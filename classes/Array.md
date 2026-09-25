@@ -152,12 +152,12 @@ When an Object is passed as the first argument, [DataSource.isAdvancedCriteria](
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| propertyName | [String](#type-string)|[Object](../reference.md#type-object)|[AdvancedCriteria](#type-advancedcriteria) | false | — | property to match, or if an Object is passed, set of properties and values to match |
+| propertyName | [String](#type-string)|[Object](../reference_2.md#type-object)|[AdvancedCriteria](#type-advancedcriteria) | false | — | property to match, or if an Object is passed, set of properties and values to match |
 | value | [Any](#type-any) | true | — | value to compare against (if propertyName is a string) |
 
 ### Returns
 
-`[Object](../reference.md#type-object)` — first matching object or null if not found
+`[Object](../reference_2.md#type-object)` — first matching object or null if not found
 
 ### Groups
 
@@ -343,7 +343,7 @@ Get a map of the form `{ item[idField] -> item[displayField] }`, for all items i
 
 ### Returns
 
-`[Object](../reference.md#type-object)` — valueMap object
+`[Object](../reference_2.md#type-object)` — valueMap object
 
 ---
 ## Method: Array.findNextIndex
@@ -366,7 +366,7 @@ var currentUserRecord = recordList.findNextIndex(0, function (record, i, recordL
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | startIndex | [int](../reference.md#type-int) | false | — | first index to consider. |
-| propertyName | [String](#type-string)|[Function](#type-function)|[Object](../reference.md#type-object)|[AdvancedCriteria](#type-advancedcriteria) | false | — | property to match; or, if a function is passed, the predicate function to call; or, if an object is passed, set of properties and values to match. |
+| propertyName | [String](#type-string)|[Function](#type-function)|[Object](../reference_2.md#type-object)|[AdvancedCriteria](#type-advancedcriteria) | false | — | property to match; or, if a function is passed, the predicate function to call; or, if an object is passed, set of properties and values to match. |
 | value | [Any](#type-any) | true | — | value to compare against (if `propertyName` is a string) or the value of `this` when the predicate function is invoked (if `propertyName` is a function) |
 | endIndex | [int](../reference.md#type-int) | true | — | last index to consider (inclusive). |
 
@@ -475,7 +475,7 @@ Returns an Object with keys for each distinct listItem\[property\] value. Each k
 
 ### Returns
 
-`[Object](../reference.md#type-object)` — index object
+`[Object](../reference_2.md#type-object)` — index object
 
 **Flags**: A
 
@@ -640,7 +640,7 @@ When an Object is passed, [DataSource.isAdvancedCriteria](DataSource.md#classmet
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| propertyName | [String](#type-string)|[Object](../reference.md#type-object)|[AdvancedCriteria](#type-advancedcriteria) | false | — | property to match, or if an Object is passed, set of properties and values to match |
+| propertyName | [String](#type-string)|[Object](../reference_2.md#type-object)|[AdvancedCriteria](#type-advancedcriteria) | false | — | property to match, or if an Object is passed, set of properties and values to match |
 | value | [Any](#type-any) | true | — | value to compare against (if propertyName is a string) |
 
 ### Returns
@@ -740,12 +740,12 @@ Add a single item to this array at a specific position in the list, sliding othe
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| obj | [Object](../reference.md#type-object) | false | — | object to add |
+| obj | [Object](../reference_2.md#type-object) | false | — | object to add |
 | pos | [number](#type-number) | false | — | position in the list to add at |
 
 ### Returns
 
-`[Object](../reference.md#type-object)` — object that was added
+`[Object](../reference_2.md#type-object)` — object that was added
 
 ### Groups
 
@@ -788,7 +788,7 @@ When an Object is passed, [DataSource.isAdvancedCriteria](DataSource.md#classmet
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| propertyName | [String](#type-string)|[Object](../reference.md#type-object)|[AdvancedCriteria](#type-advancedcriteria) | false | — | property to match, or if an Object is passed, set of properties and values to match |
+| propertyName | [String](#type-string)|[Object](../reference_2.md#type-object)|[AdvancedCriteria](#type-advancedcriteria) | false | — | property to match, or if an Object is passed, set of properties and values to match |
 | value | [Any](#type-any) | true | — | value to compare against (if propertyName is a string) |
 
 ### Returns
@@ -933,11 +933,11 @@ set() can be used to expand the length of the list.
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | pos | [number](#type-number) | false | — | position in the list to change |
-| obj | [Object](../reference.md#type-object) | false | — | new value for that position |
+| obj | [Object](../reference_2.md#type-object) | false | — | new value for that position |
 
 ### Returns
 
-`[Object](../reference.md#type-object)` — previous value at that position, or `undefined` if not found
+`[Object](../reference_2.md#type-object)` — previous value at that position, or `undefined` if not found
 
 ### Groups
 
@@ -1258,7 +1258,7 @@ Return the item at a particular position
 
 ### Returns
 
-`[Object](../reference.md#type-object)` — whatever's at that position, or `undefined` if not found
+`[Object](../reference_2.md#type-object)` — whatever's at that position, or `undefined` if not found
 
 ### Groups
 

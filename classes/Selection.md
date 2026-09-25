@@ -93,7 +93,7 @@ Return true if a particular item is selected
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| item | [Object](../reference.md#type-object) | false | — | object to check |
+| item | [Object](../reference_2.md#type-object) | false | — | object to check |
 
 ### Returns
 
@@ -113,7 +113,7 @@ When using tree-oriented selection modes like [TreeGrid.cascadeSelection](TreeGr
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| item | [Object](../reference.md#type-object) | false | — | object to check |
+| item | [Object](../reference_2.md#type-object) | false | — | object to check |
 
 ### Returns
 
@@ -176,7 +176,7 @@ Select a particular item
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| item | [Object](../reference.md#type-object) | false | — | object to select |
+| item | [Object](../reference_2.md#type-object) | false | — | object to select |
 
 ### Returns
 
@@ -287,7 +287,7 @@ All other selection routines go through this one, so by observing this routine y
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| item | [Object](../reference.md#type-object) | false | — | object to select |
+| item | [Object](../reference_2.md#type-object) | false | — | object to select |
 | newState | [boolean](../reference.md#type-boolean) | false | — | turn selection on or off |
 | recordNum | [Integer](../reference_2.md#type-integer) | false | — | The record number to select. Only used in the case of selection in a [multi-link tree](Tree.md#attr-treemultilinktree), where the node itself is not enough to unambiguously identify an occurrence in the tree |
 
@@ -333,7 +333,7 @@ Select a single item and deselect everything else
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| item | [Object](../reference.md#type-object) | false | — | object to select |
+| item | [Object](../reference_2.md#type-object) | false | — | object to select |
 
 ### Returns
 
@@ -367,7 +367,7 @@ Deselect a particular item
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| item | [Object](../reference.md#type-object) | false | — | object to select |
+| item | [Object](../reference_2.md#type-object) | false | — | object to select |
 
 ### Returns
 
@@ -403,7 +403,7 @@ To get all selected objects, use `[Selection.getSelection](#method-selectiongets
 
 ### Returns
 
-`[Object](../reference.md#type-object)` — first selected record, or null if nothing selected
+`[Object](../reference_2.md#type-object)` — first selected record, or null if nothing selected
 
 ### Groups
 

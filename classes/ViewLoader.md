@@ -138,7 +138,7 @@ Can also be called with no arguments to reload the view from the existing [ViewL
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | url | [URL](../reference_2.md#type-url) | true | — | URL to retrieve view from |
-| params | [Object](../reference.md#type-object) | true | — | Parameters to send to the viewURL. Merged with `component.viewURLParams` if both are set. |
+| params | [Object](../reference_2.md#type-object) | true | — | Parameters to send to the viewURL. Merged with `component.viewURLParams` if both are set. |
 | rpcProperties | [RPCRequest Properties](#type-rpcrequest-properties) | true | — | Additional properties for the RPCRequest sent by the ViewLoader. Very advanced; could be used to, for example, set HTTP headers. |
 
 ### Groups

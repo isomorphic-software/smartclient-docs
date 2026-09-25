@@ -469,7 +469,7 @@ Collects AI services available for a given context by walking the component hier
 
 ### Returns
 
-`[Object](../reference.md#type-object)` — merged map of service name to [AIServiceDescriptor](../reference.md#object-aiservicedescriptor)
+`[Object](../reference_2.md#type-object)` — merged map of service name to [AIServiceDescriptor](../reference.md#object-aiservicedescriptor)
 
 ---
 ## ClassMethod: AI.addMockResponses
@@ -515,7 +515,7 @@ Returns the map of all globally registered AI services (name to descriptor).
 
 ### Returns
 
-`[Object](../reference.md#type-object)` — map of service name to [AIServiceDescriptor](../reference.md#object-aiservicedescriptor)
+`[Object](../reference_2.md#type-object)` — map of service name to [AIServiceDescriptor](../reference.md#object-aiservicedescriptor)
 
 ---
 ## ClassMethod: AI.getDataSourceSummary
@@ -545,11 +545,11 @@ Returns a structured summary of a DataSource at a configurable detail level. In 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | dataSource | [DataSource](#type-datasource)|[String](#type-string) | false | — | DataSource or ID |
-| settings | [Object](../reference.md#type-object) | true | — | detail level and field options |
+| settings | [Object](../reference_2.md#type-object) | true | — | detail level and field options |
 
 ### Returns
 
-`[Object](../reference.md#type-object)` — structured summary
+`[Object](../reference_2.md#type-object)` — structured summary
 
 ### Groups
 
@@ -581,7 +581,7 @@ Built-in UI entry points — [AIAssistItem](../reference.md#class-aiassistitem) 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | userPrompt | [String](#type-string) | false | — | the user's request text |
-| context | [Object](../reference.md#type-object) | true | — | optional context with `rootCanvas` and/or `focusCanvas`. `focusCanvas` is used for component-scoped service resolution; if omitted, the canvas with keyboard focus is used |
+| context | [Object](../reference_2.md#type-object) | true | — | optional context with `rootCanvas` and/or `focusCanvas`. `focusCanvas` is used for component-scoped service resolution; if omitted, the canvas with keyboard focus is used |
 | callback | [Function](#type-function) | true | — | optional callback fired when delegation completes, with arguments `(serviceName, fellBack)`. `fellBack` is truthy if the first-service fallback was used |
 
 ### See Also
@@ -644,7 +644,7 @@ Returns an array of summaries (see [AI.getDataSourceSummary](#classmethod-aigetd
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | dataSourceNames | [Array of String](#type-array-of-string) | true | — | DataSource IDs to summarize; defaults to [AI.getDataSourceNames](#method-aigetdatasourcenames) |
-| settings | [Object](../reference.md#type-object) | true | — | passed through to [AI.getDataSourceSummary](#classmethod-aigetdatasourcesummary) |
+| settings | [Object](../reference_2.md#type-object) | true | — | passed through to [AI.getDataSourceSummary](#classmethod-aigetdatasourcesummary) |
 
 ### Returns
 

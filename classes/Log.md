@@ -284,7 +284,7 @@ Apply a batch a batch of priority settings, as a object mapping category names t
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| settings | [Object](../reference.md#type-object) | false | — | priority settings for multiple categories |
+| settings | [Object](../reference_2.md#type-object) | false | — | priority settings for multiple categories |
 
 ---
 ## ClassMethod: Log.getLogPriorities
@@ -301,7 +301,7 @@ Get all priority settings as an object mapping category names to priority levels
 
 ### Returns
 
-`[Object](../reference.md#type-object)` — priority settings
+`[Object](../reference_2.md#type-object)` — priority settings
 
 ---
 ## ClassMethod: Log.setDefaultPriority
@@ -421,7 +421,7 @@ Call a second time with identical arguments to disable tracing.
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| object | [Object](../reference.md#type-object) | false | — | object to observe |
+| object | [Object](../reference_2.md#type-object) | false | — | object to observe |
 | methodName | [String](#type-string) | false | — | name of the method to observe |
 
 ### Groups
@@ -548,7 +548,7 @@ Call a second time with identical arguments to disable tracing.
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| object | [Object](../reference.md#type-object) | false | — | object to observe |
+| object | [Object](../reference_2.md#type-object) | false | — | object to observe |
 | methodName | [String](#type-string) | false | — | name of the method to observe |
 
 ### Groups

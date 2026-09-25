@@ -201,7 +201,7 @@ Return the current navigation graph built during exploration.
 
 ### Returns
 
-`[Object](../reference.md#type-object)` — Navigation graph with nodes and edges
+`[Object](../reference_2.md#type-object)` — Navigation graph with nodes and edges
 
 ---
 ## Method: AUN.generateTest
@@ -331,7 +331,7 @@ Use `partialMode` to capture prompts using a partial mode, reducing log size by 
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| options | [Object](../reference.md#type-object) | true | — | Configuration options for conversation logging, with optional `partialMode` property (String or PartialPromptConfig). |
+| options | [Object](../reference_2.md#type-object) | true | — | Configuration options for conversation logging, with optional `partialMode` property (String or PartialPromptConfig). |
 
 ---
 ## Method: AUN.exportMarkdownLog
@@ -360,7 +360,7 @@ Note: When `partialMode` is specified, it takes precedence over the legacy omit\
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| options | [Object](../reference.md#type-object) | true | — | Configuration options for log export, with optional `partialMode` property (String or PartialPromptConfig). |
+| options | [Object](../reference_2.md#type-object) | true | — | Configuration options for log export, with optional `partialMode` property (String or PartialPromptConfig). |
 
 ### Returns
 
@@ -388,7 +388,7 @@ When [CoTProcess.mockData](CoTProcess.md#attr-cotprocessmockdata) is populated, 
 
 ### Returns
 
-`[Object](../reference.md#type-object)` — Fake AI output. Return a Promise for async mock generation.
+`[Object](../reference_2.md#type-object)` — Fake AI output. Return a Promise for async mock generation.
 
 The default implementation is equivalent to:
 

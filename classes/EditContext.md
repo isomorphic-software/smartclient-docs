@@ -470,7 +470,7 @@ The default implementation returns the same description shown in the edit tree.
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| component | [Object](../reference.md#type-object) | false | — | the Canvas or FormItem component to label |
+| component | [Object](../reference_2.md#type-object) | false | — | the Canvas or FormItem component to label |
 
 ### Returns
 
@@ -805,7 +805,7 @@ Returns all global component IDs as a map of ID to [EditNode](../reference.md#ob
 
 ### Returns
 
-`[Object](../reference.md#type-object)` — Map of global ID to EditNode for all components in the edit tree
+`[Object](../reference_2.md#type-object)` — Map of global ID to EditNode for all components in the edit tree
 
 ---
 ## Method: EditContext.createPaletteNodeTree
@@ -967,7 +967,7 @@ Executed when the left mouse is clicked (pressed and then released) on any selec
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | editNode | [EditNode](#type-editnode) | false | — | the editNode clicked |
-| liveObject | [Object](../reference.md#type-object) | false | — | the object clicked |
+| liveObject | [Object](../reference_2.md#type-object) | false | — | the object clicked |
 
 ---
 ## Method: EditContext.serializeAllEditNodesAsJSON

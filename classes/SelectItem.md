@@ -1032,7 +1032,7 @@ Expression evaluated to determine the [SelectItem.defaultValue](#attr-selectitem
 |------|------|----------|---------|-------------|
 | item | [FormItem](#type-formitem) | false | — | the form item itself (also available as "this") |
 | form | [DynamicForm](#type-dynamicform) | false | — | the managing DynamicForm instance |
-| values | [Object](../reference.md#type-object) | false | — | the current set of values for the form as a whole |
+| values | [Object](../reference_2.md#type-object) | false | — | the current set of values for the form as a whole |
 
 ### Returns
 
@@ -1173,7 +1173,7 @@ Set the valueMap for this item.
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| valueMap | [Array](#type-array)|[Object](../reference.md#type-object) | false | — | new valueMap |
+| valueMap | [Array](#type-array)|[Object](../reference_2.md#type-object) | false | — | new valueMap |
 
 ### Groups
 

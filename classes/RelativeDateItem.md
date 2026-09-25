@@ -711,7 +711,7 @@ Relative date objects have the following format:
 
 ### Returns
 
-`[Object](../reference.md#type-object)` — an object containing the relativeDate string for the current value
+`[Object](../reference_2.md#type-object)` — an object containing the relativeDate string for the current value
 
 ---
 ## Method: RelativeDateItem.parseEditorValue

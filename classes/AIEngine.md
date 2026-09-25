@@ -75,7 +75,7 @@ Override this method in [AIEngine](#class-aiengine) subclasses to add provider-s
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| rawResponse | [String](#type-string)|[Object](../reference.md#type-object) | false | — | The raw provider error response, as received by [getErrorResponseInfo](#geterrorresponseinfo). |
+| rawResponse | [String](#type-string)|[Object](../reference_2.md#type-object) | false | — | The raw provider error response, as received by [getErrorResponseInfo](#geterrorresponseinfo). |
 
 ### Returns
 

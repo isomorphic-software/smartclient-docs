@@ -161,7 +161,7 @@ Both approaches support the same properties (data, status, startRow, endRow, tot
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| data | [Array](#type-array)|[Object](../reference.md#type-object) | false | — | JavaScript data or DSResponse properties object |
+| data | [Array](#type-array)|[Object](../reference_2.md#type-object) | false | — | JavaScript data or DSResponse properties object |
 | status | [Integer](../reference_2.md#type-integer) | true | — | Response status code (default 0 = success), ignored if data is an object with a status property |
 
 ### Returns
@@ -212,11 +212,11 @@ Only an Array directly passed to `shallowClone()` is copied. Arrays contained wi
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| object | [Object](../reference.md#type-object)|[Array](#type-array)|[Object](../reference.md#type-object) | false | — | object to be cloned |
+| object | [Object](../reference_2.md#type-object)|[Array](#type-array)|[Object](../reference_2.md#type-object) | false | — | object to be cloned |
 
 ### Returns
 
-`[Object](../reference.md#type-object)|[Array of Object](#type-array-of-object)` — a shallow copy of the passed-in data
+`[Object](../reference_2.md#type-object)|[Array of Object](#type-array-of-object)` — a shallow copy of the passed-in data
 
 ---
 ## StaticMethod: isc.fromJavaList
@@ -400,8 +400,8 @@ Executes a DataSource operation directly via Java DSRequest.
 |------|------|----------|---------|-------------|
 | dataSourceId | [String](#type-string) | false | — | DataSource ID |
 | operationType | [String](#type-string) | false | — | Operation type: "fetch", "add", "update", "remove" |
-| values | [Object](../reference.md#type-object) | true | — | Values for add/update operations |
-| criteria | [Object](../reference.md#type-object) | true | — | Criteria for fetch/remove operations |
+| values | [Object](../reference_2.md#type-object) | true | — | Values for add/update operations |
+| criteria | [Object](../reference_2.md#type-object) | true | — | Criteria for fetch/remove operations |
 | operationId | [String](#type-string) | true | — | Custom operation ID |
 
 ### Returns
@@ -575,7 +575,7 @@ While cleaning up observations that are no longer required is always good practi
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| object | [Object](../reference.md#type-object) | false | — | Object to observe. This may be any JavaScript object with the specified target method, including native arrays, and instances of SmartClient classes such as [Canvas](Canvas.md#class-canvas). |
+| object | [Object](../reference_2.md#type-object) | false | — | Object to observe. This may be any JavaScript object with the specified target method, including native arrays, and instances of SmartClient classes such as [Canvas](Canvas.md#class-canvas). |
 | methodName | [String](#type-string) | false | — | Name of the method to observe. Every time this method is invoked on the target object the specified action will fire (after the default implementation completes). |
 | action | [Function](#type-function)|[String](#type-string) | false | — | Action to take when the observed method is invoked.  
 If `action` is a string to execute, certain keywords are available for context:
@@ -647,7 +647,7 @@ Return all values of a given object
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| object | [Object](../reference.md#type-object) | false | — | object to get properties from |
+| object | [Object](../reference_2.md#type-object) | false | — | object to get properties from |
 
 ### Returns
 
@@ -664,7 +664,7 @@ Updates a record in a DataSource. Returns true on success.
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | dataSourceId | [String](#type-string) | false | — | DataSource ID |
-| values | [Object](../reference.md#type-object) | false | — | Record values including primary key |
+| values | [Object](../reference_2.md#type-object) | false | — | Record values including primary key |
 
 ### Returns
 
@@ -698,11 +698,11 @@ Fetches a single record from a DataSource matching the given criteria.
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | dataSourceId | [String](#type-string) | false | — | DataSource ID |
-| criteria | [Object](../reference.md#type-object) | false | — | Criteria to match |
+| criteria | [Object](../reference_2.md#type-object) | false | — | Criteria to match |
 
 ### Returns
 
-`[Object](../reference.md#type-object)` — The first matching record as a JavaScript object, or null
+`[Object](../reference_2.md#type-object)` — The first matching record as a JavaScript object, or null
 
 ### Groups
 
@@ -735,7 +735,7 @@ Returns the size / position of an icon on the page as an array of coordinates.
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| icon | [Object](../reference.md#type-object) | false | — | icon definition for the icon you want to determine the position of (defaults to first icon in this.icons). |
+| icon | [Object](../reference_2.md#type-object) | false | — | icon definition for the icon you want to determine the position of (defaults to first icon in this.icons). |
 
 ### Returns
 
@@ -807,7 +807,7 @@ Returns the (offset) left-coordinate of an icon within its containing widget.
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| icon | [Object](../reference.md#type-object) | false | — | icon definition |
+| icon | [Object](../reference_2.md#type-object) | false | — | icon definition |
 
 ### Returns
 
@@ -907,7 +907,7 @@ If the key is not found, `defaultValue` will be returned if provided, otherwise 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | key | [String](#type-string)|[number](#type-number) | false | — | key to look for |
-| valueMap | [Object](../reference.md#type-object) | false | — | object of key:value pairs |
+| valueMap | [Object](../reference_2.md#type-object) | false | — | object of key:value pairs |
 | defaultValue | [Any](#type-any) | true | — | default value to return if key not found |
 
 ### Returns
@@ -956,7 +956,7 @@ Return all keys (property names) of a given object
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| object | [Object](../reference.md#type-object) | false | — | object to get properties from |
+| object | [Object](../reference_2.md#type-object) | false | — | object to get properties from |
 
 ### Returns
 
@@ -972,7 +972,7 @@ Returns the size / position of an icon with respect to the widget rendering out 
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| icon | [Object](../reference.md#type-object) | false | — | icon definition for the icon you want to determine the position of (defaults to first icon in this.icons). |
+| icon | [Object](../reference_2.md#type-object) | false | — | icon definition for the icon you want to determine the position of (defaults to first icon in this.icons). |
 
 ### Returns
 
@@ -1023,11 +1023,11 @@ If the same value appears more than once, the key will correspond to the last in
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| valueMap | [Object](../reference.md#type-object) | false | — | object of key:value pairs |
+| valueMap | [Object](../reference_2.md#type-object) | false | — | object of key:value pairs |
 
 ### Returns
 
-`[Object](../reference.md#type-object)` — reversed value map
+`[Object](../reference_2.md#type-object)` — reversed value map
 
 ---
 ## StaticMethod: isc.failureResponse
@@ -1059,7 +1059,7 @@ Return the first property name in a given Object, according to for..in iteration
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| object | [Object](../reference.md#type-object) | false | — | Object to get properties from |
+| object | [Object](../reference_2.md#type-object) | false | — | Object to get properties from |
 
 ### Returns
 
@@ -1109,12 +1109,12 @@ Usage example - may be used to sort a [formItem valueMap](FormItem.md#attr-formi
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| object | [Object](../reference.md#type-object) | false | — | Object to sort |
+| object | [Object](../reference_2.md#type-object) | false | — | Object to sort |
 | comparator | [Function](#type-function) | true | — | Comparator function to use when sorting the object properties |
 
 ### Returns
 
-`[Object](../reference.md#type-object)` — sorted version of the object passed in.
+`[Object](../reference_2.md#type-object)` — sorted version of the object passed in.
 
 ---
 ## StaticMethod: isc.logEchoAll
@@ -1161,7 +1161,7 @@ Converts a Java Map to a JavaScript object. Nested Maps and Lists are recursivel
 
 ### Returns
 
-`[Object](../reference.md#type-object)` — JavaScript object containing the converted data
+`[Object](../reference_2.md#type-object)` — JavaScript object containing the converted data
 
 ### Groups
 
@@ -1194,12 +1194,12 @@ Usage example - may be used to sort a [formItem valueMap](FormItem.md#attr-formi
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| object | [Object](../reference.md#type-object) | false | — | Object to sort |
+| object | [Object](../reference_2.md#type-object) | false | — | Object to sort |
 | comparator | [Function](#type-function) | true | — | Comparator function to use when sorting the objects keys |
 
 ### Returns
 
-`[Object](../reference.md#type-object)` — sorted version of the object passed in.
+`[Object](../reference_2.md#type-object)` — sorted version of the object passed in.
 
 ---
 ## StaticMethod: isc.getKeyForValue
@@ -1214,7 +1214,7 @@ If the key is not found, `defaultKey` will be returned if provided, otherwise th
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | value | [String](#type-string)|[number](#type-number) | false | — | value to look for |
-| valueMap | [Object](../reference.md#type-object) | false | — | object of key:value pairs |
+| valueMap | [Object](../reference_2.md#type-object) | false | — | object of key:value pairs |
 | defaultKey | [Any](#type-any) | true | — | default key to return if value not found |
 
 ### Returns
@@ -1237,7 +1237,7 @@ Runs an external process and returns the result.
 
 ### Returns
 
-`[Object](../reference.md#type-object)` — Result with {exitCode, output} properties
+`[Object](../reference_2.md#type-object)` — Result with {exitCode, output} properties
 
 ### Groups
 
@@ -1307,7 +1307,7 @@ Returns the (offset) top-coordinate of an icon within its containing widget.
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| icon | [Object](../reference.md#type-object) | false | — | icon definition |
+| icon | [Object](../reference_2.md#type-object) | false | — | icon definition |
 
 ### Returns
 
@@ -1336,11 +1336,11 @@ Does not handle looping references (will infinite loop).
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| object | [Object](../reference.md#type-object) | false | — | object to clone |
+| object | [Object](../reference_2.md#type-object) | false | — | object to clone |
 
 ### Returns
 
-`[Object](../reference.md#type-object)` — cloned object
+`[Object](../reference_2.md#type-object)` — cloned object
 
 ### Groups
 
@@ -1428,7 +1428,7 @@ Adds a record to a DataSource. Returns true on success.
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | dataSourceId | [String](#type-string) | false | — | DataSource ID |
-| values | [Object](../reference.md#type-object) | false | — | Record values to add |
+| values | [Object](../reference_2.md#type-object) | false | — | Record values to add |
 
 ### Returns
 
@@ -1458,7 +1458,7 @@ Creates a DSResponse with success status (0) and optional data.
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| data | [Object](../reference.md#type-object)|[Array](#type-array) | true | — | Response data (auto-converted to Java) |
+| data | [Object](../reference_2.md#type-object)|[Array](#type-array) | true | — | Response data (auto-converted to Java) |
 
 ### Returns
 
@@ -1545,7 +1545,7 @@ This is a convenience method for server-side JavaScript that eliminates the need
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| jsObject | [Object](../reference.md#type-object) | false | — | JavaScript object to convert |
+| jsObject | [Object](../reference_2.md#type-object) | false | — | JavaScript object to convert |
 
 ### Returns
 
@@ -1611,12 +1611,12 @@ Combining settings in order of precedence:
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| destination | [Object](../reference.md#type-object) | false | — | object to add properties to |
-| arguments 1-N | [Object](../reference.md#type-object) | true | — | objects to obtain properties from. Properties of all arguments other than destination are applied in turn. |
+| destination | [Object](../reference_2.md#type-object) | false | — | object to add properties to |
+| arguments 1-N | [Object](../reference_2.md#type-object) | true | — | objects to obtain properties from. Properties of all arguments other than destination are applied in turn. |
 
 ### Returns
 
-`[Object](../reference.md#type-object)` — returns the destination object
+`[Object](../reference_2.md#type-object)` — returns the destination object
 
 ### See Also
 
@@ -1650,12 +1650,12 @@ Copy any properties that do not already have a value in destination. Null and ze
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| destination | [Object](../reference.md#type-object) | false | — | Object to which properties will be added. |
-| source | [Object](../reference.md#type-object) | false | — | Object from which properties will be added. |
+| destination | [Object](../reference_2.md#type-object) | false | — | Object to which properties will be added. |
+| source | [Object](../reference_2.md#type-object) | false | — | Object from which properties will be added. |
 
 ### Returns
 
-`[Object](../reference.md#type-object)` — The destination object is returned.
+`[Object](../reference_2.md#type-object)` — The destination object is returned.
 
 ---
 ## StaticMethod: isc.defineClass
@@ -1736,7 +1736,7 @@ May return true even if `object[propertyName] === undefined` if the property is 
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| object | [Object](../reference.md#type-object) | false | — | Object to test |
+| object | [Object](../reference_2.md#type-object) | false | — | Object to test |
 | propertyName | [String](#type-string) | false | — | Which property is being tested for? |
 
 ### Returns
@@ -1800,7 +1800,7 @@ Example:
 
 ### Returns
 
-`[Object](../reference.md#type-object)` — Object with cached Java type references
+`[Object](../reference_2.md#type-object)` — Object with cached Java type references
 
 ### Groups
 

@@ -288,7 +288,7 @@ Completes a pending human task and resumes the associated workflow. This is call
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | taskId | [String](#type-string) | false | — | ID of the task to complete |
-| taskOutput | [Object](../reference.md#type-object) | false | — | Output data from the completed task |
+| taskOutput | [Object](../reference_2.md#type-object) | false | — | Output data from the completed task |
 | completedBy | [String](#type-string) | true | — | User ID of the person completing the task |
 | callback | [Callback](../reference.md#type-callback) | true | — | Called with (success, taskRecord) after completion |
 

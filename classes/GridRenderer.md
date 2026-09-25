@@ -811,7 +811,7 @@ If you do implement `getCellRecord`, the value you return is passed to you as th
 
 ### Returns
 
-`[Object](../reference.md#type-object)` — record for this cell
+`[Object](../reference_2.md#type-object)` — record for this cell
 
 ---
 ## Method: GridRenderer.rowMouseDown

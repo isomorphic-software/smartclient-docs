@@ -9,7 +9,7 @@
 ### Description
 A UI component that can participate in a DynamicForm, allowing editing or display of one of the [values tracked by the form](DynamicForm.md#attr-dynamicformvalues).
 
-FormItems are never created via the [create()](Class.md#classmethod-classcreate) method, instead, an Array of plain [JavaScript objects](../reference.md#type-object) are passed as [DynamicForm.items](DynamicForm.md#attr-dynamicformitems) when the form is created.
+FormItems are never created via the [create()](Class.md#classmethod-classcreate) method, instead, an Array of plain [JavaScript objects](../reference_2.md#type-object) are passed as [DynamicForm.items](DynamicForm.md#attr-dynamicformitems) when the form is created.
 
 See the [DynamicForm](DynamicForm.md#class-dynamicform) documentation for details and sample code.
 
@@ -4102,7 +4102,7 @@ Alternatively, you can use [Criteria](../reference_2.md#type-criteria) to declar
 | item | [FormItem](#type-formitem) | false | — | the form item itself (also available as "this") |
 | value | [Any](#type-any) | false | — | current value of the form item |
 | form | [DynamicForm](#type-dynamicform) | false | — | the managing DynamicForm instance |
-| values | [Object](../reference.md#type-object) | false | — | the current set of values for the form as a whole |
+| values | [Object](../reference_2.md#type-object) | false | — | the current set of values for the form as a whole |
 
 ### Returns
 
@@ -4120,7 +4120,7 @@ Takes an icon definition object, and returns the height for that icon in px.
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| icon | [Object](../reference.md#type-object) | false | — | icon definition object for this item. |
+| icon | [Object](../reference_2.md#type-object) | false | — | icon definition object for this item. |
 
 ### Returns
 
@@ -5394,7 +5394,7 @@ If you don't need dynamic evaluation, you can just use `item.defaultValue`.
 |------|------|----------|---------|-------------|
 | item | [FormItem](#type-formitem) | false | — | the form item itself (also available as "this") |
 | form | [DynamicForm](#type-dynamicform) | false | — | the managing DynamicForm instance |
-| values | [Object](../reference.md#type-object) | false | — | the current set of values for the form as a whole |
+| values | [Object](../reference_2.md#type-object) | false | — | the current set of values for the form as a whole |
 
 ### Returns
 
@@ -5514,7 +5514,7 @@ Takes an icon definition object, and returns the width for that icon in px.
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| icon | [Object](../reference.md#type-object) | false | — | icon definition object for this item. |
+| icon | [Object](../reference_2.md#type-object) | false | — | icon definition object for this item. |
 
 ### Returns
 
@@ -5828,7 +5828,7 @@ Set the valueMap for this item.
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| valueMap | [Array](#type-array)|[Object](../reference.md#type-object) | false | — | new valueMap |
+| valueMap | [Array](#type-array)|[Object](../reference_2.md#type-object) | false | — | new valueMap |
 
 ### Groups
 
@@ -6150,7 +6150,7 @@ Sets the [valueIcons](#attr-formitemvalueicons) for this item.
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| map | [Object](../reference.md#type-object) | false | — | mapping of logical values for this item to icon src [SCImgURL](../reference.md#type-scimgurl)s or the special value "blank". |
+| map | [Object](../reference_2.md#type-object) | false | — | mapping of logical values for this item to icon src [SCImgURL](../reference.md#type-scimgurl)s or the special value "blank". |
 
 ### Groups
 

@@ -485,7 +485,7 @@ For example:
 
 ### Returns
 
-`[Object](../reference.md#type-object)` — value associated with SC object if any, otherwise undefined
+`[Object](../reference_2.md#type-object)` — value associated with SC object if any, otherwise undefined
 
 ### Groups
 

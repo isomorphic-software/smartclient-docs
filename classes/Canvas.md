@@ -5316,7 +5316,7 @@ The [autoResizeAutoChildAttributes](#classmethod-canvassetautoresizeautochildatt
 |------|------|----------|---------|-------------|
 | policy | [String](#type-string) | false | — | Sizing policy for this set of attributes |
 | className | [String](#type-string) | false | — | Name of the class containing the autoChild configuration block to edit |
-| attributes | [Object](../reference.md#type-object) | false | — | The attribute(s) to register for resizing. |
+| attributes | [Object](../reference_2.md#type-object) | false | — | The attribute(s) to register for resizing. |
 
 ---
 ## ClassMethod: Canvas.resizeControls
@@ -5474,7 +5474,7 @@ The [autoResizeIcons](#classmethod-canvassetautoresizeicons) feature will cause 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | policy | [String](#type-string) | false | — | Icon sizing policy for this set of attributes |
-| attributes | [Object](../reference.md#type-object) | false | — | The attribute(s) to register for resizing. |
+| attributes | [Object](../reference_2.md#type-object) | false | — | The attribute(s) to register for resizing. |
 
 ---
 ## ClassMethod: Canvas.getEventEdge
@@ -5639,7 +5639,7 @@ This method will also accept a single parameter as an object array with left and
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| left | [number](#type-number)|[Object](../reference.md#type-object) | true | — | x-coordinate to move to in LOCAL coordinates or Object with left and top properties. |
+| left | [number](#type-number)|[Object](../reference_2.md#type-object) | true | — | x-coordinate to move to in LOCAL coordinates or Object with left and top properties. |
 | top | [number](#type-number) | true | — | y-coordinate to move to in LOCAL coordinates |
 
 ### Returns
@@ -7454,7 +7454,7 @@ This notification fires only on the component designated as the [Canvas.ruleScop
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| data | [Object](../reference.md#type-object) | false | — | the new rule context |
+| data | [Object](../reference_2.md#type-object) | false | — | the new rule context |
 
 ---
 ## Method: Canvas.getChildTabPosition
@@ -8039,7 +8039,7 @@ This method will be invoked during on [Canvas.draw](#method-canvasdraw) and [Can
 
 ### Returns
 
-`[Object](../reference.md#type-object)` — object containing aria attribute names and values
+`[Object](../reference_2.md#type-object)` — object containing aria attribute names and values
 
 **Flags**: A
 
@@ -8819,7 +8819,7 @@ Use [Canvas.ruleContextChanged](#method-canvasrulecontextchanged) to get a notif
 
 ### Returns
 
-`[Object](../reference.md#type-object)` — the ruleContext object, or null if canvas is not part of a ruleScope
+`[Object](../reference_2.md#type-object)` — the ruleContext object, or null if canvas is not part of a ruleScope
 
 ---
 ## Method: Canvas.setRect
@@ -8833,7 +8833,7 @@ Moves the widget so that its top-left corner is at the specified top-left coordi
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| left | [number](#type-number)|[Array](#type-array)|[Object](../reference.md#type-object) | true | — | new left coordinate, Array of coordinates in parameter order, or Object with left, top, width, height properties. If an Array or Object is passed, the remaining parameters are ignored. |
+| left | [number](#type-number)|[Array](#type-array)|[Object](../reference_2.md#type-object) | true | — | new left coordinate, Array of coordinates in parameter order, or Object with left, top, width, height properties. If an Array or Object is passed, the remaining parameters are ignored. |
 | top | [number](#type-number) | true | — | new top coordinate |
 | width | [number](#type-number) | true | — | new width |
 | height | [number](#type-number) | true | — | new height |
@@ -8981,7 +8981,7 @@ For [disabled canvases](#attr-canvasdisabled), this method returns an object wit
 
 ### Returns
 
-`[Object](../reference.md#type-object)` — dynamically calculated default aria state properties
+`[Object](../reference_2.md#type-object)` — dynamically calculated default aria state properties
 
 **Flags**: A
 

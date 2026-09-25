@@ -1910,7 +1910,7 @@ Can the field be edited? This base method always returns false, but it's overrid
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| field | [Object](../reference.md#type-object)|[number](#type-number)|[String](#type-string) | false | — | field object or identifier |
+| field | [Object](../reference_2.md#type-object)|[number](#type-number)|[String](#type-string) | false | — | field object or identifier |
 
 ### Returns
 
@@ -1984,7 +1984,7 @@ This API is equivalent to [List.find](List.md#method-listfind) but searches for 
 
 ### Returns
 
-`[Object](../reference.md#type-object)` — first matching object or null if not found
+`[Object](../reference_2.md#type-object)` — first matching object or null if not found
 
 ---
 ## Method: DataBoundComponent.disableHiliting
@@ -2157,7 +2157,7 @@ Note, if you pass a simple value to this method, it will be matched against the 
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| keyValue | [Object](../reference.md#type-object) | false | — | primary key value to search for |
+| keyValue | [Object](../reference_2.md#type-object) | false | — | primary key value to search for |
 
 ### Returns
 
@@ -2430,7 +2430,7 @@ This event is also fired when selection is updated by a direct call to one of th
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| record | [Object](../reference.md#type-object) | false | — | first selected record in the selection, if any, which may or may not be the first record in sort order if the `DataBoundComponent` is sorted. This parameter is typically used when only one record can be selected at a time. |
+| record | [Object](../reference_2.md#type-object) | false | — | first selected record in the selection, if any, which may or may not be the first record in sort order if the `DataBoundComponent` is sorted. This parameter is typically used when only one record can be selected at a time. |
 | recordList | [Array of Object](#type-array-of-object) | false | — | List of records that are now selected |
 
 ### Groups
@@ -2817,7 +2817,7 @@ If you want dropValues to be applied during a [dragRecategorize](#attr-databound
 
 ### Returns
 
-`[Object](../reference.md#type-object)` — dropValues, as described above.
+`[Object](../reference_2.md#type-object)` — dropValues, as described above.
 
 ---
 ## Method: DataBoundComponent.findNextIndex

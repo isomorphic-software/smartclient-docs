@@ -112,7 +112,7 @@ Returns the browser `window` object associated with this RemoteWindow.
 
 ### Returns
 
-`[Object](../reference.md#type-object)` — browser window
+`[Object](../reference_2.md#type-object)` — browser window
 
 ---
 ## Method: RemoteWindow.getParent
@@ -208,7 +208,7 @@ Returns the container window, if present, wrapping the browser window for this R
 
 ### Returns
 
-`[Object](../reference.md#type-object)` — OpenFin window
+`[Object](../reference_2.md#type-object)` — OpenFin window
 
 ---
 ## Method: RemoteWindow.activate

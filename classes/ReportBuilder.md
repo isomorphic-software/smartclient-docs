@@ -912,7 +912,7 @@ Returns the effective componentDefaults block for a component class: the framewo
 
 ### Returns
 
-`[Object](../reference.md#type-object)` — a copy of the effective defaults block (never null)
+`[Object](../reference_2.md#type-object)` — a copy of the effective defaults block (never null)
 
 ---
 ## Method: ReportBuilder.saveReport

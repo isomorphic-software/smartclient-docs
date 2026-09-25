@@ -171,6 +171,29 @@ Like the other `deepCloneOnEdit` settings, this flag only has an effect if you a
 **Flags**: IRWA
 
 ---
+## Attr: ValuesManager.cacheSync
+
+### Description
+When should this ValuesManager update the values it is showing from a successful save against its [DataSource](#attr-valuesmanagerdatasource)?
+
+A ValuesManager has no [ResultSet](ResultSet.md#class-resultset) keeping it current, so it applies such updates itself, merging the saved record over its current values and distributing them to its members. Note that this is a merge, where a ResultSet replaces the row outright — so a partial record passed to [DataSource.updateCaches](DataSource_1.md#method-datasourceupdatecaches) appears to work here while losing fields elsewhere. Always pass the complete record.
+
+Values the user has edited and not yet saved are preserved across an update, in whichever member form holds them - see [CacheSyncMode](../reference.md#type-cachesyncmode).
+
+This setting governs the ValuesManager and all of its members: a ValuesManager edits a single record spread across its member forms, so a partially updated set of members would be showing an inconsistent record. [DynamicForm.cacheSync](DynamicForm.md#attr-dynamicformcachesync) on a member form has no effect.
+
+### Groups
+
+- databinding
+
+### See Also
+
+- [DynamicForm.cacheSync](DynamicForm.md#attr-dynamicformcachesync)
+- [DataSource.updateCaches](DataSource_1.md#method-datasourceupdatecaches)
+
+**Flags**: IRW
+
+---
 ## Attr: ValuesManager.members
 
 ### Description
@@ -339,7 +362,7 @@ Call [ValuesManager.validate](#method-valuesmanagervalidate) to check for valida
 
 ### Returns
 
-`[Object](../reference.md#type-object)` — current values or null if validation failed.
+`[Object](../reference_2.md#type-object)` — current values or null if validation failed.
 
 ### Groups
 
@@ -509,7 +532,7 @@ Notification fired when an asynchronous validation completes.
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | success | [boolean](../reference.md#type-boolean) | false | — | true if validation succeeded, false if it failed |
-| errors | [Object](../reference.md#type-object) | false | — | Map of errors by fieldName. Will be null if validation succeeded. |
+| errors | [Object](../reference_2.md#type-object) | false | — | Map of errors by fieldName. Will be null if validation succeeded. |
 
 ---
 ## Method: ValuesManager.synchronizeMembersOnDataPath
@@ -563,7 +586,7 @@ By default hidden validation errors will be logged as warnings in the developerC
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| errors | [Object](../reference.md#type-object) | false | — | The set of errors returned - this is an object of the form  
+| errors | [Object](../reference_2.md#type-object) | false | — | The set of errors returned - this is an object of the form  
   `{fieldName:errors}`  
 Where the 'errors' object is either a single string or an array of strings containing the error messages for the field. |
 
@@ -610,7 +633,7 @@ Returns the subset of this valuesManager's values associated with some member fo
 
 ### Returns
 
-`[Object](../reference.md#type-object)` — a map of the values for the appropriate member form.
+`[Object](../reference_2.md#type-object)` — a map of the values for the appropriate member form.
 
 ### Groups
 
@@ -664,7 +687,7 @@ Where each errors object is either a single error message or an array of error m
 
 ### Returns
 
-`[Object](../reference.md#type-object)` — Object containing mapping from field names to error strings. Returns null if there are no errors for this valuesManager.
+`[Object](../reference_2.md#type-object)` — Object containing mapping from field names to error strings. Returns null if there are no errors for this valuesManager.
 
 ### Groups
 
@@ -696,7 +719,7 @@ Optional [StringMethod](../kb_topics/stringMethods.md#kb-topic-string-methods-ov
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| values | [Object](../reference.md#type-object) | false | — | the valuesManager values |
+| values | [Object](../reference_2.md#type-object) | false | — | the valuesManager values |
 | valuesManager | [ValuesManager](#type-valuesmanager) | false | — | the valuesManager being submitted |
 
 ### Groups
@@ -834,7 +857,7 @@ Returns all values within this DynamicForm that have changed since [DynamicForm.
 
 ### Returns
 
-`[Object](../reference.md#type-object)` — changed values in the form
+`[Object](../reference_2.md#type-object)` — changed values in the form
 
 ### Groups
 
@@ -937,7 +960,7 @@ Set the values for some member form.
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | ID | [String](#type-string) | false | — | ID of the member form to update |
-| values | [Object](../reference.md#type-object) | false | — | new values for the form |
+| values | [Object](../reference_2.md#type-object) | false | — | new values for the form |
 
 ### Groups
 
@@ -954,7 +977,7 @@ This method will also call [DynamicForm.setSaveOperationType](DynamicForm.md#met
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| initialValues | [Record](#type-record)|[Object](../reference.md#type-object) | true | — | initial set of values for the editor as a map of field names to their corresponding values |
+| initialValues | [Record](#type-record)|[Object](../reference_2.md#type-object) | true | — | initial set of values for the editor as a map of field names to their corresponding values |
 
 ### Groups
 
@@ -1062,7 +1085,7 @@ Note that modifying the returned object is not a supported way of adding or modi
 
 ### Returns
 
-`[Object](../reference.md#type-object)` — a map of the values for this manager
+`[Object](../reference_2.md#type-object)` — a map of the values for this manager
 
 ### Groups
 
@@ -1162,7 +1185,7 @@ Make a snapshot of the current set of values, so we can reset to them later. Cre
 
 ### Returns
 
-`[Object](../reference.md#type-object)` — copy of current form values
+`[Object](../reference_2.md#type-object)` — copy of current form values
 
 ### Groups
 
@@ -1198,7 +1221,7 @@ This method also calls [ValuesManager.rememberValues](#method-valuesmanagerremem
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| values | [Object](../reference.md#type-object) | false | — | new set of values for this values manager. |
+| values | [Object](../reference_2.md#type-object) | false | — | new set of values for this values manager. |
 
 ### Groups
 
@@ -1212,7 +1235,7 @@ Returns the set of values last stored by [DynamicForm.rememberValues](DynamicFor
 
 ### Returns
 
-`[Object](../reference.md#type-object)` — old values in the form
+`[Object](../reference_2.md#type-object)` — old values in the form
 
 ### Groups
 
@@ -1310,7 +1333,7 @@ Note that if `showErrors` is false, errors may be shown at any time via a call t
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| errors | [Object](../reference.md#type-object) | false | — | list of errors as an object with the field names as keys |
+| errors | [Object](../reference_2.md#type-object) | false | — | list of errors as an object with the field names as keys |
 | showErrors | [boolean](../reference.md#type-boolean) | false | — | If true display errors now. |
 
 ### Groups

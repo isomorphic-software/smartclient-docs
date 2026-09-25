@@ -4173,7 +4173,7 @@ To deal with errors during saving, see [Calendar.eventSaveError](#method-calenda
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | event | [CalendarEvent](#type-calendarevent) | false | — | the new calendar event to add |
-| customValues | [Object](../reference.md#type-object) | true | — | additional, custom values to be saved with the event |
+| customValues | [Object](../reference_2.md#type-object) | true | — | additional, custom values to be saved with the event |
 
 ---
 ## Method: Calendar.getVisibleStartDate
@@ -4432,7 +4432,7 @@ Create a new event in this calendar instance.
 | endDate | [Date](#type-date) | true | — | end date of event |
 | name | [String](#type-string) | true | — | name of event |
 | description | [String](#type-string) | true | — | description of event |
-| otherFields | [Object](../reference.md#type-object) | true | — | new values of additional fields to be updated |
+| otherFields | [Object](../reference_2.md#type-object) | true | — | new values of additional fields to be updated |
 
 **Deprecated**
 
@@ -5025,7 +5025,7 @@ Update an event in this calendar.
 | endDate | [Date](#type-date) | false | — | end date of event |
 | name | [String](#type-string) | false | — | name of event |
 | description | [String](#type-string) | false | — | description of event |
-| otherFields | [Object](../reference.md#type-object) | false | — | new values of additional fields to be updated |
+| otherFields | [Object](../reference_2.md#type-object) | false | — | new values of additional fields to be updated |
 
 **Deprecated**
 
@@ -5045,7 +5045,7 @@ Return false to prevent the default action, of actually [updating](#method-calen
 |------|------|----------|---------|-------------|
 | event | [CalendarEvent](#type-calendarevent) | false | — | the event that's about to be moved |
 | newEvent | [CalendarEvent](#type-calendarevent) | false | — | the event as it will be, unless this method returns false |
-| customValues | [Object](../reference.md#type-object) | true | — | additional custom values associated with the event |
+| customValues | [Object](../reference_2.md#type-object) | true | — | additional custom values associated with the event |
 
 ### Returns
 
@@ -5219,7 +5219,7 @@ Return false to prevent the default action, of actually [updating](#method-calen
 |------|------|----------|---------|-------------|
 | event | [CalendarEvent](#type-calendarevent) | false | — | the event that's about to be resized |
 | newEvent | [CalendarEvent](#type-calendarevent) | false | — | the event as it will be, unless this method returns false |
-| customValues | [Object](../reference.md#type-object) | true | — | additional custom values associated with the event |
+| customValues | [Object](../reference_2.md#type-object) | true | — | additional custom values associated with the event |
 
 ### Returns
 
@@ -5387,7 +5387,7 @@ Save an event to this Calendar's ${isc.DocUtils.linkForRef('attr:Calendar.dataSo
 |------|------|----------|---------|-------------|
 | event | [CalendarEvent](#type-calendarevent) | false | — | The event object that will be updated |
 | newEvent | [CalendarEvent](#type-calendarevent) | false | — | The new attributes for the event |
-| otherFields | [Object](../reference.md#type-object) | false | — | new values of additional fields to be updated |
+| otherFields | [Object](../reference_2.md#type-object) | false | — | new values of additional fields to be updated |
 
 ---
 ## Method: Calendar.rebuildSelectedView
@@ -5540,7 +5540,7 @@ For [Timeline](../reference.md#class-timeline)s, and for [dayView](#attr-calenda
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | laneName | [Lane](#type-lane) | false | — | the Lane in which to add this event |
-| startDate | [Date](#type-date)|[Object](../reference.md#type-object) | false | — | start date of event, or CalendarEvent Object |
+| startDate | [Date](#type-date)|[Object](../reference_2.md#type-object) | false | — | start date of event, or CalendarEvent Object |
 | endDate | [Date](#type-date) | true | — | end date of event |
 | name | [String](#type-string) | true | — | name of event |
 | description | [String](#type-string) | true | — | description of event |

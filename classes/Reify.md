@@ -207,7 +207,7 @@ Add a screen Canvas instance to the loaded-resource registry. Called automatical
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | canvas | [Canvas](#type-canvas) | false | — | the screen's top-level Canvas instance |
-| info | [Object](../reference.md#type-object) | true | — | optional fields: `screenName`, `projectName`, `source`, `reifyURL`, `sourceLabel` |
+| info | [Object](../reference_2.md#type-object) | true | — | optional fields: `screenName`, `projectName`, `source`, `reifyURL`, `sourceLabel` |
 
 ---
 ## ClassMethod: Reify.showMockDS
@@ -519,7 +519,7 @@ Add a [DataSource](DataSource_1.md#class-datasource) reference to the loaded-res
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | dsName | [String](#type-string) | false | — | the DataSource's ID |
-| info | [Object](../reference.md#type-object) | true | — | optional fields: `projectName`, `source`, `reifyURL`, `sourceLabel` |
+| info | [Object](../reference_2.md#type-object) | true | — | optional fields: `projectName`, `source`, `reifyURL`, `sourceLabel` |
 
 ---
 ## ClassMethod: Reify.setProjectLoaderPath
@@ -866,7 +866,7 @@ Registration is idempotent: re-registering an already-known project just refresh
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | project | [Project](#type-project) | false | — | the Project instance to register |
-| sourceInfo | [Object](../reference.md#type-object) | true | — | optional override for source provenance fields (`source`, `reifyURL`, `sourceLabel`); defaults derived from [Reify.defaultReifyURL](#classattr-reifydefaultreifyurl) |
+| sourceInfo | [Object](../reference_2.md#type-object) | true | — | optional override for source provenance fields (`source`, `reifyURL`, `sourceLabel`); defaults derived from [Reify.defaultReifyURL](#classattr-reifydefaultreifyurl) |
 
 ---
 ## ClassMethod: Reify.getLoadedDataSources

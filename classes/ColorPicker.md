@@ -599,7 +599,7 @@ The optional second parameter to this method indicates whether the shared picker
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| properties | [Object](../reference.md#type-object) | true | — | Properties to apply to the global ColorPicker object |
+| properties | [Object](../reference_2.md#type-object) | true | — | Properties to apply to the global ColorPicker object |
 | keepCurrentState | [boolean](../reference.md#type-boolean) | true | — | Should we keep the current state? If false (or not provided), revert to default state |
 
 ### Returns
@@ -971,7 +971,7 @@ Sets the currently-selected color. Accepts any value that [Colors.getColor](Colo
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| color | [String](#type-string)|[Color](#type-color)|[Object](../reference.md#type-object) | false | — | new color value |
+| color | [String](#type-string)|[Color](#type-color)|[Object](../reference_2.md#type-object) | false | — | new color value |
 
 ### See Also
 

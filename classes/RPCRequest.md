@@ -642,7 +642,7 @@ This is typically useful to provide visual feedback to the user when a lengthy d
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| progressEvent | [Object](../reference.md#type-object) | false | — | The native [ProgressEvent](https://developer.mozilla.org/en-US/docs/Web/API/ProgressEvent) with attributes indicating the `loaded` content so far, and, if `Content-Length` headers were set on the response, the `total` download size. Note that this is a native event produced by the browser and SmartClient does not guarantee consistency for the event object, or the timing of the `onprogress` event notifications across browsers. |
+| progressEvent | [Object](../reference_2.md#type-object) | false | — | The native [ProgressEvent](https://developer.mozilla.org/en-US/docs/Web/API/ProgressEvent) with attributes indicating the `loaded` content so far, and, if `Content-Length` headers were set on the response, the `total` download size. Note that this is a native event produced by the browser and SmartClient does not guarantee consistency for the event object, or the timing of the `onprogress` event notifications across browsers. |
 | request | [RPCRequest](#type-rpcrequest) | false | — | the request that initiated the download |
 
 ---
@@ -662,7 +662,7 @@ Note that for a successful download request, the `data` parameter will be a [Blo
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | response | [RPCResponse](#type-rpcresponse) | false | — | the response to the request |
-| data | [Object](../reference.md#type-object) | false | — | The Blob returned by the server, or error message if the download was unsuccessful |
+| data | [Object](../reference_2.md#type-object) | false | — | The Blob returned by the server, or error message if the download was unsuccessful |
 | fileName | [String](#type-string) | false | — | The file name for the downloaded file, derived from the [content-disposition header](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Disposition). |
 | type | [String](#type-string) | false | — | the content type for the downloaded file, as specified by the [content-type header](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Type). |
 | request | [RPCRequest](#type-rpcrequest) | false | — | the request that initiated the download |

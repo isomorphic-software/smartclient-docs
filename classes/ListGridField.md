@@ -2954,8 +2954,8 @@ Executed when this field is double-clicked. Note that if [ListGrid.recordDoubleC
 | recordNum | [number](#type-number) | false | — | number of the record clicked on in the current set of displayed records (starts with 0) |
 | field | [ListGridField](#type-listgridfield) | false | — | the field that was clicked on (field definition) |
 | fieldNum | [number](#type-number) | false | — | number of the field clicked on in the listGrid.fields array |
-| value | [Object](../reference.md#type-object) | false | — | value of the cell (after valueMap, etc. applied) |
-| rawValue | [Object](../reference.md#type-object) | false | — | raw value of the cell (before valueMap, etc applied) |
+| value | [Object](../reference_2.md#type-object) | false | — | value of the cell (after valueMap, etc. applied) |
+| rawValue | [Object](../reference_2.md#type-object) | false | — | raw value of the cell (before valueMap, etc applied) |
 
 ### Returns
 
@@ -3164,7 +3164,7 @@ Optional stringMethod to get a [ListGridField.valueMap](#attr-listgridfieldvalue
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| values | [Object](../reference.md#type-object) | false | — | Field values for record being edited. Note that this will include the current edit values for fields that have not yet been saved. May be null, if editing a new record. |
+| values | [Object](../reference_2.md#type-object) | false | — | Field values for record being edited. Note that this will include the current edit values for fields that have not yet been saved. May be null, if editing a new record. |
 | field | [ListGridField](#type-listgridfield) | false | — | pointer to the listGridField |
 | grid | [ListGrid](#type-listgrid) | false | — | pointer back to this ListGrid instance. |
 
@@ -3211,7 +3211,7 @@ This method may return an array of results - in this case the group will show mu
 |------|------|----------|---------|-------------|
 | records | [Array of ListGridRecord](#type-array-of-listgridrecord) | false | — | records for which a summary is being generated (so all records in the group). |
 | field | [ListGridField](#type-listgridfield) | false | — | pointer to the field for which summary value is being generated |
-| groupNode | [Object](../reference.md#type-object) | true | — | object with specified groupValue and groupName for this group |
+| groupNode | [Object](../reference_2.md#type-object) | true | — | object with specified groupValue and groupName for this group |
 
 ### Returns
 
@@ -3238,7 +3238,7 @@ To apply arbitrary default values to the grid when editing new records, develope
 \- the colNum being edited \[`item.colNum`\]  
 \- the rowNum being edited \[`item.rowNum`\] |
 | form | [DynamicForm](#type-dynamicform) | false | — | the managing DynamicForm instance |
-| values | [Object](../reference.md#type-object) | false | — | the current set of values for the form as a whole |
+| values | [Object](../reference_2.md#type-object) | false | — | the current set of values for the form as a whole |
 
 ### Returns
 
@@ -3357,7 +3357,7 @@ Default title is the groupValue itself.
 |------|------|----------|---------|-------------|
 | groupValue | [Any](#type-any) | false | — | the value from the group is created, the result of [ListGridField.getGroupValue](#method-listgridfieldgetgroupvalue) |
 | groupNode | [GroupNode](#type-groupnode) | false | — | the node in the grid containing the group. |
-| field | [Object](../reference.md#type-object) | false | — | Field object for which to get group value |
+| field | [Object](../reference_2.md#type-object) | false | — | Field object for which to get group value |
 | fieldName | [String](#type-string) | false | — | The name of the field |
 | grid | [ListGrid](#type-listgrid) | false | — | the ListGrid displaying the cell |
 
@@ -3388,7 +3388,7 @@ For custom sort orders that can be executed both client and server, consider [Da
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| recordObject | [Object](../reference.md#type-object) | false | — | record to normalize |
+| recordObject | [Object](../reference_2.md#type-object) | false | — | record to normalize |
 | fieldName | [String](#type-string) | false | — | name of the field on which sorting occurred |
 | context | [ListGrid](#type-listgrid) | false | — | A pointer back to the list grid displaying this field will be available as the `context` argument. Note that you can also get a pointer to the field definition object by calling `context.getFieldByName(fieldName)` |
 
@@ -3414,7 +3414,7 @@ Takes precedence over `parseEditorValue` defined at the grid level.
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | value | [Any](#type-any) | false | — | value displayed in the editor for the cell |
-| record | [Object](../reference.md#type-object) | false | — | record object for the row being edited. May be null if this is a new row being added to the end of the list. |
+| record | [Object](../reference_2.md#type-object) | false | — | record object for the row being edited. May be null if this is a new row being added to the end of the list. |
 | rowNum | [number](#type-number) | false | — | row number for the cell |
 | colNum | [number](#type-number) | false | — | column number for the cell. |
 | grid | [ListGrid Instance](#type-listgrid-instance) | false | — | A pointer to the ListGrid displaying the cell |
@@ -3523,7 +3523,7 @@ While any type of value may be returned, avoiding the use of string values may r
 |------|------|----------|---------|-------------|
 | value | [Any](#type-any) | false | — | raw value for the cell, from the record for the row |
 | record | [ListGridRecord](#type-listgridrecord) | false | — | Record object for the cell. Note: If this is a new row that has not been saved, in an editable grid, it has no associated record object. In this case the edit values will be passed in as this parameter (see [ListGrid.getEditValues](ListGrid_2.md#method-listgridgeteditvalues)) |
-| field | [Object](../reference.md#type-object) | false | — | Field object for which to get group value |
+| field | [Object](../reference_2.md#type-object) | false | — | Field object for which to get group value |
 | fieldName | [String](#type-string) | false | — | The name of the field |
 | grid | [ListGrid](#type-listgrid) | false | — | the ListGrid displaying the cell |
 

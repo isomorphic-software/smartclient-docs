@@ -178,7 +178,7 @@ Once updated, the icons named in the map will render their respective new images
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| mappings | [Object](../reference.md#type-object) | false | — | a map of StockIcon-names to new src-strings |
+| mappings | [Object](../reference_2.md#type-object) | false | — | a map of StockIcon-names to new src-strings |
 
 ### Groups
 

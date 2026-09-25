@@ -352,7 +352,7 @@ Can also be called with no arguments to reload content from the existing [HTMLFl
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | url | [URL](../reference_2.md#type-url) | true | — | URL to retrieve contents from |
-| params | [Object](../reference.md#type-object) | true | — | Parameters to send to the contentsURL. Merged with `component.contentsURLParams` if both are set. |
+| params | [Object](../reference_2.md#type-object) | true | — | Parameters to send to the contentsURL. Merged with `component.contentsURLParams` if both are set. |
 
 ### Groups
 

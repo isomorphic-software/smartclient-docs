@@ -1416,7 +1416,7 @@ Returns the pane for a given tab.
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| tab | [Object](../reference.md#type-object)|[number](#type-number)|[GlobalId](../reference_2.md#type-globalid)|[TabName](../reference.md#type-tabname)|[Tab](#type-tab) | false | — | — |
+| tab | [Object](../reference_2.md#type-object)|[number](#type-number)|[GlobalId](../reference_2.md#type-globalid)|[TabName](../reference.md#type-tabname)|[Tab](#type-tab) | false | — | — |
 
 ### Returns
 
@@ -1459,7 +1459,7 @@ Apply properties to an existing tab in a tabSet.
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | tab | [Tab](#type-tab)|[number](#type-number)|[GlobalId](../reference_2.md#type-globalid)|[TabName](../reference.md#type-tabname) | false | — | Identifier for the tab to be modified |
-| properties | [Object](../reference.md#type-object) | false | — | Javascript object containing the set of properties to be applied to the tab. |
+| properties | [Object](../reference_2.md#type-object) | false | — | Javascript object containing the set of properties to be applied to the tab. |
 
 **Flags**: A
 

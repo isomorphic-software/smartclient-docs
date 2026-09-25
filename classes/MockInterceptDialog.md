@@ -77,7 +77,7 @@ Populates the editor with a response object (from mockEntry or AI response).
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| response | [Object](../reference.md#type-object) | false | — | The response data to populate |
+| response | [Object](../reference_2.md#type-object) | false | — | The response data to populate |
 
 ---
 ## Method: MockInterceptDialog.getHeaderContents
@@ -109,6 +109,6 @@ Extracts the response value from the editor. Returns null if validation fails (s
 
 ### Returns
 
-`[Object](../reference.md#type-object)` — The response object, or null if invalid
+`[Object](../reference_2.md#type-object)` — The response object, or null if invalid
 
 ---

@@ -53,7 +53,7 @@ Returns the values being edited as a block of CSS properties.
 
 ### Returns
 
-`[Object](../reference.md#type-object)` — an ordinary object representing the current values from the editor
+`[Object](../reference_2.md#type-object)` — an ordinary object representing the current values from the editor
 
 ---
 ## Method: CSSEditor.editComplete
@@ -65,7 +65,7 @@ Notification fired when the okButton is clicked.
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| settings | [Object](../reference.md#type-object) | false | — | ordinary JS object with the final settings |
+| settings | [Object](../reference_2.md#type-object) | false | — | ordinary JS object with the final settings |
 
 ---
 ## Method: CSSEditor.valuesChanged
@@ -77,7 +77,7 @@ Notification fired when values in the editor are changed. The latest values are 
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| values | [Object](../reference.md#type-object) | false | — | ordinary JS object with properties representing the settings following an edit |
+| values | [Object](../reference_2.md#type-object) | false | — | ordinary JS object with properties representing the settings following an edit |
 
 ---
 ## Method: CSSEditor.setGroups

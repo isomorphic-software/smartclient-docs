@@ -9,7 +9,7 @@
 ### Description
 A [ValueMap](../reference_2.md#type-valuemap) is a set of legal values for a field.
 
-The valueMap can be specified as either an Array of legal values, or as an [Object](../reference.md#type-object) where each property maps a stored value to a user-displayable value.
+The valueMap can be specified as either an Array of legal values, or as an [Object](../reference_2.md#type-object) where each property maps a stored value to a user-displayable value.
 
 To enforce that a field should be constrained to only the values in the valueMap, either declare [field.type](DataSourceField.md#attr-datasourcefieldtype) as "enum", or use a [ValidatorType](../reference.md#type-validatortype) of "isOneOf" with explicitly listed values. Otherwise, although a normal [SelectItem](SelectItem.md#class-selectitem) control will only allow values from the valueMap to be entered, other controls such as a [ComboBox](ComboBoxItem.md#class-comboboxitem) will allow other values to be entered.
 

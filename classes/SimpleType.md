@@ -354,7 +354,7 @@ See [Class.create](Class.md#classmethod-classcreate) for more details about the 
 
 ### Returns
 
-`[Object](../reference.md#type-object)` — New instance of this class, whose init() routine has already been called
+`[Object](../reference_2.md#type-object)` — New instance of this class, whose init() routine has already been called
 
 ---
 ## Method: SimpleType.getGroupValue
@@ -368,7 +368,7 @@ Returns a group value appropriate for the passed record, field and value, in the
 |------|------|----------|---------|-------------|
 | value | [Any](#type-any) | false | — | the record value to return a group value for |
 | record | [Record](#type-record) | false | — | the record containing the passed value |
-| field | [Object](../reference.md#type-object) | false | — | the field relating to the value to be processed |
+| field | [Object](../reference_2.md#type-object) | false | — | the field relating to the value to be processed |
 | fieldName | [String](#type-string) | false | — | the name of the field relating to the value to be processed |
 | component | [Canvas](#type-canvas) | false | — | the component, usually a [ListGrid](ListGrid_1.md#class-listgrid), containing the passed record |
 
@@ -427,7 +427,7 @@ Returns a string value appropriate for the title of the group containing the pas
 |------|------|----------|---------|-------------|
 | value | [Any](#type-any) | false | — | the record value to return a group title for |
 | record | [Record](#type-record) | false | — | the record containing the passed group value |
-| field | [Object](../reference.md#type-object) | false | — | the field relating to the value to be processed |
+| field | [Object](../reference_2.md#type-object) | false | — | the field relating to the value to be processed |
 | fieldName | [String](#type-string) | false | — | the name of the field relating to the value to be processed |
 | component | [Canvas](#type-canvas) | false | — | the component, usually a [ListGrid](ListGrid_1.md#class-listgrid), containing the passed record |
 
@@ -452,7 +452,7 @@ A formatter can make itself configurable on a per-component or per-field basis b
 | value | [Any](#type-any) | false | — | value to be formatted |
 | field | [Field](#type-field) | true | — | field descriptor from the component calling the formatter, if applicable. Depending on the calling component, this could be a [ListGridField](../reference_2.md#object-listgridfield), [TreeGridField](../reference.md#object-treegridfield), etc |
 | component | [DataBoundComponent](#type-databoundcomponent) | true | — | component calling this formatter, if applicable |
-| record | [Object](../reference.md#type-object) | true | — | Full record, if applicable |
+| record | [Object](../reference_2.md#type-object) | true | — | Full record, if applicable |
 
 ---
 ## Method: SimpleType.editFormatter
@@ -561,6 +561,6 @@ A formatter can make itself configurable on a per-component or per-field basis b
 | value | [Any](#type-any) | false | — | value to be formatted |
 | field | [Field](#type-field) | true | — | field descriptor from the component calling the formatter, if applicable. Depending on the calling component, this could be a [FormItem](FormItem.md#class-formitem), [DetailViewerField](../reference.md#object-detailviewerfield), etc |
 | component | [DataBoundComponent](#type-databoundcomponent) | true | — | component calling this formatter, if applicable |
-| record | [Object](../reference.md#type-object) | true | — | Full record, if applicable |
+| record | [Object](../reference_2.md#type-object) | true | — | Full record, if applicable |
 
 ---

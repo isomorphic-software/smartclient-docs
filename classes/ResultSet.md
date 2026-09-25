@@ -74,7 +74,7 @@ Note that the client-side filtering described above is also used to determine wh
 
 If automatic cache synchronization isn't working, troubleshoot the problem using the steps suggested [in the FAQ](http://forums.smartclient.com/showthread.php?t=8159#aGrid).
 
-Regarding [operationIds](OperationBinding.md#attr-operationbindingoperationid) and how they affect caching, take into account that cache sync is based on the fetch used - any add or update operation uses a fetch to retrieve updated data, and the operationId of that fetch can be set via [cacheSyncOperation](OperationBinding.md#attr-operationbindingcachesyncoperation). If the operationId of the cache is different from the operationId of the cache update data, it won't be used to update the cache, since the fields included and other aspects of the data are allowed to be different across different operationIds. This allows to maintain distinct caches on a per component basis, so when two components are using separate operationIds they are assumed to have distinct caches, because updates performed with one operationId will not affect the cache obtained via another operationId. Also, take into account that operationId must be unique per DataSource, across all operationTypes for that DataSource.
+Regarding [operationIds](OperationBinding.md#attr-operationbindingoperationid) and how they affect caching, take into account that cache sync is based on the fetch used - any add or update operation uses a fetch to retrieve updated data, and the operationId of that fetch can be set via [cacheSyncOperation](#attr-operationbindingcachesyncoperation). If the operationId of the cache is different from the operationId of the cache update data, it won't be used to update the cache, since the fields included and other aspects of the data are allowed to be different across different operationIds. This allows to maintain distinct caches on a per component basis, so when two components are using separate operationIds they are assumed to have distinct caches, because updates performed with one operationId will not affect the cache obtained via another operationId. Also, take into account that operationId must be unique per DataSource, across all operationTypes for that DataSource.
 
 **Data Paging with partial cache**
 
@@ -713,12 +713,12 @@ When [filtered indexing](#attr-resultsetindexfiltereddata) is enabled, this meth
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| propertyName | [String](#type-string)|[Object](../reference.md#type-object)|[AdvancedCriteria](#type-advancedcriteria) | false | — | property to match, or if an Object is passed, set of properties and values to match |
+| propertyName | [String](#type-string)|[Object](../reference_2.md#type-object)|[AdvancedCriteria](#type-advancedcriteria) | false | — | property to match, or if an Object is passed, set of properties and values to match |
 | value | [Any](#type-any) | true | — | value to compare against (if propertyName is a string) |
 
 ### Returns
 
-`[Object](../reference.md#type-object)` — first matching object or null if not found
+`[Object](../reference_2.md#type-object)` — first matching object or null if not found
 
 ### Groups
 
@@ -805,7 +805,7 @@ Note, if you pass a simple value to this method, it will be matched against the 
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| keyValue | [Object](../reference.md#type-object) | false | — | primary key value to search for |
+| keyValue | [Object](../reference_2.md#type-object) | false | — | primary key value to search for |
 
 ### Returns
 
@@ -985,7 +985,7 @@ If this method is called when the [cache is incomplete](#method-resultsetallmatc
 
 ### Returns
 
-`[Object](../reference.md#type-object)` — valueMap object
+`[Object](../reference_2.md#type-object)` — valueMap object
 
 ### See Also
 
@@ -1095,7 +1095,7 @@ Like [List.findIndex](List.md#method-listfindindex). Checks only loaded rows and
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| propertyName | [String](#type-string)|[Object](../reference.md#type-object)|[AdvancedCriteria](#type-advancedcriteria) | false | — | property to match, or if an Object is passed, set of properties and values to match |
+| propertyName | [String](#type-string)|[Object](../reference_2.md#type-object)|[AdvancedCriteria](#type-advancedcriteria) | false | — | property to match, or if an Object is passed, set of properties and values to match |
 | value | [Any](#type-any) | true | — | value to compare against (if propertyName is a string) |
 
 ### Returns
@@ -1335,7 +1335,7 @@ All List access methods of the ResultSet have the semantics described in `getRan
 
 ### Returns
 
-`[Object](../reference.md#type-object)` — whatever's at that position, or `undefined` if not found
+`[Object](../reference_2.md#type-object)` — whatever's at that position, or `undefined` if not found
 
 ### Groups
 
@@ -1379,7 +1379,7 @@ When an Object is passed as the `property` argument, [DataSource.isAdvancedCrite
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| property | [String](#type-string)|[Object](../reference.md#type-object)|[AdvancedCriteria](#type-advancedcriteria) | false | — | the property name to match, or an object with property:value pairs |
+| property | [String](#type-string)|[Object](../reference_2.md#type-object)|[AdvancedCriteria](#type-advancedcriteria) | false | — | the property name to match, or an object with property:value pairs |
 | value | [Any](#type-any) | true | — | value to match (if property is a string) |
 
 ### Returns
@@ -1521,7 +1521,7 @@ Like [List.findNextIndex](List.md#method-listfindnextindex). Checks only loaded 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | startIndex | [int](../reference.md#type-int) | false | — | first index to consider. |
-| propertyName | [String](#type-string)|[Function](#type-function)|[Object](../reference.md#type-object)|[AdvancedCriteria](#type-advancedcriteria) | false | — | property to match; or, if a function is passed, the predicate function to call; or, if an object is passed, set of properties and values to match. |
+| propertyName | [String](#type-string)|[Function](#type-function)|[Object](../reference_2.md#type-object)|[AdvancedCriteria](#type-advancedcriteria) | false | — | property to match; or, if a function is passed, the predicate function to call; or, if an object is passed, set of properties and values to match. |
 | value | [Any](#type-any) | true | — | value to compare against (if `propertyName` is a string) or the value of `this` when the predicate function is invoked (if `propertyName` is a function) |
 | endIndex | [int](../reference.md#type-int) | true | — | last index to consider (inclusive). |
 

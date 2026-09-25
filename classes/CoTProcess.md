@@ -565,7 +565,7 @@ No-ops with a warning if a capture session is already armed; call [CoTProcess.di
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| bag | [Object](../reference.md#type-object) | false | — | Bag previously produced by [CoTProcess.dumpCapturedMockData](#classmethod-cotprocessdumpcapturedmockdata). |
+| bag | [Object](../reference_2.md#type-object) | false | — | Bag previously produced by [CoTProcess.dumpCapturedMockData](#classmethod-cotprocessdumpcapturedmockdata). |
 
 ### Groups
 
@@ -601,7 +601,7 @@ Safe to call any time during or after a capture session. Calling outside a captu
 
 ### Returns
 
-`[Object](../reference.md#type-object)` — Bag with shape `{formatVersion, captured, rootKey?, steps}` where `steps` is an array of `{processKey, taskID, aiResponse, timestamp}` entries in capture order. Each step may be hand-edited to add an optional numeric `delay` field that overrides [CoTProcess.defaultMockReplayDelay](#classattr-cotprocessdefaultmockreplaydelay) for that one step at replay time.
+`[Object](../reference_2.md#type-object)` — Bag with shape `{formatVersion, captured, rootKey?, steps}` where `steps` is an array of `{processKey, taskID, aiResponse, timestamp}` entries in capture order. Each step may be hand-edited to add an optional numeric `delay` field that overrides [CoTProcess.defaultMockReplayDelay](#classattr-cotprocessdefaultmockreplaydelay) for that one step at replay time.
 
 ### Groups
 
@@ -667,7 +667,7 @@ When [CoTProcess.mockData](#attr-cotprocessmockdata) is populated, the default i
 
 ### Returns
 
-`[Object](../reference.md#type-object)` — Fake AI output. Return a Promise for async mock generation.
+`[Object](../reference_2.md#type-object)` — Fake AI output. Return a Promise for async mock generation.
 
 The default implementation is equivalent to:
 
@@ -725,7 +725,7 @@ Builds the success result object to post to the async operation. Subclasses over
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| state | [Object](../reference.md#type-object) | false | — | The final process state |
+| state | [Object](../reference_2.md#type-object) | false | — | The final process state |
 | output | [Any](#type-any) | true | — | The Process's validated output; see [Process.getOutput](Process.md#method-processgetoutput). |
 
 ### Returns
@@ -740,7 +740,7 @@ Split [history](#attr-cotprocesshistory) into the recent entries that render in 
 
 ### Returns
 
-`[Object](../reference.md#type-object)` — `{older: Array, recent: Array}`
+`[Object](../reference_2.md#type-object)` — `{older: Array, recent: Array}`
 
 ### Groups
 
@@ -856,7 +856,7 @@ Returns structured error information if the process failed.
 
 ### Returns
 
-`[Object](../reference.md#type-object)` — Error object { type, message, stepIndex }
+`[Object](../reference_2.md#type-object)` — Error object { type, message, stepIndex }
 
 ---
 ## Method: CoTProcess.getCompactHistoryLines
@@ -935,7 +935,7 @@ Callers can access:
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | element | [ProcessElement](#type-processelement) | false | — | The element that completed |
-| output | [Object](../reference.md#type-object) | false | — | The task's output object |
+| output | [Object](../reference_2.md#type-object) | false | — | The task's output object |
 | process | [CoTProcess](#type-cotprocess) | false | — | The process instance |
 
 ---
@@ -1017,7 +1017,7 @@ Called when the process completes successfully. Posts the success result to the 
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| state | [Object](../reference.md#type-object) | false | — | The final process state |
+| state | [Object](../reference_2.md#type-object) | false | — | The final process state |
 | output | [Any](#type-any) | true | — | The Process's validated output as computed by [Process.getOutput](Process.md#method-processgetoutput). When no [Process.outputDS](Process.md#attr-processoutputds) / output schema is declared this is the same object as `state`. |
 
 ---

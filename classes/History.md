@@ -89,7 +89,7 @@ When the user transitions to the history entry immediately before the first synt
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| callback | [String](#type-string)|[Object](../reference.md#type-object) | false | — | The callback to invoke when the user navigates to a synthetic history entry. |
+| callback | [String](#type-string)|[Object](../reference_2.md#type-object) | false | — | The callback to invoke when the user navigates to a synthetic history entry. |
 | requiresData | [boolean](../reference.md#type-boolean) | false | — | If passed, this callback will only be fired if the user is navigating to a history entry that was explicitly generated in this browser session. |
 | isAdditional | [boolean](../reference.md#type-boolean) | true | — | If false or unspecified, then the callback is considered to be the primary callback, replacing the previous primary callback if the primary callback was previously registered. If true, then the callback is an additive callback; that is, it is called in addition to the primary callback, and after the primary callback is called. |
 

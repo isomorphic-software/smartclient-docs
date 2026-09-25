@@ -733,7 +733,7 @@ Overridden by StatefulCanvas to pick up [aria-label](#method-statefulcanvasgetar
 
 ### Returns
 
-`[Object](../reference.md#type-object)` — dynamically calculated default aria state properties
+`[Object](../reference_2.md#type-object)` — dynamically calculated default aria state properties
 
 **Flags**: A
 

@@ -1059,7 +1059,7 @@ Returns an opaque JavaScript object representing the current local transformatio
 
 ### Returns
 
-`[Object](../reference.md#type-object)` — opaque tranformation data
+`[Object](../reference_2.md#type-object)` — opaque tranformation data
 
 ### See Also
 

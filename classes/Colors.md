@@ -150,7 +150,7 @@ Supported target formats:
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| color | [String](#type-string)|[Color](#type-color)|[Object](../reference.md#type-object) | false | — | any valid CSS color string, or a structured color object with {r,g,b}, {h,s,l}, or {L,C,h} keys |
+| color | [String](#type-string)|[Color](#type-color)|[Object](../reference_2.md#type-object) | false | — | any valid CSS color string, or a structured color object with {r,g,b}, {h,s,l}, or {L,C,h} keys |
 | format | [ColorFormat](../reference_2.md#type-colorformat) | false | — | target format: "hex", "rgb", "hsl", or "oklch" |
 
 ### Returns
@@ -298,7 +298,7 @@ Returns one of: `"lighten"`, `"darken"`, `"saturate"`, `"desaturate"`, `"spin"` 
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| deltas | [Object](../reference.md#type-object) | false | — | oklch channel deltas - `l` (lightness), `c` (chroma), `h` (hue in degrees); omitted channels are treated as 0 |
+| deltas | [Object](../reference_2.md#type-object) | false | — | oklch channel deltas - `l` (lightness), `c` (chroma), `h` (hue in degrees); omitted channels are treated as 0 |
 
 ### Returns
 
@@ -439,7 +439,7 @@ Returns null if the expression is not valid RCS syntax (plain hex, rgb(), named 
 
 ### Returns
 
-`[Object](../reference.md#type-object)` — structured descriptor, or null if not valid RCS
+`[Object](../reference_2.md#type-object)` — structured descriptor, or null if not valid RCS
 
 ### Groups
 
@@ -478,7 +478,7 @@ If `format` is specified, the value must be parseable in that particular format 
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| color | [String](#type-string)|[Color](#type-color)|[Object](../reference.md#type-object) | false | — | value to test |
+| color | [String](#type-string)|[Color](#type-color)|[Object](../reference_2.md#type-object) | false | — | value to test |
 | format | [ColorFormat](../reference_2.md#type-colorformat) | true | — | if specified, require this format |
 
 ### Returns
@@ -501,12 +501,12 @@ Supported formats and their returned keys:
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| color | [String](#type-string)|[Color](#type-color)|[Object](../reference.md#type-object) | false | — | any valid CSS color string or [Color](../reference_2.md#object-color) |
+| color | [String](#type-string)|[Color](#type-color)|[Object](../reference_2.md#type-object) | false | — | any valid CSS color string or [Color](../reference_2.md#object-color) |
 | format | [ColorFormat](../reference_2.md#type-colorformat) | false | — | target format: "rgb", "hsl", or "oklch" |
 
 ### Returns
 
-`[Object](../reference.md#type-object)` — plain object with numeric component keys, or null if invalid
+`[Object](../reference_2.md#type-object)` — plain object with numeric component keys, or null if invalid
 
 ### See Also
 
@@ -565,7 +565,7 @@ The `origin` parameter is the CSS expression to use as the RCS origin - typicall
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | origin | [String](#type-string) | false | — | the CSS origin expression for the RCS - typically a `var()` reference or a literal color |
-| relationship | [Object](../reference.md#type-object) | false | — | an object with oklch deltas: `L` (lightness), `C` (chroma), and/or `h` (hue). Properties that are zero, null, or omitted produce identity channel passes. Accepts the output of both [Colors.describeRelationship](#classmethod-colorsdescriberelationship) and [Colors.parseRelationship](#classmethod-colorsparserelationship) |
+| relationship | [Object](../reference_2.md#type-object) | false | — | an object with oklch deltas: `L` (lightness), `C` (chroma), and/or `h` (hue). Properties that are zero, null, or omitted produce identity channel passes. Accepts the output of both [Colors.describeRelationship](#classmethod-colorsdescriberelationship) and [Colors.parseRelationship](#classmethod-colorsparserelationship) |
 
 ### Returns
 
@@ -601,7 +601,7 @@ Always returns a [Color](../reference_2.md#object-color) object. If the input ca
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| color | [String](#type-string)|[Color](#type-color)|[Object](../reference.md#type-object) | false | — | any valid CSS color string, an existing [Color](../reference_2.md#object-color) (copied), or a structured object with {r,g,b}, {h,s,l}, or {L,C,h} keys |
+| color | [String](#type-string)|[Color](#type-color)|[Object](../reference_2.md#type-object) | false | — | any valid CSS color string, an existing [Color](../reference_2.md#object-color) (copied), or a structured object with {r,g,b}, {h,s,l}, or {L,C,h} keys |
 
 ### Returns
 
@@ -634,7 +634,7 @@ By default, tries white first (preferred for dark backgrounds) and falls back to
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | background | [String](#type-string)|[Color](#type-color) | false | — | the background color to find a readable text color for |
-| options | [Object](../reference.md#type-object) | true | — | optional settings:
+| options | [Object](../reference_2.md#type-object) | true | — | optional settings:
 
 *   `target` - minimum contrast ratio (default 4.5 for WCAG AA; use 7.0 for WCAG AAA)
 *   `prefer` - `"white"` (default) or `"black"`; which extreme to try first
@@ -692,7 +692,7 @@ The type classification uses perceptual thresholds: L changes > 0.01, C changes 
 
 ### Returns
 
-`[Object](../reference.md#type-object)` — relationship descriptor with type, L, C, h properties
+`[Object](../reference_2.md#type-object)` — relationship descriptor with type, L, C, h properties
 
 ### Groups
 
@@ -745,7 +745,7 @@ All returned colors are guaranteed to be within the sRGB gamut (via automatic ch
 |------|------|----------|---------|-------------|
 | color | [String](#type-string)|[Color](#type-color) | false | — | the seed color whose hue and chroma define the palette |
 | steps | [int](../reference.md#type-int) | true | — | number of stops to generate (default 11) |
-| options | [Object](../reference.md#type-object) | true | — | optional settings:
+| options | [Object](../reference_2.md#type-object) | true | — | optional settings:
 
 *   `lightnessRange` - two-element array of oklch L values for the darkest and lightest stops (default `[0.15, 0.97]`)
 *   `chromaCurve` - `"natural"` (default) tapers chroma toward extremes using a cosine curve; `"constant"` uses the seed's chroma for all stops; `"peaked"` pushes maximum chroma to a configurable lightness
@@ -826,7 +826,7 @@ Examples:
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | color | [String](#type-string)|[Color](#type-color) | false | — | base color - any valid CSS color string or structured object from [Colors.getColor](#classmethod-colorsgetcolor) |
-| deltas | [Object](../reference.md#type-object) | false | — | adjustment keys - any combination of RGB keys (`red`, `green`, `blue`), friendly keys (`lightness`, `saturation`, `hue`, `alpha`), and/or raw oklch keys (`L`, `C`, `h`). See the key lists above. |
+| deltas | [Object](../reference_2.md#type-object) | false | — | adjustment keys - any combination of RGB keys (`red`, `green`, `blue`), friendly keys (`lightness`, `saturation`, `hue`, `alpha`), and/or raw oklch keys (`L`, `C`, `h`). See the key lists above. |
 | outputFormat | [ColorFormat](../reference_2.md#type-colorformat) | true | — | format for the returned string; defaults to the detected format of the input color (hex for named colors) |
 
 ### Returns
@@ -1024,7 +1024,7 @@ The returned object always contains a `primary` Color plus one or more supportin
 
 ### Returns
 
-`[Object](../reference.md#type-object)` — a map with `primary`, `secondary`, `tertiary` (where applicable), `neutral`, and `error` keys, each a [Color](../reference_2.md#object-color) object
+`[Object](../reference_2.md#type-object)` — a map with `primary`, `secondary`, `tertiary` (where applicable), `neutral`, and `error` keys, each a [Color](../reference_2.md#object-color) object
 
 ### Groups
 

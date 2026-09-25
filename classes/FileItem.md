@@ -271,7 +271,7 @@ This method returns the title displayed next to the view and download buttons wh
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | value | [Any](#type-any) | false | — | value of this item. This will typically be null unless [DataSourceField.encodeInResponse](DataSourceField.md#attr-datasourcefieldencodeinresponse) is true. See the [Binary fields documentation](../kb_topics/binaryFields.md#kb-topic-binary-fields) for details of how binary fields are handled when fetching records in SmartClient. |
-| record | [Object](../reference.md#type-object) | false | — | the values being edited by the form or held by the [ValuesManager](ValuesManager.md#class-valuesmanager) that the form is a member of. |
+| record | [Object](../reference_2.md#type-object) | false | — | the values being edited by the form or held by the [ValuesManager](ValuesManager.md#class-valuesmanager) that the form is a member of. |
 
 ---
 ## Method: FileItem.setMultiple

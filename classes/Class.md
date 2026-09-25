@@ -302,7 +302,7 @@ See also the [AutoChild](../reference.md#type-autochild) system for information 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | defaultsName | [String](#type-string) | false | — | name of the property to change |
-| newDefaults | [Object](../reference.md#type-object) | false | — | overrides for defaults |
+| newDefaults | [Object](../reference_2.md#type-object) | false | — | overrides for defaults |
 
 **Flags**: A
 
@@ -319,7 +319,7 @@ Fire some arbitrary action specified as a [Callback](../reference.md#type-callba
 | callback | [Callback](../reference.md#type-callback) | false | — | Action to fire. |
 | argNames | [String](#type-string) | true | — | Comma separated string of variable names. If the callback passed in was a string of script, any arguments passed to the callback will be available as local variables with these names. |
 | args | [Array](#type-array) | true | — | Array of arguments to pass to the method. Note that the number of arguments should match the number of argNames. |
-| target | [Object](../reference.md#type-object) | true | — | If specified the callback will be evaluated in the scope of this object - the `this` keyword will be a pointer to this target when the callback is fired. |
+| target | [Object](../reference_2.md#type-object) | true | — | If specified the callback will be evaluated in the scope of this object - the `this` keyword will be a pointer to this target when the callback is fired. |
 
 ### Returns
 
@@ -366,11 +366,11 @@ Functionally equivalent to [Class.addProperties](#method-classaddproperties), wh
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| arguments 0-N | [Object](../reference.md#type-object) | true | — | objects with methods to add (think named parameters). all the methods of each argument will be applied as instance-level methods. |
+| arguments 0-N | [Object](../reference_2.md#type-object) | true | — | objects with methods to add (think named parameters). all the methods of each argument will be applied as instance-level methods. |
 
 ### Returns
 
-`[Object](../reference.md#type-object)` — the class after methods have been added to it
+`[Object](../reference_2.md#type-object)` — the class after methods have been added to it
 
 ---
 ## ClassMethod: Class.logWarn
@@ -438,7 +438,7 @@ Templates are stored in the class object and prototype inheritance is maintained
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| templates | [Object](../reference.md#type-object) | false | — | Object mapping template names to template functions. |
+| templates | [Object](../reference_2.md#type-object) | false | — | Object mapping template names to template functions. |
 | type | [String](#type-string) | true | — | The namespace type for the templates. Defaults to "default". |
 
 ### Groups
@@ -536,7 +536,7 @@ Add default properties to all instances of this class
 
 ### Returns
 
-`[Object](../reference.md#type-object)` — the class after properties have been added to it
+`[Object](../reference_2.md#type-object)` — the class after properties have been added to it
 
 ---
 ## ClassMethod: Class.logError
@@ -578,7 +578,7 @@ Shared template utilities (`sc` and `json`) are automatically initialized and pa
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | templateName | [String](#type-string) | false | — | The name of the template to render, from the "default" namespace type. |
-| state | [Object](../reference.md#type-object) | false | — | Input state passed to the template function. |
+| state | [Object](../reference_2.md#type-object) | false | — | Input state passed to the template function. |
 
 ### Returns
 
@@ -605,7 +605,7 @@ This method is a wrapper around the native javascript method `eval()`. It papers
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | expression | [String](#type-string) | false | — | the expression to be evaluated |
-| evalArgs | [Object](../reference.md#type-object) | false | — | Optional mapping of argument names to values - each key will be available as a local variable when the script is executed. |
+| evalArgs | [Object](../reference_2.md#type-object) | false | — | Optional mapping of argument names to values - each key will be available as a local variable when the script is executed. |
 
 ### Returns
 
@@ -680,7 +680,7 @@ Note: Generally, you would not override this method. If you want to specify a co
 
 ### Returns
 
-`[Object](../reference.md#type-object)` — New instance of this class, whose init() routine has already been called
+`[Object](../reference_2.md#type-object)` — New instance of this class, whose init() routine has already been called
 
 ---
 ## ClassMethod: Class.logIsInfoEnabled
@@ -706,7 +706,7 @@ Apply a set of properties to a class object, calling the appropriate setter clas
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| arguments 0-N | [Object](../reference.md#type-object) | true | — | objects with properties to add (think named parameters). all the properties of each argument will be applied one after another so later properties will override |
+| arguments 0-N | [Object](../reference_2.md#type-object) | true | — | objects with properties to add (think named parameters). all the properties of each argument will be applied one after another so later properties will override |
 
 ---
 ## ClassMethod: Class.registerStringMethods
@@ -728,7 +728,7 @@ Note that registered stringMethods are eligible as target methods for `Action`s 
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| methodName | [Object](../reference.md#type-object) | false | — | If this is a string, name of the property to register If this is an object, assume passing in a set of name/value pairs to register |
+| methodName | [Object](../reference_2.md#type-object) | false | — | If this is a string, name of the property to register If this is an object, assume passing in a set of name/value pairs to register |
 | argumentString | [String](#type-string) | false | — | named arguments for the property in a comma separated string (not used if methodName is an object) |
 
 ### See Also
@@ -764,11 +764,11 @@ These properties can then be accessed as `myInstance.property`, and methods can 
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| arguments 0-N | [Object](../reference.md#type-object) | true | — | objects with properties to add (think named parameters). all the properties of each argument will be applied |
+| arguments 0-N | [Object](../reference_2.md#type-object) | true | — | objects with properties to add (think named parameters). all the properties of each argument will be applied |
 
 ### Returns
 
-`[Object](../reference.md#type-object)` — the class after properties have been added to it
+`[Object](../reference_2.md#type-object)` — the class after properties have been added to it
 
 ### See Also
 
@@ -912,7 +912,7 @@ This is a helper to delay a call to a method on some target by a specified amoun
 | methodName | [String](#type-string) | false | — | name of the method to call |
 | arrayArgs | [Array](#type-array) | true | — | array of arguments to pass to the method in question |
 | time | [number](#type-number) | true | — | Number of ms to delay the call by - defaults to zero (so just pulls execution of the method out of the current execution thread. |
-| target | [Object](../reference.md#type-object) | true | — | Target to fire the method on - if unspecified assume this is a call to a classMethod on this Class. |
+| target | [Object](../reference_2.md#type-object) | true | — | Target to fire the method on - if unspecified assume this is a call to a classMethod on this Class. |
 
 ### Returns
 
@@ -1023,11 +1023,11 @@ These properties can then be accessed as MyClass.property, or for functions, cal
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| arguments 0-N | [Object](../reference.md#type-object) | true | — | objects with properties to add (think named parameters). all the properties of each argument will be applied as class-level properties. |
+| arguments 0-N | [Object](../reference_2.md#type-object) | true | — | objects with properties to add (think named parameters). all the properties of each argument will be applied as class-level properties. |
 
 ### Returns
 
-`[Object](../reference.md#type-object)` — the class after properties have been added to it
+`[Object](../reference_2.md#type-object)` — the class after properties have been added to it
 
 ---
 ## ClassMethod: Class.getTemplate
@@ -1240,7 +1240,7 @@ Stop observing a method on some other object.
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| object | [Object](../reference.md#type-object) | false | — | object to observe |
+| object | [Object](../reference_2.md#type-object) | false | — | object to observe |
 | methodName | [String](#type-string) | false | — | name of the method to ignore |
 
 ### Returns
@@ -1377,7 +1377,7 @@ Add properties to this instance.
 
 ### Returns
 
-`[Object](../reference.md#type-object)` — the object after properties have been added to it
+`[Object](../reference_2.md#type-object)` — the object after properties have been added to it
 
 ---
 ## Method: Class.isObserving
@@ -1389,7 +1389,7 @@ Return true if this object is already observing a method of another object
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| object | [Object](../reference.md#type-object) | false | — | object we may be observing |
+| object | [Object](../reference_2.md#type-object) | false | — | object we may be observing |
 | methodName | [String](#type-string) | false | — | name of the method to observed |
 
 ### Returns
@@ -1513,7 +1513,7 @@ With `setProperties()` in particular, some classes may be able to take shortcuts
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| arguments 0-N | [Object](../reference.md#type-object) | true | — | objects with properties to add (think named parameters). all the properties of each argument will be applied one after another so later properties will override |
+| arguments 0-N | [Object](../reference_2.md#type-object) | true | — | objects with properties to add (think named parameters). all the properties of each argument will be applied one after another so later properties will override |
 
 ### See Also
 
@@ -1870,11 +1870,11 @@ Add properties or methods to this specific instance. Properties with the same na
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| arguments 0-N | [Object](../reference.md#type-object) | true | — | Object containing name:value pairs to be added to this object |
+| arguments 0-N | [Object](../reference_2.md#type-object) | true | — | Object containing name:value pairs to be added to this object |
 
 ### Returns
 
-`[Object](../reference.md#type-object)` — the object after properties have been added to it
+`[Object](../reference_2.md#type-object)` — the object after properties have been added to it
 
 ### See Also
 
@@ -1934,7 +1934,7 @@ NOTES:
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| object | [Object](../reference.md#type-object) | false | — | Object to observe. This may be any JavaScript object with the specified target method, including native arrays, and instances of SmartClient classes such as [Canvas](Canvas.md#class-canvas). |
+| object | [Object](../reference_2.md#type-object) | false | — | Object to observe. This may be any JavaScript object with the specified target method, including native arrays, and instances of SmartClient classes such as [Canvas](Canvas.md#class-canvas). |
 | methodName | [String](#type-string) | false | — | Name of the method to observe. Every time this method is invoked on the target object the specified action will fire (after the default implementation completes). |
 | action | [Function](#type-function)|[String](#type-string) | true | — | Optional action to take when the observed method is invoked on the target object.  
 If `action` is a string to execute, certain keywords are available for context:
@@ -2017,7 +2017,7 @@ Evaluate a string of script in the scope of this instance (so `this` is availabl
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | expression | [String](#type-string) | false | — | the expression to be evaluated |
-| evalArgs | [Object](../reference.md#type-object) | false | — | Optional mapping of argument names to values - each key will be available as a local variable when the script is executed. |
+| evalArgs | [Object](../reference_2.md#type-object) | false | — | Optional mapping of argument names to values - each key will be available as a local variable when the script is executed. |
 
 ### Returns
 

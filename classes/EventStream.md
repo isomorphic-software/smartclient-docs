@@ -274,11 +274,11 @@ Evaluates a "verify" event to check if the specified condition is met. A verify 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | event | [EventStreamEvent](#type-eventstreamevent) | false | — | The verify event to evaluate with structure: - eventType: "verify" (required) - locator: AutoTest locator for target component (required) - description: Human-readable description (optional) - dataTarget: "data" | "selection" | "properties" | "displayValue" | "fieldDef" | "recordState" | "recordComponents" | "gridSummary" | "hoverContent" | "textSelection" | "editValues" | "criteria" | "pickListData" (defaults to "data" for DBCs, "properties" otherwise) - criteria: AdvancedCriteria to match against dataTarget - matchType: "any" | "all" | "none" | "exact" | "one" | "atLeast" (default "any") - matchCount: Expected count for matchType:"exact", or minimum for matchType:"atLeast" (default 1) - pickListField: Name of the SelectItem to inspect; required when dataTarget is "pickListData" (the locator must point at the parent DynamicForm) - formula: {text: "formula expression"} to evaluate - value: Expected value for formula/script comparison - operator: "equals" | "notEquals" | "greaterThan" | "lessThan" | "between" (default "equals") - script: Arbitrary script to run for verification - timeout: Max time to wait for verification (milliseconds, default 5000) |
-| ruleScope | [Object](../reference.md#type-object) | true | — | Optional ruleScope for formula/criteria evaluation |
+| ruleScope | [Object](../reference_2.md#type-object) | true | — | Optional ruleScope for formula/criteria evaluation |
 
 ### Returns
 
-`[Object](../reference.md#type-object)` — Result object with structure: - success: (Boolean) True if verification passed - error: (String) Error message if verification failed - actual: (Any) Actual value that was checked - expected: (Any) Expected value for comparison
+`[Object](../reference_2.md#type-object)` — Result object with structure: - success: (Boolean) True if verification passed - error: (String) Error message if verification failed - actual: (Any) Actual value that was checked - expected: (Any) Expected value for comparison
 
 ### Groups
 

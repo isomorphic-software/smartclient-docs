@@ -52,7 +52,7 @@ Note that, because JSON has no way of representing dates, serializing a structur
 
 ### Returns
 
-`[Object](../reference.md#type-object)` — object derived from JSON String
+`[Object](../reference_2.md#type-object)` — object derived from JSON String
 
 ---
 ## ClassMethod: JSON.decodeStrict
@@ -72,7 +72,7 @@ For data that is always strict JSON, use [JSON.decodeSafe](#classmethod-jsondeco
 
 ### Returns
 
-`[Object](../reference.md#type-object)` — object derived from JSON String
+`[Object](../reference_2.md#type-object)` — object derived from JSON String
 
 ---
 ## ClassMethod: JSON.encode
@@ -117,7 +117,7 @@ De-serialize an object from JSON. Currently, this is simply a JavaScript eval() 
 
 ### Returns
 
-`[Object](../reference.md#type-object)` — object derived from JSON String
+`[Object](../reference_2.md#type-object)` — object derived from JSON String
 
 ---
 ## ClassMethod: JSON.decodeSafeWithDates

@@ -65,6 +65,6 @@ Cancels the processing of a timerEvent if it has not already fired.
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| timerEvent | [Object](../reference.md#type-object) | false | — | timerEvent object previously returned from Timer.setTimeout() |
+| timerEvent | [Object](../reference_2.md#type-object) | false | — | timerEvent object previously returned from Timer.setTimeout() |
 
 ---

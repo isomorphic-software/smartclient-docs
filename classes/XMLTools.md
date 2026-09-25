@@ -112,7 +112,7 @@ Details of the XPath -> Objects mapping:
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| object | [Object](../reference.md#type-object) | false | — | Object to select results from |
+| object | [Object](../reference_2.md#type-object) | false | — | Object to select results from |
 | xPath | [String](#type-string) | false | — | XPath expression |
 
 ### Returns
@@ -336,7 +336,7 @@ All atomic property values will be of String type. Use [DataSource.recordsFromXM
 
 ### Returns
 
-`[Object](../reference.md#type-object)` — The resulting JavaScript collection.
+`[Object](../reference_2.md#type-object)` — The resulting JavaScript collection.
 
 ---
 ## ClassMethod: XMLTools.serializeToString

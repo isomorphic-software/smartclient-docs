@@ -1024,7 +1024,7 @@ Like [Tree.findIndex](#method-treefindindex), but searches all tree nodes regard
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| propertyName | [String](#type-string)|[Object](../reference.md#type-object)|[AdvancedCriteria](#type-advancedcriteria) | false | — | property to match, or if an Object is passed, set of properties and values to match |
+| propertyName | [String](#type-string)|[Object](../reference_2.md#type-object)|[AdvancedCriteria](#type-advancedcriteria) | false | — | property to match, or if an Object is passed, set of properties and values to match |
 | value | [Any](#type-any) | true | — | value to compare against (if propertyName is a string) |
 
 ### Returns
@@ -1201,7 +1201,7 @@ Find the node with the specified ID. Specifically, it returns the node whose idF
 
 ### Returns
 
-`[Object](../reference.md#type-object)` — node with appropriate ID, or null if not found.
+`[Object](../reference_2.md#type-object)` — node with appropriate ID, or null if not found.
 
 ### Groups
 
@@ -1415,7 +1415,7 @@ var currentUserRecord = recordList.findNextIndex(0, function (record, i, recordL
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | startIndex | [int](../reference.md#type-int) | false | — | first index to consider. |
-| propertyName | [String](#type-string)|[Function](#type-function)|[Object](../reference.md#type-object)|[AdvancedCriteria](#type-advancedcriteria) | false | — | property to match; or, if a function is passed, the predicate function to call; or, if an object is passed, set of properties and values to match. |
+| propertyName | [String](#type-string)|[Function](#type-function)|[Object](../reference_2.md#type-object)|[AdvancedCriteria](#type-advancedcriteria) | false | — | property to match; or, if a function is passed, the predicate function to call; or, if an object is passed, set of properties and values to match. |
 | value | [Any](#type-any) | true | — | value to compare against (if `propertyName` is a string) or the value of `this` when the predicate function is invoked (if `propertyName` is a function) |
 | endIndex | [int](../reference.md#type-int) | true | — | last index to consider (inclusive). |
 
@@ -1573,7 +1573,7 @@ When searching by path, trailing path delimiters are ignored. So for example `tr
 
 ### Returns
 
-`[Object](../reference.md#type-object)` — the node matching the supplied criteria or null if not found
+`[Object](../reference_2.md#type-object)` — the node matching the supplied criteria or null if not found
 
 ### Groups
 
@@ -1625,7 +1625,7 @@ Like [Tree.findNextIndex](#method-treefindnextindex), but includes both open and
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | startIndex | [int](../reference.md#type-int) | false | — | first index to consider. |
-| propertyName | [String](#type-string)|[Function](#type-function)|[Object](../reference.md#type-object)|[AdvancedCriteria](#type-advancedcriteria) | false | — | property to match; or, if a function is passed, the predicate function to call; or, if an object is passed, set of properties and values to match. |
+| propertyName | [String](#type-string)|[Function](#type-function)|[Object](../reference_2.md#type-object)|[AdvancedCriteria](#type-advancedcriteria) | false | — | property to match; or, if a function is passed, the predicate function to call; or, if an object is passed, set of properties and values to match. |
 | value | [Any](#type-any) | true | — | value to compare against (if `propertyName` is a string) or the value of `this` when the predicate function is invoked (if `propertyName` is a function) |
 | endIndex | [int](../reference.md#type-int) | true | — | last index to consider (inclusive). |
 
@@ -1814,7 +1814,7 @@ Like [List.findIndex](List.md#method-listfindindex), but operates only on the li
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| propertyName | [String](#type-string)|[Object](../reference.md#type-object)|[AdvancedCriteria](#type-advancedcriteria) | false | — | property to match, or if an Object is passed, set of properties and values to match |
+| propertyName | [String](#type-string)|[Object](../reference_2.md#type-object)|[AdvancedCriteria](#type-advancedcriteria) | false | — | property to match, or if an Object is passed, set of properties and values to match |
 | value | [Any](#type-any) | true | — | value to compare against (if propertyName is a string) |
 
 ### Returns

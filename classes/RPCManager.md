@@ -627,7 +627,7 @@ See the [overview of error handling](../kb_topics/errorHandling.md#kb-topic-erro
 
 ### See Also
 
-- [DataSource.handleError](DataSource_2.md#method-datasourcehandleerror)
+- [DataSource.handleError](DataSource_1.md#method-datasourcehandleerror)
 - [RPCManager.handleTransportError](#classmethod-rpcmanagerhandletransporterror)
 - [RPCManager.runDefaultErrorHandling](#classmethod-rpcmanagerrundefaulterrorhandling)
 
@@ -729,7 +729,7 @@ This method is a convenience wrapper on `RPCManager.sendRequest()` - it calls th
 |------|------|----------|---------|-------------|
 | data | [Any](#type-any) | false | — | data to be passed to the server |
 | callback | [RPCCallback](#type-rpccallback) | true | — | method to call on RPC completion |
-| requestParams | [Object](../reference.md#type-object) | true | — | object literal containing any additional properties you want to set - these will be applied to the RPCRequest object that will be auto-created for you. |
+| requestParams | [Object](../reference_2.md#type-object) | true | — | object literal containing any additional properties you want to set - these will be applied to the RPCRequest object that will be auto-created for you. |
 
 ### See Also
 
@@ -1132,7 +1132,7 @@ Here is an example of how to provide a callback to the function:
 
 ### Returns
 
-`[Object](../reference.md#type-object)` — the tree of timing data, as described in the above documentation
+`[Object](../reference_2.md#type-object)` — the tree of timing data, as described in the above documentation
 
 ### See Also
 

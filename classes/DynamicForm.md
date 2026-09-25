@@ -267,6 +267,29 @@ If set to true, client-side validators will not run on the form when validate() 
 **Flags**: IRW
 
 ---
+## Attr: DynamicForm.cacheSync
+
+### Description
+When should this form update the values it is showing from a successful save against its [DataSource](#attr-dynamicformdatasource)?
+
+A form has no [ResultSet](ResultSet.md#class-resultset) keeping it current, so it applies such updates itself, merging the saved record over its current values. Note that this is a merge, where a ResultSet replaces the row outright — so a partial record passed to [DataSource.updateCaches](DataSource_1.md#method-datasourceupdatecaches) appears to work against a form while losing fields elsewhere. Always pass the complete record.
+
+Values the user has edited and not yet saved are preserved across an update - see [CacheSyncMode](../reference.md#type-cachesyncmode).
+
+For a form that is a member of a [ValuesManager](ValuesManager.md#class-valuesmanager), [ValuesManager.cacheSync](ValuesManager.md#attr-valuesmanagercachesync) governs instead: a ValuesManager edits a single record across all of its members, so the setting applies to the set as a whole.
+
+### Groups
+
+- databinding
+
+### See Also
+
+- [ValuesManager.cacheSync](ValuesManager.md#attr-valuesmanagercachesync)
+- [DataSource.updateCaches](DataSource_1.md#method-datasourceupdatecaches)
+
+**Flags**: IRW
+
+---
 ## Attr: DynamicForm.useInlineEditors
 
 ### Description
@@ -1884,8 +1907,8 @@ By default `field.editorType` will be used if present - otherwise backs off to d
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| field | [Object](../reference.md#type-object) | false | — | field definition for which we are deriving form item type. |
-| values | [Object](../reference.md#type-object) | true | — | Current set of values being edited by this form. May be null. |
+| field | [Object](../reference_2.md#type-object) | false | — | field definition for which we are deriving form item type. |
+| values | [Object](../reference_2.md#type-object) | true | — | Current set of values being edited by this form. May be null. |
 
 ### Returns
 
@@ -2165,7 +2188,7 @@ If [DynamicForm.showInlineErrors](#attr-dynamicformshowinlineerrors) is false, t
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| errors | [Object](../reference.md#type-object) | false | — | Map of field names to error messages. Each field may contain a single error message (string) or an array of errors |
+| errors | [Object](../reference_2.md#type-object) | false | — | Map of field names to error messages. Each field may contain a single error message (string) or an array of errors |
 
 ### Returns
 
@@ -2222,7 +2245,7 @@ By default hidden validation errors will be logged as warnings in the developerC
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| errors | [Object](../reference.md#type-object) | false | — | The set of errors returned - this is an object of the form  
+| errors | [Object](../reference_2.md#type-object) | false | — | The set of errors returned - this is an object of the form  
   `{fieldName:errors}`  
 Where the 'errors' object is either a single string or an array of strings containing the error messages for the field. |
 
@@ -2244,7 +2267,7 @@ Where the `errors` value may be either a string (single error message) or an arr
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| errors | [Object](../reference.md#type-object) | false | — | list of errors as an object with the field names as keys |
+| errors | [Object](../reference_2.md#type-object) | false | — | list of errors as an object with the field names as keys |
 | showErrors | [boolean](../reference.md#type-boolean) | false | — | If true redraw form to display errors now. Otherwise errors can be displayed by calling [DynamicForm.showErrors](#method-dynamicformshowerrors)  
 Note: When the errors are shown, [handleHiddenValidationErrors()](#method-dynamicformhandlehiddenvalidationerrors) will be fired for errors on hidden fields, or with no associated formItem. |
 
@@ -2317,7 +2340,7 @@ Returns all values within this DynamicForm that have changed since [DynamicForm.
 
 ### Returns
 
-`[Object](../reference.md#type-object)` — changed values in the form
+`[Object](../reference_2.md#type-object)` — changed values in the form
 
 ### Groups
 
@@ -2549,7 +2572,7 @@ Returns the set of values last stored by [DynamicForm.rememberValues](#method-dy
 
 ### Returns
 
-`[Object](../reference.md#type-object)` — old values in the form
+`[Object](../reference_2.md#type-object)` — old values in the form
 
 ### Groups
 
@@ -2628,7 +2651,7 @@ Note that modifying the returned object is not a supported way of adding or modi
 
 ### Returns
 
-`[Object](../reference.md#type-object)` — values in the form
+`[Object](../reference_2.md#type-object)` — values in the form
 
 ### Groups
 
@@ -2723,7 +2746,7 @@ This method also calls [DynamicForm.rememberValues](#method-dynamicformrememberv
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| newData | [Object](../reference.md#type-object) | true | — | values for the form, or null to reset all items to default values |
+| newData | [Object](../reference_2.md#type-object) | true | — | values for the form, or null to reset all items to default values |
 
 ### Groups
 
@@ -2863,7 +2886,7 @@ Make a snapshot of the current set of values, so we can reset to them later. Cre
 
 ### Returns
 
-`[Object](../reference.md#type-object)` — copy of current form values
+`[Object](../reference_2.md#type-object)` — copy of current form values
 
 ### Groups
 
@@ -3023,7 +3046,7 @@ Call [DynamicForm.validate](#method-dynamicformvalidate) to check for validation
 
 ### Returns
 
-`[Object](../reference.md#type-object)` — current values or null if validation failed.
+`[Object](../reference_2.md#type-object)` — current values or null if validation failed.
 
 ### Groups
 
@@ -3119,7 +3142,7 @@ Notification fired when an asynchronous validation completes.
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | success | [boolean](../reference.md#type-boolean) | false | — | true if validation succeeded, false if it failed |
-| errors | [Object](../reference.md#type-object) | false | — | Map of errors by fieldName. Will be null if validation succeeded. |
+| errors | [Object](../reference_2.md#type-object) | false | — | Map of errors by fieldName. Will be null if validation succeeded. |
 
 ---
 ## Method: DynamicForm.getErrors
@@ -3129,7 +3152,7 @@ Returns any errors that are currently visible to the user for this form, without
 
 ### Returns
 
-`[Object](../reference.md#type-object)` — Errors are returned as an object of the format  
+`[Object](../reference_2.md#type-object)` — Errors are returned as an object of the format  
 `{fieldName:errors, fieldName:errors}`  
 where each `errors` object will be either an error message string or an array of error message strings.
 
@@ -3317,7 +3340,7 @@ This method will also call [DynamicForm.setSaveOperationType](#method-dynamicfor
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| initialValues | [Record](#type-record)|[Object](../reference.md#type-object) | true | — | initial set of values for the editor as a map of field names to their corresponding values |
+| initialValues | [Record](#type-record)|[Object](../reference_2.md#type-object) | true | — | initial set of values for the editor as a map of field names to their corresponding values |
 
 ### Groups
 
@@ -3527,7 +3550,7 @@ Triggered when a SubmitItem is included in the form is submitted and gets presse
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| values | [Object](../reference.md#type-object) | false | — | the form values |
+| values | [Object](../reference_2.md#type-object) | false | — | the form values |
 | form | [DynamicForm](#type-dynamicform) | false | — | the form being submitted |
 
 ### Groups

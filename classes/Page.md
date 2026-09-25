@@ -250,7 +250,7 @@ See also [Page.getOrientation](#classmethod-pagegetorientation).
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| wd | [Object](../reference.md#type-object) | true | — | the window object |
+| wd | [Object](../reference_2.md#type-object) | true | — | the window object |
 
 ### Returns
 
@@ -309,7 +309,7 @@ Clears an action registered to fire on a specific a keyPress event via the [Page
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | actionID | [KeyName](../reference_2.md#type-keyname) | false | — | Name of key to clear registry entries for. |
-| target | [Object](../reference.md#type-object) | true | — | target specified when the action was registered for the key. |
+| target | [Object](../reference_2.md#type-object) | true | — | target specified when the action was registered for the key. |
 
 ### Groups
 
@@ -455,7 +455,7 @@ Wait for a method to fire on an object.
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| object | [Object](../reference.md#type-object) | false | — | any SmartClient object, eg, a ListGrid |
+| object | [Object](../reference_2.md#type-object) | false | — | any SmartClient object, eg, a ListGrid |
 | methodName | [String](#type-string) | false | — | name of a method on that object |
 | callback | [Function](#type-function) | false | — | Callback to fire when the observed method completes |
 | timeout | [Number](#type-number) | true | — | Optional timeout period (in milliseconds). If you want a timeout, you must also provide a timeoutCallback |
@@ -715,7 +715,7 @@ See also [Page.getOrientation](#classmethod-pagegetorientation).
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| wd | [Object](../reference.md#type-object) | true | — | the window object |
+| wd | [Object](../reference_2.md#type-object) | true | — | the window object |
 
 ### Returns
 
@@ -854,7 +854,7 @@ While cleaning up observations that are no longer required is always good practi
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| object | [Object](../reference.md#type-object) | false | — | Object to observe. This may be any JavaScript object with the specified target method, including native arrays, and instances of SmartClient classes such as [Canvas](Canvas.md#class-canvas). |
+| object | [Object](../reference_2.md#type-object) | false | — | Object to observe. This may be any JavaScript object with the specified target method, including native arrays, and instances of SmartClient classes such as [Canvas](Canvas.md#class-canvas). |
 | methodName | [String](#type-string) | false | — | Name of the method to observe. Every time this method is invoked on the target object the specified action will fire (after the default implementation completes). |
 | action | [Function](#type-function)|[String](#type-string) | false | — | Action to take when the observed method is invoked.  
 If `action` is a string to execute, certain keywords are available for context:

@@ -34,7 +34,7 @@ Called when [Process.runTask](Process.md#method-processruntask) has finished exe
 |------|------|----------|---------|-------------|
 | task | [Task](#type-task) | false | — | The task instance that was executed. |
 | process | [Process](#type-process) | false | — | The owning process instance. |
-| outputs | [Object](../reference.md#type-object) | false | — | Task outputs, if any (for [CoTTask](CoTTask.md#class-cottask), this is the final `$outputs` JSON). May be null if the task does not produce outputs. |
+| outputs | [Object](../reference_2.md#type-object) | false | — | Task outputs, if any (for [CoTTask](CoTTask.md#class-cottask), this is the final `$outputs` JSON). May be null if the task does not produce outputs. |
 
 ---
 ## Method: Callbacks.AsyncMultipleValuesGenerationResultCallback
@@ -144,7 +144,7 @@ Callback fired after a call to [RPCManager.getTimingData](RPCManager.md#classmet
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| data | [Object](../reference.md#type-object) | false | — | The root object of the timing data tree (note, this is a plain JS object, not an instance of the SmartClient Tree class) |
+| data | [Object](../reference_2.md#type-object) | false | — | The root object of the timing data tree (note, this is a plain JS object, not an instance of the SmartClient Tree class) |
 
 ---
 ## Method: Callbacks.MultiWindowEventCallback
@@ -160,7 +160,7 @@ Note that the event is simply an [OpenFin application event](https://developer.o
 |------|------|----------|---------|-------------|
 | remoteWindow | [RemoteWindow](#type-remotewindow) | false | — | window affected by event, or null if not found |
 | eventType | [MultiWindowEvent](../reference_2.md#type-multiwindowevent) | false | — | event type as passed to [MultiWindow.setEvent](MultiWindow.md#classmethod-multiwindowsetevent) |
-| event | [Object](../reference.md#type-object) | false | — | event data see MultiWindow.setEvent() see MultiWindow.clearEvent() |
+| event | [Object](../reference_2.md#type-object) | false | — | event data see MultiWindow.setEvent() see MultiWindow.clearEvent() |
 
 ---
 ## Method: Callbacks.ValidatorConditionCallback
@@ -175,8 +175,8 @@ Note that the event is simply an [OpenFin application event](https://developer.o
 | item | [DataSourceField](#type-datasourcefield)|[ListGridField](#type-listgridfield)|[FormItem](#type-formitem) | false | — | FormItem, DataSourceField or ListGridField on which this validator was declared. NOTE: FormItem will not be available during a save performed without a form (eg programmatic save) or if the field is not available in the form. |
 | validator | [Validator](#type-validator) | false | — | Validator declaration from eg [DataSourceField.validators](DataSourceField.md#attr-datasourcefieldvalidators). |
 | value | [Any](#type-any) | false | — | value to validate |
-| record | [Object](../reference.md#type-object) | false | — | Field values for record being validated. |
-| additionalContext | [Object](../reference.md#type-object) | false | — | Object containing extra context which may be useful to the condition function. Contains the following properties:  
+| record | [Object](../reference_2.md#type-object) | false | — | Field values for record being validated. |
+| additionalContext | [Object](../reference_2.md#type-object) | false | — | Object containing extra context which may be useful to the condition function. Contains the following properties:  
 
 *   validatorDefinition: the [ValidatorDefinition](../reference_2.md#object-validatordefinition) for the validator being processed. This allows easy access to custom validator defintion properties while evaluating the condition.
 *   component: the DynamicForm or ListGrid being validated  
@@ -255,7 +255,7 @@ A [Callback](../reference.md#type-callback) called when the move completes.
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| record | [Object](../reference.md#type-object)|[XMLElement](../reference.md#type-xmlelement) | false | — | record object selected from web service response data by [recordXPath](OperationBinding.md#attr-operationbindingrecordxpath) |
+| record | [Object](../reference_2.md#type-object)|[XMLElement](../reference.md#type-xmlelement) | false | — | record object selected from web service response data by [recordXPath](OperationBinding.md#attr-operationbindingrecordxpath) |
 | value | [Any](#type-any) | false | — | default value derived by the method described in [DataSourceField.valueXPath](DataSourceField.md#attr-datasourcefieldvaluexpath) |
 | field | [DataSourceField](#type-datasourcefield) | false | — | DataSourceField definition |
 | fieldName | [FieldName](../reference.md#type-fieldname) | false | — | name of the DataSource field |
@@ -408,7 +408,7 @@ Callback called with the result of [AI.buildWorkflowStep](AI.md#classmethod-aibu
 ## Method: Callbacks.HasFileCallback
 
 ### Description
-A [Callback](../reference.md#type-callback) fired when [DataSource.hasFile](DataSource_2.md#method-datasourcehasfile) completes.
+A [Callback](../reference.md#type-callback) fired when [DataSource.hasFile](DataSource_1.md#method-datasourcehasfile) completes.
 
 ### Parameters
 

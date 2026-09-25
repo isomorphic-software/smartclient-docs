@@ -290,7 +290,7 @@ Returns the template scope used to render this task's prompt, including the data
 
 ### Returns
 
-`[Object](../reference.md#type-object)` — Prompt context object
+`[Object](../reference_2.md#type-object)` — Prompt context object
 
 ---
 ## Method: CoTTask.mockOutput
@@ -300,7 +300,7 @@ Return synthetic AI output for this task when mocking is in effect (see [CoTTask
 
 ### Returns
 
-`[Object](../reference.md#type-object)` — Fake AI output to be processed as if returned by the model.
+`[Object](../reference_2.md#type-object)` — Fake AI output to be processed as if returned by the model.
 
 ### Groups
 

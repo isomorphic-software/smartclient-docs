@@ -175,7 +175,7 @@ Overridden by Progressbar to pick up aria-valuenow.
 
 ### Returns
 
-`[Object](../reference.md#type-object)` — dynamically calculated default aria state properties
+`[Object](../reference_2.md#type-object)` — dynamically calculated default aria state properties
 
 **Flags**: A
 

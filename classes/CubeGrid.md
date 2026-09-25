@@ -1565,7 +1565,7 @@ The export format will combine the column facet value titles, generating a singl
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| settings | [Object](../reference.md#type-object) | false | — | contains configuration settings for the export, including:
+| settings | [Object](../reference_2.md#type-object) | false | — | contains configuration settings for the export, including:
 
 *   facetSeparatorString (String) - if specified, the separator to use in favor of [CubeGrid.exportFacetSeparatorString](#attr-cubegridexportfacetseparatorstring) when combining titles from multiple facet values. |
 | requestProperties | [DSRequest Properties](#type-dsrequest-properties) | true | — | Request properties for the export. |
@@ -1803,12 +1803,12 @@ Returns the current set of unsaved edits for a given row being edited.
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| valuesID | [number](#type-number)|[Object](../reference.md#type-object) | false | — | rowNum of the record being edited, or an Object containing values for all the record's primary keys |
+| valuesID | [number](#type-number)|[Object](../reference_2.md#type-object) | false | — | rowNum of the record being edited, or an Object containing values for all the record's primary keys |
 | colNum | [number](#type-number) | false | — | colNum of the record being edited. Only required if valuesID is passed in as a rowNum. |
 
 ### Returns
 
-`[Object](../reference.md#type-object)` — Current editValues object for the row. This contains the current edit values in {fieldName1:value1, fieldName2:value2} format.
+`[Object](../reference_2.md#type-object)` — Current editValues object for the row. This contains the current edit values in {fieldName1:value1, fieldName2:value2} format.
 
 ### Groups
 
@@ -2033,7 +2033,7 @@ Note that only the [this.valueProperty](#attr-cubegridvalueproperty) of the obje
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | cell | [Array of number](#type-array-of-number) | false | — | 2 element array of the form `[rowNum,colNum]` indicating the record being edited |
-| values | [Object](../reference.md#type-object) | false | — | New values for the record |
+| values | [Object](../reference_2.md#type-object) | false | — | New values for the record |
 
 ---
 ## Method: CubeGrid.setFacetValueTitle
@@ -2063,7 +2063,7 @@ Returns the current value of a cell. If the cell has an outstanding edit value, 
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| record | [number](#type-number)|[Object](../reference.md#type-object) | false | — | rowNum of the record being edited, or an Object containing values for all the record's primary keys |
+| record | [number](#type-number)|[Object](../reference_2.md#type-object) | false | — | rowNum of the record being edited, or an Object containing values for all the record's primary keys |
 | colNum | [number](#type-number) | false | — | colNum of the cell. Only required if the first parameter is a rowNum |
 
 ### Returns
@@ -2107,12 +2107,12 @@ The returned value is never null, and can be freely modified.
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| valuesID | [number](#type-number)|[Object](../reference.md#type-object) | false | — | rowNum of the record being edited, or an Object containing values for all the record's primary keys |
+| valuesID | [number](#type-number)|[Object](../reference_2.md#type-object) | false | — | rowNum of the record being edited, or an Object containing values for all the record's primary keys |
 | colNum | [number](#type-number) | true | — | colNum of the record being edited. Only required if the records rowNum is passed in as the first parameter |
 
 ### Returns
 
-`[Object](../reference.md#type-object)` — A copy of the record with unsaved edits included
+`[Object](../reference_2.md#type-object)` — A copy of the record with unsaved edits included
 
 ### Groups
 
@@ -3271,7 +3271,7 @@ The saved record value will be displayed in the the appropriate cell instead.
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| editValuesID | [number](#type-number)|[Object](../reference.md#type-object) | false | — | Row number, primary keys object for the record, or editValues object |
+| editValuesID | [number](#type-number)|[Object](../reference_2.md#type-object) | false | — | Row number, primary keys object for the record, or editValues object |
 | colNum | [number](#type-number) | true | — | Column number for the cell in question. Only required if the first parameter is a row number. |
 
 ### Groups

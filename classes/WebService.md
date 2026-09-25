@@ -141,7 +141,7 @@ The schema are instances of [DataSource](DataSource_1.md#class-datasource) that 
 
 ### Returns
 
-`[Object](../reference.md#type-object)` — mapping from partName to schema
+`[Object](../reference_2.md#type-object)` — mapping from partName to schema
 
 ---
 ## Method: WebService.callOperation
@@ -166,7 +166,7 @@ NOTE: `callOperation()` is appropriate for simple operations that do not involve
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | operationName | [String](#type-string) | false | — | Name of the operation to invoke |
-| data | [Object](../reference.md#type-object) | false | — | data to serialize as XML to form the inbound message of the operation |
+| data | [Object](../reference_2.md#type-object) | false | — | data to serialize as XML to form the inbound message of the operation |
 | resultType | [Type](#type-type)|[ElementName](#type-elementname)|[XPath](#type-xpath) | false | — | Type, Element name, or XPath that should be selected from the result. For XPaths, see [WSRequest.xmlNamespaces](WSRequest.md#attr-wsrequestxmlnamespaces) for available namespace prefixes and how to add more. |
 | callback | [Callback](../reference.md#type-callback) | false | — | Callback to invoke on completion. Signature callback(data, xmlDoc, rpcResponse, wsRequest) |
 | requestProperties | [WSRequest Properties](#type-wsrequest-properties) | false | — | Additional properties for the WSRequest, such as HTTPHeaders |
@@ -195,7 +195,7 @@ If `headerData` is instead provided via either dsRequest.headerData or as part o
 
 ### Returns
 
-`[Object](../reference.md#type-object)` — data for SOAP headers
+`[Object](../reference_2.md#type-object)` — data for SOAP headers
 
 ---
 ## Method: WebService.setLocation
@@ -315,6 +315,6 @@ The schema are instances of [DataSource](DataSource_1.md#class-datasource) that 
 
 ### Returns
 
-`[Object](../reference.md#type-object)` — mapping from partName to schema
+`[Object](../reference_2.md#type-object)` — mapping from partName to schema
 
 ---

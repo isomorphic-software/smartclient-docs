@@ -596,7 +596,7 @@ The default implementation of editFailed does nothing for normal validation erro
 |------|------|----------|---------|-------------|
 | rowNum | [number](#type-number) | false | — | current index of the row we attempted to save |
 | colNum | [number](#type-number) | false | — | index of the column where the edit failed, if applicable |
-| newValues | [Object](../reference.md#type-object)|[Record](#type-record) | false | — | new values that we attempted to save |
+| newValues | [Object](../reference_2.md#type-object)|[Record](#type-record) | false | — | new values that we attempted to save |
 | oldValues | [Record](#type-record) | false | — | the complete original values from before the save occurred |
 | editCompletionEvent | [EditCompletionEvent](../reference_2.md#type-editcompletionevent) | false | — | Edit completion event that led to the save attempt |
 | dsResponse | [DSResponse](#type-dsresponse) | true | — | DSResponse, for saves through a DataSource |
@@ -1111,11 +1111,11 @@ The returned value is never null, and can be freely modified.
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| valuesID | [number](#type-number)|[Object](../reference.md#type-object) | false | — | rowNum of the record being edited, or an Object containing values for all the record's primary keys |
+| valuesID | [number](#type-number)|[Object](../reference_2.md#type-object) | false | — | rowNum of the record being edited, or an Object containing values for all the record's primary keys |
 
 ### Returns
 
-`[Object](../reference.md#type-object)` — A copy of the record with unsaved edits included
+`[Object](../reference_2.md#type-object)` — A copy of the record with unsaved edits included
 
 ### Groups
 
@@ -1645,11 +1645,11 @@ Returns the current set of unsaved edits for a given row being edited.
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| valuesID | [number](#type-number)|[Object](../reference.md#type-object) | false | — | rowNum of the record being edited, or an Object containing values for all the record's primary keys |
+| valuesID | [number](#type-number)|[Object](../reference_2.md#type-object) | false | — | rowNum of the record being edited, or an Object containing values for all the record's primary keys |
 
 ### Returns
 
-`[Object](../reference.md#type-object)` — Current editValues object for the row. This contains the current edit values in {fieldName1:value1, fieldName2:value2} format.
+`[Object](../reference_2.md#type-object)` — Current editValues object for the row. This contains the current edit values in {fieldName1:value1, fieldName2:value2} format.
 
 ### Groups
 
@@ -1854,7 +1854,7 @@ Note that [redrawing](Canvas.md#method-canvasredraw) the grid will re-evaluate t
 
 ### Returns
 
-`[Object](../reference.md#type-object)` — object containing aria attribute names and values to apply to this grid's handle
+`[Object](../reference_2.md#type-object)` — object containing aria attribute names and values to apply to this grid's handle
 
 **Flags**: A
 
@@ -1914,8 +1914,8 @@ Returns the message to display when a user attempts to save a required field wit
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| field | [Object](../reference.md#type-object) | false | — | definition of the field being edited |
-| record | [Object](../reference.md#type-object) | false | — | record object being edited |
+| field | [Object](../reference_2.md#type-object) | false | — | definition of the field being edited |
+| record | [Object](../reference_2.md#type-object) | false | — | record object being edited |
 
 ### Returns
 
@@ -2140,7 +2140,7 @@ This method sets up a set of editValues for some row / cell. It differs from 'se
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | rowNum | [number](#type-number) | false | — | Row number for the record being edited |
-| values | [Object](../reference.md#type-object) | false | — | New values for the row |
+| values | [Object](../reference_2.md#type-object) | false | — | New values for the row |
 
 ---
 ## Method: ListGrid.transferSelectedData
@@ -2250,7 +2250,7 @@ No default implementation.
 |------|------|----------|---------|-------------|
 | rowNum | [number](#type-number) | false | — | current index of the row that was saved |
 | colNum | [number](#type-number) | false | — | index of the column that was saved, if applicable |
-| newValues | [Object](../reference.md#type-object)|[Record](#type-record) | false | — | new values that were saved |
+| newValues | [Object](../reference_2.md#type-object)|[Record](#type-record) | false | — | new values that were saved |
 | oldValues | [Record](#type-record) | false | — | the complete original values from before the save occurred |
 | editCompletionEvent | [EditCompletionEvent](../reference_2.md#type-editcompletionevent) | false | — | Event that led to the save |
 | dsResponse | [DSResponse](#type-dsresponse) | true | — | for DataSource saves, DSResponse object returned |
@@ -2738,7 +2738,7 @@ Also, if an explicit property is set in ariaState, it will be respected and will
 
 ### Returns
 
-`[Object](../reference.md#type-object)` — Object containing aria property names and values to write into the button's handle
+`[Object](../reference_2.md#type-object)` — Object containing aria property names and values to write into the button's handle
 
 ### Groups
 
@@ -3378,7 +3378,7 @@ Overridden by ListGrid to pick up aria-rowcount and aria-colcount.
 
 ### Returns
 
-`[Object](../reference.md#type-object)` — dynamically calculated default aria state properties
+`[Object](../reference_2.md#type-object)` — dynamically calculated default aria state properties
 
 **Flags**: A
 
@@ -4732,7 +4732,7 @@ Default implementation returns an object with combined properties from any speci
 
 ### Returns
 
-`[Object](../reference.md#type-object)` — Object containing aria property names and values to write into the cell's HTML
+`[Object](../reference_2.md#type-object)` — Object containing aria property names and values to write into the cell's HTML
 
 ### Groups
 
@@ -5807,7 +5807,7 @@ The result of this method will be displayed to the user for the appropriate row,
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| node | [Object](../reference.md#type-object) | false | — | Specified group node |
+| node | [Object](../reference_2.md#type-object) | false | — | Specified group node |
 | gridBody | [GridRenderer](#type-gridrenderer) | true | — | The body in which the returned value will be displayed. This parameter allows the default implementation to return an empty string if appropriate for the case where there is both a frozen and unfrozen body. Note that if this parameter may be empty. If not passed, the full group node HTML will be returned. |
 
 ### Returns
@@ -5933,7 +5933,7 @@ Returns an object with:
 
 ### Returns
 
-`[Object](../reference.md#type-object)` — Object with group index information for debugging
+`[Object](../reference_2.md#type-object)` — Object with group index information for debugging
 
 ### Groups
 
@@ -6447,7 +6447,7 @@ Returns the field object associated with cell currently being edited
 
 ### Returns
 
-`[Object](../reference.md#type-object)` — Field object definition
+`[Object](../reference_2.md#type-object)` — Field object definition
 
 ### Groups
 
@@ -6681,7 +6681,7 @@ Returns the original, ungrouped data in the grid. If the grid is ungrouped, retu
 
 ### Returns
 
-`[Object](../reference.md#type-object)` — The ungrouped data that is being displayed and observed
+`[Object](../reference_2.md#type-object)` — The ungrouped data that is being displayed and observed
 
 ### Groups
 
@@ -6855,7 +6855,7 @@ This event is also fired when selection is updated by a direct call to one of th
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| record | [Object](../reference.md#type-object) | false | — | first selected record in the selection, if any, which may or may not be the first record in sort order if the `DataBoundComponent` is sorted. This parameter is typically used when only one record can be selected at a time. |
+| record | [Object](../reference_2.md#type-object) | false | — | first selected record in the selection, if any, which may or may not be the first record in sort order if the `DataBoundComponent` is sorted. This parameter is typically used when only one record can be selected at a time. |
 | recordList | [Array of Object](#type-array-of-object) | false | — | List of records that are now selected |
 
 ### Groups
@@ -6947,8 +6947,8 @@ To do something specific if a particular field is double clicked, add a recordDo
 | recordNum | [number](#type-number) | false | — | number of the record clicked on in the current set of displayed records (starts with 0) |
 | field | [ListGridField](#type-listgridfield) | false | — | the field that was clicked on (field definition) |
 | fieldNum | [number](#type-number) | false | — | number of the field clicked on in the listGrid.fields array |
-| value | [Object](../reference.md#type-object) | false | — | value of the cell (after valueMap, etc. applied) |
-| rawValue | [Object](../reference.md#type-object) | false | — | raw value of the cell (before valueMap, etc applied) |
+| value | [Object](../reference_2.md#type-object) | false | — | value of the cell (after valueMap, etc. applied) |
+| rawValue | [Object](../reference_2.md#type-object) | false | — | raw value of the cell (before valueMap, etc applied) |
 | editedRecord | [ListGridRecord](#type-listgridrecord) | false | — | the clicked record with any unsaved edit values overlaid (see `listGrid.getEditedRecord()`). |
 
 ### Returns
@@ -7060,12 +7060,12 @@ Returns the valueIcons for a field when it is displayed in the editor while edit
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| field | [Object](../reference.md#type-object) | false | — | field definition |
-| values | [Object](../reference.md#type-object) | false | — | current edit values for the record |
+| field | [Object](../reference_2.md#type-object) | false | — | field definition |
+| values | [Object](../reference_2.md#type-object) | false | — | current edit values for the record |
 
 ### Returns
 
-`[Object](../reference.md#type-object)` — valueIcons for the editor
+`[Object](../reference_2.md#type-object)` — valueIcons for the editor
 
 ### Groups
 
@@ -7163,7 +7163,7 @@ Returns any currently stored validation errors for this row in the following for
 
 ### Returns
 
-`[Object](../reference.md#type-object)` — object showing validation error arrays by field for the row passed in - if no validation errors stored for the row, null is returned.
+`[Object](../reference_2.md#type-object)` — object showing validation error arrays by field for the row passed in - if no validation errors stored for the row, null is returned.
 
 ### Groups
 
@@ -7183,7 +7183,7 @@ Returns the current value of a cell. If the cell has an outstanding edit value, 
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| record | [number](#type-number)|[Object](../reference.md#type-object) | false | — | rowNum of the record being edited, or an Object containing values for all the record's primary keys |
+| record | [number](#type-number)|[Object](../reference_2.md#type-object) | false | — | rowNum of the record being edited, or an Object containing values for all the record's primary keys |
 | field | [number](#type-number)|[String](#type-string) | false | — | colNum or fieldName of the cell |
 
 ### Returns
@@ -7528,7 +7528,7 @@ See the [formItemTypeSelection](../kb_topics/formItemTypeSelection.md#kb-topic-f
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | field | [ListGridField](#type-listgridfield) | false | — | field definition field for which we need a valueMap |
-| values | [Object](../reference.md#type-object) | false | — | current edit values for the record (may be null, if editing a new record) |
+| values | [Object](../reference_2.md#type-object) | false | — | current edit values for the record (may be null, if editing a new record) |
 
 ### Returns
 
@@ -7887,7 +7887,7 @@ Return false from this method to cancel the default behavior (Saving / cancellin
 |------|------|----------|---------|-------------|
 | editCompletionEvent | [EditCompletionEvent](../reference_2.md#type-editcompletionevent) | false | — | How was the edit completion fired? |
 | record | [ListGridRecord](#type-listgridrecord) | false | — | record for the cell being edited |
-| newValues | [Object](../reference.md#type-object) | false | — | new values for the record \[Note that fields that have not been edited will not be included in this object\] |
+| newValues | [Object](../reference_2.md#type-object) | false | — | new values for the record \[Note that fields that have not been edited will not be included in this object\] |
 | rowNum | [number](#type-number) | false | — | row number for the row being left |
 
 ### Returns
@@ -8276,7 +8276,7 @@ Note: you should set [editorType](FormItem.md#attr-formitemeditortype) in the re
 
 ### Returns
 
-`[Object](../reference.md#type-object)` — default properties for the field
+`[Object](../reference_2.md#type-object)` — default properties for the field
 
 ### See Also
 
@@ -8348,7 +8348,7 @@ Note that for edits to an existing record, clearing all edit values will drop th
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| editValuesID | [number](#type-number)|[Object](../reference.md#type-object) | false | — | Row number, primary keys object for the record, or editValues object |
+| editValuesID | [number](#type-number)|[Object](../reference_2.md#type-object) | false | — | Row number, primary keys object for the record, or editValues object |
 | colNum | [number](#type-number)|[String](#type-string) | false | — | Column number, or Name of field for which the value is to be cleared |
 
 ### Groups
@@ -8571,7 +8571,7 @@ Set the [valueMap](ListGridField.md#attr-listgridfieldvaluemap) for a field. See
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | fieldID | [String](#type-string)|[int](../reference.md#type-int) | false | — | Name or index of field to update |
-| map | [Object](../reference.md#type-object) | false | — | ValueMap for the passed field |
+| map | [Object](../reference_2.md#type-object) | false | — | ValueMap for the passed field |
 
 ---
 ## Method: ListGrid.sorterContextClick
@@ -8955,7 +8955,7 @@ Returns a map of [WAI ARIA state attribute values](Canvas.md#attr-canvasariastat
 
 ### Returns
 
-`[Object](../reference.md#type-object)` — Object containing aria property names and values to write into the cell's HTML
+`[Object](../reference_2.md#type-object)` — Object containing aria property names and values to write into the cell's HTML
 
 ### Groups
 
@@ -9112,7 +9112,7 @@ Callback fired when the user starts editing a new row.
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | record | [ListGridField](#type-listgridfield) | false | — | record for the cell being edited |
-| editValues | [Object](../reference.md#type-object) | false | — | edit values for the current row |
+| editValues | [Object](../reference_2.md#type-object) | false | — | edit values for the current row |
 | rowNum | [number](#type-number) | false | — | row number for the cell |
 
 ### Groups

@@ -811,7 +811,7 @@ Executed when a menu item with no click handler is clicked by the user. This ite
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| item | [Object](../reference.md#type-object) | false | — | pointer to the item in question |
+| item | [Object](../reference_2.md#type-object) | false | — | pointer to the item in question |
 | colNum | [number](#type-number) | true | — | Index of the column clicked by the user. May be null if this menu item was activated in response to a keyboard event. |
 
 ### Returns

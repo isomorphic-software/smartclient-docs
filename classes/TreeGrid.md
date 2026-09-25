@@ -1566,8 +1566,8 @@ Handle a doubleClick on a tree node - override of ListGrid stringMethod of same 
 | recordNum | [number](#type-number) | false | — | number of the record clicked on in the current set of displayed records (starts with 0) |
 | field | [TreeGridField](#type-treegridfield) | false | — | the field that was clicked on (field definition) |
 | fieldNum | [number](#type-number) | false | — | number of the field clicked on in the treeGrid.fields array |
-| value | [Object](../reference.md#type-object) | false | — | value of the cell (after valueMap, etc. applied) |
-| rawValue | [Object](../reference.md#type-object) | false | — | raw value of the cell (before valueMap, etc applied) |
+| value | [Object](../reference_2.md#type-object) | false | — | value of the cell (after valueMap, etc. applied) |
+| rawValue | [Object](../reference_2.md#type-object) | false | — | raw value of the cell (before valueMap, etc applied) |
 
 ### Returns
 
@@ -2401,7 +2401,7 @@ This inherited [ListGrid API](ListGrid_2.md#method-listgridstarteditingnew) is n
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| newValues | [Object](../reference.md#type-object) | true | — | Optional initial set of properties for the new record |
+| newValues | [Object](../reference_2.md#type-object) | true | — | Optional initial set of properties for the new record |
 | suppressFocus | [boolean](../reference.md#type-boolean) | true | — | Whether to suppress the default behavior of moving focus to the newly shown editor. |
 
 ### Groups

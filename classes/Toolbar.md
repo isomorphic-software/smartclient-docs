@@ -143,7 +143,7 @@ Retrieves a button widget instance (within this toolbar) from the name / ID / in
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| index | [number](#type-number)|[String](#type-string)|[Object](../reference.md#type-object) | false | — | identifier for the button to retrieve |
+| index | [number](#type-number)|[String](#type-string)|[Object](../reference_2.md#type-object) | false | — | identifier for the button to retrieve |
 
 ### Returns
 
@@ -167,7 +167,7 @@ Deselects the specified button from the toolbar, where buttonID is the index of 
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| buttonID | [number](#type-number)|[String](#type-string)|[Object](../reference.md#type-object)|[Canvas](#type-canvas) | false | — | Button / Button identifier |
+| buttonID | [number](#type-number)|[String](#type-string)|[Object](../reference_2.md#type-object)|[Canvas](#type-canvas) | false | — | Button / Button identifier |
 
 ### Groups
 
@@ -301,7 +301,7 @@ Given an identifier for a button, select it. The button identifier can be a numb
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| buttonID | [number](#type-number)|[String](#type-string)|[Object](../reference.md#type-object)|[Canvas](#type-canvas) | false | — | Button / Button identifier |
+| buttonID | [number](#type-number)|[String](#type-string)|[Object](../reference_2.md#type-object)|[Canvas](#type-canvas) | false | — | Button / Button identifier |
 
 ### Groups
 

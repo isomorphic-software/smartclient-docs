@@ -580,8 +580,8 @@ Optional method to return the CSS class for cells in this field. If specified, t
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | value | [String](#type-string) | false | — | actual value of this cell |
-| field | [Object](../reference.md#type-object) | false | — | field object for this cell |
-| record | [Object](../reference.md#type-object) | false | — | record object for this cell |
+| field | [Object](../reference_2.md#type-object) | false | — | field object for this cell |
+| record | [Object](../reference_2.md#type-object) | false | — | record object for this cell |
 | viewer | [DetailViewer](#type-detailviewer) | false | — | the viewer instance to which this cell belongs |
 
 ### Returns

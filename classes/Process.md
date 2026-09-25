@@ -468,7 +468,7 @@ Collapses the current contents of an [EditContext](EditContext.md#class-editcont
 
 ### Returns
 
-`[Object](../reference.md#type-object)` — plain Process properties object
+`[Object](../reference_2.md#type-object)` — plain Process properties object
 
 ---
 ## ClassMethod: Process.getProcess
@@ -543,7 +543,7 @@ Returns the complete process state for persistence. This includes not just proce
 
 ### Returns
 
-`[Object](../reference.md#type-object)` — Complete state object with: - state: process.state variables - execution: current execution position - transientData: task outputs that feed into subsequent tasks
+`[Object](../reference_2.md#type-object)` — Complete state object with: - state: process.state variables - execution: current execution position - transientData: task outputs that feed into subsequent tasks
 
 ---
 ## Method: Process.restoreFromState
@@ -555,7 +555,7 @@ Restores process state from a previously saved complete state and optionally res
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| completeState | [Object](../reference.md#type-object) | false | — | State object from getProcessState() |
+| completeState | [Object](../reference_2.md#type-object) | false | — | State object from getProcessState() |
 | resume | [Boolean](#type-boolean) | true | — | If true, immediately resume execution after restore |
 
 ---
@@ -629,7 +629,7 @@ Returns a live [EditContext](EditContext.md#class-editcontext) reflecting this P
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| settings | [Object](../reference.md#type-object) | true | — | Optional settings; `settings.tree` supplies an already-computed process tree (from [Process.getProcessTree](#method-processgetprocesstree)) to reuse, rather than retracing it - see this method's own class IDocument for why retracing a second time on the same live process can be unsafe. |
+| settings | [Object](../reference_2.md#type-object) | true | — | Optional settings; `settings.tree` supplies an already-computed process tree (from [Process.getProcessTree](#method-processgetprocesstree)) to reuse, rather than retracing it - see this method's own class IDocument for why retracing a second time on the same live process can be unsafe. |
 
 ### Returns
 
@@ -671,8 +671,8 @@ In this example, the output is appended to the "currentDS.fields" array in [Proc
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| stateUpdates | [Object](../reference.md#type-object) | false | — | state updates to apply |
-| inputRecord | [Object](../reference.md#type-object) | true | — | record to use as the source for any $input [TaskInputExpression](../reference_2.md#type-taskinputexpression) properties. |
+| stateUpdates | [Object](../reference_2.md#type-object) | false | — | state updates to apply |
+| inputRecord | [Object](../reference_2.md#type-object) | true | — | record to use as the source for any $input [TaskInputExpression](../reference_2.md#type-taskinputexpression) properties. |
 | strict | [Boolean](#type-boolean) | true | — | if true, the paths must exist in the state to be set. Otherwise, the paths will be created if not existing. Defaults to `process.strictPaths` when null. |
 
 ---
@@ -716,7 +716,7 @@ StringMethod called during process execution before each task element is process
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | element | [Task](#type-task) | false | — | the [Task](Task.md#class-task) being executed |
-| context | [Object](../reference.md#type-object) | false | — | the [Process.traceContext](#attr-processtracecontext), if set |
+| context | [Object](../reference_2.md#type-object) | false | — | the [Process.traceContext](#attr-processtracecontext), if set |
 
 ---
 ## Method: Process.getStateVariable
@@ -800,7 +800,7 @@ Returns information about why and where the process is suspended.
 
 ### Returns
 
-`[Object](../reference.md#type-object)` — Object with reason and taskId, or null if not suspended
+`[Object](../reference_2.md#type-object)` — Object with reason and taskId, or null if not suspended
 
 ---
 ## Method: Process.getProcessDescription
@@ -823,7 +823,7 @@ Notification hook invoked after a Task's outputs have been committed to state an
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | task | [Task](#type-task) | false | — | The Task that just committed. |
-| outputs | [Object](../reference.md#type-object) | false | — | The committed outputs (if any). |
+| outputs | [Object](../reference_2.md#type-object) | false | — | The committed outputs (if any). |
 
 ---
 ## Method: Process.getOutput
@@ -880,9 +880,9 @@ When the task completes, `callback` (a [Callbacks.RunTaskCallback](Callbacks.md#
 |------|------|----------|---------|-------------|
 | taskID | [String](#type-string) | false | — | ID of the task to execute. |
 | callback | [RunTaskCallback](#type-runtaskcallback) | false | — | Completion callback. |
-| priorTaskOutputs | [Object](../reference.md#type-object) | false | — | Optional object to simulate outputs from a prior task (see behavior above). |
-| state | [Object](../reference.md#type-object) | false | — | Optional state fixture to use for this call. |
-| ruleContext | [Object](../reference.md#type-object) | false | — | Optional override ruleContext for expression evaluation. |
+| priorTaskOutputs | [Object](../reference_2.md#type-object) | false | — | Optional object to simulate outputs from a prior task (see behavior above). |
+| state | [Object](../reference_2.md#type-object) | false | — | Optional state fixture to use for this call. |
+| ruleContext | [Object](../reference_2.md#type-object) | false | — | Optional override ruleContext for expression evaluation. |
 
 ---
 ## Method: Process.passThruTaskOutput
@@ -918,7 +918,7 @@ Resumes a suspended process. If the process was suspended at a HumanTask, the ta
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| taskOutput | [Object](../reference.md#type-object) | true | — | Output from the completed async task |
+| taskOutput | [Object](../reference_2.md#type-object) | true | — | Output from the completed async task |
 
 ---
 ## Method: Process.getTextSummary
@@ -956,7 +956,7 @@ Return a [TaskResultModifications](../reference_2.md#object-taskresultmodificati
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | task | [ProcessElement](#type-processelement) | false | — | The Task or sub-Process that just completed. |
-| outputs | [Object](../reference.md#type-object) | false | — | The Task's outputs |
+| outputs | [Object](../reference_2.md#type-object) | false | — | The Task's outputs |
 
 ### Returns
 

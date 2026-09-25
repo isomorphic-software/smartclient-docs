@@ -335,7 +335,7 @@ This method may only be called during the [Canvas.drop](Canvas.md#method-canvasd
 
 ### Returns
 
-`[Object](../reference.md#type-object)` — data from a native HTML5 drag / drop event.
+`[Object](../reference_2.md#type-object)` — data from a native HTML5 drag / drop event.
 
 ---
 ## ClassMethod: EventHandler.setDragTrackerImage
@@ -379,7 +379,7 @@ Do not pass in sensitive data (e.g. passwords, auth/session tokens, credit card 
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| data | [Object](../reference.md#type-object)|[String](#type-string) | false | — | data to make available to foreign frames |
+| data | [Object](../reference_2.md#type-object)|[String](#type-string) | false | — | data to make available to foreign frames |
 | strData | [String](#type-string) | true | — | text data to set. This is the text that users may see if the drag is dropped into an external application such as Notepad or a non-SmartClient/Smart GWT web application. |
 
 ---

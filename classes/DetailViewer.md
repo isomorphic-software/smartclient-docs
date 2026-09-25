@@ -267,6 +267,26 @@ The number of records to display in a block. A block is a horizontal row on a pa
 **Flags**: IRW
 
 ---
+## Attr: DetailViewer.cacheSync
+
+### Description
+When should this DetailViewer update the records it is showing from a successful save against its [DataSource](#attr-detailviewerdatasource)?
+
+Applies only when [DetailViewer.data](#attr-detailviewerdata) is a plain Array of records: given a [ResultSet](ResultSet.md#class-resultset), that keeps the DetailViewer current instead.
+
+A DetailViewer never saves, so "whenSaving" has the same effect as "never" here.
+
+### Groups
+
+- databinding
+
+### See Also
+
+- [DataSource.updateCaches](DataSource_1.md#method-datasourceupdatecaches)
+
+**Flags**: IRW
+
+---
 ## Attr: DetailViewer.hiliteIconLeftPadding
 
 ### Description

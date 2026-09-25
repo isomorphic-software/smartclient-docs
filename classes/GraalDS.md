@@ -108,7 +108,7 @@ Note: The same functionality is available as [isc.addRecord](#classmethod-iscadd
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | dataSourceId | [String](#type-string) | false | — | DataSource ID |
-| values | [Object](../reference.md#type-object) | false | — | Record values to add |
+| values | [Object](../reference_2.md#type-object) | false | — | Record values to add |
 
 ### Returns
 
@@ -148,7 +148,7 @@ Note: The same functionality is available as [isc.fromJavaMap](#classmethod-iscf
 
 ### Returns
 
-`[Object](../reference.md#type-object)` — JavaScript object containing the converted data
+`[Object](../reference_2.md#type-object)` — JavaScript object containing the converted data
 
 ---
 ## ClassMethod: GraalDS.now
@@ -181,7 +181,7 @@ For typical DataSource records, the manual iteration approach ([GraalDS.toJavaMa
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| jsObject | [Object](../reference.md#type-object) | false | — | JavaScript object to convert |
+| jsObject | [Object](../reference_2.md#type-object) | false | — | JavaScript object to convert |
 
 ### Returns
 
@@ -237,8 +237,8 @@ Note: The same functionality is available as [isc.executeDSRequest](#classmethod
 |------|------|----------|---------|-------------|
 | dataSourceId | [String](#type-string) | false | — | DataSource ID |
 | operationType | [String](#type-string) | false | — | Operation type: "fetch", "add", "update", "remove" |
-| values | [Object](../reference.md#type-object) | true | — | Values for add/update operations |
-| criteria | [Object](../reference.md#type-object) | true | — | Criteria for fetch/remove operations |
+| values | [Object](../reference_2.md#type-object) | true | — | Values for add/update operations |
+| criteria | [Object](../reference_2.md#type-object) | true | — | Criteria for fetch/remove operations |
 | operationId | [String](#type-string) | true | — | Custom operation ID |
 
 ### Returns
@@ -269,7 +269,7 @@ Note: The same functionality is available as [isc.successResponse](#classmethod-
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| data | [Object](../reference.md#type-object)|[Array](#type-array) | true | — | Response data (auto-converted to Java) |
+| data | [Object](../reference_2.md#type-object)|[Array](#type-array) | true | — | Response data (auto-converted to Java) |
 
 ### Returns
 
@@ -306,7 +306,7 @@ Note: The same functionality is available as [isc.updateRecord](#classmethod-isc
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | dataSourceId | [String](#type-string) | false | — | DataSource ID |
-| values | [Object](../reference.md#type-object) | false | — | Values to update (must include primary key) |
+| values | [Object](../reference_2.md#type-object) | false | — | Values to update (must include primary key) |
 
 ### Returns
 
@@ -343,11 +343,11 @@ Note: The same functionality is available as [isc.fetchOne](#classmethod-iscfetc
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | dataSourceId | [String](#type-string) | false | — | DataSource ID |
-| criteria | [Object](../reference.md#type-object) | false | — | Criteria to match |
+| criteria | [Object](../reference_2.md#type-object) | false | — | Criteria to match |
 
 ### Returns
 
-`[Object](../reference.md#type-object)` — The first matching record, or null
+`[Object](../reference_2.md#type-object)` — The first matching record, or null
 
 ---
 ## ClassMethod: GraalDS.fromJavaMapViaJSON
@@ -367,7 +367,7 @@ Same limitations apply as [GraalDS.toJavaMapViaJSON](#classmethod-graaldstojavam
 
 ### Returns
 
-`[Object](../reference.md#type-object)` — JavaScript object containing the converted data, or null if Jackson unavailable
+`[Object](../reference_2.md#type-object)` — JavaScript object containing the converted data, or null if Jackson unavailable
 
 ---
 ## ClassMethod: GraalDS.toJavaMap
@@ -383,7 +383,7 @@ Note: The same functionality is available as [isc.toJavaMap](#classmethod-isctoj
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| jsObject | [Object](../reference.md#type-object) | false | — | JavaScript object to convert |
+| jsObject | [Object](../reference_2.md#type-object) | false | — | JavaScript object to convert |
 
 ### Returns
 

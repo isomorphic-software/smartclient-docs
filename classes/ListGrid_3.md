@@ -133,8 +133,8 @@ This method sets the [field.editorValueMap](ListGridField.md#attr-listgridfielde
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| fieldID | [Object](../reference.md#type-object)|[number](#type-number)|[FieldName](../reference.md#type-fieldname) | false | — | field object, number, or name |
-| map | [Object](../reference.md#type-object) | false | — | ValueMap to apply to the field |
+| fieldID | [Object](../reference_2.md#type-object)|[number](#type-number)|[FieldName](../reference.md#type-fieldname) | false | — | field object, number, or name |
+| map | [Object](../reference_2.md#type-object) | false | — | ValueMap to apply to the field |
 
 ### Groups
 
@@ -253,7 +253,7 @@ Called when a user starts to edit a field, or whenever the field valueMap is upd
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | field | [ListGridField](#type-listgridfield) | false | — | field definition field for which we need a valueMap |
-| values | [Object](../reference.md#type-object) | false | — | Field values for record being edited. Note that this will include the current edit values for fields that have not yet been saved. May be null, if editing a new record. |
+| values | [Object](../reference_2.md#type-object) | false | — | Field values for record being edited. Note that this will include the current edit values for fields that have not yet been saved. May be null, if editing a new record. |
 
 ### Returns
 

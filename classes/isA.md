@@ -13,7 +13,7 @@ Is `object` a non-empty String?
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| object | [Object](../reference.md#type-object) | false | — | object to test |
+| object | [Object](../reference_2.md#type-object) | false | — | object to test |
 
 ### Returns
 
@@ -31,7 +31,7 @@ This method should be used instead of `instanceof Date` when the object may have
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| object | [Object](../reference.md#type-object) | false | — | object to test |
+| object | [Object](../reference_2.md#type-object) | false | — | object to test |
 
 ### Returns
 
@@ -47,7 +47,7 @@ Is `object` an interface object?
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| object | [Object](../reference.md#type-object) | false | — | object to test |
+| object | [Object](../reference_2.md#type-object) | false | — | object to test |
 
 ### Returns
 
@@ -63,7 +63,7 @@ Is `object` a Boolean object?
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| object | [Object](../reference.md#type-object) | false | — | object to test |
+| object | [Object](../reference_2.md#type-object) | false | — | object to test |
 
 ### Returns
 
@@ -83,7 +83,7 @@ NOTE: if you prefer, you can call this as `isAn.emptyObject()`
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| object | [Object](../reference.md#type-object) | false | — | object to test |
+| object | [Object](../reference_2.md#type-object) | false | — | object to test |
 
 ### Returns
 
@@ -99,7 +99,7 @@ Is `object` a class object?
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| object | [Object](../reference.md#type-object) | false | — | object to test |
+| object | [Object](../reference_2.md#type-object) | false | — | object to test |
 
 ### Returns
 
@@ -115,7 +115,7 @@ Is `object` an instance of some class?
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| object | [Object](../reference.md#type-object) | false | — | object to test |
+| object | [Object](../reference_2.md#type-object) | false | — | object to test |
 
 ### Returns
 
@@ -131,7 +131,7 @@ Does `object` implement the `List` interface?
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| object | [Object](../reference.md#type-object) | false | — | object to test |
+| object | [Object](../reference_2.md#type-object) | false | — | object to test |
 
 ### Returns
 
@@ -147,7 +147,7 @@ Is `object` an Array with no items?
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| object | [Object](../reference.md#type-object) | false | — | object to test |
+| object | [Object](../reference_2.md#type-object) | false | — | object to test |
 
 ### Returns
 
@@ -203,7 +203,7 @@ This method should be used instead of `instanceof RegExp` when the object may ha
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| object | [Object](../reference.md#type-object) | false | — | object to test |
+| object | [Object](../reference_2.md#type-object) | false | — | object to test |
 
 ### Returns
 
@@ -219,7 +219,7 @@ Is `object` a String object?
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| object | [Object](../reference.md#type-object) | false | — | object to test |
+| object | [Object](../reference_2.md#type-object) | false | — | object to test |
 
 ### Returns
 
@@ -237,7 +237,7 @@ NOTE: this returns false if `object` is an invalid number (`isNaN(object) == tru
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| object | [Object](../reference.md#type-object) | false | — | object to test |
+| object | [Object](../reference_2.md#type-object) | false | — | object to test |
 
 ### Returns
 
@@ -253,7 +253,7 @@ Is `object` a Function object?
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| object | [Object](../reference.md#type-object) | false | — | object to test |
+| object | [Object](../reference_2.md#type-object) | false | — | object to test |
 
 ### Returns
 
@@ -271,7 +271,7 @@ NOTE: if you prefer, you can call this as `isAn.emptyString()`
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| object | [Object](../reference.md#type-object) | false | — | object to test |
+| object | [Object](../reference_2.md#type-object) | false | — | object to test |
 
 ### Returns
 
@@ -289,7 +289,7 @@ NOTE: if you prefer, you can call this as `isAn.Array()`
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| object | [Object](../reference.md#type-object) | false | — | object to test |
+| object | [Object](../reference_2.md#type-object) | false | — | object to test |
 
 ### Returns
 

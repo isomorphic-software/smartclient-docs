@@ -334,7 +334,7 @@ This method is a helper to implement task-specific [ProcessElement.updateGlobalI
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| values | [Object](../reference.md#type-object) | false | — | the object to be updated |
+| values | [Object](../reference_2.md#type-object) | false | — | the object to be updated |
 | oldId | [Identifier](../reference_2.md#type-identifier) | false | — | the ID being renamed |
 | newId | [Identifier](../reference_2.md#type-identifier) | false | — | the new ID to be assigned |
 
@@ -352,7 +352,7 @@ Does the object have fields that reference the last task output (i.e. $last)?
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| object | [Object](../reference.md#type-object) | false | — | object to be checked |
+| object | [Object](../reference_2.md#type-object) | false | — | object to be checked |
 | process | [Process](#type-process) | false | — | the enclosing process |
 
 ### Returns
@@ -491,7 +491,7 @@ This method is a helper to implement task-specific [ProcessElement.updateLastEle
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| values | [Object](../reference.md#type-object) | false | — | the object to be updated |
+| values | [Object](../reference_2.md#type-object) | false | — | the object to be updated |
 | taskType | [String](#type-string) | false | — | the taskType to be used in new reference |
 
 ### Returns

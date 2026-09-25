@@ -291,7 +291,7 @@ Returns a new Color with the specified oklch deltas applied. Supports both frien
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| deltas | [Object](../reference.md#type-object) | false | — | adjustments to apply - see [Colors.adjust](Colors.md#classmethod-colorsadjust) |
+| deltas | [Object](../reference_2.md#type-object) | false | — | adjustments to apply - see [Colors.adjust](Colors.md#classmethod-colorsadjust) |
 
 ### Returns
 

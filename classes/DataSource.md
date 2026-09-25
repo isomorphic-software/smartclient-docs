@@ -4870,7 +4870,7 @@ If a specified field does not exist in the DataSource, it's assumed the values f
 ### Description
 Notification method fired when a DataSource operation such as an [add](#method-datasourceadddata), [remove](#method-datasourceremovedata) or [update](#method-datasourceupdatedata) modifies the underlying data for a DataSource.
 
-This method is used by [ResultSet](ResultSet.md#class-resultset)s to keep the user-visible data up to date as changes are made.
+This method is used by [ResultSet](ResultSet.md#class-resultset)s to keep the user-visible data up to date as changes are made, and by components that have no cache manager - see [DynamicForm.cacheSync](DynamicForm.md#attr-dynamicformcachesync).
 
 Note: rather than overriding this method, we recommend using [observation](Class.md#method-classobserve) to be notified when it is fired.
 
@@ -5405,6 +5405,10 @@ Causes any components using this DataSource to be notified of changes that have 
 This API should be used when you have found out about changes made by other users or by automatic processes. For example, using the SmartClient [Messaging](Messaging.md#class-messaging) system to receive real-time updates via HTTP streaming, you may get updates that should affect a ListGrid which is using a ResultSet to view a portion of a large dataset.
 
 See the [concurrentEdits](../kb_topics/concurrentEdits.md#kb-topic-handling-concurrent-edits-in-smartclient-datasources) overview for more on handling concurrent edits in SmartClient DataSources.
+
+Cache managers are not the only things affected. A [DynamicForm](DynamicForm.md#class-dynamicform), [ValuesManager](ValuesManager.md#class-valuesmanager) or [DetailViewer](DetailViewer.md#class-detailviewer) bound to this DataSource but showing a plain record has no cache manager keeping it current, so it watches for "update" responses itself and refreshes the record it is showing when the primary keys match. This stops a form from sitting on values the user has no reason to think are stale and may go on to commit. It can be limited to the component's own saves, or switched off altogether, with [DynamicForm.cacheSync](DynamicForm.md#attr-dynamicformcachesync), [ValuesManager.cacheSync](ValuesManager.md#attr-valuesmanagercachesync) and [DetailViewer.cacheSync](DetailViewer.md#attr-detailviewercachesync).
+
+Records passed to this method should be **complete**. A cache manager replaces the cached row with the record supplied, so any field omitted from it is lost; a form instead merges the record over the values it is showing. A partial record can therefore appear to work when tested against a form, while quietly dropping fields from every grid bound to the same DataSource.
 
 The provided `DSResponse` should have [operationType](DSResponse.md#attr-dsresponseoperationtype) "update", "add" or "remove" - there is no way for a "fetch" response to meaningfully update arbitrary caches. However, if you have a list of updated records (possibly retrieved via [DataSource.fetchData](#method-datasourcefetchdata)) you can still call `updateCaches()`with DSResponses of type "update". Typically DataSource operations that manipulate data operate on a single record at a time, but if you explicitly set the `response.data` attribute to an array of records, framework code will handle this as it would multiple updates.
 

@@ -171,6 +171,29 @@ Like the other `deepCloneOnEdit` settings, this flag only has an effect if you a
 **Flags**: IRWA
 
 ---
+## Attr: ValuesManager.cacheSync
+
+### Description
+When should this ValuesManager update the values it is showing from a successful save against its [DataSource](#attr-valuesmanagerdatasource)?
+
+A ValuesManager has no [ResultSet](ResultSet.md#class-resultset) keeping it current, so it applies such updates itself, merging the saved record over its current values and distributing them to its members. Note that this is a merge, where a ResultSet replaces the row outright — so a partial record passed to [DataSource.updateCaches](DataSource.md#method-datasourceupdatecaches) appears to work here while losing fields elsewhere. Always pass the complete record.
+
+Values the user has edited and not yet saved are preserved across an update, in whichever member form holds them - see [CacheSyncMode](../reference.md#type-cachesyncmode).
+
+This setting governs the ValuesManager and all of its members: a ValuesManager edits a single record spread across its member forms, so a partially updated set of members would be showing an inconsistent record. [DynamicForm.cacheSync](DynamicForm.md#attr-dynamicformcachesync) on a member form has no effect.
+
+### Groups
+
+- databinding
+
+### See Also
+
+- [DynamicForm.cacheSync](DynamicForm.md#attr-dynamicformcachesync)
+- [DataSource.updateCaches](DataSource.md#method-datasourceupdatecaches)
+
+**Flags**: IRW
+
+---
 ## Attr: ValuesManager.members
 
 ### Description

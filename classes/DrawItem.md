@@ -1603,7 +1603,7 @@ Update linePattern for this drawItem.
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| pattern | [LinePattern](../reference.md#type-linepattern) | false | — | new linePattern to use |
+| pattern | [LinePattern](../reference_2.md#type-linepattern) | false | — | new linePattern to use |
 
 ---
 ## Method: DrawItem.destroy

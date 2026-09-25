@@ -289,7 +289,7 @@ Optional handler to fire when a tab is deselected. Returning false will cancel t
 | tabSet | [TabSet](#type-tabset) | false | — | the tabSet containing the tab. |
 | tabNum | [Integer](../reference_2.md#type-integer) | false | — | the index of the deselected tab |
 | tabPane | [Canvas](#type-canvas) | false | — | the deselected tab's pane if set |
-| ID | [GlobalId](../reference.md#type-globalid) | false | — | the ID of the deselected tab |
+| ID | [GlobalId](../reference_2.md#type-globalid) | false | — | the ID of the deselected tab |
 | tab | [Tab](#type-tab) | false | — | the deselected tab object (not tab button instance) |
 | newTab | [Tab](#type-tab) | false | — | the tab object being selected |
 | name | [TabName](../reference.md#type-tabname) | false | — | the name of the deselected tab |
@@ -315,7 +315,7 @@ Optional handler to fire when a tab is selected. As with [TabSet.tabSelected](Ta
 | tabSet | [TabSet](#type-tabset) | false | — | the tabSet containing the tab. |
 | tabNum | [Integer](../reference_2.md#type-integer) | false | — | the index of the newly selected tab |
 | tabPane | [Canvas](#type-canvas) | false | — | the newly selected tab's pane if set |
-| ID | [GlobalId](../reference.md#type-globalid) | false | — | the ID of the newly selected tab |
+| ID | [GlobalId](../reference_2.md#type-globalid) | false | — | the ID of the newly selected tab |
 | tab | [Tab](#type-tab) | false | — | the tab object (not tab button instance) |
 | name | [TabName](../reference.md#type-tabname) | false | — | the name of the newly selected tab |
 

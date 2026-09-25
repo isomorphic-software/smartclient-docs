@@ -267,6 +267,29 @@ If set to true, client-side validators will not run on the form when validate() 
 **Flags**: IRW
 
 ---
+## Attr: DynamicForm.cacheSync
+
+### Description
+When should this form update the values it is showing from a successful save against its [DataSource](#attr-dynamicformdatasource)?
+
+A form has no [ResultSet](ResultSet.md#class-resultset) keeping it current, so it applies such updates itself, merging the saved record over its current values. Note that this is a merge, where a ResultSet replaces the row outright — so a partial record passed to [DataSource.updateCaches](DataSource.md#method-datasourceupdatecaches) appears to work against a form while losing fields elsewhere. Always pass the complete record.
+
+Values the user has edited and not yet saved are preserved across an update - see [CacheSyncMode](../reference.md#type-cachesyncmode).
+
+For a form that is a member of a [ValuesManager](ValuesManager.md#class-valuesmanager), [ValuesManager.cacheSync](ValuesManager.md#attr-valuesmanagercachesync) governs instead: a ValuesManager edits a single record across all of its members, so the setting applies to the set as a whole.
+
+### Groups
+
+- databinding
+
+### See Also
+
+- [ValuesManager.cacheSync](ValuesManager.md#attr-valuesmanagercachesync)
+- [DataSource.updateCaches](DataSource.md#method-datasourceupdatecaches)
+
+**Flags**: IRW
+
+---
 ## Attr: DynamicForm.showTitlesWithErrorMessages
 
 ### Description
@@ -2086,7 +2109,7 @@ Binds this dynamicForm to a [valuesManager](#attr-dynamicformvaluesmanager) at r
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| valuesManager | [ValuesManager](#type-valuesmanager)|[GlobalId](../reference.md#type-globalid) | false | — | the ValuesManager that controls this form's values |
+| valuesManager | [ValuesManager](#type-valuesmanager)|[GlobalId](../reference_2.md#type-globalid) | false | — | the ValuesManager that controls this form's values |
 
 ### Groups
 

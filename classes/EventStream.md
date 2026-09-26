@@ -7,7 +7,7 @@
 ## Class: EventStream
 
 ### Description
-A `EventStream` captures event details as JavaScript objects as they are handled by the [EventHandler](EventHandler.md#class-eventhandler). The event target [canvas](Canvas.md#class-canvas) ID and [class name](Class.md#method-classgetclassname) as well the [locator](../reference_2.md#type-autotestlocator) are included, as available. Event-specific data (for example, the [KeyName](../reference_2.md#type-keyname) for keyboard events) are also included where appropriate. See [EventStreamEvent](../reference.md#object-eventstreamevent) for more information.
+A `EventStream` captures event details as JavaScript objects as they are handled by the [EventHandler](EventHandler.md#class-eventhandler). The event target [canvas](Canvas.md#class-canvas) ID and [class name](Class.md#method-classgetclassname) as well the [locator](../reference_2.md#type-autotestlocator) are included, as available. Event-specific data (for example, the [KeyName](../reference.md#type-keyname) for keyboard events) are also included where appropriate. See [EventStreamEvent](../reference.md#object-eventstreamevent) for more information.
 
 You can configure the stream to capture most DOM event types and other useful events, such as [relogins](../kb_topics/relogin.md#kb-topic-relogin) and JavaScript errors that are triggered by events:
 

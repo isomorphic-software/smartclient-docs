@@ -468,7 +468,7 @@ StringMethod action to fire when this icon has focus and receives a keypress eve
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| keyName | [KeyName](../reference_2.md#type-keyname) | false | — | Name of the key pressed |
+| keyName | [KeyName](../reference.md#type-keyname) | false | — | Name of the key pressed |
 | character | [Character](#type-character) | false | — | character produced by the keypress |
 | form | [DynamicForm](#type-dynamicform) | false | — | The Dynamic Form to which this icon's item belongs. |
 | item | [FormItem](#type-formitem) | false | — | The Form Item containing this icon |

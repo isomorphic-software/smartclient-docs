@@ -92,6 +92,18 @@ Setting this attribute to true will suppress this native behavior. Alternatively
 **Flags**: IRWA
 
 ---
+## ClassAttr: Page.allowBackForwardCache
+
+### Description
+Whether a SmartClient page may be resumed from the browser's back/forward cache (["bfcache"](https://developer.mozilla.org/en-US/docs/Glossary/bfcache)).
+
+When a user navigates away, browsers may freeze the page into the bfcache and later restore it live if the user navigates back, with DOM and JavaScript state intact, rather than reloading from scratch. By default SmartClient forces a fresh reload on such a restore, so a user who navigates back always lands on a freshly-loaded page rather than a resumed one. Set this to `true` to instead permit a seamless bfcache resume; page teardown is then skipped when the page is frozen so that the restored page keeps working.
+
+Note that, in addition to this setting, the native bfcache policy varies by browser, and may be impacted by the page's HTTP cache headers, the presence of native `unload` or `beforeunload` event handlers, and other factors.
+
+**Flags**: IRWA
+
+---
 ## ClassMethod: Page.setIsomorphicDir
 
 ### Description

@@ -479,6 +479,18 @@ Return the page-relative X (horizontal) coordinate of an event.
 - mouseEvents
 
 ---
+## ClassMethod: EventHandler.isPagePersisting
+
+### Description
+Whether the page is currently transitioning into or out of the browser's back/forward cache ("bfcache"). Returns the `persisted` flag of the most recent [PageEvent](../reference_2.md#type-pageevent) `pageHide` or `pageShow`: `true` while a `pageHide` is freezing the page into the bfcache or a `pageShow` is restoring it from the bfcache, `false` for an ordinary page load or a genuine teardown.
+
+Handlers registered via [Page.setEvent](Page.md#classmethod-pagesetevent) for `pageHide` / `pageShow` also receive this value as `eventInfo.persisted`; this accessor is for code that is not itself the event handler.
+
+### Returns
+
+`[boolean](../reference.md#type-boolean)` — true if the most recent pageHide/pageShow indicated back/forward-cache persistence
+
+---
 ## ClassMethod: EventHandler.getTarget
 
 ### Description

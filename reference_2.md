@@ -2439,7 +2439,10 @@ Events registerable via [Page.setEvent](classes/Page.md#classmethod-pagesetevent
 |-------|-------------|
 | "idle" | Fires repeatedly (every 10 ms by default) when the system is idle (i.e., not busy running other scripts) after the page is loaded. |
 | "load" | Fires when the page has finished loading. It corresponds to the browser 'load' event normally handled by window.onload. |
-| "unload" | Fires when the page is exited or unloaded. It corresponds to the browser 'unload' event normally handled by window.onunload. |
+| "unload" | Fires when the page is exited or unloaded. **Deprecated** in favor of `"pageHide"`, which maps to the modern browser `pagehide` event; `"unload"` continues to fire for backwards compatibility. |
+| "pageHide" | Fires when the page is hidden — navigated away from, or frozen into the browser back/forward cache ("bfcache"). Maps to the browser `pagehide` event. The `eventInfo` passed to the handler carries a `persisted` boolean: `true` when the page is being frozen into the bfcache and may be restored later. See [EventHandler.isPagePersisting](classes/EventHandler.md#classmethod-eventhandlerispagepersisting). |
+| "pageShow" | Fires when the page is shown — freshly loaded, or restored from the browser back/forward cache. Maps to the browser `pageshow` event. The `eventInfo` carries a `persisted` boolean: `true` when the page was restored from the bfcache rather than freshly loaded. |
+| "visibilityChange" | Fires when the page's visibility changes, for example when its browser tab is backgrounded or re-shown. Maps to the browser `visibilitychange` event. The `eventInfo` carries `visibilityState` (`"visible"` or `"hidden"`) and a `hidden` boolean. |
 | "resize" | Fires when the browser window is resized by the user. It corresponds to the browser 'resize' event normally handled by window.onresize. |
 | "mouseDown" | Fires when the left mouse button is pressed on the Page. |
 | "rightMouseDown" | Fires when the right mouse button is pressed on the Page. |

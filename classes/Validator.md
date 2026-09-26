@@ -411,7 +411,7 @@ For validators of type "serverCustom" only: a scriptlet in any supported JSR223 
 ```
 The scriptlet should return a boolean true or false value - failing to return a value will be considered a false result (validator failed). If your expression is syntactically invalid, an exception is thrown and the error message is displayed in the client.
 
-See [serverScript](../kb_topics/serverScript.md#kb-topic-server-scripting) for general information on Server Scripting and JSR223, and [velocitySupport](#kb-topic-velocitysupport) for general information on Velocity support, and also see below for special rules for Velocity.
+See [serverScript](../kb_topics/serverScript.md#kb-topic-server-scripting) for general information on Server Scripting and JSR223, and [velocitySupport](../kb_topics/velocitySupport.md#kb-topic-velocity-context-variables) for general information on Velocity support, and also see below for special rules for Velocity.
 
 **Available variables** The following variables are available in a `serverCondition`:
 

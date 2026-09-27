@@ -3665,7 +3665,7 @@ Return the value tracked by this form item as a Float. If the value cannot be pa
 
 ### Returns
 
-`[Float](../reference.md#type-float)` — value of this element
+`[Float](../reference_2.md#type-float)` — value of this element
 
 ### See Also
 

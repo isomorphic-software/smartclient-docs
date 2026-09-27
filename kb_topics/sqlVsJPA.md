@@ -45,6 +45,6 @@ Because the central DataSource definition expresses all the available operations
 
 There is no information leakage from server to client with the SQL DataSource. All server-side declarations, such as SQL templates, are automatically stripped out of the DataSource definition before the browser sees it.
 
-Custom SQL in a SmartClient SQL DataSource is protected from SQL injection attacks. It is impossible for a developer to write a SQL template that is vulnerable to SQL injection without going through the [$rawValue](#kb-topic-velocitysupport) feature, a rarely used feature that is very prominently flagged in the documentation as requiring special care. Other ORM systems tend to require hand-coded SQL queries for advanced use cases such as reporting; these hand-written queries are where most security holes appear. By providing a safe environment for SQL customizations, SQL DataSource removes these risks.
+Custom SQL in a SmartClient SQL DataSource is protected from SQL injection attacks. It is impossible for a developer to write a SQL template that is vulnerable to SQL injection without going through the [$rawValue](velocitySupport.md#kb-topic-velocity-context-variables) feature, a rarely used feature that is very prominently flagged in the documentation as requiring special care. Other ORM systems tend to require hand-coded SQL queries for advanced use cases such as reporting; these hand-written queries are where most security holes appear. By providing a safe environment for SQL customizations, SQL DataSource removes these risks.
 
 ---

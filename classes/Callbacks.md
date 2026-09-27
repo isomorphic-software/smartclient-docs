@@ -384,7 +384,7 @@ A [Callback](../reference.md#type-callback) fired when [DataSource.hasFileVersio
 ## Method: Callbacks.PaletteNodeCallback
 
 ### Description
-Callback fired with the [PaletteNodes](../reference.md#object-palettenode) obtained asynchronously.
+Callback fired with the [PaletteNodes](../reference_2.md#object-palettenode) obtained asynchronously.
 
 ### Parameters
 
@@ -408,7 +408,7 @@ Callback called with the result of [AI.buildWorkflowStep](AI.md#classmethod-aibu
 ## Method: Callbacks.HasFileCallback
 
 ### Description
-A [Callback](../reference.md#type-callback) fired when [DataSource.hasFile](DataSource_1.md#method-datasourcehasfile) completes.
+A [Callback](../reference.md#type-callback) fired when [DataSource.hasFile](DataSource_2.md#method-datasourcehasfile) completes.
 
 ### Parameters
 

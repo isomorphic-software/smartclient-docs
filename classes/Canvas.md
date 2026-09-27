@@ -443,7 +443,7 @@ This is typically used to create a 3-way split pane, where left and right-hand s
 ## Attr: Canvas.editNode
 
 ### Description
-The component's [EditNode](../reference.md#object-editnode) for a component that has been created by a [Palette](../reference.md#interface-palette) from a [PaletteNode](../reference.md#object-palettenode).
+The component's [EditNode](../reference.md#object-editnode) for a component that has been created by a [Palette](../reference.md#interface-palette) from a [PaletteNode](../reference_2.md#object-palettenode).
 
 **Flags**: R
 
@@ -3824,7 +3824,7 @@ An [EditProxy](EditProxy.md#class-editproxy) controls the behaviors of a compone
 
 The `editProxy` AutoChild is created when a component is first placed into edit mode via [Canvas.setEditMode](#method-canvasseteditmode).
 
-`editProxy` properties can be supplied on a [PaletteNode](../reference.md#object-palettenode) or [EditNode](../reference.md#object-editnode) as [editProxyProperties](PaletteNode.md#attr-palettenodeeditproxyproperties), but must be provided before the component is first placed into edit mode.
+`editProxy` properties can be supplied on a [PaletteNode](../reference_2.md#object-palettenode) or [EditNode](../reference.md#object-editnode) as [editProxyProperties](PaletteNode.md#attr-palettenodeeditproxyproperties), but must be provided before the component is first placed into edit mode.
 
 Most editable components use a custom EditProxy. See the documentation for each class' [editProxyConstructor](#attr-canvaseditproxyconstructor) to determine the class.
 
@@ -6613,7 +6613,7 @@ Note: If you attempt to call this API before the widget is drawn, the call will 
 ## Method: Canvas.setDataContextCriteria
 
 ### Description
-Updates the `sharedCriteria` section of this Canvas's [Canvas.dataContext](#attr-canvasdatacontext). All contained [DataBoundComponents](../reference.md#interface-databoundcomponent) whose DataSource has fields matching the criteria by name and compatible type will re-fetch with the updated criteria combined via [DataSource.combineCriteria](DataSource.md#classmethod-datasourcecombinecriteria).
+Updates the [sharedCriteria](DataContext.md#attr-datacontextsharedcriteria) section of this Canvas's [Canvas.dataContext](#attr-canvasdatacontext). All contained [DataBoundComponents](../reference.md#interface-databoundcomponent) whose DataSource has fields matching the criteria by name and compatible type will re-fetch with the updated criteria combined via [DataSource.combineCriteria](DataSource.md#classmethod-datasourcecombinecriteria).
 
 **Global form** (criteria only — applies to all DataSources by field-name match):
 
@@ -6634,13 +6634,15 @@ Passing `null` as criteria clears the entry, causing components to re-fetch with
 
 [RelativeDate](../reference.md#object-relativedate) values inside the criteria are preserved in relative form and re-evaluated on each fetch.
 
+**Settings-object form**: in place of the positional `filterRelated` / `contributorID` parameters, the third argument may be a [DataContextCriteriaSettings](#object-datacontextcriteriasettings) object carrying the full contribution envelope — `filterRelated`, `contributorID`, [criteriaType](#attr-datacontextcriteriasettingscriteriatype), [persistToEditContext](#attr-datacontextcriteriasettingspersisttoeditcontext) and [description](#attr-datacontextcriteriasettingsdescription). The positional form implies the pre-existing envelope defaults (`criteriaType:"filter"`, persistent, no description).
+
 ### Parameters
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | criteria | [Criteria](../reference_2.md#type-criteria)|[AdvancedCriteria](#type-advancedcriteria) | false | — | the criteria to apply; null to clear |
 | dsID | [String](#type-string)|[Array of String](#type-array-of-string) | true | — | DataSource ID or array of IDs to scope the criteria. When omitted, the criteria are applied globally by field-name match across all DataSources. |
-| filterRelated | [Boolean](#type-boolean) | true | — | when true, components bound to DataSources that have a [DataSourceField.foreignKey](DataSourceField.md#attr-datasourcefieldforeignkey) relationship to the target DataSource are also filtered via a `valueQuery` sub-criterion on their FK column. Only supported when `dsID` is a single explicit ID (not null or an array). |
+| filterRelated | [Boolean](#type-boolean)|[DataContextCriteriaSettings](#type-datacontextcriteriasettings) | true | — | when true, components bound to DataSources that have a [DataSourceField.foreignKey](DataSourceField.md#attr-datasourcefieldforeignkey) relationship to the target DataSource are also filtered via a `valueQuery` sub-criterion on their FK column. Only supported when `dsID` is a single explicit ID (not null or an array). Alternatively, a [DataContextCriteriaSettings](#object-datacontextcriteriasettings) object carrying the full contribution envelope (the settings-object form above); the remaining positional parameter is then ignored. |
 | contributorID | [String](#type-string) | true | — | optional unique identifier for the criteria source. When multiple independent components (such as [Slicers](Slicer.md#class-slicer)) each publish criteria for the same DataSource, pass a distinct `contributorID` per source. All contributors' criteria are AND-combined automatically. Without a `contributorID`, each call replaces the previous DS-specific criteria entirely. |
 
 ### Groups

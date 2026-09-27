@@ -25,7 +25,7 @@ To achieve this, user-editable components are created via a special pattern (not
 
 The main components and behaviors involved in Dashboards & Tools are covered in brief below - each of these points is covered in more detail in further sections:
 
-*   User-editable components are created by [Palettes](../reference.md#interface-palette). `Palettes` create components from [PaletteNodes](../reference.md#object-palettenode), which are [data records](../reference.md#object-record) containing the component's class and default settings. Some `Palettes` provide an end user UI for creating components (eg drag a node from a Tree).
+*   User-editable components are created by [Palettes](../reference.md#interface-palette). `Palettes` create components from [PaletteNodes](../reference_2.md#object-palettenode), which are [data records](../reference.md#object-record) containing the component's class and default settings. Some `Palettes` provide an end user UI for creating components (eg drag a node from a Tree).
 *   An editable component created by a `Palette` is represented by an [EditNode](../reference.md#object-editnode), which tracks the created component along with the data necessary to save and re-create the component.
 *   An [EditContext](../classes/EditContext.md#class-editcontext) manages a list or [Tree](../classes/Tree.md#class-tree) of [EditNodes](../reference.md#object-editnode), and provides APIs for serializing and restoring `EditNodes` to and from XML and JSON, and updating the nodes as users make changes.
 *   Many UI components have ["edit mode"](../classes/Canvas.md#method-canvasseteditmode) behaviors. When "edit mode" is enabled, when an end user interacts with the component, the component will save changes to its [EditNode](../reference.md#object-editnode) or to child [EditNodes](../reference.md#object-editnode) in the [EditContext](../classes/EditContext.md#class-editcontext). For example, [PortalLayout](../classes/PortalLayout.md#class-portallayout) can track and persist changes to the placement and size of portlets made by end users. `EditMode` behaviors are implemented by [EditProxies](../classes/EditProxy.md#class-editproxy), and different edit mode behaviors can be turned on and off for different kinds of tools.
@@ -39,7 +39,7 @@ A simple tool based on the Dashboards & Tools framework would typically consist 
 
 #### Creating editable components: `Palettes`
 
-User-editable components are created by [Palettes](../reference.md#interface-palette). `Palettes` create components from [PaletteNodes](../reference.md#object-palettenode), which are [data records](../reference.md#object-record) containing the component's class and default settings.
+User-editable components are created by [Palettes](../reference.md#interface-palette). `Palettes` create components from [PaletteNodes](../reference_2.md#object-palettenode), which are [data records](../reference.md#object-record) containing the component's class and default settings.
 
 Most types of `palettes` provide a UI for an end user to create components from `paletteNodes`. For example, a [TreePalette](../reference.md#class-treepalette) presents a hierarchical set of `paletteNodes` as a tree, and allows end users to drag nodes out in order to create components. All `palettes` also support [programmatic creation of components](../classes/Palette.md#method-palettemakeeditnode) from `paletteNodes`.
 

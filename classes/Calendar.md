@@ -830,7 +830,7 @@ If true, the default, show a header cell for each day cell in the [month view](#
 ## Attr: Calendar.indicators
 
 ### Description
-An array of CalendarEvent instances representing instants in time, to be highlighted in [timeline views](#attr-calendartimelineview). Each indicator renders out as an [indicator canvas](../reference.md#class-indicatorcanvas), a special, non-interactive subclass of [EventCanvas](EventCanvas.md#class-eventcanvas), which spans all lanes and draws behind any normal, interactive events in the zorder, but in front of any [zones](#attr-calendarzones). The default [style](#attr-calendarindicatorstylename) for these components renders them as thin vertical lines that span all lanes and have a hover but no title.
+An array of CalendarEvent instances representing instants in time, to be highlighted in [timeline views](#attr-calendartimelineview). Each indicator renders out as an [indicator canvas](../reference.md#class-indicatorcanvas), a subclass of [EventCanvas](EventCanvas.md#class-eventcanvas) which spans all lanes as a vertical line. Indicators draw in front of normal events unless [Calendar.showIndicatorsInFront](#attr-calendarshowindicatorsinfront) is set to false, and always draw in front of any [zones](#attr-calendarzones).
 
 **Flags**: IRW
 
@@ -2186,7 +2186,7 @@ The title for the [laneNameField](#attr-calendarlanenamefield) in the quick [eve
 ## Attr: Calendar.showIndicatorsInFront
 
 ### Description
-In [indicator lines](#attr-calendarindicators) are showing, this attribute affects where in the z-order their canvases will be rendered: either in front of, or behind normal calendar events.
+If [indicator lines](#attr-calendarindicators) are showing, this attribute affects where in the z-order their canvases will be rendered: either in front of, or behind normal calendar events. Either way, indicators render in front of any [zones](#attr-calendarzones), which would otherwise paint over the line.
 
 **Flags**: IR
 

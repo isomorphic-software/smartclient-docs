@@ -32,7 +32,7 @@ As can be seen by looking at defaultComponents.xml, components are specified usi
 *   `icon`: icon to show in the Reify component tree (if desired)
 *   `iconWidth/Height/Size`: dimensions of the icon in pixels ("iconSize" sets both)
 *   `showDropIcon`: for components that allow children, whether to show a special drop icon on valid drop (like [TreeGrid.showDropIcons](../classes/TreeGrid.md#attr-treegridshowdropicons))
-*   and additional properties described on [PaletteNode](../reference.md#object-palettenode).
+*   and additional properties described on [PaletteNode](../reference_2.md#object-palettenode).
 
 In order to use custom classes in Reify, you must modify `[webroot]/tools/visualBuilder/globalDependencies.xml` to include:
 

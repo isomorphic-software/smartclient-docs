@@ -173,7 +173,7 @@ Form containing the DataSource picker. Scoped to manual palette-based component 
 ## Attr: ReportBuilder.autoLinkComponents
 
 ### Description
-When true, dropping two foreign-key-related data views (e.g. an Orders grid and an Order Items grid) automatically creates a master-detail link: selecting a row in the master (the FK parent) re-fetches the detail (the FK child) to that record's children via [DataBoundComponent.fetchRelatedData](#method-databoundcomponentfetchrelateddata). Auto-links surface an auto-dismissing notification and a "Driven by" affordance, and can be changed or removed by the user (which marks the link explicit, so a later auto-link pass leaves it alone). Turn this off for fully manual linking.
+When true, dropping two foreign-key-related data views (e.g. an Orders grid and an Order Items grid) automatically makes them master-detail: selecting a row in the master (the FK parent) narrows the detail (the FK child) to that record's children. The driving happens through the shared-criteria bus ([DataBoundComponent.shareSelection](#attr-databoundcomponentshareselection) on the master, default consumption on the detail); this toggle governs whether a newly-added view participates - a view added while it is off gets [dataSelectionSources](#attr-canvasdataselectionsources) `"none"` (independent) - and whether the add-time pass announces new pairings and gives details their empty-selection prompt. Auto-pairings surface an auto-dismissing notification and a "Driven by" affordance, and can be changed or removed by the user. Turn this off for fully manual linking.
 
 **Flags**: IRW
 
@@ -348,14 +348,6 @@ CSS style applied to the [ReportBuilder.emptyMessage](#attr-reportbuilderemptyme
 **Flags**: IRW
 
 ---
-## Attr: ReportBuilder.componentLinks
-
-### Description
-Tracks links between components. Each link has sourceComponentId, targetComponentId, linkType (selection|foreignKey|drillDown), and field mappings.
-
-**Flags**: IRW
-
----
 ## Attr: ReportBuilder.componentsGroup
 
 ### Description
@@ -518,7 +510,7 @@ Notification fired after a component is added to the report.
 Signature: `componentCreated(editNode, paletteNode)` where:
 
 *   `editNode` - the created [EditNode](../reference.md#object-editnode)
-*   `paletteNode` - the source [PaletteNode](../reference.md#object-palettenode)
+*   `paletteNode` - the source [PaletteNode](../reference_2.md#object-palettenode)
 
 **Flags**: IRW
 

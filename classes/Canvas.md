@@ -6613,37 +6613,24 @@ Note: If you attempt to call this API before the widget is drawn, the call will 
 ## Method: Canvas.setDataContextCriteria
 
 ### Description
-Updates the [sharedCriteria](DataContext.md#attr-datacontextsharedcriteria) section of this Canvas's [Canvas.dataContext](#attr-canvasdatacontext). All contained [DataBoundComponents](../reference.md#interface-databoundcomponent) whose DataSource has fields matching the criteria by name and compatible type will re-fetch with the updated criteria combined via [DataSource.combineCriteria](DataSource.md#classmethod-datasourcecombinecriteria).
+Add the passed criteria to the [sharedCriteria](DataContext.md#attr-datacontextsharedcriteria) section of this Canvas's [Canvas.dataContext](#attr-canvasdatacontext).
 
-**Global form** (criteria only — applies to all DataSources by field-name match):
+Components [participating in sharedCriteria](#attr-canvasusedatacontextcriteria) will react to the newly specified criteria.
 
-```
-     screen.setDataContextCriteria(newCriteria);
- 
-```
-**DataSource-specific form** (applies only to components bound to the named DataSource(s)):
-```
-     screen.setDataContextCriteria(
-         newCriteria, "Orders");
-     screen.setDataContextCriteria(
-         newCriteria, ["Orders","OrderDetail"]);
- 
-```
+Criteria passed in with no explicitly specified dataSource will be applied to all dataSources by field-name match. Criteria passed in with a specified dataSource (or set of dataSources) will only apply within those dataSource(s).
 
-Passing `null` as criteria clears the entry, causing components to re-fetch without the previously applied filter.
+Shared criteria on the dataContext are additive and keyed by DataSource plus `contributorID`. When you pass in new criteria for some contributor, pre-existing DataSource criteria with the same contributorID will be replaced. Each contributor's criteria are combined with every other contributor's criteria to form the final shared criteria. Note criteria with no explicit contributorID will belong to the same anonymous contributor.
 
-[RelativeDate](../reference.md#object-relativedate) values inside the criteria are preserved in relative form and re-evaluated on each fetch.
-
-**Settings-object form**: in place of the positional `filterRelated` / `contributorID` parameters, the third argument may be a [DataContextCriteriaSettings](#object-datacontextcriteriasettings) object carrying the full contribution envelope — `filterRelated`, `contributorID`, [criteriaType](#attr-datacontextcriteriasettingscriteriatype), [persistToEditContext](#attr-datacontextcriteriasettingspersisttoeditcontext) and [description](#attr-datacontextcriteriasettingsdescription). The positional form implies the pre-existing envelope defaults (`criteriaType:"filter"`, persistent, no description).
+Use the `settings` parameter to control whether the criteria should also impact components bound to related DataSources, plus the full contribution envelope — see [DataContextCriteriaSettings](#object-datacontextcriteriasettings).
 
 ### Parameters
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| criteria | [Criteria](../reference_2.md#type-criteria)|[AdvancedCriteria](#type-advancedcriteria) | false | — | the criteria to apply; null to clear |
+| criteria | [Criteria](../reference_2.md#type-criteria)|[AdvancedCriteria](#type-advancedcriteria) | false | — | the criteria to add. Use `null` to clear the criteria for this contributor. |
 | dsID | [String](#type-string)|[Array of String](#type-array-of-string) | true | — | DataSource ID or array of IDs to scope the criteria. When omitted, the criteria are applied globally by field-name match across all DataSources. |
-| filterRelated | [Boolean](#type-boolean)|[DataContextCriteriaSettings](#type-datacontextcriteriasettings) | true | — | when true, components bound to DataSources that have a [DataSourceField.foreignKey](DataSourceField.md#attr-datasourcefieldforeignkey) relationship to the target DataSource are also filtered via a `valueQuery` sub-criterion on their FK column. Only supported when `dsID` is a single explicit ID (not null or an array). Alternatively, a [DataContextCriteriaSettings](#object-datacontextcriteriasettings) object carrying the full contribution envelope (the settings-object form above); the remaining positional parameter is then ignored. |
-| contributorID | [String](#type-string) | true | — | optional unique identifier for the criteria source. When multiple independent components (such as [Slicers](Slicer.md#class-slicer)) each publish criteria for the same DataSource, pass a distinct `contributorID` per source. All contributors' criteria are AND-combined automatically. Without a `contributorID`, each call replaces the previous DS-specific criteria entirely. |
+| settings | [Boolean](#type-boolean)|[DataContextCriteriaSettings](#type-datacontextcriteriasettings) | true | — | settings object indicating contributor ID and other properties. If a boolean value is passed rather than a settings object, it will be used as shorthand for [filterRelated](#attr-datacontextcriteriasettingsfilterrelated). |
+| contributorID | [String](#type-string) | true | — | If a settings object was not passed in, the contributor ID may be passed directly to the method as the fourth argument. |
 
 ### Groups
 

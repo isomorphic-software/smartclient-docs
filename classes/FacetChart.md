@@ -2862,6 +2862,22 @@ Default gradations can be overridden via [FacetChart.logBase](#attr-facetchartlo
 **Flags**: IR
 
 ---
+## Attr: FacetChart.freezeValueAxis
+
+### Description
+When the chart is expanding its data area under [FacetChart.autoScrollData](#attr-facetchartautoscrolldata), should the value axis -- its gradation labels and [title](#attr-facetchartvaluetitle) -- stay pinned against the visible edge while the data scrolls past it?
+
+With this disabled the axis is simply part of the scrolling content, so scrolling far enough to reach a category also scrolls away the scale that gives its bar a meaning.
+
+This has no effect unless the chart is actually expanding its data area: a chart whose data already fits draws its axis normally.
+
+### See Also
+
+- [FacetChart.autoScrollData](#attr-facetchartautoscrolldata)
+
+**Flags**: IRW
+
+---
 ## Attr: FacetChart.pieLabelAngleStart
 
 ### Description
@@ -4696,6 +4712,18 @@ Sets [AutoScrollDataApproach](../reference.md#type-autoscrolldataapproach) and u
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | autoScrollDataApproach | [AutoScrollDataApproach](../reference.md#type-autoscrolldataapproach) | false | — | what should drive horizontal expansion of the chart? |
+
+---
+## Method: FacetChart.setFreezeValueAxis
+
+### Description
+Sets [FacetChart.freezeValueAxis](#attr-facetchartfreezevalueaxis) and updates the chart.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| freezeValueAxis | [boolean](../reference.md#type-boolean) | false | — | whether the value axis should stay pinned against the visible edge while the data scrolls |
 
 ---
 ## Method: FacetChart.getChartRadius

@@ -1267,6 +1267,23 @@ Dynamically update [Window.showHeaderIcon](#attr-windowshowheadericon) to show /
 - [Window.showHeaderIcon](#attr-windowshowheadericon)
 
 ---
+## Method: Window.setCanFocusInHeaderButtons
+
+### Description
+Updates [Window.canFocusInHeaderButtons](#attr-windowcanfocusinheaderbuttons), including existing header buttons.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| canFocus | [Boolean](#type-boolean) | false | — | whether header buttons can receive keyboard focus |
+
+### Groups
+
+- focus
+- header
+
+---
 ## Method: Window.setShowTitle
 
 ### Description

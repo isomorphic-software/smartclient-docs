@@ -13,6 +13,7 @@ A widget normally receives focus by being clicked on or tabbed to.
 
 ### Related
 
+- [Window.setCanFocusInHeaderButtons](../classes/Window.md#method-windowsetcanfocusinheaderbuttons)
 - [Canvas.focus](../classes/Canvas.md#method-canvasfocus)
 - [Canvas.blur](../classes/Canvas.md#method-canvasblur)
 - [Canvas.containsFocus](../classes/Canvas.md#method-canvascontainsfocus)

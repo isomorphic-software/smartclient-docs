@@ -181,7 +181,7 @@ When true, dropping two foreign-key-related data views (e.g. an Orders grid and 
 ## Attr: ReportBuilder.showUndo
 
 ### Description
-Whether the "Undo" toolbar button is shown.
+Whether the "Undo" toolbar button is shown. Undo steps the report back through its auto-saved versions (see [ReportBuilder.undo](#method-reportbuilderundo)).
 
 **Flags**: IR
 
@@ -216,6 +216,14 @@ Dialog for configuring chart facets, measures, and aggregation. Created as a top
 Layout hosting the compact AI prompt input. Collapsed by default it shows a one-line TextArea + Submit + expand chevron in roughly 50px; expanded it grows the TextArea to several rows and reveals a history grid populated from [ReportBuilder.historyDataSource](#attr-reportbuilderhistorydatasource) merged with [ReportBuilder.suggestedPrompts](#attr-reportbuildersuggestedprompts).
 
 **Flags**: R
+
+---
+## Attr: ReportBuilder.showRevert
+
+### Description
+Whether the "Revert" toolbar button is shown. It drops down a menu of recent saved versions of the report; picking one reverts the report to it.
+
+**Flags**: IR
 
 ---
 ## Attr: ReportBuilder.showEditInReify
@@ -440,6 +448,16 @@ Notify text shown when the CoT calls [finished](#finished) with no output object
 Watchdog timeout for the [ReportBuilderProcess](#class-reportbuilderprocess) CoT. If the process doesn't call [finished](#finished) within this many milliseconds, ReportBuilder synthesizes an [ReportBuilder.aiTimeoutMessage](#attr-reportbuilderaitimeoutmessage) error and routes it through the standard failure handler so the loading indicator clears and the user gets a Retry affordance. Set to 0 or a negative value to disable the watchdog.
 
 **Flags**: IRW
+
+---
+## Attr: ReportBuilder.autoNameReports
+
+### Description
+Whether the first edit to a brand-new report gives it a unique "New Report" name and primes its save engine, so it begins auto-saving -- and therefore recording versions for version-based Undo / Redo -- from that first edit rather than only after the first explicit Save. Matches the way Reify names a "New Screen"; leaves an empty draft in report listings until the report is saved or renamed.
+
+Off by default so an embedded or transient ReportBuilder does not write storage it was never asked to. The standalone reporting application turns it on, which is where the "draft appears in listings" behavior is expected.
+
+**Flags**: IR
 
 ---
 ## Attr: ReportBuilder.exportFormats
@@ -693,7 +711,7 @@ Retired: reports save through [ReportBuilder.screenDataSource](#attr-reportbuild
 ## Attr: ReportBuilder.showRedo
 
 ### Description
-Whether the "Redo" toolbar button is shown. Note that redo is not currently supported for reports — [ReportBuilder.redo](#method-reportbuilderredo) is a no-op — so showing the button is not recommended.
+Whether the "Redo" toolbar button is shown. Redo re-applies a version stepped back over by [ReportBuilder.undo](#method-reportbuilderundo) (see [ReportBuilder.redo](#method-reportbuilderredo)).
 
 **Flags**: IR
 
@@ -720,12 +738,20 @@ A report that has never been saved has no name to save under and is left alone; 
 **Flags**: IRW
 
 ---
+## Attr: ReportBuilder.maxAutoSavesInRevertMenu
+
+### Description
+How many recent auto-saved versions the [Revert](#attr-reportbuildershowrevert) menu lists, in addition to the last manual save.
+
+**Flags**: IR
+
+---
 ## Attr: ReportBuilder.emptyMessageImage
 
 ### Description
 Illustration shown below [ReportBuilder.emptyMessage](#attr-reportbuilderemptymessage) in an empty report. Scaled to fit the available space, preserving the aspect ratio implied by [ReportBuilder.emptyMessageImageSize](#attr-reportbuilderemptymessageimagesize). Set to `null` for no image.
 
-Defaults to the same illustration the visual builder shows on a new project, so the two tools present an empty document identically and one change restyles both. As a relative source it resolves against the page's application image directory, so that directory must carry this file -- see [Page.setAppImgDir](Page.md#classmethod-pagesetappimgdir); in the shipped tools it is the visual builder's own `graphics/` directory.
+Defaults to the `DropComponentHere` [StockIcon](../reference_2.md#object-stockicon), the same illustration the visual builder shows on a new project, so the two tools present an empty document identically. It is line art drawn in the current text colour, and as framework media it resolves on any page with no image directory to configure. Any other [SCImgURL](../reference.md#type-scimgurl) may be used instead; set [ReportBuilder.emptyMessageImageSize](#attr-reportbuilderemptymessageimagesize) to its natural size.
 
 **Flags**: IRW
 
@@ -741,7 +767,7 @@ Optional override for the [TextAreaItem.textBoxStyle](TextAreaItem.md#attr-texta
 ## Attr: ReportBuilder.autoSaveInterval
 
 ### Description
-How often, in milliseconds, an edited report is checked for changes worth saving. See [ReportBuilder.autoSaveReports](#attr-reportbuilderautosavereports).
+Quiet-pause delay, in milliseconds, after the last edit before an edited report is checked for changes and auto-saved. Each edit resets the delay, so a save -- and the version-based Undo step it creates -- lands on a natural pause in editing rather than on a fixed poll. Mirrors the pause-debounce cadence Reify auto-saves a screen on. See [ReportBuilder.autoSaveReports](#attr-reportbuilderautosavereports).
 
 **Flags**: IRW
 
@@ -838,6 +864,12 @@ Opens a dialog to load a previously saved report.
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | callback | [Callback](../reference.md#type-callback) | true | — | optional callback fired after load completes |
+
+---
+## Method: ReportBuilder.undoAIChanges
+
+### Description
+Reverts the report to the checkpoint saved just before the most recent AI run (the "Before AI" version), undoing the whole run as a single step.
 
 ---
 ## Method: ReportBuilder.addComponent
@@ -944,9 +976,7 @@ Returns the report's components as edit-node-shaped descriptors, one per portlet
 ## Method: ReportBuilder.undo
 
 ### Description
-Reverse the last edit made to the report.
-
-This is the edit context's own undo -- the same mechanism Reify uses -- so it covers every kind of edit the canvas records rather than a report-specific subset.
+Undo the last change by reverting the report to its previous auto-saved version.
 
 ### See Also
 
@@ -956,7 +986,7 @@ This is the edit context's own undo -- the same mechanism Reify uses -- so it co
 ## Method: ReportBuilder.redo
 
 ### Description
-Redo is not currently supported for reports, so this method does nothing. See [ReportBuilder.showRedo](#attr-reportbuildershowredo).
+Redo a change previously reversed by [ReportBuilder.undo](#method-reportbuilderundo) by re-applying the next auto-saved version. Version-based redo can re-place portlets that replaying gesture-log entries never could.
 
 ---
 ## Method: ReportBuilder.getReportDefinition

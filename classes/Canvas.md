@@ -1249,7 +1249,7 @@ See [containment](../kb_topics/containment.md#kb-topic-component-containment-and
 
 - containment
 
-**Flags**: IR
+**Flags**: IRA
 
 ---
 ## Attr: Canvas.animateRectTime

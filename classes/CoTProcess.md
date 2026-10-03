@@ -772,6 +772,22 @@ Callers can access:
 | process | [CoTProcess](#type-cotprocess) | false | — | The process instance (for accessing state) |
 
 ---
+## Method: CoTProcess.subProcessElement
+
+### Description
+Observable method called on this process when a task begins in a sub-process it is running -- a child started by a [SubProcessTask](SubProcessTask.md#class-subprocesstask), or any deeper descendant. It is the descendant's own [CoTProcess.processingElement](#method-cotprocessprocessingelement), passed up so that progress UI attached to this process (such as [CoTProcessLog](CoTProcessLog.md#class-cotprocesslog)) can show every step of the run, not just this process's own tasks.
+
+Purely a notification: it has no effect on this process's execution, its step count or its step timeout.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| element | [ProcessElement](#type-processelement) | false | — | the descendant's task that is about to execute |
+| process | [CoTProcess](#type-cotprocess) | false | — | the descendant process running that task |
+| depth | [Integer](../reference_2.md#type-integer) | false | — | how far below this process the descendant is: 1 for a direct child, 2 for a grandchild, and so on |
+
+---
 ## Method: CoTProcess.unpause
 
 ### Description
@@ -889,6 +905,21 @@ Task authors that show step progress to the AI (e.g. AUN's scanUI/componentFocus
 ### Returns
 
 `[Integer](../reference_2.md#type-integer)` — steps executed so far this process run
+
+---
+## Method: CoTProcess.subProcessElementResult
+
+### Description
+Observable method called on this process when a task completes in a sub-process it is running. The [CoTProcess.processingElementResult](#method-cotprocessprocessingelementresult) counterpart of [CoTProcess.subProcessElement](#method-cotprocesssubprocesselement); see that method for when it fires.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| element | [ProcessElement](#type-processelement) | false | — | the descendant's task that completed |
+| output | [Object](../reference_2.md#type-object) | false | — | that task's output object |
+| process | [CoTProcess](#type-cotprocess) | false | — | the descendant process that ran the task |
+| depth | [Integer](../reference_2.md#type-integer) | false | — | how far below this process the descendant is: 1 for a direct child, 2 for a grandchild, and so on |
 
 ---
 ## Method: CoTProcess.asyncGetResult

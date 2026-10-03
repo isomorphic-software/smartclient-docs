@@ -15,6 +15,8 @@ Per task, the log renders rows from two optional templated strings declared on t
 
 When a task does not declare `logStartMessage` the row falls back to `task.title` (then `task.ID`); when no `logResultMessage` is declared and the task's output carries a `prompt` / `aiMessage`, the row renders a truncated preview of both. An explicit empty-string template suppresses that row entirely.
 
+Tasks run by sub-processes of the attached process are logged too, rendered the same way and indented by nesting depth -- see [CoTProcessLog.showSubProcessMessages](#attr-cotprocesslogshowsubprocessmessages).
+
 Attach via [CoTProcessLog.setProcess](#method-cotprocesslogsetprocess): setting a new process detaches the previous one and clears prior messages; setting `null` detaches cleanly. The widget itself is not closed automatically on process completion - the parent app decides whether to leave it open, hide() it after a delay, or destroy it.
 
 ---
@@ -22,6 +24,14 @@ Attach via [CoTProcessLog.setProcess](#method-cotprocesslogsetprocess): setting 
 
 ### Description
 Render rows for process-level lifecycle events (start, finish, failure, cancellation). System rows are styled with [systemStyleName](#systemstylename).
+
+**Flags**: IRW
+
+---
+## Attr: CoTProcessLog.subProcessIndent
+
+### Description
+Left indent, in pixels per level of nesting, applied to rows from sub-processes when [CoTProcessLog.showSubProcessMessages](#attr-cotprocesslogshowsubprocessmessages) is enabled.
 
 **Flags**: IRW
 
@@ -78,6 +88,14 @@ Window title shown in the header bar.
 
 ### Description
 Truncation budget for the `prompt` preview used by the result-row fallback when a task does not declare a [CoTTask.logResultMessage](#cottasklogresultmessage).
+
+**Flags**: IRW
+
+---
+## Attr: CoTProcessLog.showSubProcessMessages
+
+### Description
+Also render the start and result rows of tasks run by sub-processes of the attached process -- children started by a [SubProcessTask](SubProcessTask.md#class-subprocesstask) and their descendants -- as reported by [CoTProcess.subProcessElement](CoTProcess.md#method-cotprocesssubprocesselement) and [CoTProcess.subProcessElementResult](CoTProcess.md#method-cotprocesssubprocesselementresult). Each such row is indented by [CoTProcessLog.subProcessIndent](#attr-cotprocesslogsubprocessindent) per level of nesting. Like the attached process's own rows, they honour [CoTProcessLog.showStartMessages](#attr-cotprocesslogshowstartmessages) and [CoTProcessLog.showResultMessages](#attr-cotprocesslogshowresultmessages).
 
 **Flags**: IRW
 

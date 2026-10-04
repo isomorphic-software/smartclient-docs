@@ -339,6 +339,16 @@ When exporting from large production databases, the default behavior of batching
 *   The [MockDSExportSettings.maxTreeRoots](MockDSExportSettings.md#attr-mockdsexportsettingsmaxtreeroots) default of 500 automatically prevents unbounded root-node queries on DataSources where a self-FK is not a real hierarchy.
 *   For DataSources you know are not trees, list them in [MockDSExportSettings.nonTreeDataSources](MockDSExportSettings.md#attr-mockdsexportsettingsnontreedatasources) to skip the exploratory root-count query entirely.
 
+#### Sample set for a deployment
+
+A Reify server offers a shared set of sample DataSources that every user can add to a project without the set being copied into anyone's storage: a user who edits one gets a private copy of just that DataSource, and everyone else keeps seeing the shared file. A deployment can ship its own set this way, for example an extract of a company's production schema and data so that every new project starts from realistic, interlinked records. Three steps:
+
+1.  Export the DataSources from the application that has them, each as a complete MockDataSource with all of its data: set [numRows](MockDSExportSettings.md#attr-mockdsexportsettingsnumrows) to 0 so no rows are dropped, [followFKDepth](MockDSExportSettings.md#attr-mockdsexportsettingsfollowfkdepth) high enough to pull in every related DataSource, [sample](MockDSExportSettings.md#attr-mockdsexportsettingssample) to mark the files, [separateFiles](MockDSExportSettings.md#attr-mockdsexportsettingsseparatefiles) for one file per DataSource, and [includeImageFields](MockDSExportSettings.md#attr-mockdsexportsettingsincludeimagefields) if image paths will resolve on the target server. Large production databases should also set [sequentialFetching](MockDSExportSettings.md#attr-mockdsexportsettingssequentialfetching). The Admin Console "Reify Export" dialog exposes all of these and downloads the set as a zip of ``<ID>`.ds.xml` files.
+2.  Unpack the files into a directory on the Reify server.
+3.  Add that directory to the `sample.datasources` property in the server's `server.properties` (comma-separated, after any existing entries). The files then load by ID, appear in every user's DataSource picker marked as samples, and are copied only when edited.
+
+The exported files are ordinary MockDataSources, so the same files also work with [DataSource.load](DataSource.md#classmethod-datasourceload) or `isc.MockDataSource.create()` in a hand-coded application.
+
 Unless you need programmatic or expert control over the settings, you will likely find it easier to use the "Reify Export" button in the [DataSources tab](../kb_topics/dataSourcesTab.md#kb-topic-datasources-tab), as when using that route, useful global and per-DataSource settings can be configured in an intuitively-arranged popup dialog.
 
 ### Parameters

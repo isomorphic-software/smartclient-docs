@@ -101,6 +101,14 @@ See also [MockDSExportSettings.dropEmptyFields](#attr-mockdsexportsettingsdropem
 **Flags**: IR
 
 ---
+## Attr: MockDSExportSettings.sample
+
+### Description
+Whether each exported [MockDataSource](MockDataSource.md#class-mockdatasource) is marked `sample="true"`, the marker that identifies a shared sample DataSource to Reify. Set this when exporting a [sample set for a deployment](Reify.md#classmethod-reifygetmockds).
+
+**Flags**: IR
+
+---
 ## Attr: MockDSExportSettings.sequentialFetching
 
 ### Description
@@ -110,6 +118,14 @@ When `true`, fetches records from each [DataSource](DataSource_1.md#class-dataso
 
 - [MockDSExportSettings.nonTreeDataSources](#attr-mockdsexportsettingsnontreedatasources)
 - [MockDSExportSettings.maxTreeRoots](#attr-mockdsexportsettingsmaxtreeroots)
+
+**Flags**: IR
+
+---
+## Attr: MockDSExportSettings.separateFiles
+
+### Description
+Whether the export is destined for one ``<ID>`.ds.xml` file per DataSource, as a [sample set for a deployment](Reify.md#classmethod-reifygetmockds) is, rather than a single document to paste into Reify. The per-DataSource output is always available as the second argument of the [callback](Callbacks.md#method-callbacksmockdsexportcallback); this setting turns off the warning that an export is too large to upload to Reify, which does not apply to files placed on a server. The Admin Console's "Reify Export" offers this as a zip download.
 
 **Flags**: IR
 
@@ -181,7 +197,7 @@ Entries can use either of two formats:
 ## Attr: MockDSExportSettings.numRows
 
 ### Description
-The number of rows of data to include, if more meet the [MockDSExportSettings.criteria](#attr-mockdsexportsettingscriteria).
+The number of rows of data to include, if more meet the [MockDSExportSettings.criteria](#attr-mockdsexportsettingscriteria). Set to 0 to include every matching row, as when exporting a [sample set for a deployment](Reify.md#classmethod-reifygetmockds).
 
 **Flags**: IR
 

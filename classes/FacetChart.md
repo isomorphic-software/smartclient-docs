@@ -1220,30 +1220,6 @@ Space between the legend and the chart rect or axis labels (whatever the legend 
 **Flags**: IR
 
 ---
-## Attr: FacetChart.centerLegend
-
-### Description
-Whether to place the [chart legend](#attr-facetchartshowlegend) with respect to the full, scrollable width of the chart when [FacetChart.autoScrollData](#attr-facetchartautoscrolldata) is active. The default of false means that the legend will be placed in the visible, non-overflowed region of the chart, for greater visibility.
-
-Note that alignment of the legend itself is governed by [legendAlign](#attr-facetchartlegendalign).
-
-Note that this setting has no impact on axis labeling, which always occurs with respect to the full, expanded width of the chart.
-
-### Groups
-
-- legend
-
-### See Also
-
-- [FacetChart.showLegend](#attr-facetchartshowlegend)
-- [FacetChart.centerTitle](#attr-facetchartcentertitle)
-- [FacetChart.autoScrollData](#attr-facetchartautoscrolldata)
-
-**Deprecated**
-
-**Flags**: IR
-
----
 ## Attr: FacetChart.titleProperties
 
 ### Description
@@ -3503,29 +3479,6 @@ Padding between each swatch and label pair.
 ### Groups
 
 - legend
-
-**Flags**: IR
-
----
-## Attr: FacetChart.centerTitle
-
-### Description
-Whether to place the [chart title](#attr-facetchartshowtitle) with respect to the full, scrollable width of the chart when [FacetChart.autoScrollData](#attr-facetchartautoscrolldata) is active. The default of false means that the title will be placed in the visible, non-overflowed region of the chart, for greater visibility.
-
-Note that alignment of the title itself is governed by [titleAlign](#attr-facetcharttitlealign).
-
-### Groups
-
-- chartTitle
-
-### See Also
-
-- [FacetChart.title](#attr-facetcharttitle)
-- [FacetChart.showTitle](#attr-facetchartshowtitle)
-- [FacetChart.centerLegend](#attr-facetchartcenterlegend)
-- [FacetChart.autoScrollData](#attr-facetchartautoscrolldata)
-
-**Deprecated**
 
 **Flags**: IR
 

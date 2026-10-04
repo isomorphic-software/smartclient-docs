@@ -624,6 +624,16 @@ DataSource ID (or DataSource instance) to persist AI prompt history into. If uns
 **Flags**: IRW
 
 ---
+## Attr: ReportBuilder.headerlessComponentTypes
+
+### Description
+Component class names whose wrapping portlets default to hiding their headers. Subclasses of the listed classes are included. An empty array makes all component types default to showing their portlet headers.
+
+This default applies when a portlet has no explicit [Window.showHeader](Window.md#attr-windowshowheader) setting, including when loading a report. The resolved setting is saved with the portlet; changing this list does not override existing saved header visibility choices. This property controls the wrapping portlet, rather than the component inside it.
+
+**Flags**: IRW
+
+---
 ## Attr: ReportBuilder.projectRunnerURL
 
 ### Description

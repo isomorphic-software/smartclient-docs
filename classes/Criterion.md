@@ -58,15 +58,34 @@ This would be transformed into a subquery filter that would select only the reco
  }
  
 ```
-This transformation takes place before the filtering subsystem even sees the criteria, so declaring the shortcut form via `fieldName` leads to **exactly** the same filtering behavior as if you specified the subquery directly as a `fieldQuery`
+The full [includeVia syntax](../kb_topics/includeViaSyntax.md#kb-topic-includevia-syntax) is supported, including disambiguation when multiple foreign keys point to the same DataSource and multi-hop paths. See the includeVia docs for full details.
+#### Aggregation shorthand
+The same shorthand also supports aggregation across a related DataSource, using `#`\-prefixed function names. For example, if an `Order` has many `OrderLine` records (linked by foreign key), you can filter on aggregates of those line items:
+
+*   `OrderLine.#count` — count of related OrderLine records
+*   `OrderLine.amount.#sum` — sum of the `amount` field across related records (also `#max`, `#min`, `#avg`)
+
+Example: fetch Orders that have more than 5 line items:
+```
+    {fieldName: "OrderLine.#count", operator: "greaterThan", value: 5}
+ 
+```
+This expands to a `fieldQuery` with `summaryFunctions` and is evaluated on both client and server.
 
 See the `AdvancedCriterionSubquery` overview linked above for more details of the extremely powerful subquery filtering options.
 
 When criteria are evaluated against a [rule context](Canvas.md#attr-canvasrulescope) (as with [FormItem.visibleWhen](FormItem.md#attr-formitemvisiblewhen), [Canvas.enableWhen](Canvas.md#attr-canvasenablewhen), or a [dynamic property](DynamicProperty.md#attr-dynamicpropertytruewhen)), `fieldName` as a dataPath also accepts `.` as a segment separator in addition to `/`, with no difference in behavior -- see [Canvas.provideRuleContext](Canvas.md#method-canvasproviderulecontext). Dot-separated paths such as `"grid.selectedRecord.name"` are preferred in this context.
 
+The dot-notation syntax for related DataSource fields is formally described at [RelationalReference](../reference_2.md#type-relationalreference). For the full set of dynamic references available in validators and field properties (including `auth.*`, `context.*`, `values.*`), see [ServerDynamicCriteria](../reference_2.md#type-serverdynamiccriteria).
+
 ### Groups
 
 - advancedFilter
+
+### See Also
+
+- [RelationalReference](../reference_2.md#type-relationalreference)
+- [ServerDynamicCriteria](../reference_2.md#type-serverdynamiccriteria)
 
 **Flags**: IR
 

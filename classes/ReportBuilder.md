@@ -380,6 +380,16 @@ DataSource used for DataSource definition storage. Defaults to `vbDataSources` (
 **Flags**: IR
 
 ---
+## Attr: ReportBuilder.showPortletHeaders
+
+### Description
+Whether component portlets default to showing their headers. When true, [ReportBuilder.headerlessComponentTypes](#attr-reportbuilderheaderlesscomponenttypes) identifies exceptions. When false, all component portlets default to hiding their headers.
+
+This default applies only when a portlet has no explicit [Window.showHeader](Window.md#attr-windowshowheader) setting, including when loading a report. Resolved choices are saved with the portlet, so changing this property does not override existing saved header visibility choices.
+
+**Flags**: IRW
+
+---
 ## Attr: ReportBuilder.reifyProjectName
 
 ### Description
@@ -627,7 +637,7 @@ DataSource ID (or DataSource instance) to persist AI prompt history into. If uns
 ## Attr: ReportBuilder.headerlessComponentTypes
 
 ### Description
-Component class names whose wrapping portlets default to hiding their headers. Subclasses of the listed classes are included. An empty array makes all component types default to showing their portlet headers.
+Component class names whose wrapping portlets default to hiding their headers. Subclasses of the listed classes are included. An empty array makes all component types default to showing their portlet headers when [ReportBuilder.showPortletHeaders](#attr-reportbuildershowportletheaders) is true. This list is ignored when `showPortletHeaders` is false.
 
 This default applies when a portlet has no explicit [Window.showHeader](Window.md#attr-windowshowheader) setting, including when loading a report. The resolved setting is saved with the portlet; changing this list does not override existing saved header visibility choices. This property controls the wrapping portlet, rather than the component inside it.
 

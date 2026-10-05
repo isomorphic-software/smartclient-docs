@@ -9,7 +9,7 @@
 *Inherits from:* [TextSettings](TextSettings.md#class-textsettings)
 
 ### Description
-Settings for use with [DataSource.recordsAsText](DataSource_2.md#method-datasourcerecordsastext).
+Settings for use with [DataSource.recordsAsText](DataSource_1.md#method-datasourcerecordsastext).
 
 ---
 ## Attr: TextExportSettings.lineSeparator

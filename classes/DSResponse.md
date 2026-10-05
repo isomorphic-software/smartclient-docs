@@ -94,6 +94,22 @@ Developers may also write custom dataSource logic to populate this attribute if 
 **Flags**: R
 
 ---
+## Attr: DSResponse.cacheSyncData
+
+### Description
+Whether the records in this response are complete rows, or carry only the primary keys plus the fields that changed.
+
+Defaults to `"full"` when unset, and is overridden by [DSRequest.cacheSyncData](DSRequest.md#attr-dsrequestcachesyncdata) where the request carries one. Setting it on the response is the only option for an update that has no request of its own in this page - a [Real-Time Messaging](../kb_topics/messaging.md#kb-topic-real-time-messaging) push, or a server-side `DSResponse.addRelatedUpdate()`.
+
+See [DataSource.updateCaches](DataSource_1.md#method-datasourceupdatecaches) for what each setting does to a cache, and for the one component-level exception.
+
+### Groups
+
+- cacheSynchronization
+
+**Flags**: R
+
+---
 ## Attr: DSResponse.endRow
 
 ### Description
@@ -192,7 +208,7 @@ The Java API DSResponse.addError(fieldName, errorMessage) is used to send server
 
 ### See Also
 
-- [DataSource.handleError](DataSource_2.md#method-datasourcehandleerror)
+- [DataSource.handleError](DataSource_1.md#method-datasourcehandleerror)
 
 **Flags**: R
 

@@ -97,7 +97,7 @@ Unrecoverable server `Exception` will be written to HTTP response as a warning c
 - [RPCManager.handleError](../classes/RPCManager.md#classmethod-rpcmanagerhandleerror)
 - [RPCManager.runDefaultErrorHandling](../classes/RPCManager.md#classmethod-rpcmanagerrundefaulterrorhandling)
 - [RPCManager.handleTransportError](../classes/RPCManager.md#classmethod-rpcmanagerhandletransporterror)
-- [DataSource.handleError](../classes/DataSource_2.md#method-datasourcehandleerror)
+- [DataSource.handleError](../classes/DataSource_1.md#method-datasourcehandleerror)
 - [FormItem.clearErrors](../classes/FormItem.md#method-formitemclearerrors)
 - [FormItem.setErrors](../classes/FormItem.md#method-formitemseterrors)
 - [FormItem.hasErrors](../classes/FormItem.md#method-formitemhaserrors)

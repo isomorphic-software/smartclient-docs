@@ -156,7 +156,7 @@ You can use features such as [stacking](#attr-facetchartstacked) and [extra axes
 
 In addition, with a three-facet chart, you can only call [FacetChart.setChartType](#method-facetchartsetcharttype) to switch between Bar and Column charts. Switching to other types is not supported.
 
-Take a look at [this example](https://www.smartclient.com/smartclient-latest/showcase/?id=threeFacetBarChart) to see this feature in action.
+Take a look at [this example](https://www.smartclient.com/smartclient-latest/showcase/?id=threeFacetBarChart) to see the three-facet feature in action.
 
 #### Notes on Printing
 FacetCharts support printing on all supported desktop browsers. When using Pro Edition or better with the SmartClient Server Framework installed, charts can also be exported to PDF via [RPCManager.exportContent](RPCManager.md#classmethod-rpcmanagerexportcontent) or to images via [RPCManager.exportImage](RPCManager.md#classmethod-rpcmanagerexportimage).
@@ -1489,11 +1489,13 @@ Each of the possible strategies is re-applied when the user resizes the chart as
 
 If the labelCollapseMode is "numeric" then vertical lines will be drawn at gradation values automatically chosen by the chart.
 
-If the labelCollapseMode is "time" then vertical lines are drawn to represent a sequence of significant datetime values on the x-axis, such as the first day of the month or week. The chart automatically chooses the sequence of Dates such that the spacing between them expresses the smallest granularity of time possible while still allowing the axis labels to make good use of the space. If, for example, the Date values in the data span a few years in time then the chart may select January 1 of the same year of the earliest data point and every January 1 thereafter (in range of the data) as the sequence of Dates and label each Date by the four-digit year. If the time span of the data values is on the order of minutes then the chart may select multiples of 15 minutes as the seqeunce of Dates. FacetChart currently supports the following granularities of time: years, quarters, months, weeks, days, hours, half-hours, quarter-hours, 5 minutes, minutes, 30 seconds, and 15 seconds.
+If the labelCollapseMode is "time" then vertical lines are drawn to represent a sequence of significant datetime values on the x-axis, such as the first day of the month or week. The chart automatically chooses the sequence of Dates such that the spacing between them expresses the smallest granularity of time possible while still allowing the axis labels to make good use of the space. If, for example, the Date values in the data span a few years in time then the chart may select January 1 of the same year of the earliest data point and every January 1 thereafter (in range of the data) as the sequence of Dates and label each Date by the four-digit year. If the time span of the data values is on the order of minutes then the chart may select multiples of 15 minutes as the seqeunce of Dates. FacetChart currently supports the following granularities of time: years, quarters, months, weeks, days, hours, half-hours, quarter-hours, 5 minutes, minutes, 30 seconds, 15 seconds, and seconds.
 
 The format of the Date labels is fixed by FacetChart. In particular, [FacetChart.formatAxisValue](#method-facetchartformataxisvalue) will not be called on values for the x-axis. However, FacetChart uses [DateUtil.shortMonthNames](DateUtil.md#classattr-dateutilshortmonthnames) for the time granularities of quarters, months, and weeks, uses the [default short time format](Time.md#classmethod-timesetshortdisplayformat) to format labels for time granularities from minutes to hours, and uses the [default time format](Time.md#classmethod-timesetnormaldisplayformat) to format labels for the time granularities of 15 seconds and 30 seconds. The label format can be customized by changing these three formatters. Also note that for the time granularity of weeks the sequence of Dates will be the first day of each week, as specified by [DateUtil.setFirstDayOfWeek](DateUtil.md#classmethod-dateutilsetfirstdayofweek).
 
-Note that if the labelCollapseMode is "time" or "numeric" then the [data](#attr-facetchartdata) must be initially sorted with the [data label facet](#method-facetchartgetdatalabelfacet)'s values in ascending order.
+If labelCollapseMode is "time" or "numeric", the chart automatically displays the [data label facet](#method-facetchartgetdatalabelfacet)'s values in ascending order. The supplied [data](#attr-facetchartdata) and facet values are not reordered. This applies to both static data and DataSource-bound charts; any fetch sorting still determines which records are selected when [recordLimit](DataBoundComponent.md#attr-databoundcomponentrecordlimit) is set.
+
+Three-facet Bar and Column charts support only "sample" label collapsing. Specifying "time" or "numeric" logs a warning and switches to "sample".
 
 ### Groups
 

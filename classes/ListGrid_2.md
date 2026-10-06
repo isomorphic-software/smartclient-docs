@@ -3359,7 +3359,7 @@ To override these defaults, developers may specify an explicit arrowKeyEditActio
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | item | [FormItem](#type-formitem) | false | — | Edit item receiving the up or down arrow keypress event |
-| keyName | [KeyName](../reference_2.md#type-keyname) | false | — | Key pressed (one of "Arrow\_Up" or "Arrow\_Down") |
+| keyName | [KeyName](../reference.md#type-keyname) | false | — | Key pressed (one of "Arrow\_Up" or "Arrow\_Down") |
 
 ### Returns
 

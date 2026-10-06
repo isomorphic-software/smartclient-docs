@@ -262,7 +262,7 @@ Requests that available AI engine(s) be used to build data-bound UI component(s)
 ## ClassMethod: AI.buildHilites
 
 ### Description
-Requests that available AI engine(s) be used to build one or more [Hilite](../reference_2.md#object-hilite) objects according to the user's natural language description of hilite criteria and styling to apply.
+Requests that available AI engine(s) be used to build one or more [Hilite](../reference.md#object-hilite) objects according to the user's natural language description of hilite criteria and styling to apply.
 
 ### Parameters
 

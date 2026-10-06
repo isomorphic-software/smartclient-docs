@@ -74,7 +74,7 @@ The [page width](Page.md#classmethod-pagegetwidth), present for page-level [resi
 ## Attr: EventStreamEvent.keyName
 
 ### Description
-The name of the key that triggered this event, present for [key events](EventStream.md#attr-eventstreamcapturekeyevents). For flexibility and ease of conversion to formats such as Selenese, the `keyName` for self-inserting keys (e.g. alphanumerics, "!", "@", etc.) reflects the actual character typed, factoring in the shift key. This aligns with [EventHandler.getKeyEventKey](EventHandler.md#classmethod-eventhandlergetkeyeventkey) rather than [EventHandler.getKey](EventHandler.md#classmethod-eventhandlergetkey), but refer to [KeyName](../reference_2.md#type-keyname) for special keys.
+The name of the key that triggered this event, present for [key events](EventStream.md#attr-eventstreamcapturekeyevents). For flexibility and ease of conversion to formats such as Selenese, the `keyName` for self-inserting keys (e.g. alphanumerics, "!", "@", etc.) reflects the actual character typed, factoring in the shift key. This aligns with [EventHandler.getKeyEventKey](EventHandler.md#classmethod-eventhandlergetkeyeventkey) rather than [EventHandler.getKey](EventHandler.md#classmethod-eventhandlergetkey), but refer to [KeyName](../reference.md#type-keyname) for special keys.
 
 Note that the `keyName` for special keys may be more than one character, such as "Enter", or "Down". For improved [collapsing](EventStream.md#attr-eventstreamcollapsekeyevents), the space key is always reported as the self-inserting key " ", rather than the special key "Space", since we can't collapse special and self-inserting keys into one event.
 

@@ -3622,7 +3622,7 @@ The first argument, criteria, determines which metric is used to calculate the m
 
 ### Returns
 
-`[Float](../reference_2.md#type-float)` — the maximum of the data values
+`[Float](../reference.md#type-float)` — the maximum of the data values
 
 ---
 ## Method: FacetChart.zoomTo
@@ -3657,7 +3657,7 @@ The first argument, criteria, determines which metric is used to calculate the m
 
 ### Returns
 
-`[Float](../reference_2.md#type-float)` — the mean of the data values
+`[Float](../reference.md#type-float)` — the mean of the data values
 
 ---
 ## Method: FacetChart.getPercentile
@@ -3678,7 +3678,7 @@ The second argument is the percentile to calculate and it must be a number from 
 
 ### Returns
 
-`[Float](../reference_2.md#type-float)` — a percentile of the data values
+`[Float](../reference.md#type-float)` — a percentile of the data values
 
 ---
 ## Method: FacetChart.setOtherAxisGradationTimes
@@ -3862,7 +3862,7 @@ The first argument, criteria, determines which metric is used to calculate the m
 
 ### Returns
 
-`[Float](../reference_2.md#type-float)` — the minimum of the data values
+`[Float](../reference.md#type-float)` — the minimum of the data values
 
 ---
 ## Method: FacetChart.setTickLength
@@ -3939,7 +3939,7 @@ The first argument, criteria, determines which metric is used to calculate the v
 
 ### Returns
 
-`[Float](../reference_2.md#type-float)` — the variance of the data values
+`[Float](../reference.md#type-float)` — the variance of the data values
 
 ---
 ## Method: FacetChart.fetchRelatedData
@@ -4375,7 +4375,7 @@ Note that when [canZoom](#attr-facetchartcanzoom) is enabled, this API is valid 
 
 ### Returns
 
-`[Float](../reference_2.md#type-float)` — the X coordinate where the passed data value would be drawn; or null if the passed `FacetValueMap` does not identify a currently-drawn data cell.
+`[Float](../reference.md#type-float)` — the X coordinate where the passed data value would be drawn; or null if the passed `FacetValueMap` does not identify a currently-drawn data cell.
 
 ---
 ## Method: FacetChart.setShowXTicks
@@ -4862,7 +4862,7 @@ The first argument, criteria, determines which metric is used to calculate the m
 
 ### Returns
 
-`[Float](../reference_2.md#type-float)` — the median of the data values
+`[Float](../reference.md#type-float)` — the median of the data values
 
 ---
 ## Method: FacetChart.getDataLabelFacet
@@ -5055,7 +5055,7 @@ The first argument, criteria, determines which metric is used to calculate the r
 
 ### Returns
 
-`[Float](../reference_2.md#type-float)` — the range of the data values
+`[Float](../reference.md#type-float)` — the range of the data values
 
 ---
 ## Method: FacetChart.fetchData
@@ -5121,7 +5121,7 @@ If the [chartType](#attr-facetchartcharttype) is "Area", "Bubble", "Column", "Hi
 
 ### Returns
 
-`[Float](../reference_2.md#type-float)` — the Y coordinate where the passed data value would be drawn.
+`[Float](../reference.md#type-float)` — the Y coordinate where the passed data value would be drawn.
 
 ---
 ## Method: FacetChart.drawnValueContainsPoint
@@ -5210,6 +5210,6 @@ The first argument, criteria, determines which metric is used to calculate the s
 
 ### Returns
 
-`[Float](../reference_2.md#type-float)` — the standard deviation of the data values
+`[Float](../reference.md#type-float)` — the standard deviation of the data values
 
 ---

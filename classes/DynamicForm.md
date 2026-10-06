@@ -2109,7 +2109,7 @@ Binds this dynamicForm to a [valuesManager](#attr-dynamicformvaluesmanager) at r
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| valuesManager | [ValuesManager](#type-valuesmanager)|[GlobalId](../reference_2.md#type-globalid) | false | — | the ValuesManager that controls this form's values |
+| valuesManager | [ValuesManager](#type-valuesmanager)|[GlobalId](../reference.md#type-globalid) | false | — | the ValuesManager that controls this form's values |
 
 ### Groups
 

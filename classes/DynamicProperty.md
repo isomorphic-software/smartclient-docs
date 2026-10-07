@@ -35,7 +35,7 @@ In ComponentXML, the criteria can be nested under any of ``<criteria>``, ``<Crit
 ## Attr: DynamicProperty.textFormula
 
 ### Description
-Deprecated legacy form of [template](#attr-dynamicpropertytemplate): a [UserSummary](../reference.md#object-usersummary) object (`{text, summaryVars}`) rather than a plain template string. Use [template](#attr-dynamicpropertytemplate) instead.
+Deprecated legacy form of [template](#attr-dynamicpropertytemplate): a [UserSummary](../reference_2.md#object-usersummary) object (`{text, summaryVars}`) rather than a plain template string. Use [template](#attr-dynamicpropertytemplate) instead.
 
 **Flags**: IR
 
@@ -91,7 +91,7 @@ Use [type](#attr-dynamicpropertytype) if the resolved values are not plain strin
 ### Description
 A text [template](UserSummary.md#attr-usersummarytext), written in terms of `#{path}` references into the current [rule context](Canvas.md#attr-canvasrulescope) that are substituted into the surrounding string (for example `"Editing: #{grid.selectedRecord.name}"`). Re-evaluated, and the resulting string reapplied, every time any referenced path changes. Always produces a string; [type](#attr-dynamicpropertytype) does not apply.
 
-A [UserSummary](../reference.md#object-usersummary) object (`{text, summaryVars}`) is also accepted as shorthand in place of a plain string, with `summaryVars` substituted into the template text before evaluation. See [DynamicProperty.textFormula](#attr-dynamicpropertytextformula) for the older, deprecated field name this shorthand is normalized through internally.
+A [UserSummary](../reference_2.md#object-usersummary) object (`{text, summaryVars}`) is also accepted as shorthand in place of a plain string, with `summaryVars` substituted into the template text before evaluation. See [DynamicProperty.textFormula](#attr-dynamicpropertytextformula) for the older, deprecated field name this shorthand is normalized through internally.
 
 Templates (like [formulas](#attr-dynamicpropertyformula)) are compiled to JavaScript functions, so a Content Security Policy that forbids dynamic code generation disables them — see [cspSupport](../kb_topics/cspSupport.md#kb-topic-content-security-policy-csp).
 

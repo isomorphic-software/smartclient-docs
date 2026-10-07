@@ -1123,18 +1123,18 @@ When true for a Bar chart, expansion and scrollbar are vertical, and also make s
 
 Note that this feature is incompatible with the following properties:
 
-*   [LabelCollapseMode](../reference.md#type-labelcollapsemode) (other than the default of "none")
+*   [LabelCollapseMode](../reference_2.md#type-labelcollapsemode) (other than the default of "none")
 *   [FacetChart.rotateLabels](#attr-facetchartrotatelabels) (in "auto" mode)
 *   [canDragScroll](DrawPane.md#attr-drawpanecandragscroll)
 *   [FacetChart.canZoom](#attr-facetchartcanzoom)
 
-If [FacetChart.rotateLabels](#attr-facetchartrotatelabels) is set to "auto" it will be treated as "never" if `autoScrollData` has been set. If any of the other properties have non-default values, a warning will be logged and `autoScrollData` will be disabled. The factors used to drive expansion can be limited by setting [AutoScrollDataApproach](../reference.md#type-autoscrolldataapproach). You can also enforce a minimum size for the chart-content, and scrollbars will be introduced if this widget shrinks below that size. See [autoScrollContent](#attr-facetchartautoscrollcontent), along with [minContentWidth](#attr-facetchartmincontentwidth) and [minContentHeight](#attr-facetchartmincontentheight).
+If [FacetChart.rotateLabels](#attr-facetchartrotatelabels) is set to "auto" it will be treated as "never" if `autoScrollData` has been set. If any of the other properties have non-default values, a warning will be logged and `autoScrollData` will be disabled. The factors used to drive expansion can be limited by setting [AutoScrollDataApproach](../reference_2.md#type-autoscrolldataapproach). You can also enforce a minimum size for the chart-content, and scrollbars will be introduced if this widget shrinks below that size. See [autoScrollContent](#attr-facetchartautoscrollcontent), along with [minContentWidth](#attr-facetchartmincontentwidth) and [minContentHeight](#attr-facetchartmincontentheight).
 
 ### See Also
 
 - [FacetChart.canZoom](#attr-facetchartcanzoom)
 - [FacetChart.rotateLabels](#attr-facetchartrotatelabels)
-- [LabelCollapseMode](../reference.md#type-labelcollapsemode)
+- [LabelCollapseMode](../reference_2.md#type-labelcollapsemode)
 - [FacetChart.getMinClusterSize](#method-facetchartgetminclustersize)
 - [DrawPane.canDragScroll](DrawPane.md#attr-drawpanecandragscroll)
 
@@ -1483,7 +1483,7 @@ See also [FacetChart.majorTickTimeIntervals](#attr-facetchartmajorticktimeinterv
 ## Attr: FacetChart.labelCollapseMode
 
 ### Description
-What to do when there are too many data points to be able to show labels for every data point at the current chart size - see [LabelCollapseMode](../reference.md#type-labelcollapsemode).
+What to do when there are too many data points to be able to show labels for every data point at the current chart size - see [LabelCollapseMode](../reference_2.md#type-labelcollapsemode).
 
 Each of the possible strategies is re-applied when the user resizes the chart as a whole, so if labels are omitted the user can make them visible via resize or zoom.
 
@@ -4660,13 +4660,13 @@ This is only allowed to be called when [FacetChart.chartDrawn](#method-facetchar
 ## Method: FacetChart.setAutoScrollDataApproach
 
 ### Description
-Sets [AutoScrollDataApproach](../reference.md#type-autoscrolldataapproach) and updates the chart.
+Sets [AutoScrollDataApproach](../reference_2.md#type-autoscrolldataapproach) and updates the chart.
 
 ### Parameters
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| autoScrollDataApproach | [AutoScrollDataApproach](../reference.md#type-autoscrolldataapproach) | false | — | what should drive horizontal expansion of the chart? |
+| autoScrollDataApproach | [AutoScrollDataApproach](../reference_2.md#type-autoscrolldataapproach) | false | — | what should drive horizontal expansion of the chart? |
 
 ---
 ## Method: FacetChart.setFreezeValueAxis
@@ -4852,7 +4852,7 @@ See [FacetChart.chartBackgroundDrawn](#method-facetchartchartbackgrounddrawn) fo
 ### Description
 Return the text string to display along the axes for [gradation labels](#attr-facetchartgradationlabelproperties) or facet value labels given the raw metric value or facet value id.
 
-Note that this formatter will be called for the gradation labels on an axis, including those generated for [LabelCollapseMode](../reference.md#type-labelcollapsemode) "numeric". It also will be called for each facet value along the linear axes of a chart (vertical or horizontal) unless a [FacetValue.title](FacetValue.md#attr-facetvaluetitle) has been specified (in [Facet.values](Facet.md#attr-facetvalues)) or the raw value is a string and [FacetChart.formatStringFacetValueIds](#attr-facetchartformatstringfacetvalueids) is `false`.
+Note that this formatter will be called for the gradation labels on an axis, including those generated for [LabelCollapseMode](../reference_2.md#type-labelcollapsemode) "numeric". It also will be called for each facet value along the linear axes of a chart (vertical or horizontal) unless a [FacetValue.title](FacetValue.md#attr-facetvaluetitle) has been specified (in [Facet.values](Facet.md#attr-facetvalues)) or the raw value is a string and [FacetChart.formatStringFacetValueIds](#attr-facetchartformatstringfacetvalueids) is `false`.
 
 Note that the rendering of values in hovers or via [FacetChart.showDataValues](#attr-facetchartshowdatavalues) is handled by [FacetChart.formatDataValue](#method-facetchartformatdatavalue).
 

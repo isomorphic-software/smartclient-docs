@@ -3158,7 +3158,7 @@ Returns the end of the working day on the passed date. By default, this method r
 ## Method: Calendar.setZones
 
 ### Description
-Sets the [zones](#attr-calendarzones) used to highlight areas of this calendar.
+Sets the [zones](#attr-calendarzones) used to highlight areas of this calendar. Any zones currently displayed are replaced, so passing an empty array or null removes all zones.
 
 ### Parameters
 
@@ -3878,7 +3878,7 @@ Callback fired when the mouse is clicked in a background-cell, ie, one without a
 ## Method: Calendar.setIndicators
 
 ### Description
-Sets the [indicators](#attr-calendarindicators) used to highlight instants in time.
+Sets the [indicators](#attr-calendarindicators) used to highlight instants in time. Any indicators currently displayed are replaced, so passing an empty array or null removes all indicators.
 
 ### Parameters
 

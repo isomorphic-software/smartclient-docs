@@ -618,11 +618,11 @@ Note: if criteria is being split to retrieve server criteria portion and the cri
 ## Method: ResultTree.compareCriteria
 
 ### Description
-Default behavior is to call [DataSource.compareCriteria](DataSource_1.md#method-datasourcecomparecriteria) to determine whether new criteria is equivalent to the old criteria (returns 0) or not.
+Default behavior is to call [DataSource.compareCriteria](DataSource_2.md#method-datasourcecomparecriteria) to determine whether new criteria is equivalent to the old criteria (returns 0) or not.
 
-See [DataSource.compareCriteria](DataSource_1.md#method-datasourcecomparecriteria) for a full explanation of the default behavior. The [CriteriaPolicy](../reference_2.md#type-criteriapolicy) used is "dropOnChange".
+See [DataSource.compareCriteria](DataSource_2.md#method-datasourcecomparecriteria) for a full explanation of the default behavior. The [CriteriaPolicy](../reference_2.md#type-criteriapolicy) used is "dropOnChange".
 
-Override this method or [DataSource.compareCriteria](DataSource_1.md#method-datasourcecomparecriteria) to implement your own client-side filtering behavior.
+Override this method or [DataSource.compareCriteria](DataSource_2.md#method-datasourcecomparecriteria) to implement your own client-side filtering behavior.
 
 ### Parameters
 

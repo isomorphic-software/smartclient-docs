@@ -46,6 +46,14 @@ Whether the "Theme" toolbar menu button is shown.
 **Flags**: IR
 
 ---
+## Attr: ReportBuilder.canCancelAIBuild
+
+### Description
+Whether the user can cancel a running AI build. When true, the [AI control dialog](#attr-reportbuilderaicontroldialog) shows a Cancel button; clicking it ends the run (the partial result, if any, is discarded) and returns to the prompt.
+
+**Flags**: IRW
+
+---
 ## Attr: ReportBuilder.editArea
 
 ### Description
@@ -118,6 +126,14 @@ Form within [ReportBuilder.slicerFieldDialog](#attr-reportbuilderslicerfielddial
 
 ### Description
 Milliseconds to wait after the AI process completes before hiding the [AI process log](#attr-reportbuilderaiprocesslog) overlay automatically. The delay gives the user time to see the final "Done." (or failure) row before the window disappears; set to 0 to leave the log open until dismissed manually.
+
+**Flags**: IRW
+
+---
+## Attr: ReportBuilder.canPauseAIBuild
+
+### Description
+Whether the user can pause and resume a running AI build. Off by default: a ReportBuilder build applies its result atomically at the end, so pausing to inspect mid-flight has little value. When true, the [AI control dialog](#attr-reportbuilderaicontroldialog) shows a Pause / Resume button.
 
 **Flags**: IRW
 
@@ -388,6 +404,14 @@ Whether component portlets default to showing their headers. When true, [ReportB
 This default applies only when a portlet has no explicit [Window.showHeader](Window.md#attr-windowshowheader) setting, including when loading a report. Resolved choices are saved with the portlet, so changing this property does not override existing saved header visibility choices.
 
 **Flags**: IRW
+
+---
+## Attr: ReportBuilder.aiControlDialog
+
+### Description
+Pause / cancel controls for a running AI build, shown beside the [progress log](#attr-reportbuilderaiprocesslog). Which buttons appear is governed by [ReportBuilder.canCancelAIBuild](#attr-reportbuildercancancelaibuild) and [ReportBuilder.canPauseAIBuild](#attr-reportbuildercanpauseaibuild). The dialog drives the running [ReportBuilderProcess](#class-reportbuilderprocess) directly through the standard [PauseResumeDialog](#class-pauseresumedialog), so pause / resume / cancel behavior is shared with the other AI build hosts.
+
+**Flags**: R
 
 ---
 ## Attr: ReportBuilder.reifyProjectName

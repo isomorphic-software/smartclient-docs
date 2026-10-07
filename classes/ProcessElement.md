@@ -292,7 +292,7 @@ This method is a helper to implement task-specific [ProcessElement.updateLastEle
 ## Method: ProcessElement.getTextFormulaValue
 
 ### Description
-Resolves a [UserSummary](../reference.md#object-usersummary) value against the current [rule context](Canvas.md#attr-canvasrulescope).
+Resolves a [UserSummary](../reference_2.md#object-usersummary) value against the current [rule context](Canvas.md#attr-canvasrulescope).
 
 ### Parameters
 
@@ -575,7 +575,7 @@ Sets the [process](Process.md#class-process) executing this task instance making
 ## Method: ProcessElement.updateGlobalIDInTextFormula
 
 ### Description
-Updates [text formula](../reference.md#object-usersummary) containing ruleScope references.
+Updates [text formula](../reference_2.md#object-usersummary) containing ruleScope references.
 
 This method is a helper to implement task-specific [ProcessElement.updateGlobalIDReferences](#method-processelementupdateglobalidreferences).
 

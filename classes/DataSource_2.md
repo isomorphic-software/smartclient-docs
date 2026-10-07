@@ -4,6 +4,420 @@
 
 ---
 
+## Method: DataSource.compareCriteria
+
+### Description
+Given two sets of criteria, determine whether they are equivalent, the new criteria is guaranteed more restrictive, or the new criteria is not guaranteed more restrictive, returning 0, 1 or -1 respectively.
+
+Comparisons between [AdvancedCriteria](../reference.md#object-advancedcriteria) are made via recursively calling [Operator.compareCriteria](Operator.md#method-operatorcomparecriteria) for all criteria involved.
+
+For simple [Criteria](../reference_2.md#type-criteria), by default ([CriteriaPolicy](../reference_2.md#type-criteriapolicy):"dropOnShortening"), returns:
+
+*   \-1 if the new criteria has fewer properties than the old criteria (indicating that it isn't more restrictive)
+*   \-1 if the value for any property in the old criteria is an array and 1) the value for the same property in the new criteria isn't an array, or 2) is an array but of different length, or 3) the arrays do not contain the exact same set of objects (order can be different)
+*   \-1 if the value for any given property in the old criteria is not an array, and the the value for the same property property in the new criteria is different
+*   \-1 if both values for a given property are strings and the new criteria value doesn't contain the old criteria value
+*   1 if none of the above are true and, for at least one of the properties, the respective criteria values are both strings, and the old criteria value is a substring of, and is shorter than, the new criteria value
+*   0 otherwise (indicating the sets of criteria are equivalent)
+
+For ([CriteriaPolicy](../reference_2.md#type-criteriapolicy):"dropOnChange"), returns:
+
+*   \-1 if the two sets of criteria have a different number of properties
+*   \-1 if the value for any property in the old criteria is an array and 1) the value for the same property in the new criteria isn't an array, or 2) is an array but of different length, or 3) the arrays do not contain the exact same set of objects (order can be different)
+*   \-1 if the value for any given property in the old criteria is not an array, and the the value for the same property in the new criteria is different
+*   0 otherwise (indicating the sets of criteria are equivalent)
+
+This method is called by [ResultSet.compareCriteria](ResultSet.md#method-resultsetcomparecriteria) to determine whether a change in criteria should cause the cache to be invalidated. You may want to override this method in order to mimic the filtering behavior that your server performs.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| newCriteria | [Criteria](../reference_2.md#type-criteria) | false | — | new filter criteria |
+| oldCriteria | [Criteria](../reference_2.md#type-criteria) | false | — | previous filter criteria |
+| requestProperties | [DSRequest Properties](#type-dsrequest-properties) | true | — | dataSource request properties |
+| policy | [String](#type-string) | true | — | overrides [CriteriaPolicy](../reference_2.md#type-criteriapolicy) |
+
+### Returns
+
+`[Number](#type-number)` — 0 if the filters are equivalent, 1 if newCriteria is guaranteed more restrictive, and -1 if newCriteria is not guaranteed more restrictive
+
+### See Also
+
+- [CriteriaPolicy](../reference_2.md#type-criteriapolicy)
+
+---
+## Method: DataSource.getTypeOperators
+
+### Description
+Get the list of [OperatorId](../reference.md#type-operatorid)s available on this DataSource for the given [FieldType](../reference_2.md#type-fieldtype).
+
+If [DataSource.setTypeOperators](DataSource_1.md#method-datasourcesettypeoperators) has been called for this DataSource and FieldType, returns that list, otherwise, returns the set of valid operators for the [FieldType](../reference_2.md#type-fieldtype) as specified by [SimpleType.validOperators](SimpleType.md#attr-simpletypevalidoperators), otherwise, the system-wide set of valid operators for the type as registered via [DataSource.addSearchOperator](DataSource.md#classmethod-datasourceaddsearchoperator).
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| typeName | [FieldType](../reference_2.md#type-fieldtype)|[String](#type-string) | true | — | Defaults to "text" if not passed. |
+
+### Returns
+
+`[Array of OperatorId](#type-array-of-operatorid)` — available Operators
+
+### Groups
+
+- advancedFilter
+
+---
+## Method: DataSource.getField
+
+### Description
+Return the field definition object.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| fieldName | [FieldName](../reference.md#type-fieldname) | false | — | Name of the field to retrieve |
+
+### Returns
+
+`[DataSourceField](#type-datasourcefield)` — field object
+
+---
+## Method: DataSource.listFiles
+
+### Description
+Get a list of files from the DataSource. Note, if [automatic file versioning](DataSource_1.md#attr-datasourcefileversionfield) is switched on for the dataSource, the resulting list contains only the most recent version of each file.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| criteria | [Criteria](../reference_2.md#type-criteria) | false | — | Criteria to apply. References to `fileName`, `fileType` and `fileFormat` fields will be translated to the native field names configured for this DataSource. |
+| callback | [DSCallback](../reference_2.md#type-dscallback) | false | — | Callback executed with the results. The `data` parameter is either an array of records, or null to indicate an error. The records will have the `[fileName](DataSource_1.md#attr-datasourcefilenamefield)`, `[fileType](DataSource_1.md#attr-datasourcefiletypefield)`, `[fileFormat](DataSource_1.md#attr-datasourcefileformatfield)`, `[fileLastModified](DataSource_1.md#attr-datasourcefilelastmodifiedfield)`, and `[fileVersion](DataSource_1.md#attr-datasourcefileversionfield)` fields populated, but not the `[fileContents](DataSource_1.md#attr-datasourcefilecontentsfield)` field. (You can use [getFile()](DataSource_1.md#method-datasourcegetfile) to get the `fileContents`). You can examine `[dsResponse.status](DSResponse.md#attr-dsresponsestatus)` and `[dsResponse.data](DSResponse.md#attr-dsresponsedata)` for additional information about any error. |
+
+### Groups
+
+- fileSource
+
+### See Also
+
+- [DataSource.listFileVersions](DataSource_1.md#method-datasourcelistfileversions)
+
+---
+## Method: DataSource.isAdvancedCriteria
+
+### Description
+Instance method that calls [DataSource.isAdvancedCriteria](DataSource.md#classmethod-datasourceisadvancedcriteria), passing this DataSource for enhanced heuristic detection. When a DataSource is available, `fieldName`\-only criteria are recognized as AdvancedCriteria shorthand if the fieldName is a valid field on this DataSource.
+
+See [DataSource.isAdvancedCriteria](DataSource.md#classmethod-datasourceisadvancedcriteria) for full documentation of the heuristics used to detect AdvancedCriteria format.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| criteria | [Criteria](../reference_2.md#type-criteria) | false | — | the criteria object to examine |
+
+### Returns
+
+`[Boolean](#type-boolean)` — true if the criteria is AdvancedCriteria, false otherwise
+
+---
+## Method: DataSource.getFetchDataURL
+
+### Description
+Returns a URL to DataSource fetch operation. This API is intended to return media such as images or videos to the browser.
+
+Note that because the entirety of the request is encoded in the URL, there is an inherent limitation on the amount of data that you can send viat he criteria argument to the server. The actual length depends on your server configuration and other factors such as the size of cookies (if any) being sent to the server and other HTTP headers in use. Conservatively, assume that you have about 2 kilobytes to work with.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| criteria | [Criteria](../reference_2.md#type-criteria) | false | — | Criteria to be sent to server. |
+| requestProperties | [DSRequest Properties](#type-dsrequest-properties) | true | — | additional properties to set on the DSRequest that will be issued |
+
+### Returns
+
+`[String](#type-string)` — a URL that targets the specified fetch operation.
+
+---
+## Method: DataSource.getTextMatchStyleJSONSchema
+
+### Description
+Returns a JSON Schema for a DSRequest `textMatchStyle` value. This is a fixed enum and does not depend on DataSource shape, but is exposed as an instance method for uniform access alongside the other DSRequest sub-schemas.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| settings | [JSONSchemaSettings](#type-jsonschemasettings) | true | — | Optional settings. |
+
+### Returns
+
+`[Object](../reference_2.md#type-object)|[String](#type-string)` — JSON Schema.
+
+---
+## Method: DataSource.getAllPathsToRelation
+
+### Description
+Returns all known paths between this and the given targetDS.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| targetDS | [String](#type-string)|[DataSource](#type-datasource) | false | — | The DataSource at the relationship's other end. |
+
+### Returns
+
+`[RelationPath](#type-relationpath)` — Array ofAll known paths between this and the given targetDS.
+
+---
+## Method: DataSource.getFileURL
+
+### Description
+Returns a direct URL to access a file stored in a field of type:"binary".
+
+This URL can be used as the "src" attribute of an Img widget or `<img>` tag (if the file is an image), or can be used in an ordinary HTML link (`<a>` tag) to download the file. However, for the latter use case, see also [DataSource.downloadFile](#method-datasourcedownloadfile) and [DataSource.viewFile](DataSource_1.md#method-datasourceviewfile).
+
+The URL returned is not to a static file on disk, rather, the returned URL essentially encodes a DSRequest as URL parameters, in a format understood by the IDACall servlet that comes with the Server Framework.
+
+Hence, this URL will dynamically retrieve whatever file is currently stored in the binary field via executing a normal DSRequest server side. The request will run through normal security checks, so if your application requires authentication, the user must have a valid session and be authorized to access the binary field.
+
+Note that if this method is called for a record with no associated file, the returned URL may not be functional. By default when dataSources encounter a [binary type fields](../reference_2.md#type-fieldtype), an additional field, ``<fieldName>`_filename`, is generated to store the filename for the binary field value. If this field is present in the data source but has no value for this record, developers can assume they're working with a record with no stored file. If this field is not present in some custom dataSource configuration, or the record is not loaded on the client, an additional server transaction may be required to determine whether the record has an associated file before calling this method to retrieve a download URL.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| data | [Record](#type-record)|[PKValue](#type-pkvalue) | false | — | Record containing at least the primary key field, or just the value of the primary key field. |
+| fieldName | [FieldName](../reference.md#type-fieldname) | true | — | Optional name of the binary field containing the file. If not provided, the first binary field is used. |
+| requestProperties | [DSRequest Properties](#type-dsrequest-properties) | true | — | Additional properties to set on the DSRequest that will be issued. |
+
+### Returns
+
+`[String](#type-string)` — a URL to directly access the stored file
+
+---
+## Method: DataSource.recordsAsText
+
+### Description
+Converts a list of Records to simple text formats with a Record per line and values separated by a configurable separator, including both tab-separated-values and comma-separated-values (aka CSV).
+
+In addition to the `settings` parameter for this method, [DataSourceField.exportForceText](DataSourceField.md#attr-datasourcefieldexportforcetext) can be set.
+
+If two or more different text exports are needed for the same DataSource creating a conflict for any DataSourceField setting, [DataSource.inheritsFrom](DataSource_1.md#attr-datasourceinheritsfrom) can be used to create a child DataSource where these settings can be changed without recapitulating all field definitions.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| records | [Array of Record](#type-array-of-record) | false | — | records to convert |
+| settings | [TextExportSettings Properties](#type-textexportsettings-properties) | true | — | settings for the export |
+
+### Returns
+
+`[String](#type-string)` — records as CSV/TSV (separator can be specified)
+
+---
+## Method: DataSource.fetchRecord
+
+### Description
+Fetch a single record from the DataSource by [primary key](DataSourceField.md#attr-datasourcefieldprimarykey). This simply calls [DataSource.fetchData](DataSource_1.md#method-datasourcefetchdata) after creating [Criteria](../reference_2.md#type-criteria) that contain the primary key field and value.
+
+If you call this method on a DataSource with a composite primary key - ie, one with multiple primaryKey fields - this method returns the first record where the first defined primary field matches the supplied pkValue; this may or may not be meaningful, depending on your use case. Generally, for DataSources with composite keys, it makes more sense to use `fetchData()` directly, rather than this convenience method.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| pkValue | [Any](#type-any) | false | — | value for the field marked [primaryKey](DataSourceField.md#attr-datasourcefieldprimarykey):true in this DataSource (or the first field so marked if there is more than one) |
+| callback | [DSCallback](../reference_2.md#type-dscallback) | true | — | callback to invoke on completion |
+| requestProperties | [DSRequest Properties](#type-dsrequest-properties) | true | — | additional properties to set on the DSRequest that will be issued |
+
+---
+## Method: DataSource.discardQueuedChanges
+
+### Description
+Removes queued requests from [DataSource.pendingChanges](DataSource_1.md#attr-datasourcependingchanges) without sending them to the server.
+
+Accepts standard [Criteria](../reference_2.md#type-criteria) or [AdvancedCriteria](../reference.md#object-advancedcriteria) to filter which requests to discard, matched against DSRequest fields. Common filters:
+
+```
+ // Discard all
+ ds.discardQueuedChanges();
+
+ // Discard by operation type
+ ds.discardQueuedChanges({ operationType: "add" });
+
+ // Discard specific request
+ ds.discardQueuedChanges({ requestId: "employees_request47" });
+
+ // Discard requests older than a date
+ ds.discardQueuedChanges({
+     _constructor: "AdvancedCriteria",
+     fieldName: "clientTimestamp",
+     operator: "lessThan",
+     value: cutoffDate
+ });
+ 
+```
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| criteria | [Criteria](../reference_2.md#type-criteria)|[AdvancedCriteria](#type-advancedcriteria) | true | — | Optional filter for which requests to discard |
+
+### Returns
+
+`[int](../reference.md#type-int)` — Number of requests discarded
+
+### See Also
+
+- [DataSource.pendingChanges](DataSource_1.md#attr-datasourcependingchanges)
+
+---
+## Method: DataSource.getSortByJSONSchema
+
+### Description
+Returns a JSON Schema for a DSRequest `sortBy` value against this DataSource. The schema allows any of the three documented forms: a single field-path string, an array of field-path strings, or an array of [SortSpecifier](../reference_2.md#object-sortspecifier) objects.
+
+Field references include dotted FK-graph paths out to [jSONSchemaSettings.fkDepth](#jsonschemasettingsfkdepth) (default 2), so an Order DataSource with a `customerId` foreign key will accept `"customerId.name"` as a sort property.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| settings | [JSONSchemaSettings](#type-jsonschemasettings) | true | — | Optional settings. |
+
+### Returns
+
+`[Object](../reference_2.md#type-object)|[String](#type-string)` — JSON Schema object (or string if [JSONSchemaSettings.asString](JSONSchemaSettings.md#attr-jsonschemasettingsasstring)).
+
+---
+## Method: DataSource.supportsAdvancedCriteria
+
+### Description
+Do fetch and filter operations on this dataSource support being passed [AdvancedCriteria](../reference.md#object-advancedcriteria)?
+
+For a DataSource to support being passed AdvancedCriteria, it must be [clientOnly:true](DataSource_1.md#attr-datasourceclientonly) or [cacheAllData:true](DataSource_1.md#attr-datasourcecachealldata), or have server side logic which can process AdvancedCriteria objects passed from the client.
+
+AdvancedCriteria are supported on the server for standard [SQL](../kb_topics/sqlDataSource.md#kb-topic-sql-datasources), [Hibernate](../kb_topics/hibernateIntegration.md#kb-topic-integration-with-hibernate) and [JPA](../kb_topics/jpaIntegration.md#kb-topic-integration-with-jpa) DataSources in SmartClient Enterprise or Power editions (not supported in SmartClient Pro).
+
+The framework assumes that custom dataSources support AdvancedCriteria; if you have a a custom DataSource implementation that does not support AdvancedCriteria, you can set the [DataSource.allowAdvancedCriteria](DataSource_1.md#attr-datasourceallowadvancedcriteria) property to false.
+
+### Returns
+
+`[Boolean](#type-boolean)` — true if this dataSource supports being passed AdvancedCriteria in fetch and filter type operations, false otherwise.
+
+---
+## Method: DataSource.getDisplayValue
+
+### Description
+Given a fieldName and a dataValue, apply any [DataSourceField.valueMap](DataSourceField.md#attr-datasourcefieldvaluemap) for the field and return the display value for the field
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| fieldName | [FieldName](../reference.md#type-fieldname) | false | — | name of the field to retrieve a value for |
+| value | [Any](#type-any) | false | — | data value for the field |
+
+### Returns
+
+`[Any](#type-any)` — display value for the field
+
+---
+## Method: DataSource.isCalculated
+
+### Description
+Does the specified field have its value dynamically calculated via [DataSourceField.formula](DataSourceField.md#attr-datasourcefieldformula) or other similar attributes?
+
+This method will return true for fields with the following attributes:
+
+*   [DataSourceField.formula](DataSourceField.md#attr-datasourcefieldformula)
+*   [DataSourceField.template](DataSourceField.md#attr-datasourcefieldtemplate)
+*   [DataSourceField.customSelectExpression](DataSourceField.md#attr-datasourcefieldcustomselectexpression)
+
+Or if the field has explicitly been marked as [calculated:true](DataSourceField.md#attr-datasourcefieldcalculated).
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| field | [DataSourceField](#type-datasourcefield)|[String](#type-string) | false | — | Field or fieldName |
+
+### Returns
+
+`[boolean](../reference.md#type-boolean)` — true if this is a field with dynamically calculated values
+
+---
+## Method: DataSource.handleError
+
+### Description
+If you define this method on a DataSource, it will be called whenever the server returns a DSResponse with a status other than [RPCResponse.STATUS_SUCCESS](RPCResponse.md#classattr-rpcresponsestatus_success). You can use this hook to do DataSource-specific error handling. Unless you return `false` from this method, [RPCManager.handleError](RPCManager.md#classmethod-rpcmanagerhandleerror) will be called by SmartClient right after this method completes.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| response | [DSResponse](#type-dsresponse) | false | — | the DSResponse or DSResponse object returned from the server |
+| request | [DSRequest](#type-dsrequest) | false | — | the DSRequest or DSRequest that was sent to the server |
+
+### Returns
+
+`[Boolean](#type-boolean)` — false to suppress [RPCManager.handleError](RPCManager.md#classmethod-rpcmanagerhandleerror)
+
+### Groups
+
+- errorHandling
+
+### See Also
+
+- [RPCManager.handleError](RPCManager.md#classmethod-rpcmanagerhandleerror)
+
+**Flags**: A
+
+---
+## Method: DataSource.hasFile
+
+### Description
+Indicates whether a file exists in this DataSource.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| fileSpec | [FileSpec](#type-filespec)|[String](#type-string) | false | — | Either a FileSpec, or a String which will be parsed to determine the fileName, fileType and fileFormat. For instance, "employees.ds.xml" would be parsed as {fileName: "employees", fileType: "ds", fileFormat: "xml"}. If fileType or fileFormat are not provided, will indicate whether any file with the provided fileName exists. |
+| callback | [HasFileCallback](#type-hasfilecallback) | false | — | [Callback](Callbacks.md#method-callbackshasfilecallback) executed with the results. The `data` parameter is a boolean indicating whether the file is present. You can examine `[dsResponse.status](DSResponse.md#attr-dsresponsestatus)` and `[dsResponse.data](DSResponse.md#attr-dsresponsedata)` for additional information about any error. |
+
+### Groups
+
+- fileSource
+
+---
+## Method: DataSource.convertRelativeDates
+
+### Description
+Takes all relative date values found anywhere within a Criteria / AdvancedCriteria object and converts them to concrete date values, returning the new criteria object.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| criteria | [Criteria](../reference_2.md#type-criteria) | false | — | criteria to convert |
+| timezoneOffset | [String](#type-string) | true | — | optional timezone offset. Defaults to the current timezone |
+| firstDayOfWeek | [Integer](../reference_2.md#type-integer) | true | — | first day of the week (zero is Sunday). Defaults to [DateChooser.firstDayOfWeek](DateChooser.md#attr-datechooserfirstdayofweek) |
+| baseDate | [Date](#type-date) | true | — | base value for relative conversion - defaults to now |
+
+### Returns
+
+`[Criteria](../reference_2.md#type-criteria)` — new copy of the criteria with all relative dates converted
+
+---
 ## Method: DataSource.addSearchOperator
 
 ### Description

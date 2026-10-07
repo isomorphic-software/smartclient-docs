@@ -2470,7 +2470,7 @@ Pixels between icon and title text.
 ### Description
 Summary definition for this field.
 
-Advanced applications that wish to save summaries separately from a grid's [viewState](ListGrid_2.md#method-listgridgetviewstate) can provide a [UserSummary](../reference.md#object-usersummary) as part of the field definition, and may subsequently respond to an updated summary via the [ListGrid.summaryUpdated](ListGrid_2.md#method-listgridsummaryupdated) notification.
+Advanced applications that wish to save summaries separately from a grid's [viewState](ListGrid_2.md#method-listgridgetviewstate) can provide a [UserSummary](../reference_2.md#object-usersummary) as part of the field definition, and may subsequently respond to an updated summary via the [ListGrid.summaryUpdated](ListGrid_2.md#method-listgridsummaryupdated) notification.
 
 To change this field's summary definition, either call [ListGrid.setUserSummary](ListGrid_2.md#method-listgridsetusersummary) with a new `UserSummary` object or call [ListGrid.setUserSummaryText](ListGrid_2.md#method-listgridsetusersummarytext) to change just the [UserSummary.text](UserSummary.md#attr-usersummarytext). Note that a field in a grid may not be converted to a summary field by setting a `userSummary` if it did not already have one.
 

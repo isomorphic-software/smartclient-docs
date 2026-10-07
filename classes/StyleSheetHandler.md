@@ -21,7 +21,7 @@ When true, this handler will automatically [inject](#method-stylesheethandlerinj
 ## Attr: StyleSheetHandler.name
 
 ### Description
-The name for this handler. This value is applied as both the 'id' and 'title' attributes on the handler's [stylesheet](#attr-stylesheethandlerstylesheet).
+The name for this handler. This value is applied as the 'id' attribute of the `<style>` element that owns the handler's [stylesheet](#attr-stylesheethandlerstylesheet), so the element can be located via `document.getElementById(name)`.
 
 **Flags**: IR
 

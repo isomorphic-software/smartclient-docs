@@ -594,6 +594,7 @@ This is the central API reference for the SmartClient framework.
 - [DataBinding](kb_topics/databinding.md)
 - [DataBound Component Methods](kb_topics/dataBoundComponentMethods.md)
 - [Data Changes](#kb-topic-data-changes)
+- [Data Context and Shared Criteria](kb_topics/dataContext.md)
 - [Creating DataSources](kb_topics/dataSourceDeclaration.md)
 - [DataSource and Component XML Localization](kb_topics/dataSourceLocalization.md)
 - [DataSource Operations](kb_topics/dataSourceOperations.md)

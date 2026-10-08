@@ -367,7 +367,7 @@ Synthesized error message used when the watchdog timer fires.
 ## Attr: ReportBuilder.emptyMessageStyle
 
 ### Description
-CSS style applied to the [ReportBuilder.emptyMessage](#attr-reportbuilderemptymessage) text shown across an empty report. Defaults to the style the visual builder uses for the same guidance on a new project, so the two tools present an empty document identically and one style change restyles both. Override to restyle the report guidance alone. Read when the guidance pane is created, so set it before an empty report is first shown.
+CSS style applied to the guidance shown across an empty report -- the pane itself and both the [ReportBuilder.emptyMessage](#attr-reportbuilderemptymessage) text and the [ReportBuilder.emptyMessageImage](#attr-reportbuilderemptymessageimage) illustration, so the artwork is drawn in the colour the style declares. Defaults to the style the visual builder uses for the same guidance on a new project, so the two tools present an empty document identically and one style change restyles both. Override to restyle the report guidance alone. Read when the guidance pane is created, so set it before an empty report is first shown.
 
 **Flags**: IRW
 

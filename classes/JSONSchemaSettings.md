@@ -126,3 +126,13 @@ When true (the default), reusable DataSource types are placed in a `$defs` block
 **Flags**: IR
 
 ---
+## Attr: JSONSchemaSettings.compactFieldSchema
+
+### Description
+Opt-in shape for the DSRequest schema family ([DataSource.getDSRequestJSONSchema](DataSource_1.md#method-datasourcegetdsrequestjsonschema) and its sub-schemas). When true, the facilities that reference a field (`sortBy`, `groupBy`, `summaryFunctions`, `outputs`, and criteria `fieldName` / `valuePath`) share one field-reference definition in `$defs` via `$ref` instead of each inlining the full field list, and foreign-key-reachable fields are described compactly - a per-DataSource field catalog in `$defs` plus a `foreignKeys` annotation map plus a dotted-path `pattern` - rather than enumerating every FK-expanded dotted path. This collapses an otherwise quadratic (facilities x expanded-paths) brief to a small, flat one in which the DataSource's own fields lead.
+
+Default (`false`) output is unchanged, so consumers other than the DSRequest builder are unaffected.
+
+**Flags**: IR
+
+---

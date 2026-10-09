@@ -5845,6 +5845,23 @@ Gets the contents of a particular file version stored in this DataSource.
 - fileSource
 
 ---
+## Method: DataSource.validateDSRequestFieldRefs
+
+### Description
+Validates that every field reference in a DSRequest (criteria `fieldName` / `valuePath`, `sortBy`, `groupBy`, `summaryFunctions` keys, `outputs`, and `additionalOutputs` projections) names a real field of this DataSource or an FK-reachable path, using the same reachable set as [DataSource.getDSRequestJSONSchema](#method-datasourcegetdsrequestjsonschema). Intended to catch AI-produced references to fields that do not exist before the request is used.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| dsRequest | [DSRequest](#type-dsrequest) | false | — | the request to check |
+| settings | [JSONSchemaSettings](#type-jsonschemasettings) | true | — | same reach controls as the schema builder (`relatedDataSources`, `fkDepth`, `includeHidden`); plus `mode`: "report" (default) or "repair". |
+
+### Returns
+
+`[Object](../reference_2.md#type-object)` — `{valid:Boolean, problems:Array, repaired:Object}` where each problem is `{location, reference, reason, suggestion}` and `repaired` is non-null only in "repair" mode.
+
+---
 ## Method: DataSource.getFieldForDataPath
 
 ### Description

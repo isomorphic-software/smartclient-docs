@@ -84,7 +84,7 @@ The dynamic variables available are the fields in the [Authentication.getCurrent
 ### Description
 Specify the full set of available user roles.
 
-Note that if the current user has been marked as a [superUser](#classmethod-authenticationissuperuser), [Authentication.getRoles](#classmethod-authenticationgetroles) will return the full set of available roles.
+Note that if the current user has been marked as a [superUser](#classmethod-authenticationissuperuser), [Authentication.getRoles](#classmethod-authenticationgetroles) will return the full set of available roles together with any roles passed to [Authentication.setRoles](#classmethod-authenticationsetroles).
 
 ### Parameters
 
@@ -118,7 +118,7 @@ Convenience method to return the `"userId"` attribute of the [current user](#cla
 ## ClassMethod: Authentication.setSuperUser
 
 ### Description
-Mark the current user as a super-user. This causes [Authentication.getRoles](#classmethod-authenticationgetroles) to return the full set of [available roles](#classmethod-authenticationgetavailableroles) if specified
+Mark the current user as a super-user. This causes [Authentication.getRoles](#classmethod-authenticationgetroles) to return the full set of [available roles](#classmethod-authenticationgetavailableroles), if any have been specified, together with any roles passed to [Authentication.setRoles](#classmethod-authenticationsetroles).
 
 ### Parameters
 
@@ -162,9 +162,9 @@ The schema contains the following fields:
 ## ClassMethod: Authentication.getRoles
 
 ### Description
-Returns the current set of user roles. For [super users](#classmethod-authenticationsetsuperuser) this will be the intersection of any roles specified by [Authentication.setRoles](#classmethod-authenticationsetroles) and the full set of [available roles](#classmethod-authenticationsetavailableroles) - otherwise it will be the set of roles specified by [Authentication.setRoles](#classmethod-authenticationsetroles).
+Returns the current set of user roles. For a [super user](#classmethod-authenticationsetsuperuser) this is the union of any roles specified by [Authentication.setRoles](#classmethod-authenticationsetroles) and the full set of [available roles](#classmethod-authenticationsetavailableroles), with duplicates omitted - for any other user it is just the set of roles specified by [Authentication.setRoles](#classmethod-authenticationsetroles).
 
-Current set of user roles are available in the [Canvas.ruleScope](Canvas.md#attr-canvasrulescope) as a top-level property "userRoles", so that it can be used in criteria such as [Canvas.visibleWhen](Canvas.md#attr-canvasvisiblewhen) or [FormItem.readOnlyWhen](FormItem.md#attr-formitemreadonlywhen).
+The current set of user roles is available in the [Canvas.ruleScope](Canvas.md#attr-canvasrulescope) as `auth.roles` (see [Authentication](#class-authentication)), so that it can be used in criteria such as [Canvas.visibleWhen](Canvas.md#attr-canvasvisiblewhen) or [FormItem.readOnlyWhen](FormItem.md#attr-formitemreadonlywhen).
 
 ### Returns
 
@@ -208,9 +208,9 @@ Is the current user assigned to the specified role?
 ### Description
 Set the user roles for the current user. Roles may be retrieved via [Authentication.getRoles](#classmethod-authenticationgetroles).
 
-Calling setRoles() makes the specified set of user roles available in the [Canvas.ruleScope](Canvas.md#attr-canvasrulescope) as a top-level property "userRoles", so that it can be used in criteria such as [Canvas.visibleWhen](Canvas.md#attr-canvasvisiblewhen) or [FormItem.readOnlyWhen](FormItem.md#attr-formitemreadonlywhen).
+Calling setRoles() makes the current set of user roles available in the [Canvas.ruleScope](Canvas.md#attr-canvasrulescope) as `auth.roles` (see [Authentication](#class-authentication)), so that it can be used in criteria such as [Canvas.visibleWhen](Canvas.md#attr-canvasvisiblewhen) or [FormItem.readOnlyWhen](FormItem.md#attr-formitemreadonlywhen).
 
-Note that if this current user has been [marked as a super-user](#classmethod-authenticationsetsuperuser), [Authentication.getRoles](#classmethod-authenticationgetroles) will return the full set of available roles rather than the set of roles specified here.
+Note that if this current user has been [marked as a\\n super-user](#classmethod-authenticationsetsuperuser), [Authentication.getRoles](#classmethod-authenticationgetroles) will return the union of the roles specified here and the full set of [available roles](#classmethod-authenticationsetavailableroles), with duplicates omitted - rather than just the roles specified here.
 
 ### Parameters
 

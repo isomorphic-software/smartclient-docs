@@ -588,7 +588,6 @@ This is the central API reference for the SmartClient framework.
 - [Content Security Policy (CSP)](kb_topics/cspSupport.md)
 - [cues](#kb-topic-cues)
 - [Custom Querying Overview](kb_topics/customQuerying.md)
-- [Customizing Sass-based Skins](kb_topics/customSassSkins.md)
 - [Customizing Skins](kb_topics/customSkins.md)
 - [Including custom elements in the tab order](kb_topics/customTabElements.md)
 - [DataBinding](kb_topics/databinding.md)

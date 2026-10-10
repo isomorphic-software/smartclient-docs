@@ -133,6 +133,6 @@ Deploy the skin's `config.json` (or its `.skin.json` record), and the server pro
 By default this is the live overlay described above. You can instead _freeze_ a skin (`useLiveCSS:false`): the server then serves a baked, self-contained snapshot that no longer tracks its base. Freezing is useful when you want a skin's appearance pinned.
 
 #### On a static web server
-To host a skin with no SmartClient server at all, deploy a built `skin_styles.css`. Each skin ships with a small command-line build that regenerates it from `config.json`, with no server and no Sass toolchain.
+To host a skin with no SmartClient server at all, deploy the built `skin_styles.css`: it is self-contained, needing neither the server nor any build toolchain. Note that the live overlay is a server feature, so a statically hosted skin is fixed at the state it was built in - rebuild and redeploy it to pick up changes.
 
 ---

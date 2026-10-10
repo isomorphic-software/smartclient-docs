@@ -23,15 +23,13 @@ For Skin Editor team support, registered users can access the tool via [Reify](h
 #### Locally
 If you have a [Pro or better](https://www.smartclient.com/product/) license, the Skin Editor is shipped with your SDK, in the `/tools/skinEditor/` directory. You can run the tool by navigating to `tools/skinTools/skinEditor.jsp` or by clicking the `Skin Editor` icon in the SmartClient SDK Explorer.
 
-For [Reify OnSite](reifyOnSite.md#kb-topic-reify-onsite) deployments, the server must have Ruby and the Compass gem installed to compile custom skins; see the "Skin Editor Requirements" section in the Reify OnSite documentation for details.
-
 #### Creating a new skin
 To create a new skin in the Skin Editor, select a Base-skin from the grid and enter a name for your skin. The name must be unique across all existing User-skins, including those in the `isc_userSkin` dataSource and those on-disk.
 
 #### The main screen
 When you're ready, click the "Create and Edit Skin" button to advance to the main editor screen, which consists of two main panels.
 
-*   On the left, a set of [tabs](../classes/TabSet.md#class-tabset), each housing trees with cascades of skin settings such as colors, borders and padding. Above these is a [ColorItem](../classes/ColorItem.md#class-coloritem) labelled "Highlight Color", which is the main color from which most of the colored parts of the skin inherit - for example, background colors in [ListGrid](../classes/ListGrid_1.md#class-listgrid) headers and rollovers, backgrounds and shadows of buttons of various types, and various cases where text is highlighted, such as values with [unsaved changes](../classes/FormItem.md#attr-formitemshowpending). Above this ColorItem are several functional buttons: "Delete", which permanently removes a skin; "Export", which allows the skin to be exported to a zip file for distribution; and "Save", which saves your changes to database or file-system where you skin exists and recompiles the underlying stylesheet to include your changes.
+*   On the left, a set of [tabs](../classes/TabSet.md#class-tabset), each housing trees with cascades of skin settings such as colors, borders and padding. Above these is a [ColorItem](../classes/ColorItem.md#class-coloritem) labelled "Highlight Color", which is the main color from which most of the colored parts of the skin inherit - for example, background colors in [ListGrid](../classes/ListGrid_1.md#class-listgrid) headers and rollovers, backgrounds and shadows of buttons of various types, and various cases where text is highlighted, such as values with [unsaved changes](../classes/FormItem.md#attr-formitemshowpending). Above this ColorItem are several functional buttons: "Delete", which permanently removes a skin; "Export", which allows the skin to be exported to a zip file for distribution; and "Save", which saves your changes to the database or file-system where your skin exists.
 *   On the right, a "Preview" area showing some sample components. Above this area is a toolbar offering a selector to change between which types of components to show in the Preview, a selector for modifying the "Density" (size/spacing) of the skin, and a button for switching all components in the Preview into a "Disabled" state, in order to understand those styles.
 
 #### Editing a skin
@@ -46,7 +44,7 @@ As a rough guide, a good way to start is as follows:
 
 As you make changes, you'll see them applied in the Preview area on the right of the screen. Use the "Select View" picker above the Preview to show different types of widgets and discover how your changes affect them.
 
-The Skin Editor only allows for editing variables which are used to populate the base skin's SASS template. It will incorporate your changes to those template variables and recompile the content for the skin's stylesheet, `skin_styles.css`, but it does not currently allow for customizing the other parts of the skin, such as JavaScript code and icons.
+The Skin Editor edits the skin's CSS variables, and also its custom CSS, fonts, JavaScript and stock-icon SVG symbols. All of these are held in the skin's configuration, so saving applies them directly - there is no stylesheet to recompile.
 
 #### Skin Editor files
 Files used by the Skin Editor include:
@@ -58,13 +56,12 @@ In addition to these application files, the tool requires several framework [Dat
 
 *   _isc\_baseSkin_ - manages information about "base" skins, which are skins that can be used as the starting point for custom skins in the Skin Editor. The _Flat series_ of framework skins are base-skins.
 *   _isc\_userSkin_ - manages information about "user" skins, which are custom skins created in the Skin Editor, as an extension of an existing _base_ skin. These user skins can exist either as dataSource-records or as exported skins on disk.
-*   _isc\_registeredFonts_ - manages information about fonts which have been registered with the framework and exist in the `system/helpers/fonts` directory. These are the fonts available in the Skin Editor.
+*   _registeredFonts_ - manages information about fonts which have been registered with the framework and exist in the `system/helpers/fonts` directory. These are the fonts available in the Skin Editor.
 
 #### Prerequisites
 Using Skin Editor locally requires the following additional steps:
 
 *   the builtin DataSource `isc_userSkin` must be imported to your Database using the [adminConsole](adminConsole.md#kb-topic-admin-console). This DataSource is used to store user skins until export
-*   [python](https://www.python.org/downloads/), [Ruby](http://www.ruby-lang.org/en/downloads/) and [Compass](http://compass-style.org/install/) must all be installed on your computer, and in the PATH. During saves, Skin Editor uses `Compass` to recompile skin-CSS, via an operation on the `isc_userSkin` DataSource which invokes _**compass compile 'path-to-skin-template-dir'**_ on the server.
 
 #### Exporting Skins
 To export a skin, load it in the Skin Editor and click the "Export" button to download the skin in a zip file. To use the skin, extract the zip into your project skins/ directory and load it in your project in the usual way.

@@ -5597,7 +5597,7 @@ Note that [Canvas.animateResizeLayoutMode](#attr-canvasanimateresizelayoutmode) 
 | width | [Integer](../reference_2.md#type-integer) | false | — | new width (or null for unchanged) |
 | height | [Integer](../reference_2.md#type-integer) | false | — | new height (or null for unchanged) |
 | callback | [AnimationCallback](../reference_2.md#type-animationcallback) | true | — | When the resize completes this callback will be fired. Single 'earlyFinish' parameter will be passed if the animation was cut short, for example by a call to the non-animated APIs [Canvas.resizeTo](#method-canvasresizeto) or [Canvas.resizeBy](#method-canvasresizeby). |
-| duration | [Integer](../reference_2.md#type-integer) | true | — | Duration in ms of the animated resize |
+| duration | [Integer](../reference_2.md#type-integer) | true | — | Duration in ms of the animated resize. If unset, uses [Canvas.animateResizeTime](#attr-canvasanimateresizetime), which defaults to [Canvas.animateTime](#attr-canvasanimatetime). If zero, the animation completes on the next animation tick. |
 | acceleration | [AnimationAcceleration](../reference.md#type-animationacceleration) | true | — | Optional acceleration effect to apply to the resize |
 
 ### Groups
@@ -6583,7 +6583,7 @@ Animate a reposition of this canvas from its current position to the specified p
 | left | [Integer](../reference_2.md#type-integer) | false | — | new left position (or null for unchanged) |
 | top | [Integer](../reference_2.md#type-integer) | false | — | new top position (or null for unchanged) |
 | callback | [AnimationCallback](../reference_2.md#type-animationcallback) | true | — | When the move completes this callback will be fired. Single 'earlyFinish' parameter will be passed if the animation was cut short, for example by a call to the non-animated APIs [Canvas.moveTo](#method-canvasmoveto) or [Canvas.moveBy](#method-canvasmoveby). |
-| duration | [Integer](../reference_2.md#type-integer) | true | — | Duration in ms of the animated move |
+| duration | [Integer](../reference_2.md#type-integer) | true | — | Duration in ms of the animated move. If unset, uses [Canvas.animateMoveTime](#attr-canvasanimatemovetime), which defaults to [Canvas.animateTime](#attr-canvasanimatetime). If zero, the animation completes on the next animation tick. |
 | acceleration | [AnimationAcceleration](../reference.md#type-animationacceleration) | true | — | Optional acceleration effect to bias the ratios |
 
 ### Groups
@@ -6717,7 +6717,7 @@ Hide a canvas by shrinking it vertically to zero height over a period of time. T
 |------|------|----------|---------|-------------|
 | effect | [AnimateShowEffectId](../reference_2.md#type-animateshoweffectid)|[AnimateShowEffect](#type-animateshoweffect) | true | — | How should the content of the window be hidden during the hide? If omitted, default behavior can be configured via [Canvas.animateHideEffect](#attr-canvasanimatehideeffect) |
 | callback | [AnimationCallback](../reference_2.md#type-animationcallback) | true | — | When the hide completes this callback will be fired. Single 'earlyFinish' parameter will be passed if the animation was cut short, for example by a call to the non-animated API [Canvas.hide](#method-canvashide). |
-| duration | [Integer](../reference_2.md#type-integer) | true | — | Duration in ms of the animated hide. If unset, duration will be picked up from [Canvas.animateHideTime](#attr-canvasanimatehidetime) |
+| duration | [Integer](../reference_2.md#type-integer) | true | — | Duration in ms of the animated hide. If unset, duration will be picked up from [Canvas.animateHideTime](#attr-canvasanimatehidetime). If zero, the animation completes on the next animation tick. |
 | acceleration | [AnimationAcceleration](../reference.md#type-animationacceleration) | true | — | Optional acceleration effect function to bias the animation ratios. If unset, acceleration will be picked up from [Canvas.animateShowTime](#attr-canvasanimateshowtime) |
 
 ### Groups
@@ -6789,7 +6789,7 @@ Show a canvas by growing it vertically to its fully drawn height over a period o
 |------|------|----------|---------|-------------|
 | effect | [AnimateShowEffectId](../reference_2.md#type-animateshoweffectid)|[AnimateShowEffect](#type-animateshoweffect) | true | — | Animation effect to use when revealing the widget. If omitted, default behavior can be configured via [Canvas.animateShowEffect](#attr-canvasanimateshoweffect) |
 | callback | [AnimationCallback](../reference_2.md#type-animationcallback) | true | — | When the show completes this callback will be fired. Single 'earlyFinish' parameter will be passed if the animation was cut short, for example by a call to the non-animated API [Canvas.show](#method-canvasshow). |
-| duration | [Integer](../reference_2.md#type-integer) | true | — | Duration in ms of the animated show. If unset, duration will be picked up from [Canvas.animateShowTime](#attr-canvasanimateshowtime) |
+| duration | [Integer](../reference_2.md#type-integer) | true | — | Duration in ms of the animated show. If unset, duration will be picked up from [Canvas.animateShowTime](#attr-canvasanimateshowtime). If zero, the animation completes on the next animation tick. |
 | acceleration | [AnimationAcceleration](../reference.md#type-animationacceleration) | true | — | Optional acceleration effect function to bias the animation ratios. If unset, acceleration will be picked up from [Canvas.animateShowAcceleration](#attr-canvasanimateshowacceleration) |
 
 ### Groups
@@ -6808,7 +6808,7 @@ Animate a change in opacity from the widget's current opacity to the specified o
 |------|------|----------|---------|-------------|
 | opacity | [Integer](../reference_2.md#type-integer) | false | — | desired final opacity |
 | callback | [AnimationCallback](../reference_2.md#type-animationcallback) | true | — | When the fade completes this callback will be fired. Single 'earlyFinish' parameter will be passed if the animation was cut short, for example by a call to the non-animated API [Canvas.setOpacity](#method-canvassetopacity). |
-| duration | [Integer](../reference_2.md#type-integer) | true | — | Duration in ms of the animated fade |
+| duration | [Integer](../reference_2.md#type-integer) | true | — | Duration in ms of the animated fade. If unset, uses [Canvas.animateFadeTime](#attr-canvasanimatefadetime), which defaults to [Canvas.animateTime](#attr-canvasanimatetime). If zero, the animation completes on the next animation tick. |
 | acceleration | [AnimationAcceleration](../reference.md#type-animationacceleration) | true | — | Optional animation acceleration to bias the ratios |
 
 ### Groups
@@ -7834,7 +7834,7 @@ Animate a reposition / resize of this canvas from its current size and position.
 | width | [Integer](../reference_2.md#type-integer) | false | — | new width (or null for unchanged) |
 | height | [Integer](../reference_2.md#type-integer) | false | — | new height (or null for unchanged) |
 | callback | [AnimationCallback](../reference_2.md#type-animationcallback) | true | — | When the setRect completes this callback will be fired. Single 'earlyFinish' parameter will be passed if the animation was cut short, for example by a call to the non-animated API [Canvas.setRect](#method-canvassetrect). |
-| duration | [Integer](../reference_2.md#type-integer) | true | — | Duration in ms of the animated setRect |
+| duration | [Integer](../reference_2.md#type-integer) | true | — | Duration in ms of the animated setRect. If unset, uses [Canvas.animateRectTime](#attr-canvasanimaterecttime), which defaults to [Canvas.animateTime](#attr-canvasanimatetime). If zero, the animation completes on the next animation tick. |
 | acceleration | [AnimationAcceleration](../reference.md#type-animationacceleration) | true | — | Optional acceleration effect to apply to the animation |
 
 ### Groups
@@ -8157,7 +8157,7 @@ Animate a scroll from the current scroll position to the specified position.
 | scrollLeft | [Integer](../reference_2.md#type-integer) | false | — | desired final left scroll position |
 | scrollTop | [Integer](../reference_2.md#type-integer) | false | — | desired final top scroll position |
 | callback | [AnimationCallback](../reference_2.md#type-animationcallback) | true | — | When the scroll completes this callback will be fired. Single 'earlyFinish' parameter will be passed if the animation was cut short, for example by a call to the non-animated APIs [Canvas.scrollTo](#method-canvasscrollto) or [Canvas.scrollBy](#method-canvasscrollby). |
-| duration | [Integer](../reference_2.md#type-integer) | true | — | Duration in ms of the animated scroll |
+| duration | [Integer](../reference_2.md#type-integer) | true | — | Duration in ms of the animated scroll. If unset, uses [Canvas.animateScrollTime](#attr-canvasanimatescrolltime), which defaults to [Canvas.animateTime](#attr-canvasanimatetime). If zero, the animation completes on the next animation tick. |
 | acceleration | [AnimationAcceleration](../reference.md#type-animationacceleration) | true | — | Optional acceleration to bias the animation ratios |
 
 ### Groups

@@ -12,12 +12,50 @@ A runtime report document: a [PortalLayout](PortalLayout.md#class-portallayout) 
 [ReportBuilder](ReportBuilder.md#class-reportbuilder) is the _editor_ for a DataReport: it hosts one as the root of its edit canvas and delegates export to it, so a report exports identically whether driven from the builder or deployed standalone.
 
 ---
+## Attr: DataReport.scheduleRecipientOptions
+
+### Description
+Suggested recipient email addresses offered in the Share / Schedule dialogs. A deployment or demo supplies sample addresses; empty by default.
+
+### Groups
+
+- scheduledDelivery
+
+**Flags**: IRW
+
+---
 ## Attr: DataReport.reportTitle
 
 ### Description
 The report's display title: names the report on the export cover sheet and download filename, and is the header title shown by the enclosing ReportScreen's toolbar. The hosting ReportBuilder pushes its current report title here before delegating an export; a standalone deployed report sets it from its definition.
 
 This is the report's DISPLAY title, distinct from the saved-report NAME the ReportBuilder Save dialog manages -- two reports may share a title but have different names.
+
+**Flags**: IRW
+
+---
+## Attr: DataReport.scheduleTimeZones
+
+### Description
+Optional curated time-zone list for the Schedule dialog's [SchedulerItem](SchedulerItem.md#class-scheduleritem).
+
+### Groups
+
+- scheduledDelivery
+
+**Flags**: IRW
+
+---
+## Attr: DataReport.reportPageURL
+
+### Description
+The site-relative address of the page that shows this report, for example `/reports/show.jsp?report=Sales`. A schedule saved from the Schedule dialog stores it as `deployedUrl`, and the server opens that page to render the report, so it must be a page that draws this report and must match the server's `reportRender.reportPathPattern`.
+
+When unset, the address is: in a [ReportBuilder](ReportBuilder.md#class-reportbuilder), its [ReportBuilder.reportPageURL](ReportBuilder.md#attr-reportbuilderreportpageurl), or else, without Reify ([ReportBuilder.reifyIntegration](ReportBuilder.md#attr-reportbuilderreifyintegration)`:false`), the SDK's report page `tools/reporting/reportPage.jsp?report=`_name_; with Reify loaded, Reify's runner URL for the report; otherwise the current page, which is right on the page that shows the report. See "Delivery outside Reify" in [scheduledDelivery](../kb_topics/scheduledDelivery.md#kb-topic-report-delivery-and-scheduling).
+
+### Groups
+
+- scheduledDelivery
 
 **Flags**: IRW
 
@@ -88,5 +126,21 @@ Sets the report's display [DataReport.reportTitle](#attr-datareportreporttitle):
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | title | [String](#type-string) | false | — | new display title, or null to fall back to the untitled default |
+
+---
+## Method: DataReport.setReportPageURL
+
+### Description
+Sets [DataReport.reportPageURL](#attr-datareportreportpageurl).
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| url | [URL](../reference_2.md#type-url) | false | — | site-relative address of the page that shows this report |
+
+### Groups
+
+- scheduledDelivery
 
 ---

@@ -26,6 +26,18 @@ Menu label for a hidden component that has no title of its own.
 **Flags**: IR
 
 ---
+## Attr: ReportToolbar.showManageSchedules
+
+### Description
+Show "Manage Schedules" in the toolbar: the user's scheduled deliveries of this report (or of all their reports), to edit, pause, resume or delete. Shown only where [Schedule Delivery](#attr-reporttoolbarshowscheduledelivery) is.
+
+### Groups
+
+- scheduledDelivery
+
+**Flags**: IR
+
+---
 ## Attr: ReportToolbar.showAllTitle
 
 ### Description
@@ -46,6 +58,18 @@ Hover hint shown on each report-toolbar action button while the report is open i
 
 ### Description
 Base title of the dynamic control that re-shows viewer-hidden components; the current hidden count is appended, e.g. "Show Hidden (2)".
+
+**Flags**: IR
+
+---
+## Attr: ReportToolbar.showScheduleDelivery
+
+### Description
+Show "Schedule Delivery" in the toolbar: a dialog that emails the report on a schedule. Shown only where the server supports scheduled delivery and the current user may use it (`reportScheduler.enabled`; see [scheduledDelivery](../kb_topics/scheduledDelivery.md#kb-topic-report-delivery-and-scheduling)).
+
+### Groups
+
+- scheduledDelivery
 
 **Flags**: IR
 

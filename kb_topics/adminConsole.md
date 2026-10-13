@@ -40,7 +40,7 @@ On this tab you will be able to browse your SQL databases and see the data in th
 
 **Scheduler**
 
-With the [scheduler tool](quartzAdapters.md#kb-topic-quartz-datasources) you can view, schedule, trigger and pause arbitrary [Quartz](http://www.quartz-scheduler.org) jobs. Requires the Isomorphic Scheduler server library and an [initialized](https://www.quartz-scheduler.org/documentation/2.4.0-SNAPSHOT/cookbook/ServletInitScheduler.html) / [configured](https://www.quartz-scheduler.org/documentation/2.4.0-SNAPSHOT/configuration.html) Quartz Scheduler.
+With the [scheduler tool](quartzAdapters.md#kb-topic-quartz-datasources) you can view, schedule, trigger and pause arbitrary [Quartz](http://www.quartz-scheduler.org) jobs. Requires the Isomorphic Scheduler server library and an [initialized](https://www.quartz-scheduler.org/documentation/2.4.0-SNAPSHOT/cookbook/ServletInitScheduler.html) / [configured](https://www.quartz-scheduler.org/documentation/2.4.0-SNAPSHOT/configuration.html) Quartz Scheduler. It administers raw Quartz jobs: jobs of [scheduled report\\n delivery](scheduledDelivery.md#kb-topic-report-delivery-and-scheduling) are listed read-only, since each mirrors a stored schedule and is managed from the report (see [QuartzManager.readOnlyJobGroups](../classes/QuartzManager.md#attr-quartzmanagerreadonlyjobgroups)).
 
 **Other Tools**
 

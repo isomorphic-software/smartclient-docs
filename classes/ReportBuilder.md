@@ -330,6 +330,14 @@ Signature: `reportSaved(report)` where `report` is the saved report record (`Obj
 **Flags**: IRW
 
 ---
+## Attr: ReportBuilder.scheduleRecipientOptions
+
+### Description
+Suggested recipient email addresses offered in the Schedule dialog's recipients picker. Empty by default; a deployment supplies its own distribution lists / known addresses. Users may still type any valid email (validated on entry).
+
+**Flags**: IRW
+
+---
 ## Attr: ReportBuilder.defaultExportFormat
 
 ### Description
@@ -658,6 +666,14 @@ DataSource ID (or DataSource instance) to persist AI prompt history into. If uns
 **Flags**: IRW
 
 ---
+## Attr: ReportBuilder.scheduleTimeZones
+
+### Description
+Optional override for the Schedule dialog's time-zone list: a valueMap of IANA zone id to friendly "Location (Zone Name)" display. When null, [SchedulerItem](SchedulerItem.md#class-scheduleritem)'s curated default (major world zones) is used; set this to offer a smaller / custom set.
+
+**Flags**: IRW
+
+---
 ## Attr: ReportBuilder.headerlessComponentTypes
 
 ### Description
@@ -676,6 +692,18 @@ URL of the project runner that serves published reports.
 The default names the directory, because the ReportBuilder is not served from the tools directory the way Reify is, so Reify's own bare `"projectRunner.jsp"` would not resolve here. It is written with the `[ISOMORPHIC]` prefix rather than a leading slash so that it survives deployment under a servlet context path.
 
 **Flags**: IR
+
+---
+## Attr: ReportBuilder.reportPageURL
+
+### Description
+The site-relative address of the page where the report being edited is shown, used as the report's [DataReport.reportPageURL](DataReport.md#attr-datareportreportpageurl) so that schedules saved while editing point at that page rather than at the editor. When unset: without Reify ([ReportBuilder.reifyIntegration](#attr-reportbuilderreifyintegration)`:false`) the SDK's report page, `tools/reporting/reportPage.jsp?report=`_report name_, which shows reports this builder saved; with Reify, the report's Reify runner URL. Set it when the application shows reports on its own page, and change it whenever a different report is loaded.
+
+### Groups
+
+- scheduledDelivery
+
+**Flags**: IRW
 
 ---
 ## Attr: ReportBuilder.mainLayout
@@ -942,6 +970,22 @@ List the stored reports, most recently modified first.
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | callback | [Callback](../reference.md#type-callback) | false | — | fired with an Array of file records, each carrying `fileName` and `fileLastModified` |
+
+---
+## Method: ReportBuilder.setReportPageURL
+
+### Description
+Sets [ReportBuilder.reportPageURL](#attr-reportbuilderreportpageurl).
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| url | [URL](../reference_2.md#type-url) | false | — | site-relative address of the page that shows the report |
+
+### Groups
+
+- scheduledDelivery
 
 ---
 ## Method: ReportBuilder.getReportQuery

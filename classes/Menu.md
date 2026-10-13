@@ -471,6 +471,8 @@ Explicitly disable alternateRecordStyles at the menu level by default so setting
 ### Description
 Default image to display for [check-marked items](MenuItem.md#attr-menuitemchecked) when the item is disabled. The value can be either a regular [SCImgURL](../reference.md#type-scimgurl) which can specify _size:w,h;_, or an [ImgHTMLProperties](../reference_2.md#object-imghtmlproperties) object, specifying at least _src_, _width_ and _height_.
 
+Submenus created by this menu inherit this property.
+
 **Flags**: IR
 
 ---
@@ -600,6 +602,8 @@ Custom properties for the automatically generated title column.
 
 ### Description
 Default image to display for [check-marked items](MenuItem.md#attr-menuitemchecked). The value can be either a regular [SCImgURL](../reference.md#type-scimgurl) which can specify _size:w,h;_, or an [ImgHTMLProperties](../reference_2.md#object-imghtmlproperties) object, specifying at least _src_, _width_ and _height_.
+
+Submenus created by this menu inherit this property.
 
 **Flags**: IR
 

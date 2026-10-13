@@ -38,6 +38,7 @@ _Note that this is not intended to be an exhaustive list_:
 *   This file can contain various configuration properties used for [jpaIntegration](jpaIntegration.md#kb-topic-integration-with-jpa)
 *   This file can contain SMTP configuration settings for the [OperationBinding.mail](../classes/Mail.md#class-mail) feature.
 *   This file can contain configuration settings for the [optional RealTimeMessaging module](messaging.md#kb-topic-real-time-messaging).
+*   This file can contain settings for ReportBuilder report delivery and rendering (`reportDelivery.*`, `reportRender.*`, `reportScheduler.*`), including limits on server-side renders; see [scheduledDelivery](scheduledDelivery.md#kb-topic-report-delivery-and-scheduling).
 *   `enabledBuiltins` can be used to configure access to methods provided by the server side `BuiltInRPC` class. (See server side JavaDoc for that class as well as the [tools deployment overview](toolsDeployment.md#kb-topic-tools-deployment) for more information).
 *   `domainSync.disabled` and `domainSync.baseDomains` can be used to [configure domain synching behavior](xssAndCSRFSecurity.md#kb-topic-xss-and-csrf-security).
 *   `import.consume.bom` can be set to false to switch off automatic consumption of Byte Order Markers when importing UTF data (see the server Javadocs for the DataImport class for more details)

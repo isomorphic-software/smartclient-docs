@@ -1797,21 +1797,6 @@ Strings to identify the various keys on the keyboard.
 | DrawLabel.RIGHT | Justify label's right edge against its left coordinate |
 
 ---
-## Type: LabelCollapseMode
-
-### Description
-Strategy to apply when there is too little room for labels to be shown for all data points with comfortable padding ([FacetChart.minLabelGap](classes/FacetChart.md#attr-facetchartminlabelgap)).
-
-### Values
-
-| Value | Description |
-|-------|-------------|
-| "none" | Show all labels regardless, even though they will overlap |
-| "time" | Show significant time values such as the first day of the month or week. Data values in Records must be true Date objects, not Strings. |
-| "numeric" | Pick round numbers in the range and show labels for just those numbers. Best for continuous datasets that are not time-based |
-| "sample" | Pick periodic values from the dataset and show labels for those. Best when the there are no particular points that would clearly be the best to label |
-
----
 ## Type: LabelRotationMode
 
 ### Description
@@ -3922,16 +3907,6 @@ Context for an asynchronous data-bound operation.
 ### See Also
 
 - [AsyncDataBoundOperationParams](#object-asyncdataboundoperationparams)
-
----
-## Object: AsyncMultipleValuesGenerationResult
-
-### Description
-The result of an asynchronous operation to generate multiple values.
-
-### Groups
-
-- fieldGeneration
 
 ---
 ## Object: AsyncOperationContext

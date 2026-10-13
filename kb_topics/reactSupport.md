@@ -21,6 +21,22 @@ To install support for SmartClient Eval, SmartClient LGPL, or another licensed S
  npm install smartclient-eval --branch=13.1
 ```
 
+#### Vite, Next.js and other bundlers
+
+The React wrappers are plain ES modules: they contain no JSX syntax and import nothing by npm package name except React itself, so any bundler loads them as application code. Under a bundler other than webpack, React 18 or newer is required; webpack projects keep working with React 17. The npm module's `smartclient-eval/release`, `smartclient-eval/debug` and skin imports are the one webpack-specific part, since they rely on webpack loaders to bundle the framework and the skin assets. Under another bundler, do not import them; load the framework the way a plain SmartClient page does, as script tags for the framework modules and the skin's `load_skin.js`, served from the installed `isomorphic/` directory, and import the wrappers from `smartclient-eval/react` as usual.
+
+For Vite, the plugin shipped with the wrappers does this: it serves the SDK during development, injects the script tags into `index.html`, keeps the SDK parts the page references in the production build, and switches off [Simple Names mode](simpleNamesMode.md#kb-topic-simple-names-mode) before the framework loads, because the global class names that mode binds replace natives such as `DataView` that other code on the page relies on.
+
+```
+ // vite.config.js
+ import react from '@vitejs/plugin-react';
+ import smartclient from './isomorphic/react/vite/smartclient.mjs';
+ export default { plugins: [react(), smartclient({ skin: 'Tahoe' })] };
+```
+For Next.js, place the SDK under `public/isomorphic`, switch off Simple Names and add the script tags in the root layout's ``<head>`` as plain ``<script>`` elements, which run in order before any of Next.js' own code (`next/script`'s `beforeInteractive` strategy loads scripts asynchronously, in no guaranteed order), and render the components that use the wrappers on the client only, since they need the browser runtime. React Strict Mode, which Next.js enables by default in development, mounts every component twice; the wrappers do not yet support that double cycle, so set `reactStrictMode: false`.
+
+Working starters for both, with headless tests, are in the SDK under `react/vite-app` and `react/next-app`.
+
 #### React JSX and differences from Component XML
 
 React JSX (shown in blue) can be used to declare SmartClient components as in this sample file:

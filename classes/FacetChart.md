@@ -1123,7 +1123,7 @@ When true for a Bar chart, expansion and scrollbar are vertical, and also make s
 
 Note that this feature is incompatible with the following properties:
 
-*   [LabelCollapseMode](../reference_2.md#type-labelcollapsemode) (other than the default of "none")
+*   [LabelCollapseMode](../reference.md#type-labelcollapsemode) (other than the default of "none")
 *   [FacetChart.rotateLabels](#attr-facetchartrotatelabels) (in "auto" mode)
 *   [canDragScroll](DrawPane.md#attr-drawpanecandragscroll)
 *   [FacetChart.canZoom](#attr-facetchartcanzoom)
@@ -1134,7 +1134,7 @@ If [FacetChart.rotateLabels](#attr-facetchartrotatelabels) is set to "auto" it w
 
 - [FacetChart.canZoom](#attr-facetchartcanzoom)
 - [FacetChart.rotateLabels](#attr-facetchartrotatelabels)
-- [LabelCollapseMode](../reference_2.md#type-labelcollapsemode)
+- [LabelCollapseMode](../reference.md#type-labelcollapsemode)
 - [FacetChart.getMinClusterSize](#method-facetchartgetminclustersize)
 - [DrawPane.canDragScroll](DrawPane.md#attr-drawpanecandragscroll)
 
@@ -1483,7 +1483,7 @@ See also [FacetChart.majorTickTimeIntervals](#attr-facetchartmajorticktimeinterv
 ## Attr: FacetChart.labelCollapseMode
 
 ### Description
-What to do when there are too many data points to be able to show labels for every data point at the current chart size - see [LabelCollapseMode](../reference_2.md#type-labelcollapsemode).
+What to do when there are too many data points to be able to show labels for every data point at the current chart size - see [LabelCollapseMode](../reference.md#type-labelcollapsemode).
 
 Each of the possible strategies is re-applied when the user resizes the chart as a whole, so if labels are omitted the user can make them visible via resize or zoom.
 
@@ -4852,7 +4852,7 @@ See [FacetChart.chartBackgroundDrawn](#method-facetchartchartbackgrounddrawn) fo
 ### Description
 Return the text string to display along the axes for [gradation labels](#attr-facetchartgradationlabelproperties) or facet value labels given the raw metric value or facet value id.
 
-Note that this formatter will be called for the gradation labels on an axis, including those generated for [LabelCollapseMode](../reference_2.md#type-labelcollapsemode) "numeric". It also will be called for each facet value along the linear axes of a chart (vertical or horizontal) unless a [FacetValue.title](FacetValue.md#attr-facetvaluetitle) has been specified (in [Facet.values](Facet.md#attr-facetvalues)) or the raw value is a string and [FacetChart.formatStringFacetValueIds](#attr-facetchartformatstringfacetvalueids) is `false`.
+Note that this formatter will be called for the gradation labels on an axis, including those generated for [LabelCollapseMode](../reference.md#type-labelcollapsemode) "numeric". It also will be called for each facet value along the linear axes of a chart (vertical or horizontal) unless a [FacetValue.title](FacetValue.md#attr-facetvaluetitle) has been specified (in [Facet.values](Facet.md#attr-facetvalues)) or the raw value is a string and [FacetChart.formatStringFacetValueIds](#attr-facetchartformatstringfacetvalueids) is `false`.
 
 Note that the rendering of values in hovers or via [FacetChart.showDataValues](#attr-facetchartshowdatavalues) is handled by [FacetChart.formatDataValue](#method-facetchartformatdatavalue).
 

@@ -848,6 +848,7 @@ The properties in this group are default system messages that a localized applic
 - [RichTextEditor.unorderedListPrompt](../classes/RichTextEditor.md#attr-richtexteditorunorderedlistprompt)
 - [RichTextEditor.listPropertiesPrompt](../classes/RichTextEditor.md#attr-richtexteditorlistpropertiesprompt)
 - [RichTextEditor.listPropertiesWarningText](../classes/RichTextEditor.md#attr-richtexteditorlistpropertieswarningtext)
+- [QuartzManager.readOnlyJobMessage](../classes/QuartzManager.md#attr-quartzmanagerreadonlyjobmessage)
 - [ReportBuilder.aiIncompleteTitle](../classes/ReportBuilder.md#attr-reportbuilderaiincompletetitle)
 - [ReportBuilder.aiIncompleteSubtitle](../classes/ReportBuilder.md#attr-reportbuilderaiincompletesubtitle)
 - [ReportBuilder.aiIncompletePromptLabel](../classes/ReportBuilder.md#attr-reportbuilderaiincompletepromptlabel)

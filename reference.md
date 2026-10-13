@@ -307,6 +307,7 @@ This is the central API reference for the SmartClient framework.
         - [SubmitItem](#class-submititem)
         - [CancelItem](#class-cancelitem)
         - [ResetItem](#class-resetitem)
+      - [SchedulerItem](classes/SchedulerItem.md)
       - [SectionItem](classes/SectionItem.md)
       - [RichTextItem](classes/RichTextItem.md)
       - [ToolbarItem](classes/ToolbarItem.md)
@@ -490,6 +491,7 @@ This is the central API reference for the SmartClient framework.
   - [Media](classes/Media.md)
   - [Offline](classes/Offline.md)
   - [StyleSheetHandler](classes/StyleSheetHandler.md)
+  - [DataReport](classes/DataReport.md)
   - [DMI](classes/DMI.md)
   - [MultiLinkSelection](classes/MultiLinkSelection.md)
   - [AsyncUtil](classes/AsyncUtil.md)
@@ -498,13 +500,12 @@ This is the central API reference for the SmartClient framework.
   - [ReportScreen](classes/ReportScreen.md)
   - [CellSelection](classes/CellSelection.md)
   - [CancellationController](classes/CancellationController.md)
-  - [DataReport](classes/DataReport.md)
   - [ReifyRemote](classes/ReifyRemote.md)
   - [MathFunction](classes/MathFunction.md)
+  - [ReportToolbar](classes/ReportToolbar.md)
   - [AIEngine](classes/AIEngine.md)
   - [Variant](classes/Variant.md)
   - [SortSpecifierUtil](classes/SortSpecifierUtil.md)
-  - [ReportToolbar](classes/ReportToolbar.md)
   - [FontLoader](classes/FontLoader.md)
   - [SelectOtherItem](classes/SelectOtherItem.md)
   - [Timer](classes/Timer.md)
@@ -513,6 +514,7 @@ This is the central API reference for the SmartClient framework.
     - [TextExportSettings](classes/TextExportSettings.md)
     - [TextImportSettings](classes/TextImportSettings.md)
   - [Comm](classes/Comm.md)
+  - [QuartzManager](classes/QuartzManager.md)
   - [SchemaSet](classes/SchemaSet.md)
   - [FieldPickerField](classes/FieldPickerField.md)
   - [SyntaxHiliter](#class-syntaxhiliter)
@@ -525,7 +527,6 @@ This is the central API reference for the SmartClient framework.
   - [WindowHeaderLabel](#class-windowheaderlabel)
   - [WindowHeaderIcon](#class-windowheadericon)
   - [WindowResizer](#class-windowresizer)
-  - [QuartzManager](#class-quartzmanager)
   - [HiddenPalette](#class-hiddenpalette)
   - [OpenFin](#class-openfin)
   - [RibbonGroupEditProxy](#class-ribbongroupeditproxy)
@@ -745,6 +746,7 @@ This is the central API reference for the SmartClient framework.
 - [rpcPrompt](#kb-topic-rpcprompt)
 - [Dynamic Rules](kb_topics/ruleCriteria.md)
 - [Safe Skinning](kb_topics/safeSkinning.md)
+- [Report Delivery and Scheduling](kb_topics/scheduledDelivery.md)
 - [scrolling](kb_topics/scrolling.md)
 - [Understanding scroll behavior](#kb-topic-understanding-scroll-behavior)
 - [Deploying the SmartClient SDK](kb_topics/sdkInstall.md)
@@ -3245,12 +3247,6 @@ Add a spacer to a [Layout](classes/Layout.md#class-layout) that takes up space j
 
 ### Description
 Window subclass used by the "Filter via AI…" and "Hilite via AI…" [ListGrid](classes/ListGrid_1.md#class-listgrid) header context menu items to allow the user to filter or hilite by a natural language description of a filter or hilite, respectively.
-
----
-## Class: QuartzManager
-
-### Description
-A simple user interface for managing scheduled jobs via [Quartz DataSource](kb_topics/quartzAdapters.md#kb-topic-quartz-datasources) adapters, as seen in the Scheduler tab of the [Admin Console](kb_topics/adminConsole.md#kb-topic-admin-console). Exercise caution when exposing any such feature to end users.
 
 ---
 ## Class: ToolStripMenuButton
@@ -6244,6 +6240,21 @@ Entries for the [DrawItem.knobs](classes/DrawItem.md#attr-drawitemknobs) array. 
 | "rotate" | Display a rotation knob above the top resize knob, allowing the user to rotate the item. See also [DrawItem.rotateKnob](classes/DrawItem.md#attr-drawitemrotateknob). |
 
 ---
+## Type: LabelCollapseMode
+
+### Description
+Strategy to apply when there is too little room for labels to be shown for all data points with comfortable padding ([FacetChart.minLabelGap](classes/FacetChart.md#attr-facetchartminlabelgap)).
+
+### Values
+
+| Value | Description |
+|-------|-------------|
+| "none" | Show all labels regardless, even though they will overlap |
+| "time" | Show significant time values such as the first day of the month or week. Data values in Records must be true Date objects, not Strings. |
+| "numeric" | Pick round numbers in the range and show labels for just those numbers. Best for continuous datasets that are not time-based |
+| "sample" | Pick periodic values from the dataset and show labels for those. Best when the there are no particular points that would clearly be the best to label |
+
+---
 ## Type: LayoutResizeBarPolicy
 
 ### Description
@@ -8223,6 +8234,16 @@ Parameters to an asynchronous data-bound operation.
 ### See Also
 
 - [AsyncDataBoundOperationContext](reference_2.md#object-asyncdataboundoperationcontext)
+
+---
+## Object: AsyncMultipleValuesGenerationResult
+
+### Description
+The result of an asynchronous operation to generate multiple values.
+
+### Groups
+
+- fieldGeneration
 
 ---
 ## Object: AsyncOperationParams

@@ -36,15 +36,15 @@ For JPA integration where Java beans have been explicitly declared, JPADataSourc
 
 #### JPA configuration
 
-JPA configuration should be specified in the `persistence.xml` file as usual, and placed in the `/WEB-INF/classes/META-INF` directory. For JPA 2.0 make sure you correctly declare its usage in `persistence.xml`:
+JPA configuration should be specified in the `persistence.xml` file as usual, and placed in the `/WEB-INF/classes/META-INF` directory. Make sure you correctly declare the Jakarta Persistence namespace in `persistence.xml`:
 
 ```
  <persistence
-     version="2.0"
-     xmlns="http://java.sun.com/xml/ns/persistence"
+     version="3.0"
+     xmlns="https://jakarta.ee/xml/ns/persistence"
      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-     xsi:schemaLocation="http://java.sun.com/xml/ns/persistence 
-                         http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd"
+     xsi:schemaLocation="https://jakarta.ee/xml/ns/persistence
+                         https://jakarta.ee/xml/ns/persistence/persistence_3_0.xsd"
  >
  ...
  </persistence>

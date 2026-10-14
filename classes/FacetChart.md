@@ -627,6 +627,31 @@ For databound charts, [FacetChart.facetFields](#attr-facetchartfacetfields) may 
 **Flags**: IR
 
 ---
+## Attr: FacetChart.sizeClustersToLabels
+
+### Description
+Should each cluster be sized to the width of its own [data label](#method-facetchartgetdatalabelfacet), rather than every cluster taking the single width that the widest label requires?
+
+By default every cluster is given the same width, derived from the widest pair of neighboring labels, so one long label widens every cluster in the chart. When this property is set each cluster instead takes the width its own label needs.
+
+The visible consequence is that bars are no longer a uniform thickness across the chart: a cluster divides its width between the bars it holds, so a cluster under a short label is narrower and its bars are correspondingly thinner than those under a long one. This applies however many bars a cluster holds — a single bar, several side by side, or a [stacked](#attr-facetchartstacked) one.
+
+Where labels vary in length this produces a noticeably narrower chart; where they are all of similar length it makes little difference.
+
+This is the declarative equivalent of overriding [FacetChart.getMinClusterSize](#method-facetchartgetminclustersize), and an application that defines that method keeps its own sizing regardless of this property.
+
+Where a chart has both an inner and an outer data label facet, an outer label is allowed for across the clusters it spans rather than demanded of each of them.
+
+Applies to "Column", "Bar" and "Histogram" charts. Note that along a Bar chart's data axis the labels are stacked rather than side by side, so what each cluster must clear is a line of text, which is uniform — the difference shows mainly on Column.
+
+### See Also
+
+- [FacetChart.getMinClusterSize](#method-facetchartgetminclustersize)
+- [FacetChart.autoScrollData](#attr-facetchartautoscrolldata)
+
+**Flags**: IR
+
+---
 ## Attr: FacetChart.logScalePointColor
 
 ### Description
@@ -2897,6 +2922,27 @@ Maximum allowed zIndex that can be specified through [FacetChart.zIndexMetric](#
 **Flags**: IR
 
 ---
+## Attr: FacetChart.maxDataLabelLines
+
+### Description
+The most lines a data label may be wrapped onto, where [FacetChart.canWrapLabels](#attr-facetchartcanwraplabels) allows wrapping at all. Has no effect unless that property is set.
+
+The chart chooses the fewest lines that let the labels fit, so this is a ceiling rather than a target.
+
+Where [FacetChart.maxDataLabelWidth](#attr-facetchartmaxdatalabelwidth) is also set and the two cannot both be honored, the width wins: a label is wrapped onto as many lines as that width requires, rather than being left unwrapped.
+
+### Groups
+
+- labelsAndTitles
+
+### See Also
+
+- [FacetChart.canWrapLabels](#attr-facetchartcanwraplabels)
+- [FacetChart.maxDataLabelWidth](#attr-facetchartmaxdatalabelwidth)
+
+**Flags**: IR
+
+---
 ## Attr: FacetChart.showRadarGradationLabels
 
 ### Description
@@ -2905,6 +2951,30 @@ Whether to show gradation labels in radar charts.
 ### Groups
 
 - radarChart
+
+**Flags**: IR
+
+---
+## Attr: FacetChart.maxDataLabelWidth
+
+### Description
+Maximum width for a data label on the category axis, where [FacetChart.canWrapLabels](#attr-facetchartcanwraplabels) allows wrapping at all. Has no effect unless that property is set.
+
+A label wider than this is wrapped onto as many lines as it needs, breaking at spaces, up to [FacetChart.maxDataLabelLines](#attr-facetchartmaxdatalabellines). A single word longer than this width is never broken, so it still renders wider than the maximum. Left unset, the chart derives a width from the labels themselves.
+
+Wrapping is one of the options the chart weighs when it lays the axis out, alongside [rotating the labels](#attr-facetchartrotatelabels): a wrapped label is narrower, so more labels fit side by side, at the cost of the extra lines' height. The chart picks whichever fits the space it has, so setting this does not force wrapping where the labels already fit on one line.
+
+On a Bar chart, whose category labels run down the side rather than below the plot, this is applied as a maximum rather than weighed as an option: wrapping there narrows the band the labels occupy and so widens the plot, and there is no rotation alternative for it to be weighed against. The cost is the extra lines' height, which makes each bar's row taller.
+
+Wrapping does not apply to [inlined labels](#attr-facetchartshowinlinelabels), or to charts with an inner data label facet.
+
+### Groups
+
+- labelsAndTitles
+
+### See Also
+
+- [FacetChart.maxDataLabelLines](#attr-facetchartmaxdatalabellines)
 
 **Flags**: IR
 
@@ -3243,6 +3313,29 @@ Properties for doughnut hole
 - pieChart
 
 **Flags**: IRW
+
+---
+## Attr: FacetChart.canWrapLabels
+
+### Description
+Whether a category label too long for the space available may be wrapped onto further lines, breaking at spaces.
+
+The chart lays its category labels out by trying, in order, to draw them as they are, to wrap them, and to rotate them, settling on the first that fits; where none does, it falls back to showing only some of them (see [FacetChart.labelCollapseMode](#attr-facetchartlabelcollapsemode)). Setting this property inserts the wrapping step, which means long labels less often have to be rotated or dropped. It does not force wrapping: labels that already fit on one line are left alone.
+
+[FacetChart.maxDataLabelLines](#attr-facetchartmaxdatalabellines) caps how many lines a label may take, and [FacetChart.maxDataLabelWidth](#attr-facetchartmaxdatalabelwidth) optionally caps how wide one may be. Both are ignored unless this property is set, so leaving it alone leaves label layout exactly as it would otherwise be.
+
+Applies to category labels on either axis. A single word longer than the space available is never broken, so it still renders at its full width.
+
+### Groups
+
+- labelsAndTitles
+
+### See Also
+
+- [FacetChart.maxDataLabelLines](#attr-facetchartmaxdatalabellines)
+- [FacetChart.maxDataLabelWidth](#attr-facetchartmaxdatalabelwidth)
+
+**Flags**: IR
 
 ---
 ## Attr: FacetChart.autoRotateLabels

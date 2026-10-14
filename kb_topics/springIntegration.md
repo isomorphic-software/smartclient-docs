@@ -104,59 +104,10 @@ Smartclient [SQL DataSources](sqlDataSource.md#kb-topic-sql-datasources) may be 
 #### **Spring Compatibility**
 [Spring](https://spring.io/projects/spring-framework#learn) & [Hibernate](https://hibernate.org/) have gone through reworks recently in which backwards compatibility was lost, creating complexity and difficult tradeoffs for consumers of these libraries, where there may be conflicting requirements to use different, incompatible versions of those frameworks. We have tried to do the best we can in terms of supporting many possible combinations of versions, where feasible.
 
-The [Spring](https://spring.io/projects/spring-framework#learn) 5 framework integrated with SmartClient is only compatible with [Java](https://www.oracle.com/java/technologies/downloads/) 8+, so you can't use older version of Java together with ${isc.DocUtils.linkForRef('group:springIntegration','SmartClient\\'s built-in Spring support')}, such as the "spring:" DMI target. **If you have to use a Java version less than 8**, please see the "Using Java version less than 8" section at the end of this document.
+SmartClient ships with [Spring](https://spring.io/projects/spring-framework#learn) 7 and [Hibernate](https://hibernate.org/) 7 by default. Spring 7 requires Java 17+.
 
-#### Using Hibernate 3 or 4 with Spring 5
+#### Using Hibernate 6 with Spring 6
 
-The [Spring](https://spring.io/projects/spring-framework#learn) 5 ships with [Hibernate](https://hibernate.org/) 5 support only, i.e. without built-in Hibernate 3 and 4 support it used to have.
-
-SmartClient provides "bridges" that allow Spring 5 to be used with Hibernate 3 or 4. To use this combination, include either `isomorphic_spring_hibernate-core-6.5.3.Final.jar` for Hibernate 3 support or `isomorphic_spring_hibernate4.jar` for Hibernate 4 support.
-
-Smartclient bridge classes are based on Spring 4.3.26 `org.springframework.orm.hibernate3` and `org.springframework.orm.hibernate4` packages and are placed in corresponding packages: `com.isomorphic.springhibernate3` and `com.isomorphic.springhibernate4`. So, for example, to configure managed Hibernate SessionFactory `**com.isomorphic.springhibernate3**.LocalSessionFactoryBean` class should be used instead of `org.springframework.orm.hibernate3.LocalSessionFactoryBean` class:
-
-```
- <bean id="hbSpringSessionFactory"
-       className="com.isomorphic.springhibernate3.LocalSessionFactoryBean">
-     <property name="configLocation" value="classpath:hibernate.cfg.xml"/>
- </bean>
- 
-```
-Other than that the usage is the same.
-#### Using Hibernate 5
-Hibernate 5 is not yet supported by Smartclient, but it still may be used via custom DataSource implementation, as is demonstrated in [ORM DataSource](https://www.smartclient.com/smartclient/showcase/?id=ormDataSource) and [Resusable ORM DataSource](https://www.smartclient.com/smartclient/showcase/?id=reusableORMDataSource) Showcase samples. Note that in this case Smartclient built-in Hibernate support would be lost and features like data pagination, server-side sorting and filtering, server summaries etc would also have to be implemented manually in custom DataSource if you need them.
-
-#### Using Java version less than 8
-
-With pre JDK8, you cannot use Spring 5 (according to [Spring docs](https://github.com/spring-projects/spring-framework/wiki/Upgrading-to-Spring-Framework-5.x#upgrading-to-version-50)), so, you have to remove all Spring 5 related jars. Then, you could use Spring 4 or earlier, but without any of our framework support for Spring which, as of release 13.0, requires Spring 5+ (older releases work with Spring 4).
-
-To remove Spring from the SmartClient server all Spring JARs must be removed from your WEB-INF/lib server directory:
-
-*   spring-aop-6.1.15.jar
-*   spring-beans-6.1.15.jar
-*   spring-context-6.1.15.jar
-*   spring-context-support-5.3.9.jar
-*   spring-core-6.1.15.jar
-*   spring-expression-6.1.15.jar
-*   spring-jdbc-6.1.15.jar
-*   spring-orm-6.1.15.jar
-*   spring-tx-6.1.15.jar
-*   spring-web-6.1.15.jar
-*   spring-webmvc-6.1.15.jar
-*   isomorphic\_spring.jar
-*   isomorphic\_spring\_hibernate-core-6.5.3.Final.jar
-*   isomorphic\_spring\_hibernate4.jar
-
-and Spring configuration must be removed from your WEB-INF/web.xml:
-
-```
- <!-- standard spring configuration -->
- <context-param>
-     <param-name>contextConfigLocation</param-name>
-     <param-value>/WEB-INF/applicationContext.xml</param-value>
- </context-param>
- <listener>
-     <listener-class>com.isomorphic.spring.ContextLoaderListener</listener-class>
- </listener>
-```
+Customers still on Hibernate 6.x and Spring 6.x can use the backward-compatibility provider by adding `isomorphic_hibernate6_compat.jar` to the classpath. The framework auto-detects which Hibernate version is present and loads the matching provider -- no application code changes are needed. The Spring 6 `applicationContext.xml` should reference `org.springframework.orm.hibernate5` class names (the Spring 6 package path), not the Spring 7 `org.springframework.orm.jpa.hibernate` path.
 
 ---

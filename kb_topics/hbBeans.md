@@ -7,9 +7,7 @@
 ## KB Topic: Beans and the DSRequest / DSResponse
 
 ### Description
-This section relates to JPA and Hibernate datasources and describes how submitted data is used and what to expect in `DSResponse` if Smartclient is integrated with Hibernate using "Pre-existing beans" approach (see [hibernateIntegration](hibernateIntegration.md#kb-topic-integration-with-hibernate) for details).
-
-Note that "beanless" integration mode is completely omitted here, since in that case data is represented by `Maps` instead of `Beans`.
+This section relates to JPA and Hibernate datasources and describes how submitted data is used and what to expect in `DSResponse` when SmartClient is integrated with Hibernate or JPA using entity beans (see [hibernateIntegration](hibernateIntegration.md#kb-topic-integration-with-hibernate) for details).
 
 #### Data sent in DSRequest
 In case of add or update operations [DSRequest data](../classes/DSRequest.md#attr-dsrequestdata) is used to populate associated `Bean`:

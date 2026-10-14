@@ -35,7 +35,7 @@ For Vite, the plugin shipped with the wrappers does this: it serves the SDK duri
 ```
 For Next.js, place the SDK under `public/isomorphic`, switch off Simple Names and add the script tags in the root layout's ``<head>`` as plain ``<script>`` elements, which run in order before any of Next.js' own code (`next/script`'s `beforeInteractive` strategy loads scripts asynchronously, in no guaranteed order), and render the components that use the wrappers on the client only, since they need the browser runtime. React Strict Mode, which Next.js enables by default in development, mounts every component twice; the wrappers do not yet support that double cycle, so set `reactStrictMode: false`.
 
-Working starters for both, with headless tests, are in the SDK under `react/vite-app` and `react/next-app`.
+Starter projects for Vite, Next.js and webpack, each a minimal application with the configuration above, are provided under `react/` alongside the Showcase samples project.
 
 #### React JSX and differences from Component XML
 

@@ -171,6 +171,7 @@ This is the central API reference for the SmartClient framework.
             - [RowRangeDisplay](classes/RowRangeDisplay.md)
             - [Placeholder](classes/Placeholder.md)
             - [HeaderLabel](#class-headerlabel)
+            - [WindowHeaderLabel](#class-windowheaderlabel)
           - [RibbonButton](classes/RibbonButton.md)
             - [RibbonMenuButton](#class-ribbonmenubutton)
             - [IconButton](#class-iconbutton)
@@ -200,9 +201,14 @@ This is the central API reference for the SmartClient framework.
         - [Img](classes/Img.md)
           - [ImgButton](classes/ImgButton.md)
             - [IconImgButton](classes/IconImgButton.md)
+            - [WindowMaximizeButton](#class-windowmaximizebutton)
+            - [WindowMinimizeButton](#class-windowminimizebutton)
+            - [WindowCloseButton](#class-windowclosebutton)
+            - [WindowResizer](#class-windowresizer)
           - [ImgSplitbar](classes/ImgSplitbar.md)
             - [ToolStripResizer](#class-toolstripresizer)
           - [ToolStripSeparator](#class-toolstripseparator)
+          - [WindowHeaderIcon](#class-windowheadericon)
           - [MockupElement](#class-mockupelement)
         - [ToggleSwitch](classes/ToggleSwitch.md)
         - [SimpleTile](classes/SimpleTile.md)
@@ -223,6 +229,7 @@ This is the central API reference for the SmartClient framework.
       - [PrintCanvas](classes/PrintCanvas.md)
       - [NativeScrollbar](#class-nativescrollbar)
       - [LayoutSpacer](#class-layoutspacer)
+        - [WindowFooterSpacer](#class-windowfooterspacer)
         - [ToolStripSpacer](#class-toolstripspacer)
         - [FixedSpacer](#class-fixedspacer)
         - [FlexSpacer](#class-flexspacer)
@@ -520,13 +527,6 @@ This is the central API reference for the SmartClient framework.
   - [SyntaxHiliter](#class-syntaxhiliter)
     - [XMLSyntaxHiliter](#class-xmlsyntaxhiliter)
     - [JSSyntaxHiliter](#class-jssyntaxhiliter)
-  - [WindowMaximizeButton](#class-windowmaximizebutton)
-  - [WindowMinimizeButton](#class-windowminimizebutton)
-  - [WindowCloseButton](#class-windowclosebutton)
-  - [WindowFooterSpacer](#class-windowfooterspacer)
-  - [WindowHeaderLabel](#class-windowheaderlabel)
-  - [WindowHeaderIcon](#class-windowheadericon)
-  - [WindowResizer](#class-windowresizer)
   - [HiddenPalette](#class-hiddenpalette)
   - [OpenFin](#class-openfin)
   - [RibbonGroupEditProxy](#class-ribbongroupeditproxy)
@@ -2408,6 +2408,22 @@ Simulate a click on a button (or other [StatefulCanvas](classes/StatefulCanvas.m
 Starts queuing all DataSource operations so they can be sent to the server all together as a transaction. This is a client-side batching mechanism (RPCManager.startQueue) and has no effect inside an [OperationBinding.process](classes/OperationBinding.md#attr-operationbindingprocess) where operations execute synchronously on the server. For server-side transaction control, use [OperationBinding.autoJoinTransactions](classes/OperationBinding.md#attr-operationbindingautojointransactions) instead.
 
 ---
+## Class: WindowMaximizeButton
+
+*Inherits from:* [ImgButton](classes/ImgButton.md#class-imgbutton)
+
+### Description
+Marker class available in our [React JSX support](kb_topics/reactSupport.md#kb-topic-using-smartclient-with-react) and [Component XML](kb_topics/componentXML.md#kb-topic-component-xml) to indicate within the [Window.headerControls](classes/Window.md#attr-windowheadercontrols) that the header maximize button should be rendered. Note that an instance of this class is never drawn, and it's only made available in these cases to allow for a simple syntax where every header control can be declared as a class.
+
+---
+## Class: WindowMinimizeButton
+
+*Inherits from:* [ImgButton](classes/ImgButton.md#class-imgbutton)
+
+### Description
+Marker class available in our [React JSX support](kb_topics/reactSupport.md#kb-topic-using-smartclient-with-react) and [Component XML](kb_topics/componentXML.md#kb-topic-component-xml) to indicate within the [Window.headerControls](classes/Window.md#attr-windowheadercontrols) that the header minimize button should be rendered. Note that an instance of this class is never drawn, and it's only made available in these cases to allow for a simple syntax where every header control can be declared as a class.
+
+---
 ## Class: IPickTreeItem
 
 *Inherits from:* [PickTreeItem](classes/PickTreeItem.md#class-picktreeitem)
@@ -2422,6 +2438,14 @@ Subclass of [PickTreeItem](classes/PickTreeItem.md#class-picktreeitem) which sho
 This item is an [AutoChild](#type-autochild) generated [Canvas](classes/Canvas.md#class-canvas) displayed by the IPickTreeItem and is an instance of [ITreeMenuButton](#class-itreemenubutton) by default.
 
 **Flags**: R
+
+---
+## Class: WindowCloseButton
+
+*Inherits from:* [ImgButton](classes/ImgButton.md#class-imgbutton)
+
+### Description
+Marker class available in our [React JSX support](kb_topics/reactSupport.md#kb-topic-using-smartclient-with-react) and [Component XML](kb_topics/componentXML.md#kb-topic-component-xml) to indicate within the [Window.headerControls](classes/Window.md#attr-windowheadercontrols) that the header close button should be rendered. Note that an instance of this class is never drawn, and it's only made available in these cases to allow for a simple syntax where every header control can be declared as a class.
 
 ---
 ## Class: DOMGrid
@@ -2464,6 +2488,14 @@ This task is primarily used in the workflow editor to render a "no-op" task or a
 ### Groups
 
 - serverProcess
+
+---
+## Class: WindowResizer
+
+*Inherits from:* [ImgButton](classes/ImgButton.md#class-imgbutton)
+
+### Description
+Marker class available in our [React JSX support](kb_topics/reactSupport.md#kb-topic-using-smartclient-with-react) and [Component XML](kb_topics/componentXML.md#kb-topic-component-xml) to indicate within the [Window.footerControls](classes/Window.md#attr-windowfootercontrols) that the footer resizer should be rendered. Note that an instance of this class is never drawn, and it's only made available in these cases to allow for a simple syntax where every footer control can be declared as a class.
 
 ---
 ## Class: FormEditNewRecordTask
@@ -2532,6 +2564,38 @@ SubmitItems show a title of `"Submit"` by default. May be overridden.
 **Flags**: IRW
 
 ---
+## Class: LayoutSpacer
+
+*Inherits from:* [Canvas](classes/Canvas.md#class-canvas)
+
+### Description
+Add a spacer to a [Layout](classes/Layout.md#class-layout) that takes up space just like a normal member, without actually drawing anything. A `LayoutSpacer` is semantically equivalent to using an empty canvas, but higher performance for this particular use case.
+
+---
+## Class: WindowFooterSpacer
+
+*Inherits from:* [LayoutSpacer](#class-layoutspacer)
+
+### Description
+Marker class available in our [React JSX support](kb_topics/reactSupport.md#kb-topic-using-smartclient-with-react) and [Component XML](kb_topics/componentXML.md#kb-topic-component-xml) to indicate within the [Window.footerControls](classes/Window.md#attr-windowfootercontrols) that the footer spacer should be rendered. Note that an instance of this class is never drawn, and it's only made available in these cases to allow for a simple syntax where every footer control can be declared as a class.
+
+---
+## Class: WindowHeaderLabel
+
+*Inherits from:* [Label](classes/Label.md#class-label)
+
+### Description
+Marker class available in our [React JSX support](kb_topics/reactSupport.md#kb-topic-using-smartclient-with-react) and [Component XML](kb_topics/componentXML.md#kb-topic-component-xml) to indicate within the [Window.headerControls](classes/Window.md#attr-windowheadercontrols) that the header label should be rendered. Note that an instance of this class is never drawn, and it's only made available in these cases to allow for a simple syntax where every header control can be declared as a class.
+
+---
+## Class: WindowHeaderIcon
+
+*Inherits from:* [Img](classes/Img.md#class-img)
+
+### Description
+Marker class available in our [React JSX support](kb_topics/reactSupport.md#kb-topic-using-smartclient-with-react) and [Component XML](kb_topics/componentXML.md#kb-topic-component-xml) to indicate within the [Window.headerControls](classes/Window.md#attr-windowheadercontrols) that the header icon should be rendered. Note that an instance of this class is never drawn, and it's only made available in these cases to allow for a simple syntax where every header control can be declared as a class.
+
+---
 ## Class: XORGateway
 
 *Inherits from:* [DecisionTask](classes/DecisionTask.md#class-decisiontask)
@@ -2570,24 +2634,6 @@ A simple subclass of [Menu](classes/Menu.md#class-menu) created by [TreeMenuButt
 **Important Note**: this class is not directly usable except for skinning and for subclassing when setting [TreeMenuButton.treeMenuConstructor](classes/TreeMenuButton.md#attr-treemenubuttontreemenuconstructor) on a [TreeMenuButton](classes/TreeMenuButton.md#class-treemenubutton).
 
 ---
-## Class: WindowMaximizeButton
-
-### Description
-Marker class available in our [React JSX support](kb_topics/reactSupport.md#kb-topic-using-smartclient-with-react) and [Component XML](kb_topics/componentXML.md#kb-topic-component-xml) to indicate within the [Window.headerControls](classes/Window.md#attr-windowheadercontrols) that the header maximize button should be rendered. Note that an instance of this class is never drawn, and it's only made available in these cases to allow for a simple syntax where every header control can be declared as a class.
-
----
-## Class: WindowMinimizeButton
-
-### Description
-Marker class available in our [React JSX support](kb_topics/reactSupport.md#kb-topic-using-smartclient-with-react) and [Component XML](kb_topics/componentXML.md#kb-topic-component-xml) to indicate within the [Window.headerControls](classes/Window.md#attr-windowheadercontrols) that the header minimize button should be rendered. Note that an instance of this class is never drawn, and it's only made available in these cases to allow for a simple syntax where every header control can be declared as a class.
-
----
-## Class: WindowCloseButton
-
-### Description
-Marker class available in our [React JSX support](kb_topics/reactSupport.md#kb-topic-using-smartclient-with-react) and [Component XML](kb_topics/componentXML.md#kb-topic-component-xml) to indicate within the [Window.headerControls](classes/Window.md#attr-windowheadercontrols) that the header close button should be rendered. Note that an instance of this class is never drawn, and it's only made available in these cases to allow for a simple syntax where every header control can be declared as a class.
-
----
 ## Class: CancelItem
 
 *Inherits from:* [ButtonItem](classes/ButtonItem.md#class-buttonitem)
@@ -2602,30 +2648,6 @@ Button that cancels any changes in the form, by calling [DynamicForm.cancelEditi
 CancelItems show a title of `"Cancel"` by default. May be overridden.
 
 **Flags**: IRW
-
----
-## Class: WindowFooterSpacer
-
-### Description
-Marker class available in our [React JSX support](kb_topics/reactSupport.md#kb-topic-using-smartclient-with-react) and [Component XML](kb_topics/componentXML.md#kb-topic-component-xml) to indicate within the [Window.footerControls](classes/Window.md#attr-windowfootercontrols) that the footer spacer should be rendered. Note that an instance of this class is never drawn, and it's only made available in these cases to allow for a simple syntax where every footer control can be declared as a class.
-
----
-## Class: WindowHeaderLabel
-
-### Description
-Marker class available in our [React JSX support](kb_topics/reactSupport.md#kb-topic-using-smartclient-with-react) and [Component XML](kb_topics/componentXML.md#kb-topic-component-xml) to indicate within the [Window.headerControls](classes/Window.md#attr-windowheadercontrols) that the header label should be rendered. Note that an instance of this class is never drawn, and it's only made available in these cases to allow for a simple syntax where every header control can be declared as a class.
-
----
-## Class: WindowHeaderIcon
-
-### Description
-Marker class available in our [React JSX support](kb_topics/reactSupport.md#kb-topic-using-smartclient-with-react) and [Component XML](kb_topics/componentXML.md#kb-topic-component-xml) to indicate within the [Window.headerControls](classes/Window.md#attr-windowheadercontrols) that the header icon should be rendered. Note that an instance of this class is never drawn, and it's only made available in these cases to allow for a simple syntax where every header control can be declared as a class.
-
----
-## Class: WindowResizer
-
-### Description
-Marker class available in our [React JSX support](kb_topics/reactSupport.md#kb-topic-using-smartclient-with-react) and [Component XML](kb_topics/componentXML.md#kb-topic-component-xml) to indicate within the [Window.footerControls](classes/Window.md#attr-windowfootercontrols) that the footer resizer should be rendered. Note that an instance of this class is never drawn, and it's only made available in these cases to allow for a simple syntax where every footer control can be declared as a class.
 
 ---
 ## Class: FormSetFieldValueTask
@@ -3219,14 +3241,6 @@ Overridden to assign class-appropriate type.
 - [FormItem.defaultValue](classes/FormItem.md#attr-formitemdefaultvalue)
 
 **Flags**: IRW
-
----
-## Class: LayoutSpacer
-
-*Inherits from:* [Canvas](classes/Canvas.md#class-canvas)
-
-### Description
-Add a spacer to a [Layout](classes/Layout.md#class-layout) that takes up space just like a normal member, without actually drawing anything. A `LayoutSpacer` is semantically equivalent to using an empty canvas, but higher performance for this particular use case.
 
 ---
 ## Class: GhostButton

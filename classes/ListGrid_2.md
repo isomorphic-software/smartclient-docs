@@ -919,7 +919,7 @@ Note that if [ListGrid.saveRequestProperties](ListGrid_1.md#attr-listgridsavereq
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | rows | [Array of Number](#type-array-of-number) | true | — | optionally specify which rows to save |
-| saveCallback | [Callback](../reference.md#type-callback) | true | — | If specified this callback will be fired on a successful save of the specified rows. Note that if there are no pending edits to be saved this callback will not fire - you can check for this condition using [ListGrid.hasChanges](#method-listgridhaschanges) or [ListGrid.rowHasChanges](#method-listgridrowhaschanges). Use [ListGrid.editFailed](#method-listgrideditfailed) to find out about failures encountered during saving (on a per-row basis). |
+| saveCallback | [Callback](../reference.md#type-callback) | true | — | If specified this callback will be fired on a successful save of the specified rows. Note that if there are no pending edits to be saved this callback will not fire - you can check for this condition using [ListGrid.hasChanges](#method-listgridhaschanges) or [ListGrid.rowHasChanges](ListGrid_3.md#method-listgridrowhaschanges). Use [ListGrid.editFailed](#method-listgrideditfailed) to find out about failures encountered during saving (on a per-row basis). |
 
 ### Returns
 
@@ -1131,7 +1131,7 @@ Note that if this grid is bound to a [dataSource](ListGrid_1.md#attr-listgriddat
 
 The `ignorePendingValues` parameter may be used by developers who want to ignore this case and simply compare edit values against the record in the local data set.
 
-This grid contributes ``<gridId>`.hasChanges` to the [ruleContext](Canvas.md#attr-canvasrulescope), updated whenever edit state changes. To check only the row currently being edited, use [ListGrid.rowHasChanges](#method-listgridrowhaschanges).
+This grid contributes ``<gridId>`.hasChanges` to the [ruleContext](Canvas.md#attr-canvasrulescope), updated whenever edit state changes. To check only the row currently being edited, use [ListGrid.rowHasChanges](ListGrid_3.md#method-listgridrowhaschanges).
 
 ### Parameters
 
@@ -1529,6 +1529,8 @@ By default, this method assumes a [TextMatchStyle](../reference_2.md#type-textma
 **Changing the request properties**
 
 Changes to [TextMatchStyle](../reference_2.md#type-textmatchstyle) made via `requestProperties` will be honored in combination with the fetch criteria, possibly invalidating cache and triggering a server request if needed, as documented for [willFetchData()](DataBoundComponent.md#method-databoundcomponentwillfetchdata). In contrast, changes to [operationId](DSRequest.md#attr-dsrequestoperationid) in the request properties will cause the [ResultSet](ResultSet.md#class-resultset) or [ResultTree](ResultTree.md#class-resulttree) to be rebuilt, always refetching from the server. However, changes to other request properties after the initial fetch won't be detected, and no fetch will get triggered based on that new request context.
+
+When the user re-filters this component (for example from the [filter editor](ListGrid_1.md#attr-listgridshowfiltereditor)), the request properties passed here are retained, as described under [getRefilterRequestProperties()](DataBoundComponent.md#method-databoundcomponentgetrefilterrequestproperties).
 
 To pick up such changes, we recommend that you call [setData(\[\])](#method-listgridsetdata) (passing an empty array to ensure the data model is cleared), and then call this method to fetch again. If you try to do it by calling [invalidateCache()](#method-listgridinvalidatecache), you may see duplicate fetches if you haven't already updated the data context by calling this method with the new request properties, and fail to do so before the component is [redrawn](Canvas.md#method-canvasredraw).
 
@@ -2968,6 +2970,8 @@ Retrieves data that matches the provided criteria and displays the matching data
 This method behaves exactly like [ListGrid.fetchData](#method-listgridfetchdata) except that [DSRequest.textMatchStyle](DSRequest.md#attr-dsrequesttextmatchstyle) is automatically set to "substring" so that String-valued fields are matched by case-insensitive substring comparison.
 
 For a discussion of the various filtering and criteria-management APIs and when to use them, see the [Grid Filtering overview](../kb_topics/gridFiltering.md#kb-topic-grid-filtering-overview).
+
+Note that when the user subsequently re-filters this component (for example from the [filter editor](ListGrid_1.md#attr-listgridshowfiltereditor)), the request properties passed here are retained, as described under [getRefilterRequestProperties()](DataBoundComponent.md#method-databoundcomponentgetrefilterrequestproperties).
 
 ### Parameters
 
@@ -9140,35 +9144,6 @@ Records that have been marked for removal using this method may be 'unmarked' vi
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | rowNum | [number](#type-number) | false | — | row number for the record to mark |
-
-### Groups
-
-- editing
-
----
-## Method: ListGrid.rowHasChanges
-
-### Description
-If this listGrid can be edited, this method will return true if the row passed in has been edited, but the edits have not yet been saved to the ListGrid's data object.
-
-Note this method will not return true if a record has been marked as [removed](#method-listgridmarkrecordremoved), but has no other changes. Developers can use [ListGrid.recordMarkedAsRemoved](ListGrid_3.md#method-listgridrecordmarkedasremoved) to check for this case.
-
-Note that if this grid is bound to a [dataSource](ListGrid_1.md#attr-listgriddatasource), and an asynchronous save has been submitted, this method will compare the local edit values against the submitted values by default, returning false (no changes), if they match. This is useful for detecting whether the user is actively editing values and hasn't yet committed them.
-
-The `ignorePendingValues` parameter may be used by developers who want to ignore this case and simply compare edit values against the record in the local data set.
-
-When a row is being actively edited, this grid contributes ``<gridId>`.rowHasChanges` to the [ruleContext](Canvas.md#attr-canvasrulescope) reflecting the result of this method for the current edit row (null when no row is being edited). To check for unsaved edits across all rows, use [ListGrid.hasChanges](#method-listgridhaschanges).
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| rowNum | [int](../reference.md#type-int) | false | — | index of row to check for changes |
-| ignorePendingValues | [Boolean](#type-boolean) | true | — | If true, this method will compare the current edit values against the underlying record in the dataset, not taking pending edit values into account |
-
-### Returns
-
-`[Boolean](#type-boolean)` — true if the row has changes.
 
 ### Groups
 

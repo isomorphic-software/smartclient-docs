@@ -348,7 +348,7 @@ Message to display when this DataBoundComponent attempts to load data that is no
 ### Description
 If this attribute is set to false, any attributes in the component's values object that do not map to a [field](../reference_2.md#object-datasourcefield) or [formItem](FormItem.md#class-formitem) will not be tracked when checking for changes. You should only set this flag to false if you know that your code does not store additional, non-field values in the component's data, or if you do store such values, but you don't care that they are not checked for changes. This flag is primarily provided to avoid performance issues in cases where developers are storing large numbers of extra attributes in component data; generally speaking, you should only consider setting it to false if you have a use case like this.
 
-Note, even with this flag set to false, these extra values will still be managed and stored by SmartClient; they just will not be checked when the component's values are inspected to see if they have changed. This may lead to methods like [ListGrid.rowHasChanges](ListGrid_2.md#method-listgridrowhaschanges) returning false when you are expecting it to return true. In this case, either switch this flag back to true (or just do not set it false), or provide a field definition for the affected attribute(s).
+Note, even with this flag set to false, these extra values will still be managed and stored by SmartClient; they just will not be checked when the component's values are inspected to see if they have changed. This may lead to methods like [ListGrid.rowHasChanges](ListGrid_3.md#method-listgridrowhaschanges) returning false when you are expecting it to return true. In this case, either switch this flag back to true (or just do not set it false), or provide a field definition for the affected attribute(s).
 
 **Flags**: IRWA
 
@@ -2724,6 +2724,24 @@ There is no default implementation of this method; you are intended to override 
 ### See Also
 
 - [DataBoundComponent.dropComplete](#method-databoundcomponentdropcomplete)
+
+---
+## Method: DataBoundComponent.getRefilterRequestProperties
+
+### Description
+Returns a copy of the [DSRequest](../reference_2.md#object-dsrequest) properties the last [fetchData()](ListGrid_2.md#method-listgridfetchdata) or [filterData()](ListGrid_2.md#method-listgridfilterdata) call on this component was passed, with per-call and automatically recomputed properties removed: [textMatchStyle](DSRequest.md#attr-dsrequesttextmatchstyle), [sortBy](DSRequest.md#attr-dsrequestsortby), paging row ranges, prompt settings and internal flags. Returns null if no fetch has happened yet.
+
+Built-in user interactions that change only the criteria — typing in the [filter editor](ListGrid_1.md#attr-listgridshowfiltereditor), the [filter window](ListGrid_1.md#attr-listgridfilterwindowcriteria), an attached [searchForm](ListGrid_1.md#attr-listgridsearchform), applying a [saved search](ListGrid_1.md#attr-listgridcansavesearches) and [Dynamic Criteria](../kb_topics/dynamicCriteria.md#kb-topic-dynamiccriteria) re-resolution — re-fetch with these properties rather than with a plain request, so properties the fetch was given, such as [groupBy](DSRequest.md#attr-dsrequestgroupby) and [summaryFunctions](DSRequest.md#attr-dsrequestsummaryfunctions) (see the [Server Summaries overview](../kb_topics/serverSummaries.md#kb-topic-server-summaries)), an explicit [operationId](DSRequest.md#attr-dsrequestoperationid) or [outputs](DSRequest.md#attr-dsrequestoutputs), survive user re-filtering. A programmatic `fetchData()` / `filterData()` call replaces the remembered properties, so each fetch issued by application code starts from exactly the request properties it passes.
+
+Override this method to customize which request properties user re-filtering keeps.
+
+### Returns
+
+`[DSRequest Properties](#type-dsrequest-properties)` — request properties the component's data was last fetched with, minus per-call properties; null if no fetch has happened yet
+
+### Groups
+
+- dataBoundComponentMethods
 
 ---
 ## Method: DataBoundComponent.getRecordIndex

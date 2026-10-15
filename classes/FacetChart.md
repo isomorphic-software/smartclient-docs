@@ -1153,7 +1153,7 @@ Note that this feature is incompatible with the following properties:
 *   [canDragScroll](DrawPane.md#attr-drawpanecandragscroll)
 *   [FacetChart.canZoom](#attr-facetchartcanzoom)
 
-If [FacetChart.rotateLabels](#attr-facetchartrotatelabels) is set to "auto" it will be treated as "never" if `autoScrollData` has been set. If any of the other properties have non-default values, a warning will be logged and `autoScrollData` will be disabled. The factors used to drive expansion can be limited by setting [AutoScrollDataApproach](../reference_2.md#type-autoscrolldataapproach). You can also enforce a minimum size for the chart-content, and scrollbars will be introduced if this widget shrinks below that size. See [autoScrollContent](#attr-facetchartautoscrollcontent), along with [minContentWidth](#attr-facetchartmincontentwidth) and [minContentHeight](#attr-facetchartmincontentheight).
+If [FacetChart.rotateLabels](#attr-facetchartrotatelabels) is set to "auto" it will be treated as "never" if `autoScrollData` has been set. If any of the other properties have non-default values, a warning will be logged and `autoScrollData` will be disabled. The factors used to drive expansion can be limited by setting [AutoScrollDataApproach](../reference.md#type-autoscrolldataapproach). You can also enforce a minimum size for the chart-content, and scrollbars will be introduced if this widget shrinks below that size. See [autoScrollContent](#attr-facetchartautoscrollcontent), along with [minContentWidth](#attr-facetchartmincontentwidth) and [minContentHeight](#attr-facetchartmincontentheight).
 
 ### See Also
 
@@ -4753,13 +4753,13 @@ This is only allowed to be called when [FacetChart.chartDrawn](#method-facetchar
 ## Method: FacetChart.setAutoScrollDataApproach
 
 ### Description
-Sets [AutoScrollDataApproach](../reference_2.md#type-autoscrolldataapproach) and updates the chart.
+Sets [AutoScrollDataApproach](../reference.md#type-autoscrolldataapproach) and updates the chart.
 
 ### Parameters
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| autoScrollDataApproach | [AutoScrollDataApproach](../reference_2.md#type-autoscrolldataapproach) | false | — | what should drive horizontal expansion of the chart? |
+| autoScrollDataApproach | [AutoScrollDataApproach](../reference.md#type-autoscrolldataapproach) | false | — | what should drive horizontal expansion of the chart? |
 
 ---
 ## Method: FacetChart.setFreezeValueAxis
@@ -5318,6 +5318,8 @@ By default, this method assumes a [TextMatchStyle](../reference_2.md#type-textma
 **Changing the request properties**
 
 Changes to [TextMatchStyle](../reference_2.md#type-textmatchstyle) made via `requestProperties` will be honored in combination with the fetch criteria, possibly invalidating cache and triggering a server request if needed, as documented for [willFetchData()](DataBoundComponent.md#method-databoundcomponentwillfetchdata). In contrast, changes to [operationId](DSRequest.md#attr-dsrequestoperationid) in the request properties will cause the [ResultSet](ResultSet.md#class-resultset) or [ResultTree](ResultTree.md#class-resulttree) to be rebuilt, always refetching from the server. However, changes to other request properties after the initial fetch won't be detected, and no fetch will get triggered based on that new request context.
+
+When the user re-filters this component (for example from the [filter editor](ListGrid_1.md#attr-listgridshowfiltereditor)), the request properties passed here are retained, as described under [getRefilterRequestProperties()](DataBoundComponent.md#method-databoundcomponentgetrefilterrequestproperties).
 
 To pick up such changes, we recommend that you call [setData(\[\])](#method-facetchartsetdata) (passing an empty array to ensure the data model is cleared), and then call this method to fetch again. If you try to do it by calling [invalidateCache()](ListGrid_2.md#method-listgridinvalidatecache), you may see duplicate fetches if you haven't already updated the data context by calling this method with the new request properties, and fail to do so before the component is [redrawn](Canvas.md#method-canvasredraw).
 

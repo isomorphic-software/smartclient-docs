@@ -144,7 +144,7 @@ However you _can_ create an editor with a [FormItem icon](../classes/FormItem.md
 - [ListGrid.discardAllEdits](../classes/ListGrid_2.md#method-listgriddiscardalledits)
 - [ListGrid.discardEdits](../classes/ListGrid_2.md#method-listgriddiscardedits)
 - [ListGrid.saveEdits](../classes/ListGrid_2.md#method-listgridsaveedits)
-- [ListGrid.rowHasChanges](../classes/ListGrid_2.md#method-listgridrowhaschanges)
+- [ListGrid.rowHasChanges](../classes/ListGrid_3.md#method-listgridrowhaschanges)
 - [ListGrid.hasChanges](../classes/ListGrid_2.md#method-listgridhaschanges)
 - [ListGrid.cellHasChanges](../classes/ListGrid_2.md#method-listgridcellhaschanges)
 - [ListGrid.saveAllEdits](../classes/ListGrid_2.md#method-listgridsavealledits)

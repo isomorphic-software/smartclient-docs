@@ -762,6 +762,8 @@ This method behaves exactly like [ListGrid.fetchData](ListGrid_2.md#method-listg
 
 For a discussion of the various filtering and criteria-management APIs and when to use them, see the [Grid Filtering overview](../kb_topics/gridFiltering.md#kb-topic-grid-filtering-overview).
 
+Note that when the user subsequently re-filters this component (for example from the [filter editor](ListGrid_1.md#attr-listgridshowfiltereditor)), the request properties passed here are retained, as described under [getRefilterRequestProperties()](DataBoundComponent.md#method-databoundcomponentgetrefilterrequestproperties).
+
 ### Parameters
 
 | Name | Type | Optional | Default | Description |

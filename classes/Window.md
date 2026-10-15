@@ -1231,7 +1231,7 @@ Reveals the child Canvas passed in by showing it if it is currently hidden. Note
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| child | [GlobalId](../reference_2.md#type-globalid)|[Canvas](#type-canvas) | false | — | the child Canvas to reveal, or its global ID |
+| child | [GlobalId](../reference.md#type-globalid)|[Canvas](#type-canvas) | false | — | the child Canvas to reveal, or its global ID |
 
 ---
 ## Method: Window.shouldDismissOnEscape

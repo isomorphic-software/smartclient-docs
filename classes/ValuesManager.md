@@ -488,7 +488,7 @@ Specifies a dataSource for this valuesManager. This dataSource will then be used
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| dataSource | [DataSource](#type-datasource)|[GlobalId](../reference_2.md#type-globalid) | false | — | Datasource object or identifier to bind to. |
+| dataSource | [DataSource](#type-datasource)|[GlobalId](../reference.md#type-globalid) | false | — | Datasource object or identifier to bind to. |
 
 **Flags**: A
 

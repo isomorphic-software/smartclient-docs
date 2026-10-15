@@ -2294,7 +2294,7 @@ When binding to a new DataSource, if the component has any existing "fields" or 
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| dataSource | [GlobalId](../reference_2.md#type-globalid)|[DataSource](#type-datasource) | false | — | DataSource to bind to |
+| dataSource | [GlobalId](../reference.md#type-globalid)|[DataSource](#type-datasource) | false | — | DataSource to bind to |
 | fields | [Array of DataSourceField](#type-array-of-datasourcefield) | true | — | optional array of fields to use |
 
 ---

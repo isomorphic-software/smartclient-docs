@@ -242,6 +242,29 @@ DSRequest-level override for the DataSource-level [arrayCriteriaForceExact](Data
 **Flags**: IR
 
 ---
+## Attr: DSRequest.beforeCriteria
+
+### Description
+For requests that use [server summaries](../kb_topics/serverSummaries.md#kb-topic-server-summaries), criteria applied to the records _before_ grouping and summarization, whatever fields they test. Conceptually this is the SQL `WHERE` clause, as [DSRequest.afterCriteria](#attr-dsrequestaftercriteria) is the `HAVING` clause.
+
+Ordinary criteria ([DSRequest.data](#attr-dsrequestdata)) are split per field instead: a criterion on a summarized field applies after aggregation, any other criterion before it (see the "Criteria" section of the [Server Summaries Overview](../kb_topics/serverSummaries.md#kb-topic-server-summaries)), unless [DSRequest.filterBeforeGrouping](#attr-dsrequestfilterbeforegrouping) is set. Use `beforeCriteria` when a criterion must filter records even though it tests a summarized field - for example "order lines over $500" on a request summing line amounts by category, which should total only those lines rather than drop categories whose total is under $500.
+
+On a request that does not aggregate, `beforeCriteria` is simply more criteria: it is ANDed with `criteria`, so the same criteria can be sent to aggregating and non-aggregating components alike.
+
+Where `beforeCriteria` are supported, and what server code that aggregates records itself must do with them, is described in the "Explicit Before- and After-Aggregation Criteria" section of the [Server Summaries\\n Overview](../kb_topics/serverSummaries.md#kb-topic-server-summaries).
+
+### Groups
+
+- serverSummaries
+
+### See Also
+
+- [DSRequest.afterCriteria](#attr-dsrequestaftercriteria)
+- [DSRequest.filterBeforeGrouping](#attr-dsrequestfilterbeforegrouping)
+
+**Flags**: IR
+
+---
 ## Attr: DSRequest.requestId
 
 ### Description
@@ -948,18 +971,20 @@ Note that if the request encounters an error (such as 500 server error), by defa
 ### Description
 For requests that use [server summaries](../kb_topics/serverSummaries.md#kb-topic-server-summaries), this property defines _post-aggregation criteria_ — criteria that are applied _after_ grouping and summarization have occurred. Conceptually, it works like a SQL `HAVING` clause and allows you to restrict which grouped or summarized results are returned, based on the values of summary fields rather than raw data rows.
 
-Supported by the built-in SQL, Hibernate, and JPA DataSources and by [clientOnly](DataSource_1.md#attr-datasourceclientonly) DataSources.
+`afterCriteria` may only test fields the aggregated rows hold: fields in [DSRequest.groupBy](#attr-dsrequestgroupby) and fields with a [summary\\n function](#attr-dsrequestsummaryfunctions). A request whose `afterCriteria` tests any other field fails with an error naming the field. On a request that does not aggregate there are no groups to test, so `afterCriteria` is ignored (logged at INFO level). To filter the records before aggregation, use [DSRequest.beforeCriteria](#attr-dsrequestbeforecriteria).
+
+Where `afterCriteria` are supported, and what server code that aggregates records itself must do with them, is described in the "Explicit Before- and After-Aggregation Criteria" section of the [Server Summaries\\n Overview](../kb_topics/serverSummaries.md#kb-topic-server-summaries).
 
 **Example:**  
   
-Suppose the `avg` function is being applied to the `unitPrice` field on `supplyItem` records. Specifying `afterCriteria` with the condition `unitPrice < 5` will eliminate only those groups whose _average_ price is less than 5 — that is, it filters _after_ the aggregation step.
+Suppose the `avg` function is being applied to the `unitPrice` field on `supplyItem` records. Specifying `afterCriteria` with the condition `unitPrice < 5` keeps only those groups whose _average_ price is less than 5 — that is, it filters _after_ the aggregation step.
 
 In SQL terms:
 
 ```
  SELECT category, AVG(unitPrice)
  FROM supplyItem
- WHERE ...                            -- regular criteria
+ WHERE ...                            -- regular criteria and beforeCriteria
  GROUP BY category
  HAVING AVG(unitPrice) < 5            -- afterCriteria
  
@@ -972,6 +997,7 @@ For more details on aggregation and post-aggregation filtering, see the [Server 
 
 ### See Also
 
+- [DSRequest.beforeCriteria](#attr-dsrequestbeforecriteria)
 - [OperationBinding.afterWhereClause](#attr-operationbindingafterwhereclause)
 
 **Flags**: IR

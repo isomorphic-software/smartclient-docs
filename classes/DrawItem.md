@@ -1000,11 +1000,11 @@ Resize the shape by the specified deltas.
 ## Method: DrawItem.getHoverHTML
 
 ### Description
-If [showHover](#attr-drawitemshowhover) is true, when the user holds the mouse over this DrawItem for long enough to trigger a hover event, a hover canvas is shown by default. This method returns the contents of that hover canvas. Default implementation returns [prompt](#attr-drawitemprompt) - override for custom hover HTML. Note that returning `null` or an empty string will suppress the hover canvas altogether.
+If [showHover](#attr-drawitemshowhover) is true, when the user holds the mouse over this DrawItem for long enough to trigger a hover event, a hover canvas is shown by default. This method returns the contents of that hover canvas. Default implementation returns [prompt](#attr-drawitemprompt) - override for custom hover HTML.
 
 ### Returns
 
-`[HTMLString](../reference.md#type-htmlstring)` — the HTML to show in the hover
+`[HTMLString](../reference.md#type-htmlstring)` — the HTML to show in the hover. Return `null` or an empty string (`""`) to suppress the hover.
 
 ### Groups
 

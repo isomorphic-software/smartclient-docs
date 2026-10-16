@@ -1114,7 +1114,7 @@ StringMethod to dynamically assemble an HTML string to show in a hover window ov
 
 ### Returns
 
-`[HTMLString](../reference.md#type-htmlstring)` — the html to be shown inside the hover for this cell
+`[HTMLString](../reference.md#type-htmlstring)` — the html to be shown inside the hover for this cell. Return `null` or an empty string (`""`) to suppress the hover.
 
 ### Groups
 
@@ -1222,7 +1222,7 @@ Called when the mouse pointer leaves a cell
 ## Method: GridRenderer.cellValueHoverHTML
 
 ### Description
-Returns the HTML that is displayed by the default cellValueHover handler. Return null or an empty string to cancel the hover.
+Returns the HTML that is displayed by the default cellValueHover handler.
 
 ### Parameters
 
@@ -1235,7 +1235,7 @@ Returns the HTML that is displayed by the default cellValueHover handler. Return
 
 ### Returns
 
-`[HTMLString](../reference.md#type-htmlstring)` — HTML to be displayed in the hover. If null or an empty string, then the hover is canceled.
+`[HTMLString](../reference.md#type-htmlstring)` — HTML to be displayed in the hover. Return `null` or an empty string (`""`) to suppress the hover.
 
 ### Groups
 

@@ -3283,7 +3283,7 @@ StringMethod override point for returning HTML to be shown in hovers over cells 
 
 Called only when [canHover](ListGrid_1.md#attr-listgridcanhover) and [showHover](ListGrid_1.md#attr-listgridshowhover) are both true.
 
-The value of "this" within the method will by the [field definition](../reference_2.md#object-listgridfield).
+The value of `this` within the method will be the [field definition](../reference_2.md#object-listgridfield).
 
 Note that the field described by the column might provide a custom [cellPrompt](#attr-listgridfieldcellprompt) which won't be applied unless you return it from your implementation.
 
@@ -3299,7 +3299,7 @@ Note that the field described by the column might provide a custom [cellPrompt](
 
 ### Returns
 
-`[HTMLString](../reference.md#type-htmlstring)` — HTML to show in the hover
+`[HTMLString](../reference.md#type-htmlstring)` — HTML to show in the hover. Return `null` or an empty string (`""`) to suppress the hover.
 
 ### Groups
 

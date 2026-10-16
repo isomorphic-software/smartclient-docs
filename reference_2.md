@@ -891,7 +891,7 @@ or
  
 ```
 
-Note that if the request encounters a low-level error (such as 500 server error), by default the callback will **not** be fired, instead, [DataSource.handleError](classes/DataSource_1.md#method-datasourcehandleerror) is called to invoke the default system-wide error handling. Set [willHandleError](classes/RPCRequest.md#attr-rpcrequestwillhandleerror):true to have your callback invoked regardless of whether there are errors, however, make sure your callback properly handles malformed responses when [DSResponse.status](classes/DSResponse.md#attr-dsresponsestatus) is non-zero.
+Note that if the request encounters a low-level error (such as 500 server error), by default the callback will **not** be fired, instead, [DataSource.handleError](classes/DataSource_2.md#method-datasourcehandleerror) is called to invoke the default system-wide error handling. Set [willHandleError](classes/RPCRequest.md#attr-rpcrequestwillhandleerror):true to have your callback invoked regardless of whether there are errors, however, make sure your callback properly handles malformed responses when [DSResponse.status](classes/DSResponse.md#attr-dsresponsestatus) is non-zero.
 
 ---
 ## Type: DSDataFormat

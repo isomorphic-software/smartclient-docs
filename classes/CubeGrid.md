@@ -2528,6 +2528,10 @@ Get the HTML for the facetValue button hover. Default implementation returns nul
 |------|------|----------|---------|-------------|
 | facetValues | [FacetValueMap](#type-facetvaluemap) | false | — | facetValues object for the button |
 
+### Returns
+
+`[HTMLString](../reference.md#type-htmlstring)` — HTML to be displayed in the hover. Return `null` or an empty string (`""`) to suppress the hover.
+
 ### Groups
 
 - hoverTips
@@ -3051,6 +3055,10 @@ _methodType_ callback
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | facetId | [String](#type-string) | false | — | ID for the facet |
+
+### Returns
+
+`[HTMLString](../reference.md#type-htmlstring)` — HTML to be displayed in the hover. Return `null` or an empty string (`""`) to suppress the hover.
 
 ### Groups
 

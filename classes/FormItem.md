@@ -3739,7 +3739,7 @@ The process of deriving an underlying data display value from a display value in
 ## Method: FormItem.titleHoverHTML
 
 ### Description
-If defined, this method should return the HTML to display in a hover canvas when the user holds the mousepointer over this item's title. Return null to suppress the hover canvas altogether.
+If defined, this method should return the HTML to display in a hover canvas when the user holds the mousepointer over this item's title.
 
 If not defined, [DynamicForm.titleHoverHTML](DynamicForm.md#method-dynamicformtitlehoverhtml) will be evaluated to determine hover content instead.
 
@@ -3754,7 +3754,7 @@ If [FormItem.canHover](#attr-formitemcanhover) is set to false, this method is n
 
 ### Returns
 
-`[HTMLString](../reference.md#type-htmlstring)` — HTML to be displayed in the hover
+`[HTMLString](../reference.md#type-htmlstring)` — HTML to be displayed in the hover. Return `null` or an empty string (`""`) to suppress the hover.
 
 ### Groups
 
@@ -4481,7 +4481,7 @@ The default appearance for canEdit:false items (`readOnlyDisplay:"readOnly"`) di
 ## Method: FormItem.valueHoverHTML
 
 ### Description
-If defined, this method should return the HTML to display in a hover canvas when the user holds the mousepointer over this item's value. Return null to suppress the hover canvas altogether.
+If defined, this method should return the HTML to display in a hover canvas when the user holds the mousepointer over this item's value.
 
 If not defined, [DynamicForm.valueHoverHTML](DynamicForm.md#method-dynamicformvaluehoverhtml) will be evaluated to determine hover content instead.
 
@@ -4500,7 +4500,7 @@ If [FormItem.canHover](#attr-formitemcanhover) is set to false, this method is n
 
 ### Returns
 
-`[HTMLString](../reference.md#type-htmlstring)` — HTML to be displayed in the hover
+`[HTMLString](../reference.md#type-htmlstring)` — HTML to be displayed in the hover. Return `null` or an empty string (`""`) to suppress the hover.
 
 ### Groups
 
@@ -4945,7 +4945,7 @@ Returns the title HTML for this item.
 ## Method: FormItem.itemHoverHTML
 
 ### Description
-If defined, this method should return the HTML to display in a hover canvas when the user holds the mousepointer over this item. Return null to suppress the hover canvas altogether.
+If defined, this method should return the HTML to display in a hover canvas when the user holds the mousepointer over this item.
 
 If not defined, `dynamicForm.itemHoverHTML()` will be evaluated to determine hover content instead.
 
@@ -4962,7 +4962,7 @@ If [FormItem.canHover](#attr-formitemcanhover) is set to false, this method is n
 
 ### Returns
 
-`[HTMLString](../reference.md#type-htmlstring)` — HTML to be displayed in the hover
+`[HTMLString](../reference.md#type-htmlstring)` — HTML to be displayed in the hover. Return `null` or an empty string (`""`) to suppress the hover.
 
 ### Groups
 

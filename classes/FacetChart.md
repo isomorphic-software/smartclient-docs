@@ -4048,7 +4048,7 @@ Called when the mouse hovers over a data label, that is, a text label showing va
 
 ### Returns
 
-`[HTMLString](../reference.md#type-htmlstring)` — hover text to be shown. Return null to avoid a hover being shown
+`[HTMLString](../reference.md#type-htmlstring)` — hover text to be shown. Return `null` or an empty string (`""`) to suppress the hover.
 
 ---
 ## Method: FacetChart.setOtherAxisPixelsPerGradation
@@ -5216,7 +5216,7 @@ When [FacetChart.showDataPoints](#attr-facetchartshowdatapoints) is true and the
 
 ### Returns
 
-`[HTMLString](../reference.md#type-htmlstring)` — String of HTML to show in a hover
+`[HTMLString](../reference.md#type-htmlstring)` — String of HTML to show in a hover. Return `null` or an empty string (`""`) to suppress the hover.
 
 ---
 ## Method: FacetChart.getLegendHoverHTML
@@ -5235,7 +5235,7 @@ The [FacetValue](../reference.md#object-facetvalue) that the user is hovering ov
 
 ### Returns
 
-`[HTMLString](../reference.md#type-htmlstring)` — hover text to be shown. Return null to avoid a hover being shown
+`[HTMLString](../reference.md#type-htmlstring)` — hover text to be shown. Return `null` or an empty string (`""`) to suppress the hover.
 
 ### Groups
 

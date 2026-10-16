@@ -117,16 +117,21 @@ To apply all criteria **before** summarization instead, set [OperationBinding.fi
 
 **summaryRow:** [summaryRow](../classes/ListGrid_1.md#attr-listgridshowgridsummary) fetches automatically set `filterBeforeGrouping:true`, because the summaryRow uses the main grid's criteria and must filter rows before computing aggregates.
 
-#### Explicit Post-Aggregation Criteria
+The split cannot keep the meaning of an "or" (or "not") whose branches test both a summarized field and an ordinary field, because the two parts are ANDed; such criteria are applied as split and a warning is logged. State the stage explicitly instead, as below.
 
-In addition to the automatic criteria splitting described above, [DSRequest.afterCriteria](../classes/DSRequest.md#attr-dsrequestaftercriteria) can be used to explicitly specify criteria that should always be applied _after_ aggregation, regardless of the `filterBeforeGrouping` setting. This is conceptually equivalent to a SQL `HAVING` clause and is supported by the built-in SQL, Hibernate, and JPA connectors and by clientOnly DataSources.
+#### Explicit Before- and After-Aggregation Criteria
 
-When both regular criteria and `afterCriteria` are supplied:
+In addition to the automatic criteria splitting described above, [DSRequest.beforeCriteria](../classes/DSRequest.md#attr-dsrequestbeforecriteria) and [DSRequest.afterCriteria](../classes/DSRequest.md#attr-dsrequestaftercriteria) state the stage explicitly: `beforeCriteria` always filter the records before aggregation (SQL `WHERE`), `afterCriteria` always filter the aggregated rows (SQL `HAVING`), regardless of the `filterBeforeGrouping` setting. `afterCriteria` may only test fields that are grouped or summarized.
+
+When regular criteria, `beforeCriteria` and `afterCriteria` are supplied together:
 
 *   Regular criteria are split or applied according to the rules above (or placed entirely before aggregation if `filterBeforeGrouping` is set).
+*   `beforeCriteria` are always applied before aggregation.
 *   `afterCriteria` are always applied after aggregation.
 
-For SQL DataSources, the [OperationBinding.afterWhereClause](#attr-operationbindingafterwhereclause) clause gives further control by allowing a bespoke SQL expression to replace or extend the generated post-aggregation clause via [SQL Templating](#kb-topic-customquerying).
+Both are supported by the built-in SQL, Hibernate and JPA connectors, by [clientOnly](../classes/DataSource_1.md#attr-datasourceclientonly) DataSources, and by the server's built-in aggregation of the records a custom server DataSource or DMI returns. A custom DataSource that aggregates in its own code (see [DataSource.suppressManualAggregation](../classes/DataSource_1.md#attr-datasourcesuppressmanualaggregation)) must honor them itself: apply `beforeCriteria` (`DSRequest.getBeforeCriteria()`) to the records before grouping and `afterCriteria` (`DSRequest.getAfterCriteria()`) to the groups after, and declare that it does with [DataSource.supportsBeforeAndAfterCriteria](../classes/DataSource_1.md#attr-datasourcesupportsbeforeandaftercriteria); until it does, the server logs a warning when it receives either. On a request that does not aggregate, `beforeCriteria` are combined with the regular criteria as the request executes, so a DataSource's own code sees them as ordinary criteria.
+
+A DataSource whose requests are handled by something other than the SmartClient Server - a [RestDataSource](../classes/RestDataSource.md#class-restdatasource), or a [dataProtocol](../classes/DataSource_1.md#attr-datasourcedataprotocol) "clientCustom" integration - follows the same contract through [DataSource.supportsBeforeAndAfterCriteria](../classes/DataSource_1.md#attr-datasourcesupportsbeforeandaftercriteria): unless its backend is declared to apply both sets, `beforeCriteria` on a request that does not aggregate are combined with the criteria before the request is sent, and an aggregating request logs a warning that its backend must apply them. A RestDataSource talking to the SmartClient Server's RESTHandler servlet should declare `supportsBeforeAndAfterCriteria:true`. For SQL DataSources, the [OperationBinding.afterWhereClause](#attr-operationbindingafterwhereclause) clause gives further control by allowing a bespoke SQL expression to replace or extend the generated post-aggregation clause via [SQL Templating](#kb-topic-customquerying).
 
 #### HB and JPA DataSources
 
@@ -175,6 +180,7 @@ Aggregated data fetches cannot include additional fields that are not aggregated
 - [SummaryFunction](../reference_2.md#type-summaryfunction)
 - [DSRequest.summaryFunctions](../classes/DSRequest.md#attr-dsrequestsummaryfunctions)
 - [DSRequest.groupBy](../classes/DSRequest.md#attr-dsrequestgroupby)
+- [DSRequest.beforeCriteria](../classes/DSRequest.md#attr-dsrequestbeforecriteria)
 - [DSRequest.afterCriteria](../classes/DSRequest.md#attr-dsrequestaftercriteria)
 - [OperationBinding.summaryFunctions](../classes/OperationBinding.md#attr-operationbindingsummaryfunctions)
 - [OperationBinding.groupBy](../classes/OperationBinding.md#attr-operationbindinggroupby)
@@ -187,6 +193,7 @@ Aggregated data fetches cannot include additional fields that are not aggregated
 - [DataSourceField.allowClientRequestedSummaries](../classes/DataSourceField.md#attr-datasourcefieldallowclientrequestedsummaries)
 - [AdvancedCriterionSubquery.summaryFunctions](../classes/AdvancedCriterionSubquery.md#attr-advancedcriterionsubquerysummaryfunctions)
 - [AdvancedCriterionSubquery.groupBy](../classes/AdvancedCriterionSubquery.md#attr-advancedcriterionsubquerygroupby)
+- [DataSource.supportsBeforeAndAfterCriteria](../classes/DataSource_1.md#attr-datasourcesupportsbeforeandaftercriteria)
 - [DSRequestTask.groupBy](../classes/DSRequestTask.md#attr-dsrequesttaskgroupby)
 - [DSRequestTask.summaryFunctions](../classes/DSRequestTask.md#attr-dsrequesttasksummaryfunctions)
 - [GridFetchDataTask.groupBy](../classes/GridFetchDataTask.md#attr-gridfetchdatataskgroupby)

@@ -244,7 +244,7 @@ For a SectionHeader embedded in a SectionStack, this method will return a pointe
 ## Method: ImgSectionHeader.titleHoverHTML
 
 ### Description
-Returns the HTML that is displayed by the default [titleHover](#method-imgsectionheadertitlehover) handler. Return null or an empty string to cancel the hover.
+Returns the HTML that is displayed by the default [titleHover](#method-imgsectionheadertitlehover) handler.
 
 ### Parameters
 
@@ -254,7 +254,7 @@ Returns the HTML that is displayed by the default [titleHover](#method-imgsectio
 
 ### Returns
 
-`[HTMLString](../reference.md#type-htmlstring)` — HTML to be displayed in the hover. If null or an empty string, then the hover is canceled.
+`[HTMLString](../reference.md#type-htmlstring)` — HTML to be displayed in the hover. Return `null` or an empty string (`""`) to suppress the hover.
 
 ---
 ## Method: ImgSectionHeader.titleClipped

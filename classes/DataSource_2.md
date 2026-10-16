@@ -4,6 +4,57 @@
 
 ---
 
+## Method: DataSource.isCalculated
+
+### Description
+Does the specified field have its value dynamically calculated via [DataSourceField.formula](DataSourceField.md#attr-datasourcefieldformula) or other similar attributes?
+
+This method will return true for fields with the following attributes:
+
+*   [DataSourceField.formula](DataSourceField.md#attr-datasourcefieldformula)
+*   [DataSourceField.template](DataSourceField.md#attr-datasourcefieldtemplate)
+*   [DataSourceField.customSelectExpression](#attr-datasourcefieldcustomselectexpression)
+
+Or if the field has explicitly been marked as [calculated:true](DataSourceField.md#attr-datasourcefieldcalculated).
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| field | [DataSourceField](#type-datasourcefield)|[String](#type-string) | false | — | Field or fieldName |
+
+### Returns
+
+`[boolean](../reference.md#type-boolean)` — true if this is a field with dynamically calculated values
+
+---
+## Method: DataSource.handleError
+
+### Description
+If you define this method on a DataSource, it will be called whenever the server returns a DSResponse with a status other than [RPCResponse.STATUS_SUCCESS](RPCResponse.md#classattr-rpcresponsestatus_success). You can use this hook to do DataSource-specific error handling. Unless you return `false` from this method, [RPCManager.handleError](RPCManager.md#classmethod-rpcmanagerhandleerror) will be called by SmartClient right after this method completes.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| response | [DSResponse](#type-dsresponse) | false | — | the DSResponse or DSResponse object returned from the server |
+| request | [DSRequest](#type-dsrequest) | false | — | the DSRequest or DSRequest that was sent to the server |
+
+### Returns
+
+`[Boolean](#type-boolean)` — false to suppress [RPCManager.handleError](RPCManager.md#classmethod-rpcmanagerhandleerror)
+
+### Groups
+
+- errorHandling
+
+### See Also
+
+- [RPCManager.handleError](RPCManager.md#classmethod-rpcmanagerhandleerror)
+
+**Flags**: A
+
+---
 ## Method: DataSource.hasFile
 
 ### Description

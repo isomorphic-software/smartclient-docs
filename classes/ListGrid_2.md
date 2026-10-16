@@ -2172,7 +2172,7 @@ See the [dragging](../reference.md#kb-topic-dragging) documentation for an overv
 ## Method: ListGrid.cellValueHoverHTML
 
 ### Description
-Returns the HTML that is displayed by the default cellValueHover handler. Return null or an empty string to cancel the hover.
+Returns the HTML that is displayed by the default cellValueHover handler.
 
 ### Parameters
 
@@ -2185,7 +2185,7 @@ Returns the HTML that is displayed by the default cellValueHover handler. Return
 
 ### Returns
 
-`[HTMLString](../reference.md#type-htmlstring)` — HTML to be displayed in the hover. If null or an empty string, then the hover is canceled.
+`[HTMLString](../reference.md#type-htmlstring)` — HTML to be displayed in the hover. Return `null` or an empty string (`""`) to suppress the hover.
 
 ### Groups
 
@@ -3028,7 +3028,7 @@ StringMethod to dynamically assemble an HTML string to show in a hover window ov
 
 ### Returns
 
-`[HTMLString](../reference.md#type-htmlstring)` — the html to be shown inside the hover for this cell
+`[HTMLString](../reference.md#type-htmlstring)` — the html to be shown inside the hover for this cell. Return `null` or an empty string (`""`) to suppress the hover.
 
 ### Groups
 
@@ -9080,7 +9080,7 @@ Removes an embedded component previously associated with the provided record. If
 ## Method: ListGrid.headerHoverHTML
 
 ### Description
-Returns the HTML that is displayed by the default [headerHover](#method-listgridheaderhover) handler. Return null or an empty string to cancel the hover.
+Returns the HTML that is displayed by the default [headerHover](#method-listgridheaderhover) handler.
 
 ### Parameters
 
@@ -9091,7 +9091,7 @@ Returns the HTML that is displayed by the default [headerHover](#method-listgrid
 
 ### Returns
 
-`[HTMLString](../reference.md#type-htmlstring)` — HTML to be displayed in the hover. If null or an empty string, then the hover is canceled.
+`[HTMLString](../reference.md#type-htmlstring)` — HTML to be displayed in the hover. Return `null` or an empty string (`""`) to suppress the hover.
 
 ### Groups
 

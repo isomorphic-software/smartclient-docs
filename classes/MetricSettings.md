@@ -493,7 +493,7 @@ When [MetricSettings.showDataPoints](#attr-metricsettingsshowdatapoints) is true
 
 ### Returns
 
-`[String](#type-string)` — String of HTML to show in a hover
+`[HTMLString](../reference.md#type-htmlstring)` — HTML to show in a hover. Return `null` or an empty string (`""`) to suppress the hover.
 
 ---
 ## Method: MetricSettings.getDataGradient

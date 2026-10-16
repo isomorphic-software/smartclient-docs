@@ -347,7 +347,7 @@ If [Img.altText](#attr-imgalttext) and [Img.prompt](#attr-imgprompt) are set thi
 
 ### Returns
 
-`[String](#type-string)` — the string to show in the hover
+`[HTMLString](../reference.md#type-htmlstring)` — the string to show in the hover. Return `null` or an empty string (`""`) to suppress the hover.
 
 ### Groups
 

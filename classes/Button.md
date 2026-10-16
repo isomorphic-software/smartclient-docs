@@ -733,7 +733,7 @@ Sets the vertical alignment of this buttons content.
 ## Method: Button.titleHoverHTML
 
 ### Description
-Returns the HTML that is displayed by the default [titleHover](#method-buttontitlehover) handler. Return null or an empty string to cancel the hover.
+Returns the HTML that is displayed by the default [titleHover](#method-buttontitlehover) handler.
 
 ### Parameters
 
@@ -743,7 +743,7 @@ Returns the HTML that is displayed by the default [titleHover](#method-buttontit
 
 ### Returns
 
-`[HTMLString](../reference.md#type-htmlstring)` — HTML to be displayed in the hover. If null or an empty string, then the hover is canceled.
+`[HTMLString](../reference.md#type-htmlstring)` — HTML to be displayed in the hover. Return `null` or an empty string (`""`) to suppress the hover.
 
 ---
 ## Method: Button.setState

@@ -3172,7 +3172,7 @@ Sets the [zones](#attr-calendarzones) used to highlight areas of this calendar. 
 ### Description
 This method returns the hover HTML to be displayed when the user hovers over a cell displayed in the calendar month view tab.
 
-Default implementation will display a list of the events occurring on the date the user is hovering over. Override for custom behavior. Note that returning null will suppress the hover altogether.
+Default implementation will display a list of the events occurring on the date the user is hovering over. Override for custom behavior.
 
 ### Parameters
 
@@ -3183,7 +3183,7 @@ Default implementation will display a list of the events occurring on the date t
 
 ### Returns
 
-`[HTMLString](../reference.md#type-htmlstring)` — HTML string to display
+`[HTMLString](../reference.md#type-htmlstring)` — HTML string to display. Return `null` or an empty string (`""`) to suppress the hover.
 
 ---
 ## Method: Calendar.updateEventCanvasComponent
@@ -3245,7 +3245,7 @@ In the [month view](#attr-calendarmonthview), hovering the layout background sho
 
 ### Returns
 
-`[HTMLString](../reference.md#type-htmlstring)` — HTML for the hover, or null for none
+`[HTMLString](../reference.md#type-htmlstring)` — HTML for the hover. Return `null` or an empty string (`""`) to suppress the hover.
 
 ---
 ## Method: Calendar.getSublaneEvents
@@ -3447,7 +3447,7 @@ Returns the hover HTML for an [overflow chip](#attr-calendareventoverflowimg). T
 
 ### Returns
 
-`[HTMLString](../reference.md#type-htmlstring)` — the hover HTML
+`[HTMLString](../reference.md#type-htmlstring)` — the hover HTML. Return `null` or an empty string (`""`) to suppress the hover.
 
 ---
 ## Method: Calendar.deselectEvents
@@ -3529,7 +3529,7 @@ Override this method to provide different hover content specifically for long ev
 
 ### Returns
 
-`[HTMLString](../reference.md#type-htmlstring)` — the HTML for the hover
+`[HTMLString](../reference.md#type-htmlstring)` — the HTML for the hover. Return `null` or an empty string (`""`) to suppress the hover.
 
 ---
 ## Method: Calendar.getMonthViewHeaderHoverHTML
@@ -3548,7 +3548,7 @@ By default, returns the formatted date. Override to show custom content. This me
 
 ### Returns
 
-`[HTMLString](../reference.md#type-htmlstring)` — HTML to display in the hover
+`[HTMLString](../reference.md#type-htmlstring)` — HTML to display in the hover. Return `null` or an empty string (`""`) to suppress the hover.
 
 ---
 ## Method: Calendar.getEventCanvasMenuItems
@@ -3974,7 +3974,7 @@ Returns the HTML to show in a hover when an existing event is dragged, or when a
 
 ### Returns
 
-`[HTMLString](../reference.md#type-htmlstring)` — the HTML to show in the hover
+`[HTMLString](../reference.md#type-htmlstring)` — the HTML to show in the hover. Return `null` or an empty string (`""`) to suppress the hover.
 
 ---
 ## Method: Calendar.timelineEventResized
@@ -4457,7 +4457,7 @@ Override here to return custom HTML for the passed cell.
 
 ### Returns
 
-`[HTMLString](../reference.md#type-htmlstring)` — the HTML to show in the hover
+`[HTMLString](../reference.md#type-htmlstring)` — the HTML to show in the hover. Return `null` or an empty string (`""`) to suppress the hover.
 
 ---
 ## Method: Calendar.shouldShowEvent
@@ -4586,7 +4586,7 @@ Gets the hover HTML for an [indicator](#attr-calendarindicators) being hovered o
 
 ### Returns
 
-`[HTMLString](../reference.md#type-htmlstring)` — the HTML to show in the hover
+`[HTMLString](../reference.md#type-htmlstring)` — the HTML to show in the hover. Return `null` or an empty string (`""`) to suppress the hover.
 
 ---
 ## Method: Calendar.setCurrentViewName
@@ -4881,7 +4881,7 @@ Gets the hover HTML for a [zone](#attr-calendarzones) being hovered over. Overri
 
 ### Returns
 
-`[HTMLString](../reference.md#type-htmlstring)` — the HTML to show in the hover
+`[HTMLString](../reference.md#type-htmlstring)` — the HTML to show in the hover. Return `null` or an empty string (`""`) to suppress the hover.
 
 ---
 ## Method: Calendar.getDateCellVAlign
@@ -5313,7 +5313,7 @@ Gets the hover HTML for an event being hovered over. Override here to return cus
 
 ### Returns
 
-`[HTMLString](../reference.md#type-htmlstring)` — the HTML to show in the hover
+`[HTMLString](../reference.md#type-htmlstring)` — the HTML to show in the hover. Return `null` or an empty string (`""`) to suppress the hover.
 
 ---
 ## Method: Calendar.selectEvent
@@ -5359,7 +5359,7 @@ Returns the hover HTML to show in a hover when the mouse moves over the header a
 
 ### Returns
 
-`[HTMLString](../reference.md#type-htmlstring)` — the HTML to show in the hover
+`[HTMLString](../reference.md#type-htmlstring)` — the HTML to show in the hover. Return `null` or an empty string (`""`) to suppress the hover.
 
 ---
 ## Method: Calendar.getCurrentViewName

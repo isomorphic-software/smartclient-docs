@@ -7399,11 +7399,11 @@ Returns true if the widget and all widgets above it in the containment hierarchy
 ## Method: Canvas.getHoverHTML
 
 ### Description
-If `this.showHover` is true, when the user holds the mouse over this Canvas for long enough to trigger a hover event, a hover canvas is shown by default. This method returns the contents of that hover canvas. Default implementation returns `this.prompt` - override for custom hover HTML. Note that returning `null` or an empty string will suppress the hover canvas altogether.
+If `this.showHover` is true, when the user holds the mouse over this Canvas for long enough to trigger a hover event, a hover canvas is shown by default. This method returns the contents of that hover canvas. Default implementation returns `this.prompt` - override for custom hover HTML.
 
 ### Returns
 
-`[HTMLString](../reference.md#type-htmlstring)` — the string to show in the hover
+`[HTMLString](../reference.md#type-htmlstring)` — the string to show in the hover. Return `null` or an empty string (`""`) to suppress the hover.
 
 ### Groups
 

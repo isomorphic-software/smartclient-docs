@@ -129,7 +129,7 @@ True == display options vertically, false == display in a single row
 ## Method: RadioGroupItem.valueHoverHTML
 
 ### Description
-If defined, this method should return the HTML to display in a hover canvas when the user holds the mouse-pointer over one of the radio-items in this RadioGroupItem. Return null to suppress the hover canvas altogether.
+If defined, this method should return the HTML to display in a hover canvas when the user holds the mouse-pointer over one of the radio-items in this RadioGroupItem.
 
 ### Parameters
 
@@ -141,7 +141,7 @@ If defined, this method should return the HTML to display in a hover canvas when
 
 ### Returns
 
-`[HTMLString](../reference.md#type-htmlstring)` — HTML to be displayed in the hover
+`[HTMLString](../reference.md#type-htmlstring)` — HTML to be displayed in the hover. Return `null` or an empty string (`""`) to suppress the hover.
 
 ### Groups
 

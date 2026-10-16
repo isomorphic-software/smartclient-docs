@@ -896,7 +896,7 @@ Change the icon being shown next to the title text.
 ## Method: StretchImgButton.titleHoverHTML
 
 ### Description
-Returns the HTML that is displayed by the default [titleHover](#method-stretchimgbuttontitlehover) handler. Return null or an empty string to cancel the hover.
+Returns the HTML that is displayed by the default [titleHover](#method-stretchimgbuttontitlehover) handler.
 
 ### Parameters
 
@@ -906,7 +906,7 @@ Returns the HTML that is displayed by the default [titleHover](#method-stretchim
 
 ### Returns
 
-`[HTMLString](../reference.md#type-htmlstring)` — HTML to be displayed in the hover. If null or an empty string, then the hover is canceled.
+`[HTMLString](../reference.md#type-htmlstring)` — HTML to be displayed in the hover. Return `null` or an empty string (`""`) to suppress the hover.
 
 ---
 ## Method: StretchImgButton.setActionType

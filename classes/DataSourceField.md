@@ -1100,7 +1100,7 @@ For example a composite field for a dataSource of citation references containing
 ```
 _\[This example might produce output like `"12 (5), 121-137"`\]_.
 
-For SQL DataSources, values are calculated on the server by modifying the generated SQL request as appropriate. As with other [dynamically calculated](DataSource_1.md#method-datasourceiscalculated) fields, fields with a specified template are non editable.  
+For SQL DataSources, values are calculated on the server by modifying the generated SQL request as appropriate. As with other [dynamically calculated](DataSource_2.md#method-datasourceiscalculated) fields, fields with a specified template are non editable.  
 When records are displayed in [dataBoundComponents that support editing](../reference.md#interface-databoundcomponent), template field values will be re-calculated dynamically on the client as the user edits a record, so a user may preview the result of their changes.
 
 Note that `template` fields may make use of [formula fields](#attr-datasourcefieldformula), [fields included from related dataSources](#attr-datasourcefieldincludefrom) [aggregated values from related dataSources](#attr-datasourcefieldincludesummaryfunction), and [fields derived via customSQL](#attr-datasourcefieldcustomselectexpression).
@@ -2108,7 +2108,7 @@ Example — field is required only on add:
 ### Description
 Boolean flag to indicate that a dataSource field has its values dynamically calculated rather than being populated in permanent storage.
 
-If explicitly set, this property will be respected by [DataSource.isCalculated](DataSource_1.md#method-datasourceiscalculated)
+If explicitly set, this property will be respected by [DataSource.isCalculated](DataSource_2.md#method-datasourceiscalculated)
 
 **Flags**: IRA
 
@@ -2536,7 +2536,7 @@ For example, given a dataSource with two numeric fields "population" and "area" 
 
 For SQL DataSources, values are calculated on the server by modifying the generated SQL request as appropriate. For clientOnly dataSources, values are calculated as part of the [standard fetch response flow](DataSource_1.md#method-datasourcegetclientonlyresponse). Since the field values are calculated in the data source layer, standard capbilities like server side sorting of paged data sets are supported for these fields. This would not be the case for formula field values calculated [at the component level](ListGridField.md#attr-listgridfielduserformula).
 
-As with other [dynamically calculated](DataSource_1.md#method-datasourceiscalculated) fields, fields with a specified formula are non editable.  
+As with other [dynamically calculated](DataSource_2.md#method-datasourceiscalculated) fields, fields with a specified formula are non editable.  
 When records are displayed in [dataBoundComponents that support editing](../reference.md#interface-databoundcomponent), formula field values will be re-calculated dynamically on the client as the user edits a record, so a user may preview the result of their changes.
 
 Note that `formula` fields may not make use of [fields included from related dataSources](#attr-datasourcefieldincludefrom). **DataSourceField.formula is available with Power or better licenses only.** See [smartclient.com/product](http://smartclient.com/product) for details.

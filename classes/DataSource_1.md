@@ -1295,6 +1295,8 @@ Note, this is primarily intended as a back-compatibility flag, to allow you to c
      datasource.suppress.manual.aggregation: true
  
 ```
+A DataSource that aggregates in its own code must also apply [DSRequest.beforeCriteria](DSRequest.md#attr-dsrequestbeforecriteria) and [DSRequest.afterCriteria](DSRequest.md#attr-dsrequestaftercriteria), and should declare that it does with [DataSource.supportsBeforeAndAfterCriteria](#attr-datasourcesupportsbeforeandaftercriteria); see the "Explicit Before- and After-Aggregation Criteria" section of the [Server Summaries Overview](../kb_topics/serverSummaries.md#kb-topic-server-summaries).
+
 Also note, this flag is ignored for SQL, JPA and Hibernate DataSources; those DataSource types handle aggregation inherently, using the underlying persistence engine's query language. If for some reason you need to suppress inherent aggregation for a given DataSource, mark it `[allowAggregation](#attr-datasourceallowaggregation):false`
 
 ### Groups
@@ -3398,6 +3400,36 @@ These properties are applied before [DataSource.transformRequest](#method-dataso
 
 ### Description
 For DataSources with [auditing enabled](#attr-datasourceaudit), specifies the field name used to store the [operationType](../reference_2.md#type-dsoperationtype) (in a field of type "text"). If empty string is specified as the field name, the audit DataSource will not store this field.
+
+**Flags**: IR
+
+---
+## Attr: DataSource.supportsBeforeAndAfterCriteria
+
+### Description
+Whether whatever handles this DataSource's requests applies [DSRequest.beforeCriteria](DSRequest.md#attr-dsrequestbeforecriteria) and [DSRequest.afterCriteria](DSRequest.md#attr-dsrequestaftercriteria) itself.
+
+When it does not, `beforeCriteria` on a request that does not aggregate are combined with the request's criteria before the request is sent, so the handler sees only ordinary criteria; this keeps criteria aimed at many components, such as those of a report filter, working against any backend. On a request that aggregates they cannot be combined that way - criteria that test a summarized field would then filter totals instead of records - so both sets are sent as they are and a warning is logged once for the DataSource: its backend must apply them, or they have no effect.
+
+When it does, both sets are always sent as they are.
+
+When left unset, the value is derived: `true` for DataSources served by the SmartClient Server ([dataFormat](#attr-datasourcedataformat) "iscServer") and for [clientOnly](#attr-datasourceclientonly) DataSources, including [MockDataSource](MockDataSource.md#class-mockdatasource)s, which apply both sets on the client; `false` for all others. Set it explicitly:
+
+*   `true` on a [RestDataSource](RestDataSource.md#class-restdatasource) that talks to the SmartClient Server's RESTHandler servlet, which applies both sets as the SmartClient Server always does;
+*   `true` on a DataSource with [dataProtocol](#attr-datasourcedataprotocol) "clientCustom", or any other backend, whose handler applies both sets - required whenever such a backend can aggregate.
+
+In a server-side DataSource descriptor (`.ds.xml` file), `true` declares that a custom DataSource which aggregates in its own code (see [DataSource.suppressManualAggregation](#attr-datasourcesuppressmanualaggregation)) applies both sets, so the server does not warn that it must. The built-in SQL, Hibernate and JPA DataSources always apply them.
+
+See the "Explicit Before- and After-Aggregation Criteria" section of the [Server Summaries Overview](../kb_topics/serverSummaries.md#kb-topic-server-summaries) for the full contract.
+
+### Groups
+
+- serverSummaries
+
+### See Also
+
+- [DSRequest.beforeCriteria](DSRequest.md#attr-dsrequestbeforecriteria)
+- [DSRequest.afterCriteria](DSRequest.md#attr-dsrequestaftercriteria)
 
 **Flags**: IR
 
@@ -6008,7 +6040,7 @@ Examples of using this API include:
 *   setting [DSResponse.status](DSResponse.md#attr-dsresponsestatus) to recognized ISC error values based on service-specific errors, in order to trigger standard ISC error handling. For example, setting `dsResponse.status` to [RPCResponse.STATUS_VALIDATION_ERROR](RPCResponse.md#classattr-rpcresponsestatus_validation_error) and filling in [DSResponse.errors](DSResponse.md#attr-dsresponseerrors) in order to cause validation errors to be shown in forms and grids.
 *   for services that either do not return cache update data, or return partial data, using [DSRequest.oldValues](DSRequest.md#attr-dsrequestoldvalues) to create cache update data (whether this is appropriate is application-specific), or setting [DSResponse.invalidateCache](DSResponse.md#attr-dsresponseinvalidatecache).
 
-NOTE: this method is NOT an appropriate time to call methods on visual components such as grids, initiate new DSRequests or RPCRequests, or in general do anything other than fill in fields on the DSResponse based on data that is already available. Any actions that need to be taken as a result of the web service response should be implemented exactly as for a DataSource where `transformResponse()` has not been overridden, that is, use the callback passed to high-level methods such as [`grid.fetchData()`](../kb_topics/dataBoundComponentMethods.md#kb-topic-databound-component-methods), and do error handling via either [DataSource.handleError](#method-datasourcehandleerror) or by setting [willHandleError](RPCRequest.md#attr-rpcrequestwillhandleerror).
+NOTE: this method is NOT an appropriate time to call methods on visual components such as grids, initiate new DSRequests or RPCRequests, or in general do anything other than fill in fields on the DSResponse based on data that is already available. Any actions that need to be taken as a result of the web service response should be implemented exactly as for a DataSource where `transformResponse()` has not been overridden, that is, use the callback passed to high-level methods such as [`grid.fetchData()`](../kb_topics/dataBoundComponentMethods.md#kb-topic-databound-component-methods), and do error handling via either [DataSource.handleError](DataSource_2.md#method-datasourcehandleerror) or by setting [willHandleError](RPCRequest.md#attr-rpcrequestwillhandleerror).
 
 ### Parameters
 
@@ -6827,56 +6859,5 @@ Given a fieldName and a dataValue, apply any [DataSourceField.valueMap](DataSour
 ### Returns
 
 `[Any](#type-any)` — display value for the field
-
----
-## Method: DataSource.isCalculated
-
-### Description
-Does the specified field have its value dynamically calculated via [DataSourceField.formula](DataSourceField.md#attr-datasourcefieldformula) or other similar attributes?
-
-This method will return true for fields with the following attributes:
-
-*   [DataSourceField.formula](DataSourceField.md#attr-datasourcefieldformula)
-*   [DataSourceField.template](DataSourceField.md#attr-datasourcefieldtemplate)
-*   [DataSourceField.customSelectExpression](#attr-datasourcefieldcustomselectexpression)
-
-Or if the field has explicitly been marked as [calculated:true](DataSourceField.md#attr-datasourcefieldcalculated).
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| field | [DataSourceField](#type-datasourcefield)|[String](#type-string) | false | — | Field or fieldName |
-
-### Returns
-
-`[boolean](../reference.md#type-boolean)` — true if this is a field with dynamically calculated values
-
----
-## Method: DataSource.handleError
-
-### Description
-If you define this method on a DataSource, it will be called whenever the server returns a DSResponse with a status other than [RPCResponse.STATUS_SUCCESS](RPCResponse.md#classattr-rpcresponsestatus_success). You can use this hook to do DataSource-specific error handling. Unless you return `false` from this method, [RPCManager.handleError](RPCManager.md#classmethod-rpcmanagerhandleerror) will be called by SmartClient right after this method completes.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| response | [DSResponse](#type-dsresponse) | false | — | the DSResponse or DSResponse object returned from the server |
-| request | [DSRequest](#type-dsrequest) | false | — | the DSRequest or DSRequest that was sent to the server |
-
-### Returns
-
-`[Boolean](#type-boolean)` — false to suppress [RPCManager.handleError](RPCManager.md#classmethod-rpcmanagerhandleerror)
-
-### Groups
-
-- errorHandling
-
-### See Also
-
-- [RPCManager.handleError](RPCManager.md#classmethod-rpcmanagerhandleerror)
-
-**Flags**: A
 
 ---

@@ -152,7 +152,7 @@ Optional stringMethod to fire when the user hovers over this section header and 
 ## Method: SectionHeader.titleHoverHTML
 
 ### Description
-Returns the HTML that is displayed by the default [titleHover](#method-sectionheadertitlehover) handler. Return null or an empty string to cancel the hover.
+Returns the HTML that is displayed by the default [titleHover](#method-sectionheadertitlehover) handler.
 
 ### Parameters
 
@@ -162,6 +162,6 @@ Returns the HTML that is displayed by the default [titleHover](#method-sectionhe
 
 ### Returns
 
-`[HTMLString](../reference.md#type-htmlstring)` — HTML to be displayed in the hover. If an empty string, then the hover is canceled. If null, then the default HTML is used.
+`[HTMLString](../reference.md#type-htmlstring)` — HTML to be displayed in the hover. Return `null` or an empty string (`""`) to suppress the hover.
 
 ---

@@ -7,7 +7,7 @@
 ## Class: Mail
 
 ### Description
-A `Mail` object describes an email that will be sent automatically by the SmartClient Server as part of a normal [DataSource](DataSource.md#class-datasource) operation. Mail definitions are part of an [OperationBinding](OperationBinding.md#class-operationbinding), and they can only be specified in a DataSource's XML definition. Despite the declarative nature of mail definitions, templating support via Velocity makes it very flexible; it is very easy to include values from records just fetched from permanent storage by this operation, for example. See [velocitySupport](../kb_topics/velocitySupport.md#kb-topic-velocity-context-variables) for an overview of SmartClient Server's pervasive support for templated declarative operations using Velocity.
+A `Mail` object describes an email that will be sent automatically by the SmartClient Server as part of a normal [DataSource](DataSource.md#class-datasource) operation. Mail definitions are part of an [OperationBinding](OperationBinding.md#class-operationbinding), and they can only be specified in a DataSource's XML definition. Despite the declarative nature of mail definitions, templating support via Velocity makes it very flexible; it is very easy to include values from records just fetched from permanent storage by this operation, for example. See [velocitySupport](#kb-topic-velocitysupport) for an overview of SmartClient Server's pervasive support for templated declarative operations using Velocity.
 
 The default context for the message is the dsResponse.data; that is, $foo in the message refers to the field "foo" in the DataSource response (the equivalent of calling dsResponse.getFieldValue("foo") in Java). You also have access to the normal Velocity variables described in the overview linked to above.
 
@@ -33,7 +33,7 @@ Note that we will also pass any other properties that start `mail.system` throug
 
 **Mail server configuration in OperationBinding**  
 
-Dynamic mail server can be configured in [DataSource.operationBindings](DataSource.md#attr-datasourceoperationbindings) under [`<mail>`](OperationBinding.md#attr-operationbindingmail) tag. This allows to alter mail server settings for different operations and depending on data using [Velocity templates](../kb_topics/velocitySupport.md#kb-topic-velocity-context-variables). Same values can be provided as in `server.properties` omitting "mail.system.mail.smtp" prefix, i.e. "host", "port", "auth", "user" and "password".
+Dynamic mail server can be configured in [DataSource.operationBindings](DataSource.md#attr-datasourceoperationbindings) under [`<mail>`](OperationBinding.md#attr-operationbindingmail) tag. This allows to alter mail server settings for different operations and depending on data using [Velocity templates](#kb-topic-velocitysupport). Same values can be provided as in `server.properties` omitting "mail.system.mail.smtp" prefix, i.e. "host", "port", "auth", "user" and "password".
 
 Just like in `server.properties` any other properties can be provided and will be passed through to the underlying Javamail `Session` object. Note that property names must omit "mail.smtp" prefix, for example:
 

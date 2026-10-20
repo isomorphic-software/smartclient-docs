@@ -133,7 +133,7 @@ Bear in mind when adding DataSources: the FormItems within each DynamicForm will
 
 #### Setting IDs & Custom Properties
 
-If you right-click on a component in Balsamiq (or option-click on MacOS), a menu item "Custom Properties" allows you to set a "Custom control ID" and provide "Custom control data". The "Custom control ID" will become [component.ID](../classes/Canvas.md#attr-canvasid) for the SmartClient component generated from the Balsamiq component.
+If you right-click on a component in Balsamiq (or option-click on MacOS), a menu item "Custom Properties" allows you to set a "Custom control ID" and provide "Custom control data". The "Custom control ID" will become [component.ID](../classes/Canvas_1.md#attr-canvasid) for the SmartClient component generated from the Balsamiq component.
 
 You can use "Custom control data" to provide additional properties for the generated component, as a semicolon-separated set of properties and values. For example this setting:
 
@@ -180,7 +180,7 @@ Almost all balsamiq components have obvious analogs in smartclient, so during tr
 *   "com.balsamiq.mockups::ComboBox": [SelectItem](../classes/SelectItem.md#class-selectitem)
 *   "com.balsamiq.mockups::DataGrid": [ListGrid](../classes/ListGrid_1.md#class-listgrid)
 *   "com.balsamiq.mockups::DateChooser": [DateItem](../classes/DateItem.md#class-dateitem)
-*   "com.balsamiq.mockups::FieldSet": [Canvas](../classes/Canvas.md#class-canvas)
+*   "com.balsamiq.mockups::FieldSet": [Canvas](../classes/Canvas_1.md#class-canvas)
 *   "com.balsamiq.mockups::FormattingToolbar": [ToolStrip](../classes/ToolStrip.md#class-toolstrip)
 *   "com.balsamiq.mockups::HelpButton": [Label](../classes/Label.md#class-label)
 *   "com.balsamiq.mockups::HorizontalScrollBar": [Scrollbar](../classes/Scrollbar.md#class-scrollbar)

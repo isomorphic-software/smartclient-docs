@@ -660,7 +660,7 @@ This attribute does not have an effect if a native HTML5 date input is being use
 ## Attr: DateItem.editProxyConstructor
 
 ### Description
-Default class used to construct the [EditProxy](EditProxy.md#class-editproxy) for this component when the component is [first placed into edit mode](Canvas.md#method-canvasseteditmode).
+Default class used to construct the [EditProxy](EditProxy.md#class-editproxy) for this component when the component is [first placed into edit mode](Canvas_1.md#method-canvasseteditmode).
 
 **Flags**: IR
 

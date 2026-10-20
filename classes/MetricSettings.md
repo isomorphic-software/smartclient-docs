@@ -265,6 +265,8 @@ Note that if there are data points that fall above this value, they are omitted 
 ### Description
 Properties for gradation labels
 
+Unless this block sets a `fontFamily`, these labels are drawn in ${isc.DocUtils.linkForRef('attr:FacetChart.defaultFontFamily','the chart\\'s default font')}.
+
 ### Groups
 
 - gradations
@@ -276,6 +278,8 @@ Properties for gradation labels
 
 ### Description
 Properties for labels of value axis.
+
+Unless this block sets a `fontFamily`, these labels are drawn in ${isc.DocUtils.linkForRef('attr:FacetChart.defaultFontFamily','the chart\\'s default font')}.
 
 ### Groups
 

@@ -13,7 +13,7 @@ FormItem that creates an HTML `<input type="file">` control, with an interface t
 
 **NOTE:** use [FileItem](FileItem.md#class-fileitem), **not** UploadItem, if you are using the SmartClient Server framework. FileItem is much easier to use and addresses all the limitations of UploadItem discussed below. See the [Uploading Files](../kb_topics/upload.md#kb-topic-uploading-files) overview for details.
 
-If a form containing an UploadItem is [redrawn](Canvas.md#method-canvasredraw) (which may happen if other form items are shown or hidden, the form is [resized](Canvas.md#attr-canvasredrawonresize), or this or other items show validation errors) then the value in the upload item is lost (because an HTML upload field may not be created with a value). For this reason, if you are building a form that combines an UploadItem with other FormItems that could trigger redraw()s, recommended practice is to place each UploadItem in a distinct DynamicForm instance and create the visual appearance of a single logical form via combining the DynamicForms in a [Layout](Layout.md#class-layout). For the same reason, do not apply [validators](Validator.md#class-validator) to UploadItems: if such a validator fails, it will cause the form to be redrawn and the UploadItem's value to be lost.
+If a form containing an UploadItem is [redrawn](Canvas_1.md#method-canvasredraw) (which may happen if other form items are shown or hidden, the form is [resized](Canvas_1.md#attr-canvasredrawonresize), or this or other items show validation errors) then the value in the upload item is lost (because an HTML upload field may not be created with a value). For this reason, if you are building a form that combines an UploadItem with other FormItems that could trigger redraw()s, recommended practice is to place each UploadItem in a distinct DynamicForm instance and create the visual appearance of a single logical form via combining the DynamicForms in a [Layout](Layout.md#class-layout). For the same reason, do not apply [validators](Validator.md#class-validator) to UploadItems: if such a validator fails, it will cause the form to be redrawn and the UploadItem's value to be lost.
 
 **NOTE: Browser-specific behaviors:**
 
@@ -92,7 +92,7 @@ This information is "circa 2023" and may not apply to all devices.
 ## Attr: UploadItem.editProxyConstructor
 
 ### Description
-Default class used to construct the [EditProxy](EditProxy.md#class-editproxy) for this component when the component is [first placed into edit mode](Canvas.md#method-canvasseteditmode).
+Default class used to construct the [EditProxy](EditProxy.md#class-editproxy) for this component when the component is [first placed into edit mode](Canvas_1.md#method-canvasseteditmode).
 
 **Flags**: IR
 

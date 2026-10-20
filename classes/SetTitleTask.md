@@ -59,7 +59,7 @@ Title to assign to component. To assign a dynamic value see [SetTitleTask.textFo
 ### Description
 Formula to be used to calculate the component title. Use [SetTitleTask.title](#attr-settitletasktitle) property to assign a static title instead.
 
-Available fields for use in the formula are the current [rule context](Canvas.md#attr-canvasrulescope).
+Available fields for use in the formula are the current [rule context](Canvas_1.md#attr-canvasrulescope).
 
 **Flags**: IR
 

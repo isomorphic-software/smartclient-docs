@@ -15,7 +15,7 @@ IMenuButton based version of the [MenuButton](MenuButton.md#class-menubutton) cl
 ## Attr: IMenuButton.autoDestroyMenu
 
 ### Description
-If this menuButton is [destroyed](Canvas.md#method-canvasdestroy), should it also destroy its [MenuButton.menu](MenuButton.md#attr-menubuttonmenu)?
+If this menuButton is [destroyed](Canvas_1.md#method-canvasdestroy), should it also destroy its [MenuButton.menu](MenuButton.md#attr-menubuttonmenu)?
 
 ### Groups
 
@@ -35,7 +35,7 @@ Allows you to specify an animation effect to apply to the menu when it is being 
 ## Attr: IMenuButton.hiliteAccessKey
 
 ### Description
-If this MenuButton has a specified [accessKey](Canvas.md#attr-canvasaccesskey), underline it in the title of the button by default
+If this MenuButton has a specified [accessKey](Canvas_1.md#attr-canvasaccesskey), underline it in the title of the button by default
 
 **Flags**: IR
 

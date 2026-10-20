@@ -16,7 +16,7 @@ All of the above components are placed in the [members array](#attr-toolstripmem
 The following strings can be used to add special behaviors:
 
 *   the String "separator" will cause a separator to be created (instance of [ToolStrip.separatorClass](#attr-toolstripseparatorclass))
-*   the String "resizer" will cause a resizer to be created (instance of [ToolStrip.resizeBarClass](#attr-toolstripresizebarclass)). This is equivalent to setting [showResizeBar:true](Canvas.md#attr-canvasshowresizebar) on the preceding member.
+*   the String "resizer" will cause a resizer to be created (instance of [ToolStrip.resizeBarClass](#attr-toolstripresizebarclass)). This is equivalent to setting [showResizeBar:true](Canvas_1.md#attr-canvasshowresizebar) on the preceding member.
 *   the String "starSpacer" will cause a spacer to be created (instance of [LayoutSpacer](../reference.md#class-layoutspacer)).
 
 ---
@@ -25,7 +25,7 @@ The following strings can be used to add special behaviors:
 ### Description
 Default stylename to use if [this.vertical](#attr-toolstripvertical) is true. If unset, the standard [ToolStrip.styleName](#attr-toolstripstylename) will be used for both vertical and horizontal toolstrips.
 
-Note that this property only applies to the widget at init time. To modify the styleName after this widget has been initialized, you should simply call [setStyleName()](Canvas.md#method-canvassetstylename) rather than updating this property.
+Note that this property only applies to the widget at init time. To modify the styleName after this widget has been initialized, you should simply call [setStyleName()](Canvas_1.md#method-canvassetstylename) rather than updating this property.
 
 ### Groups
 
@@ -70,8 +70,8 @@ Default properties to apply to [ToolStrip.formWrapper](#attr-toolstripformwrappe
 The default configuration will has the following settings:
 
 *   [DynamicForm.numCols](DynamicForm.md#attr-dynamicformnumcols) set to `2`
-*   [DynamicForm.overflow](Canvas.md#attr-canvasoverflow) set to `"visible"`
-*   [DynamicForm.width](Canvas.md#attr-canvaswidth) and [DynamicForm.height](Canvas.md#attr-canvasheight) set to `1`
+*   [DynamicForm.overflow](Canvas_1.md#attr-canvasoverflow) set to `"visible"`
+*   [DynamicForm.width](Canvas_1.md#attr-canvaswidth) and [DynamicForm.height](Canvas_1.md#attr-canvasheight) set to `1`
 
 To customize the wrapper form for an individual item, use the `formProperties` argument of [ToolStrip.addFormItem](#method-toolstripaddformitem).
 
@@ -94,7 +94,7 @@ Array of components that will be contained within this Toolstrip. Like [Layout.m
 Additionally, the following special String values can be used to add built-in AutoChildren with standard ToolStrip behaviors:
 
 *   `"separator"` - creates a vertical separator (instance of [ToolStrip.separatorClass](#attr-toolstripseparatorclass))
-*   `"resizer"` - creates a resizer (instance of [ToolStrip.resizeBarClass](#attr-toolstripresizebarclass)), equivalent to setting [showResizeBar:true](Canvas.md#attr-canvasshowresizebar) on the preceding member
+*   `"resizer"` - creates a resizer (instance of [ToolStrip.resizeBarClass](#attr-toolstripresizebarclass)), equivalent to setting [showResizeBar:true](Canvas_1.md#attr-canvasshowresizebar) on the preceding member
 *   `"starSpacer"` - creates a spacer (instance of [LayoutSpacer](../reference.md#class-layoutspacer))
 
 **Flags**: IR
@@ -127,7 +127,7 @@ Separator thickness in pixels
 ## Attr: ToolStrip.height
 
 ### Description
-ToolStrips set a default [height](Canvas.md#attr-canvasheight) to avoid being stretched by containing layouts.
+ToolStrips set a default [height](Canvas_1.md#attr-canvasheight) to avoid being stretched by containing layouts.
 
 ### Groups
 

@@ -6,7 +6,7 @@
 
 ## Class: EditPane
 
-*Inherits from:* [Canvas](Canvas.md#class-canvas)
+*Inherits from:* [Canvas](Canvas_1.md#class-canvas)
 
 ### Description
 A container that allows drag and drop instantiation of visual components from a [Palette](../reference.md#interface-palette), and direct manipulation of the position and size of those components.
@@ -195,7 +195,7 @@ If no defaultPalette is provided, the EditContext uses an automatically created 
 ### Description
 Obtain [PaletteNodes](../reference_2.md#object-palettenode) from a JavaScript source representation.
 
-By default, components that have [global IDs](Canvas.md#attr-canvasid) will not actually be allowed to take those global IDs - instead, only widgets that have one of the global IDs passed as the `globals` parameter will actually receive their global IDs. To override this behavior, pass the special value [RPCManager.ALL_GLOBALS](RPCManager.md#classattr-rpcmanagerall_globals) for the `globals` parameter.
+By default, components that have [global IDs](Canvas_1.md#attr-canvasid) will not actually be allowed to take those global IDs - instead, only widgets that have one of the global IDs passed as the `globals` parameter will actually receive their global IDs. To override this behavior, pass the special value [RPCManager.ALL_GLOBALS](RPCManager.md#classattr-rpcmanagerall_globals) for the `globals` parameter.
 
 ### Parameters
 
@@ -444,7 +444,7 @@ No changes are made to the live objects.
 ### Description
 Add [PaletteNodes](../reference_2.md#object-palettenode) from a JavaScript source representation.
 
-By default, components that have [global IDs](Canvas.md#attr-canvasid) will not actually be allowed to take those global IDs - instead, only widgets that have one of the global IDs passed as the `globals` parameter will actually receive their global IDs. To override this behavior, pass the special value [RPCManager.ALL_GLOBALS](RPCManager.md#classattr-rpcmanagerall_globals) for the `globals` parameter.
+By default, components that have [global IDs](Canvas_1.md#attr-canvasid) will not actually be allowed to take those global IDs - instead, only widgets that have one of the global IDs passed as the `globals` parameter will actually receive their global IDs. To override this behavior, pass the special value [RPCManager.ALL_GLOBALS](RPCManager.md#classattr-rpcmanagerall_globals) for the `globals` parameter.
 
 ### Parameters
 
@@ -509,7 +509,7 @@ Encode the tree of [EditNodes](../reference.md#object-editnode) to a JSON repres
 ### Description
 Recreate [EditNodes](../reference.md#object-editnode) from a JSON representation of [PaletteNodes](../reference_2.md#object-palettenode) (possibly created by calling [EditPane.serializeAllEditNodesAsJSON](#method-editpaneserializealleditnodesasjson) or [EditPane.serializeEditNodesAsJSON](#method-editpaneserializeeditnodesasjson).
 
-By default, components that have [global IDs](Canvas.md#attr-canvasid) will not actually be allowed to take those global IDs - instead, only widgets that have one of the global IDs passed as the `globals` parameter will actually receive their global IDs. To override this behavior, pass the special value [RPCManager.ALL_GLOBALS](RPCManager.md#classattr-rpcmanagerall_globals) for the `globals` parameter.
+By default, components that have [global IDs](Canvas_1.md#attr-canvasid) will not actually be allowed to take those global IDs - instead, only widgets that have one of the global IDs passed as the `globals` parameter will actually receive their global IDs. To override this behavior, pass the special value [RPCManager.ALL_GLOBALS](RPCManager.md#classattr-rpcmanagerall_globals) for the `globals` parameter.
 
 ### Parameters
 
@@ -549,7 +549,7 @@ The root node of the returned [Tree](Tree.md#class-tree) will be a PaletteNode d
 ## Method: EditPane.destroyAll
 
 ### Description
-Removes all [EditNodes](../reference.md#object-editnode) from the EditContext, and calls [destroy()](Canvas.md#method-canvasdestroy) on the [liveObjects](EditNode.md#attr-editnodeliveobject).
+Removes all [EditNodes](../reference.md#object-editnode) from the EditContext, and calls [destroy()](Canvas_1.md#method-canvasdestroy) on the [liveObjects](EditNode.md#attr-editnodeliveobject).
 
 ---
 ## Method: EditPane.getNodeProperty
@@ -594,7 +594,7 @@ Serialize the tree of [EditNodes](../reference.md#object-editnode) to an XML rep
 ### Description
 Recreate [EditNodes](../reference.md#object-editnode) from an XML representation of [PaletteNodes](../reference_2.md#object-palettenode) (possibly created by calling [EditPane.serializeAllEditNodes](#method-editpaneserializealleditnodes) or [EditPane.serializeEditNodes](#method-editpaneserializeeditnodes).
 
-By default, components that have [global IDs](Canvas.md#attr-canvasid) will not actually be allowed to take those global IDs - instead, only widgets that have one of the global IDs passed as the `globals` parameter will actually receive their global IDs. To override this behavior, pass the special value [RPCManager.ALL_GLOBALS](RPCManager.md#classattr-rpcmanagerall_globals) for the `globals` parameter.
+By default, components that have [global IDs](Canvas_1.md#attr-canvasid) will not actually be allowed to take those global IDs - instead, only widgets that have one of the global IDs passed as the `globals` parameter will actually receive their global IDs. To override this behavior, pass the special value [RPCManager.ALL_GLOBALS](RPCManager.md#classattr-rpcmanagerall_globals) for the `globals` parameter.
 
 ### Parameters
 
@@ -670,7 +670,7 @@ Returns an Array of [PaletteNode](../reference_2.md#object-palettenode)s represe
 ## Method: EditPane.enableEditing
 
 ### Description
-Enable edit mode for an [EditNode](../reference.md#object-editnode). This is a shortcut for calling [Canvas.setEditMode](Canvas.md#method-canvasseteditmode).
+Enable edit mode for an [EditNode](../reference.md#object-editnode). This is a shortcut for calling [Canvas.setEditMode](Canvas_1.md#method-canvasseteditmode).
 
 ### Parameters
 
@@ -680,7 +680,7 @@ Enable edit mode for an [EditNode](../reference.md#object-editnode). This is a s
 
 ### See Also
 
-- [Canvas.setEditMode](Canvas.md#method-canvasseteditmode)
+- [Canvas.setEditMode](Canvas_1.md#method-canvasseteditmode)
 - [EditPane.isNodeEditingOn](#method-editpaneisnodeeditingon)
 
 ---

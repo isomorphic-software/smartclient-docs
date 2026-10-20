@@ -74,7 +74,7 @@ Inherited from [Task.inputs](Task.md#attr-taskinputs). Describes what parent-pro
 ## Attr: SubProcessTask.process
 
 ### Description
-Inherited from [StartProcessTask.process](StartProcessTask.md#attr-startprocesstaskprocess). The Process to run as a sub-workflow; may be an instance or a String ID resolvable via [screen](Canvas.md#class-canvas).getWorkflowById or [Process.getProcess](Process.md#classmethod-processgetprocess).
+Inherited from [StartProcessTask.process](StartProcessTask.md#attr-startprocesstaskprocess). The Process to run as a sub-workflow; may be an instance or a String ID resolvable via [screen](Canvas_1.md#class-canvas).getWorkflowById or [Process.getProcess](Process.md#classmethod-processgetprocess).
 
 **Flags**: IRW
 

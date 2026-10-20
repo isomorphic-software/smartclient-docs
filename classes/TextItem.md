@@ -538,7 +538,7 @@ In [DynamicForm.linearMode](DynamicForm.md#attr-dynamicformlinearmode), this pro
 ## Attr: TextItem.editProxyConstructor
 
 ### Description
-Default class used to construct the [EditProxy](EditProxy.md#class-editproxy) for this component when the component is [first placed into edit mode](Canvas.md#method-canvasseteditmode).
+Default class used to construct the [EditProxy](EditProxy.md#class-editproxy) for this component when the component is [first placed into edit mode](Canvas_1.md#method-canvasseteditmode).
 
 **Flags**: IR
 
@@ -689,7 +689,7 @@ Note that the current value of the field is cleared when changing the mask.
 ### Description
 For text-based items, this method returns the indices of the start/end of the current selection if the item currently has the focus. In browsers other than Internet Explorer 6-9, if this item does not have focus, then this method returns the indices of the start/end of the selection the last time that this item had focus. In IE 6-9, returns null if the item does not have focus.
 
-In all browsers, clicking anywhere outside of the item causes the item to lose focus; hence, in IE 6-9, this method will not work in other components' event handlers for certain events. For example, within the [click()](Canvas.md#method-canvasclick) handler of a button, this item will have already lost focus, so in IE 6-9, this method will return null if called within the button's click() handler. One cross-browser solution to this issue is to save the selection range for later in a [mouseDown()](Canvas.md#method-canvasmousedown) or [mouseOver()](Canvas.md#method-canvasmouseover) handler.
+In all browsers, clicking anywhere outside of the item causes the item to lose focus; hence, in IE 6-9, this method will not work in other components' event handlers for certain events. For example, within the [click()](Canvas_1.md#method-canvasclick) handler of a button, this item will have already lost focus, so in IE 6-9, this method will return null if called within the button's click() handler. One cross-browser solution to this issue is to save the selection range for later in a [mouseDown()](Canvas_1.md#method-canvasmousedown) or [mouseOver()](Canvas_1.md#method-canvasmouseover) handler.
 
 Notes:
 

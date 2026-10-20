@@ -13,9 +13,9 @@ A simple container that implements the policy that at most one of its contained 
 
 The set of mutually exclusive components is specified by [Deck.panes](#attr-deckpanes), and whichever component is visible fills the space of the `Deck` automatically.
 
-To switch to a new pane, call [Deck.setCurrentPane](#method-decksetcurrentpane), or simply call [show()](Canvas.md#method-canvasshow) on the pane directly - the `Deck` will notice that you have shown a different pane and hide other panes automatically.
+To switch to a new pane, call [Deck.setCurrentPane](#method-decksetcurrentpane), or simply call [show()](Canvas_1.md#method-canvasshow) on the pane directly - the `Deck` will notice that you have shown a different pane and hide other panes automatically.
 
-[Deck.children](Canvas.md#attr-canvaschildren) may also be used; any components that are specified as children are unmanaged by the `Deck` and so can place themselves arbitrarily.
+[Deck.children](Canvas_1.md#attr-canvaschildren) may also be used; any components that are specified as children are unmanaged by the `Deck` and so can place themselves arbitrarily.
 
 `Deck` achieves its mutually-exclusive display behavior by using the superclass [Layout.members](Layout.md#attr-layoutmembers) property, which means that properties such as [Layout.layoutMargin](Layout.md#attr-layoutlayoutmargin) and [Layout.vPolicy](Layout.md#attr-layoutvpolicy) do apply to deck. However, trying to manipulate `deck.members` with APIs such as [Layout.addMember](Layout.md#method-layoutaddmember) is not supported and will have undefined results.
 
@@ -25,8 +25,8 @@ To switch to a new pane, call [Deck.setCurrentPane](#method-decksetcurrentpane),
 ### Description
 An array of canvases that will be contained within this layout. You can set the following properties on these canvases (in addition to the standard component properties):
 
-*   [layoutAlign](Canvas.md#attr-canvaslayoutalign) -- specifies the member's alignment along the breadth axis; valid values are "top", "center" and "bottom" for a horizontal layout and "left", "center" and "right" for a vertical layout (see [Layout.defaultLayoutAlign](Layout.md#attr-layoutdefaultlayoutalign) for default implementation.)
-*   [showResizeBar](Canvas.md#attr-canvasshowresizebar) -- set to true to show a resize bar (default is false)
+*   [layoutAlign](Canvas_1.md#attr-canvaslayoutalign) -- specifies the member's alignment along the breadth axis; valid values are "top", "center" and "bottom" for a horizontal layout and "left", "center" and "right" for a vertical layout (see [Layout.defaultLayoutAlign](Layout.md#attr-layoutdefaultlayoutalign) for default implementation.)
+*   [showResizeBar](Canvas_1.md#attr-canvasshowresizebar) -- set to true to show a resize bar (default is false)
 
 Height and width settings found on members are interpreted by the Layout according to the [layout policy](Layout.md#attr-layoutvpolicy).
 
@@ -52,7 +52,7 @@ If [Deck.currentPane](#attr-deckcurrentpane) is not set, when the `Deck` is firs
 ### Description
 The pane to show, including initially, in this `Deck`. All other panes are hidden.
 
-The value identifies a widget in the [panes array](#attr-deckpanes) and can be directly set to a [widget](Canvas.md#class-canvas) or to the [local name](Canvas.md#attr-canvasname), [local ID](Canvas.md#method-canvasgetlocalid) or [global ID](Canvas.md#method-canvasgetid) of a widget.
+The value identifies a widget in the [panes array](#attr-deckpanes) and can be directly set to a [widget](Canvas_1.md#class-canvas) or to the [local name](Canvas_1.md#attr-canvasname), [local ID](Canvas_1.md#method-canvasgetlocalid) or [global ID](Canvas_1.md#method-canvasgetid) of a widget.
 
 **Flags**: IRW
 
@@ -86,7 +86,7 @@ If the passed pane is not contained in this `Deck`, logs a warning and does noth
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| pane | [Canvas](#type-canvas)|[GlobalId](../reference_2.md#type-globalid) | false | — | the pane to show, as either a `Canvas` or the [Canvas.ID](Canvas.md#attr-canvasid) |
+| pane | [Canvas](#type-canvas)|[GlobalId](../reference_2.md#type-globalid) | false | — | the pane to show, as either a `Canvas` or the [Canvas.ID](Canvas_1.md#attr-canvasid) |
 
 ---
 ## Method: Deck.addPane

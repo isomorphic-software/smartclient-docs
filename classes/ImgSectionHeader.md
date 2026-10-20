@@ -75,7 +75,7 @@ If true and the title is clipped, then a hover containing the full title of this
 ## Attr: ImgSectionHeader.prompt
 
 ### Description
-Prompt displayed in hover canvas if [showHover](Canvas.md#attr-canvasshowhover) is true.
+Prompt displayed in hover canvas if [showHover](Canvas_1.md#attr-canvasshowhover) is true.
 
 ### Groups
 

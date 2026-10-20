@@ -6,7 +6,7 @@
 
 ## Class: Calendar
 
-*Inherits from:* [Canvas](Canvas.md#class-canvas)
+*Inherits from:* [Canvas](Canvas_1.md#class-canvas)
 
 ### Description
 The Calendar component provides several different ways for a user to view and edit a set of events. Note that the standard Calendar module must be loaded to make use of the Calendar class.
@@ -140,7 +140,7 @@ AutoChild component created for each [indicator](#attr-calendarindicators) entry
 ### Description
 Criteria that are never shown to or edited by the user and are cumulative with any criteria provided via [DataBoundComponent.initialCriteria](DataBoundComponent.md#attr-databoundcomponentinitialcriteria) and related methods.
 
-This property supports [dynamicCriteria](../kb_topics/dynamicCriteria.md#kb-topic-dynamiccriteria) - use [Criterion.valuePath](Criterion.md#attr-criterionvaluepath) to refer to values in the [Canvas.ruleScope](Canvas.md#attr-canvasrulescope).
+This property supports [dynamicCriteria](../kb_topics/dynamicCriteria.md#kb-topic-dynamiccriteria) - use [Criterion.valuePath](Criterion.md#attr-criterionvaluepath) to refer to values in the [Canvas.ruleScope](Canvas_1.md#attr-canvasrulescope).
 
 **Flags**: IRW
 
@@ -1286,7 +1286,7 @@ The title for the [Calendar.nameField](#attr-calendarnamefield) in the quick [ev
 ## Attr: Calendar.eventOverflowOverlay
 
 ### Description
-[AutoChild](../reference.md#type-autochild) [Canvas](Canvas.md#class-canvas) shown as a semi-transparent highlight behind event canvases when hovering an [overflow chip](#attr-calendareventoverflowimg). Spans the full column width across the overflow region's time range so the user can see which rows contain hidden events.
+[AutoChild](../reference.md#type-autochild) [Canvas](Canvas_1.md#class-canvas) shown as a semi-transparent highlight behind event canvases when hovering an [overflow chip](#attr-calendareventoverflowimg). Spans the full column width across the overflow region's time range so the user can see which rows contain hidden events.
 
 The overlay is purely visual and does not intercept pointer events. Customize opacity and color via the [AutoChild](../reference.md#type-autochild) pattern:
 
@@ -2040,7 +2040,7 @@ The hours of the workday can be customized for particular dates by providing imp
 ### Description
 Screen to create (via [createScreen()](RPCManager.md#classmethod-rpcmanagercreatescreen)) in lieu of calling [Calendar.createEventCanvasComponent](#method-calendarcreateeventcanvascomponent).
 
-If this calendar has a [dataSource](DataBoundComponent.md#attr-databoundcomponentdatasource), the created screen is provided with a [Canvas.dataContext](Canvas.md#attr-canvasdatacontext) that includes the event being shown. Be sure the event screen meets these [requirements](Canvas.md#attr-canvasautopopulatedata) to utilize the `dataContext`.
+If this calendar has a [dataSource](DataBoundComponent.md#attr-databoundcomponentdatasource), the created screen is provided with a [Canvas.dataContext](Canvas_1.md#attr-canvasdatacontext) that includes the event being shown. Be sure the event screen meets these [requirements](Canvas_1.md#attr-canvasautopopulatedata) to utilize the `dataContext`.
 
 **Flags**: IR
 
@@ -2495,7 +2495,7 @@ The text to be displayed when a user hovers over the [next](#attr-calendarnextbu
 ## Attr: Calendar.longEventDragOpacity
 
 ### Description
-The default [opacity percentage](Canvas.md#attr-canvasopacity) of [long-events](#attr-calendarallowlongevents) while being dragged.
+The default [opacity percentage](Canvas_1.md#attr-canvasopacity) of [long-events](#attr-calendarallowlongevents) while being dragged.
 
 ### Groups
 
@@ -2989,7 +2989,7 @@ The text to be displayed when a user hovers over the [date picker](#attr-calenda
 ### Description
 Criteria to be used when [Calendar.autoFetchData](#attr-calendarautofetchdata) is set.
 
-This property supports [dynamicCriteria](../kb_topics/dynamicCriteria.md#kb-topic-dynamiccriteria) - use [Criterion.valuePath](Criterion.md#attr-criterionvaluepath) to refer to values in the [Canvas.ruleScope](Canvas.md#attr-canvasrulescope).
+This property supports [dynamicCriteria](../kb_topics/dynamicCriteria.md#kb-topic-dynamiccriteria) - use [Criterion.valuePath](Criterion.md#attr-criterionvaluepath) to refer to values in the [Canvas.ruleScope](Canvas_1.md#attr-canvasrulescope).
 
 ### Groups
 
@@ -4004,7 +4004,7 @@ Called from [EventCanvas.setEvent](EventCanvas.md#method-eventcanvassetevent) wh
 
 By default, this method returns a [DetailViewer](DetailViewer.md#class-detailviewer) showing values from the associated event, according to the fields in the Calendar's [dataSource](#attr-calendardatasource), or the default event-fields if no dataSource is present.
 
-However, the component can be any [canvas-based](Canvas.md#class-canvas) widget, including a Layout containing an arrangement of other widgets. When applied as a member of an eventCanvas, the component fills its container and limits its own content to that size, showing scrollbars as appropriate.
+However, the component can be any [canvas-based](Canvas_1.md#class-canvas) widget, including a Layout containing an arrangement of other widgets. When applied as a member of an eventCanvas, the component fills its container and limits its own content to that size, showing scrollbars as appropriate.
 
 See [Calendar.updateEventCanvasComponent](#method-calendarupdateeventcanvascomponent) for details on updating components that have already been created and applied.
 
@@ -5081,7 +5081,7 @@ Changes to [TextMatchStyle](../reference_2.md#type-textmatchstyle) made via `req
 
 When the user re-filters this component (for example from the [filter editor](ListGrid_1.md#attr-listgridshowfiltereditor)), the request properties passed here are retained, as described under [getRefilterRequestProperties()](DataBoundComponent.md#method-databoundcomponentgetrefilterrequestproperties).
 
-To pick up such changes, we recommend that you call [setData(\[\])](#method-calendarsetdata) (passing an empty array to ensure the data model is cleared), and then call this method to fetch again. If you try to do it by calling [invalidateCache()](ListGrid_2.md#method-listgridinvalidatecache), you may see duplicate fetches if you haven't already updated the data context by calling this method with the new request properties, and fail to do so before the component is [redrawn](Canvas.md#method-canvasredraw).
+To pick up such changes, we recommend that you call [setData(\[\])](#method-calendarsetdata) (passing an empty array to ensure the data model is cleared), and then call this method to fetch again. If you try to do it by calling [invalidateCache()](ListGrid_2.md#method-listgridinvalidatecache), you may see duplicate fetches if you haven't already updated the data context by calling this method with the new request properties, and fail to do so before the component is [redrawn](Canvas_1.md#method-canvasredraw).
 
 ### Parameters
 

@@ -42,7 +42,7 @@ Note: If you want immediate upload on drop (like Gmail attachments), use a [Form
 ## Attr: FileUploadItem.canvasConstructor
 
 ### Description
-The class to use for the [Canvas](Canvas.md#class-canvas) autoChild. Default is FileDropZone.
+The class to use for the [Canvas](Canvas_1.md#class-canvas) autoChild. Default is FileDropZone.
 
 **Flags**: IR
 
@@ -268,7 +268,7 @@ See [FileDropZone.maxFileSize](FileDropZone.md#attr-filedropzonemaxfilesize).
 ## Attr: FileUploadItem.canvasDefaults
 
 ### Description
-Default properties for the [Canvas](Canvas.md#class-canvas) autoChild FileDropZone.
+Default properties for the [Canvas](Canvas_1.md#class-canvas) autoChild FileDropZone.
 
 The default implementation includes handlers that forward [FileDropZone.filesAdded](FileDropZone.md#method-filedropzonefilesadded) and [FileDropZone.filesRemoved](FileDropZone.md#method-filedropzonefilesremoved) notifications to update the FormItem's value.
 

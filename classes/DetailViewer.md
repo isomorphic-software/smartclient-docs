@@ -6,7 +6,7 @@
 
 ## Class: DetailViewer
 
-*Inherits from:* [Canvas](Canvas.md#class-canvas)
+*Inherits from:* [Canvas](Canvas_1.md#class-canvas)
 
 ### Description
 Displays one or more records "horizontally" with one property per line.
@@ -204,7 +204,7 @@ If the user picks an icon, the created hiliting rule will have [Hilite.icon](Hil
 ## Attr: DetailViewer.dataArity
 
 ### Description
-A DetailViewer is a [dataArity](DataBoundComponent.md#attr-databoundcomponentdataarity):either component by default which means data population from [Canvas.dataContext](Canvas.md#attr-canvasdatacontext) will be treated like a DynamicForm (i.e. single). However, by explicitly marking an instance of DetailViewer as `dataArity:multiple`, `dataContext` population will be treated similarly to a ListGrid.
+A DetailViewer is a [dataArity](DataBoundComponent.md#attr-databoundcomponentdataarity):either component by default which means data population from [Canvas.dataContext](Canvas_1.md#attr-canvasdatacontext) will be treated like a DynamicForm (i.e. single). However, by explicitly marking an instance of DetailViewer as `dataArity:multiple`, `dataContext` population will be treated similarly to a ListGrid.
 
 **Flags**: IRWA
 
@@ -344,7 +344,7 @@ CSS style for the component as a whole.
 ### Description
 Criteria that are never shown to or edited by the user and are cumulative with any criteria provided via [DataBoundComponent.initialCriteria](DataBoundComponent.md#attr-databoundcomponentinitialcriteria) and related methods.
 
-This property supports [dynamicCriteria](../kb_topics/dynamicCriteria.md#kb-topic-dynamiccriteria) - use [Criterion.valuePath](Criterion.md#attr-criterionvaluepath) to refer to values in the [Canvas.ruleScope](Canvas.md#attr-canvasrulescope).
+This property supports [dynamicCriteria](../kb_topics/dynamicCriteria.md#kb-topic-dynamiccriteria) - use [Criterion.valuePath](Criterion.md#attr-criterionvaluepath) to refer to values in the [Canvas.ruleScope](Canvas_1.md#attr-canvasrulescope).
 
 **Flags**: IRW
 
@@ -628,7 +628,7 @@ The title for the Configure Fields menu item.
 ## Attr: DetailViewer.editProxyConstructor
 
 ### Description
-Default class used to construct the [EditProxy](EditProxy.md#class-editproxy) for this component when the component is [first placed into edit mode](Canvas.md#method-canvasseteditmode).
+Default class used to construct the [EditProxy](EditProxy.md#class-editproxy) for this component when the component is [first placed into edit mode](Canvas_1.md#method-canvasseteditmode).
 
 **Flags**: IR
 
@@ -638,7 +638,7 @@ Default class used to construct the [EditProxy](EditProxy.md#class-editproxy) fo
 ### Description
 Criteria to be used when [DetailViewer.autoFetchData](#attr-detailviewerautofetchdata) is set.
 
-This property supports [dynamicCriteria](../kb_topics/dynamicCriteria.md#kb-topic-dynamiccriteria) - use [Criterion.valuePath](Criterion.md#attr-criterionvaluepath) to refer to values in the [Canvas.ruleScope](Canvas.md#attr-canvasrulescope).
+This property supports [dynamicCriteria](../kb_topics/dynamicCriteria.md#kb-topic-dynamiccriteria) - use [Criterion.valuePath](Criterion.md#attr-criterionvaluepath) to refer to values in the [Canvas.ruleScope](Canvas_1.md#attr-canvasrulescope).
 
 ### Groups
 

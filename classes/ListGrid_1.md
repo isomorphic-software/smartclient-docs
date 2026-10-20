@@ -486,7 +486,7 @@ Causes a menu item titled ["Filter using"](#attr-listgridfilterusingtext) to app
 
 Once an operator has been chosen, the active operator is indicated by an [ListGrid.operatorIcon](#attr-listgridoperatoricon) placed within the field (you can alternatively cause the icon to [always be present](#attr-listgridalwaysshowoperatoricon)). The `operatorIcon` shows the same textual representation of the search operator as is used by the [FormItem.allowExpressions](FormItem.md#attr-formitemallowexpressions) feature. Clicking on the icon provides a second way to modify the search operator.
 
-This feature is enabled by default if [DataSource.supportsAdvancedCriteria](DataSource_1.md#method-datasourcesupportsadvancedcriteria) is true, for all fields where it is normally possible to filter by typing in a search string. This excludes field types such as "date" or "boolean" which show specialized filter controls. Use [ListGridField.allowFilterOperators](ListGridField.md#attr-listgridfieldallowfilteroperators) to disable this interface for individual fields, or set [DataSourceField.canFilter](DataSourceField.md#attr-datasourcefieldcanfilter) to false to disallow filtering entirely for a field.
+This feature is enabled by default if [DataSource.supportsAdvancedCriteria](DataSource_2.md#method-datasourcesupportsadvancedcriteria) is true, for all fields where it is normally possible to filter by typing in a search string. This excludes field types such as "date" or "boolean" which show specialized filter controls. Use [ListGridField.allowFilterOperators](ListGridField.md#attr-listgridfieldallowfilteroperators) to disable this interface for individual fields, or set [DataSourceField.canFilter](DataSourceField.md#attr-datasourcefieldcanfilter) to false to disallow filtering entirely for a field.
 
 Note that this feature is similar to [ListGrid.allowFilterExpressions](#attr-listgridallowfilterexpressions), which allows the end users to directly type in characters such as ">" to control filtering. `allowFilterOperators` is easier to use and more discoverable than `allowFilterExpressions`, and also avoids the drawback where special characters like ">" cannot be used in filter values. However, `allowFilterExpressions` allows users to make use of certain operators that `allowFilterOperators` does not support, such as using the "betweenInclusive" operator by typing "5...10".
 
@@ -550,7 +550,7 @@ Default width and height of value icons for this ListGrid. Can be overridden at 
 ## Attr: ListGrid.filterWindowCriteriaIndicator
 
 ### Description
-Instance of [Canvas](Canvas.md#class-canvas) used to show visual indicator that [ListGrid.filterWindowCriteria](#attr-listgridfilterwindowcriteria) is configured. [ListGrid.showFilterWindowCriteriaIndicator](#attr-listgridshowfilterwindowcriteriaindicator) must be enabled to show indicator.
+Instance of [Canvas](Canvas_1.md#class-canvas) used to show visual indicator that [ListGrid.filterWindowCriteria](#attr-listgridfilterwindowcriteria) is configured. [ListGrid.showFilterWindowCriteriaIndicator](#attr-listgridshowfilterwindowcriteriaindicator) must be enabled to show indicator.
 
 **Flags**: IR
 
@@ -750,7 +750,7 @@ recordComponents are not created for newly added rows which have not yet been sa
 
 Depending on the [ListGrid.showRecordComponentsByCell](#attr-listgridshowrecordcomponentsbycell) setting, `createRecordComponent()` will be called either once per row, or once for every cell.
 
-Depending on [ListGrid.recordComponentPosition](#attr-listgridrecordcomponentposition), components can either be placed underneath normal record or cell content ("expand" setting) or placed so that they overlap normal cell content ("within" setting). For the "within" setting, the default is to fill the row or cell, but the component can specify percent size or even use [snapTo-positioning](Canvas.md#attr-canvassnapto) to place itself within the row or cell.
+Depending on [ListGrid.recordComponentPosition](#attr-listgridrecordcomponentposition), components can either be placed underneath normal record or cell content ("expand" setting) or placed so that they overlap normal cell content ("within" setting). For the "within" setting, the default is to fill the row or cell, but the component can specify percent size or even use [snapTo-positioning](Canvas_1.md#attr-canvassnapto) to place itself within the row or cell.
 
 The "expand" setting is incompatible with [frozen columns](#attr-listgridcanfreezefields) _unless_ all `recordComponents` are the same height and they are present in every row, in which case the fixed height of all `recordComponents` can be set via [ListGrid.recordComponentHeight](#attr-listgridrecordcomponentheight) to re-enable frozen fields.
 
@@ -1209,7 +1209,7 @@ Note that disabling this feature does not mean that saved searches are disallowe
 
 This feature uses the global settings found in [SavedSearches](SavedSearches.md#class-savedsearches). Some aspects can be overridden for this component. See [ListGrid.savedSearchDS](#attr-listgridsavedsearchds), [ListGrid.savedSearchAdminRole](#attr-listgridsavedsearchadminrole).
 
-To avoid leaking local storage, this setting will be disregarded, disabling the feature, unless the grid specifies [savedSearchId](DataBoundComponent.md#attr-databoundcomponentsavedsearchid), or an explicit [local or global ID](Canvas.md#method-canvasgetlocalid) is present.
+To avoid leaking local storage, this setting will be disregarded, disabling the feature, unless the grid specifies [savedSearchId](DataBoundComponent.md#attr-databoundcomponentsavedsearchid), or an explicit [local or global ID](Canvas_1.md#method-canvasgetlocalid) is present.
 
 **Note:** this feature requires [SmartClient Pro](https://www.smartclient.com/product/) or better.
 
@@ -1574,7 +1574,7 @@ When _ariaRole_ is set to `"grid"` we write out the following standard propertie
 
 Developers may configure different ARIA HTML roles and attributes by modifying this attribute (`listGrid.ariaRole`) and implementing custom handling for the following APIs:
 
-| ListGrid | listGrid.ariaRole, [ariaState](Canvas.md#attr-canvasariastate), [ListGrid.getAriaState](ListGrid_2.md#method-listgridgetariastate). |
+| ListGrid | listGrid.ariaRole, [ariaState](Canvas_1.md#attr-canvasariastate), [ListGrid.getAriaState](ListGrid_2.md#method-listgridgetariastate). |
 |---|---|
 | header / header buttons | [ListGrid.headerAriaRole](#attr-listgridheaderariarole), [ListGrid.headerButtonAriaRole](#attr-listgridheaderbuttonariarole), [ListGridField.headerButtonAriaRole](ListGridField.md#attr-listgridfieldheaderbuttonariarole) [ListGrid.headerButtonAriaState](#attr-listgridheaderbuttonariastate), [ListGridField.headerButtonAriaState](ListGridField.md#attr-listgridfieldheaderbuttonariastate) |
 | rows | [ListGrid.rowRole](#attr-listgridrowrole), [ListGrid.recordRowRoleProperty](#attr-listgridrecordrowroleproperty), [ListGrid.rowAriaState](#attr-listgridrowariastate), [ListGrid.recordRowAriaStateProperty](#attr-listgridrecordrowariastateproperty) , [ListGrid.getRowRole](ListGrid_2.md#method-listgridgetrowrole), [ListGrid.getRowAriaState](ListGrid_2.md#method-listgridgetrowariastate). To update row state at runtime, developers may redraw the grid or its body. |
@@ -2083,7 +2083,7 @@ Adds the ability for a user to define additional criteria above and beyond those
 
 Causes a menu item titled ["Advanced Filtering"](#attr-listgridadvancedfilteringtext) to appear in the ["Filter using"](#attr-listgridfilterusingtext) menu show in the [headerContextMenu](#attr-listgridshowheadercontextmenu) that allows the end user to configure an advanced filter on the grid that can supplement the [filter editor](#attr-listgridshowfiltereditor). Note that the menu option will show even if [filter operators](#attr-listgridallowfilteroperators) is disabled.
 
-To use this feature, the grid must be configured with a [DataSource](DataSource_1.md#class-datasource). In fact, this feature is enabled by default if the grid has a [DataSource](DataSource_1.md#class-datasource) and both [DataSource.supportsAdvancedCriteria](DataSource_1.md#method-datasourcesupportsadvancedcriteria) and [ListGrid.allowFilterOperators](#attr-listgridallowfilteroperators) are true. This default can be disabled by setting `allowFilterWindow` to `false`.
+To use this feature, the grid must be configured with a [DataSource](DataSource_1.md#class-datasource). In fact, this feature is enabled by default if the grid has a [DataSource](DataSource_1.md#class-datasource) and both [DataSource.supportsAdvancedCriteria](DataSource_2.md#method-datasourcesupportsadvancedcriteria) and [ListGrid.allowFilterOperators](#attr-listgridallowfilteroperators) are true. This default can be disabled by setting `allowFilterWindow` to `false`.
 
 [This example](https://www.smartclient.com/smartclient-latest/showcase/?id=filterWindow) shows the `allowFilterWindow` setting in use.
 
@@ -2408,9 +2408,9 @@ If [ListGrid.canAcceptDroppedRecords](#attr-listgridcanacceptdroppedrecords) is 
 ## Attr: ListGrid.hoverScreen
 
 ### Description
-Screen to create (via [createScreen()](RPCManager.md#classmethod-rpcmanagercreatescreen)) in lieu of calling [getHoverComponent()](Canvas.md#method-canvasgethovercomponent) or [ListGrid.getCellHoverComponent](ListGrid_2.md#method-listgridgetcellhovercomponent).
+Screen to create (via [createScreen()](RPCManager.md#classmethod-rpcmanagercreatescreen)) in lieu of calling [getHoverComponent()](Canvas_1.md#method-canvasgethovercomponent) or [ListGrid.getCellHoverComponent](ListGrid_2.md#method-listgridgetcellhovercomponent).
 
-If this grid has a [dataSource](DataBoundComponent.md#attr-databoundcomponentdatasource), the created screen is provided with a [Canvas.dataContext](Canvas.md#attr-canvasdatacontext) that includes the record being shown at the row.
+If this grid has a [dataSource](DataBoundComponent.md#attr-databoundcomponentdatasource), the created screen is provided with a [Canvas.dataContext](Canvas_1.md#attr-canvasdatacontext) that includes the record being shown at the row.
 
 ### Groups
 
@@ -2499,7 +2499,7 @@ When animating record removal [(see animateRemoveRecord)](#attr-listgridanimater
 ### Description
 if [ListGrid.showRecordComponents](#attr-listgridshowrecordcomponents) is true, how should the component appear within the cell. Valid options are
 
-*   `"within"`: the component will be rendered inside the record / cell. [Canvas.snapTo](Canvas.md#attr-canvassnapto) may be set to specify where the component should render within the row or cell, and [Canvas.snapOffsetTop](Canvas.md#attr-canvassnapoffsettop) / [Canvas.snapOffsetLeft](Canvas.md#attr-canvassnapoffsetleft) may be set to indent recordComponents within their parent cells. Note that if unset, the component will show up at the top/left edge for components embedded within an entire row, or for per-cell components, cell align and valign will be respected. Note also that, when rendering components "within" cells, specified component heights will be respected and will change the height of the row. However, if you want components to completely fill a cell at it's default height, set height: "100%" or rows will render at the default height of the component.
+*   `"within"`: the component will be rendered inside the record / cell. [Canvas.snapTo](Canvas_1.md#attr-canvassnapto) may be set to specify where the component should render within the row or cell, and [Canvas.snapOffsetTop](Canvas_1.md#attr-canvassnapoffsettop) / [Canvas.snapOffsetLeft](Canvas_1.md#attr-canvassnapoffsetleft) may be set to indent recordComponents within their parent cells. Note that if unset, the component will show up at the top/left edge for components embedded within an entire row, or for per-cell components, cell align and valign will be respected. Note also that, when rendering components "within" cells, specified component heights will be respected and will change the height of the row. However, if you want components to completely fill a cell at it's default height, set height: "100%" or rows will render at the default height of the component.
 *   `"expand"`: the component will be written into the cell below the normal cell content, causing the cell to expand vertically to accommodate it.
 *   `null`: If this attribute is unset, we will default to showing recordComponents with position `"within"` if [ListGrid.showRecordComponentsByCell](#attr-listgridshowrecordcomponentsbycell) is true, otherwise using `"expand"` logic.
 
@@ -3011,7 +3011,7 @@ If we're showing a [headerContextMenu](#attr-listgridshowheadercontextmenu) for 
 ## Attr: ListGrid.animateRollOver
 
 ### Description
-If the [rollOverCanvas](#attr-listgridrollovercanvas) is enabled, setting this property to `true` ensures that when the `rollOverCanvas` is displayed it is animated into view via [Canvas.animateShow](Canvas.md#method-canvasanimateshow). Note that the animation effect may be customized via [Canvas.animateShowEffect](Canvas.md#attr-canvasanimateshoweffect), [Canvas.animateShowTime](Canvas.md#attr-canvasanimateshowtime) and [Canvas.animateShowAcceleration](Canvas.md#attr-canvasanimateshowacceleration) set in `rollOverCanvasProperties`.
+If the [rollOverCanvas](#attr-listgridrollovercanvas) is enabled, setting this property to `true` ensures that when the `rollOverCanvas` is displayed it is animated into view via [Canvas.animateShow](Canvas_1.md#method-canvasanimateshow). Note that the animation effect may be customized via [Canvas.animateShowEffect](Canvas_1.md#attr-canvasanimateshoweffect), [Canvas.animateShowTime](Canvas_1.md#attr-canvasanimateshowtime) and [Canvas.animateShowAcceleration](Canvas_1.md#attr-canvasanimateshowacceleration) set in `rollOverCanvasProperties`.
 
 ### Groups
 
@@ -3146,7 +3146,7 @@ If [ListGrid.selectionAppearance](#attr-listgridselectionappearance) is set to `
 ## Attr: ListGrid.headerButtonAriaState
 
 ### Description
-Default [ARIA state](Canvas.md#attr-canvasariastate) for [header buttons](#attr-listgridshowheader). See [ListGrid.getHeaderButtonAriaState](ListGrid_2.md#method-listgridgetheaderbuttonariastate).
+Default [ARIA state](Canvas_1.md#attr-canvasariastate) for [header buttons](#attr-listgridshowheader). See [ListGrid.getHeaderButtonAriaState](ListGrid_2.md#method-listgridgetheaderbuttonariastate).
 
 **Flags**: IRA
 
@@ -3277,7 +3277,7 @@ For more information on the ARIA attributes generated by ListGrids, see [ListGri
 ## Attr: ListGrid.animateRollUnder
 
 ### Description
-If the [rollUnderCanvas](#attr-listgridrollundercanvas) is enabled, setting this property to `true` ensures that when the `rollUnderCanvas` is displayed it is animated into view via [Canvas.animateShow](Canvas.md#method-canvasanimateshow). Note that the animation effect may be customized via [Canvas.animateShowEffect](Canvas.md#attr-canvasanimateshoweffect), [Canvas.animateShowTime](Canvas.md#attr-canvasanimateshowtime) and [Canvas.animateShowAcceleration](Canvas.md#attr-canvasanimateshowacceleration) set in `rollUnderCanvasProperties`.
+If the [rollUnderCanvas](#attr-listgridrollundercanvas) is enabled, setting this property to `true` ensures that when the `rollUnderCanvas` is displayed it is animated into view via [Canvas.animateShow](Canvas_1.md#method-canvasanimateshow). Note that the animation effect may be customized via [Canvas.animateShowEffect](Canvas_1.md#attr-canvasanimateshoweffect), [Canvas.animateShowTime](Canvas_1.md#attr-canvasanimateshowtime) and [Canvas.animateShowAcceleration](Canvas_1.md#attr-canvasanimateshowacceleration) set in `rollUnderCanvasProperties`.
 
 ### Groups
 
@@ -3390,7 +3390,7 @@ Note that this feature is incompatible with clipping via [ListGrid.clipHeaderTit
 ## Attr: ListGrid.headerShadowSoftness
 
 ### Description
-If [ListGrid.showHeaderShadow](#attr-listgridshowheadershadow) is true, the [Canvas.shadowSoftness](Canvas.md#attr-canvasshadowsoftness) for the header shadow
+If [ListGrid.showHeaderShadow](#attr-listgridshowheadershadow) is true, the [Canvas.shadowSoftness](Canvas_1.md#attr-canvasshadowsoftness) for the header shadow
 
 **Flags**: IRA
 
@@ -3722,7 +3722,7 @@ The field providing the facility to expand and collapse rows.
 ## Attr: ListGrid.editProxyConstructor
 
 ### Description
-Default class used to construct the [EditProxy](EditProxy.md#class-editproxy) for this component when the component is [first placed into edit mode](Canvas.md#method-canvasseteditmode).
+Default class used to construct the [EditProxy](EditProxy.md#class-editproxy) for this component when the component is [first placed into edit mode](Canvas_1.md#method-canvasseteditmode).
 
 **Flags**: IR
 
@@ -4117,7 +4117,7 @@ This setting causes the [roll over canvas](#attr-listgridrollovercanvas) to be s
 ## Attr: ListGrid.headerShadowColor
 
 ### Description
-If [ListGrid.showHeaderShadow](#attr-listgridshowheadershadow) is true, the [Canvas.shadowColor](Canvas.md#attr-canvasshadowcolor) for the header shadow.
+If [ListGrid.showHeaderShadow](#attr-listgridshowheadershadow) is true, the [Canvas.shadowColor](Canvas_1.md#attr-canvasshadowcolor) for the header shadow.
 
 **Flags**: IRA
 
@@ -4375,7 +4375,7 @@ The current saved value can be retrieved or cleared by calling [ListGrid.getSave
 
 **Locator details**
 
-The grid must have a stable locator so that previous state can be retrieved during initial draw and saved back into the same place. If the grid has an explicit [ID](Canvas.md#attr-canvasid) the locator will always be stable. Setting an explicit ID on a known parent of the grid can also lead to a stable ID as described in the [Best Practices section of Using Selenium Scripts](../kb_topics/usingSelenium.md#kb-topic-using-selenium-scripts-selenese).
+The grid must have a stable locator so that previous state can be retrieved during initial draw and saved back into the same place. If the grid has an explicit [ID](Canvas_1.md#attr-canvasid) the locator will always be stable. Setting an explicit ID on a known parent of the grid can also lead to a stable ID as described in the [Best Practices section of Using Selenium Scripts](../kb_topics/usingSelenium.md#kb-topic-using-selenium-scripts-selenese).
 
 For purposes of this feature the top-level parent of the grid must have an explicit ID.
 
@@ -4574,7 +4574,7 @@ Default image to use for the dragTracker when things are dragged within or out o
 ### Description
 If this property is true, users can drag the mouse to select several rows or cells. This is mutually exclusive with rearranging rows or cells by dragging.
 
-**NOTE:** If `canDragSelect` is initially enabled or might be dynamically enabled after the grid is created, it may be desirable to disable [touch scrolling](Canvas.md#attr-canvasusetouchscrolling) so that touch-dragging records/cells selects them rather than starting a scroll. If [Canvas.disableTouchScrollingForDrag](Canvas.md#attr-canvasdisabletouchscrollingfordrag) is set to `true`, then touch scrolling will be disabled automatically. However, for [accessibility](../kb_topics/accessibility.md#kb-topic-accessibility--section-508-compliance) reasons, it is recommended to leave touch scrolling enabled and provide an alternative set of controls that can be used to perform drag-selection.
+**NOTE:** If `canDragSelect` is initially enabled or might be dynamically enabled after the grid is created, it may be desirable to disable [touch scrolling](Canvas_1.md#attr-canvasusetouchscrolling) so that touch-dragging records/cells selects them rather than starting a scroll. If [Canvas.disableTouchScrollingForDrag](Canvas_1.md#attr-canvasdisabletouchscrollingfordrag) is set to `true`, then touch scrolling will be disabled automatically. However, for [accessibility](../kb_topics/accessibility.md#kb-topic-accessibility--section-508-compliance) reasons, it is recommended to leave touch scrolling enabled and provide an alternative set of controls that can be used to perform drag-selection.
 
 ### Groups
 
@@ -5023,7 +5023,7 @@ When enabled, when the mouse moves over a row or cell (depending on [ListGrid.us
 
 This can be used to dynamically show controls or informational displays only on rollover. For example, controls to delete a row might appear only on rollover so they do not clutter the static display, or a "rollUnder" Canvas could be used to display additional information that can appear behind normal cell values (like displaying percent complete via as a bar of color that appears behind text values).
 
-[snapTo positioning](Canvas.md#attr-canvassnapto) can be used to place the rollOver/rollUnderCanvas. With `useCellRollOvers`, positioning is relative to the cell, for row-level rollOver, position is relative to the portion of the row that is scrolled into view (this implies a row-level rollOver/UnderCanvas can never be placed horizontally scrolled out of view, but this is possible for a cell-level rollOver).
+[snapTo positioning](Canvas_1.md#attr-canvassnapto) can be used to place the rollOver/rollUnderCanvas. With `useCellRollOvers`, positioning is relative to the cell, for row-level rollOver, position is relative to the portion of the row that is scrolled into view (this implies a row-level rollOver/UnderCanvas can never be placed horizontally scrolled out of view, but this is possible for a cell-level rollOver).
 
 `snapTo` positioning makes it easy to do something like place a button at the right edge of the grid, next to the scrollbar: just set snapTo:"R" on the `rollOverCanvas`.
 
@@ -6486,7 +6486,7 @@ Set to `true` to revert to legacy behavior where `getDefaultFormattedValue()` re
 ### Description
 Criteria to be used when [ListGrid.autoFetchData](#attr-listgridautofetchdata) is set.
 
-This property supports [dynamicCriteria](../kb_topics/dynamicCriteria.md#kb-topic-dynamiccriteria) - use [Criterion.valuePath](Criterion.md#attr-criterionvaluepath) to refer to values in the [Canvas.ruleScope](Canvas.md#attr-canvasrulescope).
+This property supports [dynamicCriteria](../kb_topics/dynamicCriteria.md#kb-topic-dynamiccriteria) - use [Criterion.valuePath](Criterion.md#attr-criterionvaluepath) to refer to values in the [Canvas.ruleScope](Canvas_1.md#attr-canvasrulescope).
 
 ### Groups
 
@@ -6558,7 +6558,7 @@ Width for hilite icons for this component. Overrides [hiliteIconSize](#attr-list
 ## Attr: ListGrid.headerButtonAriaRole
 
 ### Description
-Default [role](Canvas.md#attr-canvasariarole) for [header buttons](#attr-listgridshowheader). See [ListGrid.getHeaderButtonAriaRole](ListGrid_2.md#method-listgridgetheaderbuttonariarole).
+Default [role](Canvas_1.md#attr-canvasariarole) for [header buttons](#attr-listgridshowheader). See [ListGrid.getHeaderButtonAriaRole](ListGrid_2.md#method-listgridgetheaderbuttonariarole).
 
 **Flags**: IRA
 
@@ -6594,7 +6594,7 @@ If true, shows [recordComponents](#attr-listgridshowrecordcomponents) in cells, 
 ## Attr: ListGrid.headerAriaRole
 
 ### Description
-[Aria role](Canvas.md#attr-canvasariarole) for this listGrid's [header](#attr-listgridshowheader). See [ListGrid.getHeaderAriaRole](ListGrid_2.md#method-listgridgetheaderariarole)
+[Aria role](Canvas_1.md#attr-canvasariarole) for this listGrid's [header](#attr-listgridshowheader). See [ListGrid.getHeaderAriaRole](ListGrid_2.md#method-listgridgetheaderariarole)
 
 **Flags**: IRA
 
@@ -6646,7 +6646,7 @@ Dialog that shows progress after requesting AI-sorting of a field.
 ## Attr: ListGrid.headerShadowVOffset
 
 ### Description
-If [ListGrid.showHeaderShadow](#attr-listgridshowheadershadow) is true, the [Canvas.shadowVOffset](Canvas.md#attr-canvasshadowvoffset) for the header shadow
+If [ListGrid.showHeaderShadow](#attr-listgridshowheadershadow) is true, the [Canvas.shadowVOffset](Canvas_1.md#attr-canvasshadowvoffset) for the header shadow
 
 **Flags**: IRA
 
@@ -6841,7 +6841,7 @@ Criteria that are never shown to or edited by the user and are cumulative with a
 
 For a discussion of the various filtering and criteria-management APIs and when to use them, see the [Grid Filtering overview](../kb_topics/gridFiltering.md#kb-topic-grid-filtering-overview).
 
-This property supports [dynamicCriteria](../kb_topics/dynamicCriteria.md#kb-topic-dynamiccriteria) - use [Criterion.valuePath](Criterion.md#attr-criterionvaluepath) to refer to values in the [Canvas.ruleScope](Canvas.md#attr-canvasrulescope).
+This property supports [dynamicCriteria](../kb_topics/dynamicCriteria.md#kb-topic-dynamiccriteria) - use [Criterion.valuePath](Criterion.md#attr-criterionvaluepath) to refer to values in the [Canvas.ruleScope](Canvas_1.md#attr-canvasrulescope).
 
 To see implicitCriteria in action, take a look at [this example](https://www.smartclient.com/smartclient-latest/showcase/?id=additiveFilter) of using implicitCriteria to have an external form filter the grid in parallel with the [filterEditor](#attr-listgridshowfiltereditor).
 
@@ -6881,7 +6881,7 @@ Text to show in menu listing saved searches when there are no saved searches.
 ### Description
 Screen to create (via [createScreen()](RPCManager.md#classmethod-rpcmanagercreatescreen)) in lieu of calling [ListGrid.getRecordComponent](ListGrid_2.md#method-listgridgetrecordcomponent).
 
-If this grid has a [dataSource](#attr-listgriddatasource), the created screen is provided with a [Canvas.dataContext](Canvas.md#attr-canvasdatacontext) that includes the record being shown at the row. Be sure the record screen meets these [requirements](Canvas.md#attr-canvasautopopulatedata) to utilize the `dataContext`.
+If this grid has a [dataSource](#attr-listgriddatasource), the created screen is provided with a [Canvas.dataContext](Canvas_1.md#attr-canvasdatacontext) that includes the record being shown at the row. Be sure the record screen meets these [requirements](Canvas_1.md#attr-canvasautopopulatedata) to utilize the `dataContext`.
 
 ### Groups
 
@@ -6979,7 +6979,7 @@ To customize this field, developers may modify [ListGrid.groupTitleColumnPropert
 ## Attr: ListGrid.animateSelectionUnder
 
 ### Description
-If the [selectionUnderCanvas](#attr-listgridselectionundercanvas) is enabled, setting this property to `true` ensures that when the `selectionUnderCanvas` is displayed it is animated into view via [Canvas.animateShow](Canvas.md#method-canvasanimateshow). Note that the animation effect may be customized via [Canvas.animateShowEffect](Canvas.md#attr-canvasanimateshoweffect), [Canvas.animateShowTime](Canvas.md#attr-canvasanimateshowtime) and [Canvas.animateShowAcceleration](Canvas.md#attr-canvasanimateshowacceleration) set in `selectionUnderCanvasProperties`.
+If the [selectionUnderCanvas](#attr-listgridselectionundercanvas) is enabled, setting this property to `true` ensures that when the `selectionUnderCanvas` is displayed it is animated into view via [Canvas.animateShow](Canvas_1.md#method-canvasanimateshow). Note that the animation effect may be customized via [Canvas.animateShowEffect](Canvas_1.md#attr-canvasanimateshoweffect), [Canvas.animateShowTime](Canvas_1.md#attr-canvasanimateshowtime) and [Canvas.animateShowAcceleration](Canvas_1.md#attr-canvasanimateshowacceleration) set in `selectionUnderCanvasProperties`.
 
 ### Groups
 
@@ -7003,9 +7003,9 @@ Minimum size, in pixels, for ListGrid headers.
 ## Attr: ListGrid.minHeight
 
 ### Description
-Sets the [minimum height](Canvas.md#attr-canvasminheight) for the entire list (smaller than this doesn't tend to work very well). If not set, this value will be defaulted when [draw()](Canvas.md#method-canvasdraw) is called to something reasonable based on whether we're showing the [filter editor](#attr-listgridshowfiltereditor), [header](#attr-listgridshowheader), [summary rows](#attr-listgridshowgridsummary), and/or the [empty message](#attr-listgridshowemptymessage). Any top or bottom CSS padding specified by [ListGrid.emptyMessageStyle](#attr-listgridemptymessagestyle) will be taken into account, increasing `minHeight` so that the empty message can be shown without overflow.
+Sets the [minimum height](Canvas_1.md#attr-canvasminheight) for the entire list (smaller than this doesn't tend to work very well). If not set, this value will be defaulted when [draw()](Canvas_1.md#method-canvasdraw) is called to something reasonable based on whether we're showing the [filter editor](#attr-listgridshowfiltereditor), [header](#attr-listgridshowheader), [summary rows](#attr-listgridshowgridsummary), and/or the [empty message](#attr-listgridshowemptymessage). Any top or bottom CSS padding specified by [ListGrid.emptyMessageStyle](#attr-listgridemptymessagestyle) will be taken into account, increasing `minHeight` so that the empty message can be shown without overflow.
 
-**Note:** Minimum sizes do not apply to all situations. See [minimum sizing rules](Canvas.md#attr-canvasminwidth) for details.
+**Note:** Minimum sizes do not apply to all situations. See [minimum sizing rules](Canvas_1.md#attr-canvasminwidth) for details.
 
 ### Groups
 
@@ -7013,7 +7013,7 @@ Sets the [minimum height](Canvas.md#attr-canvasminheight) for the entire list (s
 
 ### See Also
 
-- [Canvas.minHeight](Canvas.md#attr-canvasminheight)
+- [Canvas.minHeight](Canvas_1.md#attr-canvasminheight)
 
 **Flags**: IRW
 
@@ -7666,7 +7666,7 @@ Note that this property has no effect if [ListGrid.groupNodeStyle](#attr-listgri
 ## Attr: ListGrid.animateSelection
 
 ### Description
-If the [selectionCanvas](#attr-listgridselectioncanvas) is enabled, setting this property to `true` ensures that when the `selectionCanvas` is displayed it is animated into view via [Canvas.animateShow](Canvas.md#method-canvasanimateshow). Note that the animation effect may be customized via [Canvas.animateShowEffect](Canvas.md#attr-canvasanimateshoweffect), [Canvas.animateShowTime](Canvas.md#attr-canvasanimateshowtime) and [Canvas.animateShowAcceleration](Canvas.md#attr-canvasanimateshowacceleration) set in `selectionCanvasProperties`.
+If the [selectionCanvas](#attr-listgridselectioncanvas) is enabled, setting this property to `true` ensures that when the `selectionCanvas` is displayed it is animated into view via [Canvas.animateShow](Canvas_1.md#method-canvasanimateshow). Note that the animation effect may be customized via [Canvas.animateShowEffect](Canvas_1.md#attr-canvasanimateshoweffect), [Canvas.animateShowTime](Canvas_1.md#attr-canvasanimateshowtime) and [Canvas.animateShowAcceleration](Canvas_1.md#attr-canvasanimateshowacceleration) set in `selectionCanvasProperties`.
 
 ### Groups
 
@@ -8699,7 +8699,7 @@ As an alternative to disabling wrapping entirely, [ListGrid.exportColumnWidthPad
 ### Description
 Indicates whether records can be dragged from this listGrid and dropped elsewhere.
 
-**NOTE:** If `canDragRecordsOut` is initially enabled or might be dynamically enabled after the grid is created, it may be desirable to disable [touch scrolling](Canvas.md#attr-canvasusetouchscrolling) so that touch-dragging a record starts a drag operation rather than a scroll, but see the discussion of [drag handles](ListGrid_2.md#method-listgridshowdraghandles). If [Canvas.disableTouchScrollingForDrag](Canvas.md#attr-canvasdisabletouchscrollingfordrag) is set to `true`, then touch scrolling will be disabled automatically. However, for [accessibility](../kb_topics/accessibility.md#kb-topic-accessibility--section-508-compliance) reasons, it is recommended to leave touch scrolling enabled and provide an alternative set of controls that can be used to perform drag and drop of records out of the grid.
+**NOTE:** If `canDragRecordsOut` is initially enabled or might be dynamically enabled after the grid is created, it may be desirable to disable [touch scrolling](Canvas_1.md#attr-canvasusetouchscrolling) so that touch-dragging a record starts a drag operation rather than a scroll, but see the discussion of [drag handles](ListGrid_2.md#method-listgridshowdraghandles). If [Canvas.disableTouchScrollingForDrag](Canvas_1.md#attr-canvasdisabletouchscrollingfordrag) is set to `true`, then touch scrolling will be disabled automatically. However, for [accessibility](../kb_topics/accessibility.md#kb-topic-accessibility--section-508-compliance) reasons, it is recommended to leave touch scrolling enabled and provide an alternative set of controls that can be used to perform drag and drop of records out of the grid.
 
 ### Groups
 
@@ -8802,7 +8802,7 @@ Even if content is allowed to wrap, if [ListGrid.fixedRecordHeights](#attr-listg
 ### Description
 Should the header show a drop-shadow? Shadow will be applied to the header, or for a grid with frozen columns, the header layout.
 
-Header shadow will only be displayed if [css shadows](Canvas.md#attr-canvasusecssshadow) are being used.
+Header shadow will only be displayed if [css shadows](Canvas_1.md#attr-canvasusecssshadow) are being used.
 
 ### See Also
 
@@ -9450,7 +9450,7 @@ Setting this property on a record will effect the visual style and interactivity
 ## Attr: ListGrid.headerShadowHOffset
 
 ### Description
-If [ListGrid.showHeaderShadow](#attr-listgridshowheadershadow) is true, the [Canvas.shadowHOffset](Canvas.md#attr-canvasshadowhoffset) for the header shadow
+If [ListGrid.showHeaderShadow](#attr-listgridshowheadershadow) is true, the [Canvas.shadowHOffset](Canvas_1.md#attr-canvasshadowhoffset) for the header shadow
 
 **Flags**: IRA
 

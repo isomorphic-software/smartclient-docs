@@ -164,7 +164,7 @@ Determines how messages are stacked if [MultiMessageMode](../reference_2.md#type
 ## Attr: NotifySettings.position
 
 ### Description
-Where to show the message, specified as an edge ("T", "B", "R", "L"), a corner ("TL", "TR", "BL", "BR), or "C" for center, similar to [Canvas.snapTo](Canvas.md#attr-canvassnapto). If an edge is specified, the message will be shown at its center (or the very center for "C"). Only used if [coordinates](#attr-notifysettingsx) haven't been provided.
+Where to show the message, specified as an edge ("T", "B", "R", "L"), a corner ("TL", "TR", "BL", "BR), or "C" for center, similar to [Canvas.snapTo](Canvas_1.md#attr-canvassnapto). If an edge is specified, the message will be shown at its center (or the very center for "C"). Only used if [coordinates](#attr-notifysettingsx) haven't been provided.
 
 If a [NotifySettings.positionCanvas](#attr-notifysettingspositioncanvas) has been specified, the `position` is interpreted relative to it instead of the viewport, and this property defaults to "C". Otherwise, if no `positionCanvas` is present, the default is to use [NotifySettings.slideInOrigin](#attr-notifysettingsslideinorigin) or [NotifySettings.slideOutOrigin](#attr-notifysettingsslideoutorigin), or "L" if neither property is defined.
 

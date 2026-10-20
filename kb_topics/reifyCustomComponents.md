@@ -51,7 +51,7 @@ Newly declared fields will appear in the Component Editor in the "Other" categor
 
 The ComponentEditor will pick a FormItem for a custom field by the [same rules](../reference_2.md#type-formitemtype) used for ordinary databinding, including the ability to set field.editorType to use a custom FormItem.
 
-When properties are changed by the user, Reify will look for an appropriate "setter function" for the custom field, for example, for a field named "myProp", Reify will look for "setMyProp". The target component will also be [redrawn](../classes/Canvas.md#method-canvasredraw).
+When properties are changed by the user, Reify will look for an appropriate "setter function" for the custom field, for example, for a field named "myProp", Reify will look for "setMyProp". The target component will also be [redrawn](../classes/Canvas_1.md#method-canvasredraw).
 
 **Designing Components for Editing & Using Placeholders**
 
@@ -94,7 +94,7 @@ Because of these rules, any subclass of Canvas will be automatically eligible to
 You can declare custom containment relations, such as a custom class "Wizard" that accepts instances of the custom class "Pane" by simply declaring a [component schema](componentSchema.md#kb-topic-component-schema) that says that Wizard has a property called "panes" of type "Pane". Then, provide methods that allow components to be added and removed:
 
 *   for a [multiple](../classes/DataSourceField.md#attr-datasourcefieldmultiple) field, provide "add" and "remove" functions based on the name of the field. For example, for a field "panes" of type "Pane", provide "addPane()" that takes a Pane instance, and "removePane()" that takes a pane instance or pane ID
-*   for a singular field (such as [Canvas.contextMenu](../classes/Canvas.md#attr-canvascontextmenu) or [Tab.pane](../classes/Tab.md#attr-tabpane)), provide a setter method named after the field (eg setContextMenu()) that takes either an instance of the component or null for removal
+*   for a singular field (such as [Canvas.contextMenu](../classes/Canvas_1.md#attr-canvascontextmenu) or [Tab.pane](../classes/Tab.md#attr-tabpane)), provide a setter method named after the field (eg setContextMenu()) that takes either an instance of the component or null for removal
 
 The "editing" log category can be enabled in the Developer Console to troubleshoot issues with schema-driven drag and drop and automatic lookup of getter/setter and adder/remover methods.
 

@@ -33,7 +33,7 @@ Whether to show the [preview canvas](#attr-gradienteditorpreviewcanvas), used to
 ## Attr: GradientEditor.previewCanvas
 
 ### Description
-An [AutoChild](../reference.md#type-autochild) of type [Canvas](Canvas.md#class-canvas), used to display the gradient according to the defined color-stops. The canvas supports drag and click mouse interactions to update a gradient's rotation and origin.
+An [AutoChild](../reference.md#type-autochild) of type [Canvas](Canvas_1.md#class-canvas), used to display the gradient according to the defined color-stops. The canvas supports drag and click mouse interactions to update a gradient's rotation and origin.
 
 **Flags**: R
 

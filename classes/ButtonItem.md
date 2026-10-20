@@ -17,7 +17,7 @@ FormItem for adding a Button to a form.
 ### Description
 Criteria to be evaluated to determine whether this item should be enabled. This property is incompatible with [readOnlyWhen](FormItem.md#attr-formitemreadonlywhen) and any setting you provide for the latter will be ignored if this property is set.
 
-Criteria are evaluated against the ${isc.DocUtils.linkForRef('method:DynamicForm.getValues','form\\'s current values')} as well as the current [rule context](Canvas.md#attr-canvasrulescope). Criteria are re-evaluated every time form values or the rule context changes, whether by end user action or by programmatic calls.
+Criteria are evaluated against the ${isc.DocUtils.linkForRef('method:DynamicForm.getValues','form\\'s current values')} as well as the current [rule context](Canvas_1.md#attr-canvasrulescope). Criteria are re-evaluated every time form values or the rule context changes, whether by end user action or by programmatic calls.
 
 A basic criteria uses textMatchStyle:"exact". When specified in [Component XML](../kb_topics/componentXML.md#kb-topic-component-xml) this property allows [shorthand formats](../kb_topics/xmlCriteriaShorthand.md#kb-topic-xmlcriteriashorthand) for defining criteria.
 
@@ -33,7 +33,7 @@ Note: A ButtonItem using enableWhen must have a [name](FormItem.md#attr-formitem
 ## Attr: ButtonItem.button
 
 ### Description
-This item is an autoChild generated [Canvas](Canvas.md#class-canvas) displayed by the ButtonItem and is an instance of [Button](Button.md#class-button) by defaut, cuztomizeable via the [ButtonItem.buttonConstructor](#attr-buttonitembuttonconstructor) attribute.
+This item is an autoChild generated [Canvas](Canvas_1.md#class-canvas) displayed by the ButtonItem and is an instance of [Button](Button.md#class-button) by defaut, cuztomizeable via the [ButtonItem.buttonConstructor](#attr-buttonitembuttonconstructor) attribute.
 
 **Flags**: R
 
@@ -113,7 +113,7 @@ This property governs whether [showFocusedAsOver](StatefulCanvas.md#attr-statefu
 ## Attr: ButtonItem.editProxyConstructor
 
 ### Description
-Default class used to construct the [EditProxy](EditProxy.md#class-editproxy) for this component when the component is [first placed into edit mode](Canvas.md#method-canvasseteditmode).
+Default class used to construct the [EditProxy](EditProxy.md#class-editproxy) for this component when the component is [first placed into edit mode](Canvas_1.md#method-canvasseteditmode).
 
 **Flags**: IR
 
@@ -207,7 +207,7 @@ Called when a ButtonItem is clicked on.
 
 ### Returns
 
-`[Boolean](#type-boolean)` — Return false to cancel the click event. This will prevent the event from bubbling up, suppressing [click](Canvas.md#method-canvasclick) on the form containing this item.
+`[Boolean](#type-boolean)` — Return false to cancel the click event. This will prevent the event from bubbling up, suppressing [click](Canvas_1.md#method-canvasclick) on the form containing this item.
 
 ### Groups
 

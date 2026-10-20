@@ -23,7 +23,7 @@ If false, never apply the png fix needed in Internet Explorer to make png transp
 ## Attr: Img.prompt
 
 ### Description
-Prompt displayed in hover canvas if [showHover](Canvas.md#attr-canvasshowhover) is true.
+Prompt displayed in hover canvas if [showHover](Canvas_1.md#attr-canvasshowhover) is true.
 
 ### Groups
 
@@ -155,7 +155,7 @@ Should we visibly change state when the mouse goes down in this object? This wil
 ## Attr: Img.editProxyConstructor
 
 ### Description
-Default class used to construct the [EditProxy](EditProxy.md#class-editproxy) for this component when the component is [first placed into edit mode](Canvas.md#method-canvasseteditmode).
+Default class used to construct the [EditProxy](EditProxy.md#class-editproxy) for this component when the component is [first placed into edit mode](Canvas_1.md#method-canvasseteditmode).
 
 **Flags**: IR
 
@@ -355,7 +355,7 @@ If [Img.altText](#attr-imgalttext) and [Img.prompt](#attr-imgprompt) are set thi
 
 ### See Also
 
-- [Canvas.showHover](Canvas.md#attr-canvasshowhover)
+- [Canvas.showHover](Canvas_1.md#attr-canvasshowhover)
 
 ---
 ## Method: Img.setSrc

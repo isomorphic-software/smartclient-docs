@@ -181,7 +181,7 @@ Arbitrary UI component that should appear in this MenuItem. See [ListGridRecord.
 
 When `embeddedComponent` is used in a MenuItem certain default behaviors apply:
 
-*   [MenuItem.autoDismiss](#attr-menuitemautodismiss) defaults to false and clicks on embeddedComponents are not bubbled to the menuItem - if an interaction with an embeddedComponent is expected to dismiss the menu, custom code should call menu.[hide](Canvas.md#method-canvashide) or [hideAllMenus](Menu.md#classmethod-menuhideallmenus) as appropriate, before proceeding
+*   [MenuItem.autoDismiss](#attr-menuitemautodismiss) defaults to false and clicks on embeddedComponents are not bubbled to the menuItem - if an interaction with an embeddedComponent is expected to dismiss the menu, custom code should call menu.[hide](Canvas_1.md#method-canvashide) or [hideAllMenus](Menu.md#classmethod-menuhideallmenus) as appropriate, before proceeding
 *   the default behavior for [MenuItem.embeddedComponentPosition](#attr-menuitemembeddedcomponentposition) is "expand".
 *   the component is placed over the title and key fields by default - use [MenuItem.embeddedComponentFields](#attr-menuitemembeddedcomponentfields) to override
 *   rollOver styling is disabled by default (as though [ListGridRecord.showRollOver](ListGridRecord.md#attr-listgridrecordshowrollover) were set to false)

@@ -74,7 +74,7 @@ This expands to a `fieldQuery` with `summaryFunctions` and is evaluated on both 
 
 See the `AdvancedCriterionSubquery` overview linked above for more details of the extremely powerful subquery filtering options.
 
-When criteria are evaluated against a [rule context](Canvas.md#attr-canvasrulescope) (as with [FormItem.visibleWhen](FormItem.md#attr-formitemvisiblewhen), [Canvas.enableWhen](Canvas.md#attr-canvasenablewhen), or a [dynamic property](DynamicProperty.md#attr-dynamicpropertytruewhen)), `fieldName` as a dataPath also accepts `.` as a segment separator in addition to `/`, with no difference in behavior -- see [Canvas.provideRuleContext](Canvas.md#method-canvasproviderulecontext). Dot-separated paths such as `"grid.selectedRecord.name"` are preferred in this context.
+When criteria are evaluated against a [rule context](Canvas_1.md#attr-canvasrulescope) (as with [FormItem.visibleWhen](FormItem.md#attr-formitemvisiblewhen), [Canvas.enableWhen](Canvas_1.md#attr-canvasenablewhen), or a [dynamic property](DynamicProperty.md#attr-dynamicpropertytruewhen)), `fieldName` as a dataPath also accepts `.` as a segment separator in addition to `/`, with no difference in behavior -- see [Canvas.provideRuleContext](Canvas_1.md#method-canvasproviderulecontext). Dot-separated paths such as `"grid.selectedRecord.name"` are preferred in this context.
 
 The dot-notation syntax for related DataSource fields is formally described at [RelationalReference](../reference_2.md#type-relationalreference). For the full set of dynamic references available in validators and field properties (including `auth.*`, `context.*`, `values.*`), see [ServerDynamicCriteria](../reference_2.md#type-serverdynamiccriteria).
 
@@ -158,12 +158,12 @@ If both `fieldStaticValue` and `fieldName` are specified, `fieldStaticValue` is 
 ## Attr: Criterion.valuePath
 
 ### Description
-Wherever [dynamicCriteria](../kb_topics/dynamicCriteria.md#kb-topic-dynamiccriteria) are supported, `valuePath` can be specified as a path in the current [Canvas.ruleScope](Canvas.md#attr-canvasrulescope) as an alternative to setting a fixed [Criterion.value](#attr-criterionvalue).
+Wherever [dynamicCriteria](../kb_topics/dynamicCriteria.md#kb-topic-dynamiccriteria) are supported, `valuePath` can be specified as a path in the current [Canvas.ruleScope](Canvas_1.md#attr-canvasrulescope) as an alternative to setting a fixed [Criterion.value](#attr-criterionvalue).
 
 Note: `valuePath` vs setting a path for [Criterion.fieldName](#attr-criterionfieldname):
 
 *   use a path for `criterion.fieldName` when criteria will be matched against a nested data structure.
-*   use `criterion.valuePath` when the values used in filtering should be dynamically derived based on the [Canvas.ruleScope](Canvas.md#attr-canvasrulescope). This does not imply that the criteria will be matched against a nested structure.
+*   use `criterion.valuePath` when the values used in filtering should be dynamically derived based on the [Canvas.ruleScope](Canvas_1.md#attr-canvasrulescope). This does not imply that the criteria will be matched against a nested structure.
 
 **Flags**: IR
 

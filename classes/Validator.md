@@ -405,7 +405,7 @@ Enabling this property also implies [FormItem.validateOnExit](FormItem.md#attr-f
 ## Attr: Validator.applyWhen
 
 ### Description
-Used to create a conditional validator based on [criteria](../reference_2.md#type-serverdynamiccriteria). The criteria defines when the validator applies — evaluated against the current record, [rule\\n context](Canvas.md#attr-canvasrulescope), and (when referencing related DataSources) locally cached data or the server. If the criteria match, the validator is processed; otherwise it is skipped and assumed valid.
+Used to create a conditional validator based on [criteria](../reference_2.md#type-serverdynamiccriteria). The criteria defines when the validator applies — evaluated against the current record, [rule\\n context](Canvas_1.md#attr-canvasrulescope), and (when referencing related DataSources) locally cached data or the server. If the criteria match, the validator is processed; otherwise it is skipped and assumed valid.
 
 To use an `applyWhen` criteria the form or grid must use a [DataSource](DataSource_1.md#class-datasource).
 
@@ -482,7 +482,7 @@ For validators of type "serverCustom" only: a scriptlet in any supported JSR223 
 ```
 The scriptlet should return a boolean true or false value - failing to return a value will be considered a false result (validator failed). If your expression is syntactically invalid, an exception is thrown and the error message is displayed in the client.
 
-See [serverScript](../kb_topics/serverScript.md#kb-topic-server-scripting) for general information on Server Scripting and JSR223, and [velocitySupport](#kb-topic-velocitysupport) for general information on Velocity support, and also see below for special rules for Velocity.
+See [serverScript](../kb_topics/serverScript.md#kb-topic-server-scripting) for general information on Server Scripting and JSR223, and [velocitySupport](../kb_topics/velocitySupport.md#kb-topic-velocity-context-variables) for general information on Velocity support, and also see below for special rules for Velocity.
 
 **Available variables** The following variables are available in a `serverCondition`:
 

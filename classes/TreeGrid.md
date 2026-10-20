@@ -110,7 +110,7 @@ Otherwise, `openerIconSize` defaults to [TreeGrid.iconSize](#attr-treegridiconsi
 ### Description
 Indicates whether records can be reordered by dragging within this `ListGrid`.
 
-**NOTE:** If `canReorderRecords` is initially enabled or might be [dynamically enabled](ListGrid_2.md#method-listgridsetcanreorderrecords) after the grid is created, it may be desirable to disable [touch scrolling](Canvas.md#attr-canvasusetouchscrolling) so that touch-dragging a record starts a reorder operation rather than a scroll, but see the discussion of [drag handles](ListGrid_2.md#method-listgridshowdraghandles). If [Canvas.disableTouchScrollingForDrag](Canvas.md#attr-canvasdisabletouchscrollingfordrag) is set to `true`, then touch scrolling will be disabled automatically. However, for [accessibility](../kb_topics/accessibility.md#kb-topic-accessibility--section-508-compliance) reasons, it is recommended to leave touch scrolling enabled and provide an alternative set of controls that can be used to perform drag-reordering of records.
+**NOTE:** If `canReorderRecords` is initially enabled or might be [dynamically enabled](ListGrid_2.md#method-listgridsetcanreorderrecords) after the grid is created, it may be desirable to disable [touch scrolling](Canvas_1.md#attr-canvasusetouchscrolling) so that touch-dragging a record starts a reorder operation rather than a scroll, but see the discussion of [drag handles](ListGrid_2.md#method-listgridshowdraghandles). If [Canvas.disableTouchScrollingForDrag](Canvas_1.md#attr-canvasdisabletouchscrollingfordrag) is set to `true`, then touch scrolling will be disabled automatically. However, for [accessibility](../kb_topics/accessibility.md#kb-topic-accessibility--section-508-compliance) reasons, it is recommended to leave touch scrolling enabled and provide an alternative set of controls that can be used to perform drag-reordering of records.
 
 ### Groups
 
@@ -844,7 +844,7 @@ If [TreeGrid.animateFolders](#attr-treegridanimatefolders) is true for this grid
 ### Description
 Indicates whether records can be dragged from this listGrid and dropped elsewhere.
 
-**NOTE:** If `canDragRecordsOut` is initially enabled or might be dynamically enabled after the grid is created, it may be desirable to disable [touch scrolling](Canvas.md#attr-canvasusetouchscrolling) so that touch-dragging a record starts a drag operation rather than a scroll, but see the discussion of [drag handles](ListGrid_2.md#method-listgridshowdraghandles). If [Canvas.disableTouchScrollingForDrag](Canvas.md#attr-canvasdisabletouchscrollingfordrag) is set to `true`, then touch scrolling will be disabled automatically. However, for [accessibility](../kb_topics/accessibility.md#kb-topic-accessibility--section-508-compliance) reasons, it is recommended to leave touch scrolling enabled and provide an alternative set of controls that can be used to perform drag and drop of records out of the grid.
+**NOTE:** If `canDragRecordsOut` is initially enabled or might be dynamically enabled after the grid is created, it may be desirable to disable [touch scrolling](Canvas_1.md#attr-canvasusetouchscrolling) so that touch-dragging a record starts a drag operation rather than a scroll, but see the discussion of [drag handles](ListGrid_2.md#method-listgridshowdraghandles). If [Canvas.disableTouchScrollingForDrag](Canvas_1.md#attr-canvasdisabletouchscrollingfordrag) is set to `true`, then touch scrolling will be disabled automatically. However, for [accessibility](../kb_topics/accessibility.md#kb-topic-accessibility--section-508-compliance) reasons, it is recommended to leave touch scrolling enabled and provide an alternative set of controls that can be used to perform drag and drop of records out of the grid.
 
 ### Groups
 
@@ -1992,7 +1992,7 @@ Returns the row number of the provided Y-coordinate, or the most recent mouse ev
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| y | [Integer](../reference_2.md#type-integer) | true | — | Y-coordinate relative to the top edge of the content to obtain the row number for. If not provided, then [Canvas.getOffsetY](Canvas.md#method-canvasgetoffsety) will be used. |
+| y | [Integer](../reference_2.md#type-integer) | true | — | Y-coordinate relative to the top edge of the content to obtain the row number for. If not provided, then [Canvas.getOffsetY](Canvas_1.md#method-canvasgetoffsety) will be used. |
 
 ### Returns
 
@@ -2158,7 +2158,7 @@ This object can be passed to [TreeGrid.setSelectedPaths](#method-treegridsetsele
 Process a drop of one or more nodes on a TreeGrid folder.  
 Note: See [treeGridDrop](../kb_topics/treeGridDrop.md#kb-topic-treegrid-drag-and-drop) for an overview of TreeGrid drag and drop behavior.
 
-This method can be overridden to provide custom drop behaviors and is a more appropriate override point than the lower level [Canvas.drop](Canvas.md#method-canvasdrop) handler.
+This method can be overridden to provide custom drop behaviors and is a more appropriate override point than the lower level [Canvas.drop](Canvas_1.md#method-canvasdrop) handler.
 
 The default behavior is to simply delegate to the [TreeGrid.transferNodes](#method-treegridtransfernodes) method; thus, the correct way to perform a programmatic folder drop, with all the built-in behaviors described below, is to call `transferNodes()`
 
@@ -2208,7 +2208,7 @@ By default icons are derived from [TreeGrid.folderIcon](#attr-treegridfoldericon
 To suppress icons altogether, set [showNodeIcons:false](#attr-treegridshownodeicons), or, for folder icons only [showFolderIcons:false](#attr-treegridshowfoldericons).  
 You can also provide an override of this method that returns null to suppress icons for specific nodes.
 
-Note that the full icon URL will be derived by applying [Canvas.getImgURL](Canvas.md#method-canvasgetimgurl) to the value returned from this method.
+Note that the full icon URL will be derived by applying [Canvas.getImgURL](Canvas_1.md#method-canvasgetimgurl) to the value returned from this method.
 
 ### Parameters
 

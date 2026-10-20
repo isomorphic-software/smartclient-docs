@@ -13,13 +13,13 @@ The embedded component will default to covering all fields of the record, but sp
 
 By default, the embeddedComponent will fill the entire vertical and horizontal space of the record (or of the specified fields). [ListGridRecord.embeddedComponentPosition](#attr-listgridrecordembeddedcomponentposition) can be set to control exact sizing behavior.
 
-When creating a component to use as an embedded component the component will most likely end up drawing before the record it is due to be embedded within, therefore it is recommended to set [autoDraw](Canvas.md#attr-canvasautodraw) to false on the embedded component.
+When creating a component to use as an embedded component the component will most likely end up drawing before the record it is due to be embedded within, therefore it is recommended to set [autoDraw](Canvas_1.md#attr-canvasautodraw) to false on the embedded component.
 
-When a record with an `embeddedComponent` is eliminated from view by filtering or because it is not currently rendered due to [incremental rendering](ListGrid_1.md#attr-listgridshowallrecords), the ListGrid may [Canvas.hide](Canvas.md#method-canvashide) or [Canvas.clear](Canvas.md#method-canvasclear) it.
+When a record with an `embeddedComponent` is eliminated from view by filtering or because it is not currently rendered due to [incremental rendering](ListGrid_1.md#attr-listgridshowallrecords), the ListGrid may [Canvas.hide](Canvas_1.md#method-canvashide) or [Canvas.clear](Canvas_1.md#method-canvasclear) it.
 
-If the current dataset is completely replaced (by a call to [ListGrid.setData](ListGrid_2.md#method-listgridsetdata) or [ListGrid.setDataSource](ListGrid_2.md#method-listgridsetdatasource), for example), any embedded component is [deparented](Canvas.md#method-canvasdeparent) (which implies being [clear()ed](Canvas.md#method-canvasclear)).
+If the current dataset is completely replaced (by a call to [ListGrid.setData](ListGrid_2.md#method-listgridsetdata) or [ListGrid.setDataSource](ListGrid_2.md#method-listgridsetdatasource), for example), any embedded component is [deparented](Canvas_2.md#method-canvasdeparent) (which implies being [clear()ed](Canvas_1.md#method-canvasclear)).
 
-When a ListGrid is [destroyed](Canvas.md#method-canvasdestroy), it will destroy() all embedded components regardless of whether they are currently visible. Use a call to [ListGrid.setData](ListGrid_2.md#method-listgridsetdata) immediately before destroying the ListGrid to avoid this effect when unwanted.
+When a ListGrid is [destroyed](Canvas_1.md#method-canvasdestroy), it will destroy() all embedded components regardless of whether they are currently visible. Use a call to [ListGrid.setData](ListGrid_2.md#method-listgridsetdata) immediately before destroying the ListGrid to avoid this effect when unwanted.
 
 For more advanced control over the lifecycle of components displayed over records, including deferred creation and pooling, use the [record components](ListGrid_1.md#attr-listgridshowrecordcomponents) subsystem.
 

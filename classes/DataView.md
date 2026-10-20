@@ -27,7 +27,7 @@ Does not apply to members given a fixed size in pixels - such members will never
 
 ### See Also
 
-- [Canvas.minWidth](Canvas.md#attr-canvasminwidth)
+- [Canvas.minWidth](Canvas_1.md#attr-canvasminwidth)
 
 **Flags**: IRW
 

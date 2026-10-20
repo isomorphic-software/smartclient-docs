@@ -13,8 +13,8 @@ Show or hide a component. When showing, reveals any hidden parents as well.
 
 ### See Also
 
-- [Canvas.show](Canvas.md#method-canvasshow)
-- [Canvas.hide](Canvas.md#method-canvashide)
+- [Canvas.show](Canvas_1.md#method-canvasshow)
+- [Canvas.hide](Canvas_1.md#method-canvashide)
 - [FormItem.show](FormItem.md#method-formitemshow)
 - [FormItem.hide](FormItem.md#method-formitemhide)
 

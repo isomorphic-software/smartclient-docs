@@ -6,7 +6,7 @@
 
 ## Class: CanvasGrid
 
-*Inherits from:* [Canvas](Canvas.md#class-canvas)
+*Inherits from:* [Canvas](Canvas_1.md#class-canvas)
 
 ### Description
 This is part of the [ListGrid](ListGrid_1.md#class-listgrid) prerender system and cannot be used directly.

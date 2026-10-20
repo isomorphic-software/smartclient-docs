@@ -16,7 +16,7 @@ An EditContext then provides interfaces for further editing of the components re
 Developers may explicitly define an edit context and initialize it with a [EditContext.rootComponent](#attr-editcontextrootcomponent) - the root of the user interface being created. The EditContext itself is not visible to the user, but the root component's [liveObject](EditNode.md#attr-editnodeliveobject) may be.  
 As child editNodes are added to the rootComponent node or its descendants, liveObjects in the user will update to reflect these changes. The live objects for the edit nodes will be nested using the appropriate parent-child relationships, for the types of node in question. For example Canvases will be added as [members](Layout.md#attr-layoutmembers) of layouts and FormItems will be added as [fields](DynamicForm.md#attr-dynamicformfields) of DynamicForms.
 
-To enable drag and drop creation of widgets from a [Palette](../reference.md#interface-palette), a developer can use [Canvas.setEditMode](Canvas.md#method-canvasseteditmode) to enable editing behaviors on the live object of the desired drop target (typically the root component).  
+To enable drag and drop creation of widgets from a [Palette](../reference.md#interface-palette), a developer can use [Canvas.setEditMode](Canvas_1.md#method-canvasseteditmode) to enable editing behaviors on the live object of the desired drop target (typically the root component).  
 To enable editNode creation via double-click on a [Palette](../reference.md#interface-palette), developers can set the [Palette.defaultEditContext](Palette.md#attr-palettedefaulteditcontext).
 
 Developers can also make use of [EditPane](EditPane.md#class-editpane) or [EditTree](EditTree.md#class-edittree) classes which provide a visual interface for managing an EditContext.
@@ -31,7 +31,7 @@ Developers can also make use of [EditPane](EditPane.md#class-editpane) or [EditT
 ### Description
 Should components managed by an EditContext have the characteristics of a [Component XML](../kb_topics/componentXML.md#kb-topic-component-xml) screen loaded via [RPCManager.loadScreen](RPCManager.md#classmethod-rpcmanagerloadscreen) or equivalent? This mode must be enabled to have multiple EditContext instances at one time where component might have matching IDs.
 
-If not set, components will have [global IDs](Canvas.md#attr-canvasid) as assigned by the [EditNode](../reference.md#object-editnode) configuration.
+If not set, components will have [global IDs](Canvas_1.md#attr-canvasid) as assigned by the [EditNode](../reference.md#object-editnode) configuration.
 
 ### Groups
 
@@ -509,7 +509,7 @@ Creates and returns an EditNode using the [EditContext.defaultPalette](#attr-edi
 ## Method: EditContext.enableEditing
 
 ### Description
-Enable edit mode for an [EditNode](../reference.md#object-editnode). This is a shortcut for calling [Canvas.setEditMode](Canvas.md#method-canvasseteditmode).
+Enable edit mode for an [EditNode](../reference.md#object-editnode). This is a shortcut for calling [Canvas.setEditMode](Canvas_1.md#method-canvasseteditmode).
 
 ### Parameters
 
@@ -519,7 +519,7 @@ Enable edit mode for an [EditNode](../reference.md#object-editnode). This is a s
 
 ### See Also
 
-- [Canvas.setEditMode](Canvas.md#method-canvasseteditmode)
+- [Canvas.setEditMode](Canvas_1.md#method-canvasseteditmode)
 - [EditContext.isNodeEditingOn](#method-editcontextisnodeeditingon)
 
 ---
@@ -590,7 +590,7 @@ Notification fired when an [EditNode](../reference.md#object-editnode) has been 
 ### Description
 Recreate [EditNodes](../reference.md#object-editnode) from an XML representation of [PaletteNodes](../reference_2.md#object-palettenode) (possibly created by calling [EditContext.serializeAllEditNodes](#method-editcontextserializealleditnodes) or [EditContext.serializeEditNodes](#method-editcontextserializeeditnodes).
 
-By default, components that have [global IDs](Canvas.md#attr-canvasid) will not actually be allowed to take those global IDs - instead, only widgets that have one of the global IDs passed as the `globals` parameter will actually receive their global IDs. To override this behavior, pass the special value [RPCManager.ALL_GLOBALS](RPCManager.md#classattr-rpcmanagerall_globals) for the `globals` parameter.
+By default, components that have [global IDs](Canvas_1.md#attr-canvasid) will not actually be allowed to take those global IDs - instead, only widgets that have one of the global IDs passed as the `globals` parameter will actually receive their global IDs. To override this behavior, pass the special value [RPCManager.ALL_GLOBALS](RPCManager.md#classattr-rpcmanagerall_globals) for the `globals` parameter.
 
 ### Parameters
 
@@ -833,7 +833,7 @@ Creates a [Tree](Tree.md#class-tree) from the supplied [PaletteNodes](../referen
 ### Description
 Recreate [EditNodes](../reference.md#object-editnode) from a JSON representation of [PaletteNodes](../reference_2.md#object-palettenode) (possibly created by calling [EditContext.serializeAllEditNodesAsJSON](#method-editcontextserializealleditnodesasjson) or [EditContext.serializeEditNodesAsJSON](#method-editcontextserializeeditnodesasjson).
 
-By default, components that have [global IDs](Canvas.md#attr-canvasid) will not actually be allowed to take those global IDs - instead, only widgets that have one of the global IDs passed as the `globals` parameter will actually receive their global IDs. To override this behavior, pass the special value [RPCManager.ALL_GLOBALS](RPCManager.md#classattr-rpcmanagerall_globals) for the `globals` parameter.
+By default, components that have [global IDs](Canvas_1.md#attr-canvasid) will not actually be allowed to take those global IDs - instead, only widgets that have one of the global IDs passed as the `globals` parameter will actually receive their global IDs. To override this behavior, pass the special value [RPCManager.ALL_GLOBALS](RPCManager.md#classattr-rpcmanagerall_globals) for the `globals` parameter.
 
 ### Parameters
 
@@ -942,7 +942,7 @@ If no defaultPalette is provided, the EditContext uses an automatically created 
 ### Description
 Obtain [PaletteNodes](../reference_2.md#object-palettenode) from a JavaScript source representation.
 
-By default, components that have [global IDs](Canvas.md#attr-canvasid) will not actually be allowed to take those global IDs - instead, only widgets that have one of the global IDs passed as the `globals` parameter will actually receive their global IDs. To override this behavior, pass the special value [RPCManager.ALL_GLOBALS](RPCManager.md#classattr-rpcmanagerall_globals) for the `globals` parameter.
+By default, components that have [global IDs](Canvas_1.md#attr-canvasid) will not actually be allowed to take those global IDs - instead, only widgets that have one of the global IDs passed as the `globals` parameter will actually receive their global IDs. To override this behavior, pass the special value [RPCManager.ALL_GLOBALS](RPCManager.md#classattr-rpcmanagerall_globals) for the `globals` parameter.
 
 ### Parameters
 
@@ -1088,7 +1088,7 @@ Select all EditNodes.
 ### Description
 Add [PaletteNodes](../reference_2.md#object-palettenode) from a JavaScript source representation.
 
-By default, components that have [global IDs](Canvas.md#attr-canvasid) will not actually be allowed to take those global IDs - instead, only widgets that have one of the global IDs passed as the `globals` parameter will actually receive their global IDs. To override this behavior, pass the special value [RPCManager.ALL_GLOBALS](RPCManager.md#classattr-rpcmanagerall_globals) for the `globals` parameter.
+By default, components that have [global IDs](Canvas_1.md#attr-canvasid) will not actually be allowed to take those global IDs - instead, only widgets that have one of the global IDs passed as the `globals` parameter will actually receive their global IDs. To override this behavior, pass the special value [RPCManager.ALL_GLOBALS](RPCManager.md#classattr-rpcmanagerall_globals) for the `globals` parameter.
 
 ### Parameters
 
@@ -1102,7 +1102,7 @@ By default, components that have [global IDs](Canvas.md#attr-canvasid) will not 
 ## Method: EditContext.destroyAll
 
 ### Description
-Removes all [EditNodes](../reference.md#object-editnode) from the EditContext, and calls [destroy()](Canvas.md#method-canvasdestroy) on the [liveObjects](EditNode.md#attr-editnodeliveobject).
+Removes all [EditNodes](../reference.md#object-editnode) from the EditContext, and calls [destroy()](Canvas_1.md#method-canvasdestroy) on the [liveObjects](EditNode.md#attr-editnodeliveobject).
 
 ---
 ## Method: EditContext.deselectAllEditNodes

@@ -100,11 +100,15 @@ This is the central API reference for the SmartClient framework.
         - [PortalLayout](classes/PortalLayout.md)
         - [ColumnTree](classes/ColumnTree.md)
         - [FilterBuilder](classes/FilterBuilder.md)
+        - [VStack](#class-vstack)
+          - [BatchUploader](classes/BatchUploader.md)
+          - [AdvancedHiliteEditor](classes/AdvancedHiliteEditor.md)
+          - [MultiFilePicker](#class-multifilepicker)
         - [HLayout](#class-hlayout)
           - [Shuttle](classes/Shuttle.md)
           - [NavigationBar](classes/NavigationBar.md)
-          - [ImgSectionHeader](classes/ImgSectionHeader.md)
           - [Slicer](classes/Slicer.md)
+          - [ImgSectionHeader](classes/ImgSectionHeader.md)
           - [HiliteRule](classes/HiliteRule.md)
           - [AvatarStack](classes/AvatarStack.md)
         - [Toolbar](classes/Toolbar.md)
@@ -119,9 +123,6 @@ This is the central API reference for the SmartClient framework.
           - [Header](classes/Header.md)
         - [AdaptiveMenu](classes/AdaptiveMenu.md)
         - [Deck](classes/Deck.md)
-        - [VStack](#class-vstack)
-          - [AdvancedHiliteEditor](classes/AdvancedHiliteEditor.md)
-          - [MultiFilePicker](#class-multifilepicker)
         - [ListPropertiesPane](classes/ListPropertiesPane.md)
         - [HStack](#class-hstack)
       - [Calendar](classes/Calendar.md)
@@ -334,9 +335,9 @@ This is the central API reference for the SmartClient framework.
       - [RadioItem](#class-radioitem)
     - [BooleanItem](#class-booleanitem)
   - [OperationBinding](classes/OperationBinding.md)
-  - [RPCManager](classes/RPCManager.md)
   - [ResultSet](classes/ResultSet.md)
     - [FilteredList](classes/FilteredList.md)
+  - [RPCManager](classes/RPCManager.md)
   - [Tree](classes/Tree.md)
     - [ResultTree](classes/ResultTree.md)
   - [ValuesManager](classes/ValuesManager.md)
@@ -423,8 +424,8 @@ This is the central API reference for the SmartClient framework.
     - [ShowNotificationTask](classes/ShowNotificationTask.md)
     - [ShowMessageTask](#class-showmessagetask)
     - [ProcessSequence](#class-processsequence)
-    - [EndProcessTask](#class-endprocesstask)
     - [StartTransactionTask](#class-starttransactiontask)
+    - [EndProcessTask](#class-endprocesstask)
     - [SendTransactionTask](#class-sendtransactiontask)
     - [UserConfirmationGateway](#class-userconfirmationgateway)
     - [ResetPasswordTask](#class-resetpasswordtask)
@@ -587,6 +588,7 @@ This is the central API reference for the SmartClient framework.
 - [Criteria Editing](kb_topics/criteriaEditing.md)
 - [Content Security Policy (CSP)](kb_topics/cspSupport.md)
 - [cues](#kb-topic-cues)
+- [Custom Querying Overview](kb_topics/customQuerying.md)
 - [Customizing Skins](kb_topics/customSkins.md)
 - [Including custom elements in the tab order](kb_topics/customTabElements.md)
 - [DataBinding](kb_topics/databinding.md)
@@ -811,6 +813,7 @@ This is the central API reference for the SmartClient framework.
 - [validatorExecution](#kb-topic-validatorexecution)
 - [valueMap](#kb-topic-valuemap)
 - [values](#kb-topic-values)
+- [Velocity context variables](kb_topics/velocitySupport.md)
 - [visibility](kb_topics/visibility.md)
 - [Waiting for asynchronous actions](kb_topics/waitingForAsyncActions.md)
 - [Window Header](#kb-topic-window-header)
@@ -835,6 +838,18 @@ A subclass of Layout that applies a sizing policy along the vertical axis, inter
 - [Layout.vPolicy](classes/Layout.md#attr-layoutvpolicy)
 
 ---
+## Class: VStack
+
+*Inherits from:* [Layout](classes/Layout.md#class-layout)
+
+### Description
+A subclass of Layout that simply stacks members on the vertical axis without trying to manage their height. On the horizontal axis, any members that do not have explicit widths will be sized to match the width of the stack.
+
+### See Also
+
+- [Layout.vPolicy](classes/Layout.md#attr-layoutvpolicy)
+
+---
 ## Class: HLayout
 
 *Inherits from:* [Layout](classes/Layout.md#class-layout)
@@ -852,7 +867,7 @@ A subclass of Layout that applies a sizing policy along the horizontal axis, int
 *Inherits from:* [EditProxy](classes/EditProxy.md#class-editproxy)
 
 ### Description
-[EditProxy](classes/EditProxy.md#class-editproxy) that handles [Canvas](classes/Canvas.md#class-canvas) objects when editMode is enabled.
+[EditProxy](classes/EditProxy.md#class-editproxy) that handles [Canvas](classes/Canvas_1.md#class-canvas) objects when editMode is enabled.
 
 ### Groups
 
@@ -871,21 +886,9 @@ A subclass of Layout that applies a sizing policy along the horizontal axis, int
 - devTools
 
 ---
-## Class: VStack
-
-*Inherits from:* [Layout](classes/Layout.md#class-layout)
-
-### Description
-A subclass of Layout that simply stacks members on the vertical axis without trying to manage their height. On the horizontal axis, any members that do not have explicit widths will be sized to match the width of the stack.
-
-### See Also
-
-- [Layout.vPolicy](classes/Layout.md#attr-layoutvpolicy)
-
----
 ## Class: BrowserPlugin
 
-*Inherits from:* [Canvas](classes/Canvas.md#class-canvas)
+*Inherits from:* [Canvas](classes/Canvas_1.md#class-canvas)
 
 ### Description
 Container for a Browser Plugin.
@@ -898,7 +901,7 @@ Container for a Browser Plugin.
 ### Description
 A simple subclass of [RibbonButton](classes/RibbonButton.md#class-ribbonbutton) that shows a menuIcon by default and implements showMenu().
 
-This class has [showMenuIcon](classes/RibbonButton.md#attr-ribbonbuttonshowmenuicon) set to `true` by default, and has a [RibbonButton.menuIconClick](classes/RibbonButton.md#method-ribbonbuttonmenuiconclick) handler which will show the specified [RibbonButton.menu](classes/RibbonButton.md#attr-ribbonbuttonmenu) via a call to [RibbonButton.showMenu](classes/RibbonButton.md#method-ribbonbuttonshowmenu). This menuIconClick handler cancels default click behavior, so, if a user clicks the menu icon, any specified [click handler](classes/Canvas.md#method-canvasclick) for the button as a whole will not fire.
+This class has [showMenuIcon](classes/RibbonButton.md#attr-ribbonbuttonshowmenuicon) set to `true` by default, and has a [RibbonButton.menuIconClick](classes/RibbonButton.md#method-ribbonbuttonmenuiconclick) handler which will show the specified [RibbonButton.menu](classes/RibbonButton.md#attr-ribbonbuttonmenu) via a call to [RibbonButton.showMenu](classes/RibbonButton.md#method-ribbonbuttonshowmenu). This menuIconClick handler cancels default click behavior, so, if a user clicks the menu icon, any specified [click handler](classes/Canvas_1.md#method-canvasclick) for the button as a whole will not fire.
 
 ---
 ## Attr: RibbonMenuButton.showMenuIcon
@@ -1312,6 +1315,16 @@ Returns the text based on the current component state to be edited inline. Calle
 Returns the component's `title`.
 
 ---
+## Class: NativeScrollbar
+
+*Inherits from:* [Canvas](classes/Canvas_1.md#class-canvas)
+
+### Description
+The NativeScrollbar widget will render in the browser as a native scrollbar, and has APIs allowing it to be applied to scroll content any another widget on the page. Essentially this behaves similarly to the [Scrollbar](classes/Scrollbar.md#class-scrollbar) class but will be rendered as a native browser scrollbar rather than using media, thus providing the advantages of an independant scrollbar (support for rendering the scrollbar separate from the content it effects, support for "virtual scrolling" mechanisms where content size is unknown at initial render, etc), with a native look and feel and without requiring the loading of additional media on the page.
+
+To enable this for a component simply set [Canvas.showCustomScrollbars](classes/Canvas_1.md#attr-canvasshowcustomscrollbars) to true and set [Canvas.scrollbarConstructor](classes/Canvas_1.md#attr-canvasscrollbarconstructor) to `"NativeScrollbar"`
+
+---
 ## Class: DrawTriangle
 
 *Inherits from:* [DrawPolygon](classes/DrawPolygon.md#class-drawpolygon)
@@ -1349,16 +1362,6 @@ Returns the [incenter](http://en.wikipedia.org/wiki/Incenter#Cartesian_coordinat
 ### Returns
 
 `[Point](#type-point)` — the incenter in local coordinates
-
----
-## Class: NativeScrollbar
-
-*Inherits from:* [Canvas](classes/Canvas.md#class-canvas)
-
-### Description
-The NativeScrollbar widget will render in the browser as a native scrollbar, and has APIs allowing it to be applied to scroll content any another widget on the page. Essentially this behaves similarly to the [Scrollbar](classes/Scrollbar.md#class-scrollbar) class but will be rendered as a native browser scrollbar rather than using media, thus providing the advantages of an independant scrollbar (support for rendering the scrollbar separate from the content it effects, support for "virtual scrolling" mechanisms where content size is unknown at initial render, etc), with a native look and feel and without requiring the loading of additional media on the page.
-
-To enable this for a component simply set [Canvas.showCustomScrollbars](classes/Canvas.md#attr-canvasshowcustomscrollbars) to true and set [Canvas.scrollbarConstructor](classes/Canvas.md#attr-canvasscrollbarconstructor) to `"NativeScrollbar"`
 
 ---
 ## Class: PrintCanvasTask
@@ -1670,7 +1673,7 @@ Show a component next to some other component.
 
 ### See Also
 
-- [Canvas.showNextTo](classes/Canvas.md#method-canvasshownextto)
+- [Canvas.showNextTo](classes/Canvas_1.md#method-canvasshownextto)
 
 ---
 ## Attr: ShowNextToComponentTask.canOcclude
@@ -1864,7 +1867,7 @@ Image for vertically oriented separator (for horizontal toolstrips).
 ## Attr: ToolStripSeparator.editProxyConstructor
 
 ### Description
-Default class used to construct the [EditProxy](classes/EditProxy.md#class-editproxy) for this component when the component is [first placed into edit mode](classes/Canvas.md#method-canvasseteditmode).
+Default class used to construct the [EditProxy](classes/EditProxy.md#class-editproxy) for this component when the component is [first placed into edit mode](classes/Canvas_1.md#method-canvasseteditmode).
 
 **Flags**: IR
 
@@ -1930,7 +1933,7 @@ Show an informational message and wait for the user to acknowledge.
 ### Description
 Formula to be used to calculate the message contents. Use [ShowMessageTask.message](#attr-showmessagetaskmessage) property to assign a static message instead.
 
-Available fields for use in the formula are the current [rule context](classes/Canvas.md#attr-canvasrulescope).
+Available fields for use in the formula are the current [rule context](classes/Canvas_1.md#attr-canvasrulescope).
 
 **Flags**: IR
 
@@ -2157,6 +2160,16 @@ The default pluginsPage is: "http://www.adobe.com/svg/viewer/install/"
 **Flags**: IR
 
 ---
+## Class: HeaderLabel
+
+*Inherits from:* [Label](classes/Label.md#class-label)
+
+### Description
+A [Label](classes/Label.md#class-label) subclass for headings, styled by the "headerItem" [CSS style-series](classes/StatefulCanvas.md#attr-statefulcanvasbasestyle) - the same series [HeaderItem](classes/HeaderItem.md#class-headeritem) uses inside a [DynamicForm](classes/DynamicForm.md#class-dynamicform), so a heading placed above a form matches the headings within it.
+
+Defaults to `width:"100%"` and `height:50`, so a `HeaderLabel` added to a [VLayout](#class-vlayout) spans the layout and reserves the same band for the heading whatever text it carries. Both are ordinary defaults; override either as you would on any [Canvas](classes/Canvas_1.md#class-canvas).
+
+---
 ## Class: ListPalette
 
 *Inherits from:* [ListGrid](classes/ListGrid_1.md#class-listgrid)
@@ -2185,16 +2198,6 @@ Option to show filter editor is disabled for listPalettes
 Option to save searches is disabled for listPalettes
 
 **Flags**: IRA
-
----
-## Class: HeaderLabel
-
-*Inherits from:* [Label](classes/Label.md#class-label)
-
-### Description
-A [Label](classes/Label.md#class-label) subclass for headings, styled by the "headerItem" [CSS style-series](classes/StatefulCanvas.md#attr-statefulcanvasbasestyle) - the same series [HeaderItem](classes/HeaderItem.md#class-headeritem) uses inside a [DynamicForm](classes/DynamicForm.md#class-dynamicform), so a heading placed above a form matches the headings within it.
-
-Defaults to `width:"100%"` and `height:50`, so a `HeaderLabel` added to a [VLayout](#class-vlayout) spans the layout and reserves the same band for the heading whatever text it carries. Both are ordinary defaults; override either as you would on any [Canvas](classes/Canvas.md#class-canvas).
 
 ---
 ## Class: MiniNavControl
@@ -2246,18 +2249,18 @@ Notification method fired when the down button is clicked.
 *Inherits from:* [ComponentTask](classes/ComponentTask.md#class-componenttask)
 
 ### Description
-Sets an embedded screen's [dataContext](classes/Canvas.md#attr-canvasdatacontext) with the [dataContextBinding](#attr-setscreendatataskdatacontextbinding) evaluated in the scope of this task.
+Sets an embedded screen's [dataContext](classes/Canvas_1.md#attr-canvasdatacontext) with the [dataContextBinding](#attr-setscreendatataskdatacontextbinding) evaluated in the scope of this task.
 
 ### See Also
 
 - [ScreenLoader.setDataContextBinding](classes/ScreenLoader.md#method-screenloadersetdatacontextbinding)
-- [Canvas.setDataContext](classes/Canvas.md#method-canvassetdatacontext)
+- [Canvas.setDataContext](classes/Canvas_1.md#method-canvassetdatacontext)
 
 ---
 ## Attr: SetScreenDataTask.dataContextBinding
 
 ### Description
-A [DataContextBinding](#object-datacontextbinding) to be applied to the screen via [Canvas.setDataContext](classes/Canvas.md#method-canvassetdatacontext).
+A [DataContextBinding](#object-datacontextbinding) to be applied to the screen via [Canvas.setDataContext](classes/Canvas_1.md#method-canvassetdatacontext).
 
 **Flags**: IR
 
@@ -2390,11 +2393,35 @@ Note that the [Calendar module](kb_topics/loadingOptionalModules.md#kb-topic-loa
 *Inherits from:* [ComponentTask](classes/ComponentTask.md#class-componenttask)
 
 ### Description
-Simulate a click on a button (or other [StatefulCanvas](classes/StatefulCanvas.md#class-statefulcanvas)), firing whatever handler is already attached to its [click](classes/Canvas.md#method-canvasclick) event - including a Workflow attached via a component event handler. Use this to reuse an existing, already-wired Workflow from within another Workflow, rather than duplicating it inline as a second, "floating" (component-detached) copy.
+Simulate a click on a button (or other [StatefulCanvas](classes/StatefulCanvas.md#class-statefulcanvas)), firing whatever handler is already attached to its [click](classes/Canvas_1.md#method-canvasclick) event - including a Workflow attached via a component event handler. Use this to reuse an existing, already-wired Workflow from within another Workflow, rather than duplicating it inline as a second, "floating" (component-detached) copy.
 
 ### See Also
 
-- [Canvas.click](classes/Canvas.md#method-canvasclick)
+- [Canvas.click](classes/Canvas_1.md#method-canvasclick)
+
+---
+## Class: StartTransactionTask
+
+*Inherits from:* [ProcessElement](classes/ProcessElement.md#class-processelement)
+
+### Description
+Starts queuing all DataSource operations so they can be sent to the server all together as a transaction. This is a client-side batching mechanism (RPCManager.startQueue) and has no effect inside an [OperationBinding.process](classes/OperationBinding.md#attr-operationbindingprocess) where operations execute synchronously on the server. For server-side transaction control, use [OperationBinding.autoJoinTransactions](classes/OperationBinding.md#attr-operationbindingautojointransactions) instead.
+
+---
+## Class: IPickTreeItem
+
+*Inherits from:* [PickTreeItem](classes/PickTreeItem.md#class-picktreeitem)
+
+### Description
+Subclass of [PickTreeItem](classes/PickTreeItem.md#class-picktreeitem) which shows an [IMenuButton](classes/IMenuButton.md#class-imenubutton) rather than a simple [MenuButton](classes/MenuButton.md#class-menubutton) as it's main button.
+
+---
+## Attr: IPickTreeItem.button
+
+### Description
+This item is an [AutoChild](#type-autochild) generated [Canvas](classes/Canvas_1.md#class-canvas) displayed by the IPickTreeItem and is an instance of [ITreeMenuButton](#class-itreemenubutton) by default.
+
+**Flags**: R
 
 ---
 ## Class: WindowMaximizeButton
@@ -2411,22 +2438,6 @@ Marker class available in our [React JSX support](kb_topics/reactSupport.md#kb-t
 
 ### Description
 Marker class available in our [React JSX support](kb_topics/reactSupport.md#kb-topic-using-smartclient-with-react) and [Component XML](kb_topics/componentXML.md#kb-topic-component-xml) to indicate within the [Window.headerControls](classes/Window.md#attr-windowheadercontrols) that the header minimize button should be rendered. Note that an instance of this class is never drawn, and it's only made available in these cases to allow for a simple syntax where every header control can be declared as a class.
-
----
-## Class: IPickTreeItem
-
-*Inherits from:* [PickTreeItem](classes/PickTreeItem.md#class-picktreeitem)
-
-### Description
-Subclass of [PickTreeItem](classes/PickTreeItem.md#class-picktreeitem) which shows an [IMenuButton](classes/IMenuButton.md#class-imenubutton) rather than a simple [MenuButton](classes/MenuButton.md#class-menubutton) as it's main button.
-
----
-## Attr: IPickTreeItem.button
-
-### Description
-This item is an [AutoChild](#type-autochild) generated [Canvas](classes/Canvas.md#class-canvas) displayed by the IPickTreeItem and is an instance of [ITreeMenuButton](#class-itreemenubutton) by default.
-
-**Flags**: R
 
 ---
 ## Class: WindowCloseButton
@@ -2533,14 +2544,6 @@ Component to pull record for editing.
 **Flags**: IR
 
 ---
-## Class: StartTransactionTask
-
-*Inherits from:* [ProcessElement](classes/ProcessElement.md#class-processelement)
-
-### Description
-Starts queuing all DataSource operations so they can be sent to the server all together as a transaction. This is a client-side batching mechanism (RPCManager.startQueue) and has no effect inside an [OperationBinding.process](classes/OperationBinding.md#attr-operationbindingprocess) where operations execute synchronously on the server. For server-side transaction control, use [OperationBinding.autoJoinTransactions](#attr-operationbindingautojointransactions) instead.
-
----
 ## Class: SubmitItem
 
 *Inherits from:* [ButtonItem](classes/ButtonItem.md#class-buttonitem)
@@ -2563,7 +2566,7 @@ SubmitItems show a title of `"Submit"` by default. May be overridden.
 ---
 ## Class: LayoutSpacer
 
-*Inherits from:* [Canvas](classes/Canvas.md#class-canvas)
+*Inherits from:* [Canvas](classes/Canvas_1.md#class-canvas)
 
 ### Description
 Add a spacer to a [Layout](classes/Layout.md#class-layout) that takes up space just like a normal member, without actually drawing anything. A `LayoutSpacer` is semantically equivalent to using an empty canvas, but higher performance for this particular use case.
@@ -2774,7 +2777,7 @@ This class is a synonym for Window that can be used to make intent clearer. It i
 ## Attr: InlineWindow.editProxyConstructor
 
 ### Description
-Default class used to construct the [EditProxy](classes/EditProxy.md#class-editproxy) for this component when the component is [first placed into edit mode](classes/Canvas.md#method-canvasseteditmode).
+Default class used to construct the [EditProxy](classes/EditProxy.md#class-editproxy) for this component when the component is [first placed into edit mode](classes/Canvas_1.md#method-canvasseteditmode).
 
 **Flags**: IR
 
@@ -3024,7 +3027,7 @@ Source component from which the record(s) will be transferred.
 *Inherits from:* [Button](classes/Button.md#class-button)
 
 ### Description
-[Button](classes/Button.md#class-button) subclass with fully rounded "pill" shape. Uses `baseStyle: "pillButton"`. In skins that do not define the `.pillButton` CSS class, the style auto-reverts to the standard Button baseStyle (see [Canvas.autoRevertStyles](classes/Canvas.md#attr-canvasautorevertstyles)).
+[Button](classes/Button.md#class-button) subclass with fully rounded "pill" shape. Uses `baseStyle: "pillButton"`. In skins that do not define the `.pillButton` CSS class, the style auto-reverts to the standard Button baseStyle (see [Canvas.autoRevertStyles](classes/Canvas_1.md#attr-canvasautorevertstyles)).
 
 ### Groups
 
@@ -3574,6 +3577,18 @@ Discard all changes in a grid which has auto-saving disabled.
 - devTools
 
 ---
+## Class: HandPlacedContainerEditProxy
+
+*Inherits from:* [EditProxy](classes/EditProxy.md#class-editproxy)
+
+### Description
+[EditProxy](classes/EditProxy.md#class-editproxy) that handles [Canvas](classes/Canvas_1.md#class-canvas) objects when editMode is enabled.
+
+### Groups
+
+- devTools
+
+---
 ## Class: HandPlacedForm
 
 *Inherits from:* [DynamicForm](classes/DynamicForm.md#class-dynamicform)
@@ -3582,18 +3597,6 @@ Discard all changes in a grid which has auto-saving disabled.
 This class is a DynamicForm with the default [itemLayout](classes/DynamicForm.md#attr-dynamicformitemlayout) property set to "absolute".
 
 Another synonym is AbsoluteForm.
-
----
-## Class: HandPlacedContainerEditProxy
-
-*Inherits from:* [EditProxy](classes/EditProxy.md#class-editproxy)
-
-### Description
-[EditProxy](classes/EditProxy.md#class-editproxy) that handles [Canvas](classes/Canvas.md#class-canvas) objects when editMode is enabled.
-
-### Groups
-
-- devTools
 
 ---
 ## Class: SectionStackSectionEditProxy
@@ -3672,6 +3675,16 @@ Button that resets the form to default values, by calling `DynamicForm.resetValu
 - skinVariant
 
 ---
+## Class: HandPlacedContainer
+
+*Inherits from:* [Canvas](classes/Canvas_1.md#class-canvas)
+
+### Description
+This class is a synonym for Canvas that can be used to make intent clearer. It is used by some development tools for that purpose.
+
+Another synonym is AbsoluteContainer.
+
+---
 ## Class: BorderedGrid
 
 *Inherits from:* [ListGrid](classes/ListGrid_1.md#class-listgrid)
@@ -3718,16 +3731,6 @@ Button that resets the form to default values, by calling `DynamicForm.resetValu
 ### Groups
 
 - devTools
-
----
-## Class: HandPlacedContainer
-
-*Inherits from:* [Canvas](classes/Canvas.md#class-canvas)
-
-### Description
-This class is a synonym for Canvas that can be used to make intent clearer. It is used by some development tools for that purpose.
-
-Another synonym is AbsoluteContainer.
 
 ---
 ## Class: TileGridEditProxy
@@ -4096,6 +4099,18 @@ Class used for the draggable "thumb" of a scrollbar. Do not use directly; this c
 This class is a synonym for LayoutSpacer that can be used to make intent clearer. It is used by some development tools for that purpose.
 
 ---
+## Class: ShowComponentTask
+
+*Inherits from:* [ComponentTask](classes/ComponentTask.md#class-componenttask)
+
+### Description
+Show a currently hidden component.
+
+### See Also
+
+- [Canvas.show](classes/Canvas_1.md#method-canvasshow)
+
+---
 ## Class: FlexSpacer
 
 *Inherits from:* [LayoutSpacer](#class-layoutspacer)
@@ -4154,18 +4169,6 @@ Alias for [ElevatedCard](#class-elevatedcard). Deprecated — use `ElevatedCard`
 - skinVariant
 
 **Deprecated**
-
----
-## Class: ShowComponentTask
-
-*Inherits from:* [ComponentTask](classes/ComponentTask.md#class-componenttask)
-
-### Description
-Show a currently hidden component.
-
-### See Also
-
-- [Canvas.show](classes/Canvas.md#method-canvasshow)
 
 ---
 ## Class: InlineRadioGroupItem
@@ -4540,14 +4543,14 @@ Visual hints for the user that something can be done to this object
 ### Related
 
 - [Cursor](#type-cursor)
-- [Canvas.setOpacity](classes/Canvas.md#method-canvassetopacity)
-- [Canvas.setCursor](classes/Canvas.md#method-canvassetcursor)
-- [Canvas.cursor](classes/Canvas.md#attr-canvascursor)
-- [Canvas.disabledCursor](classes/Canvas.md#attr-canvasdisabledcursor)
-- [Canvas.noDropCursor](classes/Canvas.md#attr-canvasnodropcursor)
-- [Canvas.opacity](classes/Canvas.md#attr-canvasopacity)
-- [Canvas.contextMenu](classes/Canvas.md#attr-canvascontextmenu)
-- [Canvas.menuConstructor](classes/Canvas.md#attr-canvasmenuconstructor)
+- [Canvas.setOpacity](classes/Canvas_1.md#method-canvassetopacity)
+- [Canvas.setCursor](classes/Canvas_1.md#method-canvassetcursor)
+- [Canvas.cursor](classes/Canvas_1.md#attr-canvascursor)
+- [Canvas.disabledCursor](classes/Canvas_1.md#attr-canvasdisabledcursor)
+- [Canvas.noDropCursor](classes/Canvas_1.md#attr-canvasnodropcursor)
+- [Canvas.opacity](classes/Canvas_1.md#attr-canvasopacity)
+- [Canvas.contextMenu](classes/Canvas_1.md#attr-canvascontextmenu)
+- [Canvas.menuConstructor](classes/Canvas_1.md#attr-canvasmenuconstructor)
 - [DrawItem.contextMenu](classes/DrawItem.md#attr-drawitemcontextmenu)
 - [FormItemIcon.cursor](classes/FormItemIcon.md#attr-formitemiconcursor)
 - [FormItemIcon.disabledCursor](classes/FormItemIcon.md#attr-formitemicondisabledcursor)
@@ -4574,20 +4577,20 @@ Rendering an object on the page.
 
 ### Related
 
-- [Canvas.isDrawn](classes/Canvas.md#method-canvasisdrawn)
-- [Canvas.getInnerHTML](classes/Canvas.md#method-canvasgetinnerhtml)
-- [Canvas.draw](classes/Canvas.md#method-canvasdraw)
-- [Canvas.isDirty](classes/Canvas.md#method-canvasisdirty)
-- [Canvas.markForRedraw](classes/Canvas.md#method-canvasmarkforredraw)
-- [Canvas.redraw](classes/Canvas.md#method-canvasredraw)
+- [Canvas.isDrawn](classes/Canvas_1.md#method-canvasisdrawn)
+- [Canvas.getInnerHTML](classes/Canvas_1.md#method-canvasgetinnerhtml)
+- [Canvas.draw](classes/Canvas_1.md#method-canvasdraw)
+- [Canvas.isDirty](classes/Canvas_1.md#method-canvasisdirty)
+- [Canvas.markForRedraw](classes/Canvas_1.md#method-canvasmarkforredraw)
+- [Canvas.redraw](classes/Canvas_1.md#method-canvasredraw)
 - [FormItem.getFieldName](classes/FormItem.md#method-formitemgetfieldname)
 - [FormItem.getTitle](classes/FormItem.md#method-formitemgettitle)
 - [FormItem.isDrawn](classes/FormItem.md#method-formitemisdrawn)
 - [ListGrid.markForRedraw](classes/ListGrid_2.md#method-listgridmarkforredraw)
 - [BaseWidget.autoDraw](classes/BaseWidget.md#attr-basewidgetautodraw)
-- [Canvas.autoDraw](classes/Canvas.md#attr-canvasautodraw)
-- [Canvas.suppressRedraw](classes/Canvas.md#attr-canvassuppressredraw)
-- [Canvas.redrawOnResize](classes/Canvas.md#attr-canvasredrawonresize)
+- [Canvas.autoDraw](classes/Canvas_1.md#attr-canvasautodraw)
+- [Canvas.suppressRedraw](classes/Canvas_1.md#attr-canvassuppressredraw)
+- [Canvas.redrawOnResize](classes/Canvas_1.md#attr-canvasredrawonresize)
 
 ---
 ## KB Topic: elements
@@ -4612,7 +4615,7 @@ Event "bubbling" refers to the propagation of an event up the containment hierac
 ## KB Topic: Flag Abbreviations
 
 ### Description
-*   **I**: "initializable": property can be initialized. For a simple [Object](reference_2.md#type-object), it means the property is valid to define on the Object. For a [Class](classes/Class.md#class-class) such as [Canvas](classes/Canvas.md#class-canvas), this means a property can be provided in the [Object](reference_2.md#type-object) passed to [Class.create](classes/Class.md#classmethod-classcreate).
+*   **I**: "initializable": property can be initialized. For a simple [Object](reference_2.md#type-object), it means the property is valid to define on the Object. For a [Class](classes/Class.md#class-class) such as [Canvas](classes/Canvas_1.md#class-canvas), this means a property can be provided in the [Object](reference_2.md#type-object) passed to [Class.create](classes/Class.md#classmethod-classcreate).
 *   **R**: "readable": property be read. If a getter method exists, it must be called.
 *   **W**: "writable": property can be written to after initialization. If a setter method exists, it must be called. If no setter method exists, [setProperty()](classes/Class.md#method-classsetproperty) must be called.
 *   **A**: "advanced": this property or method is meant for advanced use cases. If you are considering using an API marked "advanced" and your use case is simple or common, this is a hint that you may have missed a simpler approach
@@ -4722,16 +4725,16 @@ Properties that can be set on members of a layout to control how the layout is d
 
 ### Related
 
-- [Canvas.setShowResizeBar](classes/Canvas.md#method-canvassetshowresizebar)
+- [Canvas.setShowResizeBar](classes/Canvas_1.md#method-canvassetshowresizebar)
 - [Layout.getMemberOffset](classes/Layout.md#method-layoutgetmemberoffset)
 - [Layout.getMemberDefaultBreadth](classes/Layout.md#method-layoutgetmemberdefaultbreadth)
-- [Canvas.canDropBefore](classes/Canvas.md#attr-canvascandropbefore)
+- [Canvas.canDropBefore](classes/Canvas_1.md#attr-canvascandropbefore)
 - [Layout.defaultLayoutAlign](classes/Layout.md#attr-layoutdefaultlayoutalign)
 - [Layout.memberOverlap](classes/Layout.md#attr-layoutmemberoverlap)
-- [Canvas.layoutAlign](classes/Canvas.md#attr-canvaslayoutalign)
-- [Canvas.showResizeBar](classes/Canvas.md#attr-canvasshowresizebar)
-- [Canvas.resizeBarTarget](classes/Canvas.md#attr-canvasresizebartarget)
-- [Canvas.extraSpace](classes/Canvas.md#attr-canvasextraspace)
+- [Canvas.layoutAlign](classes/Canvas_1.md#attr-canvaslayoutalign)
+- [Canvas.showResizeBar](classes/Canvas_1.md#attr-canvasshowresizebar)
+- [Canvas.resizeBarTarget](classes/Canvas_1.md#attr-canvasresizebartarget)
+- [Canvas.extraSpace](classes/Canvas_1.md#attr-canvasextraspace)
 - [SectionStackSection.canDropBefore](classes/SectionStackSection.md#attr-sectionstacksectioncandropbefore)
 - [SectionStack.itemIndent](classes/SectionStack.md#attr-sectionstackitemindent)
 - [SectionStack.itemStartIndent](classes/SectionStack.md#attr-sectionstackitemstartindent)
@@ -4862,19 +4865,19 @@ Some UI frameworks automatically scroll elements into view before interacting wi
 ## KB Topic: snapPositioning
 
 ### Description
-[Canvas.snapTo](classes/Canvas.md#attr-canvassnapto) and related properties for positioning widgets relative to other widgets edges and corners. Snapped widgets will then move with the widget they are "snapped to" whenever that widget moves.
+[Canvas.snapTo](classes/Canvas_1.md#attr-canvassnapto) and related properties for positioning widgets relative to other widgets edges and corners. Snapped widgets will then move with the widget they are "snapped to" whenever that widget moves.
 
 ### Related
 
 - [Canvas.getSnapPosition](classes/Canvas.md#classmethod-canvasgetsnapposition)
-- [Canvas.setSnapOffsetTop](classes/Canvas.md#method-canvassetsnapoffsettop)
-- [Canvas.getSnapTo](classes/Canvas.md#method-canvasgetsnapto)
-- [Canvas.setSnapEdge](classes/Canvas.md#method-canvassetsnapedge)
-- [Canvas.getSnapEdge](classes/Canvas.md#method-canvasgetsnapedge)
-- [Canvas.snapTo](classes/Canvas.md#attr-canvassnapto)
-- [Canvas.snapEdge](classes/Canvas.md#attr-canvassnapedge)
-- [Canvas.snapOffsetLeft](classes/Canvas.md#attr-canvassnapoffsetleft)
-- [Canvas.snapOffsetTop](classes/Canvas.md#attr-canvassnapoffsettop)
+- [Canvas.setSnapOffsetTop](classes/Canvas_1.md#method-canvassetsnapoffsettop)
+- [Canvas.getSnapTo](classes/Canvas_1.md#method-canvasgetsnapto)
+- [Canvas.setSnapEdge](classes/Canvas_1.md#method-canvassetsnapedge)
+- [Canvas.getSnapEdge](classes/Canvas_1.md#method-canvasgetsnapedge)
+- [Canvas.snapTo](classes/Canvas_1.md#attr-canvassnapto)
+- [Canvas.snapEdge](classes/Canvas_1.md#attr-canvassnapedge)
+- [Canvas.snapOffsetLeft](classes/Canvas_1.md#attr-canvassnapoffsetleft)
+- [Canvas.snapOffsetTop](classes/Canvas_1.md#attr-canvassnapoffsettop)
 - [PointerSettings.snapTo](classes/PointerSettings.md#attr-pointersettingssnapto)
 - [PointerSettings.snapOffsetLeft](classes/PointerSettings.md#attr-pointersettingssnapoffsetleft)
 - [PointerSettings.snapOffsetTop](classes/PointerSettings.md#attr-pointersettingssnapoffsettop)
@@ -4977,11 +4980,11 @@ Object's "stacking order" above or below other objects
 
 ### Related
 
-- [Canvas.getZIndex](classes/Canvas.md#method-canvasgetzindex)
-- [Canvas.bringToFront](classes/Canvas.md#method-canvasbringtofront)
-- [Canvas.sendToBack](classes/Canvas.md#method-canvassendtoback)
-- [Canvas.moveAbove](classes/Canvas.md#method-canvasmoveabove)
-- [Canvas.moveBelow](classes/Canvas.md#method-canvasmovebelow)
+- [Canvas.getZIndex](classes/Canvas_1.md#method-canvasgetzindex)
+- [Canvas.bringToFront](classes/Canvas_1.md#method-canvasbringtofront)
+- [Canvas.sendToBack](classes/Canvas_1.md#method-canvassendtoback)
+- [Canvas.moveAbove](classes/Canvas_1.md#method-canvasmoveabove)
+- [Canvas.moveBelow](classes/Canvas_1.md#method-canvasmovebelow)
 - [DrawItem.getZIndex](classes/DrawItem.md#method-drawitemgetzindex)
 - [DrawItem.setZIndex](classes/DrawItem.md#method-drawitemsetzindex)
 - [DrawItem.bringToFront](classes/DrawItem.md#method-drawitembringtofront)
@@ -5087,7 +5090,7 @@ The following strings are also supported for common ratio bias effects:
 ## Type: AnimationLayoutMode
 
 ### Description
-During a [size animation](classes/Canvas.md#method-canvasanimateresize). when should the layout of the children be updated?
+During a [size animation](classes/Canvas_1.md#method-canvasanimateresize). when should the layout of the children be updated?
 
 ### Values
 
@@ -5150,7 +5153,7 @@ See [Using AutoChildren](kb_topics/autoChildUsage.md#kb-topic-using-autochildren
 ## Type: AutoChildShortcut
 
 ### Description
-A string with the format "autoChild:_autoChildName_" passed as a [Tab.pane](classes/Tab.md#attr-tabpane) or [section item](classes/SectionStackSection.md#attr-sectionstacksectionitems) instead of an actual [Canvas](classes/Canvas.md#class-canvas) or ID.
+A string with the format "autoChild:_autoChildName_" passed as a [Tab.pane](classes/Tab.md#attr-tabpane) or [section item](classes/SectionStackSection.md#attr-sectionstacksectionitems) instead of an actual [Canvas](classes/Canvas_1.md#class-canvas) or ID.
 
 ### See Also
 
@@ -5173,20 +5176,6 @@ Event on a listGrid header to trigger auto-fit of the listgrid field.
 ### Groups
 
 - autoFitFields
-
----
-## Type: AutoScrollDataApproach
-
-### Description
-What should drive the automatic expansion of the chart?
-
-### Values
-
-| Value | Description |
-|-------|-------------|
-| "labels" | Expand the chart to make room for data label facet value. Unused in Bar-type charts |
-| "clusters" | Expand the chart to accommodate [FacetChart.barMargin](classes/FacetChart.md#attr-facetchartbarmargin), [FacetChart.minBarThickness](classes/FacetChart.md#attr-facetchartminbarthickness), and [FacetChart.getMinClusterSize](classes/FacetChart.md#method-facetchartgetminclustersize). |
-| "both" | Expand the chart to make room for both labels and clusters (whichever requires more space). |
 
 ---
 ## Type: AutoSelectionModel
@@ -5214,12 +5203,12 @@ Note that the segments in an AutoTestLocator do not necessarily match parent-chi
 
 **Root locator segment** The root component of a locator may designated in one of the following ways:
 
-*   **Component ID:** If a component has an explicitly specified [ID](classes/Canvas.md#attr-canvasid) this may be used along with the class of the widget to reliably identify it, regardless of where it is in the page's widget hierarchy.  
+*   **Component ID:** If a component has an explicitly specified [ID](classes/Canvas_1.md#attr-canvasid) this may be used along with the class of the widget to reliably identify it, regardless of where it is in the page's widget hierarchy.  
     For example a VLayout with ID `"leftPane"` would be identified as:
     
     `//VLayout[ID="leftPane"]`
     
-    Or, if [Canvas.locateByIDOnly](classes/Canvas.md#attr-canvaslocatebyidonly) is true, the class of the widget will not be recorded - the locator segment to identify the root will be just the widget ID prefixed by three slash characters - for example:
+    Or, if [Canvas.locateByIDOnly](classes/Canvas_1.md#attr-canvaslocatebyidonly) is true, the class of the widget will not be recorded - the locator segment to identify the root will be just the widget ID prefixed by three slash characters - for example:
     
     `///leftPane`
     
@@ -5229,7 +5218,7 @@ Note that the segments in an AutoTestLocator do not necessarily match parent-chi
     
     This is useful for cases where a standard widget hierarchy may be dynamically rendered inside some component (such as a [screen](classes/RPCManager.md#classmethod-rpcmanagerloadscreen)) - see the [portableAutoTests](kb_topics/portableAutoTests.md#kb-topic-writing-autotests-for-multiple-environments) topic for more information
     
-*   **Base Search Segment:** The AutoTest subsystem supports searching for components by a [defining property value](classes/Canvas.md#attr-canvasdefiningproperty). If a target element is not a descendant of a component with an explicitly specified ID, and is also not contained within the specified [testRoot](classes/AutoTest.md#classmethod-autotestsettestroot) for the application, but is contained within a component that has a specified [definingProperty value](classes/Canvas.md#attr-canvasdefiningproperty), this may be used to identify the root component for the locator.
+*   **Base Search Segment:** The AutoTest subsystem supports searching for components by a [defining property value](classes/Canvas_1.md#attr-canvasdefiningproperty). If a target element is not a descendant of a component with an explicitly specified ID, and is also not contained within the specified [testRoot](classes/AutoTest.md#classmethod-autotestsettestroot) for the application, but is contained within a component that has a specified [definingProperty value](classes/Canvas_1.md#attr-canvasdefiningproperty), this may be used to identify the root component for the locator.
     
     Base search segments are prefixed with `"//:"` and include the class name for the target component along with the defining property value.
     
@@ -5258,13 +5247,13 @@ The format of individual segments within a locator will be different for differe
     
     This happens regardless of the interim widget hierarchy between the creator and its auto-child.
     
-*   **Explicit locatorChildren:** Components with an explicit [named locator child](classes/Canvas.md#method-canvassetlocatorparent) relationship will be identified within their locator parent by name. For example marking a member of a Layout with the locator child name `"myView"` might produce a locator like:
+*   **Explicit locatorChildren:** Components with an explicit [named locator child](classes/Canvas_1.md#method-canvassetlocatorparent) relationship will be identified within their locator parent by name. For example marking a member of a Layout with the locator child name `"myView"` might produce a locator like:
     
     `//VLayout[ID="mainLayout"]/myView`
     
     Once again, this is regardless of the interim widget hierarchy between the locator parent and its locator-child.
     
-*   **Search Segments:** Interior search segments in a locator are prefixed with `"//"`. Interior search segments indicate that a component may be uniquely identified by a [defining property value](classes/Canvas.md#attr-canvasdefiningproperty) within the component identified by the previous segment in the locator.
+*   **Search Segments:** Interior search segments in a locator are prefixed with `"//"`. Interior search segments indicate that a component may be uniquely identified by a [defining property value](classes/Canvas_1.md#attr-canvasdefiningproperty) within the component identified by the previous segment in the locator.
     
     For example the following locator would search for a ListGrid bound to `"someDS"` within the body of a window with ID `"mainWindow"`:
     
@@ -5286,7 +5275,7 @@ The format of individual segments within a locator will be different for differe
     
     `VLayout[ID="mainLayout"]/member[Class=TreeGrid||index=1||length=3||classIndex=0||classLength=1||roleIndex=0||roleLength=1||scRole=tree]/`
     
-    This specific segment indicates that the target component is a member of a layout. The target is a TreeGrid, and is the first of 3 members. It also indicates this is the only member TreeGrid in the members array \[indicated by the `classIndex` and `classLength` attributes\], and that it is the only member with [role](classes/Canvas.md#attr-canvasariarole) set to `"tree"`.
+    This specific segment indicates that the target component is a member of a layout. The target is a TreeGrid, and is the first of 3 members. It also indicates this is the only member TreeGrid in the members array \[indicated by the `classIndex` and `classLength` attributes\], and that it is the only member with [role](classes/Canvas_1.md#attr-canvasariarole) set to `"tree"`.
     
     The parent layout will use these _fallback attributes_ in the locator as necessary to find the appropriate member. If the layout has three members, and the first is a TreeGrid, the target may be resolved to this member with some confidence.
     
@@ -5460,7 +5449,7 @@ when heuristically finding a property that appears to contain child objects, the
 ## Type: ClickMaskMode
 
 ### Description
-Passed as a parameter to [Canvas.showClickMask](classes/Canvas.md#method-canvasshowclickmask) to determine the masks behavior when clicked.
+Passed as a parameter to [Canvas.showClickMask](classes/Canvas_1.md#method-canvasshowclickmask) to determine the masks behavior when clicked.
 
 ### Values
 
@@ -5559,7 +5548,7 @@ You can use whatever cursors are valid for your deployment platforms, but keep i
 
 ### See Also
 
-- [Canvas.cursor](classes/Canvas.md#attr-canvascursor)
+- [Canvas.cursor](classes/Canvas_1.md#attr-canvascursor)
 
 ---
 ## Type: DataURLFormat
@@ -5632,6 +5621,29 @@ The type of date/time editing style to use when editing an event.
 As an example - an input format of "MDY" would parse "01/02/1999" to Jan 2nd 1999
 
 Note: In addition to these standard formats, a custom date string parser function may be passed directly to [DateUtil.setInputFormat](classes/DateUtil.md#classmethod-dateutilsetinputformat) or passed into [DateUtil.parseInput](classes/DateUtil.md#classmethod-dateutilparseinput) as the inputFormat parameter.
+
+---
+## Type: DefaultQueryClause
+
+### Description
+The Velocity variable names of the "pieces" of SQL that SmartClient generates to form a complete fetch or update query. You can use these variables in you own custom queries and query clause overrides to build on the SmartClient functionality. See [customQuerying](kb_topics/customQuerying.md#kb-topic-custom-querying-overview) for a full discussion.
+
+### Values
+
+| Value | Description |
+|-------|-------------|
+| "$defaultSelectClause" | The column names to select, for a fetch operation only |
+| "$defaultTableClause" | The table name(s) to select from or update |
+| "$defaultAnsiJoinClause" | The [ansi join(s)](classes/DataSource_1.md#attr-datasourceuseansijoins) to join tables to select from, if enabled. |
+| "$defaultWhereClause" | The "where" condition, which will be derived from supplied criteria or a primary key value, depending on the type of operation |
+| "$defaultGroupClause" | For a fetch operation when using the [Server Summaries](kb_topics/serverSummaries.md#kb-topic-server-summaries) feature, "group by" part of aggregated query |
+| "$defaultAfterWhereClause" | For a fetch operation when using the [Server Summaries](kb_topics/serverSummaries.md#kb-topic-server-summaries) feature, "having" part of aggregated query (or outer "where" part if sub-select approach is used, see [OperationBinding.useHavingClause](classes/OperationBinding.md#attr-operationbindingusehavingclause) for more details) |
+| "$defaultValuesClause" | The column names to update and the update values, for an update or add operation |
+| "$defaultOrderClause" | The column names to sort by, for a fetch operation only |
+
+### Groups
+
+- customQuerying
 
 ---
 ## Type: DetailViewerViewState
@@ -5725,24 +5737,25 @@ When records are being dragged from within a ListGrid, what sort of drag-tracker
 ## Type: DrawingType
 
 ### Description
-The type of drawing back-end used by a [DrawPane](classes/DrawPane.md#class-drawpane) to draw its [draw items](classes/DrawPane.md#attr-drawpanedrawitems) on screen.
-#### SVG and bitmap tradeoffs
+The drawing back-end a [DrawPane](classes/DrawPane.md#class-drawpane) uses to render its [draw items](classes/DrawPane.md#attr-drawpanedrawitems).
 
-*   SVG is best supported in IE9+ and Opera 12.16 and earlier, but may also be used in Chrome, Opera 15+, Firefox 4+, and Safari.
-*   SVG tends to be higher quality, especially when it comes to text and drawing on high-DPI displays and mobile devices.
-*   [DrawItem.zIndex](classes/DrawItem.md#attr-drawitemzindex), [DrawItem.bringToFront](classes/DrawItem.md#method-drawitembringtofront), and [DrawItem.sendToBack](classes/DrawItem.md#method-drawitemsendtoback) are not supported on iOS devices in bitmap drawing mode due to platform limitations. These APIs are supported on iOS in SVG drawing mode.
-*   Incremental updates to just a few elements of a drawing are faster in SVG, whereas whole drawing refreshes are faster in bitmap mode.
-*   Browsers have limits on the maximum dimensions or area of the `<canvas>` element used in bitmap drawing. The limits on a `<canvas>` imposed by the browser translate to the same limits on the dimensions or area of a `DrawPane` using bitmap drawing. Internet Explorer, for example, limits the width and height of a `<canvas>` to 8192 pixels: [http://msdn.microsoft.com/en-us/library/ie/ff975062(v=vs.85).aspx](http://msdn.microsoft.com/en-us/library/ie/ff975062\(v=vs.85\).aspx); therefore, in IE using bitmap drawing, a `DrawPane` can be at most 8192×8192 in size. To make larger drawings, you can either switch to SVG drawing, use multiple `DrawPane`s, or enable [drag-scrolling](classes/DrawPane.md#attr-drawpanecandragscroll).
-*   In bitmap drawing, each pixel uses around 4 to 8 bytes of memory. Large bitmap drawings can therefore use a lot of memory. A 4000×2000 bitmap drawing will use around 31 to 61 Megabytes of memory.  
-    Note: To minimize memory use when using bitmap drawing for a large drawing, it may be useful to employ [slicing](http://en.wikipedia.org/wiki/Slicing_\(interface_design\)) if possible. For example, if the drawing is mostly a solid color except for content located at a few small-area places on screen, a [Canvas](classes/Canvas.md#class-canvas) can be created with the solid background color and one `DrawPane` can be created for each content area. Each `DrawPane` is [added as a child](classes/Canvas.md#method-canvasaddchild) to the `Canvas`. The [left](classes/Canvas.md#attr-canvasleft) and [top](classes/Canvas.md#attr-canvastop) properties of the `DrawPane`s are used to absolutely-position them within the `Canvas` parent.
+Defaults to "svg", which every supported browser provides. There is normally no reason to change this, and "svg" is the better choice for almost any drawing:
+
+*   Higher quality, particularly for text and on high-DPI displays.
+*   Faster for incremental updates — changing a few properties touches only those elements, where bitmap drawing repaints the whole pane. On first paint the two measured about the same: for a 2,500-point scatter plot, SVG was marginally quicker than bitmap in both Chrome and Firefox.
+*   No size ceiling. Browsers cap `<canvas>` dimensions at around 65,000px, and a `DrawPane` in bitmap drawing inherits that cap. SVG panes have no comparable limit.
+*   No bitmap memory cost. A bitmap drawing spends roughly 4 to 8 bytes per pixel, so a 4000×2000 pane costs 31–61MB; the same drawing in SVG costs nothing comparable.
+*   [DrawItem.zIndex](classes/DrawItem.md#attr-drawitemzindex), [DrawItem.bringToFront](classes/DrawItem.md#method-drawitembringtofront) and [DrawItem.sendToBack](classes/DrawItem.md#method-drawitemsendtoback) work for every item. In bitmap drawing on iOS, [DrawLabel](classes/DrawLabel.md#class-drawlabel)s default to HTML rendering and those three APIs do not apply to them; set `useHTML:false` on the label to opt out.
+
+Choose "bitmap" only for a drawing that is rebuilt wholesale far more often than it is updated in place, and that stays well inside the browser's canvas size limit.
 
 ### Values
 
 | Value | Description |
 |-------|-------------|
-| "svg" | Use Scalable Vector Graphics (SVG). SVG is a W3C standard supported by IE9+, Chrome, Firefox 4+, Safari, and Opera. |
-| "bitmap" | Use an HTML5 `<canvas>` element. "bitmap" drawing is supported by IE9+, Chrome, Firefox, Safari, and Opera. |
-| "vml" | Use Vector Markup Language (VML). VML is a deprecated vector graphics technology supported only by Internet Explorer 6 through 9. In IE 6, 7, and 8, "vml" drawing is the only supported drawing back-end. |
+| "svg" | Scalable Vector Graphics. The default, and available in every supported browser. |
+| "bitmap" | An HTML5 `<canvas>` element. See the limits above. |
+| "vml" | Vector Markup Language, an Internet Explorer technology. Retained for backwards compatibility only: Internet Explorer is not a supported browser, and no supported browser selects this back-end. |
 
 ---
 ## Type: DrawShapeCommandType
@@ -5777,7 +5790,7 @@ For DataSources of type "sql" and "hibernate", specifies the kind of inheritance
 | Value | Description |
 |-------|-------------|
 | "full" | Inherit fields by copying them onto the inheriting DataSource's underlying table. When we import a DataSource with this inheritanceMode, we create actual columns for inherited fields on the table we create. With this inheritanceMode, inherited fields are updatable. |
-| "none" | Do not physically inherit fields onto the inheriting DataSource's SQL table. Columns will not be created for inherited fields on import, and all generated SQL operations will exclude inherited fields. However, those fields are still part of the DataSource's schema so you can, for example, write [custom SQL](#kb-topic-customquerying) that returns values for the inherited fields, and they will be delivered to the client. |
+| "none" | Do not physically inherit fields onto the inheriting DataSource's SQL table. Columns will not be created for inherited fields on import, and all generated SQL operations will exclude inherited fields. However, those fields are still part of the DataSource's schema so you can, for example, write [custom SQL](kb_topics/customQuerying.md#kb-topic-custom-querying-overview) that returns values for the inherited fields, and they will be delivered to the client. |
 
 ### Groups
 
@@ -5795,7 +5808,7 @@ To embed a dynamic template in a property whose declared type is plain [String](
 ## Type: EdgeSizes
 
 ### Description
-Object used to specify custom edge sizes or offsets. Specified as an object where `defaultSize` will map to the default edge size or offset for the canvas ([Canvas.edgeSize](classes/Canvas.md#attr-canvasedgesize), or [Canvas.edgeOffset](classes/Canvas.md#attr-canvasedgeoffset) and `top`, `left`, `right` and `bottom` will map to the [edgeTop](classes/EdgedCanvas.md#attr-edgedcanvasedgetop)/[edgeOffsetTop](classes/EdgedCanvas.md#attr-edgedcanvasedgeoffsettop), [edgeLeft](classes/EdgedCanvas.md#attr-edgedcanvasedgeleft)/[edgeOffsetLeft](classes/EdgedCanvas.md#attr-edgedcanvasedgeoffsetleft), [edgeRight](classes/EdgedCanvas.md#attr-edgedcanvasedgeright)/[edgeOffsetRight](classes/EdgedCanvas.md#attr-edgedcanvasedgeoffsetright), and [edgeBottom](classes/EdgedCanvas.md#attr-edgedcanvasedgebottom)/[edgeOffsetBottom](classes/EdgedCanvas.md#attr-edgedcanvasedgeoffsetbottom) attributes on the paneContainer respectively. Note that not all these properties have to be set - if unset standard edge sizing rules will apply.
+Object used to specify custom edge sizes or offsets. Specified as an object where `defaultSize` will map to the default edge size or offset for the canvas ([Canvas.edgeSize](classes/Canvas_1.md#attr-canvasedgesize), or [Canvas.edgeOffset](classes/Canvas_1.md#attr-canvasedgeoffset) and `top`, `left`, `right` and `bottom` will map to the [edgeTop](classes/EdgedCanvas.md#attr-edgedcanvasedgetop)/[edgeOffsetTop](classes/EdgedCanvas.md#attr-edgedcanvasedgeoffsettop), [edgeLeft](classes/EdgedCanvas.md#attr-edgedcanvasedgeleft)/[edgeOffsetLeft](classes/EdgedCanvas.md#attr-edgedcanvasedgeoffsetleft), [edgeRight](classes/EdgedCanvas.md#attr-edgedcanvasedgeright)/[edgeOffsetRight](classes/EdgedCanvas.md#attr-edgedcanvasedgeoffsetright), and [edgeBottom](classes/EdgedCanvas.md#attr-edgedcanvasedgebottom)/[edgeOffsetBottom](classes/EdgedCanvas.md#attr-edgedcanvasedgeoffsetbottom) attributes on the paneContainer respectively. Note that not all these properties have to be set - if unset standard edge sizing rules will apply.
 
 ---
 ## Type: EnterKeyEditAction
@@ -5839,7 +5852,7 @@ What to do if the user hits escape while editing a cell.
 ## Type: EscapingMode
 
 ### Description
-Mode for escaping text values when using [DataSource.recordsAsText](classes/DataSource_1.md#method-datasourcerecordsastext) or [DataSource.recordsFromText](classes/DataSource_1.md#method-datasourcerecordsfromtext).
+Mode for escaping text values when using [DataSource.recordsAsText](classes/DataSource_2.md#method-datasourcerecordsastext) or [DataSource.recordsFromText](classes/DataSource_1.md#method-datasourcerecordsfromtext).
 
 ### Values
 
@@ -6150,7 +6163,7 @@ A String of HTML, such as "text".
 
 In many contexts, such as [Button.title](classes/Button.md#attr-buttontitle) and [ListGrid.formatCellValue](classes/ListGrid_2.md#method-listgridformatcellvalue), an HTML String can be specified, allowing you to use normal HTML tags and CSS to do formatting or styling.
 
-However, bear in mind that if you attempt any kind of layout or advanced styling in such an HTML string, different browsers may render the HTML differently - use SmartClient [layout](classes/Layout.md#class-layout) and [styling](classes/Canvas.md#attr-canvasstylename) features wherever possible to avoid this. See also [CSSStyleName](reference_2.md#type-cssstylename).
+However, bear in mind that if you attempt any kind of layout or advanced styling in such an HTML string, different browsers may render the HTML differently - use SmartClient [layout](classes/Layout.md#class-layout) and [styling](classes/Canvas_1.md#attr-canvasstylename) features wherever possible to avoid this. See also [CSSStyleName](reference_2.md#type-cssstylename).
 
 ---
 ## Type: ImageStyle
@@ -6266,10 +6279,10 @@ Policy for whether resize bars are shown on members by default.
 
 | Value | Description |
 |-------|-------------|
-| "marked" | resize bars are only shown on members marked [showResizeBar:true](classes/Canvas.md#attr-canvasshowresizebar) |
+| "marked" | resize bars are only shown on members marked [showResizeBar:true](classes/Canvas_1.md#attr-canvasshowresizebar) |
 | "middle" | resize bars are shown on all resizable members that are not explicitly marked showResizeBar:false, except the last member. Appropriate for a [LayoutPolicy](reference_2.md#type-layoutpolicy) of "fill" (VLayout, HLayout) since the overall space will always be filled. |
 | "all" | resize bars are shown on all resizable members that are not explicitly marked showResizeBar:false, including the last member. Can be appropriate for a [LayoutPolicy](reference_2.md#type-layoutpolicy) of "none" (VStack, HStack) since the overall size of the layout is dictated by it's member's sizes. |
-| "none" | resize bars are not shown even if members are marked with [showResizeBar:true](classes/Canvas.md#attr-canvasshowresizebar) |
+| "none" | resize bars are not shown even if members are marked with [showResizeBar:true](classes/Canvas_1.md#attr-canvasshowresizebar) |
 
 ---
 ## Type: LegendAlign
@@ -6380,10 +6393,10 @@ In inline edit mode, this type works like a text field.
 
 **Note:** When [ListGrid.editEvent](classes/ListGrid_1.md#attr-listgrideditevent) is `"click"`, clicking on a link-type field will follow the link rather than starting inline editing. The click is understood to be intended to navigate to the link target. Editing can still be started via keyboard navigation or by double-clicking if [ListGrid.canEdit](classes/ListGrid_1.md#attr-listgridcanedit) is enabled.
 
-To create a link not covered by this feature, consider using [ListGridField.formatCellValue](classes/ListGridField.md#method-listgridfieldformatcellvalue) along with [Canvas.linkHTML](classes/Canvas.md#method-canvaslinkhtml), or simply [styling the field](classes/ListGrid_2.md#method-listgridgetcellstyle) to look like a link, and providing interactivity via [field.recordClick()](classes/ListGridField.md#method-listgridfieldrecordclick). |
+To create a link not covered by this feature, consider using [ListGridField.formatCellValue](classes/ListGridField.md#method-listgridfieldformatcellvalue) along with [Canvas.linkHTML](classes/Canvas_1.md#method-canvaslinkhtml), or simply [styling the field](classes/ListGrid_2.md#method-listgridgetcellstyle) to look like a link, and providing interactivity via [field.recordClick()](classes/ListGridField.md#method-listgridfieldrecordclick). |
 | "image" | Renders a different image in each row based on the value of the field. If this URL is not absolute, it is assumed to be relative to [ListGridField.imageURLPrefix](classes/ListGridField.md#attr-listgridfieldimageurlprefix) if specified. The size of the image is controlled by [ListGridField.imageSize](classes/ListGridField.md#attr-listgridfieldimagesize), [ListGridField.imageWidth](classes/ListGridField.md#attr-listgridfieldimagewidth), [ListGridField.imageHeight](classes/ListGridField.md#attr-listgridfieldimageheight) (and by the similarly-named global default attributes on the ListGrid itself).
 
-You can also specify the following attributes on the field: `activeAreaHTML`, and `extraStuff` - these are passed to [Canvas.imgHTML](classes/Canvas.md#method-canvasimghtml) to generate the final URL.
+You can also specify the following attributes on the field: `activeAreaHTML`, and `extraStuff` - these are passed to [Canvas.imgHTML](classes/Canvas_1.md#method-canvasimghtml) to generate the final URL.
 
 Note if you want to display icons **in addition to** the normal cell value, you can use [valueIcons](classes/ListGridField.md#attr-listgridfieldvalueicons) instead. |
 | "icon" | Shows [field.icon](classes/ListGridField.md#attr-listgridfieldicon) in every cell, and also in the header. Useful for a field that is used as a button, for example, launches a detail window or removes a row. Implement a [field.recordClick](classes/ListGridField.md#method-listgridfieldrecordclick) to define a behavior for the button.
@@ -6799,16 +6812,16 @@ Is this page being viewed in landscape or portrait orientation? Typically used w
 ## Type: PercentBoxModel
 
 ### Description
-Determines sizing model when sizing / positioning a canvas relative to its [percentBox](classes/Canvas.md#attr-canvaspercentbox).
+Determines sizing model when sizing / positioning a canvas relative to its [percentBox](classes/Canvas_1.md#attr-canvaspercentbox).
 
 ### Values
 
 | Value | Description |
 |-------|-------------|
-| "visible" | use coordinates relative to the [drawn height](classes/Canvas.md#method-canvasgetvisibleheight) and width of the other canvas |
-| "viewport" | use coordinates relative to the [drawn viewport height](classes/Canvas.md#method-canvasgetviewportheight) and width of the other canvas |
-| "specified" | use coordinates relative to the [specified height](classes/Canvas.md#method-canvasgetheight) and width of the other canvas. For [overflow:"visible"](classes/Canvas.md#attr-canvasoverflow) canvases this may be smaller than drawn size. |
-| "inner" | use coordinates relative to the [specified inner height](classes/Canvas.md#method-canvasgetinnerheight) and width of the other canvas |
+| "visible" | use coordinates relative to the [drawn height](classes/Canvas_1.md#method-canvasgetvisibleheight) and width of the other canvas |
+| "viewport" | use coordinates relative to the [drawn viewport height](classes/Canvas_1.md#method-canvasgetviewportheight) and width of the other canvas |
+| "specified" | use coordinates relative to the [specified height](classes/Canvas_1.md#method-canvasgetheight) and width of the other canvas. For [overflow:"visible"](classes/Canvas_1.md#attr-canvasoverflow) canvases this may be smaller than drawn size. |
+| "inner" | use coordinates relative to the [specified inner height](classes/Canvas_1.md#method-canvasgetinnerheight) and width of the other canvas |
 
 ---
 ## Type: PickerIconName
@@ -6914,8 +6927,8 @@ Note that the notation shown above is an example of a [JavaScript object literal
 |-------|-------------|
 | "none" | proportional resizing is never used |
 | "always" | proportional resizing is always used |
-| "modifier" | proportional resize is off by default, but holding down one of the [Canvas.proportionalResizeModifiers](classes/Canvas.md#attr-canvasproportionalresizemodifiers) turns proportional resize on for a given resize interaction |
-| "modifierOff" | proportional resize is on by default, but holding down one of the [Canvas.proportionalResizeModifiers](classes/Canvas.md#attr-canvasproportionalresizemodifiers) turns proportional resize off for a given resize interaction |
+| "modifier" | proportional resize is off by default, but holding down one of the [Canvas.proportionalResizeModifiers](classes/Canvas_1.md#attr-canvasproportionalresizemodifiers) turns proportional resize on for a given resize interaction |
+| "modifierOff" | proportional resize is on by default, but holding down one of the [Canvas.proportionalResizeModifiers](classes/Canvas_1.md#attr-canvasproportionalresizemodifiers) turns proportional resize off for a given resize interaction |
 
 ### Groups
 
@@ -7102,7 +7115,7 @@ Indicates the response format to be used for a REST operation. Is only applicabl
 |-------|-------------|
 | "json" | Indicates that the REST service response is a valid [JSON](https://www.json.org/json-en.html) message. We will parse the response text as JSON, and the resulting object structure can be further processed with [XPaths](classes/DataSource_1.md#attr-datasourcerecordxpath), [templates](classes/DataSource_1.md#attr-datasourceresponsetemplate) and [scripting](classes/DataSource_1.md#attr-datasourcetransformresponsescript) |
 | "xml" | Indicates that the REST service response is an XML message. We will parse the response text as XML, and the resulting object structure can be further processed with XPaths, templates and scripting |
-| "csv" | Indicates that the the REST service response is in delimited text format in the body of the HTTP response. We will parse the response text as delimited flat text data, and the resulting object structure can be further processed with scripting. Note, we do not support XPaths because they do not make sense with flat data, and we also do not support templating of CSV responses. Record-level and field-level transformation scripts, however, are applicable, and field [nativeName](#attr-datasourcefieldnativename)s are honored if the CSV text includes a header row
+| "csv" | Indicates that the the REST service response is in delimited text format in the body of the HTTP response. We will parse the response text as delimited flat text data, and the resulting object structure can be further processed with scripting. Note, we do not support XPaths because they do not make sense with flat data, and we also do not support templating of CSV responses. Record-level and field-level transformation scripts, however, are applicable, and field [nativeName](classes/DataSourceField.md#attr-datasourcefieldnativename)s are honored if the CSV text includes a header row
 
 `RestConnector` only supports a couple options for CSV-based REST services - see [DataSource.csvDelimiter](classes/DataSource_1.md#attr-datasourcecsvdelimiter) and [DataSource.csvQuoteCharacter](classes/DataSource_1.md#attr-datasourcecsvquotecharacter) |
 | "text" | Indicates that REST service response is to be treated simply as a piece of text, with no parsing or other processing attempted. Use this format for services that return simple strings or messages in some non-standard format; you can provide your own parsing logic in a [transformResponseScript](classes/DataSource_1.md#attr-datasourcetransformresponsescript) |
@@ -7236,7 +7249,7 @@ The special prefix "\[SKIN\]" can be used to refer to images within the skin fol
 The value of "\[SKIN\]" is the combination of:
 
 *   the "skin directory", established in `load_skin.js` via [Page.setSkinDir](classes/Page.md#classmethod-pagesetskindir), plus..
-*   the setting for [skinImgDir](classes/Canvas.md#attr-canvasskinimgdir) on the component where you set an image URL property
+*   the setting for [skinImgDir](classes/Canvas_1.md#attr-canvasskinimgdir) on the component where you set an image URL property
 
 `skinImgDir` defaults to "images/", so creating an [Img](classes/Img.md#class-img) component with [Img.src](classes/Img.md#attr-imgsrc) set to "\[SKIN\]myButton/button.gif" will expand to `Page.getSkinDir() + "/images/myButton/button.gif"`.
 
@@ -7279,7 +7292,7 @@ See the [Stateful Images overview](kb_topics/statefulImages.md#kb-topic-stateful
 
 _For more information about using stylable SVGs for spriting in a way that doesn't involve lots of file-loads or the flickering typically associated with modifying SVGs in-browser, see the [SVG Symbols Overview](kb_topics/svgSymbols.md#kb-topic-svg-symbols-overview)._
 
-If the URL represents an SVG image, you may specify `tag` as a query param to control whether it's rendered in an object or image tag, provided [Canvas.useImageForSVG](classes/Canvas.md#attr-canvasuseimageforsvg) isn't set. If that query param is present and has any value other than `object`, then the SVG image will be rendered in an image tag. Otherwise, it will be rendered in an object tag. For example, an `SCImgURL` of "circle.svg?tag=image" will render in an image tag.
+If the URL represents an SVG image, you may specify `tag` as a query param to control whether it's rendered in an object or image tag, provided [Canvas.useImageForSVG](classes/Canvas_1.md#attr-canvasuseimageforsvg) isn't set. If that query param is present and has any value other than `object`, then the SVG image will be rendered in an image tag. Otherwise, it will be rendered in an object tag. For example, an `SCImgURL` of "circle.svg?tag=image" will render in an image tag.
 
 **the special "blank" constant**
 
@@ -7440,7 +7453,7 @@ The possible types of sequence handling SmartClient Server can apply. This refer
 |-------|-------------|
 | "jdbcDriver" | Use the JDBC 3.0 API "getGeneratedKeys()" to get the most recent sequence value. Obviously, this is only an option for JDBC 3.0+ drivers. **NOTE: Oracle special case** The Oracle JDBC driver provides a "getGeneratedKeys" method, but that method does not actually return the generated key values; instead, it returns a ROWID, which we must use to fetch the inserted row, and obtain the generated key values from it. For this reason, you may find that "native" is slightly faster to retrieve sequence values than "jdbcDriver" with Oracle (or you may find that it makes no noticeable difference; it depends on too many factors for us to give a concrete recommendation) |
 | "native" | Use a database-specific native technique to obtain the most recent sequence value. The actual technique used varies widely depending on the vagaries of the underlying database (and sometimes the vagaries of particular releases of a database product) |
-| "none" | No automatic attempt is made to retrieve the most recent sequence value. You are expected to handle this by providing a [cacheSyncOperation](#attr-operationbindingcachesyncoperation) that is able to return the entire row without needing generated PK values for context. For example, a query that uses `MAX(pk)` would be capable of this. To give a more complex example, say you have a sequence value that is retrieved from a legacy system: you could store that sequence value in the HTTP session and then have your custom `cacheSyncOperation` reference that session attribute in its `WHERE` clause. Also note that cacheSyncOperations, like any other [DataSource operation](classes/OperationBinding.md#class-operationbinding), can be [written in Java](classes/OperationBinding.md#attr-operationbindingserverobject) or any [JSR223-compliant scripting language](classes/OperationBinding.md#attr-operationbindingscript) - you do not have to use SQL |
+| "none" | No automatic attempt is made to retrieve the most recent sequence value. You are expected to handle this by providing a [cacheSyncOperation](classes/OperationBinding.md#attr-operationbindingcachesyncoperation) that is able to return the entire row without needing generated PK values for context. For example, a query that uses `MAX(pk)` would be capable of this. To give a more complex example, say you have a sequence value that is retrieved from a legacy system: you could store that sequence value in the HTTP session and then have your custom `cacheSyncOperation` reference that session attribute in its `WHERE` clause. Also note that cacheSyncOperations, like any other [DataSource operation](classes/OperationBinding.md#class-operationbinding), can be [written in Java](classes/OperationBinding.md#attr-operationbindingserverobject) or any [JSR223-compliant scripting language](classes/OperationBinding.md#attr-operationbindingscript) - you do not have to use SQL |
 
 ---
 ## Type: ShowDataValuesMode
@@ -7493,7 +7506,7 @@ The technique SmartClient Server's SQL DataSource should use to select a "page" 
 
 | Value | Description |
 |-------|-------------|
-| "sqlLimit" | Specify the paging directly in the SQL query we generate. The way this is done varies considerably from database to database: with some it is a straightforward built-in facility while others require arcane tricks or simply don't support the idea. This is the most efficient method, where available. Note that this strategy is not supported for operations that make use of a [customSQL](#attr-operationbindingcustomsql) clause, because it depends upon being able to determine the size of the whole dataset without actually retrieving the whole dataset. Ordinary operations do this by means of an automatically-generated "row count query", but we cannot generate such a query for a `customSQL` operation. |
+| "sqlLimit" | Specify the paging directly in the SQL query we generate. The way this is done varies considerably from database to database: with some it is a straightforward built-in facility while others require arcane tricks or simply don't support the idea. This is the most efficient method, where available. Note that this strategy is not supported for operations that make use of a [customSQL](classes/OperationBinding.md#attr-operationbindingcustomsql) clause, because it depends upon being able to determine the size of the whole dataset without actually retrieving the whole dataset. Ordinary operations do this by means of an automatically-generated "row count query", but we cannot generate such a query for a `customSQL` operation. |
 | "jdbcScroll" | Implement the paging behavior by use of the `absolute()` method of the JDBC `ResultSet`. |
 | "dropAtServer" | Implement the paging behavior by fetching the entire resultset from the database and dropping any unnecessary rows on the server before returning the data to the client. This approach is extremely inefficient, but also extremely straightforward; it is intended as a fallback option, for situations where the more sophisticated approaches cause problems (a JDBC driver that throws vague exceptions when `absolute()` is called, for example) |
 | "none" | No paging behavior: we always return the entire resultset to the client. |
@@ -7767,7 +7780,7 @@ By default the uniqueness check is not case sensitive but this can be controlled
 
 Validators of this type have [requiresServer](classes/ValidatorDefinition.md#attr-validatordefinitionrequiresserver) set to `true` and do not run on the client.
 
-Note that this validation is generally unnecessary for data coming from a UI. The typical UI uses a [SelectItem](classes/SelectItem.md#class-selectitem) or [ComboBoxItem](classes/ComboBoxItem.md#class-comboboxitem) with an [optionDataSource](classes/FormItem.md#attr-formitemoptiondatasource) for user entry, such that the user can't accidentally enter a related record if that doesn't exist, and a typical SQL schema will include constraints that prevent a bad insert if the user attempts to circumvent the UI. The primary purpose of declaring this validation explicitly is to provide clear, friendly error messages for use cases such as [BatchUploader](#class-batchuploader), where values aren't individually chosen by the user. See also the example *Related Records*. |
+Note that this validation is generally unnecessary for data coming from a UI. The typical UI uses a [SelectItem](classes/SelectItem.md#class-selectitem) or [ComboBoxItem](classes/ComboBoxItem.md#class-comboboxitem) with an [optionDataSource](classes/FormItem.md#attr-formitemoptiondatasource) for user entry, such that the user can't accidentally enter a related record if that doesn't exist, and a typical SQL schema will include constraints that prevent a bad insert if the user attempts to circumvent the UI. The primary purpose of declaring this validation explicitly is to provide clear, friendly error messages for use cases such as [BatchUploader](classes/BatchUploader.md#class-batchuploader), where values aren't individually chosen by the user. See also the example *Related Records*. |
 | required | A non-empty value is required for this field to pass validation.
 
 In the case of a "binary" field, a non-empty file must be uploaded. |
@@ -8211,14 +8224,14 @@ Represents a request to AI for a response.
 ## Object: AIServiceDescriptor
 
 ### Description
-Descriptor for an AI service that can be registered with [AI.registerAIService](classes/AI.md#classmethod-airegisteraiservice) (globally) or [Canvas.registerAIService](classes/Canvas.md#method-canvasregisteraiservice) (component-scoped) so that the [AIDelegator](classes/AIDelegator.md#class-aidelegator) can choose to invoke it on behalf of the user.
+Descriptor for an AI service that can be registered with [AI.registerAIService](classes/AI.md#classmethod-airegisteraiservice) (globally) or [Canvas.registerAIService](classes/Canvas_1.md#method-canvasregisteraiservice) (component-scoped) so that the [AIDelegator](classes/AIDelegator.md#class-aidelegator) can choose to invoke it on behalf of the user.
 
 See the [AI Assist overview](kb_topics/aiAssist.md#kb-topic-ai-assist) for the full registration and routing model.
 
 ### See Also
 
 - [AI.registerAIService](classes/AI.md#classmethod-airegisteraiservice)
-- [Canvas.registerAIService](classes/Canvas.md#method-canvasregisteraiservice)
+- [Canvas.registerAIService](classes/Canvas_1.md#method-canvasregisteraiservice)
 - [AI.delegate](classes/AI.md#classmethod-aidelegate)
 
 ---
@@ -8356,7 +8369,7 @@ An object that contains information needed to evaluate an [operator](reference_2
 ## Object: DataContextBinding
 
 ### Description
-Identical to a [DataContext](reference_2.md#object-datacontext) but in addition to fixed values, [ruleContext](classes/Canvas.md#method-canvasgetrulecontext) values can be specified by prefixing the `ruleContext` path with `$ruleScope.` as shown below:
+Identical to a [DataContext](reference_2.md#object-datacontext) but in addition to fixed values, [ruleContext](classes/Canvas_1.md#method-canvasgetrulecontext) values can be specified by prefixing the `ruleContext` path with `$ruleScope.` as shown below:
 
 For example, in JavaScript:
 
@@ -8734,7 +8747,7 @@ Extra methods added to the Number object, available on all number variables. Att
 ## Object: PointerSettings
 
 ### Description
-A set of properties that can be used to configure a [canvas pointer](classes/Canvas.md#attr-canvasshowpointer).
+A set of properties that can be used to configure a [canvas pointer](classes/Canvas_1.md#attr-canvasshowpointer).
 
 ---
 ## Object: ProcessFailure
@@ -8893,7 +8906,7 @@ The default set of standard states are explicitly documented, but this object fo
 In some cases, an icon may have only custom states - for example, a tree-folder icon is always either opened or closed. In these cases, a `_base` entry is only required if entries in the object use the _#state_ or _#modifier_ components.
 
 #### Combined states and missing entries:
-The [focused](classes/Canvas.md#method-canvasisfocused) and [selected](classes/StatefulCanvas.md#attr-statefulcanvasselected) states may be applied to a component in combination with other states. For example an [ImgButton](classes/ImgButton.md#class-imgbutton) marked both _Selected_ and _Disabled_ will look for media to represent this combined state. To provide such media in a SCStatefulImgConfig, use the combined state names (in this case `SelectedDisabled`).  
+The [focused](classes/Canvas_1.md#method-canvasisfocused) and [selected](classes/StatefulCanvas.md#attr-statefulcanvasselected) states may be applied to a component in combination with other states. For example an [ImgButton](classes/ImgButton.md#class-imgbutton) marked both _Selected_ and _Disabled_ will look for media to represent this combined state. To provide such media in a SCStatefulImgConfig, use the combined state names (in this case `SelectedDisabled`).  
 If a component is both _Selected_ and _Focused_, three-part combined states are also possible (Selected + Focused + Over gives `SelectedFocusedOver` for example).
 
 The SCStatefulImgConfig format may be sparse - developers may skip providing values for certain states (or combined states) in the SCStatefulImgConfig object. In this case the system will back off to using one of the state image entries that has been explicitly provided, according to the following rules:

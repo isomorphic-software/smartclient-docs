@@ -37,7 +37,7 @@ Note that [item.cellHeight](../classes/FormItem.md#attr-formitemcellheight) may 
 
 Forms often contain labels, data values, or instructional text which can vary in size based on the skin, data values, or internationalization settings. There are a few ways to deal with a form potentially varying in size:
 
-1.  Allow scrolling when necessary, using [overflow:auto](../classes/Canvas.md#attr-canvasoverflow), either on the immediate form, or on some parent.
+1.  Allow scrolling when necessary, using [overflow:auto](../classes/Canvas_1.md#attr-canvasoverflow), either on the immediate form, or on some parent.
 2.  Place the form in a Layout along with a component that can render any specified size, such as a [ListGrid](../classes/ListGrid_1.md#class-listgrid). In this case, the Layout will automatically shrink the grid in order to accommodate the form.
 3.  Ensure that the form can always render at a designed minimum size by reducing the number of cases of variable-sized text, and testing remaining cases across all supported skins. For example, move help text into hovers on help icons, or clip long text values at a maximum length and provide a hover to see the rest.
 

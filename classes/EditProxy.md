@@ -85,7 +85,7 @@ Common customization properties can be provided by [EditContext.hoopSelectorProp
 ## Attr: EditProxy.childrenSnapToGrid
 
 ### Description
-If not null the [Canvas.childrenSnapToGrid](Canvas.md#attr-canvaschildrensnaptogrid) on the component represented by this EditProxy is set to this value only while in edit mode. This allows snapToGrid functionality to be enforced during edit mode but not when live.
+If not null the [Canvas.childrenSnapToGrid](Canvas_1.md#attr-canvaschildrensnaptogrid) on the component represented by this EditProxy is set to this value only while in edit mode. This allows snapToGrid functionality to be enforced during edit mode but not when live.
 
 ### Groups
 
@@ -105,7 +105,7 @@ Instructions that appear below the text entry area if inline editing is enabled.
 ## Attr: EditProxy.childrenSnapResizeToGrid
 
 ### Description
-If not null the [Canvas.childrenSnapResizeToGrid](Canvas.md#attr-canvaschildrensnapresizetogrid) on the component represented by this EditProxy is set to this value only while in edit mode. This allows snapResizeToGrid functionality to be enforced during edit mode but not when live.
+If not null the [Canvas.childrenSnapResizeToGrid](Canvas_1.md#attr-canvaschildrensnapresizetogrid) on the component represented by this EditProxy is set to this value only while in edit mode. This allows snapResizeToGrid functionality to be enforced during edit mode but not when live.
 
 ### Groups
 

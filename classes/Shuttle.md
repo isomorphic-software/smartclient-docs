@@ -31,7 +31,7 @@ ImgButton for deselecting the full set of selected data in the shuttle.
 ## Attr: Shuttle.sourceGridTitle
 
 ### Description
-Title for the source grid, shown as a [Canvas.groupTitle](Canvas.md#attr-canvasgrouptitle)
+Title for the source grid, shown as a [Canvas.groupTitle](Canvas_1.md#attr-canvasgrouptitle)
 
 ### Groups
 
@@ -147,7 +147,7 @@ Width for the [Shuttle.selectButton](#attr-shuttleselectbutton)
 ## Attr: Shuttle.targetGridTitle
 
 ### Description
-Title for the target grid, shown as a [Canvas.groupTitle](Canvas.md#attr-canvasgrouptitle)
+Title for the target grid, shown as a [Canvas.groupTitle](Canvas_1.md#attr-canvasgrouptitle)
 
 ### Groups
 

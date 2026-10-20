@@ -48,7 +48,7 @@ The following DataSourceField properties have special significance when a compon
 
 *   [field.type](../classes/DataSourceField.md#attr-datasourcefieldtype) declares the type of the field, and hence the type of the JavaScript value your custom class will be initialized with. In order to declare subcomponents, can be set to the name of another component (built-in or custom).
 *   [field.multiple](../classes/DataSourceField.md#attr-datasourcefieldmultiple) declares that the field should always be array-valued even when only a single value is provided. Also indicates that the field name should be used as a "wrapper tag" in the XML format for the component.
-*   [field.propertiesOnly](../classes/DataSourceField.md#attr-datasourcefieldpropertiesonly). For fields that hold subcomponents, suppresses auto-construction to avoid [double drawing](../classes/Canvas.md#attr-canvasautodraw) and to allow subcomponents to be modified by their parent component before they are created and drawn
+*   [field.propertiesOnly](../classes/DataSourceField.md#attr-datasourcefieldpropertiesonly). For fields that hold subcomponents, suppresses auto-construction to avoid [double drawing](../classes/Canvas_1.md#attr-canvasautodraw) and to allow subcomponents to be modified by their parent component before they are created and drawn
 
 When a component is edited within Reify, the DataSource properties that normally influence databound forms will influence the Component Editor (for example, field.title, field.editorType). In addition, the following properties have special significance in component editing and component drag and drop:
 

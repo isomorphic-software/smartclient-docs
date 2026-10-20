@@ -68,7 +68,7 @@ See [SCStatefulImgConfig overview](../reference.md#object-scstatefulimgconfig) f
 ## Attr: SCStatefulImgConfig.FocusedOver
 
 ### Description
-Image to display when the component is [focused](Canvas.md#method-canvasisfocused) on [roll over](StatefulCanvas.md#attr-statefulcanvasshowrollover).
+Image to display when the component is [focused](Canvas_1.md#method-canvasisfocused) on [roll over](StatefulCanvas.md#attr-statefulcanvasshowrollover).
 
 May be specified as
 
@@ -100,7 +100,7 @@ See [SCStatefulImgConfig overview](../reference.md#object-scstatefulimgconfig) f
 ## Attr: SCStatefulImgConfig.SelectedFocused
 
 ### Description
-Image to display when the component is [selected](StatefulCanvas.md#attr-statefulcanvasselected) and [focused](Canvas.md#method-canvasisfocused).
+Image to display when the component is [selected](StatefulCanvas.md#attr-statefulcanvasselected) and [focused](Canvas_1.md#method-canvasisfocused).
 
 May be specified as
 
@@ -132,7 +132,7 @@ See [SCStatefulImgConfig overview](../reference.md#object-scstatefulimgconfig) f
 ## Attr: SCStatefulImgConfig.SelectedFocusedOver
 
 ### Description
-Image to display when the component is [selected](StatefulCanvas.md#attr-statefulcanvasselected) and [focused](Canvas.md#method-canvasisfocused) on [roll over](StatefulCanvas.md#attr-statefulcanvasshowrollover).
+Image to display when the component is [selected](StatefulCanvas.md#attr-statefulcanvasselected) and [focused](Canvas_1.md#method-canvasisfocused) on [roll over](StatefulCanvas.md#attr-statefulcanvasshowrollover).
 
 May be specified as
 
@@ -148,7 +148,7 @@ See [SCStatefulImgConfig overview](../reference.md#object-scstatefulimgconfig) f
 ## Attr: SCStatefulImgConfig.SelectedFocusedDown
 
 ### Description
-Image to display when the component is [selected](StatefulCanvas.md#attr-statefulcanvasselected) and [focused](Canvas.md#method-canvasisfocused) on [mouse down](StatefulCanvas.md#attr-statefulcanvasshowdown).
+Image to display when the component is [selected](StatefulCanvas.md#attr-statefulcanvasselected) and [focused](Canvas_1.md#method-canvasisfocused) on [mouse down](StatefulCanvas.md#attr-statefulcanvasshowdown).
 
 May be specified as
 
@@ -164,7 +164,7 @@ See [SCStatefulImgConfig overview](../reference.md#object-scstatefulimgconfig) f
 ## Attr: SCStatefulImgConfig.Focused
 
 ### Description
-Image to display when the component is [focused](Canvas.md#method-canvasisfocused).
+Image to display when the component is [focused](Canvas_1.md#method-canvasisfocused).
 
 May be specified as
 
@@ -180,7 +180,7 @@ See [SCStatefulImgConfig overview](../reference.md#object-scstatefulimgconfig) f
 ## Attr: SCStatefulImgConfig.FocusedDown
 
 ### Description
-Image to display when the component is [focused](Canvas.md#method-canvasisfocused) on [mouse down](StatefulCanvas.md#attr-statefulcanvasshowdown).
+Image to display when the component is [focused](Canvas_1.md#method-canvasisfocused) on [mouse down](StatefulCanvas.md#attr-statefulcanvasshowdown).
 
 May be specified as
 
@@ -196,7 +196,7 @@ See [SCStatefulImgConfig overview](../reference.md#object-scstatefulimgconfig) f
 ## Attr: SCStatefulImgConfig.Disabled
 
 ### Description
-Image to display when the component is [disabled](Canvas.md#attr-canvasdisabled).
+Image to display when the component is [disabled](Canvas_1.md#attr-canvasdisabled).
 
 May be specified as
 
@@ -212,7 +212,7 @@ See [SCStatefulImgConfig overview](../reference.md#object-scstatefulimgconfig) f
 ## Attr: SCStatefulImgConfig.SelectedDisabled
 
 ### Description
-Image to display when the component is [selected](StatefulCanvas.md#attr-statefulcanvasselected) and [disabled](Canvas.md#attr-canvasdisabled).
+Image to display when the component is [selected](StatefulCanvas.md#attr-statefulcanvasselected) and [disabled](Canvas_1.md#attr-canvasdisabled).
 
 May be specified as
 

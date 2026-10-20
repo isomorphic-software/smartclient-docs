@@ -117,7 +117,7 @@ If false, contentsType has no effect unless contents are being loaded from an ex
 ### Description
 Default height for the component.
 
-For a component that should potentially be sized automatically by a Layout, set this property rather than [height](Canvas.md#attr-canvasheight) directly, because Layouts regard a height setting as an explicit size that shouldn't be changed.
+For a component that should potentially be sized automatically by a Layout, set this property rather than [height](Canvas_1.md#attr-canvasheight) directly, because Layouts regard a height setting as an explicit size that shouldn't be changed.
 
 ### Groups
 

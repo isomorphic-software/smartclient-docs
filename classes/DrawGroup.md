@@ -176,8 +176,8 @@ Default drag behavior will be to reposition all items in the group (and update t
 
 ### See Also
 
-- [Canvas.getOffsetX](Canvas.md#method-canvasgetoffsetx)
-- [Canvas.getOffsetY](Canvas.md#method-canvasgetoffsety)
+- [Canvas.getOffsetX](Canvas_1.md#method-canvasgetoffsetx)
+- [Canvas.getOffsetY](Canvas_1.md#method-canvasgetoffsety)
 
 ---
 ## Method: DrawGroup.getBoundingBox
@@ -207,8 +207,8 @@ Note that if [useGroupRect](#attr-drawgroupusegrouprect) is true, this notificat
 
 ### See Also
 
-- [Canvas.getOffsetX](Canvas.md#method-canvasgetoffsetx)
-- [Canvas.getOffsetY](Canvas.md#method-canvasgetoffsety)
+- [Canvas.getOffsetX](Canvas_1.md#method-canvasgetoffsetx)
+- [Canvas.getOffsetY](Canvas_1.md#method-canvasgetoffsety)
 
 ---
 ## Method: DrawGroup.click
@@ -228,8 +228,8 @@ Note that if [useGroupRect](#attr-drawgroupusegrouprect) is true, this notificat
 
 ### See Also
 
-- [Canvas.getOffsetX](Canvas.md#method-canvasgetoffsetx)
-- [Canvas.getOffsetY](Canvas.md#method-canvasgetoffsety)
+- [Canvas.getOffsetX](Canvas_1.md#method-canvasgetoffsetx)
+- [Canvas.getOffsetY](Canvas_1.md#method-canvasgetoffsety)
 
 ---
 ## Method: DrawGroup.setHeight
@@ -261,8 +261,8 @@ Note that if [useGroupRect](#attr-drawgroupusegrouprect) is true, this notificat
 
 ### See Also
 
-- [Canvas.getOffsetX](Canvas.md#method-canvasgetoffsetx)
-- [Canvas.getOffsetY](Canvas.md#method-canvasgetoffsety)
+- [Canvas.getOffsetX](Canvas_1.md#method-canvasgetoffsetx)
+- [Canvas.getOffsetY](Canvas_1.md#method-canvasgetoffsety)
 
 ---
 ## Method: DrawGroup.setTop
@@ -328,8 +328,8 @@ Note that if [useGroupRect](#attr-drawgroupusegrouprect) is true, this notificat
 
 ### See Also
 
-- [Canvas.getOffsetX](Canvas.md#method-canvasgetoffsetx)
-- [Canvas.getOffsetY](Canvas.md#method-canvasgetoffsety)
+- [Canvas.getOffsetX](Canvas_1.md#method-canvasgetoffsetx)
+- [Canvas.getOffsetY](Canvas_1.md#method-canvasgetoffsety)
 
 ---
 ## Method: DrawGroup.getGroupRect
@@ -376,8 +376,8 @@ Default drag behavior will be to reposition all items in the group (and update t
 
 ### See Also
 
-- [Canvas.getOffsetX](Canvas.md#method-canvasgetoffsetx)
-- [Canvas.getOffsetY](Canvas.md#method-canvasgetoffsety)
+- [Canvas.getOffsetX](Canvas_1.md#method-canvasgetoffsetx)
+- [Canvas.getOffsetY](Canvas_1.md#method-canvasgetoffsety)
 
 ---
 ## Method: DrawGroup.mouseDown
@@ -397,8 +397,8 @@ Note that if [useGroupRect](#attr-drawgroupusegrouprect) is true, this notificat
 
 ### See Also
 
-- [Canvas.getOffsetX](Canvas.md#method-canvasgetoffsetx)
-- [Canvas.getOffsetY](Canvas.md#method-canvasgetoffsety)
+- [Canvas.getOffsetX](Canvas_1.md#method-canvasgetoffsetx)
+- [Canvas.getOffsetY](Canvas_1.md#method-canvasgetoffsety)
 
 ---
 ## Method: DrawGroup.setLeft
@@ -458,7 +458,7 @@ Note that if [useGroupRect](#attr-drawgroupusegrouprect) is true, this notificat
 
 ### See Also
 
-- [Canvas.getOffsetX](Canvas.md#method-canvasgetoffsetx)
-- [Canvas.getOffsetY](Canvas.md#method-canvasgetoffsety)
+- [Canvas.getOffsetX](Canvas_1.md#method-canvasgetoffsetx)
+- [Canvas.getOffsetY](Canvas_1.md#method-canvasgetoffsety)
 
 ---

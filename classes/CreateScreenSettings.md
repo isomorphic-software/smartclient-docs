@@ -23,11 +23,11 @@ Enable [verifyAsError](RPCManager.md#classattr-rpcmanagerverifyaserror) behavior
 Simplifies integrating a screen with an existing JavaScript app. Does the following:
 
 *   Sets [CreateScreenSettings.suppressAutoDraw](#attr-createscreensettingssuppressautodraw): true
-*   Sets [Canvas.htmlElement](Canvas.md#attr-canvashtmlelement) of the screen's top widget to the DOM element
-*   Sets the screen's top widget to have [Canvas.position](Canvas.md#attr-canvasposition): "relative"
-*   Draws the screen by calling [Canvas.draw](Canvas.md#method-canvasdraw) on the top widget
+*   Sets [Canvas.htmlElement](Canvas_1.md#attr-canvashtmlelement) of the screen's top widget to the DOM element
+*   Sets the screen's top widget to have [Canvas.position](Canvas_1.md#attr-canvasposition): "relative"
+*   Draws the screen by calling [Canvas.draw](Canvas_1.md#method-canvasdraw) on the top widget
 
-If you need to apply additional, custom configuration, for example setting [Canvas.htmlPosition](Canvas.md#attr-canvashtmlposition), then instead of using this property, you can call [RPCManager.createScreen](RPCManager.md#classmethod-rpcmanagercreatescreen) with [CreateScreenSettings.suppressAutoDraw](#attr-createscreensettingssuppressautodraw): true, and then manually configure and draw the screen:
+If you need to apply additional, custom configuration, for example setting [Canvas.htmlPosition](Canvas_1.md#attr-canvashtmlposition), then instead of using this property, you can call [RPCManager.createScreen](RPCManager.md#classmethod-rpcmanagercreatescreen) with [CreateScreenSettings.suppressAutoDraw](#attr-createscreensettingssuppressautodraw): true, and then manually configure and draw the screen:
 ```
      var screen = isc.RPCManager.createScreen("My Screen", {suppressAutoDraw: true});
      screen.setHtmlElement(element);
@@ -55,7 +55,7 @@ Note that here we consider a DataSource to be "globally bound" if it can be retr
 ### Description
 Defines the map of new widget [ids](Class.md#method-classgetid) to existing class instances, or to new instances that will be of a different class. A substituted class instance is returned immediately from [Class.create](Class.md#classmethod-classcreate) without modification. Otherwise, the constructor for the new instance is run, but targeting the substituted class rather than the original.
 
-Note that where we return an existing instance, not even its [Canvas.ID](Canvas.md#attr-canvasid) will be changed. An alternative is programmtic replacement using [Layout.replaceMember](Layout.md#method-layoutreplacemember).
+Note that where we return an existing instance, not even its [Canvas.ID](Canvas_1.md#attr-canvasid) will be changed. An alternative is programmtic replacement using [Layout.replaceMember](Layout.md#method-layoutreplacemember).
 
 ### See Also
 
@@ -67,7 +67,7 @@ Note that where we return an existing instance, not even its [Canvas.ID](Canvas.
 ## Attr: CreateScreenSettings.suppressAutoDraw
 
 ### Description
-If true, prevents any screen from being drawn when it's created, even if there's an explicit [Canvas.autoDraw](Canvas.md#attr-canvasautodraw):true setting on it.
+If true, prevents any screen from being drawn when it's created, even if there's an explicit [Canvas.autoDraw](Canvas_1.md#attr-canvasautodraw):true setting on it.
 
 **Flags**: IR
 
@@ -75,9 +75,9 @@ If true, prevents any screen from being drawn when it's created, even if there's
 ## Attr: CreateScreenSettings.dataContext
 
 ### Description
-[DataContext](../reference_2.md#object-datacontext) that will be provided to the top-level component as [dataContext](Canvas.md#attr-canvasdatacontext) in the screen.
+[DataContext](../reference_2.md#object-datacontext) that will be provided to the top-level component as [dataContext](Canvas_1.md#attr-canvasdatacontext) in the screen.
 
-To understand how `dataContext` is used to automatically populate [DataBoundComponents](../reference.md#interface-databoundcomponent), see [Canvas.autoPopulateData](Canvas.md#attr-canvasautopopulatedata).
+To understand how `dataContext` is used to automatically populate [DataBoundComponents](../reference.md#interface-databoundcomponent), see [Canvas.autoPopulateData](Canvas_1.md#attr-canvasautopopulatedata).
 
 ### Groups
 

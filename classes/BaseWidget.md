@@ -7,7 +7,7 @@
 ## Class: BaseWidget
 
 ### Description
-Base class for [Canvas](Canvas.md#class-canvas) and [DrawItem](DrawItem.md#class-drawitem).
+Base class for [Canvas](Canvas_1.md#class-canvas) and [DrawItem](DrawItem.md#class-drawitem).
 
 ---
 ## Attr: BaseWidget.autoDraw
@@ -15,7 +15,7 @@ Base class for [Canvas](Canvas.md#class-canvas) and [DrawItem](DrawItem.md#class
 ### Description
 If true, this widget will draw itself immediately after it is created.
 
-For [Canvas](Canvas.md#class-canvas), note that you should turn this OFF for any canvases that are provided as children of other canvases, or they will draw initially, then be clear()ed and drawn again when added as children, causing a large performance penalty.
+For [Canvas](Canvas_1.md#class-canvas), note that you should turn this OFF for any canvases that are provided as children of other canvases, or they will draw initially, then be clear()ed and drawn again when added as children, causing a large performance penalty.
 
 For [DrawItem](DrawItem.md#class-drawitem), the item will be drawn to its [drawPane](DrawItem.md#attr-drawitemdrawpane) immediately, if one is specified.
 

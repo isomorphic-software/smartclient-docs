@@ -223,7 +223,7 @@ The defualt maximum number of retries for any one particular request to AI.
 ### Description
 Registers an AI service globally so [AI.delegate](#classmethod-aidelegate) can discover and invoke it. Global services are available regardless of which component has focus.
 
-To register a service scoped to a specific component (and its descendants), use [Canvas.registerAIService](Canvas.md#method-canvasregisteraiservice) instead — canvas-scoped services shadow global ones with the same name.
+To register a service scoped to a specific component (and its descendants), use [Canvas.registerAIService](Canvas_1.md#method-canvasregisteraiservice) instead — canvas-scoped services shadow global ones with the same name.
 
 See the [AI Assist overview](../kb_topics/aiAssist.md#kb-topic-ai-assist) for the registration model and an end-to-end example.
 
@@ -235,7 +235,7 @@ See the [AI Assist overview](../kb_topics/aiAssist.md#kb-topic-ai-assist) for th
 
 ### See Also
 
-- [Canvas.registerAIService](Canvas.md#method-canvasregisteraiservice)
+- [Canvas.registerAIService](Canvas_1.md#method-canvasregisteraiservice)
 - [AI.unregisterAIService](#classmethod-aiunregisteraiservice)
 - [AI.delegate](#classmethod-aidelegate)
 - [aiAssist](../kb_topics/aiAssist.md#kb-topic-ai-assist)
@@ -572,7 +572,7 @@ Behavior:
 *   Otherwise, runs the [AIDelegator](AIDelegator.md#class-aidelegator) to ask the AI which service best matches the user's intent, then calls that service's `invoke()`.
 *   If the AI call fails or returns an unknown service name, falls back to the first registered service so the request is never silently dropped.
 
-Services are resolved by walking the component hierarchy from `context.focusCanvas` upward (see [AI.getAIServicesForContext](#classmethod-aigetaiservicesforcontext)), so canvas-scoped services registered via [Canvas.registerAIService](Canvas.md#method-canvasregisteraiservice) take precedence over globals of the same name.
+Services are resolved by walking the component hierarchy from `context.focusCanvas` upward (see [AI.getAIServicesForContext](#classmethod-aigetaiservicesforcontext)), so canvas-scoped services registered via [Canvas.registerAIService](Canvas_1.md#method-canvasregisteraiservice) take precedence over globals of the same name.
 
 Built-in UI entry points — [AIAssistItem](../reference.md#class-aiassistitem) and [VoiceAssist](VoiceAssist.md#class-voiceassist) — call this method automatically. Application code typically calls it directly only when building its own entry point.
 
@@ -587,7 +587,7 @@ Built-in UI entry points — [AIAssistItem](../reference.md#class-aiassistitem) 
 ### See Also
 
 - [AI.registerAIService](#classmethod-airegisteraiservice)
-- [Canvas.registerAIService](Canvas.md#method-canvasregisteraiservice)
+- [Canvas.registerAIService](Canvas_1.md#method-canvasregisteraiservice)
 - [AI.delegatorPrompts](#classattr-aidelegatorprompts)
 - [aiAssist](../kb_topics/aiAssist.md#kb-topic-ai-assist)
 

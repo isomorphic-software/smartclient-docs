@@ -6,7 +6,7 @@
 
 ## Class: Slider
 
-*Inherits from:* [Canvas](Canvas.md#class-canvas)
+*Inherits from:* [Canvas](Canvas_1.md#class-canvas)
 
 ### Description
 The Slider class implements a GUI slider widget allowing the user to select a numeric value from within a range by dragging a visual indicator up and down a track.

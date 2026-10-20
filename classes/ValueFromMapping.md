@@ -39,7 +39,7 @@ DataPath to read the value from, when this case matches. See [DynamicProperty.da
 ## Attr: ValueFromMapping.criteria
 
 ### Description
-Criteria that must match the current [rule context](Canvas.md#attr-canvasrulescope) for this case to apply. Omit to declare the default case -- the one used when no earlier case in the [valueFrom](DynamicProperty.md#attr-dynamicpropertyvaluefrom) array matches.
+Criteria that must match the current [rule context](Canvas_1.md#attr-canvasrulescope) for this case to apply. Omit to declare the default case -- the one used when no earlier case in the [valueFrom](DynamicProperty.md#attr-dynamicpropertyvaluefrom) array matches.
 
 **Flags**: IR
 

@@ -9,7 +9,7 @@
 *Inherits from:* [HLayout](../reference.md#class-hlayout)
 
 ### Description
-A compact filter control that targets a single DataSource field and publishes selection criteria via [Canvas.setDataContextCriteria](Canvas.md#method-canvassetdatacontextcriteria).
+A compact filter control that targets a single DataSource field and publishes selection criteria via [Canvas.setDataContextCriteria](Canvas_1.md#method-canvassetdatacontextcriteria), as [criteria on the records](DataContextCriteriaSettings.md#attr-datacontextcriteriasettingsbeforecriteria): components that show totals, such as a chart summing a field by category, total only the records the slicer selects.
 
 Configure via [Slicer.field](#attr-slicerfield) using `dataSourceID.fieldName` dot notation:
 
@@ -20,7 +20,7 @@ Configure via [Slicer.field](#attr-slicerfield) using `dataSourceID.fieldName` d
  
 ```
 
-The Slicer publishes criteria to the nearest ancestor with a [Canvas.dataContext](Canvas.md#attr-canvasdatacontext), so all sibling [DBCs](../reference.md#interface-databoundcomponent) bound to the target DataSource automatically re-fetch.
+The Slicer publishes criteria to the nearest ancestor with a [Canvas.dataContext](Canvas_1.md#attr-canvasdatacontext), so all sibling [DBCs](../reference.md#interface-databoundcomponent) bound to the target DataSource automatically re-fetch.
 
 Editor selection by resolved base type (via [SimpleType.getBaseType](#method-simpletypegetbasetype)):
 
@@ -61,6 +61,16 @@ Whether chip buttons allow multiple simultaneous selections (the default) or enf
 ### See Also
 
 - [Slicer.useRadios](#attr-sliceruseradios)
+
+**Flags**: IR
+
+---
+## Attr: Slicer.fieldTitle
+
+### Description
+Label shown beside the Slicer's editor, naming what is being sliced.
+
+If not set, the title is derived: when [Slicer.field](#attr-slicerfield) is the [displayField](DataSourceField.md#attr-datasourcefielddisplayfield) of a [foreign key](DataSourceField.md#attr-datasourcefieldforeignkey), the Slicer is labelled after that foreign key — a slicer on an order line's warehouse shows "Warehouse" rather than "Name", which is the title of the field it actually displays. Otherwise the field's own [title](DataSourceField.md#attr-datasourcefieldtitle) is used, falling back to its name.
 
 **Flags**: IR
 
@@ -121,7 +131,7 @@ Ignored for enum (has valueMap), date, datetime, boolean, and numeric fields —
 ## Attr: Slicer.value
 
 ### Description
-The Slicer's current selection, expressed as the [AdvancedCriteria](../reference.md#object-advancedcriteria) it publishes to the [dataContext](Canvas.md#attr-canvasdatacontext). This is the serializable representation of the slice: it is captured into the edit node at serialization time (see [updateEditNode()](Canvas.md#method-canvasupdateeditnode)) so it round-trips through edit-node storage just like a [listGrid.criteria](#listgridcriteria), and on recreation the Slicer reflects it in its control and re-publishes it (see [draw()](Canvas.md#method-canvasdraw)). Holds `null` when nothing is selected.
+The Slicer's current selection, expressed as the [AdvancedCriteria](../reference.md#object-advancedcriteria) it publishes to the [dataContext](Canvas_1.md#attr-canvasdatacontext). This is the serializable representation of the slice: it is captured into the edit node at serialization time (see [updateEditNode()](Canvas_1.md#method-canvasupdateeditnode)) so it round-trips through edit-node storage just like a [listGrid.criteria](#listgridcriteria), and on recreation the Slicer reflects it in its control and re-publishes it (see [draw()](Canvas_1.md#method-canvasdraw)). Holds `null` when nothing is selected.
 
 **Flags**: IRW
 
@@ -135,7 +145,7 @@ The Slicer resolves the field's base type via [SimpleType.getBaseType](#method-s
 
 ### See Also
 
-- [Canvas.setDataContextCriteria](Canvas.md#method-canvassetdatacontextcriteria)
+- [Canvas.setDataContextCriteria](Canvas_1.md#method-canvassetdatacontextcriteria)
 
 **Flags**: IR
 
@@ -143,7 +153,7 @@ The Slicer resolves the field's base type via [SimpleType.getBaseType](#method-s
 ## Attr: Slicer.contributorID
 
 ### Description
-Stable identifier used as this Slicer's key in the [dataContext](Canvas.md#attr-canvasdatacontext) [sharedCriteria](DataContext.md#attr-datacontextsharedcriteria) bus. If unset (the default), a deterministic ID is generated from the Slicer's [Slicer.field](#attr-slicerfield) in the form `"slicer__dsID_._fieldName_"`.
+Stable identifier used as this Slicer's key in the [dataContext](Canvas_1.md#attr-canvasdatacontext) [sharedCriteria](DataContext.md#attr-datacontextsharedcriteria) bus. If unset (the default), a deterministic ID is generated from the Slicer's [Slicer.field](#attr-slicerfield) in the form `"slicer__dsID_._fieldName_"`.
 
 An explicit value is only needed when two Slicers target the same DataSource and field (uncommon). Duplicate contributorIDs within the same dataContext produce a warning and last-writer-wins behavior.
 
@@ -177,7 +187,7 @@ Set to `false` to restrict the Slicer's criteria to only components bound to the
 
 ### See Also
 
-- [Canvas.setDataContextCriteria](Canvas.md#method-canvassetdatacontextcriteria)
+- [Canvas.setDataContextCriteria](Canvas_1.md#method-canvassetdatacontextcriteria)
 
 **Flags**: IRW
 

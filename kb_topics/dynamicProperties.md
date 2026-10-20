@@ -9,7 +9,7 @@
 ### Description
 Dynamic properties are SmartClient's general-purpose mechanism for keeping any settable property of any component -- or of a FormItem -- automatically synchronized with live application state, using nothing but declarative configuration: no event handlers, no "value changed" wiring, no manual re-render calls to write or maintain.
 
-Every form draws its live values from the same place: the current [rule context](../classes/Canvas.md#attr-canvasrulescope) -- the same aggregated, continuously-updated record that drives other criteria-based rules such as [FormItem.visibleWhen](../classes/FormItem.md#attr-formitemvisiblewhen) and [ListGrid.initialCriteria](../classes/ListGrid_1.md#attr-listgridinitialcriteria). A single dynamic property can:
+Every form draws its live values from the same place: the current [rule context](../classes/Canvas_1.md#attr-canvasrulescope) -- the same aggregated, continuously-updated record that drives other criteria-based rules such as [FormItem.visibleWhen](../classes/FormItem.md#attr-formitemvisiblewhen) and [ListGrid.initialCriteria](../classes/ListGrid_1.md#attr-listgridinitialcriteria). A single dynamic property can:
 
 *   pull a value from a [DataPath](../reference_2.md#type-datapath) anywhere in the rule context
 *   compute a numeric [formula](../classes/UserFormula.md#attr-userformulatext) from several rule context values at once
@@ -27,12 +27,12 @@ Because dynamicProperties are entirely declarative -- plain configuration data r
 
 **Scope and limitations**
 
-*   Any [Class](../classes/Class.md#class-class) can have dynamic properties, not just a [Canvas](../classes/Canvas.md#class-canvas). A non-Canvas class must name its ruleScope explicitly via [Class.ruleScope](../classes/Class.md#attr-classrulescope) — there is no parent chain to search. A [FormItem](../classes/FormItem.md#class-formitem) inherits its form's ruleScope, and its rules are managed by that form.
+*   Any [Class](../classes/Class.md#class-class) can have dynamic properties, not just a [Canvas](../classes/Canvas_1.md#class-canvas). A non-Canvas class must name its ruleScope explicitly via [Class.ruleScope](../classes/Class.md#attr-classrulescope) — there is no parent chain to search. A [FormItem](../classes/FormItem.md#class-formitem) inherits its form's ruleScope, and its rules are managed by that form.
 *   The target property must be runtime settable, since the new value is applied by calling the property's setter. Declaring a dynamic property on a create-time-only property is invalid and has no effect; no error is thrown and no warning is logged.
 *   Declaring a dynamic property for a property that is already dynamic replaces the previous declaration. [Class.clearDynamicProperty](../classes/Class.md#method-classcleardynamicproperty) stops further updates but leaves the property at its current value.
-*   For showing, hiding, enabling and setting components read-only, prefer the dedicated [visibleWhen](../classes/Canvas.md#attr-canvasvisiblewhen), [enableWhen](../classes/Canvas.md#attr-canvasenablewhen) and [readOnlyWhen](../classes/FormItem.md#attr-formitemreadonlywhen) properties — they express the same idea more directly and carry component-specific behavior.
+*   For showing, hiding, enabling and setting components read-only, prefer the dedicated [visibleWhen](../classes/Canvas_1.md#attr-canvasvisiblewhen), [enableWhen](../classes/Canvas_1.md#attr-canvasenablewhen) and [readOnlyWhen](../classes/FormItem.md#attr-formitemreadonlywhen) properties — they express the same idea more directly and carry component-specific behavior.
 *   Formulas and templates are compiled to JavaScript functions, so a Content Security Policy that forbids dynamic code generation disables them — see [cspSupport](cspSupport.md#kb-topic-content-security-policy-csp).
-*   A [dataPath](../classes/DynamicProperty.md#attr-dynamicpropertydatapath) into the rule context accepts either `.` or `/` as the segment separator, with no difference in behavior — see [Canvas.provideRuleContext](../classes/Canvas.md#method-canvasproviderulecontext). Dot-separated paths are preferred since they read like the equivalent JavaScript property access.
+*   A [dataPath](../classes/DynamicProperty.md#attr-dynamicpropertydatapath) into the rule context accepts either `.` or `/` as the segment separator, with no difference in behavior — see [Canvas.provideRuleContext](../classes/Canvas_1.md#method-canvasproviderulecontext). Dot-separated paths are preferred since they read like the equivalent JavaScript property access.
 
 **Examples**
 

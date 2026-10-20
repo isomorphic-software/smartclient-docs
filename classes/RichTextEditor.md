@@ -97,7 +97,7 @@ The warning message displayed in a dialog when a user tries to configure a list 
 ## Attr: RichTextEditor.colorControls
 
 ### Description
-Control group for modifying text color / background color. Consists of an array of [ControlName](../reference_2.md#type-controlname)s and/or [Canvas](Canvas.md#class-canvas) instances. To display this group of controls for some RichTextEditor, include `"formatControls"` in the [RichTextEditor.controlGroups](#attr-richtexteditorcontrolgroups) array.
+Control group for modifying text color / background color. Consists of an array of [ControlName](../reference_2.md#type-controlname)s and/or [Canvas](Canvas_1.md#class-canvas) instances. To display this group of controls for some RichTextEditor, include `"formatControls"` in the [RichTextEditor.controlGroups](#attr-richtexteditorcontrolgroups) array.
 
 **Flags**: IRA
 
@@ -262,7 +262,7 @@ ValueMap of css font size property values to font size titles to display in the 
 ## Attr: RichTextEditor.bulletControls
 
 ### Description
-Default HTML list control group. Consists of an array of [ControlName](../reference_2.md#type-controlname)s and/or [Canvas](Canvas.md#class-canvas) instances. To display this group of controls for some RichTextEditor, include `"bulletControls"` in the [RichTextEditor.controlGroups](#attr-richtexteditorcontrolgroups) array.
+Default HTML list control group. Consists of an array of [ControlName](../reference_2.md#type-controlname)s and/or [Canvas](Canvas_1.md#class-canvas) instances. To display this group of controls for some RichTextEditor, include `"bulletControls"` in the [RichTextEditor.controlGroups](#attr-richtexteditorcontrolgroups) array.
 
 **Flags**: IRA
 
@@ -290,7 +290,7 @@ Layout used to contain all of the [toolbar](#attr-richtexteditortoolbar) AutoChi
 ## Attr: RichTextEditor.formatControls
 
 ### Description
-Default text formatting control group. Consists of an array of [ControlName](../reference_2.md#type-controlname)s and/or [Canvas](Canvas.md#class-canvas) instances. To display this group of controls for some RichTextEditor, include `"formatControls"` in the [RichTextEditor.controlGroups](#attr-richtexteditorcontrolgroups) array.
+Default text formatting control group. Consists of an array of [ControlName](../reference_2.md#type-controlname)s and/or [Canvas](Canvas_1.md#class-canvas) instances. To display this group of controls for some RichTextEditor, include `"formatControls"` in the [RichTextEditor.controlGroups](#attr-richtexteditorcontrolgroups) array.
 
 **Flags**: IRA
 
@@ -330,7 +330,7 @@ The prompt for the built-in [indent](../reference_2.md#type-controlname) control
 ## Attr: RichTextEditor.controlGroups
 
 ### Description
-An array of control groups specifying which groups of controls should be included in the editor tool area. The values of this array may be the name of a control group such as one of the [StandardControlGroup](../reference.md#type-standardcontrolgroup)s, a [Canvas](Canvas.md#class-canvas), or the special string "break" which causes the subsequent control groups to continue onto a new line.
+An array of control groups specifying which groups of controls should be included in the editor tool area. The values of this array may be the name of a control group such as one of the [StandardControlGroup](../reference.md#type-standardcontrolgroup)s, a [Canvas](Canvas_1.md#class-canvas), or the special string "break" which causes the subsequent control groups to continue onto a new line.
 
 For each control group name, this\[controlGroupName\] should be defined as an array of [ControlName](../reference_2.md#type-controlname)s or Canvas instances. This allows the controls of a control group to be customized.
 
@@ -364,7 +364,7 @@ The prompt for the built-in [underlineSelection](../reference_2.md#type-controln
 ## Attr: RichTextEditor.fontControls
 
 ### Description
-Default font control group. Consists of an array of [ControlName](../reference_2.md#type-controlname)s and/or [Canvas](Canvas.md#class-canvas) instances. To display this group of controls for some RichTextEditor, include `"fontControls"` in the [RichTextEditor.controlGroups](#attr-richtexteditorcontrolgroups) array.
+Default font control group. Consists of an array of [ControlName](../reference_2.md#type-controlname)s and/or [Canvas](Canvas_1.md#class-canvas) instances. To display this group of controls for some RichTextEditor, include `"fontControls"` in the [RichTextEditor.controlGroups](#attr-richtexteditorcontrolgroups) array.
 
 **Flags**: IRA
 
@@ -372,7 +372,7 @@ Default font control group. Consists of an array of [ControlName](../reference_2
 ## Attr: RichTextEditor.styleControls
 
 ### Description
-Default text styling control group. Consists of an array of [ControlName](../reference_2.md#type-controlname)s and/or [Canvas](Canvas.md#class-canvas) instances. To display this group of controls for some RichTextEditor, include `"styleControls"` in the [RichTextEditor.controlGroups](#attr-richtexteditorcontrolgroups) array.
+Default text styling control group. Consists of an array of [ControlName](../reference_2.md#type-controlname)s and/or [Canvas](Canvas_1.md#class-canvas) instances. To display this group of controls for some RichTextEditor, include `"styleControls"` in the [RichTextEditor.controlGroups](#attr-richtexteditorcontrolgroups) array.
 
 **Flags**: IRA
 

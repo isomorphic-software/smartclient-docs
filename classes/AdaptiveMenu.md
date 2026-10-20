@@ -11,7 +11,7 @@
 ### Description
 A menu that can either show its menu options inline, or show them via a drop-down, depending on available space in the surrounding [Layout](Layout.md#class-layout) or [ToolStrip](ToolStrip.md#class-toolstrip).
 
-See [canAdaptWidth](Canvas.md#attr-canvascanadaptwidth) for background on adaptive layout.
+See [canAdaptWidth](Canvas_1.md#attr-canvascanadaptwidth) for background on adaptive layout.
 
 ---
 ## Attr: AdaptiveMenu.partialInlining

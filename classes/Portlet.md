@@ -19,7 +19,7 @@ Specifies a minimum width for the Portlet.
 
 ### See Also
 
-- [Canvas.minWidth](Canvas.md#attr-canvasminwidth)
+- [Canvas.minWidth](Canvas_1.md#attr-canvasminwidth)
 
 **Flags**: IRW
 
@@ -31,7 +31,7 @@ Specifies a minimum height for the Portlet. The height of rows within a [PortalL
 
 ### See Also
 
-- [Canvas.minHeight](Canvas.md#attr-canvasminheight)
+- [Canvas.minHeight](Canvas_1.md#attr-canvasminheight)
 
 **Flags**: IRW
 
@@ -53,7 +53,7 @@ Confirmation message to show the user when closing portlets if [Portlet.showClos
 ### Description
 If you set the rowHeight of a Portlet before adding it to a [PortalLayout](PortalLayout.md#class-portallayout), then the height will be used when creating the new row. If adding the Portlet to an existing row (or dragging it there), the Portlet's rowHeight will be used if the row's height has not already been specified. However, if you set the rowHeight of a Portlet after adding it to the PortalLayout, then the height of the entire row will always be adjusted to match.
 
-You can also just specify [height](Canvas.md#attr-canvasheight) when initializing a Portlet, and it will be applied to the rowHeight when added to a PortalLayout. However, changing the Portlet's height after initialization will not affect the row.
+You can also just specify [height](Canvas_1.md#attr-canvasheight) when initializing a Portlet, and it will be applied to the rowHeight when added to a PortalLayout. However, changing the Portlet's height after initialization will not affect the row.
 
 Note that getting the rowHeight will indicate the rowHeight specified for this Portlet, not the actual height of the row it is in.
 
@@ -87,7 +87,7 @@ Portlets have canDrop set to true to enable drag/drop reposition within the port
 ## Attr: Portlet.destroyOnClose
 
 ### Description
-Whether to call [destroy()](Canvas.md#method-canvasdestroy) when closing the Portlet.
+Whether to call [destroy()](Canvas_1.md#method-canvasdestroy) when closing the Portlet.
 
 **Flags**: IRW
 
@@ -107,7 +107,7 @@ if you want to allow some [Portlets](#class-portlet) to be dropped on a [PortalL
 
 ### See Also
 
-- [Canvas.dragType](Canvas.md#attr-canvasdragtype)
+- [Canvas.dragType](Canvas_1.md#attr-canvasdragtype)
 - [PortalLayout.portletDropTypes](PortalLayout.md#attr-portallayoutportletdroptypes)
 
 **Flags**: IRWA
@@ -116,7 +116,7 @@ if you want to allow some [Portlets](#class-portlet) to be dropped on a [PortalL
 ## Attr: Portlet.editProxyConstructor
 
 ### Description
-Default class used to construct the [EditProxy](EditProxy.md#class-editproxy) for this component when the component is [first placed into edit mode](Canvas.md#method-canvasseteditmode).
+Default class used to construct the [EditProxy](EditProxy.md#class-editproxy) for this component when the component is [first placed into edit mode](Canvas_1.md#method-canvasseteditmode).
 
 **Flags**: IR
 

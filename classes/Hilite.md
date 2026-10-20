@@ -181,7 +181,7 @@ HTML to pre-pend to cell values where this hilite is applied.
 ### Description
 Criteria defining what records this hilite should apply to.
 
-This property supports [dynamicCriteria](../kb_topics/dynamicCriteria.md#kb-topic-dynamiccriteria) - use [Criterion.valuePath](Criterion.md#attr-criterionvaluepath) to refer to values in the [Canvas.ruleScope](Canvas.md#attr-canvasrulescope).
+This property supports [dynamicCriteria](../kb_topics/dynamicCriteria.md#kb-topic-dynamiccriteria) - use [Criterion.valuePath](Criterion.md#attr-criterionvaluepath) to refer to values in the [Canvas.ruleScope](Canvas_1.md#attr-canvasrulescope).
 
 ### Groups
 

@@ -6,7 +6,7 @@
 
 ## Class: HTMLFlow
 
-*Inherits from:* [Canvas](Canvas.md#class-canvas)
+*Inherits from:* [Canvas](Canvas_1.md#class-canvas)
 
 ### Description
 Use the HTMLFlow component to display HTML content that should expand to its natural size without scrolling.
@@ -75,7 +75,7 @@ Only applies when contentsType is **not** "page".
 ### Description
 For custom components, establishes a default width for the component.
 
-For a component that should potentially be sized automatically by a Layout, set this property rather than [width](Canvas.md#attr-canvaswidth) directly, because Layouts regard a width setting as an explicit size that shouldn't be changed.
+For a component that should potentially be sized automatically by a Layout, set this property rather than [width](Canvas_1.md#attr-canvaswidth) directly, because Layouts regard a width setting as an explicit size that shouldn't be changed.
 
 ### Groups
 
@@ -109,7 +109,7 @@ The default list of tags are as follows:
 ### Description
 Dynamic string of HTML contents for this component. As with [HTMLFlow.contents](#attr-htmlflowcontents), this may be a fragment of HTML to display or a complete HTML page. See [HTMLFlow.contentsType](#attr-htmlflowcontentstype) and [HTMLFlow.supportsContentsAsPage](#attr-htmlflowsupportscontentsaspage).
 
-See [Canvas.dynamicContents](Canvas.md#attr-canvasdynamiccontents) for details on how dynamicContents are resolved to a final string value.
+See [Canvas.dynamicContents](Canvas_1.md#attr-canvasdynamiccontents) for details on how dynamicContents are resolved to a final string value.
 
 **Flags**: IRWA
 
@@ -186,7 +186,7 @@ Note that if [ContentsType](../reference_2.md#type-contentstype) is `"page"`, `o
 ## Attr: HTMLFlow.selectContentOnSelectAll
 
 ### Description
-When this `HTMLFlow` is focused, causes Ctrl-A / Command-A keypresses to select just the content, as opposed to all content on the screen becoming selected. This `HTMLFlow` must be [focusable](Canvas.md#attr-canvascanfocus) in order for this setting to have an effect.
+When this `HTMLFlow` is focused, causes Ctrl-A / Command-A keypresses to select just the content, as opposed to all content on the screen becoming selected. This `HTMLFlow` must be [focusable](Canvas_1.md#attr-canvascanfocus) in order for this setting to have an effect.
 
 Not valid with [contentsType](#attr-htmlflowcontentstype) "page".
 
@@ -370,7 +370,7 @@ StringMethod fired when content is completely loaded in this htmlFlow. Has no de
 
 Notes:
 
-*   A call to [this.setContents()](Canvas.md#method-canvassetcontents) will cause this notification to be fired when the contents have been set. If [HTMLFlow.evalScriptBlocks](#attr-htmlflowevalscriptblocks) is true, and the HTML passed into `setContents()` contains any ``<script src=... >`` tags, this callback will be fired asynchronously once the scripts have been loaded from the server and executed, as well as having the widget content updated
+*   A call to [this.setContents()](Canvas_1.md#method-canvassetcontents) will cause this notification to be fired when the contents have been set. If [HTMLFlow.evalScriptBlocks](#attr-htmlflowevalscriptblocks) is true, and the HTML passed into `setContents()` contains any ``<script src=... >`` tags, this callback will be fired asynchronously once the scripts have been loaded from the server and executed, as well as having the widget content updated
 *   When using [HTMLFlow.contentsURL](#attr-htmlflowcontentsurl), this does not apply to htmlFlows with [contentsType](#attr-htmlflowcontentstype) set to `"page"`
 
 ### Groups

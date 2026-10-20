@@ -236,7 +236,7 @@ Obtain [PaletteNodes](../reference_2.md#object-palettenode) from an XML represen
 ## Method: EditTree.destroyAll
 
 ### Description
-Removes all [EditNodes](../reference.md#object-editnode) from the EditContext, and calls [destroy()](Canvas.md#method-canvasdestroy) on the [liveObjects](EditNode.md#attr-editnodeliveobject).
+Removes all [EditNodes](../reference.md#object-editnode) from the EditContext, and calls [destroy()](Canvas_1.md#method-canvasdestroy) on the [liveObjects](EditNode.md#attr-editnodeliveobject).
 
 ---
 ## Method: EditTree.getRootEditNode
@@ -254,7 +254,7 @@ Returns the root [EditNode](../reference.md#object-editnode) of the EditContext 
 ### Description
 Recreate [EditNodes](../reference.md#object-editnode) from a JSON representation of [PaletteNodes](../reference_2.md#object-palettenode) (possibly created by calling [EditTree.serializeAllEditNodesAsJSON](#method-edittreeserializealleditnodesasjson) or [EditTree.serializeEditNodesAsJSON](#method-edittreeserializeeditnodesasjson).
 
-By default, components that have [global IDs](Canvas.md#attr-canvasid) will not actually be allowed to take those global IDs - instead, only widgets that have one of the global IDs passed as the `globals` parameter will actually receive their global IDs. To override this behavior, pass the special value [RPCManager.ALL_GLOBALS](RPCManager.md#classattr-rpcmanagerall_globals) for the `globals` parameter.
+By default, components that have [global IDs](Canvas_1.md#attr-canvasid) will not actually be allowed to take those global IDs - instead, only widgets that have one of the global IDs passed as the `globals` parameter will actually receive their global IDs. To override this behavior, pass the special value [RPCManager.ALL_GLOBALS](RPCManager.md#classattr-rpcmanagerall_globals) for the `globals` parameter.
 
 ### Parameters
 
@@ -412,7 +412,7 @@ The root node of the returned [Tree](Tree.md#class-tree) will be a PaletteNode d
 ## Method: EditTree.enableEditing
 
 ### Description
-Enable edit mode for an [EditNode](../reference.md#object-editnode). This is a shortcut for calling [Canvas.setEditMode](Canvas.md#method-canvasseteditmode).
+Enable edit mode for an [EditNode](../reference.md#object-editnode). This is a shortcut for calling [Canvas.setEditMode](Canvas_1.md#method-canvasseteditmode).
 
 ### Parameters
 
@@ -422,7 +422,7 @@ Enable edit mode for an [EditNode](../reference.md#object-editnode). This is a s
 
 ### See Also
 
-- [Canvas.setEditMode](Canvas.md#method-canvasseteditmode)
+- [Canvas.setEditMode](Canvas_1.md#method-canvasseteditmode)
 - [EditTree.isNodeEditingOn](#method-edittreeisnodeeditingon)
 
 ---
@@ -551,7 +551,7 @@ Serialize the tree of [EditNodes](../reference.md#object-editnode) to an XML rep
 ### Description
 Obtain [PaletteNodes](../reference_2.md#object-palettenode) from a JavaScript source representation.
 
-By default, components that have [global IDs](Canvas.md#attr-canvasid) will not actually be allowed to take those global IDs - instead, only widgets that have one of the global IDs passed as the `globals` parameter will actually receive their global IDs. To override this behavior, pass the special value [RPCManager.ALL_GLOBALS](RPCManager.md#classattr-rpcmanagerall_globals) for the `globals` parameter.
+By default, components that have [global IDs](Canvas_1.md#attr-canvasid) will not actually be allowed to take those global IDs - instead, only widgets that have one of the global IDs passed as the `globals` parameter will actually receive their global IDs. To override this behavior, pass the special value [RPCManager.ALL_GLOBALS](RPCManager.md#classattr-rpcmanagerall_globals) for the `globals` parameter.
 
 ### Parameters
 
@@ -583,7 +583,7 @@ Gets the tree of editNodes being edited by this editContext. Standard tree trave
 ### Description
 Recreate [EditNodes](../reference.md#object-editnode) from an XML representation of [PaletteNodes](../reference_2.md#object-palettenode) (possibly created by calling [EditTree.serializeAllEditNodes](#method-edittreeserializealleditnodes) or [EditTree.serializeEditNodes](#method-edittreeserializeeditnodes).
 
-By default, components that have [global IDs](Canvas.md#attr-canvasid) will not actually be allowed to take those global IDs - instead, only widgets that have one of the global IDs passed as the `globals` parameter will actually receive their global IDs. To override this behavior, pass the special value [RPCManager.ALL_GLOBALS](RPCManager.md#classattr-rpcmanagerall_globals) for the `globals` parameter.
+By default, components that have [global IDs](Canvas_1.md#attr-canvasid) will not actually be allowed to take those global IDs - instead, only widgets that have one of the global IDs passed as the `globals` parameter will actually receive their global IDs. To override this behavior, pass the special value [RPCManager.ALL_GLOBALS](RPCManager.md#classattr-rpcmanagerall_globals) for the `globals` parameter.
 
 ### Parameters
 
@@ -640,7 +640,7 @@ Creates a new EditNode from a PaletteNode, using the [EditTree.defaultPalette](#
 ### Description
 Add [PaletteNodes](../reference_2.md#object-palettenode) from a JavaScript source representation.
 
-By default, components that have [global IDs](Canvas.md#attr-canvasid) will not actually be allowed to take those global IDs - instead, only widgets that have one of the global IDs passed as the `globals` parameter will actually receive their global IDs. To override this behavior, pass the special value [RPCManager.ALL_GLOBALS](RPCManager.md#classattr-rpcmanagerall_globals) for the `globals` parameter.
+By default, components that have [global IDs](Canvas_1.md#attr-canvasid) will not actually be allowed to take those global IDs - instead, only widgets that have one of the global IDs passed as the `globals` parameter will actually receive their global IDs. To override this behavior, pass the special value [RPCManager.ALL_GLOBALS](RPCManager.md#classattr-rpcmanagerall_globals) for the `globals` parameter.
 
 ### Parameters
 

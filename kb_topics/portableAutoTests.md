@@ -44,8 +44,8 @@ The [AutoTest.testRoot](../classes/AutoTest.md#classattr-autotesttestroot) attri
 
 If the same UI elements are then rendered inside another container in a different environment, configuring [AutoTest.testRoot](../classes/AutoTest.md#classattr-autotesttestroot) to point to this container will allow the locators to resolve correctly.
 
-If no global testRoot was specified, any component with an explicit [ID](../classes/Canvas.md#attr-canvasid) will be treated as the root component for the elements it contains. This means that locators for components with explicit IDs will resolve correctly regardless of where these components are in the page's structure.
+If no global testRoot was specified, any component with an explicit [ID](../classes/Canvas_1.md#attr-canvasid) will be treated as the root component for the elements it contains. This means that locators for components with explicit IDs will resolve correctly regardless of where these components are in the page's structure.
 
-Components with an explicit ID are located by ID and widget class name by default. You can also set [Canvas.locateByIDOnly](../classes/Canvas.md#attr-canvaslocatebyidonly) - this will cause the generated locator for the component to omit the widget class name altogether and create a very compact locator of the format `///componentID`
+Components with an explicit ID are located by ID and widget class name by default. You can also set [Canvas.locateByIDOnly](../classes/Canvas_1.md#attr-canvaslocatebyidonly) - this will cause the generated locator for the component to omit the widget class name altogether and create a very compact locator of the format `///componentID`
 
 ---

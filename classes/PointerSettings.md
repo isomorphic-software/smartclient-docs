@@ -49,7 +49,7 @@ By default, the pointer will assume the same color as its parent canvas. Set thi
 ## Attr: PointerSettings.targetSnapTo
 
 ### Description
-Specifies the position of the pointer into the target when [showing](Canvas.md#attr-canvasshowpointer). Accepts the same values as [PointerSettings.snapTo](#attr-pointersettingssnapto).
+Specifies the position of the pointer into the target when [showing](Canvas_1.md#attr-canvasshowpointer). Accepts the same values as [PointerSettings.snapTo](#attr-pointersettingssnapto).
 
 If not specified the center location on the appropriate edge is chosen to match up with the [PointerSettings.snapTo](#attr-pointersettingssnapto) value.
 
@@ -98,13 +98,13 @@ For example if `snapTo` is specified as `"T"` and `snapOffsetTop` is set to 6, t
 ## Attr: PointerSettings.snapTo
 
 ### Description
-Specifies the position of the pointer when [showing](Canvas.md#attr-canvasshowpointer). Accepts similar values as [Canvas.snapTo](Canvas.md#attr-canvassnapto).
+Specifies the position of the pointer when [showing](Canvas_1.md#attr-canvasshowpointer). Accepts similar values as [Canvas.snapTo](Canvas_1.md#attr-canvassnapto).
 
 Possible basic values: TL, TR, LT, LB, RT, RB, BL, BR, R, L, B, T where B=Bottom, T=Top, L=Left, R=right. The first letter indicates the edge and the second optional letter indicates the placement along the edge.
 
 In addition to the basic values above, two different basic values can be combined with a separating slash (/) to position the pointer between the two locations giving more precise control. For example, `BL/L` positions the pointer along the bottom edge halfway between the bottom-left and the bottom-center.
 
-If [Canvas.showPointer](Canvas.md#attr-canvasshowpointer) is enabled and a [Canvas.pointerTarget](Canvas.md#attr-canvaspointertarget) is specified but `snapTo` is null, a reasonable location is calculated based on the location of the `pointerTarget`.
+If [Canvas.showPointer](Canvas_1.md#attr-canvasshowpointer) is enabled and a [Canvas.pointerTarget](Canvas_1.md#attr-canvaspointertarget) is specified but `snapTo` is null, a reasonable location is calculated based on the location of the `pointerTarget`.
 
 ### Groups
 
@@ -116,7 +116,7 @@ If [Canvas.showPointer](Canvas.md#attr-canvasshowpointer) is enabled and a [Canv
 ## Attr: PointerSettings.targetOffsetInto
 
 ### Description
-If [targetSnapTo](#attr-pointersettingstargetsnapto) is defined, this property can be used to specify an offset in px or percentage for the coordinate of the pointer _into_ the [Canvas.pointerTarget](Canvas.md#attr-canvaspointertarget).
+If [targetSnapTo](#attr-pointersettingstargetsnapto) is defined, this property can be used to specify an offset in px or percentage for the coordinate of the pointer _into_ the [Canvas.pointerTarget](Canvas_1.md#attr-canvaspointertarget).
 
 While [PointerSettings.targetOffsetLeft](#attr-pointersettingstargetoffsetleft) and [PointerSettings.targetOffsetTop](#attr-pointersettingstargetoffsettop) can be used to fine tune the pointer's target position the user must be aware of the orientation of the pointer. Instead, this property will be applied to the correct offset so that the pointer points inside (or outside if negative) the target.
 

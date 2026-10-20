@@ -7,7 +7,7 @@
 ## KB Topic: Keyboard Events
 
 ### Description
-SmartClient allows keyboard events to be captured at the page level via [Page.registerKey](../classes/Page.md#classmethod-pageregisterkey) or [Page.setEvent](../classes/Page.md#classmethod-pagesetevent) or at the widget level via [Canvas.keyDown](../classes/Canvas.md#method-canvaskeydown), [Canvas.keyPress](../classes/Canvas.md#method-canvaskeypress), and [Canvas.keyUp](../classes/Canvas.md#method-canvaskeyup).
+SmartClient allows keyboard events to be captured at the page level via [Page.registerKey](../classes/Page.md#classmethod-pageregisterkey) or [Page.setEvent](../classes/Page.md#classmethod-pagesetevent) or at the widget level via [Canvas.keyDown](../classes/Canvas_1.md#method-canvaskeydown), [Canvas.keyPress](../classes/Canvas_1.md#method-canvaskeypress), and [Canvas.keyUp](../classes/Canvas_1.md#method-canvaskeyup).
 
 Details about the key events can be retrieved via static methods on the EventHandler class. See the following APIs:
 

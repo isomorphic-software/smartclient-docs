@@ -186,7 +186,7 @@ MultiFileItems use a [MultiFilePicker](../reference.md#class-multifilepicker) in
 ## Attr: MultiFileItem.pickerUploadProgressLabel
 
 ### Description
-Specifies the label of the progress meter in the picker lauched by the [edit button](#attr-multifileitemeditbutton). This property is a dynamic string, similar to the [Canvas.dynamicContents](Canvas.md#attr-canvasdynamiccontents) feature, with the variables `fileName` and `formattedFileSize`.
+Specifies the label of the progress meter in the picker lauched by the [edit button](#attr-multifileitemeditbutton). This property is a dynamic string, similar to the [Canvas.dynamicContents](Canvas_1.md#attr-canvasdynamiccontents) feature, with the variables `fileName` and `formattedFileSize`.
 
 ### Groups
 

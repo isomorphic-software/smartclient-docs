@@ -13,11 +13,11 @@ To enable VoiceAssist, call [VoiceAssist.enable](#classmethod-voiceassistenable)
 
 When recognition is active, a user may double-tap the `voiceKey` to begin dictating a value for a focused input control. Text appears in the input control as the user speaks and the transcription is completed by a subsequent double-tap of the `voiceKey`, or by remaining silent for a number of seconds.
 
-In addition to value-dictation, a user may dictate a command to be issued to the focused component, which may deal with the text itself or forward to an AI for action. If the focused component doesn't [support voice-commands](Canvas.md#method-canvassupportsvoicecommands) but one of its parents does, that parent will be the focus of your dictated command. To begin dictating a command, press and hold the `voiceKey` - while the key remains pressed, the [VoiceAssist.recordingProgress](#classmethod-voiceassistrecordingprogress) method is fired with interim text-results as the user speaks.
+In addition to value-dictation, a user may dictate a command to be issued to the focused component, which may deal with the text itself or forward to an AI for action. If the focused component doesn't [support voice-commands](Canvas_1.md#method-canvassupportsvoicecommands) but one of its parents does, that parent will be the focus of your dictated command. To begin dictating a command, press and hold the `voiceKey` - while the key remains pressed, the [VoiceAssist.recordingProgress](#classmethod-voiceassistrecordingprogress) method is fired with interim text-results as the user speaks.
 
 If the user speaks one of the [VoiceAssist.cancelPhrases](#classattr-voiceassistcancelphrases), the interim text is discarded and recording is canceled.
 
-When the user releases the speech-key, recording is stopped and the final text of the recording is passed to the [target component](Canvas.md#method-canvasdovoicecommand) for action.
+When the user releases the speech-key, recording is stopped and the final text of the recording is passed to the [target component](Canvas_1.md#method-canvasdovoicecommand) for action.
 
 **Note:** On [handset](Browser.md#classattr-browserishandset) and [tablet](Browser.md#classattr-browseristablet) devices, the keyboard gestures described above (triple-tap, double-tap, press-and-hold) are not available because virtual keyboards do not fire physical key events for modifier keys. Call [VoiceAssist.setActive](#classmethod-voiceassistsetactive) from a button or other UI element, and use [VoiceAssist.startDictatingValue](#classmethod-voiceassiststartdictatingvalue) or [VoiceAssist.startDictatingCommand](#classmethod-voiceassiststartdictatingcommand) to initiate recording programmatically.
 

@@ -634,7 +634,7 @@ Get a list of projects stored in Reify's project storage.
 ## ClassMethod: Reify.unregisterLoadedScreen
 
 ### Description
-Remove a screen from the loaded-resource registry. Called automatically when a registered screen Canvas is destroyed (via an observation of [Canvas.destroy](Canvas.md#method-canvasdestroy)).
+Remove a screen from the loaded-resource registry. Called automatically when a registered screen Canvas is destroyed (via an observation of [Canvas.destroy](Canvas_1.md#method-canvasdestroy)).
 
 ### Parameters
 

@@ -105,7 +105,7 @@ ID of the next sequence or element to proceed to if a failure condition arises f
 ## Attr: FormSaveDataTask.notifyPosition
 
 ### Description
-Where to show the message, specified as an edge ("T", "B", "R", "L") similar to [Canvas.snapTo](Canvas.md#attr-canvassnapto), or "C" for center. The message will be shown at the center of the edge specified (or the very center for "C").
+Where to show the message, specified as an edge ("T", "B", "R", "L") similar to [Canvas.snapTo](Canvas_1.md#attr-canvassnapto), or "C" for center. The message will be shown at the center of the edge specified (or the very center for "C").
 
 **Flags**: IR
 

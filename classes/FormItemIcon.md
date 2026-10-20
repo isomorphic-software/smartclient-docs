@@ -166,7 +166,7 @@ Should this icon's image and/or [baseStyle](#attr-formitemiconbasestyle) switch 
 ### Description
 Criteria to be evaluated to determine whether this icon should be visible.
 
-Criteria are evaluated against the ${isc.DocUtils.linkForRef('method:DynamicForm.getValues','form\\'s current values')} as well as the current [rule context](Canvas.md#attr-canvasrulescope). Criteria are re-evaluated every time form values or the rule context changes, whether by end user action or by programmatic calls.
+Criteria are evaluated against the ${isc.DocUtils.linkForRef('method:DynamicForm.getValues','form\\'s current values')} as well as the current [rule context](Canvas_1.md#attr-canvasrulescope). Criteria are re-evaluated every time form values or the rule context changes, whether by end user action or by programmatic calls.
 
 A basic criteria uses textMatchStyle:"exact". When specified in [Component XML](../kb_topics/componentXML.md#kb-topic-component-xml) this property allows [shorthand formats](../kb_topics/xmlCriteriaShorthand.md#kb-topic-xmlcriteriashorthand) for defining criteria.
 
@@ -245,7 +245,7 @@ If set, this property determines the number of pixels space to be displayed on t
 ### Description
 Criteria to be evaluated to determine whether this icon should appear enabled.
 
-Criteria are evaluated against the ${isc.DocUtils.linkForRef('method:DynamicForm.getValues','form\\'s current values')} as well as the current [rule context](Canvas.md#attr-canvasrulescope). Criteria are re-evaluated every time form values or the rule context changes, whether by end user action or by programmatic calls.
+Criteria are evaluated against the ${isc.DocUtils.linkForRef('method:DynamicForm.getValues','form\\'s current values')} as well as the current [rule context](Canvas_1.md#attr-canvasrulescope). Criteria are re-evaluated every time form values or the rule context changes, whether by end user action or by programmatic calls.
 
 A basic criteria uses textMatchStyle:"exact". When specified in [Component XML](../kb_topics/componentXML.md#kb-topic-component-xml) this property allows [shorthand formats](../kb_topics/xmlCriteriaShorthand.md#kb-topic-xmlcriteriashorthand) for defining criteria.
 

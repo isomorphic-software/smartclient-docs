@@ -12,10 +12,10 @@ Whether an object can be seen
 ### Related
 
 - [Visibility](../reference_2.md#type-visibility)
-- [Canvas.show](../classes/Canvas.md#method-canvasshow)
-- [Canvas.showRecursively](../classes/Canvas.md#method-canvasshowrecursively)
-- [Canvas.hide](../classes/Canvas.md#method-canvashide)
-- [Canvas.isVisible](../classes/Canvas.md#method-canvasisvisible)
+- [Canvas.show](../classes/Canvas_1.md#method-canvasshow)
+- [Canvas.showRecursively](../classes/Canvas_1.md#method-canvasshowrecursively)
+- [Canvas.hide](../classes/Canvas_1.md#method-canvashide)
+- [Canvas.isVisible](../classes/Canvas_1.md#method-canvasisvisible)
 - [FormItem.isVisible](../classes/FormItem.md#method-formitemisvisible)
 - [Menu.showContextMenu](../classes/Menu.md#method-menushowcontextmenu)
 - [Menu.hideContextMenu](../classes/Menu.md#method-menuhidecontextmenu)
@@ -28,7 +28,7 @@ Whether an object can be seen
 - [Calendar.showOtherDays](../classes/Calendar.md#attr-calendarshowotherdays)
 - [Calendar.fixedMonths](../classes/Calendar.md#attr-calendarfixedmonths)
 - [Calendar.selectChosenDate](../classes/Calendar.md#attr-calendarselectchosendate)
-- [Canvas.shrinkElementOnHide](../classes/Canvas.md#attr-canvasshrinkelementonhide)
+- [Canvas.shrinkElementOnHide](../classes/Canvas_1.md#attr-canvasshrinkelementonhide)
 - [DateChooser.weekendDays](../classes/DateChooser.md#attr-datechooserweekenddays)
 
 ---

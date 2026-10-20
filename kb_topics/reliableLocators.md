@@ -13,9 +13,9 @@ There are a few simple things a developer can do to allow the AutoTest system to
 
 ## Explicit IDs
 
-If a component has an explicitly specified [ID](../classes/Canvas.md#attr-canvasid), it will be used to identify the target component's UI elements, regardless of where it sits within an application widget hierarchy. By giving key components explicit IDs, you can ensure they will be found by recorded test scripts even if the application layout changes.
+If a component has an explicitly specified [ID](../classes/Canvas_1.md#attr-canvasid), it will be used to identify the target component's UI elements, regardless of where it sits within an application widget hierarchy. By giving key components explicit IDs, you can ensure they will be found by recorded test scripts even if the application layout changes.
 
-Exception: note that if [AutoTest.testRoot](../classes/AutoTest.md#classattr-autotesttestroot) is set, the ID will be ignored when generating locators in favor of identifying their position within the designated test root. You can explicitly override this by setting [Canvas.locateByIDOnly](../classes/Canvas.md#attr-canvaslocatebyidonly).
+Exception: note that if [AutoTest.testRoot](../classes/AutoTest.md#classattr-autotesttestroot) is set, the ID will be ignored when generating locators in favor of identifying their position within the designated test root. You can explicitly override this by setting [Canvas.locateByIDOnly](../classes/Canvas_1.md#attr-canvaslocatebyidonly).
 
 ## Use AutoChildren to improve locator quality for custom components
 
@@ -25,7 +25,7 @@ This is preferable to identifying them by pure parent-child relationships as it 
 
 ## Explicit locator parents
 
-Any component can designate itself as a named locatorChild of some parent via [Canvas.setLocatorParent](../classes/Canvas.md#method-canvassetlocatorparent).
+Any component can designate itself as a named locatorChild of some parent via [Canvas.setLocatorParent](../classes/Canvas_1.md#method-canvassetlocatorparent).
 
 As long as this relationship has been defined, locators will directly use the specified locator name to identify the child when generating or resolving locators from the parent.
 
@@ -33,7 +33,7 @@ Note that a widget does not need to be a true descendant of another widget to ma
 
 ## Defining properties and search segments
 
-As described in the [AutoTestLocator overview](../reference_2.md#type-autotestlocator), locators can include search segments to find descendants by [defining property value](../classes/Canvas.md#method-canvasgetdefiningpropertyname). Developers may choose to set an explicit defining property for some component or custom class to take advantage of this capability. Locators with search segments will reliably find their targets within their parent even if the intervening widget hierarchy has changed.
+As described in the [AutoTestLocator overview](../reference_2.md#type-autotestlocator), locators can include search segments to find descendants by [defining property value](../classes/Canvas_1.md#method-canvasgetdefiningpropertyname). Developers may choose to set an explicit defining property for some component or custom class to take advantage of this capability. Locators with search segments will reliably find their targets within their parent even if the intervening widget hierarchy has changed.
 
 The SmartClient AutoTest system also provides capabilities for recording automated test scripts for playback on different environments with significant changes. See [portableAutoTests](portableAutoTests.md#kb-topic-writing-autotests-for-multiple-environments) for details.
 

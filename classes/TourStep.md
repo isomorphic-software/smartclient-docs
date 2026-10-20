@@ -23,7 +23,7 @@ To explicitly suppress automatic completion of a step on user interaction, devlo
 ## Attr: TourStep.pointerSnapTo
 
 ### Description
-Applied directly to [TourStep.targetView](#attr-toursteptargetview) [pointerSettings](Canvas.md#attr-canvaspointersettings).
+Applied directly to [TourStep.targetView](#attr-toursteptargetview) [pointerSettings](Canvas_1.md#attr-canvaspointersettings).
 
 ### Groups
 
@@ -102,7 +102,7 @@ Automatically generated view (typically a TourWindow) to show for tour step.
 
 The following [passthroughs](../kb_topics/autoChildUsage.md#kb-topic-using-autochildren) apply:
 
-*   [pointerSnapTo](#attr-toursteppointersnapto) for the [Canvas.pointerSettings](Canvas.md#attr-canvaspointersettings)
+*   [pointerSnapTo](#attr-toursteppointersnapto) for the [Canvas.pointerSettings](Canvas_1.md#attr-canvaspointersettings)
 *   [showCancelButton](#attr-tourstepshowcancelbutton) for the [TourWindow.showCancelButton](TourWindow.md#attr-tourwindowshowcancelbutton)
 *   [cancelButtonTitle](#attr-tourstepcancelbuttontitle) for the [TourWindow.cancelButtonTitle](TourWindow.md#attr-tourwindowcancelbuttontitle)
 *   [actionButtonTitle](#attr-tourstepactionbuttontitle) for the [TourWindow.actionButtonTitle](TourWindow.md#attr-tourwindowactionbuttontitle)
@@ -278,7 +278,7 @@ A regular expression can be used to match the entered value by providing the exp
 ## Attr: TourStep.showPointer
 
 ### Description
-Should a [canvas pointer](Canvas.md#attr-canvasshowpointer) be shown pointing to the target? Defaults to `true` in [Tour.mode](Tour.md#attr-tourmode):"tour".
+Should a [canvas pointer](Canvas_1.md#attr-canvasshowpointer) be shown pointing to the target? Defaults to `true` in [Tour.mode](Tour.md#attr-tourmode):"tour".
 
 ### See Also
 

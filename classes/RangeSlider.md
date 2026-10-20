@@ -6,7 +6,7 @@
 
 ## Class: RangeSlider
 
-*Inherits from:* [Canvas](Canvas.md#class-canvas)
+*Inherits from:* [Canvas](Canvas_1.md#class-canvas)
 
 ### Description
 A "double slider" allowing the user to select a range via two draggable thumbs.

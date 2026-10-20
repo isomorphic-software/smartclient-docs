@@ -82,11 +82,11 @@ Note that we'd recommend marking this operation as `requiresRole="admin"` on the
 
 #### Identifying components associated with Saved Searches
 
-Stored saved search records will have the `componentId` field set to the identifier returned by [SavedSearches.getSavedSearchId](#method-savedsearchesgetsavedsearchid) for a component. By default this method returns an identifer based on the a [local ID](Canvas.md#method-canvasgetlocalid) and [DataSource ID](DataBoundComponent.md#attr-databoundcomponentdatasource). This means that if you assign a unique ID to a component that saves searches, and don't change that ID, stored saved searches will always be associated with the component and its current DataSource.
+Stored saved search records will have the `componentId` field set to the identifier returned by [SavedSearches.getSavedSearchId](#method-savedsearchesgetsavedsearchid) for a component. By default this method returns an identifer based on the a [local ID](Canvas_1.md#method-canvasgetlocalid) and [DataSource ID](DataBoundComponent.md#attr-databoundcomponentdatasource). This means that if you assign a unique ID to a component that saves searches, and don't change that ID, stored saved searches will always be associated with the component and its current DataSource.
 
-If you don't set a unique global ID on the component, and your component isn't part of a Reify screen, and so doesn't have a separate [local ID](Canvas.md#method-canvasgetlocalid), the default saved search identifier is not guaranteed to be consistent across changes to your app, and in that case, previously stored searches will no longer be associated with the component.
+If you don't set a unique global ID on the component, and your component isn't part of a Reify screen, and so doesn't have a separate [local ID](Canvas_1.md#method-canvasgetlocalid), the default saved search identifier is not guaranteed to be consistent across changes to your app, and in that case, previously stored searches will no longer be associated with the component.
 
-Alternatively you can bypass the [ID](Canvas.md#method-canvasgetlocalid) dependency altogether and define an explicit [DataBoundComponent.savedSearchId](DataBoundComponent.md#attr-databoundcomponentsavedsearchid). This allows you to define a stable identifier for storing saved searches without setting a component [ID](Canvas.md#attr-canvasid).
+Alternatively you can bypass the [ID](Canvas_1.md#method-canvasgetlocalid) dependency altogether and define an explicit [DataBoundComponent.savedSearchId](DataBoundComponent.md#attr-databoundcomponentsavedsearchid). This allows you to define a stable identifier for storing saved searches without setting a component [ID](Canvas_1.md#attr-canvasid).
 
 Note that developers may explicitly change the [DataBoundComponent.savedSearchId](DataBoundComponent.md#attr-databoundcomponentsavedsearchid) at runtime. In this case, if the saved search ID changes, the component will be associated with a new set of saved searches. When an explicit `savedSearchId` is provided, it will not automatically be changed if a new DataSource is bound to the component. To keep the saved searches applicable to the current DataSource, developers may want to explicitly update `savedSearchId` in this case.
 
@@ -183,7 +183,7 @@ _(optional)_, type "boolean". Designates this search as an admin search, visible
 ## Attr: SavedSearches.componentIdField
 
 ### Description
-Type: "string". Stores a unique ID for the component the saved search is associated with. This does not have to be the [Canvas.ID](Canvas.md#attr-canvasid) and is usually a [AutoTestLocator](../reference_2.md#type-autotestlocator)
+Type: "string". Stores a unique ID for the component the saved search is associated with. This does not have to be the [Canvas.ID](Canvas_1.md#attr-canvasid) and is usually a [AutoTestLocator](../reference_2.md#type-autotestlocator)
 
 **Flags**: RW
 
@@ -383,7 +383,7 @@ If there is no explicly specified dataSource for storing saved searches, it will
 The returned value is calculated as follows:
 
 *   If [DataBoundComponent.savedSearchId](DataBoundComponent.md#attr-databoundcomponentsavedsearchid) is set, this method will return the [SavedSearches.savedSearchIDPrefix](#attr-savedsearchessavedsearchidprefix) + [component.savedSearchId](DataBoundComponent.md#attr-databoundcomponentsavedsearchid).
-*   Otherwise, the component's [local ID](Canvas.md#method-canvasgetlocalid) (which falls back to the [global ID](Canvas.md#attr-canvasid) if no local ID is present) will be returned. If [DataBoundComponent.showSavedSearchesByDS](DataBoundComponent.md#attr-databoundcomponentshowsavedsearchesbyds) is set and the component has a DataSource, the method will instead return the local ID + ":" + the DataSource ID, where the delimiter avoids potential collisions otherwise possible.
+*   Otherwise, the component's [local ID](Canvas_1.md#method-canvasgetlocalid) (which falls back to the [global ID](Canvas_1.md#attr-canvasid) if no local ID is present) will be returned. If [DataBoundComponent.showSavedSearchesByDS](DataBoundComponent.md#attr-databoundcomponentshowsavedsearchesbyds) is set and the component has a DataSource, the method will instead return the local ID + ":" + the DataSource ID, where the delimiter avoids potential collisions otherwise possible.
 
 Note: The returned ID string is not guaranteed to be immutable over a widget's lifespan.
 

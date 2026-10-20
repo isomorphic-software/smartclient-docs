@@ -39,18 +39,18 @@ If this button is showing an icon should it be right or left aligned?
 ## Attr: Button.canAdaptWidth
 
 ### Description
-This flag enables [adaptive width](Canvas.md#attr-canvascanadaptwidth) for the button.
+This flag enables [adaptive width](Canvas_1.md#attr-canvascanadaptwidth) for the button.
 
 If enabled the button will support rendering in a 'collapsed' view if there isn't enough space in a layout to render it at normal size. There are a couple of ways this can be achieved.
 
-*   If [Button.adaptWidthShowIconOnly](#attr-buttonadaptwidthshowicononly) is true and this button shows an icon, the title will be hidden if there isn't enough space to render it, allowing it to shrink to either the rendered icon width, or any specified [minWidth](Canvas.md#attr-canvasminwidth), whichever is larger.
-*   Otherwise, if the button has a specified [minWidth](Canvas.md#attr-canvasminwidth), and [Button.autoFit](#attr-buttonautofit) is true, autoFit will be temporarily disabled, if there isn't enough room, allowing the title to be clipped
+*   If [Button.adaptWidthShowIconOnly](#attr-buttonadaptwidthshowicononly) is true and this button shows an icon, the title will be hidden if there isn't enough space to render it, allowing it to shrink to either the rendered icon width, or any specified [minWidth](Canvas_1.md#attr-canvasminwidth), whichever is larger.
+*   Otherwise, if the button has a specified [minWidth](Canvas_1.md#attr-canvasminwidth), and [Button.autoFit](#attr-buttonautofit) is true, autoFit will be temporarily disabled, if there isn't enough room, allowing the title to be clipped
 
 In either case the title will show on hover unless an explicit hover has been specified such as by overriding [Button.titleHoverHTML](#method-buttontitlehoverhtml).
 
 ### See Also
 
-- [Canvas.canAdaptWidth](Canvas.md#attr-canvascanadaptwidth)
+- [Canvas.canAdaptWidth](Canvas_1.md#attr-canvascanadaptwidth)
 
 **Flags**: IR
 
@@ -69,7 +69,7 @@ The following table lists out the standard set of suffixes which may be appended
 | iconStyle+Focused | Applied when the component has keyboard focus, if [StatefulCanvas.showFocusedIcon](StatefulCanvas.md#attr-statefulcanvasshowfocusedicon) is true, and [StatefulCanvas.showFocusedAsOver](StatefulCanvas.md#attr-statefulcanvasshowfocusedasover) is not true. |
 | iconStyle+Over | Applied when [StatefulCanvas.showRollOverIcon](StatefulCanvas.md#attr-statefulcanvasshowrollovericon) is set to true and either the user rolls over the component or [StatefulCanvas.showFocusedAsOver](StatefulCanvas.md#attr-statefulcanvasshowfocusedasover) is true and the component has keyboard focus. |
 | iconStyle+Down | Applied when the user presses the mouse button on the component if [StatefulCanvas.showDownIcon](StatefulCanvas.md#attr-statefulcanvasshowdownicon) is set to true |
-| iconStyle+Disabled | Applied when the component is [disabled](Canvas.md#attr-canvasdisabled) if [StatefulCanvas.showDisabledIcon](StatefulCanvas.md#attr-statefulcanvasshowdisabledicon) is true. |
+| iconStyle+Disabled | Applied when the component is [disabled](Canvas_1.md#attr-canvasdisabled) if [StatefulCanvas.showDisabledIcon](StatefulCanvas.md#attr-statefulcanvasshowdisabledicon) is true. |
 | Combined styles |
 | iconStyle+SelectedFocused | Combined Selected and focused styling |
 | iconStyle+SelectedOver | Combined Selected and rollOver styling |
@@ -92,7 +92,7 @@ In addition, if [StatefulCanvas.showRTLIcon](StatefulCanvas.md#attr-statefulcanv
 ## Attr: Button.definingProperty
 
 ### Description
-This attribute denotes the name of a property to use as a [getDefiningPropertyName()](Canvas.md#method-canvasgetdefiningpropertyname) for this property when generating and resolving [AutoTest locators with search segments](../reference_2.md#type-autotestlocator).
+This attribute denotes the name of a property to use as a [getDefiningPropertyName()](Canvas_1.md#method-canvasgetdefiningpropertyname) for this property when generating and resolving [AutoTest locators with search segments](../reference_2.md#type-autotestlocator).
 
 **Flags**: IRWA
 
@@ -158,7 +158,7 @@ If the `baseStyle` is not explicitly specified for a class, the `styleName` will
 ## Attr: Button.width
 
 ### Description
-Size for this component's horizontal dimension. See [Canvas.width](Canvas.md#attr-canvaswidth) for more details.
+Size for this component's horizontal dimension. See [Canvas.width](Canvas_1.md#attr-canvaswidth) for more details.
 
 Note that if [StatefulCanvas.autoFit](StatefulCanvas.md#attr-statefulcanvasautofit) is set, this property will be ignored so that the widget is always sized just large enough to accommodate the title.
 
@@ -234,7 +234,7 @@ Clip the contents of the button if necessary.
 
 ### See Also
 
-- [Canvas.overflow](Canvas.md#attr-canvasoverflow)
+- [Canvas.overflow](Canvas_1.md#attr-canvasoverflow)
 
 **Flags**: IRWA
 
@@ -246,7 +246,7 @@ if defined, `iconOnlyBaseStyle` is used as the base CSS style className, instead
 
 ### See Also
 
-- [Canvas.canAdaptWidth](Canvas.md#attr-canvascanadaptwidth)
+- [Canvas.canAdaptWidth](Canvas_1.md#attr-canvascanadaptwidth)
 - [TabSet.simpleTabIconOnlyBaseStyle](TabSet.md#attr-tabsetsimpletabicononlybasestyle)
 
 **Flags**: IRW
@@ -314,13 +314,13 @@ in the declaration section beginning:
  .rotatedTitleButtonDown,
  .rotatedTitleButtonDisabled {
 ```
-then applying that style to the button with [overflow](Canvas.md#attr-canvasoverflow): "clip\_h" would yield a vertically-rendered title with overflow via ellipsis as expected, and also wrap with [Button.wrap](#attr-buttonwrap). Note that:
+then applying that style to the button with [overflow](Canvas_1.md#attr-canvasoverflow): "clip\_h" would yield a vertically-rendered title with overflow via ellipsis as expected, and also wrap with [Button.wrap](#attr-buttonwrap). Note that:
 
 *   The explicit width applied via CSS is needed because rotated elements don't inherit dimensions in their new orientation from the DOM - the transform/rotation occurs independently of layout.
 *   The translation transform required along the x-axis is roughly (width - height) / 2, but may need slight offsetting for optimal centering.
 *   We've explicitly avoided describing an approach based on CSS "writing-mode", since support is incomplete and bugs are present in popular browsers such as Firefox and Safari that would prevent it from being used without Framework assistance.
 
-Note on css-margins: Developers should be aware that the css "margin" property is unreliable for certain subclasses of StatefulCanvas, including [buttons](#class-button). Developers may use the explicit [Canvas.margin](Canvas.md#attr-canvasmargin) property to specify button margins, or for a button within a layout, consider the layout properties [Layout.layoutMargin](Layout.md#attr-layoutlayoutmargin), [Layout.membersMargin](Layout.md#attr-layoutmembersmargin)
+Note on css-margins: Developers should be aware that the css "margin" property is unreliable for certain subclasses of StatefulCanvas, including [buttons](#class-button). Developers may use the explicit [Canvas.margin](Canvas_1.md#attr-canvasmargin) property to specify button margins, or for a button within a layout, consider the layout properties [Layout.layoutMargin](Layout.md#attr-layoutlayoutmargin), [Layout.membersMargin](Layout.md#attr-layoutmembersmargin)
 
 ### See Also
 
@@ -486,7 +486,7 @@ Specifies the cursor to display when the mouse pointer is over the icon image.
 ## Attr: Button.disabledIconCursor
 
 ### Description
-Specifies the cursor to display when the mouse pointer is over the icon image and this `StatefulCanvas` is [disabled](Canvas.md#attr-canvasdisabled).
+Specifies the cursor to display when the mouse pointer is over the icon image and this `StatefulCanvas` is [disabled](Canvas_1.md#attr-canvasdisabled).
 
 If not set and the mouse pointer is over the icon image, [iconCursor](#attr-buttoniconcursor) will be used.
 
@@ -567,7 +567,7 @@ String identifier for this canvas's mutually exclusive selection group.
 ## Attr: Button.hiliteAccessKey
 
 ### Description
-If set to true, if the [title](StatefulCanvas.md#attr-statefulcanvastitle) of this button contains the specified [accessKey](Canvas.md#attr-canvasaccesskey), when the title is displayed to the user it will be modified to include HTML to underline the accessKey.  
+If set to true, if the [title](StatefulCanvas.md#attr-statefulcanvastitle) of this button contains the specified [accessKey](Canvas_1.md#attr-canvasaccesskey), when the title is displayed to the user it will be modified to include HTML to underline the accessKey.  
 Note that this property may cause titles that include HTML (rather than simple strings) to be inappropriately modified, so should be disabled if your title string includes HTML characters.
 
 **Flags**: IRW
@@ -576,7 +576,7 @@ Note that this property may cause titles that include HTML (rather than simple s
 ## Attr: Button.height
 
 ### Description
-Size for this component's vertical dimension. See [Canvas.height](Canvas.md#attr-canvasheight) for more details.
+Size for this component's vertical dimension. See [Canvas.height](Canvas_1.md#attr-canvasheight) for more details.
 
 Note that if [StatefulCanvas.autoFit](StatefulCanvas.md#attr-statefulcanvasautofit) is set on non-[StretchImgButton](StretchImgButton.md#class-stretchimgbutton) instances, this property will be ignored so that the widget is always sized just large enough to accommodate the title.
 

@@ -6,7 +6,7 @@
 
 ## Class: DynamicForm
 
-*Inherits from:* [Canvas](Canvas.md#class-canvas)
+*Inherits from:* [Canvas](Canvas_1.md#class-canvas)
 
 ### Description
 The DynamicForm manages a collection of FormItems which represent user input controls. The DynamicForm provides [layout](../kb_topics/formLayout.md#kb-topic-form-layout), value management, validation and databinding for the controls it manages.
@@ -82,7 +82,7 @@ This can occur when the file has been modified in the file system after selectio
 By default, before submitting the file to the server the browser will verify that it can access the file's contents and display the [DynamicForm.fileAccessFailedWarning](#attr-dynamicformfileaccessfailedwarning) if file access fails.  
 Note that accessing the file's contents is an asynchronous process, so form submission is not performed synchronously.
 
-This means that if application code calls [DynamicForm.saveData](#method-dynamicformsavedata) on a form containing a fileItem and then synchronously [clears](Canvas.md#method-canvasclear) it from the DOM, the upload will never be kicked off.  
+This means that if application code calls [DynamicForm.saveData](#method-dynamicformsavedata) on a form containing a fileItem and then synchronously [clears](Canvas_1.md#method-canvasclear) it from the DOM, the upload will never be kicked off.  
 Setting `checkFileAccessOnSubmit` to false will suppress the (asynchronous) check, and can be used to bypass this limitation, but this is not recommended except as a short term backwards-compatibility workaround. Instead we'd recommend using the [saveData callback](#method-dynamicformsavedata) to clear the form when the upload has completed. This also gives the user an opportunity to correct validation errors and re-submit the form if necessary.
 
 **Flags**: IRWA
@@ -339,7 +339,7 @@ Note that colSpanning items with `width:"*"` prevent the browser's native table 
 ## Attr: DynamicForm.editProxyConstructor
 
 ### Description
-Default class used to construct the [EditProxy](EditProxy.md#class-editproxy) for this component when the component is [first placed into edit mode](Canvas.md#method-canvasseteditmode).
+Default class used to construct the [EditProxy](EditProxy.md#class-editproxy) for this component when the component is [first placed into edit mode](Canvas_1.md#method-canvasseteditmode).
 
 **Flags**: IR
 
@@ -675,7 +675,7 @@ Additionally, when [DynamicForm.autoDetectColumnMinWidths](#attr-dynamicformauto
 
 Note that if title columns are left at the default [DynamicForm.titleWidth](#attr-dynamicformtitlewidth) or assigned a fixed width, while the others are configured to use the remaining horizontal space (i.e. with a percent or "\*" as described above), then care must be taken if you have long titles with no spaces or [DynamicForm.wrapItemTitles](#attr-dynamicformwrapitemtitles) is false.
 
-Depending on the title font and exact column width applied, the title may overflow its assigned column, causing the form itself to overflow. If the form's parent has [overflow](Canvas.md#attr-canvasoverflow): "auto" and the form has width: "100%" or its parent is a [Layout](Layout.md#class-layout) with [hPolicy](Layout.md#attr-layouthpolicy): "fill", this could cause a horizontal scrollbar to appear in a situation where it doesn't seem necessary.
+Depending on the title font and exact column width applied, the title may overflow its assigned column, causing the form itself to overflow. If the form's parent has [overflow](Canvas_1.md#attr-canvasoverflow): "auto" and the form has width: "100%" or its parent is a [Layout](Layout.md#class-layout) with [hPolicy](Layout.md#attr-layouthpolicy): "fill", this could cause a horizontal scrollbar to appear in a situation where it doesn't seem necessary.
 
 If the parent's height is just right so that the space taken by the unwanted horizontal scrollbar introduces a vertical scrollbar, this may even lead to oscillating scrollbars on the parent. To avoid, you must address the original problem of the title overflowing its assigned column, by widening it, using a smaller font, or allowing wrapping to occur.
 
@@ -1281,7 +1281,7 @@ A default width for hovers shown for items
 ### Description
 Criteria that are never shown to or edited by the user and are cumulative with any criteria provided via [DataBoundComponent.initialCriteria](DataBoundComponent.md#attr-databoundcomponentinitialcriteria) and related methods.
 
-This property supports [dynamicCriteria](../kb_topics/dynamicCriteria.md#kb-topic-dynamiccriteria) - use [Criterion.valuePath](Criterion.md#attr-criterionvaluepath) to refer to values in the [Canvas.ruleScope](Canvas.md#attr-canvasrulescope).
+This property supports [dynamicCriteria](../kb_topics/dynamicCriteria.md#kb-topic-dynamiccriteria) - use [Criterion.valuePath](Criterion.md#attr-criterionvaluepath) to refer to values in the [Canvas.ruleScope](Canvas_1.md#attr-canvasrulescope).
 
 **Flags**: IRW
 
@@ -1320,7 +1320,7 @@ If `errorOrientation` is unset, the error orientation will default to "top" if [
 ### Description
 Criteria to be used when [DynamicForm.autoFetchData](#attr-dynamicformautofetchdata) is set.
 
-This property supports [dynamicCriteria](../kb_topics/dynamicCriteria.md#kb-topic-dynamiccriteria) - use [Criterion.valuePath](Criterion.md#attr-criterionvaluepath) to refer to values in the [Canvas.ruleScope](Canvas.md#attr-canvasrulescope).
+This property supports [dynamicCriteria](../kb_topics/dynamicCriteria.md#kb-topic-dynamiccriteria) - use [Criterion.valuePath](Criterion.md#attr-criterionvaluepath) to refer to values in the [Canvas.ruleScope](Canvas_1.md#attr-canvasrulescope).
 
 ### Groups
 
@@ -2043,9 +2043,9 @@ If a [DSRequest](../reference_2.md#object-dsrequest) configuration object is pas
 
 If no explicit saveOperationType is present, the system will use the following heuristic to determine the save operationType:
 
-*   If the form has no value for the [primaryKey field](DataSource_1.md#method-datasourcegetprimarykeyfield) this method will return "add". The assumption is that this is a new record, and the field will be populated when the record is created, (as with a "sequence" type field).
-*   If, ${isc.DocUtils.linkForRef('method:DynamicForm.setValues','when the form\\'s values were populated')}, the form had value for the [primaryKey field](DataSource_1.md#method-datasourcegetprimarykeyfield) but it has subsequently be changed, this method will return "add". In this case the value has been changed, either by the user or programmatically so a different (new) record is assumed. This is determined by looking at the [oldValues](#method-dynamicformgetoldvalues) for the form.
-*   If the [primaryKey field](DataSource_1.md#method-datasourcegetprimarykeyfield) is editable and a value is now present for the primary key field, but was not present in the [oldValues](#method-dynamicformgetoldvalues) for the form, this method will return "add". In this case either no initial values were provided, or a 'sparse' set of values for a new record (with no primary key) were provided to the form and the user has subsequently explicitly entered a new primaryKey field value.
+*   If the form has no value for the [primaryKey field](DataSource_2.md#method-datasourcegetprimarykeyfield) this method will return "add". The assumption is that this is a new record, and the field will be populated when the record is created, (as with a "sequence" type field).
+*   If, ${isc.DocUtils.linkForRef('method:DynamicForm.setValues','when the form\\'s values were populated')}, the form had value for the [primaryKey field](DataSource_2.md#method-datasourcegetprimarykeyfield) but it has subsequently be changed, this method will return "add". In this case the value has been changed, either by the user or programmatically so a different (new) record is assumed. This is determined by looking at the [oldValues](#method-dynamicformgetoldvalues) for the form.
+*   If the [primaryKey field](DataSource_2.md#method-datasourcegetprimarykeyfield) is editable and a value is now present for the primary key field, but was not present in the [oldValues](#method-dynamicformgetoldvalues) for the form, this method will return "add". In this case either no initial values were provided, or a 'sparse' set of values for a new record (with no primary key) were provided to the form and the user has subsequently explicitly entered a new primaryKey field value.
 *   Otherwise this method will return "update". Either the primaryKey field is non editable, or the user has not changed it from its initial value.
 
 ### Parameters

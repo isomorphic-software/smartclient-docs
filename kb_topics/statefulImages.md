@@ -24,7 +24,7 @@ The following table lists out the standard set of combined URLs that may be gene
 | src+"_Focused"+extension | Applied when the component has keyboard focus, if [StatefulCanvas.showFocused](../classes/StatefulCanvas.md#attr-statefulcanvasshowfocused) is true, and [StatefulCanvas.showFocusedAsOver](../classes/StatefulCanvas.md#attr-statefulcanvasshowfocusedasover) is not true. |
 | src+"_Over"+extension | Applied when the user rolls over the component if [StatefulCanvas.showRollOver](../classes/StatefulCanvas.md#attr-statefulcanvasshowrollover) is set to true |
 | src+"_Down"+extension | Applied when the user presses the mouse button over over the component if [StatefulCanvas.showDown](../classes/StatefulCanvas.md#attr-statefulcanvasshowdown) is set to true |
-| src+"_Disabled"+extension | Applied to [Canvas.disabled](../classes/Canvas.md#attr-canvasdisabled) component if [StatefulCanvas.showDisabled](../classes/StatefulCanvas.md#attr-statefulcanvasshowdisabled) is true. |
+| src+"_Disabled"+extension | Applied to [Canvas.disabled](../classes/Canvas_1.md#attr-canvasdisabled) component if [StatefulCanvas.showDisabled](../classes/StatefulCanvas.md#attr-statefulcanvasshowdisabled) is true. |
 | Combined states |
 | src+"_Selected_Focused"+extension | Combined Selected and focused state |
 | src+"_Selected_Over"+extension | Combined Selected and rollOver state |

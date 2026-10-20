@@ -17,7 +17,7 @@ This topic explains how to use the autoChild system when creating custom compone
 
 Before reading this topic, be sure you have read the *QuickStart Guide* material on creating custom components and have reviewed the provided examples.
 
-_Note:_ the autoChild pattern allows you to generate instances of any [Canvas](../classes/Canvas.md#class-canvas) subclass, but FormItems [may not be created outside of a DynamicForm](../classes/FormItem.md#classmethod-formitemcreate) and as such can not be instantiated as autoChildren using the APIs described below.
+_Note:_ the autoChild pattern allows you to generate instances of any [Canvas](../classes/Canvas_1.md#class-canvas) subclass, but FormItems [may not be created outside of a DynamicForm](../classes/FormItem.md#classmethod-formitemcreate) and as such can not be instantiated as autoChildren using the APIs described below.
 
 #### Basics
 
@@ -117,7 +117,7 @@ Note that AutoChildren are not always created as soon as the parent component, a
 
 #### AutoChildren lifecycle
 
-By default any auto-children created by [Class.addAutoChild](../classes/Class.md#method-classaddautochild) or [Class.createAutoChild](../classes/Class.md#method-classcreateautochild) will be [destroyed](../classes/Canvas.md#method-canvasdestroy) when the canvas that created them is destroyed. You can suppress this behavior by setting `dontAutoDestroy` to `true` on the auto child. To do this you could add the property to the defaults or properties block for the autoChild, or pass it into the creating method in the dynamic set of properties.
+By default any auto-children created by [Class.addAutoChild](../classes/Class.md#method-classaddautochild) or [Class.createAutoChild](../classes/Class.md#method-classcreateautochild) will be [destroyed](../classes/Canvas_1.md#method-canvasdestroy) when the canvas that created them is destroyed. You can suppress this behavior by setting `dontAutoDestroy` to `true` on the auto child. To do this you could add the property to the defaults or properties block for the autoChild, or pass it into the creating method in the dynamic set of properties.
 
 #### Subclassing a component with autoChildren
 
@@ -235,11 +235,11 @@ For example:
 - [Class.getChildPropertyValue](../classes/Class.md#method-classgetchildpropertyvalue)
 - [Class.creator](../classes/Class.md#attr-classcreator)
 - [Class.autoCreator](../classes/Class.md#attr-classautocreator)
-- [Canvas.autoParent](../classes/Canvas.md#attr-canvasautoparent)
+- [Canvas.autoParent](../classes/Canvas_1.md#attr-canvasautoparent)
 
 ### See Also
 
-- [Canvas.autoParent](../classes/Canvas.md#attr-canvasautoparent)
+- [Canvas.autoParent](../classes/Canvas_1.md#attr-canvasautoparent)
 - [Class.autoCreator](../classes/Class.md#attr-classautocreator)
 
 ---

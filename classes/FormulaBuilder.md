@@ -658,7 +658,7 @@ Whether to show a checkbox offering the user the ability to automatically hide a
 ## Attr: FormulaBuilder.targetRuleScope
 
 ### Description
-[Canvas.ruleScope](Canvas.md#attr-canvasrulescope) providing the list of available fields for the formulaBuilder.
+[Canvas.ruleScope](Canvas_1.md#attr-canvasrulescope) providing the list of available fields for the formulaBuilder.
 
 By default the formulaBuilder will include **only** fields of numeric type or derived from a numeric type. Set [FormulaBuilder.fields](#attr-formulabuilderfields) to override this.
 

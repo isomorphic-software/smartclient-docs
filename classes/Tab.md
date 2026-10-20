@@ -120,7 +120,7 @@ If enabled, the tab will collapse to show just its icon when showing the title w
 ### See Also
 
 - [Button.canAdaptWidth](Button.md#attr-buttoncanadaptwidth)
-- [Canvas.canAdaptWidth](Canvas.md#attr-canvascanadaptwidth)
+- [Canvas.canAdaptWidth](Canvas_1.md#attr-canvascanadaptwidth)
 
 **Flags**: IR
 

@@ -35,7 +35,7 @@ Sections default to the collapsed state unless [SectionStackSection.showHeader](
 ## Attr: SectionStackSection.destroyOnRemove
 
 ### Description
-Should the [SectionStackSection.items](#attr-sectionstacksectionitems) be [destroyed](Canvas.md#method-canvasdestroy) if this section is [removed](SectionStack.md#method-sectionstackremovesection)? The section header itself and any controls will always be destroyed.
+Should the [SectionStackSection.items](#attr-sectionstacksectionitems) be [destroyed](Canvas_1.md#method-canvasdestroy) if this section is [removed](SectionStack.md#method-sectionstackremovesection)? The section header itself and any controls will always be destroyed.
 
 **Flags**: I
 
@@ -196,7 +196,7 @@ Title to show for the section
 ## Attr: SectionStackSection.canReorder
 
 ### Description
-If set to false, then this sectionHeader will not be able to be dragged to perform a drag reorder, if [SectionStack.canReorderSections](SectionStack.md#attr-sectionstackcanreordersections) is true. You can also disable dropping other sections before this one by setting [canDropBefore](Canvas.md#attr-canvascandropbefore) to false.
+If set to false, then this sectionHeader will not be able to be dragged to perform a drag reorder, if [SectionStack.canReorderSections](SectionStack.md#attr-sectionstackcanreordersections) is true. You can also disable dropping other sections before this one by setting [canDropBefore](Canvas_1.md#attr-canvascandropbefore) to false.
 
 **Flags**: I
 

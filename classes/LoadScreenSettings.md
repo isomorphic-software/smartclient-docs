@@ -58,7 +58,7 @@ Note that here we consider the "loaded DataSources" to be those that are registe
 ## Attr: LoadScreenSettings.suppressAutoDraw
 
 ### Description
-If true, prevents any screen from being drawn when it's loaded, even if there's an explicit [Canvas.autoDraw](Canvas.md#attr-canvasautodraw):true setting on it.
+If true, prevents any screen from being drawn when it's loaded, even if there's an explicit [Canvas.autoDraw](Canvas_1.md#attr-canvasautodraw):true setting on it.
 
 **Flags**: IR
 

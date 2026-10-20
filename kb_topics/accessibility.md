@@ -40,9 +40,9 @@ While WAI-ARIA markup is provided for other browsers, support for WAI-ARIA itsel
 While SmartClient enables accessible web applications to be created, it is always possible for an application to violate accessibility standards. The following is a brief and not exhaustive list of concerns for application authors:
 
 *   for any operation that can be triggered via drag and drop, you should offer an equivalent keyboard-only means of performing the same operation. For common grid to grid drags, this is easily accomplished using [ListGrid.transferSelectedData](../classes/ListGrid_2.md#method-listgridtransferselecteddata).
-*   if you use a component in a way that is not typical, such as using an ImgButton as a non-interactive stateful display, set its [Canvas.ariaRole](../classes/Canvas.md#attr-canvasariarole) appropriately. For a list of ARIA roles, see [http://www.w3.org/WAI/PF/aria/roles#role\_definitions](http://www.w3.org/WAI/PF/aria/roles#role_definitions). Note that in most cases you will not need to modify the default ariaRole written out by the SmartClient framework with screenReader mode enabled.
+*   if you use a component in a way that is not typical, such as using an ImgButton as a non-interactive stateful display, set its [Canvas.ariaRole](../classes/Canvas_1.md#attr-canvasariarole) appropriately. For a list of ARIA roles, see [http://www.w3.org/WAI/PF/aria/roles#role\_definitions](http://www.w3.org/WAI/PF/aria/roles#role_definitions). Note that in most cases you will not need to modify the default ariaRole written out by the SmartClient framework with screenReader mode enabled.
 *   for plain HTML content that is incorporated into an Ajax interface (such as an embedded help system), embed the HTML into an [HTMLFlow](../classes/HTMLFlow.md#class-htmlflow) (whose default ARIA role is "article") and ensure the HTML itself is accessible (for example, has "alt" attributes on all images which are semantically meaningful)
-*   in addition to setting explicit ARIA roles per canvas, SmartClient also allows developers to specify values for explicit [ARIA states](../classes/Canvas.md#attr-canvasariastate) (see [http://www.w3.org/TR/wai-aria/states\_and\_properties](http://www.w3.org/TR/wai-aria/states_and_properties)) to be written out with the HTML for a component.  
+*   in addition to setting explicit ARIA roles per canvas, SmartClient also allows developers to specify values for explicit [ARIA states](../classes/Canvas_1.md#attr-canvasariastate) (see [http://www.w3.org/TR/wai-aria/states\_and\_properties](http://www.w3.org/TR/wai-aria/states_and_properties)) to be written out with the HTML for a component.  
     Note that, as with ariaRoles, in most cases the framework automatically writes out any appropriate aria state information based on the component being generated - you'd only make use of this property if using components in some custom way. To provide a concrete example: a developer might implement a logical nested "menu" built from a set of Button instances. In that case, some button might have ariaRole set to `"menuitem"` and (if it launches a sub-menu), also the ["haspopup"](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-haspopup) aria state. The code for this would be something like:
     ```
      isc.Button.create({
@@ -62,14 +62,14 @@ JAWS: By default, JAWS treats a web page as a web document - text interspersed w
 ### Related
 
 - [isc.setScreenReaderMode](../classes/isc.md#staticmethod-iscsetscreenreadermode)
-- [Canvas.setAriaState](../classes/Canvas.md#method-canvassetariastate)
+- [Canvas.setAriaState](../classes/Canvas_1.md#method-canvassetariastate)
 - [ListGrid.getCellRole](../classes/ListGrid_2.md#method-listgridgetcellrole)
 - [ListGrid.getCellAriaState](../classes/ListGrid_2.md#method-listgridgetcellariastate)
 - [ListGrid.getRowRole](../classes/ListGrid_2.md#method-listgridgetrowrole)
 - [ListGrid.getRowAriaState](../classes/ListGrid_2.md#method-listgridgetrowariastate)
 - [ListGrid.getHeaderButtonAriaState](../classes/ListGrid_2.md#method-listgridgetheaderbuttonariastate)
-- [Canvas.ariaRole](../classes/Canvas.md#attr-canvasariarole)
-- [Canvas.ariaState](../classes/Canvas.md#attr-canvasariastate)
+- [Canvas.ariaRole](../classes/Canvas_1.md#attr-canvasariarole)
+- [Canvas.ariaState](../classes/Canvas_1.md#attr-canvasariastate)
 - [FormItem.ariaRole](../classes/FormItem.md#attr-formitemariarole)
 - [FormItem.ariaState](../classes/FormItem.md#attr-formitemariastate)
 - [ListGrid.ariaRole](../classes/ListGrid_1.md#attr-listgridariarole)

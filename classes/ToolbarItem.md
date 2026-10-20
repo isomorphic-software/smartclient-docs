@@ -49,7 +49,7 @@ List of buttons for the toolbar. Each button should be specified as a simple JS 
 ## Attr: ToolbarItem.canvas
 
 ### Description
-This item is an autoChild generated [Canvas](Canvas.md#class-canvas) displayed by the ToolbarItem and is an instance of [Toolbar](Toolbar.md#class-toolbar) by default, customizable via the [ToolbarItem.canvasConstructor](#attr-toolbaritemcanvasconstructor) attribute.
+This item is an autoChild generated [Canvas](Canvas_1.md#class-canvas) displayed by the ToolbarItem and is an instance of [Toolbar](Toolbar.md#class-toolbar) by default, customizable via the [ToolbarItem.canvasConstructor](#attr-toolbaritemcanvasconstructor) attribute.
 
 **Flags**: R
 
@@ -93,7 +93,7 @@ Default [Button.autoFit](Button.md#attr-buttonautofit) for buttons - true by def
 ## Attr: ToolbarItem.editProxyConstructor
 
 ### Description
-Default class used to construct the [EditProxy](EditProxy.md#class-editproxy) for this component when the component is [first placed into edit mode](Canvas.md#method-canvasseteditmode).
+Default class used to construct the [EditProxy](EditProxy.md#class-editproxy) for this component when the component is [first placed into edit mode](Canvas_1.md#method-canvasseteditmode).
 
 **Flags**: IR
 

@@ -325,7 +325,7 @@ Allows the developer to override the horizontal text alignment of hover tips sho
 
 ### See Also
 
-- [Canvas.hoverAlign](Canvas.md#attr-canvashoveralign)
+- [Canvas.hoverAlign](Canvas_1.md#attr-canvashoveralign)
 
 **Flags**: IRWA
 
@@ -377,7 +377,7 @@ Allows the developer to override the vertical text alignment of hover tips shown
 
 ### See Also
 
-- [Canvas.hoverVAlign](Canvas.md#attr-canvashovervalign)
+- [Canvas.hoverVAlign](Canvas_1.md#attr-canvashovervalign)
 
 **Flags**: IRWA
 
@@ -518,7 +518,7 @@ Allows the developer to override the vertical text alignment of hover tips shown
 
 ### See Also
 
-- [Canvas.hoverVAlign](Canvas.md#attr-canvashovervalign)
+- [Canvas.hoverVAlign](Canvas_1.md#attr-canvashovervalign)
 
 **Flags**: IRWA
 
@@ -1050,7 +1050,7 @@ Allows the developer to override the horizontal text alignment of hover tips sho
 
 ### See Also
 
-- [Canvas.hoverAlign](Canvas.md#attr-canvashoveralign)
+- [Canvas.hoverAlign](Canvas_1.md#attr-canvashoveralign)
 
 **Flags**: IRWA
 
@@ -1114,7 +1114,7 @@ Note that this property is incompatible with [indented](#attr-cubegridindentvtre
 ### Description
 For [touch browsers](Browser.md#classattr-browseristouch), `canDragSelect` defaults to false so that touch scrolling can be used to navigate scrollable CubeGrids. In all other browsers it defaults to true.
 
-**NOTE:** If `canDragSelect` is enabled, it may be desirable to disable [touch scrolling](Canvas.md#attr-canvasusetouchscrolling) so that touch-dragging cells of the CubeGrid selects them rather than starting a scroll. If [Canvas.disableTouchScrollingForDrag](Canvas.md#attr-canvasdisabletouchscrollingfordrag) is set to `true`, then touch scrolling will be disabled automatically. However, for [accessibility](../kb_topics/accessibility.md#kb-topic-accessibility--section-508-compliance) reasons, it is recommended to leave touch scrolling enabled and provide an alternative set of controls that can be used to perform drag-selection.
+**NOTE:** If `canDragSelect` is enabled, it may be desirable to disable [touch scrolling](Canvas_1.md#attr-canvasusetouchscrolling) so that touch-dragging cells of the CubeGrid selects them rather than starting a scroll. If [Canvas.disableTouchScrollingForDrag](Canvas_1.md#attr-canvasdisabletouchscrollingfordrag) is set to `true`, then touch scrolling will be disabled automatically. However, for [accessibility](../kb_topics/accessibility.md#kb-topic-accessibility--section-508-compliance) reasons, it is recommended to leave touch scrolling enabled and provide an alternative set of controls that can be used to perform drag-selection.
 
 **Flags**: IR
 
@@ -1182,7 +1182,7 @@ If specified and `this.showHover` is true, this is the default width to apply to
 
 ### See Also
 
-- [Canvas.hoverWidth](Canvas.md#attr-canvashoverwidth)
+- [Canvas.hoverWidth](Canvas_1.md#attr-canvashoverwidth)
 
 **Flags**: IRWA
 
@@ -1206,7 +1206,7 @@ If specified and `this.showHover` is true, this is the default height to apply t
 
 ### See Also
 
-- [Canvas.hoverHeight](Canvas.md#attr-canvashoverheight)
+- [Canvas.hoverHeight](Canvas_1.md#attr-canvashoverheight)
 
 **Flags**: IRWA
 
@@ -1234,7 +1234,7 @@ If specified and `this.showHover` is true, this is the default width to apply to
 
 ### See Also
 
-- [Canvas.hoverWidth](Canvas.md#attr-canvashoverwidth)
+- [Canvas.hoverWidth](Canvas_1.md#attr-canvashoverwidth)
 
 **Flags**: IRWA
 
@@ -1282,7 +1282,7 @@ If specified and `this.showHover` is true, this is the default height to apply t
 
 ### See Also
 
-- [Canvas.hoverHeight](Canvas.md#attr-canvashoverheight)
+- [Canvas.hoverHeight](Canvas_1.md#attr-canvashoverheight)
 
 **Flags**: IRWA
 
@@ -1349,7 +1349,7 @@ Allows the developer to override the css class applied to hover tips shown for f
 
 ### See Also
 
-- [Canvas.hoverStyle](Canvas.md#attr-canvashoverstyle)
+- [Canvas.hoverStyle](Canvas_1.md#attr-canvashoverstyle)
 
 **Flags**: IRWA
 
@@ -1365,7 +1365,7 @@ Allows the developer to override the css class applied to hover tips shown for f
 
 ### See Also
 
-- [Canvas.hoverStyle](Canvas.md#attr-canvashoverstyle)
+- [Canvas.hoverStyle](Canvas_1.md#attr-canvashoverstyle)
 
 **Flags**: IRWA
 
@@ -1840,7 +1840,7 @@ Returns the row number of the provided Y-coordinate, or the most recent mouse ev
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| y | [Integer](../reference_2.md#type-integer) | true | — | Y-coordinate relative to the top edge of the content to obtain the row number for. If not provided, then [Canvas.getOffsetY](Canvas.md#method-canvasgetoffsety) will be used. |
+| y | [Integer](../reference_2.md#type-integer) | true | — | Y-coordinate relative to the top edge of the content to obtain the row number for. If not provided, then [Canvas.getOffsetY](Canvas_1.md#method-canvasgetoffsety) will be used. |
 
 ### Returns
 
@@ -2084,7 +2084,7 @@ Returns the column number of the provided X-coordinate, or the most recent mouse
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| x | [Integer](../reference_2.md#type-integer) | true | — | X-coordinate relative to the left edge of the content to obtain the column number for. If not provided, then [Canvas.getOffsetX](Canvas.md#method-canvasgetoffsetx) will be used. |
+| x | [Integer](../reference_2.md#type-integer) | true | — | X-coordinate relative to the left edge of the content to obtain the column number for. If not provided, then [Canvas.getOffsetX](Canvas_1.md#method-canvasgetoffsetx) will be used. |
 
 ### Returns
 

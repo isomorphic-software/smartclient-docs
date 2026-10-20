@@ -108,9 +108,9 @@ Note that this setting only applies when using [Reify.loadProject](Reify.md#meth
 ## Attr: LoadProjectSettings.dataContext
 
 ### Description
-[DataContext](../reference_2.md#object-datacontext) that will be provided to the top-level component as [dataContext](Canvas.md#attr-canvasdatacontext) in each screen cached for the project.
+[DataContext](../reference_2.md#object-datacontext) that will be provided to the top-level component as [dataContext](Canvas_1.md#attr-canvasdatacontext) in each screen cached for the project.
 
-To understand how `dataContext` is used to automatically populate [DataBoundComponents](../reference.md#interface-databoundcomponent), see [Canvas.autoPopulateData](Canvas.md#attr-canvasautopopulatedata).
+To understand how `dataContext` is used to automatically populate [DataBoundComponents](../reference.md#interface-databoundcomponent), see [Canvas.autoPopulateData](Canvas_1.md#attr-canvasautopopulatedata).
 
 ### Groups
 

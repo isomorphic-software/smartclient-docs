@@ -59,7 +59,7 @@ Text shown inside the field that serves as an indicator of what this field is fo
 ## Attr: SavedSearchItem.editProxyConstructor
 
 ### Description
-Default class used to construct the [EditProxy](EditProxy.md#class-editproxy) for this component when the component is [first placed into edit mode](Canvas.md#method-canvasseteditmode).
+Default class used to construct the [EditProxy](EditProxy.md#class-editproxy) for this component when the component is [first placed into edit mode](Canvas_1.md#method-canvasseteditmode).
 
 **Flags**: IR
 
@@ -173,7 +173,7 @@ Whether a confirmation message should be shown when a user removes a saved searc
 ### Description
 Component that saved searches should apply to. May be specified as a DataBoundComponent instance or the String ID of one. When set, whenever [SavedSearchItem.searchChanged](#method-savedsearchitemsearchchanged) fires, the search is automatically applied to the `targetComponent` unless the `searchChanged` event is cancelled.
 
-To avoid leaking local storage, saving searches will not be allowed for the target grid unless it specifies [savedSearchId](DataBoundComponent.md#attr-databoundcomponentsavedsearchid), or an explicit [local or global ID](Canvas.md#method-canvasgetlocalid) is present.
+To avoid leaking local storage, saving searches will not be allowed for the target grid unless it specifies [savedSearchId](DataBoundComponent.md#attr-databoundcomponentsavedsearchid), or an explicit [local or global ID](Canvas_1.md#method-canvasgetlocalid) is present.
 
 **Flags**: IR
 
@@ -229,7 +229,7 @@ This flag controls whether adding new searches is allowed.
 ## Attr: SavedSearchItem.saveDefaultSearch
 
 ### Description
-Works identically to [ListGrid.saveDefaultSearch](ListGrid_1.md#attr-listgridsavedefaultsearch). The default is stored in browser `localStorage` using the [savedSearchId](DataBoundComponent.md#attr-databoundcomponentsavedsearchid) of the [SavedSearchItem.targetComponent](#attr-savedsearchitemtargetcomponent), or a combination of the [local or global ID](Canvas.md#method-canvasgetlocalid) and [DataSource ID](Class.md#method-classgetid) if no savedSearchId was specified (see documentation for [savedSearchId](DataBoundComponent.md#attr-databoundcomponentsavedsearchid) for details).
+Works identically to [ListGrid.saveDefaultSearch](ListGrid_1.md#attr-listgridsavedefaultsearch). The default is stored in browser `localStorage` using the [savedSearchId](DataBoundComponent.md#attr-databoundcomponentsavedsearchid) of the [SavedSearchItem.targetComponent](#attr-savedsearchitemtargetcomponent), or a combination of the [local or global ID](Canvas_1.md#method-canvasgetlocalid) and [DataSource ID](Class.md#method-classgetid) if no savedSearchId was specified (see documentation for [savedSearchId](DataBoundComponent.md#attr-databoundcomponentsavedsearchid) for details).
 
 If no targetComponent is specified, the savedSearchId or minimal locator of the `SavedSearchItem` itself will be used.
 

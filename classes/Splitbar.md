@@ -50,7 +50,7 @@ If [Splitbar.showGrip](#attr-splitbarshowgrip) is true, this property determines
 ## Attr: Splitbar.thumbLength
 
 ### Description
-Size of the thumb element along the bar's length axis (vertical for an HLayout bar, horizontal for a VLayout bar). Relevant only in [Splitbar.cssOnly](#attr-splitbarcssonly) mode where the thumb floats over the bar via [snapTo:"C"](Canvas.md#attr-canvassnapto). When set, the thumb is large enough to show a [Splitbar.thumbStyle](#attr-splitbarthumbstyle) background, border, or shadow around the grip icon. When unset, the thumb sizes to its grip icon.
+Size of the thumb element along the bar's length axis (vertical for an HLayout bar, horizontal for a VLayout bar). Relevant only in [Splitbar.cssOnly](#attr-splitbarcssonly) mode where the thumb floats over the bar via [snapTo:"C"](Canvas_1.md#attr-canvassnapto). When set, the thumb is large enough to show a [Splitbar.thumbStyle](#attr-splitbarthumbstyle) background, border, or shadow around the grip icon. When unset, the thumb sizes to its grip icon.
 
 ### Groups
 
@@ -261,7 +261,7 @@ If [StretchImg.showGrip](StretchImg.md#attr-stretchimgshowgrip) is true, this pr
 ### Description
 When a `Splitbar` is created by a layout, the `target` property of the Splitbar will be a pointer to the member for which it is acting as a resizeBar. The Splitbar will be positioned next to its target, and will resize it on drag completion.
 
-See [Layout.resizeBarClass](Layout.md#attr-layoutresizebarclass), [Canvas.showResizeBar](Canvas.md#attr-canvasshowresizebar) and [Canvas.resizeBarTarget](Canvas.md#attr-canvasresizebartarget) for details on configuring the resize bars shown in Layouts.
+See [Layout.resizeBarClass](Layout.md#attr-layoutresizebarclass), [Canvas.showResizeBar](Canvas_1.md#attr-canvasshowresizebar) and [Canvas.resizeBarTarget](Canvas_1.md#attr-canvasresizebartarget) for details on configuring the resize bars shown in Layouts.
 
 **Flags**: R
 

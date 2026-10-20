@@ -33,7 +33,7 @@ See the [AutoTestLocator overview](../reference_2.md#type-autotestlocator) for d
 ### Description
 May a simple widget ID with no other content be returned from [AutoTest.getLocator](AutoTest.md#classmethod-autotestgetlocator)?
 
-If true, when a locator is requested for a component, and that component has an explicitly specified [Canvas.ID](Canvas.md#attr-canvasid), the ID will be returned as the entire locator.
+If true, when a locator is requested for a component, and that component has an explicitly specified [Canvas.ID](Canvas_1.md#attr-canvasid), the ID will be returned as the entire locator.
 
 This only applies when the target of the locator is the component itself or its handle. If the target is a child, or an interior DOM element that requires additional locator segments to identify, a standard multi-segment locator will be generated.
 
@@ -45,7 +45,7 @@ See the [AutoTestLocator overview](../reference_2.md#type-autotestlocator) for m
 ## Attr: AutoTestLocatorConfiguration.useSearchSegments
 
 ### Description
-Should generated locators include search segments (as detailed in the [AutoTestLocator overview](../reference_2.md#type-autotestlocator)) to identify components with [defining property values](Canvas.md#method-canvasgetdefiningpropertyname)?
+Should generated locators include search segments (as detailed in the [AutoTestLocator overview](../reference_2.md#type-autotestlocator)) to identify components with [defining property values](Canvas_1.md#method-canvasgetdefiningpropertyname)?
 
 See also [AutoTestLocatorConfiguration.searchSegmentsIncludeHidden](#attr-autotestlocatorconfigurationsearchsegmentsincludehidden)
 

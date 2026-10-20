@@ -6,7 +6,7 @@
 
 ## Class: Layout
 
-*Inherits from:* [Canvas](Canvas.md#class-canvas)
+*Inherits from:* [Canvas](Canvas_1.md#class-canvas)
 
 ### Description
 Arranges a set of "member" Canvases in horizontal or vertical stacks, applying a layout policy to determine member heights and widths.
@@ -19,7 +19,7 @@ Layouts and Stacks may be nested to create arbitrarily complex layouts.
 
 Since Layouts can be either horizontally or vertically oriented, throughout the documentation of Layout and it's subclasses, the term "length" refers to the axis of stacking, and the term "breadth" refers to the other axis. Hence, "length" means height in the context of a VLayout or VStack, but means width in the context of an HLayout or HStack.
 
-To show a resizer bar after (to the right or bottom of) a layout member, set [showResizeBar](Canvas.md#attr-canvasshowresizebar) to true on that member component (not on the HLayout or VLayout). Resizer bars override [membersMargin](#attr-layoutmembersmargin) spacing.
+To show a resizer bar after (to the right or bottom of) a layout member, set [showResizeBar](Canvas_1.md#attr-canvasshowresizebar) to true on that member component (not on the HLayout or VLayout). Resizer bars override [membersMargin](#attr-layoutmembersmargin) spacing.
 
 Like other Canvas subclasses, Layout and Stack components may have % width and height values. To create a dynamically-resizing layout that occupies the entire page (or entire parent component), set width and height to "100%".
 
@@ -78,8 +78,8 @@ If set, a Layout with breadthPolicy:"fill" will specially interpret a percentage
 ### Description
 An array of canvases that will be contained within this layout. You can set the following properties on these canvases (in addition to the standard component properties):
 
-*   [layoutAlign](Canvas.md#attr-canvaslayoutalign) -- specifies the member's alignment along the breadth axis; valid values are "top", "center" and "bottom" for a horizontal layout and "left", "center" and "right" for a vertical layout (see [Layout.defaultLayoutAlign](#attr-layoutdefaultlayoutalign) for default implementation.)
-*   [showResizeBar](Canvas.md#attr-canvasshowresizebar) -- set to true to show a resize bar (default is false)
+*   [layoutAlign](Canvas_1.md#attr-canvaslayoutalign) -- specifies the member's alignment along the breadth axis; valid values are "top", "center" and "bottom" for a horizontal layout and "left", "center" and "right" for a vertical layout (see [Layout.defaultLayoutAlign](#attr-layoutdefaultlayoutalign) for default implementation.)
+*   [showResizeBar](Canvas_1.md#attr-canvasshowresizebar) -- set to true to show a resize bar (default is false)
 
 Height and width settings found on members are interpreted by the Layout according to the [layout policy](#attr-layoutvpolicy).
 
@@ -93,7 +93,7 @@ Note that it is valid to have null slots in the provided `members` Array, and th
 ## Attr: Layout.paddingAsLayoutMargin
 
 ### Description
-If this widget has padding specified (as [this.padding](Canvas.md#attr-canvaspadding) or in the CSS style applied to this layout), should it show up as space outside the members, similar to layoutMargin?
+If this widget has padding specified (as [this.padding](Canvas_1.md#attr-canvaspadding) or in the CSS style applied to this layout), should it show up as space outside the members, similar to layoutMargin?
 
 If this setting is false, padding will not affect member positioning (as CSS padding normally does not affect absolutely positioned children). Leaving this setting true allows a designer to more effectively control layout purely from CSS.
 
@@ -119,7 +119,7 @@ Does not apply to members given a fixed size in pixels - such members will never
 
 ### See Also
 
-- [Canvas.minWidth](Canvas.md#attr-canvasminwidth)
+- [Canvas.minWidth](Canvas_1.md#attr-canvasminwidth)
 
 **Flags**: IRW
 
@@ -192,7 +192,7 @@ If set to "lastOnTop", members stack from the first member at bottom to the last
 
 ### Description
 If [this.showDragPlaceHolder](#attr-layoutshowdragplaceholder) is true, this defaults object determines the default appearance of the placeholder displayed when the user drags a widget out of this layout.  
-Default value for this property sets the placeholder [styleName](Canvas.md#attr-canvasstylename) to `"layoutPlaceHolder"`  
+Default value for this property sets the placeholder [styleName](Canvas_1.md#attr-canvasstylename) to `"layoutPlaceHolder"`  
 To modify this object, use [Class.changeDefaults](Class.md#classmethod-classchangedefaults)
 
 ### Groups
@@ -217,7 +217,7 @@ Number of pixels by which each member should overlap the preceding member, used 
 
 `memberOverlap` can be used in conjunction with [Layout.stackZIndex](#attr-layoutstackzindex) to create a particular visual stacking order.
 
-Note that overlap of individual members can be accomplished with a negative setting for [Canvas.extraSpace](Canvas.md#attr-canvasextraspace).
+Note that overlap of individual members can be accomplished with a negative setting for [Canvas.extraSpace](Canvas_1.md#attr-canvasextraspace).
 
 ### Groups
 
@@ -229,11 +229,11 @@ Note that overlap of individual members can be accomplished with a negative sett
 ## Attr: Layout.defaultResizeBars
 
 ### Description
-Policy for whether resize bars are shown on members by default. Note that this setting changes the effect of [Canvas.showResizeBar](Canvas.md#attr-canvasshowresizebar) for members of this layout.
+Policy for whether resize bars are shown on members by default. Note that this setting changes the effect of [Canvas.showResizeBar](Canvas_1.md#attr-canvasshowresizebar) for members of this layout.
 
 ### See Also
 
-- [Canvas.showResizeBar](Canvas.md#attr-canvasshowresizebar)
+- [Canvas.showResizeBar](Canvas_1.md#attr-canvasshowresizebar)
 
 **Flags**: IRW
 
@@ -346,7 +346,7 @@ Alignment of all members in this Layout on the length axis (vertical for a VLayo
 
 Horizontal layouts should only be set to [Alignment](../reference_2.md#type-alignment), and vertical layouts to [VerticalAlignment](../reference.md#type-verticalalignment), otherwise they will be considered invalid values, and assigning an invalid value here will log a warning to the Developer Console.
 
-For alignment on the breadth axis, see [Layout.defaultLayoutAlign](#attr-layoutdefaultlayoutalign) and [Canvas.layoutAlign](Canvas.md#attr-canvaslayoutalign).
+For alignment on the breadth axis, see [Layout.defaultLayoutAlign](#attr-layoutdefaultlayoutalign) and [Canvas.layoutAlign](Canvas_1.md#attr-canvaslayoutalign).
 
 When attempting to center components be sure that you have set a specific size on the component(s) involved. If components fill all available space in the layout, centering looks the same as not centering.
 
@@ -372,7 +372,7 @@ If both `layoutStartMargin` and the more specific properties (top/left margin) a
 ## Attr: Layout.defaultLayoutAlign
 
 ### Description
-Specifies the default alignment for layout members on the breadth axis (horizontal axis for a VLayout, vertical axis for an HLayout). Can be overridden on a per-member basis by setting [Canvas.layoutAlign](Canvas.md#attr-canvaslayoutalign).
+Specifies the default alignment for layout members on the breadth axis (horizontal axis for a VLayout, vertical axis for an HLayout). Can be overridden on a per-member basis by setting [Canvas.layoutAlign](Canvas_1.md#attr-canvaslayoutalign).
 
 If unset, default member layout alignment will be "top" for a horizontal layout, and "left" for a vertical layout, or "right" if in [RTL](Page.md#classmethod-pageisrtl) mode.
 
@@ -441,7 +441,7 @@ Space outside of all members. This attribute, along with [Layout.layoutLeftMargi
 ### Description
 A MultiAutoChild created to resize members of this `Layout`.
 
-A resize bar will be created for any member of this `Layout` that has [showResizeBar](Canvas.md#attr-canvasshowresizebar) set to `true`. Resize bars will be instances of the class specified by [Layout.resizeBarClass](#attr-layoutresizebarclass) by default, and will automatically be sized to the member's breadth, and to the thickness specified by [Layout.resizeBarSize](#attr-layoutresizebarsize).
+A resize bar will be created for any member of this `Layout` that has [showResizeBar](Canvas_1.md#attr-canvasshowresizebar) set to `true`. Resize bars will be instances of the class specified by [Layout.resizeBarClass](#attr-layoutresizebarclass) by default, and will automatically be sized to the member's breadth, and to the thickness specified by [Layout.resizeBarSize](#attr-layoutresizebarsize).
 
 To customize the appearance or behavior of resizeBars within some layout a custom resize bar class can be created by subclassing [Splitbar](Splitbar.md#class-splitbar) or [ImgSplitbar](ImgSplitbar.md#class-imgsplitbar) and setting [Layout.resizeBarClass](#attr-layoutresizebarclass) or `resizeBarConstructor` to this custom class. Alternatively, `resizeBarProperties` may be specified. See [autoChildUsage](../kb_topics/autoChildUsage.md#kb-topic-using-autochildren) for more information.
 
@@ -503,7 +503,7 @@ If set to true, when a member is dragged out of layout, a visible placeholder ca
 ### Description
 A Layout may overflow if it has one or more members with a fixed width or height, or that themselves overflow. For details on member sizing see [LayoutPolicy](../reference_2.md#type-layoutpolicy).
 
-Note that for overflow: "auto", "scroll", or "visible", members exceeding the Layout's specified breadth but falling short of its overflow breadth will keep the alignment set via [Layout.defaultLayoutAlign](#attr-layoutdefaultlayoutalign) or [Canvas.layoutAlign](Canvas.md#attr-canvaslayoutalign).
+Note that for overflow: "auto", "scroll", or "visible", members exceeding the Layout's specified breadth but falling short of its overflow breadth will keep the alignment set via [Layout.defaultLayoutAlign](#attr-layoutdefaultlayoutalign) or [Canvas.layoutAlign](Canvas_1.md#attr-canvaslayoutalign).
 
 ### Groups
 
@@ -511,7 +511,7 @@ Note that for overflow: "auto", "scroll", or "visible", members exceeding the La
 
 ### See Also
 
-- [Canvas.overflow](Canvas.md#attr-canvasoverflow)
+- [Canvas.overflow](Canvas_1.md#attr-canvasoverflow)
 - [Layout.minBreadthMember](#attr-layoutminbreadthmember)
 
 **Flags**: IRW
@@ -546,7 +546,7 @@ Controls whether to show a drop-indicator during a drag and drop operation. Set 
 ## Attr: Layout.editProxyConstructor
 
 ### Description
-Default class used to construct the [EditProxy](EditProxy.md#class-editproxy) for this component when the component is [first placed into edit mode](Canvas.md#method-canvasseteditmode).
+Default class used to construct the [EditProxy](EditProxy.md#class-editproxy) for this component when the component is [first placed into edit mode](Canvas_1.md#method-canvasseteditmode).
 
 **Flags**: IR
 
@@ -592,9 +592,9 @@ See [Layout.minMemberLength](#attr-layoutminmemberlength).
 ## Attr: Layout.canDropComponents
 
 ### Description
-Layouts provide a default implementation of a drag and drop interaction. If you set [canAcceptDrop](Canvas.md#attr-canvascanacceptdrop):true and `canDropComponents:true` on a Layout, when a droppable Canvas ([canDrop:true](Canvas.md#attr-canvascandrop) is dragged over the layout, it will show a dropLine (a simple insertion line) at the drop location.
+Layouts provide a default implementation of a drag and drop interaction. If you set [canAcceptDrop](Canvas_1.md#attr-canvascanacceptdrop):true and `canDropComponents:true` on a Layout, when a droppable Canvas ([canDrop:true](Canvas_1.md#attr-canvascandrop) is dragged over the layout, it will show a dropLine (a simple insertion line) at the drop location.
 
-When the drop occurs, [Layout.getDropComponent](#method-layoutgetdropcomponent) is invoked to determine which component should be added to the layout as a member at the location calculated by [Layout.getDropPosition](#method-layoutgetdropposition). By default this method will return the current drag target. This default behavior allows existing members to be reordered or external components that have [Canvas.canDragReposition](Canvas.md#attr-canvascandragreposition) (or [Canvas.canDrag](Canvas.md#attr-canvascandrag)) and [Canvas.canDrop](Canvas.md#attr-canvascandrop) set to `true` to be added to the Layout.
+When the drop occurs, [Layout.getDropComponent](#method-layoutgetdropcomponent) is invoked to determine which component should be added to the layout as a member at the location calculated by [Layout.getDropPosition](#method-layoutgetdropposition). By default this method will return the current drag target. This default behavior allows existing members to be reordered or external components that have [Canvas.canDragReposition](Canvas_1.md#attr-canvascandragreposition) (or [Canvas.canDrag](Canvas_1.md#attr-canvascandrag)) and [Canvas.canDrop](Canvas_1.md#attr-canvascandrop) set to `true` to be added to the Layout.
 
 You can control the thickness of the dropLine via [Layout.dropLineThickness](#attr-layoutdroplinethickness) and you can customize the style using css styling in the skin file (look for .layoutDropLine in skin\_styles.css for your skin).
 
@@ -617,7 +617,7 @@ If you want to dynamically create a component to be added to the Layout in respo
  });
  
 ```
-If you want to completely suppress the builtin drag and drop logic, but still receive drag and drop events for your own custom implementation, set [Canvas.canAcceptDrop](Canvas.md#attr-canvascanacceptdrop) to `true` and `canDropComponents` to `false` on your Layout.
+If you want to completely suppress the builtin drag and drop logic, but still receive drag and drop events for your own custom implementation, set [Canvas.canAcceptDrop](Canvas_1.md#attr-canvascanacceptdrop) to `true` and `canDropComponents` to `false` on your Layout.
 
 ### Groups
 
@@ -717,7 +717,7 @@ Method to force a reflow of the layout after directly assigning a value to any o
 ### Description
 Layouts ensure children are ordered in the tab-sequence with members being reachable first (in member order), then any non-member children.
 
-As with [Canvas.getChildTabPosition](Canvas.md#method-canvasgetchildtabposition) if [Canvas.setRelativeTabPosition](Canvas.md#method-canvassetrelativetabposition) was called explicitly called for some child, it will be respected over member order.
+As with [Canvas.getChildTabPosition](Canvas_1.md#method-canvasgetchildtabposition) if [Canvas.setRelativeTabPosition](Canvas_1.md#method-canvassetrelativetabposition) was called explicitly called for some child, it will be respected over member order.
 
 ### Parameters
 
@@ -733,7 +733,7 @@ As with [Canvas.getChildTabPosition](Canvas.md#method-canvasgetchildtabposition)
 ## Method: Layout.getMemberNumber
 
 ### Description
-Given a member Canvas or member [ID](Canvas.md#attr-canvasid) or [name](Canvas.md#attr-canvasname), return the index of that member within this layout's members array. If passed a number, just returns it.
+Given a member Canvas or member [ID](Canvas_1.md#attr-canvasid) or [name](Canvas_1.md#attr-canvasname), return the index of that member within this layout's members array. If passed a number, just returns it.
 
 Note that if more than one member has the same `name`, passing in a `name` has an undefined result.
 
@@ -843,7 +843,7 @@ This method is an override point only; it does not exist by default and cannot b
 ## Method: Layout.getMember
 
 ### Description
-Given a numerical index or a member [name](Canvas.md#attr-canvasname) or member [ID](Canvas.md#attr-canvasid), return a pointer to the appropriate member. If passed a member Canvas, just returns it.
+Given a numerical index or a member [name](Canvas_1.md#attr-canvasname) or member [ID](Canvas_1.md#attr-canvasid), return a pointer to the appropriate member. If passed a member Canvas, just returns it.
 
 Note that if more than one member has the same `name`, passing in a `name` has an undefined result.
 
@@ -1098,7 +1098,7 @@ Changes the [Layout.align](#attr-layoutalign) for this Layout.
 
 Horizontal layouts should only be changed to [Alignment](../reference_2.md#type-alignment), and vertical layouts to [VerticalAlignment](../reference.md#type-verticalalignment), otherwise they will be considered invalid values, and assigning an invalid value here will log a warning to the Developer Console.
 
-For alignment on the breadth axis, see [Layout.defaultLayoutAlign](#attr-layoutdefaultlayoutalign) and [Canvas.layoutAlign](Canvas.md#attr-canvaslayoutalign).
+For alignment on the breadth axis, see [Layout.defaultLayoutAlign](#attr-layoutdefaultlayoutalign) and [Canvas.layoutAlign](Canvas_1.md#attr-canvaslayoutalign).
 
 ### Parameters
 

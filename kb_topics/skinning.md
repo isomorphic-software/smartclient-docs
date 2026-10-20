@@ -186,7 +186,7 @@ A [StretchImg](../classes/StretchImg.md#class-stretchimg) is a SmartClient compo
 
 #### EdgedCanvas
 
-Similar to a StretchImg, an [EdgedCanvas](../classes/EdgedCanvas.md#class-edgedcanvas) provides an image-based decorative edge around and/or behind another component, with up to 9 segments (a 3x3 grid). Decorative edges can be added to any component by setting [showEdges:true](../classes/Canvas.md#attr-canvasshowedges). EdgedCanvas is also used to construct drop-shadows, which can be enabled on any component via [showShadow:true](../classes/Canvas.md#attr-canvasshowshadow).
+Similar to a StretchImg, an [EdgedCanvas](../classes/EdgedCanvas.md#class-edgedcanvas) provides an image-based decorative edge around and/or behind another component, with up to 9 segments (a 3x3 grid). Decorative edges can be added to any component by setting [showEdges:true](../classes/Canvas_1.md#attr-canvasshowedges). EdgedCanvas is also used to construct drop-shadows, which can be enabled on any component via [showShadow:true](../classes/Canvas_1.md#attr-canvasshowshadow).
 
 #### Multiple looks for the same component type
 

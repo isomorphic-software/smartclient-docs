@@ -1,9 +1,14 @@
-# Canvas Documentation
+# Canvas Documentation (Part 1 of 2)
 
 [← Back to API Index](../reference.md)
 
 ---
 
+# Canvas Documentation
+
+[← Back to API Index](../reference.md)
+
+---
 ## Class: Canvas
 
 *Inherits from:* [BaseWidget](BaseWidget.md#class-basewidget)
@@ -33,7 +38,7 @@ A declared value of the enum type [BackgroundRepeat](../reference_2.md#type-back
 ## ClassAttr: Canvas.defaultPageSpace
 
 ### Description
-A fixed number of pixels at the top of the page in which components will not be placed. This is overridable per-instance via the [Canvas.leavePageSpace](#attr-canvasleavepagespace) attribute. Essentially, the effect is that all top-level components are shifted down this number of pixels, and the page height is treated as this number of pixels _less_ than the real page height.
+A fixed number of pixels at the top of the page in which components will not be placed. This is overridable per-instance via the [Canvas.leavePageSpace](Canvas_1.md#attr-canvasleavepagespace) attribute. Essentially, the effect is that all top-level components are shifted down this number of pixels, and the page height is treated as this number of pixels _less_ than the real page height.
 
 This attribute can be useful on certain mobile devices, when components should not be placed in a top portion of the screen. For example, on iOS devices in certain configurations, this can be set to 20 to avoid placing any component into the status bar area. Or, if using iOS 7.1's 'minimal-ui' viewport parameter, this can be set to 20 to avoid placing any component into the top 20px area of the screen, which if tapped on iPhone in landscape, causes Mobile Safari's address bar and tab bar to be shown.
 
@@ -338,7 +343,7 @@ A declared value of the enum type [BackgroundRepeat](../reference_2.md#type-back
 ## ClassAttr: Canvas.neverUseFilters
 
 ### Description
-Disables automatic use of filters in IE by default. Filters will only be used if [Canvas.useOpacityFilter](#attr-canvasuseopacityfilter) is explicitly set to true on a component.
+Disables automatic use of filters in IE by default. Filters will only be used if [Canvas.useOpacityFilter](Canvas_1.md#attr-canvasuseopacityfilter) is explicitly set to true on a component.
 
 Does not remove filters on already drawn components, or which are applied via CSS.
 
@@ -579,7 +584,7 @@ Default time for performing an animated scroll. If unset, `this.animateTime` wil
 ## Attr: Canvas.leavePageSpace
 
 ### Description
-If set, overrides the global [Canvas.defaultPageSpace](#classattr-canvasdefaultpagespace).
+If set, overrides the global [Canvas.defaultPageSpace](Canvas.md#classattr-canvasdefaultpagespace).
 
 ### Groups
 
@@ -591,7 +596,7 @@ If set, overrides the global [Canvas.defaultPageSpace](#classattr-canvasdefaultp
 ## Attr: Canvas.isGroup
 
 ### Description
-Should a grouping frame be shown around this canvas if a non-empty string has been specified for [Canvas.groupTitle](#attr-canvasgrouptitle).
+Should a grouping frame be shown around this canvas if a non-empty string has been specified for [Canvas.groupTitle](#attr-canvasgrouptitle). Use [Canvas.setIsGroup](#method-canvassetisgroup) to change this setting on an existing canvas.
 
 ### Groups
 
@@ -603,7 +608,7 @@ Should a grouping frame be shown around this canvas if a non-empty string has be
 - [Canvas.groupLabelStyleName](#attr-canvasgrouplabelstylename)
 - [Canvas.groupLabelBackgroundColor](#attr-canvasgrouplabelbackgroundcolor)
 
-**Flags**: IR
+**Flags**: IRW
 
 ---
 ## Attr: Canvas.shadowSoftness
@@ -694,7 +699,7 @@ Example use cases:
 ### Description
 Renders the widget to be partly transparent. A widget's opacity property may be set to any number between 0 (transparent) to 100 (opaque). Null means don't specify opacity directly, 100 is fully opaque. Note that heavy use of opacity may have a performance impact on some older browsers.
 
-In older versions of Internet Explorer (Pre IE9 / HTML5), opacity is achieved through proprietary filters. If [filters have been disabled](#classattr-canvasneverusefilters) within this application developers must set [Canvas.useOpacityFilter](#attr-canvasuseopacityfilter) to true for specific components on which opacity support is required.
+In older versions of Internet Explorer (Pre IE9 / HTML5), opacity is achieved through proprietary filters. If [filters have been disabled](Canvas.md#classattr-canvasneverusefilters) within this application developers must set [Canvas.useOpacityFilter](#attr-canvasuseopacityfilter) to true for specific components on which opacity support is required.
 
 Also note that opacity is incompatible with [backMasks](#attr-canvasusebackmask).
 
@@ -803,7 +808,7 @@ Vertical offset for the [shadow](#attr-canvasshowshadow). Takes precedence over 
 ### Description
 Configures where the Opacity filter is used for IE6-8.
 
-With the default of null, opacity filters are used unless [Canvas.neverUseFilters](#classattr-canvasneverusefilters) has been set. When set explicitly to true, opacity filters are used even if `neverUseFilters` is true.
+With the default of null, opacity filters are used unless [Canvas.neverUseFilters](Canvas.md#classattr-canvasneverusefilters) has been set. When set explicitly to true, opacity filters are used even if `neverUseFilters` is true.
 
 See [IEFilters](../kb_topics/IEFilters.md#kb-topic-internet-explorer-filter-effects) for background.
 
@@ -983,6 +988,8 @@ Set the CSS padding of this component, in pixels. Padding provides space between
 This property sets the same thickness of padding on every side. Differing per-side padding can be set in a CSS style and applied via [Canvas.styleName](#attr-canvasstylename).
 
 Note that CSS padding does not affect the placement of [Canvas.children](#attr-canvaschildren). To provide a blank area around children, either use [CSS margins](#attr-canvasmargin) or use a [Layout](Layout.md#class-layout) as the parent instead, and use properties such as [Layout.layoutMargin](Layout.md#attr-layoutlayoutmargin) to create blank space.
+
+When a [grouping frame](#attr-canvasisgroup) is applied, including on the first draw of an initially-grouped canvas, [Canvas.groupPadding](#attr-canvasgrouppadding) replaces this property's value. The previous value is saved for restoration when the frame is removed. While this override is active, reading this property or calling `getPadding()` returns the group padding, not the saved value. Calling [Canvas.setPadding](Canvas_2.md#method-canvassetpadding) while grouped updates both this property and [Canvas.groupPadding](#attr-canvasgrouppadding) immediately, without changing the saved ungrouped padding. The new group padding is also used on subsequent redraws and regrouping. Null group padding clears the explicit padding, allowing [Canvas.styleName](#attr-canvasstylename) to supply it. Removing the frame restores the saved padding, including a null value.
 
 ### Groups
 
@@ -1180,17 +1187,13 @@ When this Canvas is included as a member in a Layout, layoutAlign controls align
 ## Attr: Canvas.groupPadding
 
 ### Description
-Padding to apply inside the border when this canvas is showing a group [border and label](#attr-canvasisgroup).
+Padding to apply inside the border when this canvas is showing a group [border and label](#attr-canvasisgroup). This value replaces [Canvas.padding](#attr-canvaspadding) when the frame is applied, including on the first draw of an initially-grouped canvas, so `getPadding()` returns the group padding. See [Canvas.padding](#attr-canvaspadding) for how the ungrouped value is saved and restored. Calling [Canvas.setPadding](Canvas_2.md#method-canvassetpadding) while grouped also updates this property; [Canvas.setGroupPadding](#method-canvassetgrouppadding) can update it in either grouping state. If null, grouping clears the explicit padding so [Canvas.styleName](#attr-canvasstylename) supplies it, including on subsequent redraws and regrouping. Space reserved for the group label by [Canvas.leaveGroupLabelSpace](#attr-canvasleavegrouplabelspace) is independent of this setting.
 
 ### Groups
 
 - appearance
 
-### See Also
-
-- [Canvas.isGroup](#attr-canvasisgroup)
-
-**Flags**: IR
+**Flags**: IRW
 
 ---
 ## Attr: Canvas.height
@@ -1241,7 +1244,7 @@ Specifies the cursor image to display when the mouse pointer is over this widget
 
 ### Description
 This Canvas's immediate parent, if any. May be specified as a Canvas instance or the String ID of a Canvas.  
-Can be initialized, but any subsequent manipulation should be via [addChild()](#method-canvasaddchild) and [removeChild()](#method-canvasremovechild) calls on the parent. The parent Canvas should be fetched using [getParentCanvas()](#method-canvasgetparentcanvas).
+Can be initialized, but any subsequent manipulation should be via [addChild()](#method-canvasaddchild) and [removeChild()](Canvas_2.md#method-canvasremovechild) calls on the parent. The parent Canvas should be fetched using [getParentCanvas()](#method-canvasgetparentcanvas).
 
 See [containment](../kb_topics/containment.md#kb-topic-component-containment-and-hierarchy) for an overview of parent/child relationships.
 
@@ -1368,13 +1371,15 @@ The advantage of forwarding events is that it allows hover CSS or any other even
 ## Attr: Canvas.groupBorderCSS
 
 ### Description
-Sets the style for the grouping frame around the canvas. Only necessary when showing a [grouping frame](#attr-canvasisgroup).
+Sets the style for the grouping frame around the canvas. Only necessary when showing a [grouping frame](#attr-canvasisgroup). Applying the frame replaces [Canvas.border](#attr-canvasborder), including on the first draw of an initially-grouped canvas, so `getBorder()` returns the group border. See [Canvas.border](#attr-canvasborder) for how the ungrouped value is saved and restored. Calling [Canvas.setBorder](#method-canvassetborder) while grouped also updates this property; [Canvas.setGroupBorderCSS](#method-canvassetgroupbordercss) can update it in either grouping state.
+
+The canvas's [Canvas.borderRadius](#attr-canvasborderradius) also applies to this frame.
 
 ### Groups
 
 - appearance
 
-**Flags**: IR
+**Flags**: IRW
 
 ---
 ## Attr: Canvas.definingPropertyNameOptions
@@ -1442,7 +1447,9 @@ Set the CSS border of this component, as a CSS string including border-width, bo
 
 This property applies the same border to all four sides of this component. Different per-side borders can be set in a CSS style and applied via [Canvas.styleName](#attr-canvasstylename).
 
-If a [grouping frame](#attr-canvasisgroup) is being shown then border is derived from the [Canvas.groupBorderCSS](#attr-canvasgroupbordercss) attribute, not from the explicit border property.
+A CSS border value does not set or reset the corner radius. Use [Canvas.borderRadius](#attr-canvasborderradius) to specify rounded corners.
+
+When a [grouping frame](#attr-canvasisgroup) is applied, including on the first draw of an initially-grouped canvas, [Canvas.groupBorderCSS](#attr-canvasgroupbordercss) replaces this property's value. The previous value is saved for restoration when the frame is removed. While grouped, reading this property or calling `getBorder()` returns the group border, not the saved value. Calling [Canvas.setBorder](#method-canvassetborder) while grouped updates both this property and [Canvas.groupBorderCSS](#attr-canvasgroupbordercss) immediately, without changing the saved ungrouped border. The new group border is also used on subsequent redraws and regrouping. Restoring an unset border allows [Canvas.styleName](#attr-canvasstylename) to supply the border again.
 
 ### Groups
 
@@ -1863,6 +1870,10 @@ How thick should we make the scrollbars for this canvas. This only applies if [C
 ### Description
 The CSS border-radius for this widget. The value can be any variant of a CSS border-radius value - that is, from 1 to 4 space-separated px values, where one value affects all corners and 4 values affects individual corners. For example "10px" applies a 10px radius to all corners, where "5px 10px 15px 20px" applies a different radius to each corner, clockwise from Top-Left: "TL TR BR BL". A plain Integer is applied as a px radius to all corners.
 
+This property is independent of [Canvas.border](#attr-canvasborder): setting the border's width, style or color does not set or reset the radius. An explicit radius overrides ordinary radius rules from [Canvas.styleName](#attr-canvasstylename). CSS declarations marked `!important` still follow the normal CSS cascade. When null, no explicit radius is emitted, leaving the CSS style's radius in effect.
+
+This radius also applies while a [grouping frame](#attr-canvasisgroup) is shown.
+
 ### Groups
 
 - appearance
@@ -2223,7 +2234,7 @@ Native browser scrollbars are slightly faster simply because there are less Smar
 
 SmartClient is always aware of the size of the scrollbar, regardless of whether native or custom scrollbars are used, and regardless of what operating system and/or operating system "theme" or "skin" is in use. This means SmartClient will correctly report the [viewport size](#method-canvasgetviewportheight), that is, the interior area of the widget excluding space taken by scrollbars, which is key for exactly filling a component with content without creating unnecessary scrolling.
 
-The `showCustomScrollbars` setting is typically overridden in load\_skin.js in order to change the default for all SmartClient components at once. This may be achieved via the static [Canvas.setShowCustomScrollbars](#classmethod-canvassetshowcustomscrollbars) method or via a simple addProperties block , like so:
+The `showCustomScrollbars` setting is typically overridden in load\_skin.js in order to change the default for all SmartClient components at once. This may be achieved via the static [Canvas.setShowCustomScrollbars](Canvas.md#classmethod-canvassetshowcustomscrollbars) method or via a simple addProperties block , like so:
 
 ```
      isc.Canvas.addProperties({ showCustomScrollbars:false });
@@ -2687,7 +2698,7 @@ If [this.showHover](#attr-canvasshowhover) is true, this property can be used to
 ### Description
 Array of all Canvii that are immediate children of this Canvas.
 
-Use [Canvas.addChild](#method-canvasaddchild) and [Canvas.removeChild](#method-canvasremovechild) to add and remove children after a Canvas has been created/drawn.
+Use [Canvas.addChild](#method-canvasaddchild) and [Canvas.removeChild](Canvas_2.md#method-canvasremovechild) to add and remove children after a Canvas has been created/drawn.
 
 As an alternative to providing Canvas instances, the `children` array may also contain Strings. A String will be assumed to be a global ID, and a Canvas with that ID will be used as the child.
 
@@ -2851,7 +2862,7 @@ If unset percentage sizing is based on
 ## Attr: Canvas.isPrinting
 
 ### Description
-This boolean flag will be set to true by framework logic while generating print HTML for this widget as a result to a call to [Canvas.showPrintPreview](#classmethod-canvasshowprintpreview) (or just [Canvas.getPrintHTML](#method-canvasgetprinthtml)). Note that this flag is set recursively as parent widgets generate print HTML for their children.
+This boolean flag will be set to true by framework logic while generating print HTML for this widget as a result to a call to [Canvas.showPrintPreview](Canvas.md#classmethod-canvasshowprintpreview) (or just [Canvas.getPrintHTML](#method-canvasgetprinthtml)). Note that this flag is set recursively as parent widgets generate print HTML for their children.
 
 This is a read-only property and should not be modified by application code.
 
@@ -3309,7 +3320,7 @@ By default SmartClient auto-assigns tab-indices, ensuring focusable widgets are 
 
 For more information on automatic tab index assignment, including recommended approaches for customizing tab order assignation, see the [tabOrderOverview](../kb_topics/tabOrderOverview.md#kb-topic-tab-order-overview). Developers may call [Canvas.clearExplicitTabIndex](#method-canvasclearexplicittabindex) to clear any explicitly assigned tab index, and have the widget participate in automatic tab position allocation.
 
-`canvas.tabIndex` cannot be set to greater than [Canvas.TAB_INDEX_FLOOR](#classattr-canvastab_index_floor) - as we reserve the values above this range for auto-assigned tab-indices.
+`canvas.tabIndex` cannot be set to greater than [Canvas.TAB_INDEX_FLOOR](Canvas.md#classattr-canvastab_index_floor) - as we reserve the values above this range for auto-assigned tab-indices.
 
 ### Groups
 
@@ -4063,7 +4074,7 @@ See also [Canvas.shadowColor](#attr-canvasshadowcolor), [Canvas.shadowDepth](#at
 ## Attr: Canvas.printChildrenAbsolutelyPositioned
 
 ### Description
-Should this canvas print its children absolutely positioned when generating [printable HTML](#classmethod-canvasgetprinthtml).
+Should this canvas print its children absolutely positioned when generating [printable HTML](Canvas.md#classmethod-canvasgetprinthtml).
 
 By default explicitly specified absolute positioning and sizing is ignored when generating print HTML. This is done intentionally: there is no way for the framework to predict how explicit sizes will translate to a the printed page and if HTML for printing includes the same absolute positioning and sizing as is displayed within an application it is very common to encounter undesirable effects, such as seeing tables get broken over several pages horizontally when there is enough room to print them on a single page of paper.
 
@@ -4182,7 +4193,7 @@ If `this.showHover` is true, this property can be used to customize the alignmen
 
 ### Description
 This Canvas's immediate parent, if any. May be specified as a Canvas instance or the String ID of a Canvas.  
-Can be initialized, but any subsequent manipulation should be via [addChild()](#method-canvasaddchild) and [removeChild()](#method-canvasremovechild) calls on the parent.
+Can be initialized, but any subsequent manipulation should be via [addChild()](#method-canvasaddchild) and [removeChild()](Canvas_2.md#method-canvasremovechild) calls on the parent.
 
 ### Groups
 
@@ -4426,7 +4437,6 @@ In addition, an application can put custom data into the ruleScope via [Canvas.p
 
 #### ValuesManager and RuleContext
 [\*WhenRules](../kb_topics/ruleCriteria.md#kb-topic-dynamic-rules) in member forms of a ValuesManager using short-form field references (i.e. no prefix) apply to the particular member form. To reference field values outside of the form use the dataSource-prefixed path (e.g. Customer.email).
-
 ## Troubleshooting RuleScope issues
 
 The ruleScope system consists of two major parts: managing the rule context and using the rule context. The former is handled by [Canvas.provideRuleContext](#method-canvasproviderulecontext) and [Canvas.removeRuleContext](#method-canvasremoverulecontext). Users of rule context are the criteria-based rules noted above.
@@ -4822,7 +4832,7 @@ The [Canvas.dragMaskType](#attr-canvasdragmasktype) property controls what kind 
 ## ClassMethod: Canvas.getSnapPosition
 
 ### Description
-Return the position for `snapper` to be placed in order to "snap to" an edge or corner of `target`, in the same sense as [Canvas.snapTo](#attr-canvassnapto).
+Return the position for `snapper` to be placed in order to "snap to" an edge or corner of `target`, in the same sense as [Canvas.snapTo](Canvas_1.md#attr-canvassnapto).
 
 Default for `snapEdge` is the **opposite** edge or corner from `snapTo`. For example, `snapTo` of "T" (top) means `snapEdge` will default to "B" (bottom), so the returned coordinates would place `snapper` centered along the top edge of `target`. A `snapTo` of "TL" (top left) means `snapEdge` will default to "BR" (bottom right), so the returned coordinates would place the bottom right of `snapper` at the top left corner of `target`.
 
@@ -4881,7 +4891,7 @@ Generate and show a [PrintWindow](../reference.md#class-printwindow) containing 
 ### Description
 In some platform/browser configurations, scrollable regions do not show visible scrollbars until the user attempts to interact with the region. The interaction to show the scrollbar varies by browser/OS but may include starting a trackpad scroll or simply rolling over the scrollable element.
 
-This method changes the value of [Canvas.nativeAutoHideScrollbars](#attr-canvasnativeautohidescrollbars).
+This method changes the value of [Canvas.nativeAutoHideScrollbars](Canvas_1.md#attr-canvasnativeautohidescrollbars).
 
 ### Parameters
 
@@ -4891,8 +4901,8 @@ This method changes the value of [Canvas.nativeAutoHideScrollbars](#attr-canvasn
 
 ### See Also
 
-- [Canvas.scrollbarConstructor](#attr-canvasscrollbarconstructor)
-- [Canvas.showCustomScrollbars](#attr-canvasshowcustomscrollbars)
+- [Canvas.scrollbarConstructor](Canvas_1.md#attr-canvasscrollbarconstructor)
+- [Canvas.showCustomScrollbars](Canvas_1.md#attr-canvasshowcustomscrollbars)
 
 ---
 ## ClassMethod: Canvas.getAllCanvases
@@ -4933,7 +4943,7 @@ The optional `criteria` parameter allows further filtering using [AdvancedCriter
 ## ClassMethod: Canvas.getPrintPreview
 
 ### Description
-Creates a printCanvas containing the full printHTML for a series of components, passing it as an argument to the callback (if supplied) when it fires. Note that the generated preview canvas will be drawn automatically by this method. Developers may also explicitly create a PrintCanvas instance and populate it with HTML derived from the [Canvas.getPrintHTML](#method-canvasgetprinthtml) for finer grained control over when the print canvas is drawn.
+Creates a printCanvas containing the full printHTML for a series of components, passing it as an argument to the callback (if supplied) when it fires. Note that the generated preview canvas will be drawn automatically by this method. Developers may also explicitly create a PrintCanvas instance and populate it with HTML derived from the [Canvas.getPrintHTML](Canvas_1.md#method-canvasgetprinthtml) for finer grained control over when the print canvas is drawn.
 
 ### Parameters
 
@@ -5040,7 +5050,7 @@ Changes the system-wide [Canvas.allowExternalFilters](#classattr-canvasallowexte
 ## ClassMethod: Canvas.getTopLevelComponents
 
 ### Description
-Returns an array of all top-level [Canvases](#class-canvas) that are currently drawn and visible, ordered by zIndex (highest zIndex first). This method is useful for error reporting and debugging, as it provides a snapshot of the visible UI state at any given moment.
+Returns an array of all top-level [Canvases](Canvas_1.md#class-canvas) that are currently drawn and visible, ordered by zIndex (highest zIndex first). This method is useful for error reporting and debugging, as it provides a snapshot of the visible UI state at any given moment.
 
 A "top-level" component is one that has no parent canvas and is drawn and visible. This method filters the list to include only components that are actually visible to the user, excluding components that are completely occluded by other components with higher zIndex values.
 
@@ -5366,7 +5376,7 @@ Changes the system-wide [Canvas.neverUseFilters](#classattr-canvasneverusefilter
 ### Description
 Whether to use the browser's native scrollbars or SmartClient-based scrollbars by default for all canvases.
 
-This method changes the default value of [Canvas.showCustomScrollbars](#attr-canvasshowcustomscrollbars).
+This method changes the default value of [Canvas.showCustomScrollbars](Canvas_1.md#attr-canvasshowcustomscrollbars).
 
 ### Parameters
 
@@ -5376,14 +5386,14 @@ This method changes the default value of [Canvas.showCustomScrollbars](#attr-can
 
 ### See Also
 
-- [Canvas.scrollbarConstructor](#attr-canvasscrollbarconstructor)
-- [Canvas.nativeAutoHideScrollbars](#attr-canvasnativeautohidescrollbars)
+- [Canvas.scrollbarConstructor](Canvas_1.md#attr-canvasscrollbarconstructor)
+- [Canvas.nativeAutoHideScrollbars](Canvas_1.md#attr-canvasnativeautohidescrollbars)
 
 ---
 ## ClassMethod: Canvas.getById
 
 ### Description
-Retrieve a Canvas by its global [ID](#attr-canvasid).
+Retrieve a Canvas by its global [ID](Canvas_1.md#attr-canvasid).
 
 This method will only return instances of the class on which the static method was invoked.
 
@@ -5486,7 +5496,7 @@ Check if an event is within an "edge" of this canvas.
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| edgeMask | [Array of EdgeName](#type-array-of-edgename) | true | — | Array of legal edges. Default is all the edges that allow resizing (see [Canvas.resizeFrom](#attr-canvasresizefrom)) |
+| edgeMask | [Array of EdgeName](#type-array-of-edgename) | true | — | Array of legal edges. Default is all the edges that allow resizing (see [Canvas.resizeFrom](Canvas_1.md#attr-canvasresizefrom)) |
 
 ### Returns
 
@@ -5499,7 +5509,7 @@ Check if an event is within an "edge" of this canvas.
 
 ### See Also
 
-- [Canvas.resizeFrom](#attr-canvasresizefrom)
+- [Canvas.resizeFrom](Canvas_1.md#attr-canvasresizefrom)
 
 ---
 ## ClassMethod: Canvas.setDefaultPageSpace
@@ -5519,7 +5529,7 @@ Changes the global [Canvas.defaultPageSpace](#classattr-canvasdefaultpagespace).
 ## ClassMethod: Canvas.imgHTML
 
 ### Description
-Generates the HTML for an image. Also available at the [instance level](#method-canvasimghtml).
+Generates the HTML for an image. Also available at the [instance level](Canvas_1.md#method-canvasimghtml).
 
 ### Parameters
 
@@ -5670,7 +5680,7 @@ See [gettingCanvasSize](../kb_topics/gettingCanvasSize.md#kb-topic-determining-t
 ## Method: Canvas.handleDataContextCriteria
 
 ### Description
-Called on each [DataBoundComponent](../reference.md#interface-databoundcomponent) when `sharedCriteria` from a [Canvas.dataContext](#attr-canvasdatacontext) applies to this component's DataSource. The default implementation combines the supplied criteria with the component's existing criteria via [DataSource.combineCriteria](DataSource.md#classmethod-datasourcecombinecriteria) and re-fetches.
+Called on each [DataBoundComponent](../reference.md#interface-databoundcomponent) when `sharedCriteria` from a [Canvas.dataContext](#attr-canvasdatacontext) applies to this component's DataSource. The default implementation applies the shared criteria as part of the component's [implicit criteria](DataBoundComponent.md#method-databoundcomponentgetimplicitcriteria), leaving its own criteria unchanged, and re-fetches.
 
 **Type compatibility rules**: a criterion matches a DataSource field when the field name exists and the types are compatible:
 
@@ -5679,16 +5689,18 @@ Called on each [DataBoundComponent](../reference.md#interface-databoundcomponent
 *   A `time` (logicalTime) criterion value matches a `datetime` field and is applied as a partial constraint on the time portion
 *   All other type mismatches: criterion is skipped for that component
 
-For singular-arity components ([DynamicForm](DynamicForm.md#class-dynamicform), [DetailViewer](DetailViewer.md#class-detailviewer)), the default is a no-op since criteria do not apply to single-record views. Override to opt in.
+Single-record components ([DynamicForm](DynamicForm.md#class-dynamicform), [DetailViewer](DetailViewer.md#class-detailviewer)) do not receive shared criteria, and this method is not called for them, unless they set [useDataContextCriteria](#attr-canvasusedatacontextcriteria):true.
 
 Return `false` to suppress the default re-fetch entirely.
+
+The shared criteria arrive in the shape they are published in ([Canvas.setDataContextCriteria](#method-canvassetdatacontextcriteria)): a [DataContextCriteriaSettings](../reference_2.md#object-datacontextcriteriasettings) carrying only [criteria](DataContextCriteriaSettings.md#attr-datacontextcriteriasettingscriteria), [beforeCriteria](DataContextCriteriaSettings.md#attr-datacontextcriteriasettingsbeforecriteria) and [afterCriteria](DataContextCriteriaSettings.md#attr-datacontextcriteriasettingsaftercriteria), each the AND of every contribution that applies to this component, or null. The object is always passed, and is a copy, so an override may keep or modify it. `afterCriteria` are those published for this component's DataSource; a fetch carries them only when its request can interpret them (see [Canvas.setDataContextCriteria](#method-canvassetdatacontextcriteria)). To fetch with them, pass `criteria` as the criteria and the other two as request properties.
 
 ### Parameters
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| criteria | [AdvancedCriteria](#type-advancedcriteria) | false | — | criteria filtered to fields that match this component's DataSource |
-| source | [String](#type-string) | false | — | "global" for field-matched criteria, or a DataSource ID for DS-specific criteria |
+| source | [String](#type-string) | false | — | "global" when only field-matched criteria apply, otherwise this component's DataSource ID |
+| criteria | [DataContextCriteriaSettings](#type-datacontextcriteriasettings) | false | — | the shared criteria that apply to this component |
 
 ### Returns
 
@@ -5962,6 +5974,22 @@ Note that if passed an absolute path (starting with "/" or "http://" for example
 - images
 
 **Flags**: A
+
+---
+## Method: Canvas.setBorderRadius
+
+### Description
+Updates [Canvas.borderRadius](#attr-canvasborderradius). Passing null removes the explicit radius so that the radius supplied by [Canvas.styleName](#attr-canvasstylename) can take effect. Also updates the visible radius while a [grouping frame](#attr-canvasisgroup) is shown.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| borderRadius | [Integer](../reference_2.md#type-integer)|[String](#type-string) | false | — | the corner radius, or null to clear it |
+
+### Groups
+
+- appearance
 
 ---
 ## Method: Canvas.mouseWheel
@@ -6313,6 +6341,22 @@ Hides the click mask associated with this canvas.
 - [Canvas.showClickMask](#method-canvasshowclickmask)
 
 ---
+## Method: Canvas.setGroupPadding
+
+### Description
+Updates [Canvas.groupPadding](#attr-canvasgrouppadding). If grouped, immediately applies the new padding without changing the saved ungrouped [Canvas.padding](#attr-canvaspadding). Otherwise, the value is used the next time grouping is applied. Passing null clears the explicit group padding, allowing [Canvas.styleName](#attr-canvasstylename) to apply.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| groupPadding | [Integer](../reference_2.md#type-integer) | false | — | padding for the grouping frame, or null to clear it |
+
+### Groups
+
+- appearance
+
+---
 ## Method: Canvas.focusInPreviousTabElement
 
 ### Description
@@ -6490,7 +6534,7 @@ Returns true if element is a descendant of this widget (i.e., exists below this 
 ### Description
 Set the CSS border of this component, as a CSS string including border-width, border-style, and/or color (eg "2px solid blue").
 
-This property applies the same border to all four sides of this component. Different per-side borders can be set in a CSS style and applied via [Canvas.styleName](#attr-canvasstylename).
+This property applies the same border to all four sides of this component. Different per-side borders can be set in a CSS style and applied via [Canvas.styleName](#attr-canvasstylename). While grouped, updates both [Canvas.border](#attr-canvasborder) and [Canvas.groupBorderCSS](#attr-canvasgroupbordercss) immediately, preserving the saved ungrouped border described by [Canvas.border](#attr-canvasborder).
 
 ### Parameters
 
@@ -6613,24 +6657,25 @@ Note: If you attempt to call this API before the widget is drawn, the call will 
 ## Method: Canvas.setDataContextCriteria
 
 ### Description
-Add the passed criteria to the [sharedCriteria](DataContext.md#attr-datacontextsharedcriteria) section of this Canvas's [Canvas.dataContext](#attr-canvasdatacontext).
+Publishes a contribution to the [sharedCriteria](DataContext.md#attr-datacontextsharedcriteria) section of this Canvas's [Canvas.dataContext](#attr-canvasdatacontext): criteria that every component [participating in sharedCriteria](#attr-canvasusedatacontextcriteria) combines into its fetches. The [contribution](../reference_2.md#object-datacontextcriteriasettings) holds the criteria and says which DataSources they apply to and who contributed them.
 
-Components [participating in sharedCriteria](#attr-canvasusedatacontextcriteria) will react to the newly specified criteria.
+**Three kinds of criteria.** A contribution may carry any of:
 
-Criteria passed in with no explicitly specified dataSource will be applied to all dataSources by field-name match. Criteria passed in with a specified dataSource (or set of dataSources) will only apply within those dataSource(s).
+*   [beforeCriteria](DataContextCriteriaSettings.md#attr-datacontextcriteriasettingsbeforecriteria) - criteria on the records, applied to each component's fetches as [DSRequest.beforeCriteria](DSRequest.md#attr-dsrequestbeforecriteria): before aggregation by a component that aggregates, as ordinary criteria by one that does not. A test on raw records means the same to every component, so this is the kind for filter controls such as a [Slicer](Slicer.md#class-slicer) or a date range, and the kind selection sharing publishes.
+*   [afterCriteria](DataContextCriteriaSettings.md#attr-datacontextcriteriasettingsaftercriteria) - criteria on totals, applied as [DSRequest.afterCriteria](DSRequest.md#attr-dsrequestaftercriteria) only by a component whose request groups, and groups or summarizes every field the criteria test. Every other component ignores them (logged at DEBUG level): it has no such totals, and applying the test to its records would contradict the components that do filter their totals with it.
+*   [criteria](DataContextCriteriaSettings.md#attr-datacontextcriteriasettingscriteria) - ordinary criteria, combined into each component's criteria; a component that aggregates splits them per field like any criteria of its request (see the [Server Summaries\\n Overview](../kb_topics/serverSummaries.md#kb-topic-server-summaries)).
 
-Shared criteria on the dataContext are additive and keyed by DataSource plus `contributorID`. When you pass in new criteria for some contributor, pre-existing DataSource criteria with the same contributorID will be replaced. Each contributor's criteria are combined with every other contributor's criteria to form the final shared criteria. Note criteria with no explicit contributorID will belong to the same anonymous contributor.
+**Contributors.** Contributions are keyed by DataSource plus [contributorID](DataContextCriteriaSettings.md#attr-datacontextcriteriasettingscontributorid): a call replaces all three sets the same contributor last published for those DataSources, and the contributions of different contributors are AND-combined. A contribution with no contributorID belongs to a single anonymous contributor. Publish a contribution carrying none of the three sets to withdraw it.
 
-Use the `settings` parameter to control whether the criteria should also impact components bound to related DataSources, plus the full contribution envelope — see [DataContextCriteriaSettings](#object-datacontextcriteriasettings).
+**Scope.** With [dataSource](DataContextCriteriaSettings.md#attr-datacontextcriteriasettingsdatasource) set, the contribution applies to components bound to those DataSources, and with [filterRelated](DataContextCriteriaSettings.md#attr-datacontextcriteriasettingsfilterrelated) also to components bound to related DataSources. With no `dataSource`, the contribution's `criteria` apply to every DataSource by field-name match. This global form carries `criteria` only and has a single slot: each call replaces the previous one, and a `contributorID` is ignored with a warning. Global criteria are not saved with the screen.
+
+To read the published state back, use [Canvas.getDataContextCriteria](#method-canvasgetdatacontextcriteria) and [Canvas.getDataContextRequestProperties](#method-canvasgetdatacontextrequestproperties).
 
 ### Parameters
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| criteria | [Criteria](../reference_2.md#type-criteria)|[AdvancedCriteria](#type-advancedcriteria) | false | — | the criteria to add. Use `null` to clear the criteria for this contributor. |
-| dsID | [String](#type-string)|[Array of String](#type-array-of-string) | true | — | DataSource ID or array of IDs to scope the criteria. When omitted, the criteria are applied globally by field-name match across all DataSources. |
-| settings | [Boolean](#type-boolean)|[DataContextCriteriaSettings](#type-datacontextcriteriasettings) | true | — | settings object indicating contributor ID and other properties. If a boolean value is passed rather than a settings object, it will be used as shorthand for [filterRelated](#attr-datacontextcriteriasettingsfilterrelated). |
-| contributorID | [String](#type-string) | true | — | If a settings object was not passed in, the contributor ID may be passed directly to the method as the fourth argument. |
+| contribution | [DataContextCriteriaSettings](#type-datacontextcriteriasettings) | false | — | the contribution to publish |
 
 ### Groups
 
@@ -6797,6 +6842,22 @@ Show a canvas by growing it vertically to its fully drawn height over a period o
 - animation
 
 ---
+## Method: Canvas.setIsGroup
+
+### Description
+Changes [Canvas.isGroup](#attr-canvasisgroup), updating the grouping frame and label without re-creating the canvas. The frame is shown only when the grouping conditions described by [Canvas.isGroup](#attr-canvasisgroup) are met.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| isGroup | [boolean](../reference.md#type-boolean) | false | — | whether to enable grouping |
+
+### Groups
+
+- appearance
+
+---
 ## Method: Canvas.animateFade
 
 ### Description
@@ -6954,7 +7015,13 @@ Return the page-relative bottom coordinate of this object, in pixels.
 ## Method: Canvas.getDataContextCriteria
 
 ### Description
-Returns the current [AdvancedCriteria](../reference.md#object-advancedcriteria) from the applicable ${isc.DocUtils.linkForRef('attr:Canvas.dataContext','dataContext\\'s')} `sharedCriteria`.
+Returns the current ordinary [criteria](DataContextCriteriaSettings.md#attr-datacontextcriteriasettingscriteria) of the applicable ${isc.DocUtils.linkForRef('attr:Canvas.dataContext','dataContext\\'s')} `sharedCriteria`. Before- and after-aggregation criteria are returned by [Canvas.getDataContextRequestProperties](#method-canvasgetdatacontextrequestproperties), so a fetch that should honor all of the shared criteria passes both:
+```
+   dataSource.fetchData(canvas.getDataContextCriteria(dsID), callback,
+                        canvas.getDataContextRequestProperties(dsID));
+ 
+```
+This is correct whether or not the fetch aggregates; to aggregate, add [groupBy](DSRequest.md#attr-dsrequestgroupby) and [summaryFunctions](DSRequest.md#attr-dsrequestsummaryfunctions) to the object the second method returns. Using only this method misses criteria published as before- or after-aggregation criteria, such as those of a [Slicer](Slicer.md#class-slicer).
 
 When called with no arguments, returns the global (non-DS-specific) shared criteria. When called with a DataSource ID, returns criteria specific to that DataSource, or null.
 
@@ -7396,6 +7463,28 @@ Returns true if the widget and all widgets above it in the containment hierarchy
 **Deprecated**
 
 ---
+## Method: Canvas.getDataContextRequestProperties
+
+### Description
+Returns the before- and after-aggregation criteria published to the applicable ${isc.DocUtils.linkForRef('attr:Canvas.dataContext','dataContext\\'s')} `sharedCriteria` for a DataSource, as a [DSRequest](../reference_2.md#object-dsrequest) properties block `{beforeCriteria, afterCriteria}` holding whichever of the two exist (an empty object when neither does). Pass it as the request properties of a fetch, beside [Canvas.getDataContextCriteria](#method-canvasgetdatacontextcriteria) as its criteria - see that method for the pattern. The two are kept apart rather than combined because only the DataSource, given the whole request, decides which criteria filter records and which filter totals.
+
+The `afterCriteria` are returned as published; a request that does not group, or does not group or summarize every field they test, should leave them out (see [Canvas.setDataContextCriteria](#method-canvassetdatacontextcriteria)).
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| dataSourceID | [String](#type-string) | false | — | DataSource ID |
+
+### Returns
+
+`[DSRequest](#type-dsrequest)` — the shared before / after criteria, as request properties
+
+### Groups
+
+- dataContext
+
+---
 ## Method: Canvas.getHoverHTML
 
 ### Description
@@ -7707,7 +7796,7 @@ Horizontally scrolls the content of the widget to 0
 Returns the outer DOM element of this Canvas. This method is provided for the very rare cases where a programmer needs to examine the DOM hierarchy created by a drawn SmartClient component.
 
 Direct manipulation of the DOM elements created by SmartClient components is not supported. SmartClient components should be rendered or cleared using standard methods such as [Canvas.draw](#method-canvasdraw), [Canvas.clear](#method-canvasclear). If direct integration with existing DOM structures is required, this should be achieved via the [Canvas.htmlElement](#attr-canvashtmlelement) attribute, rather than by attempting to move the component's outer element via native browser APIs.  
-The content of SmartClient components' DOM elements should also not be directly manipulated using native browser APIs - standard methods such as [Canvas.setContents](#method-canvassetcontents), [Canvas.addChild](#method-canvasaddchild), [Canvas.removeChild](#method-canvasremovechild), [Canvas.markForRedraw](#method-canvasmarkforredraw) and [Canvas.redraw](#method-canvasredraw) should be used instead.
+The content of SmartClient components' DOM elements should also not be directly manipulated using native browser APIs - standard methods such as [Canvas.setContents](#method-canvassetcontents), [Canvas.addChild](#method-canvasaddchild), [Canvas.removeChild](Canvas_2.md#method-canvasremovechild), [Canvas.markForRedraw](#method-canvasmarkforredraw) and [Canvas.redraw](#method-canvasredraw) should be used instead.
 
 In some cases, the element returned may match the element returned by [Canvas.getContentElement](#method-canvasgetcontentelement), but this will not always be the case.
 
@@ -7750,6 +7839,22 @@ Return the top coordinate of this object, relative to its enclosing context, in 
 ### Groups
 
 - positioning
+
+---
+## Method: Canvas.setGroupBorderCSS
+
+### Description
+Updates [Canvas.groupBorderCSS](#attr-canvasgroupbordercss). If grouped, immediately applies the new border without changing the saved ungrouped [Canvas.border](#attr-canvasborder). Otherwise, the value is used the next time grouping is applied. Passing null clears the explicit group border, allowing [Canvas.styleName](#attr-canvasstylename) to apply.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| groupBorderCSS | [String](#type-string) | false | — | CSS border for the grouping frame, or null to clear it |
+
+### Groups
+
+- appearance
 
 ---
 ## Method: Canvas.getPageTop
@@ -8078,7 +8183,7 @@ Return the right coordinate of this object as rendered, relative to its enclosin
 Returns the DOM element for this Canvas which contains the [Canvas.contents](#attr-canvascontents), or for [parent components](#method-canvasgetparentcanvas), the DOM elements for any drawn children. This method is provided for the very rare cases where a programmer needs to examine the DOM hierarchy created by a drawn SmartClient component.
 
 Direct manipulation of the DOM elements created by SmartClient components is not supported. SmartClient components should be rendered or cleared using standard methods such as [Canvas.draw](#method-canvasdraw), [Canvas.clear](#method-canvasclear). If direct integration with existing DOM structures is required, this should be achieved via the [Canvas.htmlElement](#attr-canvashtmlelement) attribute, rather than by attempting to move the component's outer element via native browser APIs.  
-The content of SmartClient components' DOM elements should also not be directly manipulated using native browser APIs - standard methods such as [Canvas.setContents](#method-canvassetcontents), [Canvas.addChild](#method-canvasaddchild), [Canvas.removeChild](#method-canvasremovechild), [Canvas.markForRedraw](#method-canvasmarkforredraw) and [Canvas.redraw](#method-canvasredraw) should be used instead.
+The content of SmartClient components' DOM elements should also not be directly manipulated using native browser APIs - standard methods such as [Canvas.setContents](#method-canvassetcontents), [Canvas.addChild](#method-canvasaddchild), [Canvas.removeChild](Canvas_2.md#method-canvasremovechild), [Canvas.markForRedraw](#method-canvasmarkforredraw) and [Canvas.redraw](#method-canvasredraw) should be used instead.
 
 In some cases, the element returned may match the element returned by [Canvas.getOuterElement](#method-canvasgetouterelement), but this will not always be the case.
 
@@ -8191,7 +8296,7 @@ Also note that developers should not `destroy()` or `markForDestroy()` a compone
 ### Description
 Sets the opacity for the widget to the newOpacity value. This newOpacity value must be within the range of 0 (transparent) to 100 (opaque). Null means don't specify opacity directly. Note that heavy use of opacity may have a performance impact on some older browsers.
 
-In older versions of Internet Explorer (Pre IE9 / HTML5), opacity is achieved through proprietary filters. If [filters have been disabled](#classattr-canvasneverusefilters) within this application developers must set [Canvas.useOpacityFilter](#attr-canvasuseopacityfilter) to true for specific components on which opacity support is required.
+In older versions of Internet Explorer (Pre IE9 / HTML5), opacity is achieved through proprietary filters. If [filters have been disabled](Canvas.md#classattr-canvasneverusefilters) within this application developers must set [Canvas.useOpacityFilter](#attr-canvasuseopacityfilter) to true for specific components on which opacity support is required.
 
 Also note that opacity is incompatible with [backMasks](#attr-canvasusebackmask).
 
@@ -9074,7 +9179,7 @@ Developers may also call [Canvas.clearExplicitTabIndex](#method-canvasclearexpli
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| tabIndex | [number](#type-number) | false | — | New tabIndex for this widget. Must be less than [Canvas.TAB_INDEX_FLOOR](#classattr-canvastab_index_floor) to avoid interfering with auto-assigned tab indices on the page. |
+| tabIndex | [number](#type-number) | false | — | New tabIndex for this widget. Must be less than [Canvas.TAB_INDEX_FLOOR](Canvas.md#classattr-canvastab_index_floor) to avoid interfering with auto-assigned tab indices on the page. |
 
 ### Groups
 
@@ -9490,7 +9595,7 @@ Generate and show a [PrintWindow](../reference.md#class-printwindow) containing 
 
 ### See Also
 
-- [Canvas.showPrintPreview](#classmethod-canvasshowprintpreview)
+- [Canvas.showPrintPreview](Canvas.md#classmethod-canvasshowprintpreview)
 
 ---
 ## Method: Canvas.intersects
@@ -9982,213 +10087,5 @@ See [gettingCanvasSize](../kb_topics/gettingCanvasSize.md#kb-topic-determining-t
 - [Canvas.getInnerWidth](#method-canvasgetinnerwidth)
 
 **Flags**: A
-
----
-## Method: Canvas.visibleAtPoint
-
-### Description
-Does this widget contain the specified global (x,y) coordinates, and have no other widgets also at the specified position, obscuring this one? This is commonly used for (for example) drag and drop interactions.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| x | [number](#type-number) | false | — | GLOBAL x-coordinate |
-| y | [number](#type-number) | false | — | GLOBAL y-coordinate |
-| withinViewport | [boolean](../reference.md#type-boolean) | true | — | point lies within our viewport rather than just our drawn area |
-| ignoreWidgets | [Canvas](#type-canvas) | true | — | If passed ignore widget(s), do not check whether those widgets occludes this one. |
-| upToParent | [Canvas](#type-canvas) | true | — | If passed, only check for siblings occluding the component up as far as the specified parent widget. |
-
-### Returns
-
-`[boolean](../reference.md#type-boolean)` — true if this object contains the specified point; false otherwise
-
-### Groups
-
-- positioning
-
-**Flags**: A
-
----
-## Method: Canvas.removeChild
-
-### Description
-Remove a child from this parent.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| child | [Canvas](#type-canvas) | false | — | Child canvas to remove from this parent. |
-| name | [String](#type-string) | true | — | If the child canvas was assigned a name when added via addChild(), it should be passed in here to ensure no reference is kept to the child |
-
-### Groups
-
-- containment
-
----
-## Method: Canvas.getAriaHandleID
-
-### Description
-Returns the DOM ID for the main element for this canvas which will have ARIA [role](#attr-canvasariarole) and [attributes](#attr-canvasariastate) applied to it. This can be useful when applying [custom aria state attributes](#attr-canvasariastate) which need to refer to the DOM handle of another canvas, such as [aria-controls](https://www.w3.org/TR/2017/REC-wai-aria-1.1-20171214/#aria-controls).
-
-Note that we do not recommend using this ID to identify the element in the DOM for integration with automated testing tools. The [AutoTest.getLocator](AutoTest.md#classmethod-autotestgetlocator) and [AutoTest.getElement](AutoTest.md#classmethod-autotestgetelement) APIs should be used instead. These locators are much finer grained - they allow developers to identify sub-elements within the widget handle that map to specific logical SmartClient objects (for example FormItem Icons within a DynamicForm). They are also more stable - AutoTest locators are able to reliably identify components based on their position in the application hierarchy and other context, while the DOM element IDs are not guaranteed not to change across page reloads.
-
-### Returns
-
-`[String](#type-string)` — ID written into the DOM element for this component
-
-**Flags**: A
-
----
-## Method: Canvas.deparent
-
-### Description
-Remove this canvas from its parent if it has one.
-
-### Groups
-
-- containment
-
----
-## Method: Canvas.setSnapTo
-
-### Description
-Set the snapTo property of this canvas, and handle repositioning.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| snapTo | [String](#type-string) | false | — | new snapTo value |
-
-### Groups
-
-- snapGridDragging
-
----
-## Method: Canvas.setLeft
-
-### Description
-Set the left coordinate of this object, relative to its enclosing context, in pixels. NOTE: if you're setting multiple coordinates, use setRect(), moveTo() or resizeTo() instead
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| left | [Number](#type-number)|[String](#type-string) | false | — | new left coordinate |
-
-### Groups
-
-- positioning
-
----
-## Method: Canvas.setOverflow
-
-### Description
-Update the [overflow](#attr-canvasoverflow) of a Canvas after it has been created.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| newOverflow | [Overflow](../reference.md#type-overflow) | false | — | New overflow value. |
-
-### Groups
-
-- positioning
-- sizing
-- sizing
-
-**Flags**: A
-
----
-## Method: Canvas.setPadding
-
-### Description
-Set the CSS padding of this component, in pixels. Padding provides space between the border and the component's contents.
-
-This property sets the same thickness of padding on every side. Differing per-side padding can be set in a CSS style and applied via [Canvas.styleName](#attr-canvasstylename).
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| newPadding | [number](#type-number) | false | — | new padding in pixels |
-
-### Groups
-
-- appearance
-
----
-## Method: Canvas.doValueDictation
-
-### Description
-If [Canvas.supportsVoiceCommands](#method-canvassupportsvoicecommands) returns true, this method may be implemented to deal with transcriptions recorded while this Canvas has focus.
-
-If focus is in this canvas when the user double-taps the [voice-key](VoiceAssist.md#classattr-voiceassistvoicekey), records some speech and double-taps again, this method is invoked with the final dictated-text, allowing the canvas to display it or process it in some way, such as saving it to a database or providing it to an AI for processing.
-
-Note that, if the canvas has a `setValue` method, the transcription will be applied automatically and interactively as the user speaks. If that functionality suits your needs, there is no need to implement this method.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| text | [String](#type-string) | false | — | the final text as spoken by the user |
-
----
-## Method: Canvas.getScrollBottom
-
-### Description
-Returns the scrollTop required to scroll vertically to the end of this widget's content.
-
-### Returns
-
-`[int](../reference.md#type-int)` — scroll bottom coordinate
-
-### Groups
-
-- scrolling
-
----
-## Method: Canvas.scrollToTop
-
-### Description
-Vertically scrolls the content of the widget to 0
-
-### Groups
-
-- scrolling
-
----
-## Method: Canvas.setMinHeight
-
-### Description
-Resizes the widget vertically if required to satisfy the specified [Canvas.minHeight](#attr-canvasminheight).
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| height | [number](#type-number) | false | — | new minimum height |
-
-### Groups
-
-- sizing
-
----
-## Method: Canvas.getRect
-
-### Description
-Returns the coordinates of this object as an array in left, top, width, height order.
-
-### Returns
-
-`[Array of int](#type-array-of-int)` — coordinates as \[left, top, width, height\]
-
-### Groups
-
-- positioning
-- sizing
 
 ---

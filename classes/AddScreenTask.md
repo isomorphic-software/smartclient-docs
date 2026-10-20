@@ -11,7 +11,7 @@
 ### Description
 Adds a new screen instance to a Layout, as a new Tab in a TabSet or as a new Section in a SectionStack. When the target is a TabSet or SectionStack, a static [AddScreenTask.title](#attr-addscreentasktitle) or dynamic [AddScreenTask.titleFormula](#attr-addscreentasktitleformula) can be assigned for the new Tab or Section.
 
-The new screen's [dataContext](Canvas.md#attr-canvasdatacontext) can be configured with [dataContextBinding](#attr-addscreentaskdatacontextbinding) evaluated in the scope of this task.
+The new screen's [dataContext](Canvas_1.md#attr-canvasdatacontext) can be configured with [dataContextBinding](#attr-addscreentaskdatacontextbinding) evaluated in the scope of this task.
 
 ---
 ## Attr: AddScreenTask.screenName
@@ -33,7 +33,7 @@ Title of new SectionStackSection or TabSet when [componentId](ComponentTask.md#a
 ## Attr: AddScreenTask.dataContextBinding
 
 ### Description
-A [DataContextBinding](../reference.md#object-datacontextbinding) to be applied to the created screen via [Canvas.setDataContext](Canvas.md#method-canvassetdatacontext).
+A [DataContextBinding](../reference.md#object-datacontextbinding) to be applied to the created screen via [Canvas.setDataContext](Canvas_1.md#method-canvassetdatacontext).
 
 **Flags**: IR
 
@@ -43,7 +43,7 @@ A [DataContextBinding](../reference.md#object-datacontextbinding) to be applied 
 ### Description
 Formula to be used to calculate the title contents. Use [AddScreenTask.title](#attr-addscreentasktitle) property to assign a static title instead.
 
-Available fields for use in the formula are the current [rule context](Canvas.md#attr-canvasrulescope).
+Available fields for use in the formula are the current [rule context](Canvas_1.md#attr-canvasrulescope).
 
 **Flags**: IR
 

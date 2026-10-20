@@ -51,7 +51,7 @@ Note that overflowing height is also affected by [columnOverflow](#attr-portalla
 
 - [PortalLayout.canResizePortlets](#attr-portallayoutcanresizeportlets)
 - [PortalLayout.columnOverflow](#attr-portallayoutcolumnoverflow)
-- [Canvas.overflow](Canvas.md#attr-canvasoverflow)
+- [Canvas.overflow](Canvas_1.md#attr-canvasoverflow)
 
 **Flags**: IRW
 
@@ -166,7 +166,7 @@ Note that the displayed width of a column will automatically shrink and stretch 
 ## Attr: PortalLayout.portletDropTypes
 
 ### Description
-The [dropTypes](Canvas.md#attr-canvasdroptypes) to be applied when dropping [Portlets](Portlet.md#class-portlet) on this `PortalLayout`, or when dropping other components to be auto-wrapped in a [Portlet](Portlet.md#class-portlet). If you set this, then you will need to set an equivalent [Canvas.dragType](Canvas.md#attr-canvasdragtype) on anything to be dragged into this `PortalLayout` (including [Portlets](Portlet.md#class-portlet)).
+The [dropTypes](Canvas_1.md#attr-canvasdroptypes) to be applied when dropping [Portlets](Portlet.md#class-portlet) on this `PortalLayout`, or when dropping other components to be auto-wrapped in a [Portlet](Portlet.md#class-portlet). If you set this, then you will need to set an equivalent [Canvas.dragType](Canvas_1.md#attr-canvasdragtype) on anything to be dragged into this `PortalLayout` (including [Portlets](Portlet.md#class-portlet)).
 
 As a convenience, [Portlet.dragType](Portlet.md#attr-portletdragtype) defaults to `"Portlet"`. Thus, if you want to allow [Portlets](Portlet.md#class-portlet) to be dropped on this `PortalLayout`, but disable auto-wrapping of other components, you can set `portletDropTypes` to `["Portlet"]`.
 
@@ -182,7 +182,7 @@ For more control over what can be dropped, you can also implement [willAcceptPor
 
 ### See Also
 
-- [Canvas.dropTypes](Canvas.md#attr-canvasdroptypes)
+- [Canvas.dropTypes](Canvas_1.md#attr-canvasdroptypes)
 
 **Flags**: IRW
 
@@ -224,7 +224,7 @@ To set the spacing between portal columns, use [PortalLayout.columnSpacing](#att
 ## Attr: PortalLayout.columnOverflow
 
 ### Description
-Controls the [overflow](Canvas.md#attr-canvasoverflow) setting for each column. If set to "auto" (the default) then each column will scroll individually (if its [Portlets](Portlet.md#class-portlet) overflow the column height). You can also use "hidden" to clip overflowing heights, or "visible" to show the overflow. The effect of "visible" will depend on the setting for [PortalLayout.overflow](#attr-portallayoutoverflow) -- by default, the PortalLayout as a whole will scroll when necessary.
+Controls the [overflow](Canvas_1.md#attr-canvasoverflow) setting for each column. If set to "auto" (the default) then each column will scroll individually (if its [Portlets](Portlet.md#class-portlet) overflow the column height). You can also use "hidden" to clip overflowing heights, or "visible" to show the overflow. The effect of "visible" will depend on the setting for [PortalLayout.overflow](#attr-portallayoutoverflow) -- by default, the PortalLayout as a whole will scroll when necessary.
 
 ### Groups
 
@@ -233,7 +233,7 @@ Controls the [overflow](Canvas.md#attr-canvasoverflow) setting for each column. 
 ### See Also
 
 - [Overflow](../reference.md#type-overflow)
-- [Canvas.overflow](Canvas.md#attr-canvasoverflow)
+- [Canvas.overflow](Canvas_1.md#attr-canvasoverflow)
 
 **Flags**: IRWA
 
@@ -346,11 +346,11 @@ Drop is enabled for PortalLayouts by default. See [PortalLayout.dropTypes](#attr
 ## Attr: PortalLayout.dropTypes
 
 ### Description
-This property may be explicitly specified to restrict which [target dragTypes](Canvas.md#attr-canvasdragtype) may be dropped directly onto the PortalLayout. See the related [PortalLayout.portletDropTypes](#attr-portallayoutportletdroptypes) property for how to restrict dropping portlets into a portalLayout and its sub-components (rows and columns).
+This property may be explicitly specified to restrict which [target dragTypes](Canvas_1.md#attr-canvasdragtype) may be dropped directly onto the PortalLayout. See the related [PortalLayout.portletDropTypes](#attr-portallayoutportletdroptypes) property for how to restrict dropping portlets into a portalLayout and its sub-components (rows and columns).
 
 If this property is not explicitly specified, drop behavior will be as follows when the user drops directly on the portalLayout outside any PortalColumns, or within the [PortalLayout.portletHDropOffset](#attr-portallayoutportlethdropoffset) of an existing column.
 
-*   Drop will be allowed for targets with [dragType:"PortalColumn"](Canvas.md#attr-canvasdragtype). This allows the user to reorder portal columns by dragging using the column header.
+*   Drop will be allowed for targets with [dragType:"PortalColumn"](Canvas_1.md#attr-canvasdragtype). This allows the user to reorder portal columns by dragging using the column header.
 *   If [PortalLayout.canAddColumns](#attr-portallayoutcanaddcolumns) is true, drop will also be allowed for other components that match the [PortalLayout.portletDropTypes](#attr-portallayoutportletdroptypes) for the PortalLayout, if specified. If [PortalLayout.portletDropTypes](#attr-portallayoutportletdroptypes) is unspecified, all other components may be dropped.  
     This allows the user to add columns to the portal layout by dropping components outside of any existing columns. If the dropped components are not instances of [Portlet](Portlet.md#class-portlet), a Portlet will be automatically created to contain them.  
     Note that if [PortalLayout.portletDropTypes](#attr-portallayoutportletdroptypes) is specified, drop will be disallowed for any component whose dragType is not included in the portletDropTypes list, and is not `"PortalColumn"`
@@ -464,9 +464,9 @@ The column includes a menu, if [showColumnMenus](#attr-portallayoutshowcolumnmen
 ### Description
 This method will be invoked to determine whether a dragged [Portlet](Portlet.md#class-portlet) or other component can be dropped into this `PortalLayout` at the specified position.
 
-The method will be called with the appropriate parameters from [Canvas.willAcceptDrop](Canvas.md#method-canvaswillacceptdrop) when the user attempts to drop within the PortalLayout or its subcomponents.
+The method will be called with the appropriate parameters from [Canvas.willAcceptDrop](Canvas_1.md#method-canvaswillacceptdrop) when the user attempts to drop within the PortalLayout or its subcomponents.
 
-The default implementation acts like [Canvas.willAcceptDrop](Canvas.md#method-canvaswillacceptdrop), checking the [PortalLayout.dropTypes](#attr-portallayoutdroptypes) of the appropriate subcomponent, which will be derived from the [PortalLayout.portletDropTypes](#attr-portallayoutportletdroptypes) by default.
+The default implementation acts like [Canvas.willAcceptDrop](Canvas_1.md#method-canvaswillacceptdrop), checking the [PortalLayout.dropTypes](#attr-portallayoutdroptypes) of the appropriate subcomponent, which will be derived from the [PortalLayout.portletDropTypes](#attr-portallayoutportletdroptypes) by default.
 
 This method may be overridden to control Portlet drop capabilities based on custom logic.
 
@@ -491,7 +491,7 @@ See [portalLayoutDrop](../kb_topics/portalLayoutDrop.md#kb-topic-drag-and-drop-b
 
 ### See Also
 
-- [Canvas.dragType](Canvas.md#attr-canvasdragtype)
+- [Canvas.dragType](Canvas_1.md#attr-canvasdragtype)
 - [PortalLayout.portletDropTypes](#attr-portallayoutportletdroptypes)
 - [PortalLayout.portletsChanged](#method-portallayoutportletschanged)
 
@@ -707,7 +707,7 @@ Note that this sets the intrinsic width of the column. Columns may also automati
 
 ### See Also
 
-- [Canvas.setWidth](Canvas.md#method-canvassetwidth)
+- [Canvas.setWidth](Canvas_1.md#method-canvassetwidth)
 
 ---
 ## Method: PortalLayout.portletMinimized
@@ -895,7 +895,7 @@ This method is called when the user drops components into the rows or columns of
 
 Overriding this method allows you to modify drop behaviour when creating or reordering portlets via drag & drop. You can return the dragTarget for the standard behavior, or null to cancel the drop.
 
-Otherwise, return the component you want to be dropped (as for [Layout.getDropComponent](Layout.md#method-layoutgetdropcomponent)). You will generally want to return a [Portlet](Portlet.md#class-portlet) or subclass. However, you can return any [Canvas](Canvas.md#class-canvas), and it will automatically be wrapped in a [Portlet](#attr-portallayoutportlet) if necessary.
+Otherwise, return the component you want to be dropped (as for [Layout.getDropComponent](Layout.md#method-layoutgetdropcomponent)). You will generally want to return a [Portlet](Portlet.md#class-portlet) or subclass. However, you can return any [Canvas](Canvas_1.md#class-canvas), and it will automatically be wrapped in a [Portlet](#attr-portallayoutportlet) if necessary.
 
 ### Parameters
 
@@ -1041,7 +1041,7 @@ Gets the width of a column in the PortalLayout.
 
 ### See Also
 
-- [Canvas.getWidth](Canvas.md#method-canvasgetwidth)
+- [Canvas.getWidth](Canvas_1.md#method-canvasgetwidth)
 
 ---
 ## Method: PortalLayout.portletMaximized

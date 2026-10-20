@@ -182,7 +182,7 @@ Will cause the following images to be cached:
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | baseDir | [String](#type-string) | false | — | Base directory containing the shadow images. |
-| depths | [String](#type-string)|[Array](#type-array) | false | — | List of depths to load. These values corresponds to the Canvas attribute [Canvas.shadowDepth](Canvas.md#attr-canvasshadowdepth). This can either be a string with comma separated depths or an Array of depths. |
+| depths | [String](#type-string)|[Array](#type-array) | false | — | List of depths to load. These values corresponds to the Canvas attribute [Canvas.shadowDepth](Canvas_1.md#attr-canvasshadowdepth). This can either be a string with comma separated depths or an Array of depths. |
 | baseShadowImage | [String](#type-string) | true | — | Name of the base shadow image from which list of URLs is generated. If not specified, this defaults to "ds.png". |
 | onload | [String](#type-string)|[Function](#type-function) | true | — | Optional code to execute when the last of the specified URLs has completed caching. |
 

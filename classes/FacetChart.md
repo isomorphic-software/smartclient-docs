@@ -599,6 +599,8 @@ See [http://en.wikipedia.org/wiki/Simple\_linear\_regression](http://en.wikipedi
 ### Description
 Properties for labels of value axis.
 
+Unless this block sets a `fontFamily`, these labels are drawn in ${isc.DocUtils.linkForRef('attr:FacetChart.defaultFontFamily','the chart\\'s default font')}.
+
 ### Groups
 
 - labelsAndTitles
@@ -903,6 +905,8 @@ Error bars are supported for single-axis charts only.
 ### Description
 Properties for labels shown next to legend color swatches.
 
+Unless this block sets a `fontFamily`, these labels are drawn in ${isc.DocUtils.linkForRef('attr:FacetChart.defaultFontFamily','the chart\\'s default font')}.
+
 ### Groups
 
 - legend
@@ -1153,7 +1157,7 @@ Note that this feature is incompatible with the following properties:
 *   [canDragScroll](DrawPane.md#attr-drawpanecandragscroll)
 *   [FacetChart.canZoom](#attr-facetchartcanzoom)
 
-If [FacetChart.rotateLabels](#attr-facetchartrotatelabels) is set to "auto" it will be treated as "never" if `autoScrollData` has been set. If any of the other properties have non-default values, a warning will be logged and `autoScrollData` will be disabled. The factors used to drive expansion can be limited by setting [AutoScrollDataApproach](../reference.md#type-autoscrolldataapproach). You can also enforce a minimum size for the chart-content, and scrollbars will be introduced if this widget shrinks below that size. See [autoScrollContent](#attr-facetchartautoscrollcontent), along with [minContentWidth](#attr-facetchartmincontentwidth) and [minContentHeight](#attr-facetchartmincontentheight).
+If [FacetChart.rotateLabels](#attr-facetchartrotatelabels) is set to "auto" it will be treated as "never" if `autoScrollData` has been set. If any of the other properties have non-default values, a warning will be logged and `autoScrollData` will be disabled. The factors used to drive expansion can be limited by setting [AutoScrollDataApproach](../reference_2.md#type-autoscrolldataapproach). You can also enforce a minimum size for the chart-content, and scrollbars will be introduced if this widget shrinks below that size. See [autoScrollContent](#attr-facetchartautoscrollcontent), along with [minContentWidth](#attr-facetchartmincontentwidth) and [minContentHeight](#attr-facetchartmincontentheight).
 
 ### See Also
 
@@ -1164,6 +1168,24 @@ If [FacetChart.rotateLabels](#attr-facetchartrotatelabels) is set to "auto" it w
 - [DrawPane.canDragScroll](DrawPane.md#attr-drawpanecandragscroll)
 
 **Flags**: IRW
+
+---
+## Attr: FacetChart.defaultFontFamily
+
+### Description
+Font family used by default for every text element of the chart - the title, axis titles, axis value labels, data labels, legend labels and hover labels - wherever the relevant `...LabelProperties` block does not name a font of its own.
+
+If unset, the font comes from the loaded skin, so that charts match the surrounding application without any chart-level configuration and follow a change of skin automatically.
+
+Setting `fontFamily` on an individual block - [FacetChart.dataLabelProperties](#attr-facetchartdatalabelproperties), say - overrides this for that one element type, as does a skin that does so.
+
+A value should end in a CSS generic family such as `sans-serif` so that a platform missing every named family still falls back to a predictable face; one is appended automatically if absent. Note also that a font appears in a server-exported chart only if the server can load it, which is automatic for a font the skin declares with an `@font-face` rule but not for one merely assumed to be installed.
+
+### Groups
+
+- appearance
+
+**Flags**: IRA
 
 ---
 ## Attr: FacetChart.dataFetchMode
@@ -1249,6 +1271,8 @@ Space between the legend and the chart rect or axis labels (whatever the legend 
 
 ### Description
 Properties for title label.
+
+Unless this block sets a `fontFamily`, the title is drawn in ${isc.DocUtils.linkForRef('attr:FacetChart.defaultFontFamily','the chart\\'s default font')}.
 
 ### Groups
 
@@ -1391,6 +1415,8 @@ Properties for bar
 
 ### Description
 Properties for text in a floating label that represents the data value shown whenever the mouse moves withing the main chart area when [FacetChart.showValueOnHover](#attr-facetchartshowvalueonhover) is enabled.
+
+Unless this block sets a `fontFamily`, this label is drawn in ${isc.DocUtils.linkForRef('attr:FacetChart.defaultFontFamily','the chart\\'s default font')}.
 
 ### Groups
 
@@ -2766,7 +2792,7 @@ Defaults to the value of [FacetChart.pixelsPerGradation](#attr-facetchartpixelsp
 ### Description
 Criteria to be used when [FacetChart.autoFetchData](#attr-facetchartautofetchdata) is set.
 
-This property supports [dynamicCriteria](../kb_topics/dynamicCriteria.md#kb-topic-dynamiccriteria) - use [Criterion.valuePath](Criterion.md#attr-criterionvaluepath) to refer to values in the [Canvas.ruleScope](Canvas.md#attr-canvasrulescope).
+This property supports [dynamicCriteria](../kb_topics/dynamicCriteria.md#kb-topic-dynamiccriteria) - use [Criterion.valuePath](Criterion.md#attr-criterionvaluepath) to refer to values in the [Canvas.ruleScope](Canvas_1.md#attr-canvasrulescope).
 
 ### Groups
 
@@ -2815,6 +2841,8 @@ Specifies the "id" of the default metric facet value. The default metric is used
 
 ### Description
 Properties for gradation labels
+
+Unless this block sets a `fontFamily`, these labels are drawn in ${isc.DocUtils.linkForRef('attr:FacetChart.defaultFontFamily','the chart\\'s default font')}.
 
 ### Groups
 
@@ -2897,6 +2925,8 @@ Angle where first label is placed in a Pie chart in stacked mode, in degrees.
 
 ### Description
 Properties for data label
+
+Unless this block sets a `fontFamily`, these labels are drawn in ${isc.DocUtils.linkForRef('attr:FacetChart.defaultFontFamily','the chart\\'s default font')}.
 
 ### Groups
 
@@ -3230,7 +3260,7 @@ If [FacetChart.autoFetchData](#attr-facetchartautofetchdata) is `true`, this att
 ## Attr: FacetChart.editProxyConstructor
 
 ### Description
-Default class used to construct the [EditProxy](EditProxy.md#class-editproxy) for this component when the component is [first placed into edit mode](Canvas.md#method-canvasseteditmode).
+Default class used to construct the [EditProxy](EditProxy.md#class-editproxy) for this component when the component is [first placed into edit mode](Canvas_1.md#method-canvasseteditmode).
 
 **Flags**: IR
 
@@ -3433,6 +3463,8 @@ Compress outliers: choose `p > 1` (e.g. `p = 2`).
 
 ### Description
 Properties for labels of data axis.
+
+Unless this block sets a `fontFamily`, these labels are drawn in ${isc.DocUtils.linkForRef('attr:FacetChart.defaultFontFamily','the chart\\'s default font')}.
 
 ### Groups
 
@@ -3677,7 +3709,7 @@ NOTE: if `autoFetchData` is set, calling [fetchData()](ListGrid_2.md#method-list
 ### Description
 Criteria that are never shown to or edited by the user and are cumulative with any criteria provided via [DataBoundComponent.initialCriteria](DataBoundComponent.md#attr-databoundcomponentinitialcriteria) and related methods.
 
-This property supports [dynamicCriteria](../kb_topics/dynamicCriteria.md#kb-topic-dynamiccriteria) - use [Criterion.valuePath](Criterion.md#attr-criterionvaluepath) to refer to values in the [Canvas.ruleScope](Canvas.md#attr-canvasrulescope).
+This property supports [dynamicCriteria](../kb_topics/dynamicCriteria.md#kb-topic-dynamiccriteria) - use [Criterion.valuePath](Criterion.md#attr-criterionvaluepath) to refer to values in the [Canvas.ruleScope](Canvas_1.md#attr-canvasrulescope).
 
 **Flags**: IRW
 
@@ -4206,7 +4238,7 @@ Sets [FacetChart.autoScrollData](#attr-facetchartautoscrolldata) and updates the
 ### Description
 Returns an array of [DrawnValue](../reference_2.md#object-drawnvalue) objects containing rendering information for the data values having each metric that are shown nearest to the passed coordinates.
 
-Passed X and Y coordinates should be relative to the FacetChart. If neither an X or Y coordinate is passed, both X and Y will use the current [Canvas.getOffsetX](Canvas.md#method-canvasgetoffsetx) and [Canvas.getOffsetY](Canvas.md#method-canvasgetoffsety).
+Passed X and Y coordinates should be relative to the FacetChart. If neither an X or Y coordinate is passed, both X and Y will use the current [Canvas.getOffsetX](Canvas_1.md#method-canvasgetoffsetx) and [Canvas.getOffsetY](Canvas_1.md#method-canvasgetoffsety).
 
 The behavior for different chart types is the same as [FacetChart.getNearestDrawnValue](#method-facetchartgetnearestdrawnvalue). This method also logs a warning and returns null if called before [FacetChart.chartDrawn](#method-facetchartchartdrawn).
 
@@ -4363,7 +4395,7 @@ For scatter plots only, get a Function from the specified independent variable X
 ### Description
 Returns rendering information for the data value that is shown nearest to the passed coordinates, as a [DrawnValue](../reference_2.md#object-drawnvalue) object.
 
-Passed X and Y coordinates should be relative to the FacetChart. If neither an X or Y coordinate is passed, both X and Y will use the current [Canvas.getOffsetX](Canvas.md#method-canvasgetoffsetx) and [Canvas.getOffsetY](Canvas.md#method-canvasgetoffsety).
+Passed X and Y coordinates should be relative to the FacetChart. If neither an X or Y coordinate is passed, both X and Y will use the current [Canvas.getOffsetX](Canvas_1.md#method-canvasgetoffsetx) and [Canvas.getOffsetY](Canvas_1.md#method-canvasgetoffsety).
 
 If called before [FacetChart.chartDrawn](#method-facetchartchartdrawn), logs a warning and returns null. For a chart with multiple vertical axes, returns the nearest point from the first metric only (see [FacetChart overview](#class-facetchart)). For scatter charts, returns a DrawnValue where the [value](DrawnValue.md#attr-drawnvaluevalue) is from the [y-axis metric](#attr-facetchartyaxismetric).
 
@@ -4449,7 +4481,7 @@ If called before [FacetChart.chartDrawn](#method-facetchartchartdrawn), logs a w
 ### Description
 Retrieves printable HTML for this component and all printable subcomponents.
 
-By default any Canvas with children will simply collect the printable HTML of its children by calling getPrintHTML() on each child that is considered [printable](Canvas.md#attr-canvasshouldprint).
+By default any Canvas with children will simply collect the printable HTML of its children by calling getPrintHTML() on each child that is considered [printable](Canvas_1.md#attr-canvasshouldprint).
 
 If overriding this method for a custom component, you should **either** return a String of printable HTML string directly **or** return null, and fire the callback (if provided) using [Class.fireCallback](Class.md#method-classfirecallback).
 
@@ -4753,13 +4785,13 @@ This is only allowed to be called when [FacetChart.chartDrawn](#method-facetchar
 ## Method: FacetChart.setAutoScrollDataApproach
 
 ### Description
-Sets [AutoScrollDataApproach](../reference.md#type-autoscrolldataapproach) and updates the chart.
+Sets [AutoScrollDataApproach](../reference_2.md#type-autoscrolldataapproach) and updates the chart.
 
 ### Parameters
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| autoScrollDataApproach | [AutoScrollDataApproach](../reference.md#type-autoscrolldataapproach) | false | — | what should drive horizontal expansion of the chart? |
+| autoScrollDataApproach | [AutoScrollDataApproach](../reference_2.md#type-autoscrolldataapproach) | false | — | what should drive horizontal expansion of the chart? |
 
 ---
 ## Method: FacetChart.setFreezeValueAxis
@@ -4977,9 +5009,9 @@ Fires when a data value is clicked, and provides information about the data valu
 
 Specifically, this fires for clicks on pie slices, bars or columns, areas, lines or points (in a Bubble or Scatter plot).
 
-If there are multiple data values at the clicked position, you can use [FacetChart.getNearestDrawnValues](#method-facetchartgetnearestdrawnvalues) to discover the full list of values at the current coordinate (pass in [getOffsetX/Y()](Canvas.md#method-canvasgetoffsetx) for the coordinates).
+If there are multiple data values at the clicked position, you can use [FacetChart.getNearestDrawnValues](#method-facetchartgetnearestdrawnvalues) to discover the full list of values at the current coordinate (pass in [getOffsetX/Y()](Canvas_1.md#method-canvasgetoffsetx) for the coordinates).
 
-If you want to create behaviors for clicking or moving _near_ shapes without requiring a direct hit, implement a standard [Canvas.click](Canvas.md#method-canvasclick) handler on the FacetChart as a whole and use [FacetChart.getNearestDrawnValue](#method-facetchartgetnearestdrawnvalue) to discover the nearest data values.
+If you want to create behaviors for clicking or moving _near_ shapes without requiring a direct hit, implement a standard [Canvas.click](Canvas_1.md#method-canvasclick) handler on the FacetChart as a whole and use [FacetChart.getNearestDrawnValue](#method-facetchartgetnearestdrawnvalue) to discover the nearest data values.
 
 ### Parameters
 
@@ -5133,6 +5165,16 @@ Note that the [FacetChart.zoomStartValue](#attr-facetchartzoomstartvalue) and [F
 ### Groups
 
 - zoom
+
+---
+## Method: FacetChart.getDefaultFontFamily
+
+### Description
+Returns the font family in effect for this chart's text: [FacetChart.defaultFontFamily](#attr-facetchartdefaultfontfamily) if set, otherwise the font taken from the skin. The returned list always ends in a CSS generic family.
+
+### Returns
+
+`[String](#type-string)` — font family list, as a CSS font-family value
 
 ---
 ## Method: FacetChart.setFilled
@@ -5321,7 +5363,7 @@ Changes to [TextMatchStyle](../reference_2.md#type-textmatchstyle) made via `req
 
 When the user re-filters this component (for example from the [filter editor](ListGrid_1.md#attr-listgridshowfiltereditor)), the request properties passed here are retained, as described under [getRefilterRequestProperties()](DataBoundComponent.md#method-databoundcomponentgetrefilterrequestproperties).
 
-To pick up such changes, we recommend that you call [setData(\[\])](#method-facetchartsetdata) (passing an empty array to ensure the data model is cleared), and then call this method to fetch again. If you try to do it by calling [invalidateCache()](ListGrid_2.md#method-listgridinvalidatecache), you may see duplicate fetches if you haven't already updated the data context by calling this method with the new request properties, and fail to do so before the component is [redrawn](Canvas.md#method-canvasredraw).
+To pick up such changes, we recommend that you call [setData(\[\])](#method-facetchartsetdata) (passing an empty array to ensure the data model is cleared), and then call this method to fetch again. If you try to do it by calling [invalidateCache()](ListGrid_2.md#method-listgridinvalidatecache), you may see duplicate fetches if you haven't already updated the data context by calling this method with the new request properties, and fail to do so before the component is [redrawn](Canvas_1.md#method-canvasredraw).
 
 ### Parameters
 
@@ -5358,6 +5400,18 @@ If the [chartType](#attr-facetchartcharttype) is "Area", "Bubble", "Column", "Hi
 ### Returns
 
 `[Float](../reference_2.md#type-float)` — the Y coordinate where the passed data value would be drawn.
+
+---
+## Method: FacetChart.getDataLabelFacets
+
+### Description
+Every [Facet](../reference_2.md#object-facet) currently rendered as a data-label facet, outermost first. Most charts have one; a clustered-stacked chart has an inner one as well, and a stack in such a chart is identified by a value from each.
+
+Complements [FacetChart.getDataLabelFacet](#method-facetchartgetdatalabelfacet) and [FacetChart.getLegendFacet](#method-facetchartgetlegendfacet), which answer for a single facet.
+
+### Returns
+
+`[Array of Facet](#type-array-of-facet)` — the data-label facets; empty if the chart has none
 
 ---
 ## Method: FacetChart.drawnValueContainsPoint

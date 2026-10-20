@@ -22,7 +22,7 @@ SmartClient's error reporting APIs can capture:
 *   **Rich Stack Traces** - Browser-specific stack trace with function names, arguments, and line numbers via [Class.getStackTrace](../classes/Class.md#method-classgetstacktrace)
 *   **Timer Origin Traces** - When an error occurs in a [timer callback](../classes/Timer.md#classmethod-timersettimeout), the stack trace leading up to the setTimeout() call is automatically included, showing where the timer was originally set
 *   **Event Stream History** - Complete record of user interactions leading up to the error via [EventStream](../classes/EventStream.md#class-eventstream), including mouse clicks, key presses, and other events
-*   **UI Component State** - Full snapshot of visible UI components and their states via [Canvas.getTopLevelComponents](../classes/Canvas.md#classmethod-canvasgettoplevelcomponents) and [Canvas.getUISummary](../classes/Canvas.md#method-canvasgetuisummary)
+*   **UI Component State** - Full snapshot of visible UI components and their states via [Canvas.getTopLevelComponents](../classes/Canvas.md#classmethod-canvasgettoplevelcomponents) and [Canvas.getUISummary](../classes/Canvas_1.md#method-canvasgetuisummary)
 *   **Framework and Browser Info** - SmartClient version, build date, browser type and version
 
 **Example: Capturing Error Context**
@@ -176,6 +176,6 @@ This comprehensive error context makes it much easier to reproduce and fix issue
 - [Canvas.getTopLevelComponents](../classes/Canvas.md#classmethod-canvasgettoplevelcomponents)
 - [Class.getStackTrace](../classes/Class.md#method-classgetstacktrace)
 - [EventStream.setEventErrorListener](../classes/EventStream.md#method-eventstreamseteventerrorlistener)
-- [Canvas.getUISummary](../classes/Canvas.md#method-canvasgetuisummary)
+- [Canvas.getUISummary](../classes/Canvas_1.md#method-canvasgetuisummary)
 
 ---

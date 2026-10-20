@@ -67,7 +67,7 @@ If using an icon for this button, whether to switch the icon image if the button
 ## Attr: Label.editProxyConstructor
 
 ### Description
-Default class used to construct the [EditProxy](EditProxy.md#class-editproxy) for this component when the component is [first placed into edit mode](Canvas.md#method-canvasseteditmode).
+Default class used to construct the [EditProxy](EditProxy.md#class-editproxy) for this component when the component is [first placed into edit mode](Canvas_1.md#method-canvasseteditmode).
 
 **Flags**: IR
 
@@ -161,7 +161,7 @@ For example, to include the current date in a templated message, `canvas.content
 
 Embedded expressions will be evaluated when the canvas is drawn or redrawn, and the result of the evaluated expression will be displayed to the user. If the expression does not evaluate to a String, the `toString()` representation of the returned object will be displayed automatically
 
-Dynamic expressions are evaluated in the scope of the canvas displaying the content, so the `this` keyword may be used within your expression to refer to the canvas. Developers may also explicitly supply values for variables to be used within the evaluation via the [Canvas.dynamicContentsVars](Canvas.md#attr-canvasdynamiccontentsvars) property.
+Dynamic expressions are evaluated in the scope of the canvas displaying the content, so the `this` keyword may be used within your expression to refer to the canvas. Developers may also explicitly supply values for variables to be used within the evaluation via the [Canvas.dynamicContentsVars](Canvas_1.md#attr-canvasdynamiccontentsvars) property.
 
 Notes:
 
@@ -177,7 +177,7 @@ Notes:
 ### See Also
 
 - [Label.contents](#attr-labelcontents)
-- [Canvas.dynamicContentsVars](Canvas.md#attr-canvasdynamiccontentsvars)
+- [Canvas.dynamicContentsVars](Canvas_1.md#attr-canvasdynamiccontentsvars)
 
 **Flags**: IRWA
 
@@ -261,7 +261,7 @@ Note that for StretchImgButton instances, autoFit will occur horizontally only, 
 ## Attr: Label.height
 
 ### Description
-Size for this component's vertical dimension. See [Canvas.height](Canvas.md#attr-canvasheight) for more details.
+Size for this component's vertical dimension. See [Canvas.height](Canvas_1.md#attr-canvasheight) for more details.
 
 Note that if [StatefulCanvas.autoFit](StatefulCanvas.md#attr-statefulcanvasautofit) is set on non-[StretchImgButton](StretchImgButton.md#class-stretchimgbutton) instances, this property will be ignored so that the widget is always sized just large enough to accommodate the title.
 
@@ -279,7 +279,7 @@ Note that if [StatefulCanvas.autoFit](StatefulCanvas.md#attr-statefulcanvasautof
 ## Attr: Label.width
 
 ### Description
-Size for this component's horizontal dimension. See [Canvas.width](Canvas.md#attr-canvaswidth) for more details.
+Size for this component's horizontal dimension. See [Canvas.width](Canvas_1.md#attr-canvaswidth) for more details.
 
 Note that if [StatefulCanvas.autoFit](StatefulCanvas.md#attr-statefulcanvasautofit) is set, this property will be ignored so that the widget is always sized just large enough to accommodate the title.
 
@@ -341,7 +341,7 @@ Dynamically change the CSS class for this widget. For a Label, this is equivalen
 ### Description
 Changes the contents of a widget to newContents, an HTML string.
 
-When [dynamicContents](Canvas.md#attr-canvasdynamiccontents) is set, `setContents()` can also be called with no arguments to cause contents to be re-evaluated.
+When [dynamicContents](Canvas_1.md#attr-canvasdynamiccontents) is set, `setContents()` can also be called with no arguments to cause contents to be re-evaluated.
 
 ### Parameters
 

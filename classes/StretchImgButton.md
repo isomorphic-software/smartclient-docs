@@ -29,7 +29,7 @@ If using an icon for this button, whether to switch the icon image on mouse roll
 ## Attr: StretchImgButton.height
 
 ### Description
-Size for this component's vertical dimension. See [Canvas.height](Canvas.md#attr-canvasheight) for more details.
+Size for this component's vertical dimension. See [Canvas.height](Canvas_1.md#attr-canvasheight) for more details.
 
 Note that if [StatefulCanvas.autoFit](StatefulCanvas.md#attr-statefulcanvasautofit) is set on non-[StretchImgButton](#class-stretchimgbutton) instances, this property will be ignored so that the widget is always sized just large enough to accommodate the title.
 
@@ -61,7 +61,7 @@ Note that for StretchImgButton instances, autoFit will occur horizontally only, 
 ## Attr: StretchImgButton.definingProperty
 
 ### Description
-This attribute denotes the name of a property to use as a [getDefiningPropertyName()](Canvas.md#method-canvasgetdefiningpropertyname) for this property when generating and resolving [AutoTest locators with search segments](../reference_2.md#type-autotestlocator).
+This attribute denotes the name of a property to use as a [getDefiningPropertyName()](Canvas_1.md#method-canvasgetdefiningpropertyname) for this property when generating and resolving [AutoTest locators with search segments](../reference_2.md#type-autotestlocator).
 
 **Flags**: IRWA
 
@@ -480,7 +480,7 @@ Should we visibly change state when disabled?
 ## Attr: StretchImgButton.width
 
 ### Description
-Size for this component's horizontal dimension. See [Canvas.width](Canvas.md#attr-canvaswidth) for more details.
+Size for this component's horizontal dimension. See [Canvas.width](Canvas_1.md#attr-canvaswidth) for more details.
 
 Note that if [StatefulCanvas.autoFit](StatefulCanvas.md#attr-statefulcanvasautofit) is set, this property will be ignored so that the widget is always sized just large enough to accommodate the title.
 
@@ -514,7 +514,7 @@ So by default the label will be sized to match the center image of the StretchIm
 ## Attr: StretchImgButton.hiliteAccessKey
 
 ### Description
-If set to true, if the [title](StatefulCanvas.md#attr-statefulcanvastitle) of this button contains the specified [accessKey](Canvas.md#attr-canvasaccesskey), when the title is displayed to the user it will be modified to include HTML to underline the accessKey.  
+If set to true, if the [title](StatefulCanvas.md#attr-statefulcanvastitle) of this button contains the specified [accessKey](Canvas_1.md#attr-canvasaccesskey), when the title is displayed to the user it will be modified to include HTML to underline the accessKey.  
 Note that this property may cause titles that include HTML (rather than simple strings) to be inappropriately modified, so should be disabled if your title string includes HTML characters.
 
 **Flags**: IRW
@@ -568,13 +568,13 @@ in the declaration section beginning:
  .rotatedTitleButtonDown,
  .rotatedTitleButtonDisabled {
 ```
-then applying that style to the button with [overflow](Canvas.md#attr-canvasoverflow): "clip\_h" would yield a vertically-rendered title with overflow via ellipsis as expected, and also wrap with [Button.wrap](Button.md#attr-buttonwrap). Note that:
+then applying that style to the button with [overflow](Canvas_1.md#attr-canvasoverflow): "clip\_h" would yield a vertically-rendered title with overflow via ellipsis as expected, and also wrap with [Button.wrap](Button.md#attr-buttonwrap). Note that:
 
 *   The explicit width applied via CSS is needed because rotated elements don't inherit dimensions in their new orientation from the DOM - the transform/rotation occurs independently of layout.
 *   The translation transform required along the x-axis is roughly (width - height) / 2, but may need slight offsetting for optimal centering.
 *   We've explicitly avoided describing an approach based on CSS "writing-mode", since support is incomplete and bugs are present in popular browsers such as Firefox and Safari that would prevent it from being used without Framework assistance.
 
-Note on css-margins: Developers should be aware that the css "margin" property is unreliable for certain subclasses of StatefulCanvas, including [buttons](Button.md#class-button). Developers may use the explicit [Canvas.margin](Canvas.md#attr-canvasmargin) property to specify button margins, or for a button within a layout, consider the layout properties [Layout.layoutMargin](Layout.md#attr-layoutlayoutmargin), [Layout.membersMargin](Layout.md#attr-layoutmembersmargin)
+Note on css-margins: Developers should be aware that the css "margin" property is unreliable for certain subclasses of StatefulCanvas, including [buttons](Button.md#class-button). Developers may use the explicit [Canvas.margin](Canvas_1.md#attr-canvasmargin) property to specify button margins, or for a button within a layout, consider the layout properties [Layout.layoutMargin](Layout.md#attr-layoutlayoutmargin), [Layout.membersMargin](Layout.md#attr-layoutmembersmargin)
 
 **Flags**: IRW
 

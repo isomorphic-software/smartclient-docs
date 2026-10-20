@@ -15,11 +15,11 @@ A Menu is initialized with a set of [MenuItem](../reference_2.md#object-menuitem
 
 Each `MenuItem` can have a [title](MenuItem.md#attr-menuitemtitle), [icon](MenuItem.md#attr-menuitemicon), [shortcut keys](MenuItem.md#attr-menuitemkeys), optional [MenuItem.submenu](MenuItem.md#attr-menuitemsubmenu) and various other settings. Alternatively, a `MenuItem` can contain an arbitrary widget via [MenuItem.embeddedComponent](MenuItem.md#attr-menuitemembeddedcomponent).
 
-To create a context menu for a component, provide a Menu instance for the [Canvas.contextMenu](Canvas.md#attr-canvascontextmenu) property. Note that some components like [ListGrid](ListGrid_1.md#class-listgrid) have more specific properties because they have distinct regions or because they have a default set of context menu actions available (for example: [ListGrid.headerContextMenu](ListGrid_1.md#attr-listgridheadercontextmenu) and related APIs).
+To create a context menu for a component, provide a Menu instance for the [Canvas.contextMenu](Canvas_1.md#attr-canvascontextmenu) property. Note that some components like [ListGrid](ListGrid_1.md#class-listgrid) have more specific properties because they have distinct regions or because they have a default set of context menu actions available (for example: [ListGrid.headerContextMenu](ListGrid_1.md#attr-listgridheadercontextmenu) and related APIs).
 
 If you want a button that pops up a menu when clicked, or a bar of such buttons, see the [MenuButton](MenuButton.md#class-menubutton) and [MenuBar](MenuBar.md#class-menubar) classes.
 
-To create a pop-up panel interface that looks nothing like a `Menu` (but still dismisses automatically on an outside click), use [Canvas.showClickMask](Canvas.md#method-canvasshowclickmask) to arrange for automatic dismissal, and the [Canvas.showNextTo](Canvas.md#method-canvasshownextto) utility method to place the component near whatever triggered it, while automatically staying on-screen.
+To create a pop-up panel interface that looks nothing like a `Menu` (but still dismisses automatically on an outside click), use [Canvas.showClickMask](Canvas_1.md#method-canvasshowclickmask) to arrange for automatic dismissal, and the [Canvas.showNextTo](Canvas_1.md#method-canvasshownextto) utility method to place the component near whatever triggered it, while automatically staying on-screen.
 
 ---
 ## Attr: Menu.baseStyle
@@ -35,7 +35,7 @@ CSS style for a normal cell
 ### Description
 Optional target canvas for this menu. Available as a parameter to dynamic menuItem configuration methods such as [MenuItem.checkIf](MenuItem.md#method-menuitemcheckif).
 
-Whenever a Menu is shown as a contextMenu by a widget due to [Canvas.contextMenu](Canvas.md#attr-canvascontextmenu) being set, `menu.target` is automatically set to the widget that showed the contextMenu.
+Whenever a Menu is shown as a contextMenu by a widget due to [Canvas.contextMenu](Canvas_1.md#attr-canvascontextmenu) being set, `menu.target` is automatically set to the widget that showed the contextMenu.
 
 If this item has any [submenus](MenuItem.md#attr-menuitemsubmenu) the `target` will be propagated down to these child menus.
 
@@ -549,7 +549,7 @@ If applying a background-color to the body via a CSS style applied using this pr
 ## Attr: Menu.editProxyConstructor
 
 ### Description
-Default class used to construct the [EditProxy](EditProxy.md#class-editproxy) for this component when the component is [first placed into edit mode](Canvas.md#method-canvasseteditmode).
+Default class used to construct the [EditProxy](EditProxy.md#class-editproxy) for this component when the component is [first placed into edit mode](Canvas_1.md#method-canvasseteditmode).
 
 **Flags**: IR
 

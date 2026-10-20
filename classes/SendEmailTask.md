@@ -55,7 +55,7 @@ Email subject. To assign a dynamic subject see [SendEmailTask.subjectFormula](#a
 ### Description
 Formula to be used to calculate the subject contents. Use [SendEmailTask.subject](#attr-sendemailtasksubject) property to assign a static subject instead.
 
-Available fields for use in the formula are the current [rule context](Canvas.md#attr-canvasrulescope).
+Available fields for use in the formula are the current [rule context](Canvas_1.md#attr-canvasrulescope).
 
 **Flags**: IR
 

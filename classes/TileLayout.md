@@ -6,7 +6,7 @@
 
 ## Class: TileLayout
 
-*Inherits from:* [Canvas](Canvas.md#class-canvas)
+*Inherits from:* [Canvas](Canvas_1.md#class-canvas)
 
 ### Description
 Lays out a series of components, called "tiles", in a grid with multiple tiles per row.
@@ -29,7 +29,7 @@ Width and height may be separately set via [TileLayout.tileHeight](#attr-tilelay
 ## Attr: TileLayout.paddingAsLayoutMargin
 
 ### Description
-If this widget has padding specified (as [this.padding](Canvas.md#attr-canvaspadding) or in the CSS style applied to this layout), should it show up as space outside the members, similar to layoutMargin?
+If this widget has padding specified (as [this.padding](Canvas_1.md#attr-canvaspadding) or in the CSS style applied to this layout), should it show up as space outside the members, similar to layoutMargin?
 
 If this setting is false, padding will not affect member positioning (as CSS padding normally does not affect absolutely positioned children). Leaving this setting true allows a designer to more effectively control layout purely from CSS.
 
@@ -179,7 +179,7 @@ Normal [Overflow](../reference.md#type-overflow) settings can be used on TileLay
 ### Description
 When [LayoutPolicy](../reference_2.md#type-layoutpolicy) is "flow", should we automatically start a new line when there's not enough room to fit the next tile on the same line?
 
-If set to false, a new line will only be started if a tile specifies [tile.startLine](Canvas.md#attr-canvasstartline) or [tile.endLine](Canvas.md#attr-canvasendline).
+If set to false, a new line will only be started if a tile specifies [tile.startLine](Canvas_1.md#attr-canvasstartline) or [tile.endLine](Canvas_1.md#attr-canvasendline).
 
 ### Groups
 
@@ -265,7 +265,7 @@ Horizontal margin in between tiles. See [TileLayout.tileMargin](#attr-tilelayout
 ### Description
 Minimum size in pixels for stretch-resolved tiles when [TileLayout.tileFlowPolicy](#attr-tilelayouttileflowpolicy) is "fill". Tiles whose width (or height for [vertical orientation](../reference_2.md#type-orientation)) resolves via `"*"` or `"%"` will never be sized below this value. Also used as the effective width of stretch tiles when deciding whether a row is full (prevents unbounded accumulation of `"*"` tiles on one row).
 
-Defaults to [TileLayout.tileSize](#attr-tilelayouttilesize) if unset. Per-tile [Canvas.minWidth](Canvas.md#attr-canvasminwidth) takes precedence when larger.
+Defaults to [TileLayout.tileSize](#attr-tilelayouttilesize) if unset. Per-tile [Canvas.minWidth](Canvas_1.md#attr-canvasminwidth) takes precedence when larger.
 
 ### Groups
 
@@ -348,17 +348,17 @@ Add a tile to the layout, dynamically.
 ## Method: TileLayout.transformTileRect
 
 ### Description
-Transforms the input tile [relative rect](Canvas.md#method-canvassetrect) to an absolute page rect that you can apply to your own drop indicator canvas. The supplied rect is automatically clipped along the direction perpendicular to the layout's [TileLayout.orientation](#attr-tilelayoutorientation) if it extends beyond the visible edges of the layout, just like the [TileLayout.dragLine](#attr-tilelayoutdragline) autochild.
+Transforms the input tile [relative rect](Canvas_1.md#method-canvassetrect) to an absolute page rect that you can apply to your own drop indicator canvas. The supplied rect is automatically clipped along the direction perpendicular to the layout's [TileLayout.orientation](#attr-tilelayoutorientation) if it extends beyond the visible edges of the layout, just like the [TileLayout.dragLine](#attr-tilelayoutdragline) autochild.
 
 **Note:** Only code your own drop indicator if you can't get what you need by customizing and [styling](#attr-tilelayoutdraglinestyle) the built-in [TileLayout.dragLine](#attr-tilelayoutdragline) autochild!
 
 To build your own:
 
-*   Create a separate indicator [Canvas](Canvas.md#class-canvas), positioned off screen with the appropriate color, opacity, and [style](Canvas.md#attr-canvasstylename) that you want. Set the indicator's [dropTarget](Canvas.md#attr-canvasdroptarget) to be the layout so the indicator is ignored as a target itself.
-*   Override [dropMove()](Canvas.md#method-canvasdropmove) to call [TileLayout.getDropIndex](#method-tilelayoutgetdropindex), retrieve the tile, get the ${isc.DocUtils.linkForRef('method:Canvas.setRect','tile\\'s relative rect')}, and modify the rect as you need to size your indicator properly.
+*   Create a separate indicator [Canvas](Canvas_1.md#class-canvas), positioned off screen with the appropriate color, opacity, and [style](Canvas_1.md#attr-canvasstylename) that you want. Set the indicator's [dropTarget](Canvas_1.md#attr-canvasdroptarget) to be the layout so the indicator is ignored as a target itself.
+*   Override [dropMove()](Canvas_1.md#method-canvasdropmove) to call [TileLayout.getDropIndex](#method-tilelayoutgetdropindex), retrieve the tile, get the ${isc.DocUtils.linkForRef('method:Canvas.setRect','tile\\'s relative rect')}, and modify the rect as you need to size your indicator properly.
 *   You'll have to manually handle the case of the drop index pointing beyond the last record, perhaps by grabbing the last tile rect, but narrowing it to the opposite side.
-*   Pass the modified rect to this method to clip and transform it to an absolute rect, and then [set that new rect](Canvas.md#method-canvassetrect) into your drop indicator and [show()](Canvas.md#method-canvasshow) it.
-*   You will need to [hide()](Canvas.md#method-canvashide) the drop indicator in [dropOut()](Canvas.md#method-canvasdropout).
+*   Pass the modified rect to this method to clip and transform it to an absolute rect, and then [set that new rect](Canvas_1.md#method-canvassetrect) into your drop indicator and [show()](Canvas_1.md#method-canvasshow) it.
+*   You will need to [hide()](Canvas_1.md#method-canvashide) the drop indicator in [dropOut()](Canvas_1.md#method-canvasdropout).
 
 Sample code that can be added to the SmartClient Showcase "Basic Tiling" sample:
 

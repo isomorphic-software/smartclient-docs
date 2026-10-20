@@ -23,7 +23,7 @@ Name of a project to open when Reify loads.
 ## Attr: ReifyLoadConfig.target
 
 ### Description
-For `mode:"inline"`, a [Layout](Layout.md#class-layout) to add the Reify instance to as a member. If not specified, the Reify instance is created but not added to the page — call [Canvas.draw](Canvas.md#method-canvasdraw) or add it to a layout manually.
+For `mode:"inline"`, a [Layout](Layout.md#class-layout) to add the Reify instance to as a member. If not specified, the Reify instance is created but not added to the page — call [Canvas.draw](Canvas_1.md#method-canvasdraw) or add it to a layout manually.
 
 **Flags**: IR
 
@@ -39,7 +39,7 @@ For `mode:"inline"`, additional properties to apply to the [Reify](Reify.md#clas
 ## Attr: ReifyLoadConfig.mode
 
 ### Description
-How to load the Reify editor: `"inline"` loads Reify as a [Canvas](Canvas.md#class-canvas) in the current page; `"window"` opens Reify in a new browser tab.
+How to load the Reify editor: `"inline"` loads Reify as a [Canvas](Canvas_1.md#class-canvas) in the current page; `"window"` opens Reify in a new browser tab.
 
 **Flags**: IR
 

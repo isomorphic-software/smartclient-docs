@@ -33,7 +33,7 @@ Messages are edge or corner-aligned based on the [viewport width](Page.md#classm
 
 **Modal Windows and Click Masks**
 
-Messages are always shown above all other widgets, including [modal windows](Window.md#attr-windowismodal) and [click masks](Canvas.md#method-canvasshowclickmask). This is because it's expected that messages are "out of band" and logically indepedent of the widget hierarchy being shown. We apply this layering policy even for windows and widgets created by [NotifyAction](../reference.md#object-notifyaction)s. If there may a scenario where a message can block a window created by an action, set [NotifySettings.canDismiss](NotifySettings.md#attr-notifysettingscandismiss) to true so that an unobstructed view of the underlying widgets can be restored.
+Messages are always shown above all other widgets, including [modal windows](Window.md#attr-windowismodal) and [click masks](Canvas_1.md#method-canvasshowclickmask). This is because it's expected that messages are "out of band" and logically indepedent of the widget hierarchy being shown. We apply this layering policy even for windows and widgets created by [NotifyAction](../reference.md#object-notifyaction)s. If there may a scenario where a message can block a window created by an action, set [NotifySettings.canDismiss](NotifySettings.md#attr-notifysettingscandismiss) to true so that an unobstructed view of the underlying widgets can be restored.
 
 In the linked sample, note how we take care to reuse the existing modal window, if any, if the "Launch..." link is clicked, so that repeated clicks never stack windows over each other.
 

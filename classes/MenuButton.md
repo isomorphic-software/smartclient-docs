@@ -77,7 +77,7 @@ Allows you to specify an animation effect to apply to the menu when it is being 
 ## Attr: MenuButton.autoDestroyMenu
 
 ### Description
-If this menuButton is [destroyed](Canvas.md#method-canvasdestroy), should it also destroy its [MenuButton.menu](#attr-menubuttonmenu)?
+If this menuButton is [destroyed](Canvas_1.md#method-canvasdestroy), should it also destroy its [MenuButton.menu](#attr-menubuttonmenu)?
 
 ### Groups
 
@@ -103,7 +103,7 @@ Show menu button image (up / down arrowhead) for this menu button.
 ### Description
 This property corresponds to the inherited [Button.icon](Button.md#attr-buttonicon) property, which is used to display the menuButtonImage, so anything you attempt to set there would be clobbered by the internal usage.
 
-You could add an icon via the [MenuButton.title](#attr-menubuttontitle) property, by using [Canvas.imgHTML](Canvas.md#method-canvasimghtml) to generate an appropriate `<img>` tag and pre-pending it to your title.
+You could add an icon via the [MenuButton.title](#attr-menubuttontitle) property, by using [Canvas.imgHTML](Canvas_1.md#method-canvasimghtml) to generate an appropriate `<img>` tag and pre-pending it to your title.
 
 ### Groups
 
@@ -131,7 +131,7 @@ Image for menu button indicating that the button expands a menu. This image is s
 ## Attr: MenuButton.editProxyConstructor
 
 ### Description
-Default class used to construct the [EditProxy](EditProxy.md#class-editproxy) for this component when the component is [first placed into edit mode](Canvas.md#method-canvasseteditmode).
+Default class used to construct the [EditProxy](EditProxy.md#class-editproxy) for this component when the component is [first placed into edit mode](Canvas_1.md#method-canvasseteditmode).
 
 **Flags**: IR
 
@@ -139,7 +139,7 @@ Default class used to construct the [EditProxy](EditProxy.md#class-editproxy) fo
 ## Attr: MenuButton.hiliteAccessKey
 
 ### Description
-If this MenuButton has a specified [accessKey](Canvas.md#attr-canvasaccesskey), underline it in the title of the button by default
+If this MenuButton has a specified [accessKey](Canvas_1.md#attr-canvasaccesskey), underline it in the title of the button by default
 
 **Flags**: IR
 

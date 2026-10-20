@@ -99,7 +99,7 @@ When a `Splitbar` is created by a layout to be the resizeBar for some member of 
 ### Description
 When a `Splitbar` is created by a layout, the `target` property of the Splitbar will be a pointer to the member for which it is acting as a resizeBar. The Splitbar will be positioned next to its target, and will resize it on drag completion.
 
-See [Layout.resizeBarClass](Layout.md#attr-layoutresizebarclass), [Canvas.showResizeBar](Canvas.md#attr-canvasshowresizebar) and [Canvas.resizeBarTarget](Canvas.md#attr-canvasresizebartarget) for details on configuring the resize bars shown in Layouts.
+See [Layout.resizeBarClass](Layout.md#attr-layoutresizebarclass), [Canvas.showResizeBar](Canvas_1.md#attr-canvasshowresizebar) and [Canvas.resizeBarTarget](Canvas_1.md#attr-canvasresizebartarget) for details on configuring the resize bars shown in Layouts.
 
 **Flags**: R
 

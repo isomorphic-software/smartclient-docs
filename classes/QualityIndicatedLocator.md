@@ -31,7 +31,7 @@ True if the returned [locator](#attr-qualityindicatedlocatorlocator) includes a 
 ## Attr: QualityIndicatedLocator.firstParentOfIndex
 
 ### Description
-The ID of the first parent within the locator segments that has a child referenced by index. Note that a child component with an explicit [locatorName](Canvas.md#attr-canvaslocatorname) will be excluded since the name is a reliable means to locate the component.
+The ID of the first parent within the locator segments that has a child referenced by index. Note that a child component with an explicit [locatorName](Canvas_1.md#attr-canvaslocatorname) will be excluded since the name is a reliable means to locate the component.
 
 **Flags**: IR
 

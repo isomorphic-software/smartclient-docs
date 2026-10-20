@@ -9,7 +9,7 @@
 ### Description
 SmartClient can be easily integrated into any existing web application, regardless of the technology used, because it's careful not to interfere with the functionality or appearance of content created by other frameworks.
 
-SmartClient components can be adapted to your existing application's layout by using the [Canvas.htmlElement](../classes/Canvas.md#attr-canvashtmlelement) and [Canvas.matchElement](../classes/Canvas.md#attr-canvasmatchelement) APIs, for example, allowing them to be placed appropriately and respond automatically to DOM-level create, destroy, and resize events.
+SmartClient components can be adapted to your existing application's layout by using the [Canvas.htmlElement](../classes/Canvas_1.md#attr-canvashtmlelement) and [Canvas.matchElement](../classes/Canvas_1.md#attr-canvasmatchelement) APIs, for example, allowing them to be placed appropriately and respond automatically to DOM-level create, destroy, and resize events.
 
 Using this strategy, replacing another table or list component with a SmartClient ListGrid can be as simple as [loading](backgroundDownload.md#kb-topic-background-download) the framework and creating the ListGrid:
 

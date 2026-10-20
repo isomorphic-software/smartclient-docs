@@ -15,7 +15,7 @@ Live version of the object created from the [EditNode.defaults](#attr-editnodede
 ## Attr: EditNode.editProxyProperties
 
 ### Description
-Properties to be applied to the [liveObject](#attr-editnodeliveobject).[editProxy](Canvas.md#attr-canvaseditproxy) when created.
+Properties to be applied to the [liveObject](#attr-editnodeliveobject).[editProxy](Canvas_1.md#attr-canvaseditproxy) when created.
 
 Note that the `editProxy` is created the first time a component is placed into editMode, so any `editProxyProperties` must be set before then.
 
@@ -25,7 +25,7 @@ Note that the `editProxy` is created the first time a component is placed into e
 ## Attr: EditNode.useEditMask
 
 ### Description
-Shortcut property to be applied to the [liveObject](#attr-editnodeliveobject).[editProxy](Canvas.md#attr-canvaseditproxy) when created.
+Shortcut property to be applied to the [liveObject](#attr-editnodeliveobject).[editProxy](Canvas_1.md#attr-canvaseditproxy) when created.
 
 **Flags**: IR
 

@@ -15,7 +15,7 @@ The Hover class handles showing a simple SmartClient canvas containing arbitrary
 ### Description
 This is a single-instance widget, used to show contextual hover HTML and created lazily on the first call to [Hover.show](#classmethod-hovershow).
 
-This component is created using the [autoChild pattern](../reference.md#type-autochild), so you can configure it using [autoChild defaults](#classattr-hoverhovercanvasdefaults) and [properties](#classattr-hoverhovercanvasproperties), or change its type with [Hover.hoverCanvasConstructor](#classattr-hoverhovercanvasconstructor). Note that size and position are managed by the Hover subsystem, so not all [Canvas settings](Canvas.md#class-canvas) are supported.
+This component is created using the [autoChild pattern](../reference.md#type-autochild), so you can configure it using [autoChild defaults](#classattr-hoverhovercanvasdefaults) and [properties](#classattr-hoverhovercanvasproperties), or change its type with [Hover.hoverCanvasConstructor](#classattr-hoverhovercanvasconstructor). Note that size and position are managed by the Hover subsystem, so not all [Canvas settings](Canvas_1.md#class-canvas) are supported.
 
 To fully customize what a hover looks like, see [Hover.showHoverComponent](#classmethod-hovershowhovercomponent), which allows entirely custom widgets such as [grids](ListGrid_1.md#class-listgrid) to be shown as hovers.
 
@@ -37,7 +37,7 @@ Defaults to apply to the Hover canvas shown when the user hovers over some widge
  
 ```
   
-Note that these properties can be overridden by individual widgets showing hovers, by modifying [Canvas.hoverWidth](Canvas.md#attr-canvashoverwidth), [Canvas.hoverHeight](Canvas.md#attr-canvashoverheight), [Canvas.hoverStyle](Canvas.md#attr-canvashoverstyle), [Canvas.hoverAlign](Canvas.md#attr-canvashoveralign), [Canvas.hoverVAlign](Canvas.md#attr-canvashovervalign), [Canvas.hoverOpacity](Canvas.md#attr-canvashoveropacity), and [Canvas.hoverWrap](Canvas.md#attr-canvashoverwrap).
+Note that these properties can be overridden by individual widgets showing hovers, by modifying [Canvas.hoverWidth](Canvas_1.md#attr-canvashoverwidth), [Canvas.hoverHeight](Canvas_1.md#attr-canvashoverheight), [Canvas.hoverStyle](Canvas_1.md#attr-canvashoverstyle), [Canvas.hoverAlign](Canvas_1.md#attr-canvashoveralign), [Canvas.hoverVAlign](Canvas_1.md#attr-canvashovervalign), [Canvas.hoverOpacity](Canvas_1.md#attr-canvashoveropacity), and [Canvas.hoverWrap](Canvas_1.md#attr-canvashoverwrap).
 
 **Flags**: IRW
 
@@ -104,7 +104,7 @@ Width for the [Hover.focusKeyHintLabel](#classattr-hoverfocuskeyhintlabel)
 ### Description
 Allows interaction with hovers when the cursor is positioned over them.
 
-It is recommended to use [hoverPersist](Canvas.md#attr-canvashoverpersist) on canvas-instances for most cases of controlling hover persistence. Changing the system-wide default hover setting could interfere with features of built-in components, but is allowed for rare cases like manually showing a hover via [Hover.show](#classmethod-hovershow) - you should just restore the default mode after the hover is hidden.
+It is recommended to use [hoverPersist](Canvas_1.md#attr-canvashoverpersist) on canvas-instances for most cases of controlling hover persistence. Changing the system-wide default hover setting could interfere with features of built-in components, but is allowed for rare cases like manually showing a hover via [Hover.show](#classmethod-hovershow) - you should just restore the default mode after the hover is hidden.
 
 ### Groups
 
@@ -116,7 +116,7 @@ It is recommended to use [hoverPersist](Canvas.md#attr-canvashoverpersist) on ca
 ## ClassAttr: Hover.focusKeyHintLabel
 
 ### Description
-The focusKeyHintLabel is automatically generated when showing the standard hover for canvases with a specified [Canvas.hoverFocusKey](Canvas.md#attr-canvashoverfocuskey), if [Hover.showFocusKeyHint](#classattr-hovershowfocuskeyhint) is true.
+The focusKeyHintLabel is automatically generated when showing the standard hover for canvases with a specified [Canvas.hoverFocusKey](Canvas_1.md#attr-canvashoverfocuskey), if [Hover.showFocusKeyHint](#classattr-hovershowfocuskeyhint) is true.
 
 Its content is determined via [Hover.focusKeyHintMessage](#classattr-hoverfocuskeyhintmessage) and its sizing and placement may be configured via [Hover.focusKeyHintLabelWidth](#classattr-hoverfocuskeyhintlabelwidth), [Hover.focusKeyHintLabelHeight](#classattr-hoverfocuskeyhintlabelheight) and [Hover.focusKeyHintLabelOffset](#classattr-hoverfocuskeyhintlabeloffset). Other configuration can be applied via the standard [autoChild configuration pattern](../kb_topics/autoChildUsage.md#kb-topic-using-autochildren).
 
@@ -134,7 +134,7 @@ Properties to apply to the [hoverCanvas](#classattr-hoverhovercanvas) used to sh
 ## ClassAttr: Hover.showFocusKeyHint
 
 ### Description
-If [Canvas.hoverFocusKey](Canvas.md#attr-canvashoverfocuskey) is set, should we show a [hint label autoChild](#classattr-hoverfocuskeyhintlabel) within the standard hover canvas, prompting the user which focus key to press?
+If [Canvas.hoverFocusKey](Canvas_1.md#attr-canvashoverfocuskey) is set, should we show a [hint label autoChild](#classattr-hoverfocuskeyhintlabel) within the standard hover canvas, prompting the user which focus key to press?
 
 **Flags**: IRW
 
@@ -176,7 +176,7 @@ Hide hoverCanvas shown via [Hover.show](#classmethod-hovershow)
 ### Description
 Displays a standard Hover canvas containing the specified HTML content.  
 This method may also be called to modify the content of the hover if it is already showing. Call [Hover.hide](#classmethod-hoverhide) to hide the canvas again.  
-A common use case for calling this method is to asynchronously fetch detail data from the server about some component, and display it in the Hover canvas when the data is returned. Note that in this case you will typically need to verify that the user is still hovering over the component in question before calling Hover.show() - if the user has moved the mouse off the component, the information will not apply to whatever is now under the mouse. Suggested approaches for handling this are to either use a [Canvas.mouseOut](Canvas.md#method-canvasmouseout) handler to track when the user moves off the component, or checking [EventHandler.getTarget](EventHandler.md#classmethod-eventhandlergettarget) as part of the asynchronous callback
+A common use case for calling this method is to asynchronously fetch detail data from the server about some component, and display it in the Hover canvas when the data is returned. Note that in this case you will typically need to verify that the user is still hovering over the component in question before calling Hover.show() - if the user has moved the mouse off the component, the information will not apply to whatever is now under the mouse. Suggested approaches for handling this are to either use a [Canvas.mouseOut](Canvas_1.md#method-canvasmouseout) handler to track when the user moves off the component, or checking [EventHandler.getTarget](EventHandler.md#classmethod-eventhandlergettarget) as part of the asynchronous callback
 
 The default Hover canvas position will be based on the mouse pointer position, adjusted by [Hover.leftOffset](#classattr-hoverleftoffset) and [Hover.topOffset](#classattr-hovertopoffset). If this position would render the Hover canvas partially clipped, it will be automatically modified to ensure the Hover is entirely visible.
 
@@ -199,7 +199,7 @@ The default Hover canvas position will be based on the mouse pointer position, a
 ## ClassMethod: Hover.showHoverComponent
 
 ### Description
-Similar to [Hover.show()](#classmethod-hovershow) but uses the hover mechanism to display some [component](Canvas.md#class-canvas) instead of showing [HTML text](Canvas.md#method-canvasgethoverhtml) in the builtin [hoverCanvas](#classattr-hoverhovercanvas). _Hover.showHoverComponent()_ is called automatically instead of _Hover.show()_ when [Canvas.showHoverComponents](Canvas.md#attr-canvasshowhovercomponents) is true.
+Similar to [Hover.show()](#classmethod-hovershow) but uses the hover mechanism to display some [component](Canvas_1.md#class-canvas) instead of showing [HTML text](Canvas_1.md#method-canvasgethoverhtml) in the builtin [hoverCanvas](#classattr-hoverhovercanvas). _Hover.showHoverComponent()_ is called automatically instead of _Hover.show()_ when [Canvas.showHoverComponents](Canvas_1.md#attr-canvasshowhovercomponents) is true.
 
 As with `Hover.show()`, the component-position is based on the mouse pointer position, adjusted by [Hover.leftOffset](#classattr-hoverleftoffset) and [Hover.topOffset](#classattr-hovertopoffset). If this position would render the component partially clipped or off-screen, it is moved to ensure the component is entirely visible.
 

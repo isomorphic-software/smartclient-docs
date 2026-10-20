@@ -13,7 +13,7 @@ The deployable frame around a [DataReport](DataReport.md#class-datareport): a VL
 ## Attr: ReportScreen.destroyReportOnReplace
 
 ### Description
-Whether the report body should be [destroyed](Canvas.md#method-canvasdestroy) when it is replaced by a different body, or unlinked by `setDataReport(null)`, rather than just removed from the frame. Defaults to false so a caller that supplied its own [ReportScreen.dataReport](#attr-reportscreendatareport) keeps ownership of it and can re-use it elsewhere.
+Whether the report body should be [destroyed](Canvas_1.md#method-canvasdestroy) when it is replaced by a different body, or unlinked by `setDataReport(null)`, rather than just removed from the frame. Defaults to false so a caller that supplied its own [ReportScreen.dataReport](#attr-reportscreendatareport) keeps ownership of it and can re-use it elsewhere.
 
 This property has no effect on a body created via the autoChild pattern, using [ReportScreen.dataReportProperties](#attr-reportscreendatareportproperties) / [ReportScreen.dataReportDefaults](#reportscreendatareportdefaults): a ReportScreen that built its own body owns it, and always destroys it on replacement, regardless of this property's value.
 

@@ -136,7 +136,7 @@ In ComponentXML dynamicProperties can be intialized as:
 
 - [dynamicProperties](../kb_topics/dynamicProperties.md#kb-topic-dynamic-properties)
 - [DynamicProperty](../reference_2.md#object-dynamicproperty)
-- [Canvas.dataPath](Canvas.md#attr-canvasdatapath)
+- [Canvas.dataPath](Canvas_1.md#attr-canvasdatapath)
 - [Class.addDynamicProperty](#method-classadddynamicproperty)
 
 **Flags**: IR
@@ -145,13 +145,13 @@ In ComponentXML dynamicProperties can be intialized as:
 ## Attr: Class.ruleScope
 
 ### Description
-[Canvas.ID](Canvas.md#attr-canvasid) of the component that manages "rule context" for which this class participates. A non-Canvas class can only use the ruleScope for supporting [Class.dynamicProperties](#attr-classdynamicproperties). Unlike [Canvas.ruleScope](Canvas.md#attr-canvasrulescope) `ruleScope` on a standalone class must be explicitly specified: a non-Canvas class has no [Canvas.parentCanvas](Canvas.md#attr-canvasparentcanvas) chain to search for an enclosing [Canvas.isRuleScope](Canvas.md#attr-canvasisrulescope) component.
+[Canvas.ID](Canvas_1.md#attr-canvasid) of the component that manages "rule context" for which this class participates. A non-Canvas class can only use the ruleScope for supporting [Class.dynamicProperties](#attr-classdynamicproperties). Unlike [Canvas.ruleScope](Canvas_1.md#attr-canvasrulescope) `ruleScope` on a standalone class must be explicitly specified: a non-Canvas class has no [Canvas.parentCanvas](Canvas_1.md#attr-canvasparentcanvas) chain to search for an enclosing [Canvas.isRuleScope](Canvas_1.md#attr-canvasisrulescope) component.
 
 A [FormItem](FormItem.md#class-formitem) is the one exception: it always takes on its form's ruleScope, and its dynamic properties are evaluated and managed by that form rather than by the FormItem itself.
 
 ### See Also
 
-- [Canvas.ruleScope](Canvas.md#attr-canvasrulescope)
+- [Canvas.ruleScope](Canvas_1.md#attr-canvasrulescope)
 - [dynamicProperties](../kb_topics/dynamicProperties.md#kb-topic-dynamic-properties)
 
 **Flags**: IR
@@ -164,7 +164,7 @@ Global identifier for referring to a Class instance in JavaScript. If you specif
 
 Not all Class subclasses support this property. The following commonly-used subclasses support global IDs:
 
-*   [Canvas](Canvas.md#class-canvas) and all visual widget subclasses
+*   [Canvas](Canvas_1.md#class-canvas) and all visual widget subclasses
 *   [DataSource](DataSource_1.md#class-datasource)
 *   [Tree](Tree.md#class-tree)
 *   [ValuesManager](ValuesManager.md#class-valuesmanager)
@@ -186,7 +186,7 @@ The setting defaults to true if unset. To disable this behavior for a custom cla
  
 ```
 
-Note that it is not valid to disable this behavior for any subclass of [Canvas](Canvas.md#class-canvas) (Canvas relies on this property).
+Note that it is not valid to disable this behavior for any subclass of [Canvas](Canvas_1.md#class-canvas) (Canvas relies on this property).
 
 Regardless of the setting for `addPropertiesOnCreate`, all arguments passed to [Class.create](#classmethod-classcreate) are still passed on to [Class.init](#method-classinit).
 
@@ -670,7 +670,7 @@ All arguments passed to this method are passed on to the [Class.init](#method-cl
 
 Any return value from [Class.init](#method-classinit) is thrown away.
 
-Note: Generally, you would not override this method. If you want to specify a constructor for your class, provide an override for [Class.init](#method-classinit) for generic classes or [Canvas.initWidget](Canvas.md#method-canvasinitwidget) for any subclasses of UI components (i.e. descendants of [Canvas](Canvas.md#class-canvas)).
+Note: Generally, you would not override this method. If you want to specify a constructor for your class, provide an override for [Class.init](#method-classinit) for generic classes or [Canvas.initWidget](Canvas_1.md#method-canvasinitwidget) for any subclasses of UI components (i.e. descendants of [Canvas](Canvas_1.md#class-canvas)).
 
 ### Parameters
 
@@ -1319,7 +1319,7 @@ General best practice is to call the method as "this.echo()" whenever "this" is 
 ### Description
 Initialize a new instance of this Class. This method is called automatically by [Class.create](#classmethod-classcreate).
 
-Override this method to provide initialization logic for your class. If your class is a subclass of a UI component (i.e. descendant of [Canvas](Canvas.md#class-canvas)), it is typically recommended to override [Canvas.initComplete](Canvas.md#method-canvasinitcomplete) or [Canvas.initWidget](Canvas.md#method-canvasinitwidget) instead.
+Override this method to provide initialization logic for your class. If your class is a subclass of a UI component (i.e. descendant of [Canvas](Canvas_1.md#class-canvas)), it is typically recommended to override [Canvas.initComplete](Canvas_1.md#method-canvasinitcomplete) or [Canvas.initWidget](Canvas_1.md#method-canvasinitwidget) instead.
 
 ### Parameters
 
@@ -1460,11 +1460,11 @@ See the [AutoChild usage overview](../kb_topics/autoChildren.md#kb-topic-autochi
 4.  sets this._autoChildName_ to the created component
 5.  adds the component either to this component, or to some other parent, specified by the "autoParent" property in the autoChild's defaults. The "autoParent" property may be "none" indicating the autoChild should not be automatically added.
 
-When adding an autoChild to a [Layout](Layout.md#class-layout) subclass, [addMember()](Layout.md#method-layoutaddmember) will be called instead of the normal [addChild()](Canvas.md#method-canvasaddchild). To prevent this behavior, `addAsChild:true` can be set in the autoChild defaults. Similarly, `addAsPeer:true` may be set to add an autoChild as a peer.
+When adding an autoChild to a [Layout](Layout.md#class-layout) subclass, [addMember()](Layout.md#method-layoutaddmember) will be called instead of the normal [addChild()](Canvas_1.md#method-canvasaddchild). To prevent this behavior, `addAsChild:true` can be set in the autoChild defaults. Similarly, `addAsPeer:true` may be set to add an autoChild as a peer.
 
 **Tip:** because `addAutoChild()` checks specifically for show_AutoChildName_:false, you do not have to add show_AutoChildName_:true in order for an autoChild to be shown by default; leaving the property undefined is sufficient.
 
-Note that by default the child created by this method will be destroyed when [destroy()](Canvas.md#method-canvasdestroy) is called on this instance. To disable this behavior, set `dontAutoDestroy` to true on the auto child.
+Note that by default the child created by this method will be destroyed when [destroy()](Canvas_1.md#method-canvasdestroy) is called on this instance. To disable this behavior, set `dontAutoDestroy` to true on the auto child.
 
 ### Parameters
 
@@ -1559,14 +1559,14 @@ In addition to applying defaults and properties as described under the [AutoChil
 *   is automatically `autoDraw:false`
 *   has a `creator` property that points to this component, for easy authoring of event handlers (eg click:"this.creator.doSomething()")
 
-Unlike [Class.addAutoChild](#method-classaddautochild), `createAutoChild()` does not create a this._autoChildName_ reference to the component, check a show_AutoChildName_ flag, or automatically add the autoChild via [Canvas.addChild](Canvas.md#method-canvasaddchild).
+Unlike [Class.addAutoChild](#method-classaddautochild), `createAutoChild()` does not create a this._autoChildName_ reference to the component, check a show_AutoChildName_ flag, or automatically add the autoChild via [Canvas.addChild](Canvas_1.md#method-canvasaddchild).
 
 General you use `createAutoChild` rather than addAutoChild when:
 
 *   you are going to create several autoChildren with a common set of defaults (for example the [column](ColumnTree.md#attr-columntreecolumn) autoChild of the [ColumnTree](ColumnTree.md#class-columntree)).
 *   children need to be created before their parents (eg, for layout/auto-sizing reasons)
 
-Note that by default the child created by this method will be destroyed when [destroy()](Canvas.md#method-canvasdestroy) is called on this instance. To disable this behavior, set `dontAutoDestroy` to true on the auto child.
+Note that by default the child created by this method will be destroyed when [destroy()](Canvas_1.md#method-canvasdestroy) is called on this instance. To disable this behavior, set `dontAutoDestroy` to true on the auto child.
 
 ### Parameters
 
@@ -1611,7 +1611,7 @@ Permanently destroy a class instance and any automatically created resources, re
 
 ### See Also
 
-- [Canvas.destroy](Canvas.md#method-canvasdestroy)
+- [Canvas.destroy](Canvas_1.md#method-canvasdestroy)
 - [memoryLeaks](../kb_topics/memoryLeaks.md#kb-topic-memory-leaks)
 
 **Flags**: A
@@ -1755,7 +1755,7 @@ General best practice is to call the method as "this.echo()" whenever "this" is 
 ## Method: Class.addDynamicProperty
 
 ### Description
-Sets up the value of `propertyName` to be dynamically derived from the [ruleScope](Canvas.md#attr-canvasrulescope), via any of the forms documented under [DynamicProperty](../reference_2.md#object-dynamicproperty): a simple [DataPath](../reference_2.md#type-datapath) into the ruleScope, a numeric [formula](../reference.md#object-userformula) or text [template](../reference.md#object-usersummary), an [AdvancedCriteria](../reference.md#object-advancedcriteria) (or a single bare criterion such as `{fieldName: "...", operator: "...", value: ...}`) built against [DataPaths](../reference_2.md#type-datapath), or a [valueFrom](DynamicProperty.md#attr-dynamicpropertyvaluefrom) list of alternatives. A full [DynamicProperty](../reference_2.md#object-dynamicproperty) object combining several of these fields is also accepted directly as `source`.
+Sets up the value of `propertyName` to be dynamically derived from the [ruleScope](Canvas_1.md#attr-canvasrulescope), via any of the forms documented under [DynamicProperty](../reference_2.md#object-dynamicproperty): a simple [DataPath](../reference_2.md#type-datapath) into the ruleScope, a numeric [formula](../reference.md#object-userformula) or text [template](../reference.md#object-usersummary), an [AdvancedCriteria](../reference.md#object-advancedcriteria) (or a single bare criterion such as `{fieldName: "...", operator: "...", value: ...}`) built against [DataPaths](../reference_2.md#type-datapath), or a [valueFrom](DynamicProperty.md#attr-dynamicpropertyvaluefrom) list of alternatives. A full [DynamicProperty](../reference_2.md#object-dynamicproperty) object combining several of these fields is also accepted directly as `source`.
 
 The dataPath, criteria, template, formula, or valueFrom is evaluated immediately when addDynamicProperty() is called, then re-evaluated every time the ruleScope changes. An [AdvancedCriteria](../reference.md#object-advancedcriteria) (or bare criterion) always evaluates to boolean true or false, and a [template](../reference.md#object-usersummary) to a string.
 
@@ -1776,7 +1776,7 @@ Note that you may convert a simple criteria (a plain map of fieldName to value) 
 
 ### See Also
 
-- [Canvas.dataPath](Canvas.md#attr-canvasdatapath)
+- [Canvas.dataPath](Canvas_1.md#attr-canvasdatapath)
 - [Class.dynamicProperties](#attr-classdynamicproperties)
 - [dynamicProperties](../kb_topics/dynamicProperties.md#kb-topic-dynamic-properties)
 - [DynamicProperty](../reference_2.md#object-dynamicproperty)
@@ -1922,7 +1922,7 @@ An unlimited number of observers can be set up to observe any method. The notifi
 
 NOTES:
 
-*   The object to observe may be any JavaScript object with the specified method, including simple JavaScript Objects or Arrays, or instances of SmartClient classes like [Canvas](Canvas.md#class-canvas).
+*   The object to observe may be any JavaScript object with the specified method, including simple JavaScript Objects or Arrays, or instances of SmartClient classes like [Canvas](Canvas_1.md#class-canvas).
 *   For a given observer, observed object, and observed method combination, at most one action can be registered. If you attempt to call `observe()` again with the same combination, it will return false and the action will not be registered.
 *   A method could potentially trigger an observation of itself by another object, either through code within the method itself or within an observer's action.  
     In this case the observation will be set up, but the new observation action will not fire as part of this thread. For subsequent calls to the method, the newly added observer will be fired.
@@ -1934,7 +1934,7 @@ NOTES:
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| object | [Object](../reference_2.md#type-object) | false | — | Object to observe. This may be any JavaScript object with the specified target method, including native arrays, and instances of SmartClient classes such as [Canvas](Canvas.md#class-canvas). |
+| object | [Object](../reference_2.md#type-object) | false | — | Object to observe. This may be any JavaScript object with the specified target method, including native arrays, and instances of SmartClient classes such as [Canvas](Canvas_1.md#class-canvas). |
 | methodName | [String](#type-string) | false | — | Name of the method to observe. Every time this method is invoked on the target object the specified action will fire (after the default implementation completes). |
 | action | [Function](#type-function)|[String](#type-string) | true | — | Optional action to take when the observed method is invoked on the target object.  
 If `action` is a string to execute, certain keywords are available for context:

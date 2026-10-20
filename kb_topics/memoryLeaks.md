@@ -9,7 +9,7 @@
 ### Description
 Care must be taken to avoid memory leaks in your application:
 
-*   Any [Canvas](../classes/Canvas.md#class-canvas) (including subclasses) that you're done using should be destroy()d to avoid memory leaks. Since [destroy()](../classes/Canvas.md#method-canvasdestroy) is recursive, you only need to call destroy() on the topmost component in any hierarchy of widgets you don't need. This includes [DynamicForm](../classes/DynamicForm.md#class-dynamicform) automatically destroying [FormItem](../classes/FormItem.md#class-formitem)s and [DrawPane](../classes/DrawPane.md#class-drawpane) automatically destroying [DrawItem](../classes/DrawItem.md#class-drawitem)s.
+*   Any [Canvas](../classes/Canvas_1.md#class-canvas) (including subclasses) that you're done using should be destroy()d to avoid memory leaks. Since [destroy()](../classes/Canvas_1.md#method-canvasdestroy) is recursive, you only need to call destroy() on the topmost component in any hierarchy of widgets you don't need. This includes [DynamicForm](../classes/DynamicForm.md#class-dynamicform) automatically destroying [FormItem](../classes/FormItem.md#class-formitem)s and [DrawPane](../classes/DrawPane.md#class-drawpane) automatically destroying [DrawItem](../classes/DrawItem.md#class-drawitem)s.
 *   Any [ValuesManager](../classes/ValuesManager.md#class-valuesmanager)s that you are done using should be destroy()d to avoid memory leaks, and will never be automatically destroyed as a consequence of destroying any related Canvas.
 *   [ResultSet](../classes/ResultSet.md#class-resultset) and [ResultTree](../classes/ResultTree.md#class-resulttree) instances that you **manually** create need to be destroy()d to avoid leaks. ResultSet and ResultTree instances automatically created by [ListGrid](../classes/ListGrid_1.md#class-listgrid)s and [TreeGrid](../classes/TreeGrid.md#class-treegrid)s (see [ListGrid.fetchData](../classes/ListGrid_2.md#method-listgridfetchdata)) do not need to be destroy()d as they are automatically destroyed with the creating ListGrid or TreeGrid.
 *   If your application creates an unbounded number of DataSources while it is running (this is very rare), DataSources that are given a [DataSource.ID](../classes/DataSource_1.md#attr-datasourceid) need to be destroy()d to avoid leaks. Most applications do not need to worry about this, as they create a fixed set of DataSources, and [DataSource.get](../classes/DataSource.md#classmethod-datasourceget) will never cause a leak.
@@ -40,7 +40,7 @@ If you do not have a minimal test case and have simply shown that your applicati
 
 ### See Also
 
-- [Canvas.destroy](../classes/Canvas.md#method-canvasdestroy)
+- [Canvas.destroy](../classes/Canvas_1.md#method-canvasdestroy)
 - [DrawItem.destroy](../classes/DrawItem.md#method-drawitemdestroy)
 - [Class.destroy](../classes/Class.md#method-classdestroy)
 - [ValuesManager](../classes/ValuesManager.md#class-valuesmanager)

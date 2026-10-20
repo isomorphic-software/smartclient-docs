@@ -115,7 +115,7 @@ This looks exactly like any other Angular component, but we import a few very si
  }
  
 ```
-This just creates a typical SmartClient Layout containing a databound ListGrid and a Button that manipulates the ListGrid, the same as any other SmartClient component creation. Note that when it's drawn, the layout will be placed in the DOM element created by the Angular component thanks to [Canvas.htmlElement](../classes/Canvas.md#attr-canvashtmlelement).
+This just creates a typical SmartClient Layout containing a databound ListGrid and a Button that manipulates the ListGrid, the same as any other SmartClient component creation. Note that when it's drawn, the layout will be placed in the DOM element created by the Angular component thanks to [Canvas.htmlElement](../classes/Canvas_1.md#attr-canvashtmlelement).
 
 Finally, a little helper `drawCanvasOnElement` function that causes the SmartClient runtime to be loaded if it hasn't already, and provides the given element to the builder function when everything is ready.
 

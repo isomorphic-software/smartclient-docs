@@ -15,7 +15,7 @@ Optional UI label override. If omitted, the target's [description](CoTTask.md#at
 ## Attr: CoTTransition.visibleWhen
 
 ### Description
-Conditional visibility for this transition, evaluated with the same semantics as [Canvas.visibleWhen](Canvas.md#attr-canvasvisiblewhen). When false, the transition is treated as unavailable: it is omitted from prompt fragments (see ["transitions"](CoTProcess.md#method-cotprocessgetpromptpart)) and hidden from any UI that lists transitions. If the AI attempts to use a non-visible transition (e.g., emits {goTo} to this target) resulting in a validation error and a retry.
+Conditional visibility for this transition, evaluated with the same semantics as [Canvas.visibleWhen](Canvas_1.md#attr-canvasvisiblewhen). When false, the transition is treated as unavailable: it is omitted from prompt fragments (see ["transitions"](CoTProcess.md#method-cotprocessgetpromptpart)) and hidden from any UI that lists transitions. If the AI attempts to use a non-visible transition (e.g., emits {goTo} to this target) resulting in a validation error and a retry.
 
 **Evaluation context**  
 The expression is evaluated against the process [ruleScope](Process.md#attr-processrulescope). In addition, the special identifier `state` is prebound to `process.state`

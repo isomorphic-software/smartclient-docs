@@ -27,7 +27,7 @@ Whether to animate a change of the view state via [NavigationBar.setViewState](#
 
 Enabling animation of state changes does have a performance impact because more components need to be created by the `NavigationBar` to implement the animated transitions. It is therefore recommended to leave `animateStateChanges` at its default value of `false` unless [NavigationBar.setViewState](#method-navigationbarsetviewstate) might be called on this `NavigationBar` instance and animation is desired.
 
-Note also that when animation is enabled, certain AutoChild defaults and properties may be used to create other AutoChildren that are internal to the animation implementation. This generally does not cause an issue unless certain non-UI event handlers are added to the defaults and/or properties (e.g. [Canvas.visibilityChanged](Canvas.md#method-canvasvisibilitychanged), [Canvas.resized](Canvas.md#method-canvasresized)). For those types of handlers, a check should be added to make sure that the handler is running for the expected component.
+Note also that when animation is enabled, certain AutoChild defaults and properties may be used to create other AutoChildren that are internal to the animation implementation. This generally does not cause an issue unless certain non-UI event handlers are added to the defaults and/or properties (e.g. [Canvas.visibilityChanged](Canvas_1.md#method-canvasvisibilitychanged), [Canvas.resized](Canvas_1.md#method-canvasresized)). For those types of handlers, a check should be added to make sure that the handler is running for the expected component.
 
 **Flags**: IRA
 

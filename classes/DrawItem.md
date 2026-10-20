@@ -137,7 +137,7 @@ Line color
 ## Attr: DrawItem.destroying
 
 ### Description
-Flag indicating a drawItem is mid-destruction, similar to [Canvas.destroying](Canvas.md#attr-canvasdestroying).
+Flag indicating a drawItem is mid-destruction, similar to [Canvas.destroying](Canvas_1.md#attr-canvasdestroying).
 
 **Flags**: RA
 
@@ -485,7 +485,7 @@ This offset overrides the built-in offset used when showing both resize and move
 ## Attr: DrawItem.drawPane
 
 ### Description
-[DrawPane](DrawPane.md#class-drawpane) or [global ID](Canvas.md#method-canvasgetid) of the DrawPane this drawItem should draw in.
+[DrawPane](DrawPane.md#class-drawpane) or [global ID](Canvas_1.md#method-canvasgetid) of the DrawPane this drawItem should draw in.
 
 If this item has a [DrawGroup](DrawGroup.md#class-drawgroup), the drawGroup's drawPane is automatically used.
 
@@ -495,7 +495,7 @@ If this item has a [DrawGroup](DrawGroup.md#class-drawgroup), the drawGroup's dr
 ## Attr: DrawItem.destroyed
 
 ### Description
-Flag indicating a drawItem has been destroyed, similar to [Canvas.destroyed](Canvas.md#attr-canvasdestroyed).
+Flag indicating a drawItem has been destroyed, similar to [Canvas.destroyed](Canvas_1.md#attr-canvasdestroyed).
 
 **Flags**: RA
 
@@ -621,7 +621,7 @@ If this item is showing "startPoint" [control knobs](#attr-drawitemknobs), this 
 ### Description
 Context menu to show for this object, an instance of the Menu widget.
 
-Note: if [Canvas.destroy](Canvas.md#method-canvasdestroy) is called on a canvas, any specified context menu is not automatically destroyed as well. This is in contrast to [MenuButton](MenuButton.md#class-menubutton)s which automatically destroy their specified [MenuButton.menu](MenuButton.md#attr-menubuttonmenu) by default. The behavior is intentional as context menus are commonly reused across components.
+Note: if [Canvas.destroy](Canvas_1.md#method-canvasdestroy) is called on a canvas, any specified context menu is not automatically destroyed as well. This is in contrast to [MenuButton](MenuButton.md#class-menubutton)s which automatically destroy their specified [MenuButton.menu](MenuButton.md#attr-menubuttonmenu) by default. The behavior is intentional as context menus are commonly reused across components.
 
 ### Groups
 
@@ -629,7 +629,7 @@ Note: if [Canvas.destroy](Canvas.md#method-canvasdestroy) is called on a canvas,
 
 ### See Also
 
-- [Canvas.showContextMenu](Canvas.md#method-canvasshowcontextmenu)
+- [Canvas.showContextMenu](Canvas_1.md#method-canvasshowcontextmenu)
 
 **Flags**: IRW
 
@@ -671,7 +671,7 @@ Shadow used for all DrawItem subtypes.
 ## Attr: DrawItem.editProxyConstructor
 
 ### Description
-Default class used to construct the [EditProxy](EditProxy.md#class-editproxy) for this component when the component is [first placed into edit mode](Canvas.md#method-canvasseteditmode).
+Default class used to construct the [EditProxy](EditProxy.md#class-editproxy) for this component when the component is [first placed into edit mode](Canvas_1.md#method-canvasseteditmode).
 
 **Flags**: IR
 
@@ -873,8 +873,8 @@ Note that if this item is part of a [DrawGroup](DrawGroup.md#class-drawgroup), t
 
 ### See Also
 
-- [Canvas.getOffsetX](Canvas.md#method-canvasgetoffsetx)
-- [Canvas.getOffsetY](Canvas.md#method-canvasgetoffsety)
+- [Canvas.getOffsetX](Canvas_1.md#method-canvasgetoffsetx)
+- [Canvas.getOffsetY](Canvas_1.md#method-canvasgetoffsety)
 
 ---
 ## Method: DrawItem.bringToFront
@@ -950,8 +950,8 @@ Note that if this item is part of a [DrawGroup](DrawGroup.md#class-drawgroup), t
 
 ### See Also
 
-- [Canvas.getOffsetX](Canvas.md#method-canvasgetoffsetx)
-- [Canvas.getOffsetY](Canvas.md#method-canvasgetoffsety)
+- [Canvas.getOffsetX](Canvas_1.md#method-canvasgetoffsetx)
+- [Canvas.getOffsetY](Canvas_1.md#method-canvasgetoffsety)
 
 ---
 ## Method: DrawItem.show
@@ -1028,8 +1028,8 @@ Note that if this item is part of a [DrawGroup](DrawGroup.md#class-drawgroup), t
 
 ### See Also
 
-- [Canvas.getOffsetX](Canvas.md#method-canvasgetoffsetx)
-- [Canvas.getOffsetY](Canvas.md#method-canvasgetoffsety)
+- [Canvas.getOffsetX](Canvas_1.md#method-canvasgetoffsetx)
+- [Canvas.getOffsetY](Canvas_1.md#method-canvasgetoffsety)
 
 ---
 ## Method: DrawItem.rotateTo
@@ -1083,8 +1083,8 @@ Note that if this item is part of a [DrawGroup](DrawGroup.md#class-drawgroup), t
 
 ### See Also
 
-- [Canvas.getOffsetX](Canvas.md#method-canvasgetoffsetx)
-- [Canvas.getOffsetY](Canvas.md#method-canvasgetoffsety)
+- [Canvas.getOffsetX](Canvas_1.md#method-canvasgetoffsetx)
+- [Canvas.getOffsetY](Canvas_1.md#method-canvasgetoffsety)
 
 ---
 ## Method: DrawItem.dragStop
@@ -1104,8 +1104,8 @@ Note that if this item is part of a [DrawGroup](DrawGroup.md#class-drawgroup), t
 
 ### See Also
 
-- [Canvas.getOffsetX](Canvas.md#method-canvasgetoffsetx)
-- [Canvas.getOffsetY](Canvas.md#method-canvasgetoffsety)
+- [Canvas.getOffsetX](Canvas_1.md#method-canvasgetoffsetx)
+- [Canvas.getOffsetY](Canvas_1.md#method-canvasgetoffsety)
 
 ---
 ## Method: DrawItem.setFillOpacity
@@ -1205,7 +1205,7 @@ Setter for [drawPane](#attr-drawitemdrawpane).
 ## Method: DrawItem.moved
 
 ### Description
-Notification method fired when this component is explicitly moved. Note that a component's position on the screen may also be changed due to an ancestor being moved. The [parentMoved()](Canvas.md#method-canvasparentmoved) method provides a notification entry point to catch that case as well.
+Notification method fired when this component is explicitly moved. Note that a component's position on the screen may also be changed due to an ancestor being moved. The [parentMoved()](Canvas_1.md#method-canvasparentmoved) method provides a notification entry point to catch that case as well.
 
 ### Parameters
 
@@ -1317,8 +1317,8 @@ Note that if this item is part of a [DrawGroup](DrawGroup.md#class-drawgroup), t
 
 ### See Also
 
-- [Canvas.getOffsetX](Canvas.md#method-canvasgetoffsetx)
-- [Canvas.getOffsetY](Canvas.md#method-canvasgetoffsety)
+- [Canvas.getOffsetX](Canvas_1.md#method-canvasgetoffsetx)
+- [Canvas.getOffsetY](Canvas_1.md#method-canvasgetoffsety)
 
 ---
 ## Method: DrawItem.getResizeBoundingBox
@@ -1416,7 +1416,7 @@ Shows a set of control knobs for this drawItem. Updates [DrawItem.knobs](#attr-d
 ## Method: DrawItem.doubleClick
 
 ### Description
-Notification fired when the user clicks on this DrawItem twice in rapid succession (within the [DrawPane](DrawPane.md#class-drawpane)'s [doubleClickDelay](Canvas.md#attr-canvasdoubleclickdelay) by default) in this object.
+Notification fired when the user clicks on this DrawItem twice in rapid succession (within the [DrawPane](DrawPane.md#class-drawpane)'s [doubleClickDelay](Canvas_1.md#attr-canvasdoubleclickdelay) by default) in this object.
 
 Note that if this item is part of a [DrawGroup](DrawGroup.md#class-drawgroup), then the group's [useGroupRect](DrawGroup.md#attr-drawgroupusegrouprect) setting affects whether this item receives the notification. If useGroupRect is true, then this item will _not_ receive the notification. Otherwise, the item receives the notification and notification bubbles up to the group.
 
@@ -1430,7 +1430,7 @@ Note that if this item is part of a [DrawGroup](DrawGroup.md#class-drawgroup), t
 
 ### See Also
 
-- [Canvas.doubleClickDelay](Canvas.md#attr-canvasdoubleclickdelay)
+- [Canvas.doubleClickDelay](Canvas_1.md#attr-canvasdoubleclickdelay)
 
 ---
 ## Method: DrawItem.sendToBack
@@ -1471,7 +1471,7 @@ If [DrawItem.canDrag](#attr-drawitemcandrag) is true and the [control knobs](#at
 ## Method: DrawItem.showContextMenu
 
 ### Description
-Executed when the right mouse button is clicked. The default implementation of this method auto-creates a [Menu](Menu.md#class-menu) from the [Canvas.contextMenu](Canvas.md#attr-canvascontextmenu) property on this component and then calls [Menu.showContextMenu](Menu.md#method-menushowcontextmenu) on it to show it.
+Executed when the right mouse button is clicked. The default implementation of this method auto-creates a [Menu](Menu.md#class-menu) from the [Canvas.contextMenu](Canvas_1.md#attr-canvascontextmenu) property on this component and then calls [Menu.showContextMenu](Menu.md#method-menushowcontextmenu) on it to show it.
 
 If you want to show a standard context menu, you can simply define your Menu and set it as the contextMenu property on your component - you do not need to override this method.
 
@@ -1489,9 +1489,9 @@ If you want to do some other processing before showing a menu or do something el
 
 - [DrawItem.contextMenu](#attr-drawitemcontextmenu)
 - [Menu.showContextMenu](Menu.md#method-menushowcontextmenu)
-- [Canvas.hideContextMenu](Canvas.md#method-canvashidecontextmenu)
-- [Canvas.getOffsetX](Canvas.md#method-canvasgetoffsetx)
-- [Canvas.getOffsetY](Canvas.md#method-canvasgetoffsety)
+- [Canvas.hideContextMenu](Canvas_1.md#method-canvashidecontextmenu)
+- [Canvas.getOffsetX](Canvas_1.md#method-canvasgetoffsetx)
+- [Canvas.getOffsetY](Canvas_1.md#method-canvasgetoffsety)
 
 **Flags**: A
 
@@ -1605,8 +1605,8 @@ Note that if this item is part of a [DrawGroup](DrawGroup.md#class-drawgroup), t
 
 ### See Also
 
-- [Canvas.getOffsetX](Canvas.md#method-canvasgetoffsetx)
-- [Canvas.getOffsetY](Canvas.md#method-canvasgetoffsety)
+- [Canvas.getOffsetX](Canvas_1.md#method-canvasgetoffsetx)
+- [Canvas.getOffsetY](Canvas_1.md#method-canvasgetoffsety)
 
 ---
 ## Method: DrawItem.setLinePattern
@@ -1624,7 +1624,7 @@ Update linePattern for this drawItem.
 ## Method: DrawItem.destroy
 
 ### Description
-Permanently destroys this DrawItem, similar to [Canvas.destroy](Canvas.md#method-canvasdestroy).
+Permanently destroys this DrawItem, similar to [Canvas.destroy](Canvas_1.md#method-canvasdestroy).
 
 ### See Also
 
@@ -1669,8 +1669,8 @@ Note that if this item is part of a [DrawGroup](DrawGroup.md#class-drawgroup), t
 
 ### See Also
 
-- [Canvas.getOffsetX](Canvas.md#method-canvasgetoffsetx)
-- [Canvas.getOffsetY](Canvas.md#method-canvasgetoffsety)
+- [Canvas.getOffsetX](Canvas_1.md#method-canvasgetoffsetx)
+- [Canvas.getOffsetY](Canvas_1.md#method-canvasgetoffsety)
 
 ---
 ## Method: DrawItem.hide

@@ -39,7 +39,7 @@ Specifies the URL of the image local to the skin or application directory.
 ## Attr: ImgHTMLProperties.name
 
 ### Description
-Specifies the name of the image. This is an identifier unique to the canvas, and subsequent calls to `[Canvas.getImage](Canvas.md#method-canvasgetimage)` and `[Canvas.setImage](Canvas.md#method-canvassetimage)` with this name will act on the image object created using this `ImgHTMLProperties` object.
+Specifies the name of the image. This is an identifier unique to the canvas, and subsequent calls to `[Canvas.getImage](Canvas_1.md#method-canvasgetimage)` and `[Canvas.setImage](Canvas_1.md#method-canvassetimage)` with this name will act on the image object created using this `ImgHTMLProperties` object.
 
 **Flags**: IRW
 

@@ -145,7 +145,7 @@ See [taskInputExpressions](../reference_2.md#type-taskinputexpression) for detai
 ### Description
 Optional ID for this process element, allowing it to be referred to from [Decisions](MultiDecisionTask.md#class-multidecisiontask), or as the [Process.startElement](Process.md#attr-processstartelement). See [ProcessSequence](../reference.md#class-processsequence) and [Process](Process.md#class-process) to understand when this is required or can be omitted.
 
-Unlike [Canvas.ID](Canvas.md#attr-canvasid) a `processElement`'s is a not a globally unique variable, it need only by unique within its process.
+Unlike [Canvas.ID](Canvas_1.md#attr-canvasid) a `processElement`'s is a not a globally unique variable, it need only by unique within its process.
 
 When assigned an ID, a `processElement` can be retrieve via [Process.getElement](Process.md#method-processgetelement).
 
@@ -199,7 +199,7 @@ Unless this method is provided, for a [ComponentTask](ComponentTask.md#class-com
 ### Description
 Updates references to a global ID within the properties of this process element (i.e. rename). This method is not called as part of workflow execution but is used by [Reify](Reify.md#class-reify) to keep workflow event handlers in sync with ID changes within the screen.
 
-Each processElement or Task that has properties that save global IDs (like a component ID or criteria referencing [ruleContext](Canvas.md#attr-canvasrulescope)) must be able to update its references on demand by overriding this method or defer to its superclass.
+Each processElement or Task that has properties that save global IDs (like a component ID or criteria referencing [ruleContext](Canvas_1.md#attr-canvasrulescope)) must be able to update its references on demand by overriding this method or defer to its superclass.
 
 There are a number of helper methods to make this easier listed below.
 
@@ -292,7 +292,7 @@ This method is a helper to implement task-specific [ProcessElement.updateLastEle
 ## Method: ProcessElement.getTextFormulaValue
 
 ### Description
-Resolves a [UserSummary](../reference.md#object-usersummary) value against the current [rule context](Canvas.md#attr-canvasrulescope).
+Resolves a [UserSummary](../reference.md#object-usersummary) value against the current [rule context](Canvas_1.md#attr-canvasrulescope).
 
 ### Parameters
 

@@ -1082,7 +1082,7 @@ Dynamic valueMaps can be provided by implementing [ListGrid.getEditorValueMap](L
 ## Attr: ListGridField.headerButtonAriaRole
 
 ### Description
-[Aria role](Canvas.md#attr-canvasariarole) for the header button for this field.
+[Aria role](Canvas_1.md#attr-canvasariarole) for the header button for this field.
 
 **Flags**: IRA
 
@@ -1895,7 +1895,7 @@ If a listGrid is showing a field of type summary, should this field be passed to
 ## Attr: ListGridField.headerButtonAriaState
 
 ### Description
-[Aria state](Canvas.md#attr-canvasariastate) for the header button for this field.
+[Aria state](Canvas_1.md#attr-canvasariastate) for the header button for this field.
 
 **Flags**: IRA
 
@@ -2201,7 +2201,7 @@ The grid can be sorted by an AI-generated field like any other, with the asynchr
 ## Attr: ListGridField.prompt
 
 ### Description
-Causes a tooltip hover to appear on the header generated for this field (effectively sets [Canvas.prompt](Canvas.md#attr-canvasprompt) for the header).
+Causes a tooltip hover to appear on the header generated for this field (effectively sets [Canvas.prompt](Canvas_1.md#attr-canvasprompt) for the header).
 
 **Flags**: IR
 

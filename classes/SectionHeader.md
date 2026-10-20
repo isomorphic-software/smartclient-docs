@@ -43,7 +43,7 @@ By default doubleClicks are disabled for SectionHeaders. All mouse click events 
 ## Attr: SectionHeader.definingProperty
 
 ### Description
-This attribute denotes the name of a property to use as a [getDefiningPropertyName()](Canvas.md#method-canvasgetdefiningpropertyname) for this property when generating and resolving [AutoTest locators with search segments](../reference_2.md#type-autotestlocator).
+This attribute denotes the name of a property to use as a [getDefiningPropertyName()](Canvas_1.md#method-canvasgetdefiningpropertyname) for this property when generating and resolving [AutoTest locators with search segments](../reference_2.md#type-autotestlocator).
 
 **Flags**: IRWA
 
@@ -99,7 +99,7 @@ A [Layout](Layout.md#class-layout) containing specified [SectionHeader.controls]
 ## Attr: SectionHeader.editProxyConstructor
 
 ### Description
-Default class used to construct the [EditProxy](EditProxy.md#class-editproxy) for this component when the component is [first placed into edit mode](Canvas.md#method-canvasseteditmode).
+Default class used to construct the [EditProxy](EditProxy.md#class-editproxy) for this component when the component is [first placed into edit mode](Canvas_1.md#method-canvasseteditmode).
 
 **Flags**: IR
 

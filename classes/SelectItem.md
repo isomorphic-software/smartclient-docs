@@ -226,7 +226,7 @@ If the `textBoxStyle` is changed at runtime, [updateState()](FormItem.md#method-
 ## Attr: SelectItem.pickListPlacement
 
 ### Description
-Controls where the [PickList](../reference_2.md#interface-picklist) is placed. Can be specified as a [PanelPlacement](../reference_2.md#type-panelplacement) or a specific widget that should be filled (by specifying an actual Canvas or [Canvas.ID](Canvas.md#attr-canvasid)).
+Controls where the [PickList](../reference_2.md#interface-picklist) is placed. Can be specified as a [PanelPlacement](../reference_2.md#type-panelplacement) or a specific widget that should be filled (by specifying an actual Canvas or [Canvas.ID](Canvas_1.md#attr-canvasid)).
 
 Default behavior is to `"fillPanel"` if [Browser.isHandset](Browser.md#classattr-browserishandset) or [Browser.isTablet](Browser.md#classattr-browseristablet), to better accommodate the smaller screen real estate and less precise pointing ability on such devices.
 
@@ -779,7 +779,7 @@ If [FormItem.showOver](FormItem.md#attr-formitemshowover) is true, setting this 
 ## Attr: SelectItem.editProxyConstructor
 
 ### Description
-Default class used to construct the [EditProxy](EditProxy.md#class-editproxy) for this component when the component is [first placed into edit mode](Canvas.md#method-canvasseteditmode).
+Default class used to construct the [EditProxy](EditProxy.md#class-editproxy) for this component when the component is [first placed into edit mode](Canvas_1.md#method-canvasseteditmode).
 
 **Flags**: IR
 
@@ -987,7 +987,7 @@ The SelectItem will either render as a drop-down allowing multiple selections, o
 
 The logical value of the formItem, as retrieved by [getValue()](FormItem.md#method-formitemgetvalue) and set via [setValue()](FormItem.md#method-formitemsetvalue), is an Array of Strings reflecting the selected values.
 
-When this value is true, we disable doubleClick events by default, instead issuing two single clicks by forcibly setting [noDoubleClicks: true](Canvas.md#attr-canvasnodoubleclicks). If you need to work with doubleClick events, you can disable this default behavior by explicitly setting formItem.pickListProperties.noDoubleClicks: false.
+When this value is true, we disable doubleClick events by default, instead issuing two single clicks by forcibly setting [noDoubleClicks: true](Canvas_1.md#attr-canvasnodoubleclicks). If you need to work with doubleClick events, you can disable this default behavior by explicitly setting formItem.pickListProperties.noDoubleClicks: false.
 
 Note: `multiple:true` SelectItems with multipleAppearance:"grid" do not currently support optionDataSource binding. You can get around this by calling [DataSource.fetchData](DataSource_1.md#method-datasourcefetchdata) directly and calling [dsResponse.data.getValueMap()](List.md#method-listgetvaluemap) to obtain a valueMap.
 

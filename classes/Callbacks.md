@@ -243,7 +243,7 @@ A [Callback](../reference.md#type-callback) called when the move completes.
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| earlyFinish | [boolean](../reference.md#type-boolean) | false | — | true if the animation was cut short. To quit an animation early, simply call the non-animated version of the same API, so for example call [Canvas.hide](Canvas.md#method-canvashide) to cut short an animation from [Canvas.animateHide](Canvas.md#method-canvasanimatehide) already in progress. |
+| earlyFinish | [boolean](../reference.md#type-boolean) | false | — | true if the animation was cut short. To quit an animation early, simply call the non-animated version of the same API, so for example call [Canvas.hide](Canvas_1.md#method-canvashide) to cut short an animation from [Canvas.animateHide](Canvas_1.md#method-canvasanimatehide) already in progress. |
 
 ---
 ## Method: Callbacks.GetFieldValueCallback

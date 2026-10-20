@@ -37,7 +37,7 @@ An array of Strings indicating the classNames of controls that should be specifi
 ### Description
 If true, generates HTML for export.
 
-Some components, specifically [DrawPane](DrawPane.md#class-drawpane) and [FacetChart](FacetChart.md#class-facetchart) on IE8 and earlier, need to generate different HTML for export versus in-browser print preview. When using [RPCManager.exportContent](RPCManager.md#classmethod-rpcmanagerexportcontent) the printForExport property is set to true automatically. If not using RPCManager.exportContent(), but the generated HTML will be sent for export, the `PrintProperties` passed to [Canvas.getPrintHTML](Canvas.md#method-canvasgetprinthtml) must have printForExport:true.
+Some components, specifically [DrawPane](DrawPane.md#class-drawpane) and [FacetChart](FacetChart.md#class-facetchart) on IE8 and earlier, need to generate different HTML for export versus in-browser print preview. When using [RPCManager.exportContent](RPCManager.md#classmethod-rpcmanagerexportcontent) the printForExport property is set to true automatically. If not using RPCManager.exportContent(), but the generated HTML will be sent for export, the `PrintProperties` passed to [Canvas.getPrintHTML](Canvas_1.md#method-canvasgetprinthtml) must have printForExport:true.
 
 ### Groups
 

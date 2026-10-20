@@ -167,7 +167,7 @@ Note that this property makes use of the HTML `accept` attribute, and so relies 
 ## Attr: FileItem.editProxyConstructor
 
 ### Description
-Default class used to construct the [EditProxy](EditProxy.md#class-editproxy) for this component when the component is [first placed into edit mode](Canvas.md#method-canvasseteditmode).
+Default class used to construct the [EditProxy](EditProxy.md#class-editproxy) for this component when the component is [first placed into edit mode](Canvas_1.md#method-canvasseteditmode).
 
 **Flags**: IR
 
@@ -187,7 +187,7 @@ Returns the name of the icon to use for the download functionality.
 ## Attr: FileItem.displayCanvas
 
 ### Description
-The [Canvas](Canvas.md#class-canvas) created automatically when [canEdit](FormItem.md#attr-formitemcanedit) is false and the field is of any type other than "binary".
+The [Canvas](Canvas_1.md#class-canvas) created automatically when [canEdit](FormItem.md#attr-formitemcanedit) is false and the field is of any type other than "binary".
 
 If the field is of type "imageFile", and [showFileInline](#attr-fileitemshowfileinline) is true, the contents of the canvas are set to HTML that streams the image file for display. Otherwise, the item renders icons that allow the file to be [viewed](#attr-fileitemviewiconsrc) or [downloaded](#attr-fileitemdownloadiconsrc).
 

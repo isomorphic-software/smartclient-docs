@@ -6,7 +6,7 @@
 
 ## Class: PrintCanvas
 
-*Inherits from:* [Canvas](Canvas.md#class-canvas)
+*Inherits from:* [Canvas](Canvas_1.md#class-canvas)
 
 ### Description
 PrintCanvas is a subclass of canvas which renders printable content HTML and provides APIs for printing this content as a separate document.
@@ -37,7 +37,7 @@ Location of the special printFrame html file provided as part of the SmartClient
 ### Description
 Update the HTML content displayed in this print canvas. If the printCanvas is not yet drawn the HTML will be displayed when the canvas is drawn.
 
-Note that if the printCanvas is [redrawn](Canvas.md#method-canvasredraw), or [cleared](Canvas.md#method-canvasclear) and then [drawn](Canvas.md#method-canvasdraw) again, the HTML will be redisplayed inside the print canvas, and the specified callback will be fired again.
+Note that if the printCanvas is [redrawn](Canvas_1.md#method-canvasredraw), or [cleared](Canvas_1.md#method-canvasclear) and then [drawn](Canvas_1.md#method-canvasdraw) again, the HTML will be redisplayed inside the print canvas, and the specified callback will be fired again.
 
 ### Parameters
 

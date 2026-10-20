@@ -221,11 +221,11 @@ Unless one of the above (or [Process.errorTaskRef](#attr-processerrortaskref)) i
 ## Attr: Process.ruleScope
 
 ### Description
-[Canvas.ID](Canvas.md#attr-canvasid) of the component that manages "rule context" for which this process participates. The rule context can be used in [taskInputExpression](../reference_2.md#type-taskinputexpression).
+[Canvas.ID](Canvas_1.md#attr-canvasid) of the component that manages "rule context" for which this process participates. The rule context can be used in [taskInputExpression](../reference_2.md#type-taskinputexpression).
 
 ### See Also
 
-- [Canvas.ruleScope](Canvas.md#attr-canvasrulescope)
+- [Canvas.ruleScope](Canvas_1.md#attr-canvasrulescope)
 
 **Flags**: IR
 

@@ -41,7 +41,7 @@ Defaults that will be applied to the AutoChild created by any instance of the pa
 
 SmartClient Class of the component to be created. An advanced option, this property should generally only be used to customize system-generated autoChildren when there is documentation encouraging you to do so. For example, [ListGrid](../classes/ListGrid_1.md#class-listgrid) offers the ability to use simple CSS-based headers or more complex [StretchImg](../classes/StretchImg.md#class-stretchimg) based headers via [ListGrid.headerButtonConstructor](../classes/ListGrid_1.md#attr-listgridheaderbuttonconstructor). The constructor can also be specified using the `_constructor` property in the defaults for the AutoChild. If both `_name_Constructor` and `_constructor` are specified, the explicit `_name_Constructor` will be used.
 
-The AutoChild system can be used to create both [direct children](../classes/Canvas.md#attr-canvaschildren) and indirect children (children of children). For example, the [minimizeButton](../classes/Window.md#attr-windowminimizebutton) of the Window is also an autoChild, even though it is actually located within the window header.
+The AutoChild system can be used to create both [direct children](../classes/Canvas_1.md#attr-canvaschildren) and indirect children (children of children). For example, the [minimizeButton](../classes/Window.md#attr-windowminimizebutton) of the Window is also an autoChild, even though it is actually located within the window header.
 
 #### Skinning AutoChildren
 

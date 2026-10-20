@@ -43,7 +43,7 @@ Indicates whether this is a vertical or horizontal slider.
 ## Attr: SliderItem.slider
 
 ### Description
-This item is an autoChild generated [Canvas](Canvas.md#class-canvas) displayed by the SliderItem and is an instance of [Slider](Slider.md#class-slider) by default. It is customizable via the standard [AutoChild](../reference.md#type-autochild) pattern, by customizing [SliderItem.sliderProperties](#attr-slideritemsliderproperties) and [SliderItem.sliderConstructor](#attr-slideritemsliderconstructor).
+This item is an autoChild generated [Canvas](Canvas_1.md#class-canvas) displayed by the SliderItem and is an instance of [Slider](Slider.md#class-slider) by default. It is customizable via the standard [AutoChild](../reference.md#type-autochild) pattern, by customizing [SliderItem.sliderProperties](#attr-slideritemsliderproperties) and [SliderItem.sliderConstructor](#attr-slideritemsliderconstructor).
 
 **Flags**: R
 

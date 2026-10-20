@@ -365,7 +365,7 @@ If you simply want side-by-side display with arbitrary proportions, and don't ca
 
 ### See Also
 
-- [Canvas.width](Canvas.md#attr-canvaswidth)
+- [Canvas.width](Canvas_1.md#attr-canvaswidth)
 
 **Flags**: IRW
 
@@ -424,7 +424,7 @@ The `listPane` is optional; if not present, wherever the `listPane` is mentioned
 ## Attr: SplitPane.editProxyConstructor
 
 ### Description
-Default class used to construct the [EditProxy](EditProxy.md#class-editproxy) for this component when the component is [first placed into edit mode](Canvas.md#method-canvasseteditmode).
+Default class used to construct the [EditProxy](EditProxy.md#class-editproxy) for this component when the component is [first placed into edit mode](Canvas_1.md#method-canvasseteditmode).
 
 **Flags**: IR
 
@@ -448,11 +448,11 @@ If this property is unset, the [SplitPane.navigationBar](#attr-splitpanenavigati
 ### Description
 If set, the `SplitPane` will automatically monitor selection changes in the [SplitPane.navigationPane](#attr-splitpanenavigationpane) and [SplitPane.listPane](#attr-splitpanelistpane), and call [SplitPane.navigateListPane](#method-splitpanenavigatelistpane) or [SplitPane.navigateDetailPane](#method-splitpanenavigatedetailpane) when selections are changed.
 
-If a pane is not a [DataBoundComponent](../reference.md#interface-databoundcomponent), but contains a component (selected via a breadth-first search), then that inner component will be monitored for selection changes instead. In either case, `autoNavigate` does nothing unless the monitored component has a valid [DataSource](DataSource_1.md#class-datasource) and there is a DataSource relationship declared between panes. Note that for [Layout](Layout.md#class-layout)s, the [members](Layout.md#attr-layoutmembers) will be searched when looking for a component rather than the [children](Canvas.md#attr-canvaschildren).
+If a pane is not a [DataBoundComponent](../reference.md#interface-databoundcomponent), but contains a component (selected via a breadth-first search), then that inner component will be monitored for selection changes instead. In either case, `autoNavigate` does nothing unless the monitored component has a valid [DataSource](DataSource_1.md#class-datasource) and there is a DataSource relationship declared between panes. Note that for [Layout](Layout.md#class-layout)s, the [members](Layout.md#attr-layoutmembers) will be searched when looking for a component rather than the [children](Canvas_1.md#attr-canvaschildren).
 
 Auto-navigation occurs after the [recordClick()](ListGrid_2.md#method-listgridrecordclick) or [selectionUpdated()](DataBoundComponent.md#method-databoundcomponentselectionupdated) method is called, so if you implement these methods, your code will run first. Importantly, if your methods call [fetchData()](ListGrid_2.md#method-listgridfetchdata), [setCriteria()](ListGrid_2.md#method-listgridsetcriteria), [DynamicForm.editRecord](DynamicForm.md#method-dynamicformeditrecord) or [DynamicForm.editNewRecord](DynamicForm.md#method-dynamicformeditnewrecord) on the target component, navigation will still occur, but duplicate calls to fetch related data, set data into the target, or start editing the record in the target will be skipped.
 
-The selection of the pane or pane inner component for monitoring is done only when the `SplitPane` is created, and when a new [SplitPane.navigationPane](#attr-splitpanenavigationpane) or [SplitPane.listPane](#attr-splitpanelistpane) is assigned, except when the `SplitPane` is in [edit mode](Canvas.md#method-canvasseteditmode) (e.g. when using [Reify](../kb_topics/reify.md#kb-topic-reify-overview)). where the component redetection logic gets run every time a pane's widget hierarchy changes. Changing the hierarchy under a pane at other times in a way that will affect the breadth-first selection of an inner component may lead to unexpected behavior.
+The selection of the pane or pane inner component for monitoring is done only when the `SplitPane` is created, and when a new [SplitPane.navigationPane](#attr-splitpanenavigationpane) or [SplitPane.listPane](#attr-splitpanelistpane) is assigned, except when the `SplitPane` is in [edit mode](Canvas_1.md#method-canvasseteditmode) (e.g. when using [Reify](../kb_topics/reify.md#kb-topic-reify-overview)). where the component redetection logic gets run every time a pane's widget hierarchy changes. Changing the hierarchy under a pane at other times in a way that will affect the breadth-first selection of an inner component may lead to unexpected behavior.
 
 Note that only one inner component under each pane (or the pane itself) will be monitored, even if multiple inner components might satisfy the related-data requirement.
 

@@ -9,7 +9,7 @@
 *Inherits from:* [StretchImg](StretchImg.md#class-stretchimg)
 
 ### Description
-The Scrollbar widget implements cross-platform, image-based scrollbars that control the scrolling of content in other widgets. Scrollbar widgets are created and displayed automatically for widgets that require them, based on settings for [Canvas.overflow](Canvas.md#attr-canvasoverflow).
+The Scrollbar widget implements cross-platform, image-based scrollbars that control the scrolling of content in other widgets. Scrollbar widgets are created and displayed automatically for widgets that require them, based on settings for [Canvas.overflow](Canvas_1.md#attr-canvasoverflow).
 
 The scrollbar's appearance is based on a [StretchImg](StretchImg.md#class-stretchimg) for the "track", which consists of two fixed size buttons and a stretchable center segment, and the [ScrollThumb](../reference.md#class-scrollthumb), the draggable portion of the scrollbar, also a StretchImg, with an optional [grip](StretchImg.md#attr-stretchimgshowgrip).
 
@@ -65,7 +65,7 @@ The widget whose contents should be scrolled by this scrollbar. The scrollbar th
 ## Attr: Scrollbar.btnSize
 
 ### Description
-The size of the square buttons (arrows) at the ends of this scrollbar. This overrides [Canvas.scrollbarSize](Canvas.md#attr-canvasscrollbarsize) to set the width of a vertical scrollbar or the height of a horizontal scrollbar. If not set it will default to [Canvas.scrollbarSize](Canvas.md#attr-canvasscrollbarsize).
+The size of the square buttons (arrows) at the ends of this scrollbar. This overrides [Canvas.scrollbarSize](Canvas_1.md#attr-canvasscrollbarsize) to set the width of a vertical scrollbar or the height of a horizontal scrollbar. If not set it will default to [Canvas.scrollbarSize](Canvas_1.md#attr-canvasscrollbarsize).
 
 ### Groups
 

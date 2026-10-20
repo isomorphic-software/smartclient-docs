@@ -15,7 +15,7 @@ Note that if this grid is bound to a [dataSource](ListGrid_1.md#attr-listgriddat
 
 The `ignorePendingValues` parameter may be used by developers who want to ignore this case and simply compare edit values against the record in the local data set.
 
-When a row is being actively edited, this grid contributes ``<gridId>`.rowHasChanges` to the [ruleContext](Canvas.md#attr-canvasrulescope) reflecting the result of this method for the current edit row (null when no row is being edited). To check for unsaved edits across all rows, use [ListGrid.hasChanges](ListGrid_2.md#method-listgridhaschanges).
+When a row is being actively edited, this grid contributes ``<gridId>`.rowHasChanges` to the [ruleContext](Canvas_1.md#attr-canvasrulescope) reflecting the result of this method for the current edit row (null when no row is being edited). To check for unsaved edits across all rows, use [ListGrid.hasChanges](ListGrid_2.md#method-listgridhaschanges).
 
 ### Parameters
 
@@ -122,7 +122,7 @@ Returns true if the specified record is marked as removed via a call to [ListGri
 ### Description
 Process a drop of one or more records on a ListGrid record.
 
-This method can be overridden to provide custom drop behaviors, and is a more appropriate override point than the lower level [Canvas.drop](Canvas.md#method-canvasdrop) handler.
+This method can be overridden to provide custom drop behaviors, and is a more appropriate override point than the lower level [Canvas.drop](Canvas_1.md#method-canvasdrop) handler.
 
 If this is a self-drop, records are simply reordered.
 

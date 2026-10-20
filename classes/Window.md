@@ -217,9 +217,9 @@ Body of the Window, where [contained components](../reference.md#kb-topic-form-i
 
 The following [passthroughs](../kb_topics/autoChildUsage.md#kb-topic-using-autochildren) apply:
 
-*   [bodyStyle](#attr-windowbodystyle) for the [Canvas.styleName](Canvas.md#attr-canvasstylename)
+*   [bodyStyle](#attr-windowbodystyle) for the [Canvas.styleName](Canvas_1.md#attr-canvasstylename)
 *   [printBodyStyle](#attr-windowprintbodystyle) for the `styleName` to use when printing
-*   [bodyColor](#attr-windowbodycolor) / [hiliteBodyColor](#attr-windowhilitebodycolor) for the [Canvas.backgroundColor](Canvas.md#attr-canvasbackgroundcolor)
+*   [bodyColor](#attr-windowbodycolor) / [hiliteBodyColor](#attr-windowhilitebodycolor) for the [Canvas.backgroundColor](Canvas_1.md#attr-canvasbackgroundcolor)
 
 **Flags**: R
 
@@ -244,7 +244,7 @@ If set to true the image source is derived from [Window.headerSrc](#attr-windowh
 The name of the widget class (as a string) to use for the body. If unset the appropriate constructor type will be determined as follows:  
 \- if [Window.items](#attr-windowitems) is defined as an array of widgets, and [Window.contentLayout](#attr-windowcontentlayout) is not set to `"none"`, bodyConstructor defaults to a [VLayout](../reference.md#class-vlayout)  
 \- if [Window.src](#attr-windowsrc) is set, bodyConstructor defaults to an [HTMLFlow](HTMLFlow.md#class-htmlflow)  
-\- otherwise bodyConstructor will default to a simple [Canvas](Canvas.md#class-canvas)  
+\- otherwise bodyConstructor will default to a simple [Canvas](Canvas_1.md#class-canvas)  
 Note that if this property is overridden for some window, the specified constructor should be a subclass of one of these defaults to ensure the window renders out as expected.
 
 ### Groups
@@ -262,7 +262,7 @@ Header for the Window, based on an HLayout. The header contains the title and so
 
 The following [passthroughs](../kb_topics/autoChildUsage.md#kb-topic-using-autochildren) apply:
 
-*   [headerStyle](#attr-windowheaderstyle) for [Canvas.styleName](Canvas.md#attr-canvasstylename)
+*   [headerStyle](#attr-windowheaderstyle) for [Canvas.styleName](Canvas_1.md#attr-canvasstylename)
 *   [printHeaderStyle](#attr-windowprintheaderstyle) for the `styleName` to use when printing.
 
 **Flags**: R
@@ -406,9 +406,9 @@ ImgButton-based resizer, shown in the footer.
 ## Attr: Window.useBackMask
 
 ### Description
-By default Windows show a [backMask](Canvas.md#attr-canvasusebackmask) in Internet Explorer versions predating Internet Explorer 9. This is a workaround for a native browser issue whereby certain DOM elements such as `IFRAME`s (whether rendered within SmartClient components via features such as [contentsURL](HTMLFlow.md#attr-htmlflowcontentsurl) or explicitly written into the HTML of the page) will not be properly occluded by DOM elements which overlap them but have a higher z-index.
+By default Windows show a [backMask](Canvas_1.md#attr-canvasusebackmask) in Internet Explorer versions predating Internet Explorer 9. This is a workaround for a native browser issue whereby certain DOM elements such as `IFRAME`s (whether rendered within SmartClient components via features such as [contentsURL](HTMLFlow.md#attr-htmlflowcontentsurl) or explicitly written into the HTML of the page) will not be properly occluded by DOM elements which overlap them but have a higher z-index.
 
-A side-effect of this is that the [opacity](Canvas.md#attr-canvasopacity) can not be modified for the entire window. Developers may disable the backmask in order to support opacity in IE versions less than 9 by setting this property to false, however you should be aware that in doing this there is a potential for the "burn through" problem described above.
+A side-effect of this is that the [opacity](Canvas_1.md#attr-canvasopacity) can not be modified for the entire window. Developers may disable the backmask in order to support opacity in IE versions less than 9 by setting this property to false, however you should be aware that in doing this there is a potential for the "burn through" problem described above.
 
 **Flags**: IRA
 
@@ -477,7 +477,7 @@ If true, a click outside the bounds of the Window will have the same effect as p
 ## Attr: Window.showHeaderOnRollOver
 
 ### Description
-When [Window.showHeader](#attr-windowshowheader) is false, should the [Window.header](#attr-windowheader) be shown when the pointer is over the Window or keyboard focus is within the Window or its header? This includes focus on the Window itself, for example by tabbing to a Window with [canFocus](Canvas.md#attr-canvascanfocus) set to true, and focus on its descendant controls. The header overlays the top of the body without changing the layout of the contents, and is hidden when neither the pointer nor keyboard focus is within the Window or its header.
+When [Window.showHeader](#attr-windowshowheader) is false, should the [Window.header](#attr-windowheader) be shown when the pointer is over the Window or keyboard focus is within the Window or its header? This includes focus on the Window itself, for example by tabbing to a Window with [canFocus](Canvas_1.md#attr-canvascanfocus) set to true, and focus on its descendant controls. The header overlays the top of the body without changing the layout of the contents, and is hidden when neither the pointer nor keyboard focus is within the Window or its header.
 
 Has no effect when [Window.showHeader](#attr-windowshowheader) is null or true, since the header is always shown in that case. Use [Window.setShowHeaderOnRollOver](#method-windowsetshowheaderonrollover) to change this property at runtime.
 
@@ -701,7 +701,7 @@ If null or true, always show the [Window.header](#attr-windowheader) for this Wi
 
 When false, the value of [Window.showHeaderOnRollOver](#attr-windowshowheaderonrollover) determines whether the header is shown on roll over or keyboard focus, or remains hidden. Use [Window.setShowHeader](#method-windowsetshowheader) to change this property at runtime.
 
-Note that in certain Smartclient skins [Window.showHeaderBackground](#attr-windowshowheaderbackground) may be set to `false` and the header's appearance implemented as part of the window's [edge media](Canvas.md#attr-canvasshowedges). In this case suppressing the header can be achieved by overriding the edge media as well as setting this property to false. For example, to create a headerless window with a similar appearance to a [Menu](Menu.md#class-menu) in the `_TreeFrog_` skin, the following attributes could be used:
+Note that in certain Smartclient skins [Window.showHeaderBackground](#attr-windowshowheaderbackground) may be set to `false` and the header's appearance implemented as part of the window's [edge media](Canvas_1.md#attr-canvasshowedges). In this case suppressing the header can be achieved by overriding the edge media as well as setting this property to false. For example, to create a headerless window with a similar appearance to a [Menu](Menu.md#class-menu) in the `_TreeFrog_` skin, the following attributes could be used:
 
 ```
       showHeader:false,
@@ -768,7 +768,7 @@ Is this window maximized. If true at init time, the window will be drawn maximiz
 ## Attr: Window.bringToFrontOnMouseUp
 
 ### Description
-Should this window automatically be shown at the top of the page's z-order and be brought to front via [Canvas.bringToFront](Canvas.md#method-canvasbringtofront) whenever the user clicks it?
+Should this window automatically be shown at the top of the page's z-order and be brought to front via [Canvas.bringToFront](Canvas_1.md#method-canvasbringtofront) whenever the user clicks it?
 
 If [Window.isModal](#attr-windowismodal) is true for this window, this setting will have no effect - we always bring the window to the front on initial display and on mouseDown. By default we also do this for non-modal windows (which matches user expectation for most standard interfaces - think of switching between OS-level application windows), but this may be disabled for cases where it is not appropriate by setting this attribute to `false`
 
@@ -925,7 +925,7 @@ Is this window minimized. If true at init time, the window will be drawn minimiz
 ## Attr: Window.editProxyConstructor
 
 ### Description
-Default class used to construct the [EditProxy](EditProxy.md#class-editproxy) for this component when the component is [first placed into edit mode](Canvas.md#method-canvasseteditmode).
+Default class used to construct the [EditProxy](EditProxy.md#class-editproxy) for this component when the component is [first placed into edit mode](Canvas_1.md#method-canvasseteditmode).
 
 **Flags**: IR
 
@@ -977,7 +977,7 @@ If true, show a close button in the header, which will dismiss this window by ca
 ### Description
 When drag resizing is enabled via [Window.canDragResize](#attr-windowcandragresize), restricts resizes to only certain edges or corners.
 
-This property on [Window](#class-window) overrides the default defined by [Canvas.resizeFrom](Canvas.md#attr-canvasresizefrom).
+This property on [Window](#class-window) overrides the default defined by [Canvas.resizeFrom](Canvas_1.md#attr-canvasresizefrom).
 
 ### Groups
 
@@ -1030,9 +1030,9 @@ If true, show a minimize button in the header--clicking it minimizes the Window.
 ### Description
 Renders the widget to be partly transparent. A widget's opacity property may be set to any number between 0 (transparent) to 100 (opaque). Null means don't specify opacity directly, 100 is fully opaque. Note that heavy use of opacity may have a performance impact on some older browsers.
 
-In older versions of Internet Explorer (Pre IE9 / HTML5), opacity is achieved through proprietary filters. If [filters have been disabled](Canvas.md#classattr-canvasneverusefilters) within this application developers must set [Canvas.useOpacityFilter](Canvas.md#attr-canvasuseopacityfilter) to true for specific components on which opacity support is required.
+In older versions of Internet Explorer (Pre IE9 / HTML5), opacity is achieved through proprietary filters. If [filters have been disabled](Canvas.md#classattr-canvasneverusefilters) within this application developers must set [Canvas.useOpacityFilter](Canvas_1.md#attr-canvasuseopacityfilter) to true for specific components on which opacity support is required.
 
-Also note that opacity is incompatible with [backMasks](Canvas.md#attr-canvasusebackmask), and that this property is enabled by default for Window instances.
+Also note that opacity is incompatible with [backMasks](Canvas_1.md#attr-canvasusebackmask), and that this property is enabled by default for Window instances.
 
 **Flags**: IRWA
 
@@ -1083,7 +1083,7 @@ CSS Style for header in printed output
 ### Description
 If true, this Window widget will automatically be centered on the page when shown. If false, it will show up in the last position it was placed (either programmatically, or by user interaction).
 
-**Note:** If an auto-centering Window is either programmatically moved or dragged by an end user, auto-centering behavior is automatically turned off. To manually center a Window, you can use [Window.centerInPage](#method-windowcenterinpage). Auto-centering will also be disabled if you pass an explicit [left](Canvas.md#attr-canvasleft) or [top](Canvas.md#attr-canvastop) value at [create time](Class.md#classmethod-classcreate).
+**Note:** If an auto-centering Window is either programmatically moved or dragged by an end user, auto-centering behavior is automatically turned off. To manually center a Window, you can use [Window.centerInPage](#method-windowcenterinpage). Auto-centering will also be disabled if you pass an explicit [left](Canvas_1.md#attr-canvasleft) or [top](Canvas_1.md#attr-canvastop) value at [create time](Class.md#classmethod-classcreate).
 
 ### Groups
 
@@ -1163,7 +1163,7 @@ Setter for [headerStyle](#attr-windowheaderstyle).
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| newHeaderStyle | [CSSStyleName](../reference_2.md#type-cssstylename) | false | — | new [styleName](Canvas.md#attr-canvasstylename) for the [header](#attr-windowheader). |
+| newHeaderStyle | [CSSStyleName](../reference_2.md#type-cssstylename) | false | — | new [styleName](Canvas_1.md#attr-canvasstylename) for the [header](#attr-windowheader). |
 
 ---
 ## Method: Window.setBodyStyle
@@ -1175,7 +1175,7 @@ Setter for [bodyStyle](#attr-windowbodystyle).
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| newBodyStyle | [CSSStyleName](../reference_2.md#type-cssstylename) | false | — | new [styleName](Canvas.md#attr-canvasstylename) for the [body](#attr-windowbody). |
+| newBodyStyle | [CSSStyleName](../reference_2.md#type-cssstylename) | false | — | new [styleName](Canvas_1.md#attr-canvasstylename) for the [body](#attr-windowbody). |
 
 ---
 ## Method: Window.centerInPage
@@ -1393,7 +1393,7 @@ Setter for [bodyColor](#attr-windowbodycolor).
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| newBodyColor | [CSSColor](../reference_2.md#type-csscolor) | false | — | new [backgroundColor](Canvas.md#attr-canvasbackgroundcolor) for the [body](#attr-windowbody). |
+| newBodyColor | [CSSColor](../reference_2.md#type-csscolor) | false | — | new [backgroundColor](Canvas_1.md#attr-canvasbackgroundcolor) for the [body](#attr-windowbody). |
 
 ---
 ## Method: Window.setShowMaximizeButton

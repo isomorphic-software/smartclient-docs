@@ -54,7 +54,7 @@ Return this constant from a child event to stop the event propagating to its par
 Advanced property governing whether focus and blur notifications throughout the SmartClient system should be fired synchronously in Internet Explorer and Microsoft Edge, as they are in other browsers.
 
 Internet Explorer differs from other supported browsers in that the native `onfocus` and `onblur` browser events are fired asynchronously. In all other browsers these handlers are fired synchronously.  
-Historically, SmartClient focus change event notifications such as [Canvas.focusChanged](Canvas.md#method-canvasfocuschanged) and [FormItem.focus](FormItem.md#method-formitemfocus) / [FormItem.blur](FormItem.md#method-formitemblur) were fired from these native event handlers, meaning that they would also be asynchronous in Internet Explorer and synchronous in all other browsers.  
+Historically, SmartClient focus change event notifications such as [Canvas.focusChanged](Canvas_1.md#method-canvasfocuschanged) and [FormItem.focus](FormItem.md#method-formitemfocus) / [FormItem.blur](FormItem.md#method-formitemblur) were fired from these native event handlers, meaning that they would also be asynchronous in Internet Explorer and synchronous in all other browsers.  
 Internet Explorer does provide developers with a separate focus-change notification which fires synchronously in the form of the `focusin` and `focusout` events (documented [here](http://www.w3schools.com/jsref/event_onfocusin.asp)).  
 When synchronousFocusNotifications is set to `true` the SmartClient system will leverage these events to provide synchronous notifications in Internet Explorer.
 
@@ -169,11 +169,11 @@ To access properties of the last event, use:
 ## ClassAttr: EventHandler.showNoDropIndicator
 
 ### Description
-If set to true, when the user drags a [canDrop:true](Canvas.md#attr-canvascandrop) canvas over any component with [Canvas.canAcceptDrop](Canvas.md#attr-canvascanacceptdrop) set to false or where [Canvas.willAcceptDrop](Canvas.md#method-canvaswillacceptdrop) returns false, the [no-drop cursor](Canvas.md#attr-canvasnodropcursor) will be shown automatically to indicate this is not a valid drop point.
+If set to true, when the user drags a [canDrop:true](Canvas_1.md#attr-canvascandrop) canvas over any component with [Canvas.canAcceptDrop](Canvas_1.md#attr-canvascanacceptdrop) set to false or where [Canvas.willAcceptDrop](Canvas_1.md#method-canvaswillacceptdrop) returns false, the [no-drop cursor](Canvas_1.md#attr-canvasnodropcursor) will be shown automatically to indicate this is not a valid drop point.
 
 This property can be modified at runtime, meaning a developer could choose to show the no drop indicator for specific drag/drop interactions by changing the value from a dragStart handler or similar.
 
-Note that when this property is false, developers may still use the [Canvas.dropMove](Canvas.md#method-canvasdropmove) handler for potential drop targets and use [Canvas.setCursor](Canvas.md#method-canvassetcursor) to explicitly indicate invalid drop areas within a widget. This is the approach used by default for [TreeGrid](TreeGrid.md#class-treegrid) drag/drop interactions, for example.
+Note that when this property is false, developers may still use the [Canvas.dropMove](Canvas_1.md#method-canvasdropmove) handler for potential drop targets and use [Canvas.setCursor](Canvas_1.md#method-canvassetcursor) to explicitly indicate invalid drop areas within a widget. This is the approach used by default for [TreeGrid](TreeGrid.md#class-treegrid) drag/drop interactions, for example.
 
 **Flags**: IRW
 
@@ -204,7 +204,7 @@ Your canvas can call this method to set the initial drag offset to whatever you 
 
 ### See Also
 
-- [Canvas.dragStart](Canvas.md#method-canvasdragstart)
+- [Canvas.dragStart](Canvas_1.md#method-canvasdragstart)
 
 ---
 ## ClassMethod: EventHandler.rightButtonDown
@@ -283,7 +283,7 @@ Returns the current dragTarget. This is the component on which the drag and drop
 
 ### See Also
 
-- [Canvas.dragTarget](Canvas.md#attr-canvasdragtarget)
+- [Canvas.dragTarget](Canvas_1.md#attr-canvasdragtarget)
 
 **Flags**: A
 
@@ -291,7 +291,7 @@ Returns the current dragTarget. This is the component on which the drag and drop
 ## ClassMethod: EventHandler.getWheelDeltaX
 
 ### Description
-Horizontal scroll delta reported by a [mouseWheel](Canvas.md#method-canvasmousewheel) event (such as a horizontal swipe on a track-pad).
+Horizontal scroll delta reported by a [mouseWheel](Canvas_1.md#method-canvasmousewheel) event (such as a horizontal swipe on a track-pad).
 
 Returns a numeric value indicating how far the mouse wheel was rotated / the magnitude of the scroll gesture. This value will be positive if the user scrolled the mousewheel to the right, negative if scrolled in the other direction.
 
@@ -327,11 +327,11 @@ See the [Keyboard Events Overview](../kb_topics/keyboardEvents.md#kb-topic-keybo
 ### Description
 Retrieves the data from a native HTML5 drag / drop event.
 
-For a cross-frame drag initiated on another SmartClient browser window this method retrieves the data made available when the drag was initiated in the foreign frame via [EventHandler.setNativeDragData](#classmethod-eventhandlersetnativedragdata). See [Canvas.useNativeDrag](Canvas.md#attr-canvasusenativedrag) for details on cross-frame drag and drop in SmartClient.
+For a cross-frame drag initiated on another SmartClient browser window this method retrieves the data made available when the drag was initiated in the foreign frame via [EventHandler.setNativeDragData](#classmethod-eventhandlersetnativedragdata). See [Canvas.useNativeDrag](Canvas_1.md#attr-canvasusenativedrag) for details on cross-frame drag and drop in SmartClient.
 
-For a [file upload drag](Canvas.md#attr-canvascandropfiles), this method will return the [FileList](https://developer.mozilla.org/en-US/docs/Web/API/FileList) containing the file(s) that were dragged onto the component.
+For a [file upload drag](Canvas_1.md#attr-canvascandropfiles), this method will return the [FileList](https://developer.mozilla.org/en-US/docs/Web/API/FileList) containing the file(s) that were dragged onto the component.
 
-This method may only be called during the [Canvas.drop](Canvas.md#method-canvasdrop) event (or methods called during the handling of that event, such as [ListGrid.recordDrop](ListGrid_3.md#method-listgridrecorddrop)). It will return null if called at any other time, or if called during a non-HTML5 drag and drop.
+This method may only be called during the [Canvas.drop](Canvas_1.md#method-canvasdrop) event (or methods called during the handling of that event, such as [ListGrid.recordDrop](ListGrid_3.md#method-listgridrecorddrop)). It will return null if called at any other time, or if called during a non-HTML5 drag and drop.
 
 ### Returns
 
@@ -343,7 +343,7 @@ This method may only be called during the [Canvas.drop](Canvas.md#method-canvasd
 ### Description
 This API may be called to set the native HTML5 drag tracker image. The `x` and `y` parameters may be specified to affect the placement of the drag tracker image relative to the mouse cursor. The size of the drag tracker image is the intrinsic size of the image. Browsers may apply certain visual effects (such as a slight transparency) to this image.
 
-Can only be called during the [Canvas.dragStart](Canvas.md#method-canvasdragstart) event (or methods called during the handling of that event).
+Can only be called during the [Canvas.dragStart](Canvas_1.md#method-canvasdragstart) event (or methods called during the handling of that event).
 
 **NOTES:**
 
@@ -367,11 +367,11 @@ Can only be called during the [Canvas.dragStart](Canvas.md#method-canvasdragstar
 ## ClassMethod: EventHandler.setNativeDragData
 
 ### Description
-Sets the data available in a cross-frame HTML5 drag (see [Canvas.useNativeDrag](Canvas.md#attr-canvasusenativedrag)).
+Sets the data available in a cross-frame HTML5 drag (see [Canvas.useNativeDrag](Canvas_1.md#attr-canvasusenativedrag)).
 
 Data provided to this method must be valid for serialization to JSON via the [JSONEncoder](JSONEncoder.md#class-jsonencoder), or can simply be a String.
 
-Can only be called during the [Canvas.dragStart](Canvas.md#method-canvasdragstart) event (or methods called during the handling of that event).
+Can only be called during the [Canvas.dragStart](Canvas_1.md#method-canvasdragstart) event (or methods called during the handling of that event).
 
 Do not pass in sensitive data (e.g. passwords, auth/session tokens, credit card numbers, SSNs, etc.).
 
@@ -418,7 +418,7 @@ See the [Keyboard Events Overview](../kb_topics/keyboardEvents.md#kb-topic-keybo
 ## ClassMethod: EventHandler.getFocusCanvas
 
 ### Description
-Method to return the [canvasFocus:true](Canvas.md#attr-canvascanfocus) canvas with current keyboard focus.
+Method to return the [canvasFocus:true](Canvas_1.md#attr-canvascanfocus) canvas with current keyboard focus.
 
 ### Returns
 
@@ -529,7 +529,7 @@ See the [Keyboard Events Overview](../kb_topics/keyboardEvents.md#kb-topic-keybo
 ## ClassMethod: EventHandler.targetIsMasked
 
 ### Description
-Return whether this Canvas is masked by a clickMask (see [Canvas.showClickMask](Canvas.md#method-canvasshowclickmask)).
+Return whether this Canvas is masked by a clickMask (see [Canvas.showClickMask](Canvas_1.md#method-canvasshowclickmask)).
 
 ### Parameters
 
@@ -573,7 +573,7 @@ See the [Keyboard Events Overview](../kb_topics/keyboardEvents.md#kb-topic-keybo
 ## ClassMethod: EventHandler.getDragRect
 
 ### Description
-During a drag with [dragAppearance](Canvas.md#attr-canvasdragappearance) of either "target" or "outline", returns the page-relative coordinates of whatever element is being dragged.
+During a drag with [dragAppearance](Canvas_1.md#attr-canvasdragappearance) of either "target" or "outline", returns the page-relative coordinates of whatever element is being dragged.
 
 Calling this method allows you to write drag and drop logic that works identically even if `dragAppearance` is subsequently changed.
 
@@ -666,7 +666,7 @@ See the [Keyboard Events Overview](../kb_topics/keyboardEvents.md#kb-topic-keybo
 ## ClassMethod: EventHandler.getWheelDelta
 
 ### Description
-Applies to [mouseWheel](Canvas.md#method-canvasmousewheel) events only. Returns a numeric value indicating how far the mouse wheel was rotated. This value will be positive if the user scrolled the mousewheel forward or up, or negative if scrolled in the other direction. For a standard wheel-mouse, an increment of 1 relates to the smallest possible rotation of the mouse wheel. For other scrolling devices, such as scroll gestures on a track pad, wheel delta may be reported in finer grained increments (causing this method to return a fractional value).
+Applies to [mouseWheel](Canvas_1.md#method-canvasmousewheel) events only. Returns a numeric value indicating how far the mouse wheel was rotated. This value will be positive if the user scrolled the mousewheel forward or up, or negative if scrolled in the other direction. For a standard wheel-mouse, an increment of 1 relates to the smallest possible rotation of the mouse wheel. For other scrolling devices, such as scroll gestures on a track pad, wheel delta may be reported in finer grained increments (causing this method to return a fractional value).
 
 Note that behavior for trackpad scroll-gestures may differ by browser, but where separate vertical and horizontal scroll information is available, this method refers to a vertical scroll gesture.
 
@@ -682,7 +682,7 @@ Developers should also be aware that some browsers and operating systems allow t
 ## ClassMethod: EventHandler.getWheelDeltaY
 
 ### Description
-Applies to [mouseWheel](Canvas.md#method-canvasmousewheel) events only. Returns a numeric value indicating how far the mouse wheel was rotated. This value will be positive if the user scrolled the mousewheel forward or up, or negative if scrolled in the other direction. For a standard wheel-mouse, an increment of 1 relates to the smallest possible rotation of the mouse wheel. For other scrolling devices, such as scroll gestures on a track pad, wheel delta may be reported in finer grained increments (causing this method to return a fractional value).
+Applies to [mouseWheel](Canvas_1.md#method-canvasmousewheel) events only. Returns a numeric value indicating how far the mouse wheel was rotated. This value will be positive if the user scrolled the mousewheel forward or up, or negative if scrolled in the other direction. For a standard wheel-mouse, an increment of 1 relates to the smallest possible rotation of the mouse wheel. For other scrolling devices, such as scroll gestures on a track pad, wheel delta may be reported in finer grained increments (causing this method to return a fractional value).
 
 Note that behavior for trackpad scroll-gestures may differ by browser, but where separate vertical and horizontal scroll information is available, this method refers to a vertical scroll gesture.
 

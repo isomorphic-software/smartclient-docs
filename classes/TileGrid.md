@@ -25,7 +25,7 @@ Whether values should be allowed to wrap by default, or should be shown on one l
 ### Description
 Criteria that are never shown to or edited by the user and are cumulative with any criteria provided via [DataBoundComponent.initialCriteria](DataBoundComponent.md#attr-databoundcomponentinitialcriteria) and related methods.
 
-This property supports [dynamicCriteria](../kb_topics/dynamicCriteria.md#kb-topic-dynamiccriteria) - use [Criterion.valuePath](Criterion.md#attr-criterionvaluepath) to refer to values in the [Canvas.ruleScope](Canvas.md#attr-canvasrulescope).
+This property supports [dynamicCriteria](../kb_topics/dynamicCriteria.md#kb-topic-dynamiccriteria) - use [Criterion.valuePath](Criterion.md#attr-criterionvaluepath) to refer to values in the [Canvas.ruleScope](Canvas_1.md#attr-canvasrulescope).
 
 **Flags**: IRW
 
@@ -74,7 +74,7 @@ For SimpleTiles, it is possible to use [DetailViewerField.getCellStyle](DetailVi
 ## Attr: TileGrid.editProxyConstructor
 
 ### Description
-Default class used to construct the [EditProxy](EditProxy.md#class-editproxy) for this component when the component is [first placed into edit mode](Canvas.md#method-canvasseteditmode).
+Default class used to construct the [EditProxy](EditProxy.md#class-editproxy) for this component when the component is [first placed into edit mode](Canvas_1.md#method-canvasseteditmode).
 
 **Flags**: IR
 
@@ -187,7 +187,7 @@ A TileGrid automatically creates one tile per record in the dataset, via the [Au
 
 By default, the [SimpleTile](SimpleTile.md#class-simpletile) class will be used. This class automatically invokes [TileGrid.getTileHTML](#method-tilegridgettilehtml) on the tileGrid to generate its content. The standard [TileGrid.getTileHTML](#method-tilegridgettilehtml) method uses a [detailViewer](#attr-tilegriddetailviewer) to render html for the tile's record, based on the provided [TileGrid.fields](#attr-tilegridfields) (or on the default set of fields).
 
-To create a completely different appearance, override [TileGrid.tileConstructor](#attr-tilegridtileconstructor) with the name of the custom SmartClient class to use for each tile. For example, subclass [SimpleTile](SimpleTile.md#class-simpletile) and override [getInnerHTML()](Canvas.md#method-canvasgetinnerhtml), returning custom HTML for each tile.
+To create a completely different appearance, override [TileGrid.tileConstructor](#attr-tilegridtileconstructor) with the name of the custom SmartClient class to use for each tile. For example, subclass [SimpleTile](SimpleTile.md#class-simpletile) and override [getInnerHTML()](Canvas_1.md#method-canvasgetinnerhtml), returning custom HTML for each tile.
 
 ```
      isc.defineClass("MyCustomTile", "SimpleTile").addProperties({
@@ -263,7 +263,7 @@ Visual appearance to show when the tile is being dragged.
 
 ### See Also
 
-- [Canvas.dragAppearance](Canvas.md#attr-canvasdragappearance)
+- [Canvas.dragAppearance](Canvas_1.md#attr-canvasdragappearance)
 
 **Flags**: IRWA
 
@@ -464,7 +464,7 @@ Indicates whether the text of the emptyMessage property should be displayed if n
 ### Description
 Indicates whether tiles can be reordered by dragging within this `TileGrid`.
 
-**NOTE:** If `canReorderTiles` is initially enabled or might be [dynamically enabled](#method-tilegridsetcanreordertiles) after the grid is created, it may be desirable to disable [touch scrolling](Canvas.md#attr-canvasusetouchscrolling) so that touch-dragging a tile starts a reorder operation rather than a scroll. If [Canvas.disableTouchScrollingForDrag](Canvas.md#attr-canvasdisabletouchscrollingfordrag) is set to `true`, then touch scrolling will be disabled automatically. However, for [accessibility](../kb_topics/accessibility.md#kb-topic-accessibility--section-508-compliance) reasons, it is recommended to leave touch scrolling enabled and provide an alternative set of controls that can be used to perform drag-reordering of tiles.
+**NOTE:** If `canReorderTiles` is initially enabled or might be [dynamically enabled](#method-tilegridsetcanreordertiles) after the grid is created, it may be desirable to disable [touch scrolling](Canvas_1.md#attr-canvasusetouchscrolling) so that touch-dragging a tile starts a reorder operation rather than a scroll. If [Canvas.disableTouchScrollingForDrag](Canvas_1.md#attr-canvasdisabletouchscrollingfordrag) is set to `true`, then touch scrolling will be disabled automatically. However, for [accessibility](../kb_topics/accessibility.md#kb-topic-accessibility--section-508-compliance) reasons, it is recommended to leave touch scrolling enabled and provide an alternative set of controls that can be used to perform drag-reordering of tiles.
 
 ### Groups
 
@@ -492,7 +492,7 @@ This setting is incompatible with [TileGrid.dataFetchMode](#attr-tilegriddatafet
 ### Description
 Screen to create (via [createScreen()](RPCManager.md#classmethod-rpcmanagercreatescreen)) for the tile in lieu of calling [TileGrid.getTile](#method-tilegridgettile).
 
-If this grid has a [dataSource](DataBoundComponent.md#attr-databoundcomponentdatasource), the created screen is provided with a [Canvas.dataContext](Canvas.md#attr-canvasdatacontext) that includes the record being expanded. Be sure the tile screen meets these [requirements](Canvas.md#attr-canvasautopopulatedata) to utilize the `dataContext`.
+If this grid has a [dataSource](DataBoundComponent.md#attr-databoundcomponentdatasource), the created screen is provided with a [Canvas.dataContext](Canvas_1.md#attr-canvasdatacontext) that includes the record being expanded. Be sure the tile screen meets these [requirements](Canvas_1.md#attr-canvasautopopulatedata) to utilize the `dataContext`.
 
 **Flags**: IR
 
@@ -502,7 +502,7 @@ If this grid has a [dataSource](DataBoundComponent.md#attr-databoundcomponentdat
 ### Description
 Criteria to be used when [TileGrid.autoFetchData](#attr-tilegridautofetchdata) is set.
 
-This property supports [dynamicCriteria](../kb_topics/dynamicCriteria.md#kb-topic-dynamiccriteria) - use [Criterion.valuePath](Criterion.md#attr-criterionvaluepath) to refer to values in the [Canvas.ruleScope](Canvas.md#attr-canvasrulescope).
+This property supports [dynamicCriteria](../kb_topics/dynamicCriteria.md#kb-topic-dynamiccriteria) - use [Criterion.valuePath](Criterion.md#attr-criterionvaluepath) to refer to values in the [Canvas.ruleScope](Canvas_1.md#attr-canvasrulescope).
 
 ### Groups
 
@@ -600,7 +600,7 @@ The string to display in the body of a tileGrid with an empty data array, if [Ti
 ### Description
 Indicates whether tiles can be dragged from this `TileGrid` and dropped elsewhere.
 
-**NOTE:** If `canDragTilesOut` is initially enabled or might be [dynamically enabled](#method-tilegridsetcandragtilesout) after the grid is created, it may be desirable to disable [touch scrolling](Canvas.md#attr-canvasusetouchscrolling) so that touch-dragging a tile starts a drag operation rather than a scroll. If [Canvas.disableTouchScrollingForDrag](Canvas.md#attr-canvasdisabletouchscrollingfordrag) is set to `true`, then touch scrolling will be disabled automatically. However, for [accessibility](../kb_topics/accessibility.md#kb-topic-accessibility--section-508-compliance) reasons, it is recommended to leave touch scrolling enabled and provide an alternative set of controls that can be used to perform drag and drop of tiles out of the grid.
+**NOTE:** If `canDragTilesOut` is initially enabled or might be [dynamically enabled](#method-tilegridsetcandragtilesout) after the grid is created, it may be desirable to disable [touch scrolling](Canvas_1.md#attr-canvasusetouchscrolling) so that touch-dragging a tile starts a drag operation rather than a scroll. If [Canvas.disableTouchScrollingForDrag](Canvas_1.md#attr-canvasdisabletouchscrollingfordrag) is set to `true`, then touch scrolling will be disabled automatically. However, for [accessibility](../kb_topics/accessibility.md#kb-topic-accessibility--section-508-compliance) reasons, it is recommended to leave touch scrolling enabled and provide an alternative set of controls that can be used to perform drag and drop of tiles out of the grid.
 
 ### Groups
 
@@ -1437,7 +1437,7 @@ Changes to [TextMatchStyle](../reference_2.md#type-textmatchstyle) made via `req
 
 When the user re-filters this component (for example from the [filter editor](ListGrid_1.md#attr-listgridshowfiltereditor)), the request properties passed here are retained, as described under [getRefilterRequestProperties()](DataBoundComponent.md#method-databoundcomponentgetrefilterrequestproperties).
 
-To pick up such changes, we recommend that you call [setData(\[\])](#method-tilegridsetdata) (passing an empty array to ensure the data model is cleared), and then call this method to fetch again. If you try to do it by calling [invalidateCache()](ListGrid_2.md#method-listgridinvalidatecache), you may see duplicate fetches if you haven't already updated the data context by calling this method with the new request properties, and fail to do so before the component is [redrawn](Canvas.md#method-canvasredraw).
+To pick up such changes, we recommend that you call [setData(\[\])](#method-tilegridsetdata) (passing an empty array to ensure the data model is cleared), and then call this method to fetch again. If you try to do it by calling [invalidateCache()](ListGrid_2.md#method-listgridinvalidatecache), you may see duplicate fetches if you haven't already updated the data context by calling this method with the new request properties, and fail to do so before the component is [redrawn](Canvas_1.md#method-canvasredraw).
 
 ### Parameters
 

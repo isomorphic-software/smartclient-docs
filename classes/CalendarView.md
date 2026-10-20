@@ -97,7 +97,7 @@ If specified, overrides [Calendar.eventStyleName](Calendar.md#attr-calendarevent
 ## Attr: CalendarView.eventDragCanvas
 
 ### Description
-[Canvas](Canvas.md#class-canvas) displayed while dragging or resizing an event in this view and styled according to [eventDragCanvasStyleName](#attr-calendarvieweventdragcanvasstylename).
+[Canvas](Canvas_1.md#class-canvas) displayed while dragging or resizing an event in this view and styled according to [eventDragCanvasStyleName](#attr-calendarvieweventdragcanvasstylename).
 
 **Flags**: IR
 

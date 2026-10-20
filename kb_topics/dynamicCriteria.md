@@ -7,9 +7,9 @@
 ## KB Topic: dynamicCriteria
 
 ### Description
-If a property indicates it has support for "dynamic criteria" it means that values in the criteria may be dynamically derived from the current [Canvas.ruleScope](../classes/Canvas.md#attr-canvasrulescope) using [Criterion.valuePath](../classes/Criterion.md#attr-criterionvaluepath).
+If a property indicates it has support for "dynamic criteria" it means that values in the criteria may be dynamically derived from the current [Canvas.ruleScope](../classes/Canvas_1.md#attr-canvasrulescope) using [Criterion.valuePath](../classes/Criterion.md#attr-criterionvaluepath).
 
-In other words, it allows criteria to be declared using values from nearby drawn components, via the [Canvas.ruleScope](../classes/Canvas.md#attr-canvasrulescope). Values are pulled from the ruleScope via setting [Criterion.valuePath](../classes/Criterion.md#attr-criterionvaluepath) When values drawn from the ruleScope change, the component where dynamicCriteria is declared will be notified and automatically use the new value
+In other words, it allows criteria to be declared using values from nearby drawn components, via the [Canvas.ruleScope](../classes/Canvas_1.md#attr-canvasrulescope). Values are pulled from the ruleScope via setting [Criterion.valuePath](../classes/Criterion.md#attr-criterionvaluepath) When values drawn from the ruleScope change, the component where dynamicCriteria is declared will be notified and automatically use the new value
 
 ```
  isc.DynamicForm.create({

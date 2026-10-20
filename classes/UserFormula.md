@@ -25,7 +25,7 @@ For [ListGridField.userFormula](ListGridField.md#attr-listgridfielduserformula) 
 
 **Forms / Editing context**
 
-For [FormItem.formula](FormItem.md#attr-formitemformula) and [ListGridField.editorFormula](ListGridField.md#attr-listgridfieldeditorformula), variables are dot-separated (.) names representing the nested hierarchy path to the desired value within the [rule context](Canvas.md#attr-canvasrulescope). No mapping with [UserFormula.formulaVars](#attr-userformulaformulavars) is needed.
+For [FormItem.formula](FormItem.md#attr-formitemformula) and [ListGridField.editorFormula](ListGridField.md#attr-listgridfieldeditorformula), variables are dot-separated (.) names representing the nested hierarchy path to the desired value within the [rule context](Canvas_1.md#attr-canvasrulescope). No mapping with [UserFormula.formulaVars](#attr-userformulaformulavars) is needed.
 
 This attribute is writable only in [ListGrid](ListGrid_1.md#class-listgrid)s. Applications must call either [ListGrid.setUserFormula](ListGrid_2.md#method-listgridsetuserformula) or [ListGrid.setUserFormulaText](ListGrid_2.md#method-listgridsetuserformulatext) to re-evaluate the formula.
 
@@ -46,7 +46,7 @@ Object mapping from variable names to field names. All variable names must be si
 
 When used in the context of grid or detail viewer fields, field names are evaluated against the record.
 
-When used in the context of forms and editing, this property is not used for formula mapping. Instead, field names are evaluated directly against the current [rule context](Canvas.md#attr-canvasrulescope).
+When used in the context of forms and editing, this property is not used for formula mapping. Instead, field names are evaluated directly against the current [rule context](Canvas_1.md#attr-canvasrulescope).
 
 Formulas built by a [FormulaBuilder](FormulaBuilder.md#class-formulabuilder) for a [ListGrid](ListGrid_1.md#class-listgrid) will normally not define this property and the field names will be used directly, unless [useSingleLetterKey](FormulaBuilder.md#attr-formulabuilderusesingleletterkey) is `true`. However, the Builder may add mapping keys to avoid collisions with registered [math functions](MathFunction.md#classmethod-mathfunctionregisterfunction). When directly using field names in a formula, any mapping keys you add to avoid collisions should contain the string "Field" so that the SmartClient Framework can detect when single-letter keys are not in use.
 

@@ -234,7 +234,7 @@ When true, enables mock data capture mode. During execution, each AI response is
 *   **Database state changes:** If the CoT modifies a database during capture (creates, updates, or deletes records), subsequent replays against the same database will encounter different data. For example, a captured workflow that finds and edits "Order #123 with status On Hold" will fail on replay if that order no longer exists or has a different status.
 *   **External service responses differ:** Any external API calls that return different data on replay will cause workflow divergence.
 
-To avoid false regressions, ensure the test environment is reset to the same state before each replay (e.g., restore database snapshots, use deterministic component IDs via [Canvas.ID](Canvas.md#attr-canvasid), or isolate tests in fresh browser sessions).
+To avoid false regressions, ensure the test environment is reset to the same state before each replay (e.g., restore database snapshots, use deterministic component IDs via [Canvas.ID](Canvas_1.md#attr-canvasid), or isolate tests in fresh browser sessions).
 
 **ID Stability via UISession:** CoT processes that use [UISession](#class-uisession) (such as [AUN](AUN.md#class-aun)) benefit from UISession's deterministic ID generation. UISession assigns its own [PathLocalIds](#type-pathlocalid) that are independent of SmartClient's global ID counters, so components created _before_ the session do not affect IDs within the session's scope. See [UISession](#class-uisession) for details on ID stability guarantees.
 

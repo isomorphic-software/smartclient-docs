@@ -152,7 +152,7 @@ See [TreeGrid.showNodeIcons](TreeGrid.md#attr-treegridshownodeicons) and [TreeGr
 ### Description
 Criteria that are never shown to or edited by the user and are cumulative with any criteria provided via [DataBoundComponent.initialCriteria](DataBoundComponent.md#attr-databoundcomponentinitialcriteria) and related methods.
 
-This property supports [dynamicCriteria](../kb_topics/dynamicCriteria.md#kb-topic-dynamiccriteria) - use [Criterion.valuePath](Criterion.md#attr-criterionvaluepath) to refer to values in the [Canvas.ruleScope](Canvas.md#attr-canvasrulescope).
+This property supports [dynamicCriteria](../kb_topics/dynamicCriteria.md#kb-topic-dynamiccriteria) - use [Criterion.valuePath](Criterion.md#attr-criterionvaluepath) to refer to values in the [Canvas.ruleScope](Canvas_1.md#attr-canvasrulescope).
 
 **Flags**: IRW
 
@@ -303,7 +303,7 @@ If set, each column in the ColumnTree will show a header with the title of the s
 ### Description
 Indicates whether records can be dragged from this listGrid and dropped elsewhere.
 
-**NOTE:** If `canDragRecordsOut` is initially enabled or might be dynamically enabled after the grid is created, it may be desirable to disable [touch scrolling](Canvas.md#attr-canvasusetouchscrolling) so that touch-dragging a record starts a drag operation rather than a scroll, but see the discussion of [drag handles](ListGrid_2.md#method-listgridshowdraghandles). If [Canvas.disableTouchScrollingForDrag](Canvas.md#attr-canvasdisabletouchscrollingfordrag) is set to `true`, then touch scrolling will be disabled automatically. However, for [accessibility](../kb_topics/accessibility.md#kb-topic-accessibility--section-508-compliance) reasons, it is recommended to leave touch scrolling enabled and provide an alternative set of controls that can be used to perform drag and drop of records out of the grid.
+**NOTE:** If `canDragRecordsOut` is initially enabled or might be dynamically enabled after the grid is created, it may be desirable to disable [touch scrolling](Canvas_1.md#attr-canvasusetouchscrolling) so that touch-dragging a record starts a drag operation rather than a scroll, but see the discussion of [drag handles](ListGrid_2.md#method-listgridshowdraghandles). If [Canvas.disableTouchScrollingForDrag](Canvas_1.md#attr-canvasdisabletouchscrollingfordrag) is set to `true`, then touch scrolling will be disabled automatically. However, for [accessibility](../kb_topics/accessibility.md#kb-topic-accessibility--section-508-compliance) reasons, it is recommended to leave touch scrolling enabled and provide an alternative set of controls that can be used to perform drag and drop of records out of the grid.
 
 ### Groups
 
@@ -365,7 +365,7 @@ When using [single-column mode](#attr-columntreeshowmultiplecolumns), this i18n 
 ### Description
 Criteria to be used when [ColumnTree.autoFetchData](#attr-columntreeautofetchdata) is set.
 
-This property supports [dynamicCriteria](../kb_topics/dynamicCriteria.md#kb-topic-dynamiccriteria) - use [Criterion.valuePath](Criterion.md#attr-criterionvaluepath) to refer to values in the [Canvas.ruleScope](Canvas.md#attr-canvasrulescope).
+This property supports [dynamicCriteria](../kb_topics/dynamicCriteria.md#kb-topic-dynamiccriteria) - use [Criterion.valuePath](Criterion.md#attr-criterionvaluepath) to refer to values in the [Canvas.ruleScope](Canvas_1.md#attr-canvasrulescope).
 
 ### Groups
 
@@ -715,7 +715,7 @@ Additional properties to apply to the ListGrid that will show the indicated colu
 Process a drop of one or more nodes on a TreeGrid folder.  
 Note: See [treeGridDrop](../kb_topics/treeGridDrop.md#kb-topic-treegrid-drag-and-drop) for an overview of TreeGrid drag and drop behavior.
 
-This method can be overridden to provide custom drop behaviors and is a more appropriate override point than the lower level [Canvas.drop](Canvas.md#method-canvasdrop) handler.
+This method can be overridden to provide custom drop behaviors and is a more appropriate override point than the lower level [Canvas.drop](Canvas_1.md#method-canvasdrop) handler.
 
 The default behavior is to simply delegate to the [ColumnTree.transferNodes](#method-columntreetransfernodes) method; thus, the correct way to perform a programmatic folder drop, with all the built-in behaviors described below, is to call `transferNodes()`
 

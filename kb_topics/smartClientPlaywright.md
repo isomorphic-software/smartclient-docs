@@ -49,7 +49,7 @@ For general concepts, see [scrollingBehavior](../reference.md#kb-topic-understan
 
 Playwright actions like [click](https://playwright.dev/docs/api/class-elementhandle#element-handle-click) may scroll the target element into view. If SmartClient components redraw synchronously on scroll, this can interfere with Playwright actions. To avoid issues, ensure the element is in view before interacting.
 
-For SmartClient skins that use [custom scrollbars](../classes/Canvas.md#attr-canvasshowcustomscrollbars), the Playwright [mouse.wheel](https://playwright.dev/docs/api/class-page#page-mouse-wheel) method may not see the component as a valid target for scrolling. For this reason the sample `commands.js` file includes a `scrollSC()` method. This method takes a locator plus target left and top position as arguments. Note that you can specify left and top as an explicit pixel position, or use a percentage string like "50%". For example, to scroll some component to its mid point vertically while leaving the horizontal scroll position unchanged you could invoke:
+For SmartClient skins that use [custom scrollbars](../classes/Canvas_1.md#attr-canvasshowcustomscrollbars), the Playwright [mouse.wheel](https://playwright.dev/docs/api/class-page#page-mouse-wheel) method may not see the component as a valid target for scrolling. For this reason the sample `commands.js` file includes a `scrollSC()` method. This method takes a locator plus target left and top position as arguments. Note that you can specify left and top as an explicit pixel position, or use a percentage string like "50%". For example, to scroll some component to its mid point vertically while leaving the horizontal scroll position unchanged you could invoke:
 
 ```
  await page.scrollSC(locator, null, "50%");
@@ -97,7 +97,7 @@ Instead, the "click()" function is the way to interact with these controls, for 
       expect(text.trim()).toBe('Glue Pelikan Roll-fix Refill Permanent #955');
  
 ```
-**Using force-click to dismiss [click masks](../classes/Canvas.md#method-canvasshowclickmask)**
+**Using force-click to dismiss [click masks](../classes/Canvas_1.md#method-canvasshowclickmask)**
 
 In some cases you may need to dismiss a SmartClient click-mask by clicking. Examples include certain styles of drop-down, grid editing interactions, etc. - that are dismissed via an outside-click. Playwright will reject attempts to send a `click()` to some element under the click-mask by default as the target element will be obscured by the click mask in the DOM, and so is not directly "visible" as far as Playwright is aware. You can handle this by specifying [force:true](https://playwright.dev/docs/api/class-elementhandle#element-handle-click) on your click method.
 

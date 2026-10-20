@@ -6,7 +6,7 @@
 
 ## Class: DrawPane
 
-*Inherits from:* [Canvas](Canvas.md#class-canvas)
+*Inherits from:* [Canvas](Canvas_1.md#class-canvas)
 
 ### Description
 A DrawPane is a container for drawing bitmap and vector graphics using browser's built-in freeform drawing capabilities. These include the HTML5 ``<canvas>`` tag and `SVG (Scalable Vector Graphics)` where available, and the `VML (Vector Markup Language)` for legacy browsers (Internet Explorer 8 and earlier).
@@ -38,12 +38,12 @@ There are three different coordinate systems involved when a DrawItem is drawn o
     
 *   The "global coordinate system" refers to the drawing coordinate system with global DrawPane transforms [DrawPane.translate](#attr-drawpanetranslate), [DrawPane.zoomLevel](#attr-drawpanezoomlevel) and [DrawPane.rotation](#attr-drawpanerotation) applied.
     
-    Use [DrawItem.getResizeBoundingBox](DrawItem.md#method-drawitemgetresizeboundingbox) to obtain the bounding box of a [DrawItem](DrawItem.md#class-drawitem) in global coordinates. The APIs [DrawItem.getPageLeft](DrawItem.md#method-drawitemgetpageleft) and [DrawItem.getPageTop](DrawItem.md#method-drawitemgetpagetop) reflect global coordinates rounded to the nearest pixel and offset by the page-relative coordinates of the [DrawPane](#class-drawpane)'s top left corner. (See for example [Canvas.getPageLeft](Canvas.md#method-canvasgetpageleft) and [Canvas.getPageTop](Canvas.md#method-canvasgetpagetop).)
+    Use [DrawItem.getResizeBoundingBox](DrawItem.md#method-drawitemgetresizeboundingbox) to obtain the bounding box of a [DrawItem](DrawItem.md#class-drawitem) in global coordinates. The APIs [DrawItem.getPageLeft](DrawItem.md#method-drawitemgetpageleft) and [DrawItem.getPageTop](DrawItem.md#method-drawitemgetpagetop) reflect global coordinates rounded to the nearest pixel and offset by the page-relative coordinates of the [DrawPane](#class-drawpane)'s top left corner. (See for example [Canvas.getPageLeft](Canvas_1.md#method-canvasgetpageleft) and [Canvas.getPageTop](Canvas_1.md#method-canvasgetpagetop).)
     
     With the default global transforms, the global coordinate system is identical to the drawing coordinate system.
     
 
-The view port of the DrawPane is the rectangle in the global coordinate system from (0, 0) that is as wide as the DrawPane's [inner content width](Canvas.md#method-canvasgetinnercontentwidth) and as high as the DrawPane's [inner content height](Canvas.md#method-canvasgetinnercontentheight). Note: In the case of a [FacetChart](FacetChart.md#class-facetchart) showing a [zoom chart](FacetChart.md#attr-facetchartcanzoom), the view port height is decreased by the height of the zoom chart.
+The view port of the DrawPane is the rectangle in the global coordinate system from (0, 0) that is as wide as the DrawPane's [inner content width](Canvas_1.md#method-canvasgetinnercontentwidth) and as high as the DrawPane's [inner content height](Canvas_1.md#method-canvasgetinnercontentheight). Note: In the case of a [FacetChart](FacetChart.md#class-facetchart) showing a [zoom chart](FacetChart.md#attr-facetchartcanzoom), the view port height is decreased by the height of the zoom chart.
 
 One other coordinate system in use by a DrawPane when [drag-scrolling](#attr-drawpanecandragscroll) is enabled is the "viewbox coordinate system". The viewbox coordinate system is the drawing coordinate system with the [DrawPane.translate](#attr-drawpanetranslate) and [DrawPane.rotation](#attr-drawpanerotation) transforms applied. Use [drawingWidth](#attr-drawpanedrawingwidth) and [drawingHeight](#attr-drawpanedrawingheight) to control how much of the viewbox is available while panning.
 
@@ -71,7 +71,7 @@ Zoom for the `DrawPane` as a whole, where 1 is normal size.
 ## Attr: DrawPane.editProxyConstructor
 
 ### Description
-Default class used to construct the [EditProxy](EditProxy.md#class-editproxy) for this component when the component is [first placed into edit mode](Canvas.md#method-canvasseteditmode).
+Default class used to construct the [EditProxy](EditProxy.md#class-editproxy) for this component when the component is [first placed into edit mode](Canvas_1.md#method-canvasseteditmode).
 
 **Flags**: IR
 
@@ -349,7 +349,7 @@ NOTE: For performance reasons, this `DrawPane` may draw the new item on a delay 
 ### Description
 Retrieves printable HTML for this component and all printable subcomponents.
 
-By default any Canvas with children will simply collect the printable HTML of its children by calling getPrintHTML() on each child that is considered [printable](Canvas.md#attr-canvasshouldprint).
+By default any Canvas with children will simply collect the printable HTML of its children by calling getPrintHTML() on each child that is considered [printable](Canvas_1.md#attr-canvasshouldprint).
 
 If overriding this method for a custom component, you should **either** return a String of printable HTML string directly **or** return null, and fire the callback (if provided) using [Class.fireCallback](Class.md#method-classfirecallback).
 
@@ -545,7 +545,7 @@ The DrawItems will continue to exist, and you can call draw() on them to make th
 ### Description
 Returns the point of the last event in the [drawing coordinate system](#class-drawpane).
 
-To give a concrete example, suppose that this `DrawPane` has [zoomLevel](#attr-drawpanezoomlevel) 2 and drag-panning is not enabled (just to simplify this example). If [getOffsetX()](Canvas.md#method-canvasgetoffsetx) and [getOffsetY()](Canvas.md#method-canvasgetoffsety) is (0, 0) (i.e. the mouse pointer is located at the top left point of this `DrawPane`), then getDrawingPoint() would return (0, 0). If getOffsetX/Y() is (20, 40), then getDrawingPoint() would return (10, 20) because when the 2× zoom level is applied, (10, 20) is translated to (20, 40) on the screen. You could, for example, create a new [DrawLine](DrawLine.md#class-drawline) with [startPoint](DrawLine.md#attr-drawlinestartpoint) (10, 20) and when this line is drawn on screen, the position of the line's start point would be at offset (20, 40) on screen.
+To give a concrete example, suppose that this `DrawPane` has [zoomLevel](#attr-drawpanezoomlevel) 2 and drag-panning is not enabled (just to simplify this example). If [getOffsetX()](Canvas_1.md#method-canvasgetoffsetx) and [getOffsetY()](Canvas_1.md#method-canvasgetoffsety) is (0, 0) (i.e. the mouse pointer is located at the top left point of this `DrawPane`), then getDrawingPoint() would return (0, 0). If getOffsetX/Y() is (20, 40), then getDrawingPoint() would return (10, 20) because when the 2× zoom level is applied, (10, 20) is translated to (20, 40) on the screen. You could, for example, create a new [DrawLine](DrawLine.md#class-drawline) with [startPoint](DrawLine.md#attr-drawlinestartpoint) (10, 20) and when this line is drawn on screen, the position of the line's start point would be at offset (20, 40) on screen.
 
 ### Returns
 
@@ -641,6 +641,20 @@ Creates a simple linear gradient which can be used by any DrawItem of this DrawP
 `[Identifier](../reference_2.md#type-identifier)` — id
 
 **Deprecated**
+
+---
+## Method: DrawPane.zoomAboutPoint
+
+### Description
+Sets the zoom level while keeping the drawing point under a given position of the viewport fixed on screen - the behavior expected when zooming with the mouse wheel or a pinch gesture over a point of interest. [DrawPane.setZoomLevel](#method-drawpanesetzoomlevel) by contrast keeps the top-left corner of the viewport fixed.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| zoomLevel | [float](../reference.md#type-float) | false | — | desired zoom level; must be greater than 0 |
+| offsetX | [int](../reference.md#type-int) | true | — | horizontal offset within the viewport to keep fixed; defaults to the center of the viewport |
+| offsetY | [int](../reference.md#type-int) | true | — | vertical offset within the viewport to keep fixed; defaults to the center of the viewport |
 
 ---
 ## Method: DrawPane.removeGradient

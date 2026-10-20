@@ -46,7 +46,7 @@ This attribute has the same function as [DataSource.descriptionField](DataSource
 ### Description
 Criteria to be used when [DataBoundComponent.autoFetchData](#attr-databoundcomponentautofetchdata) is set.
 
-This property supports [dynamicCriteria](../kb_topics/dynamicCriteria.md#kb-topic-dynamiccriteria) - use [Criterion.valuePath](Criterion.md#attr-criterionvaluepath) to refer to values in the [Canvas.ruleScope](Canvas.md#attr-canvasrulescope).
+This property supports [dynamicCriteria](../kb_topics/dynamicCriteria.md#kb-topic-dynamiccriteria) - use [Criterion.valuePath](Criterion.md#attr-criterionvaluepath) to refer to values in the [Canvas.ruleScope](Canvas_1.md#attr-canvasrulescope).
 
 **Flags**: IR
 
@@ -358,7 +358,7 @@ Note, even with this flag set to false, these extra values will still be managed
 ### Description
 Criteria that are never shown to or edited by the user and are cumulative with any criteria provided via [DataBoundComponent.initialCriteria](#attr-databoundcomponentinitialcriteria) and related methods.
 
-This property supports [dynamicCriteria](../kb_topics/dynamicCriteria.md#kb-topic-dynamiccriteria) - use [Criterion.valuePath](Criterion.md#attr-criterionvaluepath) to refer to values in the [Canvas.ruleScope](Canvas.md#attr-canvasrulescope).
+This property supports [dynamicCriteria](../kb_topics/dynamicCriteria.md#kb-topic-dynamiccriteria) - use [Criterion.valuePath](Criterion.md#attr-criterionvaluepath) to refer to values in the [Canvas.ruleScope](Canvas_1.md#attr-canvasrulescope).
 
 **Flags**: IRW
 
@@ -630,7 +630,7 @@ Like the other `deepCloneOnEdit` settings, this flag only has an effect if you a
 
 ### See Also
 
-- [Canvas.dataPath](Canvas.md#attr-canvasdatapath)
+- [Canvas.dataPath](Canvas_1.md#attr-canvasdatapath)
 - [FormItem.dataPath](FormItem.md#attr-formitemdatapath)
 - [DataSourceField.deepCloneOnEdit](DataSourceField.md#attr-datasourcefielddeepcloneonedit)
 - [DataSource.deepCloneOnEdit](DataSource_1.md#attr-datasourcedeepcloneonedit)
@@ -643,7 +643,7 @@ Like the other `deepCloneOnEdit` settings, this flag only has an effect if you a
 ### Description
 Does this component represent singular or multiple "records" objects? Options are "multiple", "single" or "either".
 
-This property is used within a [ValuesManager](ValuesManager.md#class-valuesmanager) and also controls how auto-population works if the component is in a [Canvas.dataContext](Canvas.md#attr-canvasdatacontext) and [Canvas.autoPopulateData](Canvas.md#attr-canvasautopopulatedata) is set.
+This property is used within a [ValuesManager](ValuesManager.md#class-valuesmanager) and also controls how auto-population works if the component is in a [Canvas.dataContext](Canvas_1.md#attr-canvasdatacontext) and [Canvas.autoPopulateData](Canvas_1.md#attr-canvasautopopulatedata) is set.
 
 **Flags**: IRWA
 
@@ -1121,11 +1121,11 @@ Before we start editing values in this DataBoundComponent, should we perform a d
 
 If this value is not explicitly set, it defaults to the value of [DataSource.deepCloneOnEdit](DataSource_1.md#attr-datasourcedeepcloneonedit). This value can be overridden per-field with [DataSourceField.deepCloneOnEdit](DataSourceField.md#attr-datasourcefielddeepcloneonedit).
 
-Like the other `deepCloneOnEdit` settings, this flag only has an effect if you are editing a values object that contains nested objects or arrays, using [dataPath](Canvas.md#attr-canvasdatapath)s.
+Like the other `deepCloneOnEdit` settings, this flag only has an effect if you are editing a values object that contains nested objects or arrays, using [dataPath](Canvas_1.md#attr-canvasdatapath)s.
 
 ### See Also
 
-- [Canvas.dataPath](Canvas.md#attr-canvasdatapath)
+- [Canvas.dataPath](Canvas_1.md#attr-canvasdatapath)
 - [FormItem.dataPath](FormItem.md#attr-formitemdatapath)
 - [DataSourceField.deepCloneOnEdit](DataSourceField.md#attr-datasourcefielddeepcloneonedit)
 - [DataSource.deepCloneOnEdit](DataSource_1.md#attr-datasourcedeepcloneonedit)
@@ -1476,8 +1476,8 @@ Defaults to true when unset. Set to `false` to skip the server round-trip and us
 ### Description
 Optional identifier for saved searches that should be applied to this component.
 
-By default [SavedSearches](SavedSearches.md#class-savedsearches) are associated with a component via its [local ID](Canvas.md#method-canvasgetlocalid) and [DataSource ID](#attr-databoundcomponentdatasource). This property allows developers to override this behavior and explicitly associate a component with a set of saved searches. This can provide a couple of benefits:  
-Firstly this ensures that saved searches will be unambiguously associated with the particular component even if the page changes such that a stored minimal locator would no longer applied to the component, without requiring an explicit [Canvas.ID](Canvas.md#attr-canvasid).  
+By default [SavedSearches](SavedSearches.md#class-savedsearches) are associated with a component via its [local ID](Canvas_1.md#method-canvasgetlocalid) and [DataSource ID](#attr-databoundcomponentdatasource). This property allows developers to override this behavior and explicitly associate a component with a set of saved searches. This can provide a couple of benefits:  
+Firstly this ensures that saved searches will be unambiguously associated with the particular component even if the page changes such that a stored minimal locator would no longer applied to the component, without requiring an explicit [Canvas.ID](Canvas_1.md#attr-canvasid).  
 Secondly this allows the same set of saved searches to be applied to more than one component on a page. This may be valueable for cases where the same information from the same dataSource is presented to users in multiple places.
 
 **Flags**: IRWA
@@ -2054,7 +2054,7 @@ Returns a copy of the implicit criteria currently applied to this component.
 
 These criteria are never shown to or edited by the user and are cumulative with any criteria provided via [DataBoundComponent.initialCriteria](#attr-databoundcomponentinitialcriteria) and related methods.
 
-This method returns explicitly specified [DataBoundComponent.implicitCriteria](#attr-databoundcomponentimplicitcriteria), combined with criteria derived from any [dataContext.sharedCriteria](Canvas.md#attr-canvasdatacontext) that applies to this component.
+This method returns explicitly specified [DataBoundComponent.implicitCriteria](#attr-databoundcomponentimplicitcriteria), combined with the ordinary criteria of any [dataContext.sharedCriteria](Canvas_1.md#attr-canvasdatacontext) that apply to this component. Shared before- and after-aggregation criteria are not included: fetches carry them separately (see [Canvas.setDataContextCriteria](Canvas_1.md#method-canvassetdatacontextcriteria)).
 
 ---
 ## Method: DataBoundComponent.deselectRecord
@@ -2777,7 +2777,7 @@ Returns an array of [field alignments](../reference_2.md#type-alignment) for thi
 ### Description
 Setter for [DataBoundComponent.autoFetchData](#attr-databoundcomponentautofetchdata).
 
-Enabling `autoFetchData` on a component that has already been drawn and bound to a [dataSource](#attr-databoundcomponentdatasource), but has not yet performed its initial fetch, triggers that fetch immediately. This mirrors the one-time fetch that [Canvas.draw](Canvas.md#method-canvasdraw) performs for a component created with `autoFetchData:true`, and supports tools (such as Reify) that bind the `dataSource` and enable `autoFetchData` as separate, independently-ordered edits.
+Enabling `autoFetchData` on a component that has already been drawn and bound to a [dataSource](#attr-databoundcomponentdatasource), but has not yet performed its initial fetch, triggers that fetch immediately. This mirrors the one-time fetch that [Canvas.draw](Canvas_1.md#method-canvasdraw) performs for a component created with `autoFetchData:true`, and supports tools (such as Reify) that bind the `dataSource` and enable `autoFetchData` as separate, independently-ordered edits.
 
 ### Parameters
 

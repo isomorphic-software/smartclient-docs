@@ -265,7 +265,7 @@ When set to true, shows an additional field at the beginning of the field-list (
 ### Description
 Screen to create (via [createScreen()](RPCManager.md#classmethod-rpcmanagercreatescreen)) in lieu of calling [ListGrid.getExpansionComponent](#method-listgridgetexpansioncomponent).
 
-If this grid has a [dataSource](ListGrid_1.md#attr-listgriddatasource), the created screen is provided with a [Canvas.dataContext](Canvas.md#attr-canvasdatacontext) that includes the record being expanded. Be sure the expansion screen meets these [requirements](Canvas.md#attr-canvasautopopulatedata) to utilize the `dataContext`.
+If this grid has a [dataSource](ListGrid_1.md#attr-listgriddatasource), the created screen is provided with a [Canvas.dataContext](Canvas_1.md#attr-canvasdatacontext) that includes the record being expanded. Be sure the expansion screen meets these [requirements](Canvas_1.md#attr-canvasautopopulatedata) to utilize the `dataContext`.
 
 ### Groups
 
@@ -348,7 +348,7 @@ An array of [SortSpecifier](../reference_2.md#object-sortspecifier) objects used
 ### Description
 Indicates whether records can be reordered by dragging within this `ListGrid`.
 
-**NOTE:** If `canReorderRecords` is initially enabled or might be [dynamically enabled](#method-listgridsetcanreorderrecords) after the grid is created, it may be desirable to disable [touch scrolling](Canvas.md#attr-canvasusetouchscrolling) so that touch-dragging a record starts a reorder operation rather than a scroll, but see the discussion of [drag handles](#method-listgridshowdraghandles). If [Canvas.disableTouchScrollingForDrag](Canvas.md#attr-canvasdisabletouchscrollingfordrag) is set to `true`, then touch scrolling will be disabled automatically. However, for [accessibility](../kb_topics/accessibility.md#kb-topic-accessibility--section-508-compliance) reasons, it is recommended to leave touch scrolling enabled and provide an alternative set of controls that can be used to perform drag-reordering of records.
+**NOTE:** If `canReorderRecords` is initially enabled or might be [dynamically enabled](#method-listgridsetcanreorderrecords) after the grid is created, it may be desirable to disable [touch scrolling](Canvas_1.md#attr-canvasusetouchscrolling) so that touch-dragging a record starts a reorder operation rather than a scroll, but see the discussion of [drag handles](#method-listgridshowdraghandles). If [Canvas.disableTouchScrollingForDrag](Canvas_1.md#attr-canvasdisabletouchscrollingfordrag) is set to `true`, then touch scrolling will be disabled automatically. However, for [accessibility](../kb_topics/accessibility.md#kb-topic-accessibility--section-508-compliance) reasons, it is recommended to leave touch scrolling enabled and provide an alternative set of controls that can be used to perform drag-reordering of records.
 
 ### Groups
 
@@ -1131,7 +1131,7 @@ Note that if this grid is bound to a [dataSource](ListGrid_1.md#attr-listgriddat
 
 The `ignorePendingValues` parameter may be used by developers who want to ignore this case and simply compare edit values against the record in the local data set.
 
-This grid contributes ``<gridId>`.hasChanges` to the [ruleContext](Canvas.md#attr-canvasrulescope), updated whenever edit state changes. To check only the row currently being edited, use [ListGrid.rowHasChanges](ListGrid_3.md#method-listgridrowhaschanges).
+This grid contributes ``<gridId>`.hasChanges` to the [ruleContext](Canvas_1.md#attr-canvasrulescope), updated whenever edit state changes. To check only the row currently being edited, use [ListGrid.rowHasChanges](ListGrid_3.md#method-listgridrowhaschanges).
 
 ### Parameters
 
@@ -1329,7 +1329,7 @@ Changes selectionAppearance on the fly.
 ### Description
 Get the array of all **currently visible** fields for this ListGrid.
 
-This list fields is only valid once the ListGrid has been [drawn](Canvas.md#method-canvasdraw) or once [ListGrid.setFields](#method-listgridsetfields) has been called explicitly. If called earlier, only the list of directly specified fields will be returned (the Array passed to create()).
+This list fields is only valid once the ListGrid has been [drawn](Canvas_1.md#method-canvasdraw) or once [ListGrid.setFields](#method-listgridsetfields) has been called explicitly. If called earlier, only the list of directly specified fields will be returned (the Array passed to create()).
 
 This Array should be treated as **read-only**. To modify the set of visible fields, use [ListGrid.showField](#method-listgridshowfield), [ListGrid.hideField](#method-listgridhidefield) and related APIs. To update properties of individual fields, use [ListGrid.setFieldProperties](#method-listgridsetfieldproperties) or more specific APIs such as [ListGrid.setFieldTitle](#method-listgridsetfieldtitle).
 
@@ -1460,7 +1460,7 @@ Redraw just the [grid header](ListGrid_1.md#attr-listgridheader)
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| rightNow | [boolean](../reference.md#type-boolean) | false | — | If true, redraw the grid header with a direct inline call to its redraw() method. Otherwise, [mark the header for redraw](Canvas.md#method-canvasmarkforredraw) |
+| rightNow | [boolean](../reference.md#type-boolean) | false | — | If true, redraw the grid header with a direct inline call to its redraw() method. Otherwise, [mark the header for redraw](Canvas_1.md#method-canvasmarkforredraw) |
 
 ---
 ## Method: ListGrid.getValueIcon
@@ -1532,7 +1532,7 @@ Changes to [TextMatchStyle](../reference_2.md#type-textmatchstyle) made via `req
 
 When the user re-filters this component (for example from the [filter editor](ListGrid_1.md#attr-listgridshowfiltereditor)), the request properties passed here are retained, as described under [getRefilterRequestProperties()](DataBoundComponent.md#method-databoundcomponentgetrefilterrequestproperties).
 
-To pick up such changes, we recommend that you call [setData(\[\])](#method-listgridsetdata) (passing an empty array to ensure the data model is cleared), and then call this method to fetch again. If you try to do it by calling [invalidateCache()](#method-listgridinvalidatecache), you may see duplicate fetches if you haven't already updated the data context by calling this method with the new request properties, and fail to do so before the component is [redrawn](Canvas.md#method-canvasredraw).
+To pick up such changes, we recommend that you call [setData(\[\])](#method-listgridsetdata) (passing an empty array to ensure the data model is cleared), and then call this method to fetch again. If you try to do it by calling [invalidateCache()](#method-listgridinvalidatecache), you may see duplicate fetches if you haven't already updated the data context by calling this method with the new request properties, and fail to do so before the component is [redrawn](Canvas_1.md#method-canvasredraw).
 
 ### Parameters
 
@@ -1614,7 +1614,7 @@ Returns the column number of the provided X-coordinate, or the most recent mouse
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| x | [Integer](../reference_2.md#type-integer) | true | — | X-coordinate relative to the left edge of the content to obtain the column number for. If not provided, then [Canvas.getOffsetX](Canvas.md#method-canvasgetoffsetx) will be used. |
+| x | [Integer](../reference_2.md#type-integer) | true | — | X-coordinate relative to the left edge of the content to obtain the column number for. If not provided, then [Canvas.getOffsetX](Canvas_1.md#method-canvasgetoffsetx) will be used. |
 
 ### Returns
 
@@ -1850,9 +1850,9 @@ Dynamically retrieves the aria properties to write out for this listGrid in [scr
 
 If [ListGrid.ariaRole](ListGrid_1.md#attr-listgridariarole) is set to `"grid"` this will return an object with `rowcount` and `colcount` attributes populated to indicate this size of the grid and its data.
 
-If a static [ariaState](Canvas.md#attr-canvasariastate) has been specified, the default implementation will apply these dynamically derived properties in addition to any properties specified on the static object.
+If a static [ariaState](Canvas_1.md#attr-canvasariastate) has been specified, the default implementation will apply these dynamically derived properties in addition to any properties specified on the static object.
 
-Note that [redrawing](Canvas.md#method-canvasredraw) the grid will re-evaluate this method and apply the result to the handle.
+Note that [redrawing](Canvas_1.md#method-canvasredraw) the grid will re-evaluate this method and apply the result to the handle.
 
 ### Returns
 
@@ -2265,7 +2265,7 @@ No default implementation.
 ## Method: ListGrid.getHeaderAriaRole
 
 ### Description
-Returns the [role](Canvas.md#attr-canvasariarole) for this listGrid's [header](ListGrid_1.md#attr-listgridshowheader).
+Returns the [role](Canvas_1.md#attr-canvasariarole) for this listGrid's [header](ListGrid_1.md#attr-listgridshowheader).
 
 If [ListGrid.headerAriaRole](ListGrid_1.md#attr-listgridheaderariarole) is explicitly provided, it will be used.  
 Otherwise default implementation returns `"row"` if [ListGrid.ariaRole](ListGrid_1.md#attr-listgridariarole) is set to `"grid"`
@@ -2473,7 +2473,7 @@ Returns the row number of the provided Y-coordinate, or the most recent mouse ev
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| y | [Integer](../reference_2.md#type-integer) | true | — | Y-coordinate relative to the top edge of the content to obtain the row number for. If not provided, then [Canvas.getOffsetY](Canvas.md#method-canvasgetoffsety) will be used. |
+| y | [Integer](../reference_2.md#type-integer) | true | — | Y-coordinate relative to the top edge of the content to obtain the row number for. If not provided, then [Canvas.getOffsetY](Canvas_1.md#method-canvasgetoffsety) will be used. |
 
 ### Returns
 
@@ -2722,7 +2722,7 @@ If [ListGrid.canSelectCells](ListGrid_1.md#attr-listgridcanselectcells) is set t
 ## Method: ListGrid.getHeaderButtonAriaState
 
 ### Description
-Returns a map of [WAI ARIA state attribute values](Canvas.md#attr-canvasariastate) to be written into header buttons for this grid.
+Returns a map of [WAI ARIA state attribute values](Canvas_1.md#attr-canvasariastate) to be written into header buttons for this grid.
 
 Default implementation returns an object with combined properties from any specified [header button aria state default object](ListGrid_1.md#attr-listgridheaderbuttonariastate), overlaid with any [ListGridField.headerButtonAriaState](ListGridField.md#attr-listgridfieldheaderbuttonariastate) properties specified on the field itself, plus the following attributes:
 
@@ -3144,13 +3144,13 @@ When [ListGrid.showHoverComponents](ListGrid_1.md#attr-listgridshowhovercomponen
 
 By default, this method returns one of a set of builtin components, according to the value of [listGrid.hoverMode](../reference.md#type-hovermode). You can override this method to return any component you wish to provide as a hoverComponent, or invoke the superclass method to have the default hover component generated, then further customize it.
 
-By default, components returned by `getCellHoverComponent()` will be automatically destroyed when the hover is hidden. To prevent this, set [Canvas.hoverAutoDestroy](Canvas.md#attr-canvashoverautodestroy) to false on the returned component.
+By default, components returned by `getCellHoverComponent()` will be automatically destroyed when the hover is hidden. To prevent this, set [Canvas.hoverAutoDestroy](Canvas_1.md#attr-canvashoverautodestroy) to false on the returned component.
 
 If you return a component that fetches data or loads content dynamically:
 
 1.  set rpcRequest.promptStyle to "cursor" or set rpcRequest.showPrompt to false on any network requests, or the default masking that blocks the screen during network requests will dismiss the hover
-2.  as covered above, your component may have been automatically destroyed by the time your content has been loaded. Check [Canvas.destroyed](Canvas.md#attr-canvasdestroyed) before taking action in an asynchronous callback
-3.  if your component grows in size after data is loaded, and it would then be rendered partially off-screen, it will be automatically re-positioned to keep it on-screen. However this will not automatically happen in cases where you provide HTML content that changes size after initial render, in which case a call to [Canvas.adjustForContent](Canvas.md#method-canvasadjustforcontent) will be required. See that API for details.
+2.  as covered above, your component may have been automatically destroyed by the time your content has been loaded. Check [Canvas.destroyed](Canvas_1.md#attr-canvasdestroyed) before taking action in an asynchronous callback
+3.  if your component grows in size after data is loaded, and it would then be rendered partially off-screen, it will be automatically re-positioned to keep it on-screen. However this will not automatically happen in cases where you provide HTML content that changes size after initial render, in which case a call to [Canvas.adjustForContent](Canvas_1.md#method-canvasadjustforcontent) will be required. See that API for details.
 
 ### Parameters
 
@@ -3172,7 +3172,7 @@ If you return a component that fetches data or loads content dynamically:
 ## Method: ListGrid.getHeaderButtonAriaRole
 
 ### Description
-Returns the [role](Canvas.md#attr-canvasariarole) for this listGrid's [header buttons](ListGrid_1.md#attr-listgridshowheader).
+Returns the [role](Canvas_1.md#attr-canvasariarole) for this listGrid's [header buttons](ListGrid_1.md#attr-listgridshowheader).
 
 If [ListGridField.headerButtonAriaRole](ListGridField.md#attr-listgridfieldheaderbuttonariarole) or [ListGrid.headerButtonAriaRole](ListGrid_1.md#attr-listgridheaderbuttonariarole) is set, it will be used.  
 Othewise, the default implementation returns `"columnheader"` if [ListGrid.ariaRole](ListGrid_1.md#attr-listgridariarole) is set to `"grid"`, `"button"` otherwise.
@@ -3376,7 +3376,7 @@ Note, this is potentially an expensive method. For example, consider a listGrid 
 ## Method: ListGrid.getAriaStateDefaults
 
 ### Description
-Retrieves dynamically calculated default [ARIA state mapping](Canvas.md#attr-canvasariastate) properties for this listGrid. These will be combined with explicitly specified aria state as described in [ListGrid.getAriaState](#method-listgridgetariastate).
+Retrieves dynamically calculated default [ARIA state mapping](Canvas_1.md#attr-canvasariastate) properties for this listGrid. These will be combined with explicitly specified aria state as described in [ListGrid.getAriaState](#method-listgridgetariastate).
 
 Overridden by ListGrid to pick up aria-rowcount and aria-colcount.
 
@@ -4716,7 +4716,7 @@ Note that returning false from this method will not prevent any specified [ListG
 ## Method: ListGrid.getRowAriaState
 
 ### Description
-Returns a map of [WAI ARIA state attribute values](Canvas.md#attr-canvasariastate) to be written into rows within this grid.
+Returns a map of [WAI ARIA state attribute values](Canvas_1.md#attr-canvasariastate) to be written into rows within this grid.
 
 Default implementation returns an object with combined properties from any specified [row aria state default object](ListGrid_1.md#attr-listgridrowariastate), overlaid with any [ListGrid.recordRowAriaStateProperty](ListGrid_1.md#attr-listgridrecordrowariastateproperty) properties specified on the record itself, plus the following attributes:
 
@@ -4811,9 +4811,9 @@ Does this grid currently have errors associated with editValues for any row in t
 ## Method: ListGrid.willAcceptDrop
 
 ### Description
-This method overrides [Canvas.willAcceptDrop](Canvas.md#method-canvaswillacceptdrop) and works as follows:  
+This method overrides [Canvas.willAcceptDrop](Canvas_1.md#method-canvaswillacceptdrop) and works as follows:  
 
-*   If [Canvas.willAcceptDrop](Canvas.md#method-canvaswillacceptdrop) (the superclass definition) returns false, this method always returns false. This allows [Canvas.dragType](Canvas.md#attr-canvasdragtype) and [Canvas.dropTypes](Canvas.md#attr-canvasdroptypes) to be used to configure eligibility for drop. By default, a ListGrid has no dropTypes configured and so this check will not prevent a drop.
+*   If [Canvas.willAcceptDrop](Canvas_1.md#method-canvaswillacceptdrop) (the superclass definition) returns false, this method always returns false. This allows [Canvas.dragType](Canvas_1.md#attr-canvasdragtype) and [Canvas.dropTypes](Canvas_1.md#attr-canvasdroptypes) to be used to configure eligibility for drop. By default, a ListGrid has no dropTypes configured and so this check will not prevent a drop.
 *   If this is a self-drop, that is, the user is dragging a record within this list, this is an attempted drag-reorder. If [ListGrid.canReorderRecords](#attr-listgridcanreorderrecords) is false, this method returns false.
 *   If the [dragTarget](EventHandler.md#classmethod-eventhandlergetdragtarget) is another widget, if [ListGrid.canAcceptDroppedRecords](ListGrid_1.md#attr-listgridcanacceptdroppedrecords) is false this method returns false.
 *   If a call to [ListGrid.getDragData](#method-listgridgetdragdata) on the `dragTarget` fails to return an record object or an array of records, this method returns null.
@@ -4893,7 +4893,7 @@ Use for suggested or reformatted values for edits that remain unsaved.
 ### Description
 Get the complete array of fields for this ListGrid, including fields that are not currently visible or were specified implicitly via [ListGrid.dataSource](ListGrid_1.md#attr-listgriddatasource).
 
-This list of fields is only valid once the ListGrid has been [drawn](Canvas.md#method-canvasdraw) or once [ListGrid.setFields](#method-listgridsetfields) has been called explicitly. If called earlier, only the list of directly specified fields will be returned (the Array passed to create()).
+This list of fields is only valid once the ListGrid has been [drawn](Canvas_1.md#method-canvasdraw) or once [ListGrid.setFields](#method-listgridsetfields) has been called explicitly. If called earlier, only the list of directly specified fields will be returned (the Array passed to create()).
 
 This Array should be treated as **read-only**. To modify the set of visible fields, use [ListGrid.showField](#method-listgridshowfield), [ListGrid.hideField](#method-listgridhidefield) and related APIs. To update properties of individual fields, use [ListGrid.setFieldProperties](#method-listgridsetfieldproperties) or more specific APIs such as [ListGrid.setFieldTitle](#method-listgridsetfieldtitle).
 
@@ -5131,7 +5131,7 @@ This method fires slightly after the transition is visually complete (deferred b
 
 Only fires when [ListGrid.preRender](ListGrid_1.md#attr-listgridprerender) is `"data"` or `"structure"`. Does not fire when preRender is `"none"`.
 
-For grids that do not use [ListGrid.preRender](ListGrid_1.md#attr-listgridprerender), the standard [drawn()](Canvas.md#method-canvasdrawn) notification indicates when the grid's HTML has rendered. When preRender IS enabled, `drawn()` fires when the canvas preview is first shown (before the HTML body), so use this method instead to detect the HTML transition.
+For grids that do not use [ListGrid.preRender](ListGrid_1.md#attr-listgridprerender), the standard [drawn()](Canvas_1.md#method-canvasdrawn) notification indicates when the grid's HTML has rendered. When preRender IS enabled, `drawn()` fires when the canvas preview is first shown (before the HTML body), so use this method instead to detect the HTML transition.
 
 ### Groups
 
@@ -6580,7 +6580,7 @@ This method may return an array of values. This implies that the grid summary sh
 
 This method may be overridden to completely customize the summary value displayed for columns in this grid. An example use case would be when summary information is available on the client and does not need to be calculated directly from the data.
 
-If you update this method after the grid has been drawn so that new summaries will be generated from the same data, the changes won't be reflected in any [redraws](Canvas.md#method-canvasredraw) or other interaction until the next [data change](#method-listgriddatachanged), unless you call [ListGrid.recalculateGridSummary](#method-listgridrecalculategridsummary).
+If you update this method after the grid has been drawn so that new summaries will be generated from the same data, the changes won't be reflected in any [redraws](Canvas_1.md#method-canvasredraw) or other interaction until the next [data change](#method-listgriddatachanged), unless you call [ListGrid.recalculateGridSummary](#method-listgridrecalculategridsummary).
 
 **Note:** this method will not be called if [ListGrid.summaryRowDataSource](ListGrid_1.md#attr-listgridsummaryrowdatasource) is specified.
 
@@ -6743,7 +6743,7 @@ Identifies whether the passed-in field is the specially generated [rowNumberFiel
 ### Description
 Retrieve the [recordComponent](ListGrid_1.md#attr-listgridshowrecordcomponents) currently being shown at the given coordinates.
 
-`recordComponents` are dynamically assigned to row/cell coordinates and, depending on the [ListGrid.recordComponentPoolingMode](ListGrid_1.md#attr-listgridrecordcomponentpoolingmode), any kind of redraw of the containing ListGrid (due to sort change, scrolling, editing etc) may cause a `recordComponent` to be assigned to another row, [clear()ed](Canvas.md#method-canvasclear) or permanently [destroy()ed](Canvas.md#method-canvasdestroy).
+`recordComponents` are dynamically assigned to row/cell coordinates and, depending on the [ListGrid.recordComponentPoolingMode](ListGrid_1.md#attr-listgridrecordcomponentpoolingmode), any kind of redraw of the containing ListGrid (due to sort change, scrolling, editing etc) may cause a `recordComponent` to be assigned to another row, [clear()ed](Canvas_1.md#method-canvasclear) or permanently [destroy()ed](Canvas_1.md#method-canvasdestroy).
 
 Hence you should always call `getRecordComponent()` right before taking action on the `recordComponent` - don't cache the component associated with row/cell coordinate. Similarly, it's invalid to call `getRecordComponent()` during a redraw (for example, from [formatting](ListGridField.md#method-listgridfieldformatcellvalue) code).
 
@@ -6798,7 +6798,7 @@ Called when a row receives a mousedown event.
 ## Method: ListGrid.addEmbeddedComponent
 
 ### Description
-Attaches the component to the provided record. If `position` is specified as `"within"` [Canvas.snapTo](Canvas.md#attr-canvassnapto) and [Canvas.snapOffsetLeft](Canvas.md#attr-canvassnapoffsetleft), [Canvas.snapOffsetTop](Canvas.md#attr-canvassnapoffsettop) may be set to specify where the component will render within the cell or record. If unset, for components embedded within a record we will default to embedding at the top/left coordinate, and for components embedded within a cell, we will respect the align / valign properties for the cell in question. Any percentage sizing will be interpreted as percentage of row size.
+Attaches the component to the provided record. If `position` is specified as `"within"` [Canvas.snapTo](Canvas_1.md#attr-canvassnapto) and [Canvas.snapOffsetLeft](Canvas_1.md#attr-canvassnapoffsetleft), [Canvas.snapOffsetTop](Canvas_1.md#attr-canvassnapoffsettop) may be set to specify where the component will render within the cell or record. If unset, for components embedded within a record we will default to embedding at the top/left coordinate, and for components embedded within a cell, we will respect the align / valign properties for the cell in question. Any percentage sizing will be interpreted as percentage of row size.
 
 Otherwise it will appear to be embedded within the record, underneath the field values.
 
@@ -6918,7 +6918,7 @@ Removes the grouping from the listGrid, restoring its original data
 ## Method: ListGrid.markForRedraw
 
 ### Description
-Marks the widget as "dirty" so that it will be added to a queue for redraw. Redraw of dirty components is handled by a looping timer and will after a very short delay (typically less than 100ms). In most cases it is recommended that developers use `markForRedraw()` instead of calling [Canvas.redraw](Canvas.md#method-canvasredraw) directly. Since this method queues the redraw, multiple calls to markForRedraw() within a single thread of execution will only lead to a single DOM manipulation which greatly improves application performance.
+Marks the widget as "dirty" so that it will be added to a queue for redraw. Redraw of dirty components is handled by a looping timer and will after a very short delay (typically less than 100ms). In most cases it is recommended that developers use `markForRedraw()` instead of calling [Canvas.redraw](Canvas_1.md#method-canvasredraw) directly. Since this method queues the redraw, multiple calls to markForRedraw() within a single thread of execution will only lead to a single DOM manipulation which greatly improves application performance.
 
 ### Parameters
 
@@ -8946,7 +8946,7 @@ Deselect all records
 ## Method: ListGrid.getCellAriaState
 
 ### Description
-Returns a map of [WAI ARIA state attribute values](Canvas.md#attr-canvasariastate) to be written into cells within this grid. Default implementation return null, meaning no per-cell aria state is written out
+Returns a map of [WAI ARIA state attribute values](Canvas_1.md#attr-canvasariastate) to be written into cells within this grid. Default implementation return null, meaning no per-cell aria state is written out
 
 ### Parameters
 

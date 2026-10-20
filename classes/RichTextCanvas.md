@@ -6,7 +6,7 @@
 
 ## Class: RichTextCanvas
 
-*Inherits from:* [Canvas](Canvas.md#class-canvas)
+*Inherits from:* [Canvas](Canvas_1.md#class-canvas)
 
 ### Description
 Canvas to be used for Rich Text Editing

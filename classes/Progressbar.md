@@ -29,7 +29,7 @@ This property must be set instead of setting `width` or `height`.
 ## Attr: Progressbar.editProxyConstructor
 
 ### Description
-Default class used to construct the [EditProxy](EditProxy.md#class-editproxy) for this component when the component is [first placed into edit mode](Canvas.md#method-canvasseteditmode).
+Default class used to construct the [EditProxy](EditProxy.md#class-editproxy) for this component when the component is [first placed into edit mode](Canvas_1.md#method-canvasseteditmode).
 
 **Flags**: IR
 
@@ -169,7 +169,7 @@ Sets the breadth of the progressbar to newLength. This is the height of a horizo
 ## Method: Progressbar.getAriaStateDefaults
 
 ### Description
-Retrieves dynamically calculated default [ARIA state mapping](Canvas.md#attr-canvasariastate) properties for this canvas. These will be combined with explicitly specified aria state as described in [Canvas.getAriaState](Canvas.md#method-canvasgetariastate).
+Retrieves dynamically calculated default [ARIA state mapping](Canvas_1.md#attr-canvasariastate) properties for this canvas. These will be combined with explicitly specified aria state as described in [Canvas.getAriaState](Canvas_1.md#method-canvasgetariastate).
 
 Overridden by Progressbar to pick up aria-valuenow.
 

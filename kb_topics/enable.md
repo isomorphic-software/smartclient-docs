@@ -11,12 +11,12 @@ Disabled components do not respond to mouse or keyboard events, and change appea
 
 ### Related
 
-- [Canvas.setEnabled](../classes/Canvas.md#method-canvassetenabled)
-- [Canvas.setDisabled](../classes/Canvas.md#method-canvassetdisabled)
-- [Canvas.enable](../classes/Canvas.md#method-canvasenable)
-- [Canvas.disable](../classes/Canvas.md#method-canvasdisable)
-- [Canvas.isDisabled](../classes/Canvas.md#method-canvasisdisabled)
-- [Canvas.isEnabled](../classes/Canvas.md#method-canvasisenabled)
+- [Canvas.setEnabled](../classes/Canvas_1.md#method-canvassetenabled)
+- [Canvas.setDisabled](../classes/Canvas_1.md#method-canvassetdisabled)
+- [Canvas.enable](../classes/Canvas_1.md#method-canvasenable)
+- [Canvas.disable](../classes/Canvas_1.md#method-canvasdisable)
+- [Canvas.isDisabled](../classes/Canvas_1.md#method-canvasisdisabled)
+- [Canvas.isEnabled](../classes/Canvas_1.md#method-canvasisenabled)
 - [FormItem.setIconDisabled](../classes/FormItem.md#method-formitemseticondisabled)
 - [FormItem.enableIcon](../classes/FormItem.md#method-formitemenableicon)
 - [FormItem.disableIcon](../classes/FormItem.md#method-formitemdisableicon)
@@ -28,7 +28,7 @@ Disabled components do not respond to mouse or keyboard events, and change appea
 - [Button.setDisabled](../classes/Button.md#method-buttonsetdisabled)
 - [ImgButton.setDisabled](../classes/ImgButton.md#method-imgbuttonsetdisabled)
 - [StretchImgButton.setDisabled](../classes/StretchImgButton.md#method-stretchimgbuttonsetdisabled)
-- [Canvas.disabled](../classes/Canvas.md#attr-canvasdisabled)
-- [Canvas.enabled](../classes/Canvas.md#attr-canvasenabled)
+- [Canvas.disabled](../classes/Canvas_1.md#attr-canvasdisabled)
+- [Canvas.enabled](../classes/Canvas_1.md#attr-canvasenabled)
 
 ---

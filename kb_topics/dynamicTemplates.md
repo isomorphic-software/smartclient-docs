@@ -23,7 +23,7 @@ To include a literal brace in the output, double it: `{{` produces `{` and `}}` 
 Brace delimiters were chosen over JavaScript's template literal `${}` form to avoid a false expectation of lexical scope capture, and to align with React JSX expression syntax so documentation and samples are inter-convertible between React and non-React environments.
 
 #### Where templates can appear
-Properties typed [DynString](../reference.md#type-dynstring) or [DynHTMLString](../reference_2.md#type-dynhtmlstring) accept {expr} templates directly — no wrapper required. Examples include [Button.title](../classes/Button.md#attr-buttontitle), [ListGridField.cellTemplate](../classes/ListGridField.md#attr-listgridfieldcelltemplate), and [Canvas.contents](../classes/Canvas.md#attr-canvascontents). On any other property, wrap the value with one of the marker functions to opt in:
+Properties typed [DynString](../reference.md#type-dynstring) or [DynHTMLString](../reference_2.md#type-dynhtmlstring) accept {expr} templates directly — no wrapper required. Examples include [Button.title](../classes/Button.md#attr-buttontitle), [ListGridField.cellTemplate](../classes/ListGridField.md#attr-listgridfieldcelltemplate), and [Canvas.contents](../classes/Canvas_1.md#attr-canvascontents). On any other property, wrap the value with one of the marker functions to opt in:
 
 *   [isc.dyn](../classes/isc.md#staticmethod-iscdyn) — string template producing a reactive string
 *   [isc.dynamic](../classes/isc.md#staticmethod-iscdynamic) — inline expression returning a typed value (number, boolean, etc.)

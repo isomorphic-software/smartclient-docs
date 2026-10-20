@@ -9,7 +9,7 @@
 *Inherits from:* [ImgButton](ImgButton.md#class-imgbutton)
 
 ### Description
-A specialized subclass of [ImgButton](ImgButton.md#class-imgbutton) designed to show an icon that launches a [context menu](Canvas.md#attr-canvascontextmenu) when clicked. The icon is specified as the [src](#attr-iconimgbuttonsrc) property.
+A specialized subclass of [ImgButton](ImgButton.md#class-imgbutton) designed to show an icon that launches a [context menu](Canvas_1.md#attr-canvascontextmenu) when clicked. The icon is specified as the [src](#attr-iconimgbuttonsrc) property.
 
 ### See Also
 
@@ -19,7 +19,7 @@ A specialized subclass of [ImgButton](ImgButton.md#class-imgbutton) designed to 
 ## Attr: IconImgButton.showMenuOnClick
 
 ### Description
-If true, this widget will fire [showContextMenu()](Canvas.md#method-canvasshowcontextmenu) to show the [context menu](Canvas.md#attr-canvascontextmenu) if one is defined, rather than [click()](Canvas.md#method-canvasclick), when the left mouse is clicked.
+If true, this widget will fire [showContextMenu()](Canvas_1.md#method-canvasshowcontextmenu) to show the [context menu](Canvas_1.md#attr-canvascontextmenu) if one is defined, rather than [click()](Canvas_1.md#method-canvasclick), when the left mouse is clicked.
 
 Note that this property has a different interpretation in [IconButton](../reference.md#class-iconbutton) as [IconButton.showMenuOnClick](RibbonButton.md#attr-ribbonbuttonshowmenuonclick).
 

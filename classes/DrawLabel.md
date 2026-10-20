@@ -119,7 +119,7 @@ DrawLabel only supports the "move" knob type.
 ## Attr: DrawLabel.styleName
 
 ### Description
-For [drawingType](DrawPane.md#attr-drawpanedrawingtype) "svg" only, the CSS class applied to this label. Similar to [Canvas.styleName](Canvas.md#attr-canvasstylename). The font properties [DrawLabel.fontSize](#attr-drawlabelfontsize), [DrawLabel.fontWeight](#attr-drawlabelfontweight), [DrawLabel.fontStyle](#attr-drawlabelfontstyle), and [DrawLabel.fontFamily](#attr-drawlabelfontfamily), unless set to null, take priority over any CSS settings. This property can be used in combination with [DrawLabel.escapeContents](#attr-drawlabelescapecontents) if needed. but note that in SVG, the precedence of CSS and inline styling applied to an element works differently that it does in HTML. See [Mozilla SVG Developer Reference](https://developer.mozilla.org/en-US/docs/Web/SVG/Element/text)
+For [drawingType](DrawPane.md#attr-drawpanedrawingtype) "svg" only, the CSS class applied to this label. Similar to [Canvas.styleName](Canvas_1.md#attr-canvasstylename). The font properties [DrawLabel.fontSize](#attr-drawlabelfontsize), [DrawLabel.fontWeight](#attr-drawlabelfontweight), [DrawLabel.fontStyle](#attr-drawlabelfontstyle), and [DrawLabel.fontFamily](#attr-drawlabelfontfamily), unless set to null, take priority over any CSS settings. This property can be used in combination with [DrawLabel.escapeContents](#attr-drawlabelescapecontents) if needed. but note that in SVG, the precedence of CSS and inline styling applied to an element works differently that it does in HTML. See [Mozilla SVG Developer Reference](https://developer.mozilla.org/en-US/docs/Web/SVG/Element/text)
 
 Note that only font sizes defined in pixels are supported through this property.
 
@@ -181,7 +181,7 @@ Note that this setting is ignored for [DrawItem.titleLabel](DrawItem.md#attr-dra
 ## Attr: DrawLabel.editProxyConstructor
 
 ### Description
-Default class used to construct the [EditProxy](EditProxy.md#class-editproxy) for this component when the component is [first placed into edit mode](Canvas.md#method-canvasseteditmode).
+Default class used to construct the [EditProxy](EditProxy.md#class-editproxy) for this component when the component is [first placed into edit mode](Canvas_1.md#method-canvasseteditmode).
 
 **Flags**: IR
 
@@ -225,7 +225,11 @@ This is the content that will exist as the label.
 ## Attr: DrawLabel.fontFamily
 
 ### Description
-Font family name, similar to the CSS font-family attribute.
+Font family, similar to the CSS font-family attribute: either a single family name or a comma-separated list of them in preference order.
+
+A list should always end in one of the CSS generic families (`sans-serif`, `serif`, `monospace`) so that a platform missing every named family still falls back to a predictable face rather than to the browser's last-resort font.
+
+[FacetChart](FacetChart.md#class-facetchart) does not use this default: chart labels follow the skin instead, via [FacetChart.defaultFontFamily](FacetChart.md#attr-facetchartdefaultfontfamily).
 
 ### See Also
 

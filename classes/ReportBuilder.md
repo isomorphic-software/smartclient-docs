@@ -149,7 +149,7 @@ Optional list of natural-language prompt strings deployments want authors to dis
 ## Attr: ReportBuilder.globalFilterDateField
 
 ### Description
-Name of the date/datetime field driven by the report-level date-range filter in the global filter bar. The selected range is published to the report [dataContext](Canvas.md#attr-canvasdatacontext) for every available DataSource that has a field of this name, so a single date range narrows all data views at once. Defaults to `"created"` -- the row audit timestamp present on the demo's DataSources. A DataSource without this field is simply left unfiltered by the date range.
+Name of the date/datetime field driven by the report-level date-range filter in the global filter bar. The selected range is published to the report [dataContext](Canvas_1.md#attr-canvasdatacontext) for every available DataSource that has a field of this name, so a single date range narrows all data views at once. Defaults to `"created"` -- the row audit timestamp present on the demo's DataSources. A DataSource without this field is simply left unfiltered by the date range.
 
 **Flags**: IRW
 

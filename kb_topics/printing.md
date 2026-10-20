@@ -18,7 +18,7 @@ SmartClient has specialized printing support that can take any page built with S
 
 The default printed view can be customized with settings and method overrides as necessary, including the ability to created printed representations of custom components you have created.
 
-For simple, built in printing support, see the [Canvas.showPrintPreview](../classes/Canvas.md#classmethod-canvasshowprintpreview) and [Canvas.getPrintPreview](../classes/Canvas.md#classmethod-canvasgetprintpreview) APIs, or for finer grained control developers may call [Canvas.getPrintHTML](../classes/Canvas.md#method-canvasgetprinthtml) directly and work with the [PrintCanvas](../classes/PrintCanvas.md#class-printcanvas) or [PrintWindow](../reference.md#class-printwindow) class.
+For simple, built in printing support, see the [Canvas.showPrintPreview](../classes/Canvas.md#classmethod-canvasshowprintpreview) and [Canvas.getPrintPreview](../classes/Canvas.md#classmethod-canvasgetprintpreview) APIs, or for finer grained control developers may call [Canvas.getPrintHTML](../classes/Canvas_1.md#method-canvasgetprinthtml) directly and work with the [PrintCanvas](../classes/PrintCanvas.md#class-printcanvas) or [PrintWindow](../reference.md#class-printwindow) class.
 
 Note that the [CubeGrid](../classes/CubeGrid.md#class-cubegrid) component does not currently support WYSIWYG printing (as documented [in that class](../classes/CubeGrid.md#method-cubegridgetprinthtml)).
 
@@ -29,8 +29,8 @@ Note that the [CubeGrid](../classes/CubeGrid.md#class-cubegrid) component does n
 - [Canvas.showPrintPreview](../classes/Canvas.md#classmethod-canvasshowprintpreview)
 - [CubeGrid.getPrintHTML](../classes/CubeGrid.md#method-cubegridgetprinthtml)
 - [FacetChart.getPrintHTML](../classes/FacetChart.md#method-facetchartgetprinthtml)
-- [Canvas.getPrintHTML](../classes/Canvas.md#method-canvasgetprinthtml)
-- [Canvas.print](../classes/Canvas.md#method-canvasprint)
+- [Canvas.getPrintHTML](../classes/Canvas_1.md#method-canvasgetprinthtml)
+- [Canvas.print](../classes/Canvas_1.md#method-canvasprint)
 - [DrawPane.getPrintHTML](../classes/DrawPane.md#method-drawpanegetprinthtml)
 - [FormItem.getPrintValueIconStyle](../classes/FormItem.md#method-formitemgetprintvalueiconstyle)
 - [FormItem.getPrintValueIcon](../classes/FormItem.md#method-formitemgetprintvalueicon)
@@ -38,8 +38,8 @@ Note that the [CubeGrid](../classes/CubeGrid.md#class-cubegrid) component does n
 - [PrintCanvas](../classes/PrintCanvas.md#class-printcanvas)
 - [PrintWindow](../reference.md#class-printwindow)
 - [FacetChart.printZoomChart](../classes/FacetChart.md#attr-facetchartprintzoomchart)
-- [Canvas.printChildrenAbsolutelyPositioned](../classes/Canvas.md#attr-canvasprintchildrenabsolutelypositioned)
-- [Canvas.shouldPrint](../classes/Canvas.md#attr-canvasshouldprint)
+- [Canvas.printChildrenAbsolutelyPositioned](../classes/Canvas_1.md#attr-canvasprintchildrenabsolutelypositioned)
+- [Canvas.shouldPrint](../classes/Canvas_1.md#attr-canvasshouldprint)
 - [PrintProperties.omitControls](../classes/PrintProperties.md#attr-printpropertiesomitcontrols)
 - [PrintProperties.includeControls](../classes/PrintProperties.md#attr-printpropertiesincludecontrols)
 - [PrintProperties.printForExport](../classes/PrintProperties.md#attr-printpropertiesprintforexport)

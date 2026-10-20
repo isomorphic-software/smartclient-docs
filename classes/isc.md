@@ -575,7 +575,7 @@ While cleaning up observations that are no longer required is always good practi
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| object | [Object](../reference_2.md#type-object) | false | — | Object to observe. This may be any JavaScript object with the specified target method, including native arrays, and instances of SmartClient classes such as [Canvas](Canvas.md#class-canvas). |
+| object | [Object](../reference_2.md#type-object) | false | — | Object to observe. This may be any JavaScript object with the specified target method, including native arrays, and instances of SmartClient classes such as [Canvas](Canvas_1.md#class-canvas). |
 | methodName | [String](#type-string) | false | — | Name of the method to observe. Every time this method is invoked on the target object the specified action will fire (after the default implementation completes). |
 | action | [Function](#type-function)|[String](#type-string) | false | — | Action to take when the observed method is invoked.  
 If `action` is a string to execute, certain keywords are available for context:
@@ -1263,9 +1263,9 @@ Same as [Log.echo](Log.md#classmethod-logecho).
 ## StaticMethod: isc.setAutoDraw
 
 ### Description
-Set the global default setting for [Canvas.autoDraw](Canvas.md#attr-canvasautodraw).
+Set the global default setting for [Canvas.autoDraw](Canvas_1.md#attr-canvasautodraw).
 
-After calling `isc.setAutoDraw()`, any newly created Canvas which is not given an explicit setting for [autoDraw](Canvas.md#attr-canvasautodraw) will follow the new default setting.
+After calling `isc.setAutoDraw()`, any newly created Canvas which is not given an explicit setting for [autoDraw](Canvas_1.md#attr-canvasautodraw) will follow the new default setting.
 
 autoDraw:false is the recommended default setting for most applications since it ensures that extra draws will not occur when developers inadvertently omit the autoDraw:false setting on child components.
 
@@ -1281,7 +1281,7 @@ autoDraw:false is the recommended default setting for most applications since it
 
 ### See Also
 
-- [Canvas.autoDraw](Canvas.md#attr-canvasautodraw)
+- [Canvas.autoDraw](Canvas_1.md#attr-canvasautodraw)
 
 ---
 ## StaticMethod: isc.jacksonMapper

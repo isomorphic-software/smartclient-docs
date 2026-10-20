@@ -10,7 +10,7 @@
 SmartClient ships a React 18 wrapper layer that lets every SmartClient class be created and composed as a React component — `SC.ListGrid`, `SC.DynamicForm`, `SC.Button`, etc. — while keeping the underlying SmartClient widget in charge of rendering, layout, sizing, and event handling. JSX is the markup; SmartClient is the framework.
 
 #### JSX-valued properties
-Any SmartClient property that accepts a string of HTML (for example [Canvas.contents](../classes/Canvas.md#attr-canvascontents) or [Hover.contents](#hovercontents)) also accepts a React element value:
+Any SmartClient property that accepts a string of HTML (for example [Canvas.contents](../classes/Canvas_1.md#attr-canvascontents) or [Hover.contents](#hovercontents)) also accepts a React element value:
 ```
    <SC.Canvas contents={<MyHeader title="Hello"/>}/>
  

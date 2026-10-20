@@ -6,7 +6,7 @@
 
 ## Class: StatefulCanvas
 
-*Inherits from:* [Canvas](Canvas.md#class-canvas)
+*Inherits from:* [Canvas](Canvas_1.md#class-canvas)
 
 ### Description
 A component that has a set of possible states, and which presents itself differently according to which state it is in. An example is a button, which can be "up", "down", "over" or "disabled".
@@ -130,7 +130,7 @@ For [Img](Img.md#class-img) or [StretchImg](StretchImg.md#class-stretchimg) base
 ## Attr: StatefulCanvas.showMenuOnClick
 
 ### Description
-If true, this widget will fire [showContextMenu()](Canvas.md#method-canvasshowcontextmenu) to show the [context menu](Canvas.md#attr-canvascontextmenu) if one is defined, rather than [click()](Canvas.md#method-canvasclick), when the left mouse is clicked.
+If true, this widget will fire [showContextMenu()](Canvas_1.md#method-canvasshowcontextmenu) to show the [context menu](Canvas_1.md#attr-canvascontextmenu) if one is defined, rather than [click()](Canvas_1.md#method-canvasclick), when the left mouse is clicked.
 
 Note that this property has a different interpretation in [IconButton](../reference.md#class-iconbutton) as [IconButton.showMenuOnClick](RibbonButton.md#attr-ribbonbuttonshowmenuonclick).
 
@@ -180,7 +180,7 @@ The following table lists out the standard set of suffixes which may be appended
 | iconStyle+Focused | Applied when the component has keyboard focus, if [StatefulCanvas.showFocusedIcon](#attr-statefulcanvasshowfocusedicon) is true, and [StatefulCanvas.showFocusedAsOver](#attr-statefulcanvasshowfocusedasover) is not true. |
 | iconStyle+Over | Applied when [StatefulCanvas.showRollOverIcon](#attr-statefulcanvasshowrollovericon) is set to true and either the user rolls over the component or [StatefulCanvas.showFocusedAsOver](#attr-statefulcanvasshowfocusedasover) is true and the component has keyboard focus. |
 | iconStyle+Down | Applied when the user presses the mouse button on the component if [StatefulCanvas.showDownIcon](#attr-statefulcanvasshowdownicon) is set to true |
-| iconStyle+Disabled | Applied when the component is [disabled](Canvas.md#attr-canvasdisabled) if [StatefulCanvas.showDisabledIcon](#attr-statefulcanvasshowdisabledicon) is true. |
+| iconStyle+Disabled | Applied when the component is [disabled](Canvas_1.md#attr-canvasdisabled) if [StatefulCanvas.showDisabledIcon](#attr-statefulcanvasshowdisabledicon) is true. |
 | Combined styles |
 | iconStyle+SelectedFocused | Combined Selected and focused styling |
 | iconStyle+SelectedOver | Combined Selected and rollOver styling |
@@ -416,7 +416,7 @@ Behavior on state changes -- BUTTON, RADIO or CHECKBOX
 ## Attr: StatefulCanvas.height
 
 ### Description
-Size for this component's vertical dimension. See [Canvas.height](Canvas.md#attr-canvasheight) for more details.
+Size for this component's vertical dimension. See [Canvas.height](Canvas_1.md#attr-canvasheight) for more details.
 
 Note that if [StatefulCanvas.autoFit](#attr-statefulcanvasautofit) is set on non-[StretchImgButton](StretchImgButton.md#class-stretchimgbutton) instances, this property will be ignored so that the widget is always sized just large enough to accommodate the title.
 
@@ -462,7 +462,7 @@ Note that for StretchImgButton instances, autoFit will occur horizontally only, 
 ### Description
 If specified this property returns the [aria-label](#method-statefulcanvasgetarialabel) attribute to write out in [screenReaderMode](isc.md#staticmethod-iscsetscreenreadermode).
 
-If unset, aria-label will default to [this.prompt](Canvas.md#attr-canvasprompt) if specified, otherwise [this.title](#attr-statefulcanvastitle).
+If unset, aria-label will default to [this.prompt](Canvas_1.md#attr-canvasprompt) if specified, otherwise [this.title](#attr-statefulcanvastitle).
 
 **Flags**: IRWA
 
@@ -518,7 +518,7 @@ Vertical alignment of this component's title.
 ## Attr: StatefulCanvas.width
 
 ### Description
-Size for this component's horizontal dimension. See [Canvas.width](Canvas.md#attr-canvaswidth) for more details.
+Size for this component's horizontal dimension. See [Canvas.width](Canvas_1.md#attr-canvaswidth) for more details.
 
 Note that if [StatefulCanvas.autoFit](#attr-statefulcanvasautofit) is set, this property will be ignored so that the widget is always sized just large enough to accommodate the title.
 
@@ -615,13 +615,13 @@ in the declaration section beginning:
  .rotatedTitleButtonDown,
  .rotatedTitleButtonDisabled {
 ```
-then applying that style to the button with [overflow](Canvas.md#attr-canvasoverflow): "clip\_h" would yield a vertically-rendered title with overflow via ellipsis as expected, and also wrap with [Button.wrap](Button.md#attr-buttonwrap). Note that:
+then applying that style to the button with [overflow](Canvas_1.md#attr-canvasoverflow): "clip\_h" would yield a vertically-rendered title with overflow via ellipsis as expected, and also wrap with [Button.wrap](Button.md#attr-buttonwrap). Note that:
 
 *   The explicit width applied via CSS is needed because rotated elements don't inherit dimensions in their new orientation from the DOM - the transform/rotation occurs independently of layout.
 *   The translation transform required along the x-axis is roughly (width - height) / 2, but may need slight offsetting for optimal centering.
 *   We've explicitly avoided describing an approach based on CSS "writing-mode", since support is incomplete and bugs are present in popular browsers such as Firefox and Safari that would prevent it from being used without Framework assistance.
 
-Note on css-margins: Developers should be aware that the css "margin" property is unreliable for certain subclasses of StatefulCanvas, including [buttons](Button.md#class-button). Developers may use the explicit [Canvas.margin](Canvas.md#attr-canvasmargin) property to specify button margins, or for a button within a layout, consider the layout properties [Layout.layoutMargin](Layout.md#attr-layoutlayoutmargin), [Layout.membersMargin](Layout.md#attr-layoutmembersmargin)
+Note on css-margins: Developers should be aware that the css "margin" property is unreliable for certain subclasses of StatefulCanvas, including [buttons](Button.md#class-button). Developers may use the explicit [Canvas.margin](Canvas_1.md#attr-canvasmargin) property to specify button margins, or for a button within a layout, consider the layout properties [Layout.layoutMargin](Layout.md#attr-layoutlayoutmargin), [Layout.membersMargin](Layout.md#attr-layoutmembersmargin)
 
 **Flags**: IRW
 
@@ -641,7 +641,7 @@ Pixels between icon and title text.
 ## Attr: StatefulCanvas.editProxyConstructor
 
 ### Description
-Default class used to construct the [EditProxy](EditProxy.md#class-editproxy) for this component when the component is [first placed into edit mode](Canvas.md#method-canvasseteditmode).
+Default class used to construct the [EditProxy](EditProxy.md#class-editproxy) for this component when the component is [first placed into edit mode](Canvas_1.md#method-canvasseteditmode).
 
 **Flags**: IR
 
@@ -682,7 +682,7 @@ The following table lists out the standard set of suffixes which may be applied 
 | baseStyle+Focused | Applied when the component has keyboard focus, if [StatefulCanvas.showFocused](#attr-statefulcanvasshowfocused) is true, and [StatefulCanvas.showFocusedAsOver](#attr-statefulcanvasshowfocusedasover) is not true. |
 | baseStyle+Over | Applied when [StatefulCanvas.showRollOver](#attr-statefulcanvasshowrollover) is set to true and either the user rolls over the component or [StatefulCanvas.showFocusedAsOver](#attr-statefulcanvasshowfocusedasover) is true and the component has keyboard focus. |
 | baseStyle+Down | Applied when the user presses the mouse button on the component if [StatefulCanvas.showDown](#attr-statefulcanvasshowdown) is set to true |
-| baseStyle+Disabled | Applied when the component is [disabled](Canvas.md#attr-canvasdisabled) if [StatefulCanvas.showDisabled](#attr-statefulcanvasshowdisabled) is true. |
+| baseStyle+Disabled | Applied when the component is [disabled](Canvas_1.md#attr-canvasdisabled) if [StatefulCanvas.showDisabled](#attr-statefulcanvasshowdisabled) is true. |
 | Combined styles |
 | baseStyle+SelectedFocused | Combined Selected and focused styling |
 | baseStyle+SelectedOver | Combined Selected and rollOver styling |
@@ -727,7 +727,7 @@ Setter for [ignoreRTL](#attr-statefulcanvasignorertl).
 ## Method: StatefulCanvas.getAriaStateDefaults
 
 ### Description
-Retrieves dynamically calculated default [ARIA state mapping](Canvas.md#attr-canvasariastate) properties for this canvas. These will be combined with explicitly specified aria state as described in [Canvas.getAriaState](Canvas.md#method-canvasgetariastate).
+Retrieves dynamically calculated default [ARIA state mapping](Canvas_1.md#attr-canvasariastate) properties for this canvas. These will be combined with explicitly specified aria state as described in [Canvas.getAriaState](Canvas_1.md#method-canvasgetariastate).
 
 Overridden by StatefulCanvas to pick up [aria-label](#method-statefulcanvasgetarialabel).
 
@@ -845,7 +845,7 @@ Default is to simply return this.title.
 ### Description
 Method to return the `aria-label` for this component (see [StatefulCanvas.getAriaStateDefaults](#method-statefulcanvasgetariastatedefaults)).
 
-Returns [StatefulCanvas.ariaLabel](#attr-statefulcanvasarialabel) if specified, otherwise [prompt](Canvas.md#attr-canvasprompt), otherwise [StatefulCanvas.title](#attr-statefulcanvastitle)
+Returns [StatefulCanvas.ariaLabel](#attr-statefulcanvasarialabel) if specified, otherwise [prompt](Canvas_1.md#attr-canvasprompt), otherwise [StatefulCanvas.title](#attr-statefulcanvastitle)
 
 ### Returns
 

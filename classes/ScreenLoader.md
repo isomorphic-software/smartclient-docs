@@ -21,7 +21,7 @@ The ScreenLoader relies on the XMLHttpRequest object which can be disabled by en
 ## Attr: ScreenLoader.dataContextBinding
 
 ### Description
-A [DataContextBinding](../reference.md#object-datacontextbinding) to be applied to the loaded screen via [Canvas.setDataContext](Canvas.md#method-canvassetdatacontext).
+A [DataContextBinding](../reference.md#object-datacontextbinding) to be applied to the loaded screen via [Canvas.setDataContext](Canvas_1.md#method-canvassetdatacontext).
 
 ### Groups
 
@@ -41,7 +41,7 @@ Message to show while the screen is loading if [enabled](#attr-screenloadershowl
 ## Attr: ScreenLoader.editProxyConstructor
 
 ### Description
-Default class used to construct the [EditProxy](EditProxy.md#class-editproxy) for this component when the component is [first placed into edit mode](Canvas.md#method-canvasseteditmode).
+Default class used to construct the [EditProxy](EditProxy.md#class-editproxy) for this component when the component is [first placed into edit mode](Canvas_1.md#method-canvasseteditmode).
 
 **Flags**: IR
 
@@ -89,7 +89,7 @@ Set the dataContextBinding property.
 ## Method: ScreenLoader.dataContextChanged
 
 ### Description
-Notification method fired when [DataContext](../reference_2.md#object-datacontext) is bound on the embedded screen. This can occur on the initial draw or by an explicit call to [setDataContext()](Canvas.md#method-canvassetdatacontext) either via this ScreenLoader or from other components including the screen itself.
+Notification method fired when [DataContext](../reference_2.md#object-datacontext) is bound on the embedded screen. This can occur on the initial draw or by an explicit call to [setDataContext()](Canvas_1.md#method-canvassetdatacontext) either via this ScreenLoader or from other components including the screen itself.
 
 ### Groups
 

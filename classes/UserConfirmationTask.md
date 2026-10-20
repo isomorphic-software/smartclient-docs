@@ -19,7 +19,7 @@ If the user clicks OK, the [nextElement](#attr-userconfirmationtasknextelement) 
 ### Description
 Formula to be used to calculate the message contents. Use [UserConfirmationTask.message](#attr-userconfirmationtaskmessage) property to assign a static message instead.
 
-Available fields for use in the formula are the current [rule context](Canvas.md#attr-canvasrulescope).
+Available fields for use in the formula are the current [rule context](Canvas_1.md#attr-canvasrulescope).
 
 **Flags**: IR
 

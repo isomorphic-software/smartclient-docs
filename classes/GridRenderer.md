@@ -6,7 +6,7 @@
 
 ## Class: GridRenderer
 
-*Inherits from:* [Canvas](Canvas.md#class-canvas)
+*Inherits from:* [Canvas](Canvas_1.md#class-canvas)
 
 ### Description
 A flexible, high-speed table that offers consistent cross-platform sizing, clipping, and events.
@@ -1004,7 +1004,7 @@ Returns the row number of the provided Y-coordinate, or the most recent mouse ev
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| y | [Integer](../reference_2.md#type-integer) | true | — | Y-coordinate relative to the top edge of the content to obtain the row number for. If not provided, then [Canvas.getOffsetY](Canvas.md#method-canvasgetoffsety) will be used. |
+| y | [Integer](../reference_2.md#type-integer) | true | — | Y-coordinate relative to the top edge of the content to obtain the row number for. If not provided, then [Canvas.getOffsetY](Canvas_1.md#method-canvasgetoffsety) will be used. |
 
 ### Returns
 
@@ -1572,7 +1572,7 @@ Returns the column number of the provided X-coordinate, or the most recent mouse
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| x | [Integer](../reference_2.md#type-integer) | true | — | X-coordinate relative to the left edge of the content to obtain the column number for. If not provided, then [Canvas.getOffsetX](Canvas.md#method-canvasgetoffsetx) will be used. |
+| x | [Integer](../reference_2.md#type-integer) | true | — | X-coordinate relative to the left edge of the content to obtain the column number for. If not provided, then [Canvas.getOffsetX](Canvas_1.md#method-canvasgetoffsetx) will be used. |
 
 ### Returns
 

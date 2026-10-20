@@ -29,7 +29,7 @@ This text is shown as a tooltip prompt when the cursor hovers over this item.
 
 When the item is [read-only](FormItem.md#method-formitemsetcanedit) a different hover can be shown with [FormItem.readOnlyHover](FormItem.md#attr-formitemreadonlyhover). Or, when the item is [disabled](FormItem.md#attr-formitemdisabled) or read-only with [readOnlyDisplay:disabled](FormItem.md#attr-formitemreadonlydisplay) a different hover can be shown with [FormItem.disabledHover](FormItem.md#attr-formitemdisabledhover).
 
-Note that when the form is [disabled](Canvas.md#attr-canvasdisabled), or when this item [suppresses hovers](FormItem.md#attr-formitemcanhover), this prompt will not be shown.
+Note that when the form is [disabled](Canvas_1.md#attr-canvasdisabled), or when this item [suppresses hovers](FormItem.md#attr-formitemcanhover), this prompt will not be shown.
 
 ### Groups
 
@@ -117,7 +117,7 @@ If `canvas` and `createCanvas()` are unspecified, the canvas for this item will 
 
 Note that subclasses of `CanvasItem` may use a different AutoChild name than just "canvas". For example, [SliderItem](SliderItem.md#class-slideritem) uses "slider", and in that case, you need to use the specific APIs provided by the subclass.
 
-Note that [Canvas.canvasItem](Canvas.md#attr-canvascanvasitem) will be set on the canvas to point back to this item.
+Note that [Canvas.canvasItem](Canvas_1.md#attr-canvascanvasitem) will be set on the canvas to point back to this item.
 
 ### See Also
 
@@ -153,7 +153,7 @@ If [FormItem.prompt](FormItem.md#attr-formitemprompt) is specified for this item
 ## Attr: CanvasItem.autoDestroy
 
 ### Description
-Should this item's [canvas](#attr-canvasitemcanvas) be automatically destroyed when the item is destroyed? Form items are destroyed automatically when a call to [DynamicForm.setItems](DynamicForm.md#method-dynamicformsetitems) removes them from their parent form, or if their parent form is destroyed. This property governs whether, when this occurs, the item's canvas should also be [destroyed](Canvas.md#method-canvasdestroy).
+Should this item's [canvas](#attr-canvasitemcanvas) be automatically destroyed when the item is destroyed? Form items are destroyed automatically when a call to [DynamicForm.setItems](DynamicForm.md#method-dynamicformsetitems) removes them from their parent form, or if their parent form is destroyed. This property governs whether, when this occurs, the item's canvas should also be [destroyed](Canvas_1.md#method-canvasdestroy).
 
 This property has no effect for canvases automatically created via the "autoChild" pattern, using [CanvasItem.canvasProperties](#attr-canvasitemcanvasproperties), [CanvasItem.canvasDefaults](#attr-canvasitemcanvasdefaults) etc. CanvasItems which create their canvas in this way will always destroy the canvas when the item is destroyed or on an explicit [CanvasItem.setCanvas](#method-canvasitemsetcanvas) call, regardless of this property's value.
 
@@ -377,7 +377,7 @@ This method allows dynamic creation of a CanvasItem's canvas, rather than settin
 ### Description
 This method will place an entry for the [CanvasItem.canvas](#attr-canvasitemcanvas) under this item in the [TabIndexManager](TabIndexManager.md#class-tabindexmanager). This ensures the user can tab into the canvas (and its descendants) in the expected position within this item's DynamicForm.
 
-See also [DynamicForm.updateChildTabPositions()](Canvas.md#method-canvasupdatechildtabpositions).
+See also [DynamicForm.updateChildTabPositions()](Canvas_1.md#method-canvasupdatechildtabpositions).
 
 ---
 ## Method: CanvasItem.canEditCriterion
@@ -405,7 +405,7 @@ This method has been overridden to return true if this item's canvas is a Dynami
 ## Method: CanvasItem.shouldDisableCanvas
 
 ### Description
-Method called to determine whether the [canvas](#attr-canvasitemcanvas) should be [disabled](Canvas.md#method-canvassetdisabled) when this `CanvasItem` is disabled or its [editability changes](#method-canvasitemcaneditchanged). By default, if the `canvas` is a [DynamicForm](DynamicForm.md#class-dynamicform), then it is disabled if and only if this `CanvasItem` is disabled; otherwise, the `canvas` is disabled if and only if this `CanvasItem` is disabled or [read-only](FormItem.md#method-formitemgetcanedit).
+Method called to determine whether the [canvas](#attr-canvasitemcanvas) should be [disabled](Canvas_1.md#method-canvassetdisabled) when this `CanvasItem` is disabled or its [editability changes](#method-canvasitemcaneditchanged). By default, if the `canvas` is a [DynamicForm](DynamicForm.md#class-dynamicform), then it is disabled if and only if this `CanvasItem` is disabled; otherwise, the `canvas` is disabled if and only if this `CanvasItem` is disabled or [read-only](FormItem.md#method-formitemgetcanedit).
 
 This method may be overridden to customize the default return value.
 

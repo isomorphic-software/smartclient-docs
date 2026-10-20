@@ -6,7 +6,7 @@
 
 ## Class: DrawKnob
 
-*Inherits from:* [Canvas](Canvas.md#class-canvas)
+*Inherits from:* [Canvas](Canvas_1.md#class-canvas)
 
 ### Description
 Canvas that renders a [DrawItem](DrawItem.md#class-drawitem) into a [DrawPane](DrawPane.md#class-drawpane) and provides interactivity for that drawItem, including drag and drop.

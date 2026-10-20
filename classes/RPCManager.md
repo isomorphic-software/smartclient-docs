@@ -914,7 +914,7 @@ Exports the printable representation of a set of widgets as a .pdf that is then 
 
 As with other exports, the resulting file can be [saved to the server filesystem](DSRequest.md#attr-dsrequestexporttofilesystem) instead of, or in addition to being downloaded to the user. See server-side docs for com.isomorphic.contentexport.PdfExport for more details on server-side processing and code samples for redirecting PDF output to a file or in-memory buffer, as well as instructions for adding additional stylesheets.
 
-You can either pass any `Canvas` to `exportContent`, or you can pass HTML that you have retrieved by calling [Canvas.getPrintHTML](Canvas.md#method-canvasgetprinthtml). When calling `getPrintHTML()` to retrieve HTML for use with `exportContent()`, you must pass the [PrintProperties.printForExport](PrintProperties.md#attr-printpropertiesprintforexport) or [DrawPane](DrawPane.md#class-drawpane) and [FacetChart](FacetChart.md#class-facetchart) instances will not export properly.
+You can either pass any `Canvas` to `exportContent`, or you can pass HTML that you have retrieved by calling [Canvas.getPrintHTML](Canvas_1.md#method-canvasgetprinthtml). When calling `getPrintHTML()` to retrieve HTML for use with `exportContent()`, you must pass the [PrintProperties.printForExport](PrintProperties.md#attr-printpropertiesprintforexport) or [DrawPane](DrawPane.md#class-drawpane) and [FacetChart](FacetChart.md#class-facetchart) instances will not export properly.
 
 You can use a custom skin when exporting your HTML content. To use a custom skin, add a line to [server.properties](../kb_topics/server_properties.md#kb-topic-serverproperties-file):
 
@@ -967,7 +967,7 @@ In ContainerIO mode (WAR deployment where the framework loads resources from the
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| canvas | [Canvas](#type-canvas)|[Array of Canvas[]](#type-array-of-canvas)|[HTMLString](../reference.md#type-htmlstring) | false | — | Canvas or canvas list that has exportable widgets, or an HTML fragment derived from [getPrintHTML()](Canvas.md#method-canvasgetprinthtml) |
+| canvas | [Canvas](#type-canvas)|[Array of Canvas[]](#type-array-of-canvas)|[HTMLString](../reference.md#type-htmlstring) | false | — | Canvas or canvas list that has exportable widgets, or an HTML fragment derived from [getPrintHTML()](Canvas_1.md#method-canvasgetprinthtml) |
 | requestProperties | [DSRequest Properties](#type-dsrequest-properties) | true | — | Request properties for the export to pdf object |
 
 ---
@@ -976,7 +976,7 @@ In ContainerIO mode (WAR deployment where the framework loads resources from the
 ### Description
 Creates a screen previously cached by a call to [RPCManager.cacheScreens](#classmethod-rpcmanagercachescreens). (Compare with [Project.createScreen](Project.md#method-projectcreatescreen) for [reify](../kb_topics/reify.md#kb-topic-reify-overview) projects.)
 
-As with [RPCManager.loadScreen](#classmethod-rpcmanagerloadscreen), the default behavior is to prevent any global widget IDs from being established, the returned Canvas will be the outermost component of the screen, and that Canvas will provide access to other widgets in the screen via [getByLocalId()](Canvas.md#method-canvasgetbylocalid)
+As with [RPCManager.loadScreen](#classmethod-rpcmanagerloadscreen), the default behavior is to prevent any global widget IDs from being established, the returned Canvas will be the outermost component of the screen, and that Canvas will provide access to other widgets in the screen via [getByLocalId()](Canvas_1.md#method-canvasgetbylocalid)
 
 Alternatively, as with [RPCManager.loadScreen](#classmethod-rpcmanagerloadscreen), a list of IDs that should be allowed to become globals can be passed, allowing those widgets to be retrieved via a call to [Canvas.getById](Canvas.md#classmethod-canvasgetbyid) after the screen has been created.
 
@@ -1200,13 +1200,13 @@ The `screen` provided by the callback will be the outermost component if your lo
 
 If you have multiple widget hierarchies in your screen, the `screen` returned will be the last top-level component created.
 
-By default, components in the loaded screens that have [global IDs](Canvas.md#attr-canvasid) will not actually be allowed to take those global IDs - instead, only widgets that have one of the global IDs passed as the `globals` parameter will actually receive their global IDs. To override this behavior, pass the special value [RPCManager.ALL_GLOBALS](#classattr-rpcmanagerall_globals) for the `globals` parameter.
+By default, components in the loaded screens that have [global IDs](Canvas_1.md#attr-canvasid) will not actually be allowed to take those global IDs - instead, only widgets that have one of the global IDs passed as the `globals` parameter will actually receive their global IDs. To override this behavior, pass the special value [RPCManager.ALL_GLOBALS](#classattr-rpcmanagerall_globals) for the `globals` parameter.
 
-When globals are being suppressed, the `screen` available in the callback will provide access to widgets that did not receive their global IDs via [Canvas.getByLocalId](Canvas.md#method-canvasgetbylocalid), and the `suppressedGlobals` available in the callback will be a mapping from suppressed global ID to the widget or other component that would have used that global ID if globals were not suppressed. In addition, any other `Canvas` loaded with the screen also provides access to any suppressed globals from the screen via `getByLocalId()`.
+When globals are being suppressed, the `screen` available in the callback will provide access to widgets that did not receive their global IDs via [Canvas.getByLocalId](Canvas_1.md#method-canvasgetbylocalid), and the `suppressedGlobals` available in the callback will be a mapping from suppressed global ID to the widget or other component that would have used that global ID if globals were not suppressed. In addition, any other `Canvas` loaded with the screen also provides access to any suppressed globals from the screen via `getByLocalId()`.
 
 To load multiple screens at once, use [Reify.loadProject](Reify.md#method-reifyloadproject) if the screens are part of a [Project](Project.md#class-project), otherwise use [RPCManager.cacheScreens](#classmethod-rpcmanagercachescreens).
 
-Components in the screen will default to having [Canvas.autoDraw](Canvas.md#attr-canvasautodraw) set to false. This may be overridden by setting the [RPCRequest.suppressAutoDraw](RPCRequest.md#attr-rpcrequestsuppressautodraw) attribute explicitly to `false` on the request properties object.
+Components in the screen will default to having [Canvas.autoDraw](Canvas_1.md#attr-canvasautodraw) set to false. This may be overridden by setting the [RPCRequest.suppressAutoDraw](RPCRequest.md#attr-rpcrequestsuppressautodraw) attribute explicitly to `false` on the request properties object.
 
 You can optionally provide a locale name to use when resolving any i18n tags in the screen's component XML. If you do not supply this, the locale will be derived from the servlet API, and so will generally be a locale appropriate to the client's operating system settings. Only provide a locale manually if you have a special requirement that requires the user's operating system locale to be overridden in your application. If you provide a locale name, it should be of the form "xx" or "xx\_YY", where "xx" is a valid language code and "YY" is a valid country code. For example, "fr" or "en\_GB".
 

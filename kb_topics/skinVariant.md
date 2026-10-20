@@ -9,7 +9,7 @@
 ### Description
 Skin variants are named visual presets that modify a base class's appearance without changing behavior. Each variant is a set of property overrides registered in [Variant](../classes/Variant.md#class-variant) and auto-created as a subclass during framework initialization.
 
-Variant subclasses work in any skin. When a skin provides CSS definitions for the variant's style properties, the variant takes effect. In skins that do not define those CSS classes, variant style properties automatically revert to their superclass values via [Canvas.autoRevertStyles](../classes/Canvas.md#attr-canvasautorevertstyles), so the component falls back to the skin's default appearance.
+Variant subclasses work in any skin. When a skin provides CSS definitions for the variant's style properties, the variant takes effect. In skins that do not define those CSS classes, variant style properties automatically revert to their superclass values via [Canvas.autoRevertStyles](../classes/Canvas_1.md#attr-canvasautorevertstyles), so the component falls back to the skin's default appearance.
 
 #### Grid variants
 Grid variants (Compact, Flat, Bordered, Striped) are created as subclasses of both [ListGrid](../classes/ListGrid_1.md#class-listgrid) and [TreeGrid](../classes/TreeGrid.md#class-treegrid). For example, the Compact variant produces both `CompactGrid` and `CompactTreeGrid`.
@@ -68,6 +68,6 @@ The "Default Table" appearance in variant-enabled skins is simply a standard [Li
 - [BorderedSection](../reference.md#class-borderedsection)
 - [GradientHeader](../reference.md#class-gradientheader)
 - [MinimalSection](../reference.md#class-minimalsection)
-- [Canvas.autoRevertStyles](../classes/Canvas.md#attr-canvasautorevertstyles)
+- [Canvas.autoRevertStyles](../classes/Canvas_1.md#attr-canvasautorevertstyles)
 
 ---

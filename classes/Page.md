@@ -679,7 +679,7 @@ This action will be passed 2 parameters: The name of the key pressed will be ava
 
 ### See Also
 
-- [Canvas.keyPress](Canvas.md#method-canvaskeypress)
+- [Canvas.keyPress](Canvas_1.md#method-canvaskeypress)
 - [Page.setEvent](#classmethod-pagesetevent)
 - [Page.unregisterKey](#classmethod-pageunregisterkey)
 
@@ -866,7 +866,7 @@ While cleaning up observations that are no longer required is always good practi
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| object | [Object](../reference_2.md#type-object) | false | — | Object to observe. This may be any JavaScript object with the specified target method, including native arrays, and instances of SmartClient classes such as [Canvas](Canvas.md#class-canvas). |
+| object | [Object](../reference_2.md#type-object) | false | — | Object to observe. This may be any JavaScript object with the specified target method, including native arrays, and instances of SmartClient classes such as [Canvas](Canvas_1.md#class-canvas). |
 | methodName | [String](#type-string) | false | — | Name of the method to observe. Every time this method is invoked on the target object the specified action will fire (after the default implementation completes). |
 | action | [Function](#type-function)|[String](#type-string) | false | — | Action to take when the observed method is invoked.  
 If `action` is a string to execute, certain keywords are available for context:

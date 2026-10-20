@@ -130,7 +130,7 @@ Size, in pixels, of indentation of all member items relative to the start of the
 ### Description
 SectionStacks provide the same default implementation of drag and drop interactions as [Layouts](Layout.md#attr-layoutcandropcomponents), except that members are added as items into the section over which they're dropped.
 
-If you want to completely suppress the builtin drag and drop logic, but still receive drag and drop events for your own custom implementation, set [Canvas.canAcceptDrop](Canvas.md#attr-canvascanacceptdrop) to `true` and `canDropComponents` to `false` on your SectionStack.
+If you want to completely suppress the builtin drag and drop logic, but still receive drag and drop events for your own custom implementation, set [Canvas.canAcceptDrop](Canvas_1.md#attr-canvascanacceptdrop) to `true` and `canDropComponents` to `false` on your SectionStack.
 
 ### Groups
 
@@ -244,7 +244,7 @@ The default configuration includes a click handler to invoke [SectionStack.close
 ## Attr: SectionStack.editProxyConstructor
 
 ### Description
-Default class used to construct the [EditProxy](EditProxy.md#class-editproxy) for this component when the component is [first placed into edit mode](Canvas.md#method-canvasseteditmode).
+Default class used to construct the [EditProxy](EditProxy.md#class-editproxy) for this component when the component is [first placed into edit mode](Canvas_1.md#method-canvasseteditmode).
 
 **Flags**: IR
 
@@ -599,7 +599,7 @@ Method intended to be called by the sectionHeader when it is clicked on.
 ### Description
 Add a section to the SectionStack.
 
-You may want to apply [overflow](Canvas.md#attr-canvasoverflow): "auto" to your stack if users can add an unlimited/ number of sections, so that they're all accessible.
+You may want to apply [overflow](Canvas_1.md#attr-canvasoverflow): "auto" to your stack if users can add an unlimited/ number of sections, so that they're all accessible.
 
 ### Parameters
 

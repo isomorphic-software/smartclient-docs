@@ -83,7 +83,7 @@ Properties to be applied to the [editNode](../reference.md#object-editnode) when
 ## Attr: PaletteNode.editProxyProperties
 
 ### Description
-Properties to be applied to the [liveObject](#attr-palettenodeliveobject).[editProxy](Canvas.md#attr-canvaseditproxy) when created.
+Properties to be applied to the [liveObject](#attr-palettenodeliveobject).[editProxy](Canvas_1.md#attr-canvaseditproxy) when created.
 
 **Flags**: IR
 

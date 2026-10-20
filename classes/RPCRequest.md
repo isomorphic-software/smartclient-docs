@@ -7,7 +7,7 @@
 ## Attr: RPCRequest.suppressAutoDraw
 
 ### Description
-If [RPCRequest.evalResult](#attr-rpcrequestevalresult) is set, setting this property to true causes [Canvas.autoDraw](Canvas.md#attr-canvasautodraw) to be set to false for the duration of the result evaluation - which is generally what you want if you're returning new components from the server.
+If [RPCRequest.evalResult](#attr-rpcrequestevalresult) is set, setting this property to true causes [Canvas.autoDraw](Canvas_1.md#attr-canvasautodraw) to be set to false for the duration of the result evaluation - which is generally what you want if you're returning new components from the server.
 
 This also effects components loaded via the [RPCManager.loadScreen](RPCManager.md#classmethod-rpcmanagerloadscreen) API.
 

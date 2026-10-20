@@ -39,7 +39,7 @@ Known issues by browser are listed below.
 
 #### Internet Explorer
 
-*   IE may draw "seams" on [EdgedCanvas](../classes/EdgedCanvas.md#class-edgedcanvas) objects, which are faint antialiasing artifacts between the images used to make up the `EdgedCanvas`. This affects [drop shadows](../classes/Canvas.md#attr-canvasshowshadow) and showing edges with a high [Canvas.edgeSize](../classes/Canvas.md#attr-canvasedgesize).
+*   IE may draw "seams" on [EdgedCanvas](../classes/EdgedCanvas.md#class-edgedcanvas) objects, which are faint antialiasing artifacts between the images used to make up the `EdgedCanvas`. This affects [drop shadows](../classes/Canvas_1.md#attr-canvasshowshadow) and showing edges with a high [Canvas.edgeSize](../classes/Canvas_1.md#attr-canvasedgesize).
 *   Phantom borders may appear between table cells and other content that should be adjacent with no separation. This issue is also thought to be the cause of a line appearing below a selected [TabSet](../classes/TabSet.md#class-tabset) tab at certain zoom levels.
 *   SVG content may disappear at high zoom levels.
 
@@ -94,9 +94,9 @@ When a browser is zoomed, either directly or via OS-level zoom, it can report si
 *   because of subpixel measurement bugs, the browser changes its mind and decides that the same content now requires scrollbars again
 *   we re-add scrollbars
 
-To work around this issue, we rely the idea of a [maximum zoom overflow error](../classes/Canvas.md#attr-canvasmaxzoomoverflowerror), the experimental maximum possible error due to subpixel rendering when browser and/or OS-level zoom is present. This value is typically one or a few pixels, but should always be kept as small as possible because it also represents the maximum amount of unwanted clipping that the Framework might apply to the canvas when overflow is present. If too large, it will easily be noticed and may clip the edges of buttons or other content.
+To work around this issue, we rely the idea of a [maximum zoom overflow error](../classes/Canvas_1.md#attr-canvasmaxzoomoverflowerror), the experimental maximum possible error due to subpixel rendering when browser and/or OS-level zoom is present. This value is typically one or a few pixels, but should always be kept as small as possible because it also represents the maximum amount of unwanted clipping that the Framework might apply to the canvas when overflow is present. If too large, it will easily be noticed and may clip the edges of buttons or other content.
 
-For example, if you execute the following sample in a zoomed desktop browser, you'll see that if you try to grab the bottom edge and drag-resize it shorter, some text will be clipped from the bottom before the scrollbar appears. This is because the [maximum zoom overflow error](../classes/Canvas.md#attr-canvasmaxzoomoverflowerror) for the sample is 25, a much larger value than ever needed but illustrative of its potential for clipping content.
+For example, if you execute the following sample in a zoomed desktop browser, you'll see that if you try to grab the bottom edge and drag-resize it shorter, some text will be clipped from the bottom before the scrollbar appears. This is because the [maximum zoom overflow error](../classes/Canvas_1.md#attr-canvasmaxzoomoverflowerror) for the sample is 25, a much larger value than ever needed but illustrative of its potential for clipping content.
 
 ```
 isc.HTMLPane.create({  
@@ -108,7 +108,7 @@ isc.HTMLPane.create({
 })
  
 ```
-**Note:** the framework should set [Canvas.correctZoomOverflow](../classes/Canvas.md#attr-canvascorrectzoomoverflow) automatically for you where it's needed, so it's set explicitly above to force it to an excessive value.
+**Note:** the framework should set [Canvas.correctZoomOverflow](../classes/Canvas_1.md#attr-canvascorrectzoomoverflow) automatically for you where it's needed, so it's set explicitly above to force it to an excessive value.
 
 If you can still reproduce the flickering scrollbar problem with our canvas default settings for your browser and OS, please contact Isomorphic and provide as much detail about your setup as possible: framework version, skin in use, whether the skin is customized, browser, browser version, OS platform and version, and any non-default visual settings for the browser or OS.
 

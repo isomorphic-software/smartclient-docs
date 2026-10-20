@@ -6,7 +6,7 @@
 
 ## Class: EdgedCanvas
 
-*Inherits from:* [Canvas](Canvas.md#class-canvas)
+*Inherits from:* [Canvas](Canvas_1.md#class-canvas)
 
 ### Description
 EdgedCanvas acts as a decorative, image-based frame around another single Canvas.

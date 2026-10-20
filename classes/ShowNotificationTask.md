@@ -25,7 +25,7 @@ NotifyType for message.
 ### Description
 Formula to be used to calculate the message contents. Use [ShowNotificationTask.message](#attr-shownotificationtaskmessage) property to assign a static message instead.
 
-Available fields for use in the formula are the current [rule context](Canvas.md#attr-canvasrulescope).
+Available fields for use in the formula are the current [rule context](Canvas_1.md#attr-canvasrulescope).
 
 **Flags**: IR
 
@@ -49,7 +49,7 @@ Auto-dismiss message after a short duration.
 ## Attr: ShowNotificationTask.position
 
 ### Description
-Where to show the message, specified as an edge ("T", "B", "R", "L") similar to [Canvas.snapTo](Canvas.md#attr-canvassnapto), or "C" for center. The message will be shown at the center of the edge specified (or the very center for "C").
+Where to show the message, specified as an edge ("T", "B", "R", "L") similar to [Canvas.snapTo](Canvas_1.md#attr-canvassnapto), or "C" for center. The message will be shown at the center of the edge specified (or the very center for "C").
 
 **Flags**: IR
 

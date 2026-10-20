@@ -6,7 +6,7 @@
 
 ## Class: TabSet
 
-*Inherits from:* [Canvas](Canvas.md#class-canvas)
+*Inherits from:* [Canvas](Canvas_1.md#class-canvas)
 
 ### Description
 The TabSet class allows components on several panes to share the same space. The tabs at the top can be selected by the user to show each pane.
@@ -182,7 +182,7 @@ Navigation bar shown in the [TabSet.moreTabPane](#attr-tabsetmoretabpane);
 ## Attr: TabSet.destroyPanes
 
 ### Description
-Whether [destroy()](Canvas.md#method-canvasdestroy) should be called on [Tab.pane](Tab.md#attr-tabpane) when it a tab is removed via [TabSet.removeTab](#method-tabsetremovetab).
+Whether [destroy()](Canvas_1.md#method-canvasdestroy) should be called on [Tab.pane](Tab.md#attr-tabpane) when it a tab is removed via [TabSet.removeTab](#method-tabsetremovetab).
 
 With the default setting of `null` panes will be automatically destroyed. An application might set this to false in order to re-use panes in different tabs or in different parts of the application.
 
@@ -387,7 +387,7 @@ The attribute should be specified an [edgeSizes map](../reference.md#type-edgesi
 ### Description
 Container where the component specified by [Tab.pane](Tab.md#attr-tabpane) is shown.
 
-Note: paneContainer and showEdges:true for rounded tabsets: you can enable decorative image-based edges on the paneContainer by setting [showEdges:true](Canvas.md#attr-canvasshowedges) via paneContainerDefaults (to skin all tabsets) or paneContainerProperties (to use edges on one instance). In this structure, the [baseLine](../reference.md#kb-topic-baseline) should use media that matches the appearance of the decorative edges and fully overlaps the edge of the paneContainer that it is adjacent to. In the most typical appearance (symmetric edges on all 4 sides), both [TabBar.baseLineCapSize](TabBar.md#attr-tabbarbaselinecapsize) and [TabBar.baseLineThickness](TabBar.md#attr-tabbarbaselinethickness) match the [edgeSize](Canvas.md#attr-canvasedgesize) set on the paneContainer. See the load\_skin.js file for the "SmartClient" skin for an example of setting all relevant properties.
+Note: paneContainer and showEdges:true for rounded tabsets: you can enable decorative image-based edges on the paneContainer by setting [showEdges:true](Canvas_1.md#attr-canvasshowedges) via paneContainerDefaults (to skin all tabsets) or paneContainerProperties (to use edges on one instance). In this structure, the [baseLine](../reference.md#kb-topic-baseline) should use media that matches the appearance of the decorative edges and fully overlaps the edge of the paneContainer that it is adjacent to. In the most typical appearance (symmetric edges on all 4 sides), both [TabBar.baseLineCapSize](TabBar.md#attr-tabbarbaselinecapsize) and [TabBar.baseLineThickness](TabBar.md#attr-tabbarbaselinethickness) match the [edgeSize](Canvas_1.md#attr-canvasedgesize) set on the paneContainer. See the load\_skin.js file for the "SmartClient" skin for an example of setting all relevant properties.
 
 To disable edges for a particular TabSet, which you may want to do for a TabSet that is already within a clearly defined container, configure the paneContainer to show only it's top edge:
 
@@ -686,7 +686,7 @@ You can also refer to the default tabPicker/tabScroll controls from Component XM
 
 When [Browser.isTouch](Browser.md#classattr-browseristouch) is `true` and native touch scrolling is supported, then by default, only the `"tabPicker"` is shown. The `"tabScroller"` control is omitted by default on touch devices because the tabs in the tab bar are native touch-scrollable, so the `"tabScroller"` control is unnecessary. To override the omission of the `"tabScroller"`, simply add "tabScroller" to the `tabBarControls` array.
 
-**Note:** Due to tabs supporting [adaptive width](Tab.md#attr-tabcanadaptwidth) and other complexities of TabSet widget layout, [flexible-sized](Canvas.md#attr-canvaswidth) controls (including [spacers](../reference.md#class-layoutspacer)) aren't supported in `tabBarControls`. However, if you take into account the width of your tabs and whether the [picker](#attr-tabsettabpicker) and [TabSet.scroller](#attr-tabsetscroller) are present, you can add a fixed-width spacer to achieve the desired appearance, as long as the set of tabs and TabSet width are static.
+**Note:** Due to tabs supporting [adaptive width](Tab.md#attr-tabcanadaptwidth) and other complexities of TabSet widget layout, [flexible-sized](Canvas_1.md#attr-canvaswidth) controls (including [spacers](../reference.md#class-layoutspacer)) aren't supported in `tabBarControls`. However, if you take into account the width of your tabs and whether the [picker](#attr-tabsettabpicker) and [TabSet.scroller](#attr-tabsetscroller) are present, you can add a fixed-width spacer to achieve the desired appearance, as long as the set of tabs and TabSet width are static.
 
 ### Groups
 
@@ -737,7 +737,7 @@ Note that for best results the media should be sized to match the scroller butto
 ## Attr: TabSet.showPartialEdges
 
 ### Description
-If the paneContainer for this tab set is showing [edges](Canvas.md#attr-canvasshowedges), setting this attribute to `true` will set the paneContainer to show [customEdges](Canvas.md#attr-canvascustomedges) for the three sides opposing the tabBarPosition.
+If the paneContainer for this tab set is showing [edges](Canvas_1.md#attr-canvasshowedges), setting this attribute to `true` will set the paneContainer to show [customEdges](Canvas_1.md#attr-canvascustomedges) for the three sides opposing the tabBarPosition.
 
 **Flags**: IRA
 
@@ -771,7 +771,7 @@ Thickness of tabBar, applies to either orientation (specifies height for horizon
 ## Attr: TabSet.editProxyConstructor
 
 ### Description
-Default class used to construct the [EditProxy](EditProxy.md#class-editproxy) for this component when the component is [first placed into edit mode](Canvas.md#method-canvasseteditmode).
+Default class used to construct the [EditProxy](EditProxy.md#class-editproxy) for this component when the component is [first placed into edit mode](Canvas_1.md#method-canvasseteditmode).
 
 **Flags**: IR
 
@@ -1023,7 +1023,7 @@ To get the path to the image to display, this base URL will be modified as follo
 ## Attr: TabSet.showPaneContainerEdges
 
 ### Description
-Should the paneContainer for this tabset show [edges](Canvas.md#attr-canvasshowedges).
+Should the paneContainer for this tabset show [edges](Canvas_1.md#attr-canvasshowedges).
 
 **Flags**: IRWA
 
@@ -1396,7 +1396,7 @@ Changes the title of a tab
 ## Method: TabSet.getPaneContainerEdges
 
 ### Description
-If the paneContainer for this tab set is showing [edges](Canvas.md#attr-canvasshowedges), this method can be used to specify (dynamically) which [customEdges](Canvas.md#attr-canvascustomedges) to show. Called when the pane creator is created.
+If the paneContainer for this tab set is showing [edges](Canvas_1.md#attr-canvasshowedges), this method can be used to specify (dynamically) which [customEdges](Canvas_1.md#attr-canvascustomedges) to show. Called when the pane creator is created.
 
 Default implementation will return null unless [showPartialEdges](#attr-tabsetshowpartialedges) is true, in which case it will return the three edges opposite the [tabBarPosition](#attr-tabsettabbarposition).
 
@@ -1568,7 +1568,7 @@ If there is not enough space to display all the tabs in this tabSet, this method
 ### Description
 Get the live Canvas representing a tab by index, ID, reference, or name. If passed a tab Canvas, just returns it.
 
-Note that live Tab instances are not available until [draw()](Canvas.md#method-canvasdraw).
+Note that live Tab instances are not available until [draw()](Canvas_1.md#method-canvasdraw).
 
 The returned Tab is considered an internal component of the TabSet. In order to maximize forward compatibility, manipulate tabs through APIs such as a [TabSet.setTabTitle](#method-tabsetsettabtitle) instead. Also note that a super-lightweight TabSet implementation may not use a separate Canvas per Tab, and code that accesses and manipulates Tabs as Canvases won't be compatible with that implementation.
 
@@ -1603,7 +1603,7 @@ NOTE: the old pane for the tab is not destroy()d
 ## Method: TabSet.tabSelected
 
 ### Description
-Notification fired when a tab is selected. Note that this will only fire if this tabSet is drawn. If a tab is selected before [draw()](Canvas.md#method-canvasdraw) is called, the `tabSelected()` notification will fire on `draw()`.
+Notification fired when a tab is selected. Note that this will only fire if this tabSet is drawn. If a tab is selected before [draw()](Canvas_1.md#method-canvasdraw) is called, the `tabSelected()` notification will fire on `draw()`.
 
 ### Parameters
 

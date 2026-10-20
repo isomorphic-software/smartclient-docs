@@ -32,7 +32,7 @@ A symbolic thead ID useful for debugging, present when a JavaScript error is hit
 ## Attr: EventStreamEvent.dragTargetID
 
 ### Description
-The [widget ID](Canvas.md#attr-canvasid) of the [drag target](EventHandler.md#classmethod-eventhandlergetdragtarget), present for most [drag events](EventStream.md#attr-eventstreamcapturedragevents).
+The [widget ID](Canvas_1.md#attr-canvasid) of the [drag target](EventHandler.md#classmethod-eventhandlergetdragtarget), present for most [drag events](EventStream.md#attr-eventstreamcapturedragevents).
 
 Note that if drag events are not being captured, it will be populated for the `mouseUp` event terminating the drag.
 
@@ -103,7 +103,7 @@ True For synthetic events. Otherwise, not present at all. When true, [EventStrea
 ## Attr: EventStreamEvent.dropTargetClass
 
 ### Description
-The [class name](Class.md#method-classgetclassname) of the [drop target](Canvas.md#method-canvasdrop), present for some [drag events](EventStream.md#attr-eventstreamcapturedragevents).
+The [class name](Class.md#method-classgetclassname) of the [drop target](Canvas_1.md#method-canvasdrop), present for some [drag events](EventStream.md#attr-eventstreamcapturedragevents).
 
 Note that if drag events are not being captured, it will be populated for the `mouseUp` event terminating the drag.
 
@@ -119,7 +119,7 @@ Note that if drag events are not being captured, it will be populated for the `m
 ## Attr: EventStreamEvent.targetY
 
 ### Description
-The vertical offset of the event from the [top edge](Canvas.md#attr-canvastop) of the event target, if one exists. Keyboard, page-level, and non-DOM events may not have any target.
+The vertical offset of the event from the [top edge](Canvas_1.md#attr-canvastop) of the event target, if one exists. Keyboard, page-level, and non-DOM events may not have any target.
 
 ### See Also
 
@@ -178,7 +178,7 @@ For synthetic events (where the [EventHandler](EventHandler.md#class-eventhandle
 ## Attr: EventStreamEvent.targetID
 
 ### Description
-The [widget ID](Canvas.md#attr-canvasid) of the event target, if one exists. Page-level and non-DOM events may not have any target.
+The [widget ID](Canvas_1.md#attr-canvasid) of the event target, if one exists. Page-level and non-DOM events may not have any target.
 
 ### See Also
 
@@ -234,7 +234,7 @@ The [class name](Class.md#method-classgetclassname) of the event target, if one 
 ## Attr: EventStreamEvent.targetX
 
 ### Description
-The horizontal offset of the event from the [left edge](Canvas.md#attr-canvasleft) of the event target, if one exists. Keyboard, page-level, and non-DOM events may not have any target.
+The horizontal offset of the event from the [left edge](Canvas_1.md#attr-canvasleft) of the event target, if one exists. Keyboard, page-level, and non-DOM events may not have any target.
 
 ### See Also
 
@@ -317,7 +317,7 @@ The count, if present, includes the event itself so it will always be a number g
 ## Attr: EventStreamEvent.dropTargetID
 
 ### Description
-The [widget ID](Canvas.md#attr-canvasid) of the [drop target](Canvas.md#method-canvasdrop), present for some [drag events](EventStream.md#attr-eventstreamcapturedragevents).
+The [widget ID](Canvas_1.md#attr-canvasid) of the [drop target](Canvas_1.md#method-canvasdrop), present for some [drag events](EventStream.md#attr-eventstreamcapturedragevents).
 
 Note that if drag events are not being captured, it will be populated for the `mouseUp` event terminating the drag.
 

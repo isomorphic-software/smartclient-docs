@@ -44,7 +44,7 @@ A service is just a [AIServiceDescriptor](../reference.md#object-aiservicedescri
  });
 ```
 
-**Component-scoped services** are only available when the component (or one of its descendants) has focus. They let a specific screen, form, or widget add its own AI capabilities without affecting the rest of the application, and they shadow any global service of the same name. Register them with [Canvas.registerAIService](../classes/Canvas.md#method-canvasregisteraiservice):
+**Component-scoped services** are only available when the component (or one of its descendants) has focus. They let a specific screen, form, or widget add its own AI capabilities without affecting the rest of the application, and they shadow any global service of the same name. Register them with [Canvas.registerAIService](../classes/Canvas_1.md#method-canvasregisteraiservice):
 
 ```
  orderForm.registerAIService({

@@ -43,7 +43,7 @@ The built-in `"voiceAssist"` icon is provided by [VoiceAssist.getVoiceAssistIcon
 ## Attr: FormItem.editProxyConstructor
 
 ### Description
-Default class used to construct the [EditProxy](EditProxy.md#class-editproxy) for this component when the component is [first placed into edit mode](Canvas.md#method-canvasseteditmode).
+Default class used to construct the [EditProxy](EditProxy.md#class-editproxy) for this component when the component is [first placed into edit mode](Canvas_1.md#method-canvasseteditmode).
 
 **Flags**: IR
 
@@ -79,7 +79,7 @@ See [DataSourceField.foreignDisplayField](DataSourceField.md#attr-datasourcefiel
 ### Description
 Allows interaction with hovers when the cursor is positioned over them.
 
-Overrides the [same attribute](Canvas.md#attr-canvashoverpersist) on the parent form.
+Overrides the [same attribute](Canvas_1.md#attr-canvashoverpersist) on the parent form.
 
 ### Groups
 
@@ -253,7 +253,7 @@ The component that will be displayed when [FormItem.showPicker](#method-formitem
 
 Can be specified directly as a Canvas, or created automatically via the [AutoChild](../reference.md#type-autochild) pattern. The default autoChild configuration for the picker is a Canvas with backgroundColor set and no other modifications.
 
-Note that the picker is not automatically destroyed with the FormItem that uses it, in order to allow recycling of picker components. To destroy a single-use picker, override [Canvas.destroy](Canvas.md#method-canvasdestroy).
+Note that the picker is not automatically destroyed with the FormItem that uses it, in order to allow recycling of picker components. To destroy a single-use picker, override [Canvas.destroy](Canvas_1.md#method-canvasdestroy).
 
 **Flags**: IRW
 
@@ -475,7 +475,7 @@ Text alignment for text displayed in this item's hover canvas, if shown.
 ### Description
 Formula to be used to calculate the text value of this FormItem. For a numeric field [FormItem.formula](#attr-formitemformula) is used instead.
 
-Available fields for use in the formula are the current [rule context](Canvas.md#attr-canvasrulescope). The formula is re-evaluated every time the rule context changes.
+Available fields for use in the formula are the current [rule context](Canvas_1.md#attr-canvasrulescope). The formula is re-evaluated every time the rule context changes.
 
 See [FormItem.formula](#attr-formitemformula) for details on available fields for the formula and when the formula is calculated.
 
@@ -866,7 +866,7 @@ If unset the orientation will be derived from [DynamicForm.errorOrientation](Dyn
 ### Description
 Formula to be used to calculate the numeric value of this FormItem. For a field of type "text" (or subtypes) [FormItem.textFormula](#attr-formitemtextformula) is used instead.
 
-Available fields for use in the formula are the current [rule context](Canvas.md#attr-canvasrulescope). The formula is re-evaluated every time the rule context changes.
+Available fields for use in the formula are the current [rule context](Canvas_1.md#attr-canvasrulescope). The formula is re-evaluated every time the rule context changes.
 
 Values calculated by the formula will always replace the current value of a non-editable field. For an editable field, the current value will be replaced if the end user has not changed the value since the last time it was computed by the formula, or if the value of the field is invalid according to declared [validators](#attr-formitemvalidators).
 
@@ -951,7 +951,7 @@ This text is shown as a tooltip prompt when the cursor hovers over this item.
 
 When the item is [read-only](#method-formitemsetcanedit) a different hover can be shown with [FormItem.readOnlyHover](#attr-formitemreadonlyhover). Or, when the item is [disabled](#attr-formitemdisabled) or read-only with [readOnlyDisplay:disabled](#attr-formitemreadonlydisplay) a different hover can be shown with [FormItem.disabledHover](#attr-formitemdisabledhover).
 
-Note that when the form is [disabled](Canvas.md#attr-canvasdisabled), or when this item [suppresses hovers](#attr-formitemcanhover), this prompt will not be shown.
+Note that when the form is [disabled](Canvas_1.md#attr-canvasdisabled), or when this item [suppresses hovers](#attr-formitemcanhover), this prompt will not be shown.
 
 ### Groups
 
@@ -1430,7 +1430,7 @@ If not specified `this.form.itemHoverDelay` will be used instead.
 ### Description
 This attribute gives users a way to pin this item's hover in place so they can interact with it (scroll it, click embedded links, etc).
 
-Overrides the [same attribute](Canvas.md#attr-canvashoverfocuskey) on the parent form.
+Overrides the [same attribute](Canvas_1.md#attr-canvashoverfocuskey) on the parent form.
 
 ### Groups
 
@@ -1555,7 +1555,7 @@ If we're showing a value icon, this attribute governs the amount of space betwee
 ### Description
 Criteria to be evaluated to determine whether this FormItem should be visible.
 
-Criteria are evaluated against the ${isc.DocUtils.linkForRef('method:DynamicForm.getValues','form\\'s current values')} as well as the current [rule context](Canvas.md#attr-canvasrulescope). Criteria are re-evaluated every time form values or the rule context changes, whether by end user action or by programmatic calls.
+Criteria are evaluated against the ${isc.DocUtils.linkForRef('method:DynamicForm.getValues','form\\'s current values')} as well as the current [rule context](Canvas_1.md#attr-canvasrulescope). Criteria are re-evaluated every time form values or the rule context changes, whether by end user action or by programmatic calls.
 
 If both [FormItem.showIf](#method-formitemshowif) and `visibleWhen` are specified, `visibleWhen` is ignored.
 
@@ -1745,7 +1745,7 @@ Number of rows that this item spans
 ## Attr: FormItem.pickerSnapEdge
 
 ### Description
-Which edge or corner of the picker should be placed at the [FormItem.pickerSnapTo](#attr-formitempickersnapto) anchor point on the item. Uses the same edge/corner codes as [Canvas.snapEdge](Canvas.md#attr-canvassnapedge): `"TL"`, `"T"`, `"TR"`, `"L"`, `"C"`, `"R"`, `"BL"`, `"B"`, `"BR"`.
+Which edge or corner of the picker should be placed at the [FormItem.pickerSnapTo](#attr-formitempickersnapto) anchor point on the item. Uses the same edge/corner codes as [Canvas.snapEdge](Canvas_1.md#attr-canvassnapedge): `"TL"`, `"T"`, `"TR"`, `"L"`, `"C"`, `"R"`, `"BL"`, `"B"`, `"BR"`.
 
 ### Groups
 
@@ -1950,11 +1950,11 @@ Height of the error icon, if we're showing icons when validation errors occur.
 ## Attr: FormItem.pickerSnapTo
 
 ### Description
-Controls where the picker is placed relative to this item by specifying which edge or corner of the item the picker should be anchored to. Uses the same edge/corner codes as [Canvas.snapTo](Canvas.md#attr-canvassnapto): `"TL"`, `"T"`, `"TR"`, `"L"`, `"C"`, `"R"`, `"BL"`, `"B"`, `"BR"`.
+Controls where the picker is placed relative to this item by specifying which edge or corner of the item the picker should be anchored to. Uses the same edge/corner codes as [Canvas.snapTo](Canvas_1.md#attr-canvassnapto): `"TL"`, `"T"`, `"TR"`, `"L"`, `"C"`, `"R"`, `"BL"`, `"B"`, `"BR"`.
 
 The [FormItem.pickerSnapEdge](#attr-formitempickersnapedge) property determines which edge of the picker aligns to this anchor point. Together they allow any edge/corner of the picker to be aligned with any edge/corner of the item (e.g. `pickerSnapTo:"BR"` with `pickerSnapEdge:"BL"` places the picker to the right of the item, bottom-aligned).
 
-The picker is still constrained to remain within the browser viewport via [Canvas.placeNear](Canvas.md#method-canvasplacenear). These properties apply whether the picker is shown via the [picker icon](#attr-formitemshowpickericon) or via [FormItem.showPickerOnFocus](#attr-formitemshowpickeronfocus).
+The picker is still constrained to remain within the browser viewport via [Canvas.placeNear](Canvas_1.md#method-canvasplacenear). These properties apply whether the picker is shown via the [picker icon](#attr-formitemshowpickericon) or via [FormItem.showPickerOnFocus](#attr-formitemshowpickeronfocus).
 
 ### Groups
 
@@ -2541,7 +2541,7 @@ In addition to FormItemIcon property objects, this array may contain plain strin
 ### Description
 This text is shown as a tooltip prompt when the cursor hovers over this item and the item is [read-only](#method-formitemsetcanedit).
 
-Note that when the form is [disabled](Canvas.md#attr-canvasdisabled), or when this item [suppresses hovers](#attr-formitemcanhover), nothing will be shown.
+Note that when the form is [disabled](Canvas_1.md#attr-canvasdisabled), or when this item [suppresses hovers](#attr-formitemcanhover), nothing will be shown.
 
 **Flags**: IRW
 
@@ -2890,7 +2890,7 @@ The criteria generated for this fetch will consist of the specified optionCriter
 For example, if a developer's use case was a DataSource of user records, with [FormItem.valueField](#attr-formitemvaluefield) set to _"userID"_" and [FormItem.displayField](#attr-formitemdisplayfield) set to _"userName"_, the generated criteria to retrieve the display value for the item would look for an exact match between the current item value and the userID field in the dataSource. The _optionCriteria_ would allow additional restrictions on this fetch (searching for records matching some other _"region"_ field, say).  
 The sub-criterion containing the current valueField value will always look for an exact match (rather than any kind of substring match), so if [FormItem.optionTextMatchStyle](#attr-formitemoptiontextmatchstyle) is set to something other than "exact", developers may expect to see AdvancedCriteria passed to the server
 
-This property supports [dynamicCriteria](../kb_topics/dynamicCriteria.md#kb-topic-dynamiccriteria) - use [Criterion.valuePath](Criterion.md#attr-criterionvaluepath) to refer to values in the [Canvas.ruleScope](Canvas.md#attr-canvasrulescope). Criteria are re-evaluated when the [rule context](Canvas.md#method-canvasgetrulecontext) changes.
+This property supports [dynamicCriteria](../kb_topics/dynamicCriteria.md#kb-topic-dynamiccriteria) - use [Criterion.valuePath](Criterion.md#attr-criterionvaluepath) to refer to values in the [Canvas.ruleScope](Canvas_1.md#attr-canvasrulescope). Criteria are re-evaluated when the [rule context](Canvas_1.md#method-canvasgetrulecontext) changes.
 
 ### Groups
 
@@ -3008,7 +3008,7 @@ See also [DataSourceField.valueMap](DataSourceField.md#attr-datasourcefieldvalue
 ### Description
 Criteria to be evaluated to determine whether this FormItem should be made [read-only](#method-formitemsetcanedit). Appearance when read-only is determined by [FormItem.readOnlyDisplay](#attr-formitemreadonlydisplay).
 
-Criteria are evaluated against the ${isc.DocUtils.linkForRef('method:DynamicForm.getValues','form\\'s current values')} as well as the current [rule context](Canvas.md#attr-canvasrulescope). Criteria are re-evaluated every time form values or the rule context changes, whether by end user action or by programmatic calls.
+Criteria are evaluated against the ${isc.DocUtils.linkForRef('method:DynamicForm.getValues','form\\'s current values')} as well as the current [rule context](Canvas_1.md#attr-canvasrulescope). Criteria are re-evaluated every time form values or the rule context changes, whether by end user action or by programmatic calls.
 
 A basic criteria uses textMatchStyle:"exact". When specified in [Component XML](../kb_topics/componentXML.md#kb-topic-component-xml) this property allows [shorthand formats](../kb_topics/xmlCriteriaShorthand.md#kb-topic-xmlcriteriashorthand) for defining criteria.
 
@@ -3169,7 +3169,7 @@ Scaleable spriting can be achieved using the [SCSpriteConfig](../reference.md#ty
 ### Description
 Criteria to be evaluated to determine whether this FormItem should be [required](#attr-formitemrequired).
 
-Criteria are evaluated against the ${isc.DocUtils.linkForRef('method:DynamicForm.getValues','form\\'s current values')} as well as the current [rule context](Canvas.md#attr-canvasrulescope). Criteria are re-evaluated every time form values or the rule context changes, whether by end user action or by programmatic calls.
+Criteria are evaluated against the ${isc.DocUtils.linkForRef('method:DynamicForm.getValues','form\\'s current values')} as well as the current [rule context](Canvas_1.md#attr-canvasrulescope). Criteria are re-evaluated every time form values or the rule context changes, whether by end user action or by programmatic calls.
 
 A basic criteria uses textMatchStyle:"exact". When specified in [Component XML](../kb_topics/componentXML.md#kb-topic-component-xml) this property allows [shorthand formats](../kb_topics/xmlCriteriaShorthand.md#kb-topic-xmlcriteriashorthand) for defining criteria.
 
@@ -3304,7 +3304,7 @@ This text is shown as a tooltip prompt when the cursor hovers over this item and
 
 You can also override [itemHoverHTML](#method-formitemitemhoverhtml) on the item to show a custom hover, whether or not the item is disabled.
 
-Note that when the form is [disabled](Canvas.md#attr-canvasdisabled), or when this item [suppresses hovers](#attr-formitemcanhover), nothing will be shown.
+Note that when the form is [disabled](Canvas_1.md#attr-canvasdisabled), or when this item [suppresses hovers](#attr-formitemcanhover), nothing will be shown.
 
 **Flags**: IRW
 
@@ -3971,7 +3971,7 @@ Notification method fired when the user double-clicks the title for this item
 
 ### Returns
 
-`[Boolean](#type-boolean)` — Return false to cancel the doubleclick event. This will prevent the event from bubbling up, suppressing [doubleClick](Canvas.md#method-canvasdoubleclick) on the form containing this item.
+`[Boolean](#type-boolean)` — Return false to cancel the doubleclick event. This will prevent the event from bubbling up, suppressing [doubleClick](Canvas_1.md#method-canvasdoubleclick) on the form containing this item.
 
 ---
 ## Method: FormItem.canEditCriterion
@@ -4658,7 +4658,7 @@ This event may be cancelled by returning false to suppress the [FormItem.click](
 ### Description
 Called when a FormItem's value has been changed as the result of user interaction. This method fires after the newly specified value has been stored.
 
-Change/Changed notifications vs _"...When"_ rules: the `change` and `changed` events only fire when an end user modifies a field value. If you are trying to dynamically control the visibility or enabled state of other components in response to these events, consider instead using properties such as [Canvas.visibleWhen](Canvas.md#attr-canvasvisiblewhen), [item.readOnlyWhen](#attr-formitemreadonlywhen), [Canvas.enableWhen](Canvas.md#attr-canvasenablewhen) on the target component. (Similar properties are available on [FormItem](#class-formitem), [Canvas](Canvas.md#class-canvas), [MenuItem](../reference_2.md#object-menuitem) and other components).
+Change/Changed notifications vs _"...When"_ rules: the `change` and `changed` events only fire when an end user modifies a field value. If you are trying to dynamically control the visibility or enabled state of other components in response to these events, consider instead using properties such as [Canvas.visibleWhen](Canvas_1.md#attr-canvasvisiblewhen), [item.readOnlyWhen](#attr-formitemreadonlywhen), [Canvas.enableWhen](Canvas_1.md#attr-canvasenablewhen) on the target component. (Similar properties are available on [FormItem](#class-formitem), [Canvas](Canvas_1.md#class-canvas), [MenuItem](../reference_2.md#object-menuitem) and other components).
 
 ### Parameters
 
@@ -4687,7 +4687,7 @@ Called when this FormItem is double-clicked.
 
 ### Returns
 
-`[Boolean](#type-boolean)` — Return false to cancel the doubleClick event. This will prevent the event from bubbling up, suppressing [doubleClick](Canvas.md#method-canvasdoubleclick) on the form containing this item.
+`[Boolean](#type-boolean)` — Return false to cancel the doubleClick event. This will prevent the event from bubbling up, suppressing [doubleClick](Canvas_1.md#method-canvasdoubleclick) on the form containing this item.
 
 ### Groups
 
@@ -4699,9 +4699,9 @@ Called when this FormItem is double-clicked.
 ### Description
 Shifts focus to the next focusable element after this item, skipping any elements nested inside the tabbing group for this item, such as sub-elements, nested canvases in a CanvasItem, or icons.
 
-This method makes use of the [TabIndexManager.shiftFocusAfterGroup](TabIndexManager.md#classmethod-tabindexmanagershiftfocusaftergroup) method to request focus be changed to the next registered entry. By default standard focusable SmartClient UI elements, including Canvases, FormItems, FormItemIcons, etc are registered with the TabIndexManager in the appropriate order, and will accept focus if [focusable](Canvas.md#attr-canvascanfocus), and not [disabled](#attr-formitemdisabled) or [masked](Canvas.md#method-canvasshowclickmask).
+This method makes use of the [TabIndexManager.shiftFocusAfterGroup](TabIndexManager.md#classmethod-tabindexmanagershiftfocusaftergroup) method to request focus be changed to the next registered entry. By default standard focusable SmartClient UI elements, including Canvases, FormItems, FormItemIcons, etc are registered with the TabIndexManager in the appropriate order, and will accept focus if [focusable](Canvas_1.md#attr-canvascanfocus), and not [disabled](#attr-formitemdisabled) or [masked](Canvas_1.md#method-canvasshowclickmask).
 
-Canvases support a similar method: [Canvas.focusAfterGroup](Canvas.md#method-canvasfocusaftergroup).
+Canvases support a similar method: [Canvas.focusAfterGroup](Canvas_1.md#method-canvasfocusaftergroup).
 
 **NOTE:** Focusable elements created directly in the raw HTML bootstrap or by application code will not be passed focus by this method unless they have also been explicitly registered with the TabIndexManager. See the [tabOrderOverview](../kb_topics/tabOrderOverview.md#kb-topic-tab-order-overview) for more information.
 
@@ -4902,7 +4902,7 @@ This method is called after standard item keypress handlers when the user presse
 
 Default implementation varies by item type. In short character keys are suppressed for all editable fields, as are keys which will modify the current state of the field ("Arrow" keys for moving around free form text editors, etc).
 
-Developers may override this method to allow the form to react to certain keypresses, for example allowing scrolling of the form when the user presses the arrow keys, but they should be aware that doing so could lead to confusing user experience if the keypress will also move the position of the caret within a text box (say). Note that when this method returns true, no [keyPress](Canvas.md#method-canvaskeypress) event will fire on the form for the key pressed. However developers will still receive the separate [DynamicForm.itemKeyPress](DynamicForm.md#method-dynamicformitemkeypress) event.
+Developers may override this method to allow the form to react to certain keypresses, for example allowing scrolling of the form when the user presses the arrow keys, but they should be aware that doing so could lead to confusing user experience if the keypress will also move the position of the caret within a text box (say). Note that when this method returns true, no [keyPress](Canvas_1.md#method-canvaskeypress) event will fire on the form for the key pressed. However developers will still receive the separate [DynamicForm.itemKeyPress](DynamicForm.md#method-dynamicformitemkeypress) event.
 
 ### Parameters
 
@@ -5173,7 +5173,7 @@ Notification method fired when the user clicks the title for this item
 
 ### Returns
 
-`[Boolean](#type-boolean)` — Return false to cancel the click event. This will prevent the event from bubbling up, suppressing [click](Canvas.md#method-canvasclick) on the form containing this item.
+`[Boolean](#type-boolean)` — Return false to cancel the click event. This will prevent the event from bubbling up, suppressing [click](Canvas_1.md#method-canvasclick) on the form containing this item.
 
 ---
 ## Method: FormItem.setHint
@@ -5470,7 +5470,7 @@ Returning false cancels the change. Note that if what you want to do is **transf
 
 Note that if you ask the form for the current value in this handler, you will get the old value because the change has not yet been committed. The new value is available as a parameter to this method.
 
-Change/Changed notifications vs _"...When"_ rules: the `change` and `changed` events only fire when an end user modifies a field value. If you are trying to dynamically control the visibility or enabled state of other components in response to these events, consider instead using properties such as [Canvas.visibleWhen](Canvas.md#attr-canvasvisiblewhen), [item.readOnlyWhen](#attr-formitemreadonlywhen), [Canvas.enableWhen](Canvas.md#attr-canvasenablewhen) on the target component. (Similar properties are available on [FormItem](#class-formitem), [Canvas](Canvas.md#class-canvas), [MenuItem](../reference_2.md#object-menuitem) and other components).
+Change/Changed notifications vs _"...When"_ rules: the `change` and `changed` events only fire when an end user modifies a field value. If you are trying to dynamically control the visibility or enabled state of other components in response to these events, consider instead using properties such as [Canvas.visibleWhen](Canvas_1.md#attr-canvasvisiblewhen), [item.readOnlyWhen](#attr-formitemreadonlywhen), [Canvas.enableWhen](Canvas_1.md#attr-canvasenablewhen) on the target component. (Similar properties are available on [FormItem](#class-formitem), [Canvas](Canvas_1.md#class-canvas), [MenuItem](../reference_2.md#object-menuitem) and other components).
 
 ### Parameters
 
@@ -5984,7 +5984,7 @@ Note: `click()` is available on StaticTextItem, BlurbItems, ButtonItem, and deri
 
 ### Returns
 
-`[Boolean](#type-boolean)` — Return false to cancel the click event. This will prevent the event from bubbling up, suppressing [click](Canvas.md#method-canvasclick) on the form containing this item.
+`[Boolean](#type-boolean)` — Return false to cancel the click event. This will prevent the event from bubbling up, suppressing [click](Canvas_1.md#method-canvasclick) on the form containing this item.
 
 ### Groups
 
@@ -5994,7 +5994,7 @@ Note: `click()` is available on StaticTextItem, BlurbItems, ButtonItem, and deri
 ## Method: FormItem.isVisible
 
 ### Description
-Return true if the form item is currently visible. Note that like the similar [Canvas API](Canvas.md#method-canvasisvisible), it indicates visibility settings only and so will return true for an item that is not drawn.
+Return true if the form item is currently visible. Note that like the similar [Canvas API](Canvas_1.md#method-canvasisvisible), it indicates visibility settings only and so will return true for an item that is not drawn.
 
 ### Returns
 

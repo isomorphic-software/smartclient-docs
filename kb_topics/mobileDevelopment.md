@@ -35,13 +35,13 @@ Many SmartClient components automatically change their behavior and/or appearanc
 *   [Menu](../classes/Menu.md#class-menu) components likewise fill the entire screen or a major portion, and offer submenu navigation via a slide-in animation and back button instead of displaying the origin menu and submenu simultaneously
 *   [Calendar](../classes/Calendar.md#attr-calendarminimalui) eliminates the tabs normally used to switch between Day, Week and Month view, instead using device pivot to switch between Day and Week views and offering a compact link to Month view
 *   Windows and Dialogs fill the screen by default and remove rounded edges to save space
-*   many controls implement an expanded hit area for clicks or drags so that finger touches that are technically outside of the drawn area of the control still activate the control. This accommodates the imprecision of finger touches as compared to mouse clicks, while still showing the same compact appearance as is used for desktop interfaces. This includes the [Slider](../classes/Slider.md#class-slider) thumb, [Window.headerControls](../classes/Window.md#attr-windowheadercontrols), [edge-based resizing](../classes/Canvas.md#attr-canvasresizefrom), and many other controls.
+*   many controls implement an expanded hit area for clicks or drags so that finger touches that are technically outside of the drawn area of the control still activate the control. This accommodates the imprecision of finger touches as compared to mouse clicks, while still showing the same compact appearance as is used for desktop interfaces. This includes the [Slider](../classes/Slider.md#class-slider) thumb, [Window.headerControls](../classes/Window.md#attr-windowheadercontrols), [edge-based resizing](../classes/Canvas_1.md#attr-canvasresizefrom), and many other controls.
 *   [SpinnerItem](../classes/SpinnerItem.md#class-spinneritem) switches to side-by-side +/- controls instead of the very small, vertically stacked +/- control typical of desktop interfaces
 *   [AdaptiveMenu](../classes/AdaptiveMenu.md#class-adaptivemenu) can either display menu items inline, or in a drop-down, or mix the two modes according to available space.
 
 In addition to automatic behavior, SmartClient offers Adaptive Layout whereby a [Layout](../classes/Layout.md#class-layout) member may be _designed_ to render itself at multiple possible sizes, in order to fit into the amount of space available in the Layout. Unlike simply indicating a flexible size on a member, setting an adaptive width or height indicates that the member has two (or more) different _ways_ of rendering itself with different _discrete_ sizes, but does not have the ability to use every additional available pixel.
 
-For more guidance, see the documentation under [Canvas.canAdaptWidth](../classes/Canvas.md#attr-canvascanadaptwidth) and the *Inlined Menu Mobile* and *Adaptive Menu* samples.
+For more guidance, see the documentation under [Canvas.canAdaptWidth](../classes/Canvas_1.md#attr-canvascanadaptwidth) and the *Inlined Menu Mobile* and *Adaptive Menu* samples.
 
 #### Finger / touch event handling
 
@@ -59,26 +59,26 @@ Components that normally show scrollbars on desktop browsers will, by default, h
 
 If you are using drag and drop features such as [ListGrid.canReorderRecords](../classes/ListGrid_2.md#attr-listgridcanreorderrecords), this obviously conflicts with using finger drags for scrolling. There are two options:
 
-1.  Leave touch scrolling active for the grid, but provide additional controls, such as buttons, that enable users to perform the drag operation in a different way. Optionally display scrollbars _in addition to_ leaving touch scrolling active by setting [Canvas.alwaysShowScrollbars](../classes/Canvas.md#attr-canvasalwaysshowscrollbars) to `true`.
-2.  Set [useTouchScrolling](../classes/Canvas.md#attr-canvasusetouchscrolling) to `false` on the component. Scrollbars will be shown, and finger drags will no longer cause scrolling, so that finger drags can now be used for the drag and drop operation configured on the component
+1.  Leave touch scrolling active for the grid, but provide additional controls, such as buttons, that enable users to perform the drag operation in a different way. Optionally display scrollbars _in addition to_ leaving touch scrolling active by setting [Canvas.alwaysShowScrollbars](../classes/Canvas_1.md#attr-canvasalwaysshowscrollbars) to `true`.
+2.  Set [useTouchScrolling](../classes/Canvas_1.md#attr-canvasusetouchscrolling) to `false` on the component. Scrollbars will be shown, and finger drags will no longer cause scrolling, so that finger drags can now be used for the drag and drop operation configured on the component
 
 Option #1 above is generally preferred, since it is also considered an [accessibility](accessibility.md#kb-topic-accessibility--section-508-compliance) violation if drag and drop is the sole way to trigger an operation (keyboard-only users cannot use drag and drop), and also because scrollbars are not usually found in touch interfaces.
 
-If your application is not required to be keyboard accessible, and you prefer to show scrollbars and use finger drags for normal drag operations, you can use [Canvas.disableTouchScrollingForDrag](../classes/Canvas.md#attr-canvasdisabletouchscrollingfordrag) to make this choice system-wide or on a per-component-type basis.
+If your application is not required to be keyboard accessible, and you prefer to show scrollbars and use finger drags for normal drag operations, you can use [Canvas.disableTouchScrollingForDrag](../classes/Canvas_1.md#attr-canvasdisabletouchscrollingfordrag) to make this choice system-wide or on a per-component-type basis.
 
 #### Exceptionally wide screens / forms
 
 If you have designed a screen for desktop use and it is too wide to fit on a handset or tablet-sized screen, there are several possible strategies:
 
 *   **use [SplitPane](../classes/SplitPane.md#class-splitpane)**: any time you have two or more panes where a choice in one pane decides what is displayed in the other. See the "SplitPane" section further down for details
-*   **rely on horizontal scrolling**: if you have something like a [DynamicForm](../classes/DynamicForm.md#class-dynamicform) that has 3 columns of input fields, as long as the form itself or some parent has [overflow:"auto"](../classes/Canvas.md#attr-canvasoverflow) set, horizontal touch scrolling will be available to reach fields that initially render offscreen. Most of the time, there is already an `overflow:"auto"` parent component as a result of default framework behaviors or application settings that also make sense for desktop mode, so nothing needs to be done.
+*   **rely on horizontal scrolling**: if you have something like a [DynamicForm](../classes/DynamicForm.md#class-dynamicform) that has 3 columns of input fields, as long as the form itself or some parent has [overflow:"auto"](../classes/Canvas_1.md#attr-canvasoverflow) set, horizontal touch scrolling will be available to reach fields that initially render offscreen. Most of the time, there is already an `overflow:"auto"` parent component as a result of default framework behaviors or application settings that also make sense for desktop mode, so nothing needs to be done.
     
     However, consider whether scrolling is already in use for other purposes: if you have a grid plus an adjacent component to the right, if the adjacent component is entirely offscreen, attempting touch scrollng on the grid will just scroll the grid as such and won't reveal the adjacent component. In this kind of situation, you can:
     
     *   _use [SplitPane](../classes/SplitPane.md#class-splitpane)_ as described above, a grid with something adjacent is frequently a good candidate for conversion to `SplitPane`
-    *   _make the scrolling component smaller or flexible size_. Whether it's a grid or other scrollable component on the left, this situation usually arises because an inappropriately large fixed size has been set, instead of a [flexible size](../classes/Canvas.md#attr-canvaswidth).
+    *   _make the scrolling component smaller or flexible size_. Whether it's a grid or other scrollable component on the left, this situation usually arises because an inappropriately large fixed size has been set, instead of a [flexible size](../classes/Canvas_1.md#attr-canvaswidth).
     *   _leave some blank space_ above or below the grid - this gives the user somewhere to use touch scrolling to move both the grid and adjacent component
-    *   _force scrollbars to appear_ by setting [useTouchScrolling](../classes/Canvas.md#attr-canvasusetouchscrolling) to false. This is another way to give the user a place they can touch in order to scroll the both the grid and adjacent component together
+    *   _force scrollbars to appear_ by setting [useTouchScrolling](../classes/Canvas_1.md#attr-canvasusetouchscrolling) to false. This is another way to give the user a place they can touch in order to scroll the both the grid and adjacent component together
 *   **use [FlowLayout](../reference.md#class-flowlayout)**: a `FlowLayout` can automatically take two side-by-side elements and switch them to vertical stacking when the screen is narrow
 
 #### SplitPane
@@ -121,7 +121,7 @@ SmartClient automatically uses the minimal-ui setting whenever iOS is detected, 
  </script>
 ```
 
-Whether minimal-ui is used or not, it is recommend to place some kind of non-interactive widget or content in the dead zones created by browser toolbars, for example, a [Label](../classes/Label.md#class-label) showing your company name or application name. When using [Canvas.defaultPageSpace](../classes/Canvas.md#classattr-canvasdefaultpagespace) to have all components avoid a dead zone at the top of the page, you can set [leavePageSpace:0](../classes/Canvas.md#attr-canvasleavepagespace) to allow individual components to place themselves in a dead zone.
+Whether minimal-ui is used or not, it is recommend to place some kind of non-interactive widget or content in the dead zones created by browser toolbars, for example, a [Label](../classes/Label.md#class-label) showing your company name or application name. When using [Canvas.defaultPageSpace](../classes/Canvas.md#classattr-canvasdefaultpagespace) to have all components avoid a dead zone at the top of the page, you can set [leavePageSpace:0](../classes/Canvas_1.md#attr-canvasleavepagespace) to allow individual components to place themselves in a dead zone.
 
 #### Configuring the viewport
 

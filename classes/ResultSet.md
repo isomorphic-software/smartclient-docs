@@ -74,7 +74,7 @@ Note that the client-side filtering described above is also used to determine wh
 
 If automatic cache synchronization isn't working, troubleshoot the problem using the steps suggested [in the FAQ](http://forums.smartclient.com/showthread.php?t=8159#aGrid).
 
-Regarding [operationIds](OperationBinding.md#attr-operationbindingoperationid) and how they affect caching, take into account that cache sync is based on the fetch used - any add or update operation uses a fetch to retrieve updated data, and the operationId of that fetch can be set via [cacheSyncOperation](#attr-operationbindingcachesyncoperation). If the operationId of the cache is different from the operationId of the cache update data, it won't be used to update the cache, since the fields included and other aspects of the data are allowed to be different across different operationIds. This allows to maintain distinct caches on a per component basis, so when two components are using separate operationIds they are assumed to have distinct caches, because updates performed with one operationId will not affect the cache obtained via another operationId. Also, take into account that operationId must be unique per DataSource, across all operationTypes for that DataSource.
+Regarding [operationIds](OperationBinding.md#attr-operationbindingoperationid) and how they affect caching, take into account that cache sync is based on the fetch used - any add or update operation uses a fetch to retrieve updated data, and the operationId of that fetch can be set via [cacheSyncOperation](OperationBinding.md#attr-operationbindingcachesyncoperation). If the operationId of the cache is different from the operationId of the cache update data, it won't be used to update the cache, since the fields included and other aspects of the data are allowed to be different across different operationIds. This allows to maintain distinct caches on a per component basis, so when two components are using separate operationIds they are assumed to have distinct caches, because updates performed with one operationId will not affect the cache obtained via another operationId. Also, take into account that operationId must be unique per DataSource, across all operationTypes for that DataSource.
 
 **Data Paging with partial cache**
 
@@ -357,7 +357,7 @@ A ResultSet that has a complete cache for the current filter criteria can potent
 ## Attr: ResultSet.useClientFiltering
 
 ### Description
-Whether to filter data locally when we have a complete cache of all DataSource records for the current criteria, and the user further restricts the criteria (see [DataSource.compareCriteria](DataSource_1.md#method-datasourcecomparecriteria)).
+Whether to filter data locally when we have a complete cache of all DataSource records for the current criteria, and the user further restricts the criteria (see [DataSource.compareCriteria](DataSource_2.md#method-datasourcecomparecriteria)).
 
 This may need to be disabled if client-side filtering differs from server-side filtering in a way that affects functionality or is surprising.
 
@@ -546,6 +546,18 @@ The cache will then be dropped the next time rows are fetched, to prevent proble
 **Flags**: IRA
 
 ---
+## Attr: ResultSet.afterCriteria
+
+### Description
+[Criteria applied to the aggregated rows](DSRequest.md#attr-dsrequestaftercriteria) on every fetch this ResultSet issues. Taken from the request like [ResultSet.beforeCriteria](#attr-resultsetbeforecriteria), and likewise re-fetches when changed with [ResultSet.setAfterCriteria](#method-resultsetsetaftercriteria).
+
+### Groups
+
+- serverSummaries
+
+**Flags**: IRW
+
+---
 ## Attr: ResultSet.dataSource
 
 ### Description
@@ -584,6 +596,20 @@ The fetch will be issued when the first page of data arrives from the server as 
 ### Groups
 
 - rowCountDisplay
+
+**Flags**: IRW
+
+---
+## Attr: ResultSet.beforeCriteria
+
+### Description
+[Criteria applied to the records before aggregation](DSRequest.md#attr-dsrequestbeforecriteria) on every fetch this ResultSet issues. Normally taken from the request properties of the component's `fetchData()` / `filterData()` call, and kept when the user re-filters (see [DataBoundComponent.getRefilterRequestProperties](DataBoundComponent.md#method-databoundcomponentgetrefilterrequestproperties)).
+
+Changing it with [ResultSet.setBeforeCriteria](#method-resultsetsetbeforecriteria) re-fetches: the cached records reflect the criteria they were fetched with, so they are never filtered locally to a new set.
+
+### Groups
+
+- serverSummaries
 
 **Flags**: IRW
 
@@ -1064,9 +1090,9 @@ Note that if [progressive loading](DataSource_1.md#attr-datasourceprogressiveloa
 ## Method: ResultSet.compareCriteria
 
 ### Description
-Default behavior is to call [DataSource.compareCriteria](DataSource_1.md#method-datasourcecomparecriteria) to determine whether new criteria is guaranteed more restrictive, equivalent to the old criteria, or not guaranteed more restrictive, returning 1, 0 or -1 respectively. See [DataSource.compareCriteria](DataSource_1.md#method-datasourcecomparecriteria) for a full explanation of the default behavior.
+Default behavior is to call [DataSource.compareCriteria](DataSource_2.md#method-datasourcecomparecriteria) to determine whether new criteria is guaranteed more restrictive, equivalent to the old criteria, or not guaranteed more restrictive, returning 1, 0 or -1 respectively. See [DataSource.compareCriteria](DataSource_2.md#method-datasourcecomparecriteria) for a full explanation of the default behavior.
 
-Override this method or [DataSource.compareCriteria](DataSource_1.md#method-datasourcecomparecriteria) to implement your own client-side filtering behavior.
+Override this method or [DataSource.compareCriteria](DataSource_2.md#method-datasourcecomparecriteria) to implement your own client-side filtering behavior.
 
 ### Parameters
 
@@ -1168,6 +1194,22 @@ Returns -1 if not found.
 ### Groups
 
 - access
+
+---
+## Method: ResultSet.setAfterCriteria
+
+### Description
+Setter for [ResultSet.afterCriteria](#attr-resultsetaftercriteria). Re-fetches if the new criteria differ from those the cached data was fetched with.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| afterCriteria | [Criteria](../reference_2.md#type-criteria) | false | — | new after-aggregation criteria, or null |
+
+### Returns
+
+`[Boolean](#type-boolean)` — true if the change caused a fetch
 
 ---
 ## Method: ResultSet.invalidateCache
@@ -1280,6 +1322,22 @@ Remove a property index created by [ResultSet.createIndex](#method-resultsetcrea
 ### Groups
 
 - caching
+
+---
+## Method: ResultSet.setBeforeCriteria
+
+### Description
+Setter for [ResultSet.beforeCriteria](#attr-resultsetbeforecriteria). Re-fetches if the new criteria differ from those the cached data was fetched with.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| beforeCriteria | [Criteria](../reference_2.md#type-criteria) | false | — | new before-aggregation criteria, or null |
+
+### Returns
+
+`[Boolean](#type-boolean)` — true if the change caused a fetch
 
 ---
 ## Method: ResultSet.getRowCountStatus

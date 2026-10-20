@@ -71,7 +71,7 @@ Some things to keep in mind:
      
     ```
     
-*   Using the static [_Class_.getById()](../classes/Canvas.md#classmethod-canvasgetbyid) methods allow developers to retrieve instances of specific classes by their [global ID](../classes/Canvas.md#attr-canvasid) in a type-aware manner. IDEs with TypeScript support can then offer appropriate auto-completion, type checking and documentation for attributes and methods on the returned object.
+*   Using the static [_Class_.getById()](../classes/Canvas.md#classmethod-canvasgetbyid) methods allow developers to retrieve instances of specific classes by their [global ID](../classes/Canvas_1.md#attr-canvasid) in a type-aware manner. IDEs with TypeScript support can then offer appropriate auto-completion, type checking and documentation for attributes and methods on the returned object.
 *   **FormItem Type Narrowing with editorType**: The TypeScript descriptor uses a discriminated union type called `FormItemConfig` that enables type-specific property checking based on the `editorType` property. This is particularly important for nested editor configurations like `editorProperties` and `filterEditorProperties` in [ListGrid](../classes/ListGrid_1.md#class-listgrid) field definitions.  
       
     For example:  

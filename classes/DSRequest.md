@@ -378,6 +378,20 @@ This behaves the same way as [OperationBinding.applyCriteriaBeforeAggregation](O
 **Flags**: IR
 
 ---
+## Attr: DSRequest.cacheSyncData
+
+### Description
+Whether the records involved in this request are complete rows, or carry only the primary keys plus the fields that changed.
+
+Defaults to `"full"` when unset. Takes precedence over [DSResponse.cacheSyncData](DSResponse.md#attr-dsresponsecachesyncdata) where both are set. See [DataSource.updateCaches](DataSource.md#method-datasourceupdatecaches) for what each setting does to a cache, and for the one component-level exception.
+
+### Groups
+
+- cacheSynchronization
+
+**Flags**: IRW
+
+---
 ## Attr: DSRequest.resultSet
 
 ### Description

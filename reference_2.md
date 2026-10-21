@@ -1113,6 +1113,23 @@ Type of change to the [ListGrid.groupTree](classes/ListGrid_1.md#attr-listgridgr
 - [ListGrid.groupTreeChanged](classes/ListGrid_2.md#method-listgridgrouptreechanged)
 
 ---
+## Type: HashAlgorithm
+
+### Description
+Algorithms to use when hashing field values (see [DataSourceField.storeWithHash](classes/DataSourceField.md#attr-datasourcefieldstorewithhash)). Note that the `MD5` and `SHA` algorithms are deprecated as secure hashes since they are vulnerable to collisions created by an attacker with current technology, though they may still be useful in detecting corruption due to faulty transmission or storage.
+
+### Values
+
+| Value | Description |
+|-------|-------------|
+| "MD5" | Message Digest algorithm. _Deprecated as a secure hash._ |
+| "SHA" | Secure Hashing Algorithm (SHA-1). _Deprecated as a secure hash._ |
+| "SHA-256" | Secure Hashing Algorithm (SHA-256). |
+| "SHA-512" | Secure Hashing Algorithm (SHA-512). |
+| "bcrypt" | bcrypt is a password hashing function designed by Niels Provos and David Mazieres, based on the Blowfish cipher. |
+| "none" | Don't hash values. Can be specified to avoid the default algorithm. |
+
+---
 ## Type: HoopSelectionStyle
 
 ### Description

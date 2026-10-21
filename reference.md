@@ -4424,6 +4424,25 @@ A Boolean which is either true or false. May not be null.
 | "custom" | custom validation |
 
 ---
+## Type: CacheSyncData
+
+### Description
+How completely the records involved in a data-changing operation describe the rows they refer to, and so what automatic [cache synchronization](kb_topics/cacheSynchronization.md#kb-topic-automatic-cache-synchronization) does with them. Set it on [DSRequest.cacheSyncData](classes/DSRequest.md#attr-dsrequestcachesyncdata) or [DSResponse.cacheSyncData](classes/DSResponse.md#attr-dsresponsecachesyncdata).
+
+Not to be confused with [CacheSyncMode](#type-cachesyncmode), which is a different question: that controls _whether_ a component with no [ResultSet](classes/ResultSet.md#class-resultset) picks such updates up at all, where this controls _how much of a row_ each record is claiming to be.
+
+### Values
+
+| Value | Description |
+|-------|-------------|
+| "full" | each record is the complete row. A field absent from a record is cleared, and a record matching no cached row is added. The default. |
+| "partial" | each record carries its primary keys plus only the fields that changed. Absent fields are left alone, explicitly null fields are cleared, and a record matching no cached row is ignored rather than added. |
+
+### Groups
+
+- cacheSynchronization
+
+---
 ## Type: CacheSyncMode
 
 ### Description
@@ -5463,23 +5482,6 @@ Possible values for the state of ListGrid groups when groupBy is called
 | "all" | open all groups |
 | "first" | open the first group |
 | "none" | start with all groups closed |
-
----
-## Type: HashAlgorithm
-
-### Description
-Algorithms to use when hashing field values (see [DataSourceField.storeWithHash](classes/DataSourceField.md#attr-datasourcefieldstorewithhash)). Note that the `MD5` and `SHA` algorithms are deprecated as secure hashes since they are vulnerable to collisions created by an attacker with current technology, though they may still be useful in detecting corruption due to faulty transmission or storage.
-
-### Values
-
-| Value | Description |
-|-------|-------------|
-| "MD5" | Message Digest algorithm. _Deprecated as a secure hash._ |
-| "SHA" | Secure Hashing Algorithm (SHA-1). _Deprecated as a secure hash._ |
-| "SHA-256" | Secure Hashing Algorithm (SHA-256). |
-| "SHA-512" | Secure Hashing Algorithm (SHA-512). |
-| "bcrypt" | bcrypt is a password hashing function designed by Niels Provos and David Mazieres, based on the Blowfish cipher. |
-| "none" | Don't hash values. Can be specified to avoid the default algorithm. |
 
 ---
 ## Type: HiliteIconPosition

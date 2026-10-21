@@ -721,7 +721,7 @@ A widget normally receives focus by being clicked on or tabbed to.
 ## Attr: Canvas.testDataContext
 
 ### Description
-A [DataContext](../reference.md#object-datacontext) to be used if no [Canvas.dataContext](#attr-canvasdatacontext) is provided (directly or indirectly via a parent). If a DataContext is provided it completely replaces the `testDataContext`.
+A [DataContext](../reference_2.md#object-datacontext) to be used if no [Canvas.dataContext](#attr-canvasdatacontext) is provided (directly or indirectly via a parent). If a DataContext is provided it completely replaces the `testDataContext`.
 
 DataSources included in the `testDataContext` are immediately provided to [rule context](#attr-canvasrulescope) when used if no other component has done so already. These records are found in rule context 'dataContext' section (ex. `dataContext.Customer` for a Customer record in `testDataContext`) so they do not conflict with normal DataSource records.
 
@@ -731,7 +731,7 @@ DataSources included in the `testDataContext` are immediately provided to [rule 
 
 ### See Also
 
-- [DataContext](../reference.md#object-datacontext)
+- [DataContext](../reference_2.md#object-datacontext)
 
 **Flags**: IR
 
@@ -4149,7 +4149,7 @@ By default, the rule context contains data as follows:
 *   any DynamicForm or other component that edits values and has been assigned an explicit [Canvas.ID](#attr-canvasid) contributes its current values under ``<componentId>`.values`, and contributes a flag `hasChanges`.
 *   any DynamicForm or ListGrid that has been assigned an explicit [Canvas.ID](#attr-canvasid) contributes a value ``<componentId>`.focusField`. When present the value indicates the component has focus along with the name of the field that has focus. Its absense indicates the component does not have focus at all.
 *   any ListGrid that has been assigned an explicit [Canvas.ID](#attr-canvasid) contributes a flag `isGrouped` under ``<componentId>``.
-*   any DataSource included in a [DataContext](../reference.md#object-datacontext) or [Canvas.testDataContext](#attr-canvastestdatacontext) that is being used for this ruleScope contributes the values into the `dataContext` section of the ruleContext (ex. `dataContext.Customer`) so the values do not conflict with normal DataSource contributions. Note that the `dataContext` is immutable so only the first contribution is actually saved.
+*   any DataSource included in a [DataContext](../reference_2.md#object-datacontext) or [Canvas.testDataContext](#attr-canvastestdatacontext) that is being used for this ruleScope contributes the values into the `dataContext` section of the ruleContext (ex. `dataContext.Customer`) so the values do not conflict with normal DataSource contributions. Note that the `dataContext` is immutable so only the first contribution is actually saved.
 
 A [ValuesManager](ValuesManager.md#class-valuesmanager) contributes the DataSource-prefixed portion of ruleContext prior to the member forms. See additional ValuesManager information below.
 
@@ -6213,7 +6213,7 @@ When a widget instance is created, it is assigned a unique global identifier tha
 
 ### Returns
 
-`[GlobalId](../reference.md#type-globalid)` — global identifier for this canvas
+`[GlobalId](../reference_2.md#type-globalid)` — global identifier for this canvas
 
 ---
 ## Method: Canvas.animateHide
@@ -7707,7 +7707,7 @@ Set the [Canvas.edgeOpacity](#attr-canvasedgeopacity) and mark the canvas for re
 ## Method: Canvas.dataContextChanged
 
 ### Description
-Notification method fired when [DataContext](../reference.md#object-datacontext) is bound. This can occur on the initial draw or by an explicit call to [Canvas.setDataContext](#method-canvassetdatacontext).
+Notification method fired when [DataContext](../reference_2.md#object-datacontext) is bound. This can occur on the initial draw or by an explicit call to [Canvas.setDataContext](#method-canvassetdatacontext).
 
 This feature allows the use of the `dataContext` as a general-purpose API to the screen. For example, if you wanted your screen to support _dynamically_ showing or hiding parts of itself based on a button that is external to the screen, you could do that by implementing this handler to show/hide that part of the screen based on the current state of the `dataContext`.
 
@@ -7878,7 +7878,7 @@ If the passed-in widget is not a child of this Canvas, this method has no effect
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| child | [GlobalId](../reference.md#type-globalid)|[Canvas](#type-canvas) | false | — | the child Canvas to reveal, or its global ID |
+| child | [GlobalId](../reference_2.md#type-globalid)|[Canvas](#type-canvas) | false | — | the child Canvas to reveal, or its global ID |
 
 ---
 ## Method: Canvas.supportsVoiceCommands
@@ -8576,7 +8576,7 @@ Will return false if any parent canvas does not contain the specified point, (EG
 ## Method: Canvas.setDataContext
 
 ### Description
-Provides a new [DataContext](../reference.md#object-datacontext) to the Canvas. If the DataContext is new, [DataBoundComponents](../reference.md#interface-databoundcomponent) contained within this Canvas will be automatically bound as described in [Canvas.dataContext](#attr-canvasdatacontext). If the DataContext replaces an existing one, any contained components that were originally bound against the DataContext will be re-bound.
+Provides a new [DataContext](../reference_2.md#object-datacontext) to the Canvas. If the DataContext is new, [DataBoundComponents](../reference.md#interface-databoundcomponent) contained within this Canvas will be automatically bound as described in [Canvas.dataContext](#attr-canvasdatacontext). If the DataContext replaces an existing one, any contained components that were originally bound against the DataContext will be re-bound.
 
 ### Parameters
 

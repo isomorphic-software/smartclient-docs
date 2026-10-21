@@ -1593,6 +1593,29 @@ If `errorOrientation` is unset, the error orientation will default to "top" if [
 **Flags**: IRW
 
 ---
+## Attr: DynamicForm.cacheSyncClearsOmittedFields
+
+### Description
+When an update made elsewhere reaches this component via [cache synchronization](../kb_topics/cacheSynchronization.md#kb-topic-automatic-cache-synchronization), should a field the record omits be cleared?
+
+By default the record is merged over the values being shown, so a field it omits keeps its value. A [ResultSet](ResultSet.md#class-resultset) replaces the cached row instead, clearing it. Set this to match that, which is what you want where a response omits a field to say it is now null.
+
+Applies only to ["full"](../reference.md#type-cachesyncdata) records — a field omitted from a "partial" record means "unchanged" by definition, and is never cleared.
+
+A field the user has edited and not yet saved is not cleared, and goes on reporting as an unsaved change — an omitted field carries no value for the edit to agree with. (An edit that does match an incoming value stops counting as a change; see [DynamicForm.cacheSync](#attr-dynamicformcachesync).)
+
+### Groups
+
+- databinding
+
+### See Also
+
+- [DynamicForm.cacheSync](#attr-dynamicformcachesync)
+- [DataSource.updateCaches](DataSource.md#method-datasourceupdatecaches)
+
+**Flags**: IRW
+
+---
 ## Attr: DynamicForm.itemLayout
 
 ### Description
@@ -2109,7 +2132,7 @@ Binds this dynamicForm to a [valuesManager](#attr-dynamicformvaluesmanager) at r
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| valuesManager | [ValuesManager](#type-valuesmanager)|[GlobalId](../reference.md#type-globalid) | false | — | the ValuesManager that controls this form's values |
+| valuesManager | [ValuesManager](#type-valuesmanager)|[GlobalId](../reference_2.md#type-globalid) | false | — | the ValuesManager that controls this form's values |
 
 ### Groups
 

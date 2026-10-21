@@ -1265,6 +1265,12 @@ Name of a SmartClient Class that subclasses [FormItem](classes/FormItem.md#class
 *   ["CanvasItem"](classes/CanvasItem.md#class-canvasitem)
 
 ---
+## Type: GlobalId
+
+### Description
+An [Identifier](#type-identifier) that's unique in the global scope. For example, the [ID](classes/Canvas.md#attr-canvasid) of a [Canvas](classes/Canvas.md#class-canvas) is a `GlobalId`.
+
+---
 ## Type: GroupTreeChangeType
 
 ### Description
@@ -1536,6 +1542,27 @@ In addition, components may declare that they have [adaptive sizing](classes/Can
 ### See Also
 
 - [Layout.minBreadthMember](classes/Layout.md#attr-layoutminbreadthmember)
+
+---
+## Type: LinePattern
+
+### Description
+Supported styles of drawing lines.
+
+### Values
+
+| Value | Description |
+|-------|-------------|
+| "solid" | Solid line |
+| "dot" | Dotted line |
+| "dash" | Dashed line |
+| "shortdot" | Dotted line, with more tightly spaced dots |
+| "shortdash" | Dashed line, with shorter, more tightly spaced dashes |
+| "longdash" | Dashed line, with longer, more widely spaced dashes |
+
+### Groups
+
+- line
 
 ---
 ## Type: ListGridComponent
@@ -2940,6 +2967,24 @@ A shortcut form is also allowed where only `fieldName` and `value` values are pr
 ### Groups
 
 - advancedFilter
+
+---
+## Object: DataContext
+
+### Description
+A mapping from [DataSource](classes/DataSource.md#class-datasource) IDs to specific [Records](#object-record).
+
+To understand how `dataContext` is used to automatically populate [DataBoundComponents](#interface-databoundcomponent), see [Canvas.autoPopulateData](classes/Canvas.md#attr-canvasautopopulatedata).
+
+For example, in JavaScript:
+
+```
+   {
+      "Customer": { customerNumber: "15", name: "Trish Joiner" },
+      "Employee": { employeeID: "4231", name: "Fred Smith" }
+   }
+ 
+```
 
 ---
 ## Object: DataQuestion

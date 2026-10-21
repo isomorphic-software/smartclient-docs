@@ -120,6 +120,9 @@ You can also just set a specific `cacheSyncStrategy` on the DataSource, operatio
 
 ### Related
 
+- [CacheSyncData](../reference.md#type-cachesyncdata)
+- [DSRequest.cacheSyncData](../classes/DSRequest.md#attr-dsrequestcachesyncdata)
+- [DSResponse.cacheSyncData](../classes/DSResponse.md#attr-dsresponsecachesyncdata)
 - [DSResponse.invalidateCache](../classes/DSResponse.md#attr-dsresponseinvalidatecache)
 
 ### See Also

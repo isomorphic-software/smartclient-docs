@@ -47,7 +47,7 @@ Target component which must clicked to process [TourStep.expectedValue](#attr-to
 
 This is commonly used for a dialog where the must select a value and then click a submit button.
 
-Target may be specified as a [GlobalId](../reference.md#type-globalid) for a Component or FormItem, or as a [AutoTestLocator](../reference_2.md#type-autotestlocator) for an element.
+Target may be specified as a [GlobalId](../reference_2.md#type-globalid) for a Component or FormItem, or as a [AutoTestLocator](../reference_2.md#type-autotestlocator) for an element.
 
 **Flags**: IR
 
@@ -115,7 +115,7 @@ The following [passthroughs](../kb_topics/autoChildUsage.md#kb-topic-using-autoc
 ### Description
 Component that is the target of this step. The interaction for this step is indicated in [actionType](#attr-tourstepactiontype). For actions that need multiple targets, this target is the primary one.
 
-Target may be specified as a [GlobalId](../reference.md#type-globalid) for a Component or FormItem, or as a [AutoTestLocator](../reference_2.md#type-autotestlocator) for an element.
+Target may be specified as a [GlobalId](../reference_2.md#type-globalid) for a Component or FormItem, or as a [AutoTestLocator](../reference_2.md#type-autotestlocator) for an element.
 
 **Flags**: IR
 
@@ -240,7 +240,7 @@ Defaults for the [TourStep.targetView](#attr-toursteptargetview) autoChild. Thes
 ### Description
 Target component on which a [target](#attr-toursteptarget) must be dropped to complete step. If [actionType](#attr-tourstepactiontype) is not specified and this property is provided, `actionType` defaults to "drag".
 
-Target may be specified as a [GlobalId](../reference.md#type-globalid) for a Component or FormItem, or as a [AutoTestLocator](../reference_2.md#type-autotestlocator) for an element.
+Target may be specified as a [GlobalId](../reference_2.md#type-globalid) for a Component or FormItem, or as a [AutoTestLocator](../reference_2.md#type-autotestlocator) for an element.
 
 **Flags**: IR
 

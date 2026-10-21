@@ -75,7 +75,7 @@ If true, prevents any screen from being drawn when it's created, even if there's
 ## Attr: CreateScreenSettings.dataContext
 
 ### Description
-[DataContext](../reference.md#object-datacontext) that will be provided to the top-level component as [dataContext](Canvas.md#attr-canvasdatacontext) in the screen.
+[DataContext](../reference_2.md#object-datacontext) that will be provided to the top-level component as [dataContext](Canvas.md#attr-canvasdatacontext) in the screen.
 
 To understand how `dataContext` is used to automatically populate [DataBoundComponents](../reference.md#interface-databoundcomponent), see [Canvas.autoPopulateData](Canvas.md#attr-canvasautopopulatedata).
 

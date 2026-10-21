@@ -4495,6 +4495,25 @@ A Boolean which is either true or false. May not be null.
 | "custom" | custom validation |
 
 ---
+## Type: CacheSyncData
+
+### Description
+How completely the records involved in a data-changing operation describe the rows they refer to, and so what automatic [cache synchronization](kb_topics/cacheSynchronization.md#kb-topic-automatic-cache-synchronization) does with them. Set it on [DSRequest.cacheSyncData](classes/DSRequest.md#attr-dsrequestcachesyncdata) or [DSResponse.cacheSyncData](classes/DSResponse.md#attr-dsresponsecachesyncdata).
+
+Not to be confused with [CacheSyncMode](#type-cachesyncmode), which is a different question: that controls _whether_ a component with no [ResultSet](classes/ResultSet.md#class-resultset) picks such updates up at all, where this controls _how much of a row_ each record is claiming to be.
+
+### Values
+
+| Value | Description |
+|-------|-------------|
+| "full" | each record is the complete row. A field absent from a record is cleared, and a record matching no cached row is added. The default. |
+| "partial" | each record carries its primary keys plus only the fields that changed. Absent fields are left alone, explicitly null fields are cleared, and a record matching no cached row is ignored rather than added. |
+
+### Groups
+
+- cacheSynchronization
+
+---
 ## Type: CacheSyncMode
 
 ### Description
@@ -5421,12 +5440,6 @@ Form METHOD parameters - how the form fields are submitted to the server
 - submitting
 
 ---
-## Type: GlobalId
-
-### Description
-An [Identifier](#type-identifier) that's unique in the global scope. For example, the [ID](classes/Canvas.md#attr-canvasid) of a [Canvas](classes/Canvas.md#class-canvas) is a `GlobalId`.
-
----
 ## Type: GroupStartOpen
 
 ### Description
@@ -5652,27 +5665,6 @@ Supported styles of drawing the endpoints of a line
 | "round" | Semicircular rounding |
 | "square" | Squared-off endpoint |
 | "butt" | Square endpoint, stops exactly at the line's end coordinates instead of extending 1/2 lineWidth further as "round" and "square" do |
-
-### Groups
-
-- line
-
----
-## Type: LinePattern
-
-### Description
-Supported styles of drawing lines.
-
-### Values
-
-| Value | Description |
-|-------|-------------|
-| "solid" | Solid line |
-| "dot" | Dotted line |
-| "dash" | Dashed line |
-| "shortdot" | Dotted line, with more tightly spaced dots |
-| "shortdash" | Dashed line, with shorter, more tightly spaced dashes |
-| "longdash" | Dashed line, with longer, more widely spaced dashes |
 
 ### Groups
 
@@ -7930,28 +7922,10 @@ An object that contains information needed to evaluate an [operator](#object-ope
 - advancedFilter
 
 ---
-## Object: DataContext
-
-### Description
-A mapping from [DataSource](classes/DataSource.md#class-datasource) IDs to specific [Records](#object-record).
-
-To understand how `dataContext` is used to automatically populate [DataBoundComponents](#interface-databoundcomponent), see [Canvas.autoPopulateData](classes/Canvas.md#attr-canvasautopopulatedata).
-
-For example, in JavaScript:
-
-```
-   {
-      "Customer": { customerNumber: "15", name: "Trish Joiner" },
-      "Employee": { employeeID: "4231", name: "Fred Smith" }
-   }
- 
-```
-
----
 ## Object: DataContextBinding
 
 ### Description
-Identical to a [DataContext](#object-datacontext) but in addition to fixed values, [ruleContext](classes/Canvas.md#method-canvasgetrulecontext) values can be specified by prefixing the `ruleContext` path with `$ruleScope.` as shown below:
+Identical to a [DataContext](reference_2.md#object-datacontext) but in addition to fixed values, [ruleContext](classes/Canvas.md#method-canvasgetrulecontext) values can be specified by prefixing the `ruleContext` path with `$ruleScope.` as shown below:
 
 For example, in JavaScript:
 

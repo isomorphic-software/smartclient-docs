@@ -3531,6 +3531,24 @@ Note that not all items can be disabled, and not all browsers show an obvious di
 **Flags**: IRW
 
 ---
+## Attr: FormItem.hintPlacement
+
+### Description
+Where should this item's [hint](#attr-formitemhint) be displayed?
+
+If unset, the placement is picked up from [DynamicForm.hintPlacement](DynamicForm.md#attr-dynamicformhintplacement).
+
+### Groups
+
+- appearance
+
+### See Also
+
+- [DynamicForm.hintPlacement](DynamicForm.md#attr-dynamicformhintplacement)
+
+**Flags**: IRA
+
+---
 ## Attr: FormItem.clipStaticValue
 
 ### Description

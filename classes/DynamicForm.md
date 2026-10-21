@@ -712,6 +712,24 @@ When [DynamicForm.linearMode](#attr-dynamicformlinearmode) is true, this propert
 **Flags**: IRW
 
 ---
+## Attr: DynamicForm.hintPlacement
+
+### Description
+Where should the [hints](FormItem.md#attr-formitemhint) of this form's items be displayed?
+
+The default of "auto" places hints beside the items on the desktop, and avoids taking horizontal room for them on a handset.
+
+### Groups
+
+- appearance
+
+### See Also
+
+- [FormItem.hintPlacement](FormItem.md#attr-formitemhintplacement)
+
+**Flags**: IRA
+
+---
 ## Attr: DynamicForm.autoComplete
 
 ### Description

@@ -1533,6 +1533,26 @@ Name of a SmartClient Class that subclasses [FormItem](classes/FormItem.md#class
 *   ["CanvasItem"](classes/CanvasItem.md#class-canvasitem)
 
 ---
+## Type: FormItemHintPlacement
+
+### Description
+Where a [FormItem.hint](classes/FormItem.md#attr-formitemhint) is displayed, relative to the item itself.
+
+### Values
+
+| Value | Description |
+|-------|-------------|
+| "after" | horizontally beside the item |
+| "below" | underneath the item, in a row of its own. Useful in a narrow form, where a hint shown "after" an item makes the form wider than the space available to it |
+| "inline" | within the item's own field - see [TextItem.showHintInField](classes/TextItem.md#attr-textitemshowhintinfield). An item that cannot show an in-field hint uses "after" instead |
+| "adaptive" | "inline" for items that can show an in-field hint, and "below" for the rest, so that no hint takes horizontal room |
+| "auto" | "adaptive" on a handset, where there is no horizontal room beside an item, and "after" elsewhere |
+
+### Groups
+
+- appearance
+
+---
 ## Type: FormItemType
 
 ### Description

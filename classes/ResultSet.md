@@ -74,7 +74,13 @@ Note that the client-side filtering described above is also used to determine wh
 
 If automatic cache synchronization isn't working, troubleshoot the problem using the steps suggested [in the FAQ](http://forums.smartclient.com/showthread.php?t=8159#aGrid).
 
-Regarding [operationIds](OperationBinding.md#attr-operationbindingoperationid) and how they affect caching, take into account that cache sync is based on the fetch used - any add or update operation uses a fetch to retrieve updated data, and the operationId of that fetch can be set via [cacheSyncOperation](#attr-operationbindingcachesyncoperation). If the operationId of the cache is different from the operationId of the cache update data, it won't be used to update the cache, since the fields included and other aspects of the data are allowed to be different across different operationIds. This allows to maintain distinct caches on a per component basis, so when two components are using separate operationIds they are assumed to have distinct caches, because updates performed with one operationId will not affect the cache obtained via another operationId. Also, take into account that operationId must be unique per DataSource, across all operationTypes for that DataSource.
+Regarding [operationIds](OperationBinding.md#attr-operationbindingoperationid) and how they affect caching: cache synchronization is **not** scoped by operationId. Every ResultSet on the DataSource is notified of an update, whatever operationId its own data was fetched with, so separate operationIds do not give a component a private cache.
+
+[cacheSyncOperation](#attr-operationbindingcachesyncoperation) selects the fetch the _server_ uses to re-read the updated row; it does not limit which caches the result is then applied to.
+
+This matters where components on one DataSource fetch different sets of fields, since a record from one operation is applied to all of them - see [DSRequest.cacheSyncData](DSRequest.md#attr-dsrequestcachesyncdata) to apply only the fields that changed, or [ResultSet.dropCacheOnUpdate](#attr-resultsetdropcacheonupdate) and [DSResponse.invalidateCache](DSResponse.md#attr-dsresponseinvalidatecache) where a component should refetch instead.
+
+Note that operationId must be unique per DataSource, across all operationTypes for that DataSource.
 
 **Data Paging with partial cache**
 

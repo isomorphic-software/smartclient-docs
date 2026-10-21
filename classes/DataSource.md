@@ -498,7 +498,7 @@ This also means that for a read-only DataSource, that is, a DataSource only capa
 ## Attr: DataSource.logSlowRemove
 
 ### Description
-Allows you to specify ["remove" operation](../reference.md#type-dsoperationtype) SQL query execution time threshold in milliseconds, which if exceeded query is identified as "slow" and may be logged under specific logging category.
+Allows you to specify ["remove" operation](../reference_2.md#type-dsoperationtype) SQL query execution time threshold in milliseconds, which if exceeded query is identified as "slow" and may be logged under specific logging category.
 
 See [DataSource.logSlowSQL](#attr-datasourcelogslowsql) for more details.
 
@@ -1027,7 +1027,7 @@ See the [Velocity User Guide](https://velocity.apache.org/engine/2.3/user-guide.
 ## Attr: DataSource.logSlowAdd
 
 ### Description
-Allows you to specify ["add" operation](../reference.md#type-dsoperationtype) SQL query execution time threshold in milliseconds, which if exceeded query is identified as "slow" and may be logged under specific logging category.
+Allows you to specify ["add" operation](../reference_2.md#type-dsoperationtype) SQL query execution time threshold in milliseconds, which if exceeded query is identified as "slow" and may be logged under specific logging category.
 
 See [DataSource.logSlowSQL](#attr-datasourcelogslowsql) for more details.
 
@@ -1519,7 +1519,7 @@ If true, indicates that the SmartClient Server should automatically apply a [Val
 ## Attr: DataSource.logSlowCustom
 
 ### Description
-Allows you to specify ["custom" operation](../reference.md#type-dsoperationtype) SQL query execution time threshold in milliseconds, which if exceeded query is identified as "slow" and may be logged under specific logging category.
+Allows you to specify ["custom" operation](../reference_2.md#type-dsoperationtype) SQL query execution time threshold in milliseconds, which if exceeded query is identified as "slow" and may be logged under specific logging category.
 
 See [DataSource.logSlowSQL](#attr-datasourcelogslowsql) for more details.
 
@@ -2053,7 +2053,7 @@ Note that setting this property does not automatically cause an authentication m
 ## Attr: DataSource.logSlowFetch
 
 ### Description
-Allows you to specify ["fetch" operation](../reference.md#type-dsoperationtype) SQL query execution time threshold in milliseconds, which if exceeded query is identified as "slow" and may be logged under specific logging category.
+Allows you to specify ["fetch" operation](../reference_2.md#type-dsoperationtype) SQL query execution time threshold in milliseconds, which if exceeded query is identified as "slow" and may be logged under specific logging category.
 
 See [DataSource.logSlowSQL](#attr-datasourcelogslowsql) for more details.
 
@@ -2475,7 +2475,7 @@ If you specify both `projectFileKey` and `projectFileLocations`, then both with 
 ## Attr: DataSource.logSlowUpdate
 
 ### Description
-Allows you to specify ["update" operation](../reference.md#type-dsoperationtype) SQL query execution time threshold in milliseconds, which if exceeded query is identified as "slow" and may be logged under specific logging category.
+Allows you to specify ["update" operation](../reference_2.md#type-dsoperationtype) SQL query execution time threshold in milliseconds, which if exceeded query is identified as "slow" and may be logged under specific logging category.
 
 See [DataSource.logSlowSQL](#attr-datasourcelogslowsql) for more details.
 
@@ -2668,7 +2668,7 @@ For JPA and Hibernate DataSources this property indicates, that data source has 
 ### Description
 For DataSources with [auditing enabled](#attr-datasourceaudit), specifies the field name used to store the names of the fields which were updated. If empty string is specified as the field name, the audit DataSource will not store this field.
 
-Note that this field will only be set for [update](../reference.md#type-dsoperationtype) operations.
+Note that this field will only be set for [update](../reference_2.md#type-dsoperationtype) operations.
 
 **Flags**: IR
 
@@ -3274,7 +3274,7 @@ These properties are applied before [DataSource.transformRequest](#method-dataso
 ## Attr: DataSource.auditTypeFieldName
 
 ### Description
-For DataSources with [auditing enabled](#attr-datasourceaudit), specifies the field name used to store the [operationType](../reference.md#type-dsoperationtype) (in a field of type "text"). If empty string is specified as the field name, the audit DataSource will not store this field.
+For DataSources with [auditing enabled](#attr-datasourceaudit), specifies the field name used to store the [operationType](../reference_2.md#type-dsoperationtype) (in a field of type "text"). If empty string is specified as the field name, the audit DataSource will not store this field.
 
 **Flags**: IR
 
@@ -5408,7 +5408,20 @@ See the [concurrentEdits](../kb_topics/concurrentEdits.md#kb-topic-handling-conc
 
 Cache managers are not the only things affected. A [DynamicForm](DynamicForm.md#class-dynamicform), [ValuesManager](ValuesManager.md#class-valuesmanager) or [DetailViewer](DetailViewer.md#class-detailviewer) bound to this DataSource but showing a plain record has no cache manager keeping it current, so it watches for "update" responses itself and refreshes the record it is showing when the primary keys match. This stops a form from sitting on values the user has no reason to think are stale and may go on to commit. It can be limited to the component's own saves, or switched off altogether, with [DynamicForm.cacheSync](DynamicForm.md#attr-dynamicformcachesync), [ValuesManager.cacheSync](ValuesManager.md#attr-valuesmanagercachesync) and [DetailViewer.cacheSync](DetailViewer.md#attr-detailviewercachesync).
 
-Records passed to this method should be **complete**. A cache manager replaces the cached row with the record supplied, so any field omitted from it is lost; a form instead merges the record over the values it is showing. A partial record can therefore appear to work when tested against a form, while quietly dropping fields from every grid bound to the same DataSource.
+#### Complete records, or partial ones
+How much of a row a record has to describe is set by [DSRequest.cacheSyncData](DSRequest.md#attr-dsrequestcachesyncdata) or [DSResponse.cacheSyncData](DSResponse.md#attr-dsresponsecachesyncdata) - the request wins where both are set - and is `"full"` unless you say otherwise.
+
+In **"full"** mode each record _is_ the row. A cache manager replaces the cached row with the record supplied, so a field the record omits is **cleared** - omitting a field is how a response says that field is now null, which is why an omission cannot also mean "leave this one alone". An explicit null and an absent field therefore have the same effect on a grid. Pass an incomplete record in this mode and its missing fields are dropped from every [ResultSet](ResultSet.md#class-resultset) on the DataSource; a warning naming those fields is logged when this is detected.
+
+Still in "full" mode, a record whose primary keys match no cached row is **added** to any cache whose criteria it matches. If that record was incomplete, the cache gains an incomplete row, and the same record can end up complete in one grid and partial in another. Whether it is added at all depends on whether the criteria happen to reference fields the record carries, so an incomplete record in "full" mode is not reliably ignorable either.
+
+In **"partial"** mode each record carries its primary keys plus only the fields that changed. Such a record is **merged** into the cached row: a field it omits is left alone, and a field explicitly set to null is cleared. A record matching no cached row is **ignored** rather than added, since a fragment is not enough to build a row from. Criteria are evaluated against the merged row, not the fragment, so a filtered cache keeps a row that still matches once the change is applied. "partial" applies to "update" only - it is ignored, with a warning, for "add" and "remove".
+
+Use "partial" for a push that carries just what changed, such as a [Real-Time Messaging](../kb_topics/messaging.md#kb-topic-real-time-messaging) update, especially where components bound to the same DataSource fetch different sets of fields. See also [DataSource.sparseUpdates](#attr-datasourcesparseupdates), which is the same idea applied to the update requests this DataSource sends.
+
+One exception to all of the above: a [DynamicForm](DynamicForm.md#class-dynamicform), [ValuesManager](ValuesManager.md#class-valuesmanager) or [DetailViewer](DetailViewer.md#class-detailviewer) merges per field in **both** modes, because it has no cache manager and is showing one record rather than maintaining a row set - see [DynamicForm.cacheSync](DynamicForm.md#attr-dynamicformcachesync). So a field absent from a "full" record is cleared in a grid and left untouched in a form. Supply complete records in "full" mode, or use "partial", and the question does not arise.
+
+In either mode, a field the user has edited but not yet saved keeps the value they typed rather than the incoming one, and goes on reporting as changed - unless the incoming value is the same as theirs, in which case it stops counting as an unsaved change. See [DynamicForm.cacheSync](DynamicForm.md#attr-dynamicformcachesync).
 
 The provided `DSResponse` should have [operationType](DSResponse.md#attr-dsresponseoperationtype) "update", "add" or "remove" - there is no way for a "fetch" response to meaningfully update arbitrary caches. However, if you have a list of updated records (possibly retrieved via [DataSource.fetchData](#method-datasourcefetchdata)) you can still call `updateCaches()`with DSResponses of type "update". Typically DataSource operations that manipulate data operate on a single record at a time, but if you explicitly set the `response.data` attribute to an array of records, framework code will handle this as it would multiple updates.
 
@@ -5756,7 +5769,7 @@ Call this method to set the data in the client-side cache after initialization.
 ### Description
 Invoke an operation declared with [OperationBinding.operationType](OperationBinding.md#attr-operationbindingoperationtype) "custom".
 
-**This is a rarely used API.** If the operation you are performing can be thought of as one of the standard "CRUD" [operation types](../reference.md#type-dsoperationtype), declare it with a CRUD operationType. For example, if your operation updates a record, declare it with operationType "update" and invoke it via [DataSource.updateData](#method-datasourceupdatedata) - this will cause [cache sync](ResultSet.md#class-resultset) to work correctly.
+**This is a rarely used API.** If the operation you are performing can be thought of as one of the standard "CRUD" [operation types](../reference_2.md#type-dsoperationtype), declare it with a CRUD operationType. For example, if your operation updates a record, declare it with operationType "update" and invoke it via [DataSource.updateData](#method-datasourceupdatedata) - this will cause [cache sync](ResultSet.md#class-resultset) to work correctly.
 
 In particular:
 

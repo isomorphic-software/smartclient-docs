@@ -125,11 +125,11 @@ This is the central API reference for the SmartClient framework.
         - [Deck](classes/Deck.md)
         - [ListPropertiesPane](classes/ListPropertiesPane.md)
         - [HStack](#class-hstack)
-      - [Calendar](classes/Calendar.md)
-        - [Timeline](#class-timeline)
       - [DrawPane](classes/DrawPane.md)
         - [FacetChart](classes/FacetChart.md)
         - [Gauge](classes/Gauge.md)
+      - [Calendar](classes/Calendar.md)
+        - [Timeline](#class-timeline)
       - [DynamicForm](classes/DynamicForm.md)
         - [SavedSearchForm](classes/SavedSearchForm.md)
         - [SearchForm](classes/SearchForm.md)
@@ -7853,6 +7853,25 @@ Validators of this type have [requiresServer](classes/ValidatorDefinition.md#att
 If validation logic can be expressed as criteria, use [Validator.passWhen](classes/Validator.md#attr-validatorpasswhen) or [Validator.failWhen](classes/Validator.md#attr-validatorfailwhen) instead — these provide automatic client-side enforcement. Even if only part of the logic is criteria-expressible, use [Validator.applyWhen](classes/Validator.md#attr-validatorapplywhen) to gate the `serverCustom` validator. |
 
 ---
+## Type: ValueClickSelection
+
+### Description
+What a click on a plotted data value selects - see [FacetChart.valueClickSelection](classes/FacetChart.md#attr-facetchartvalueclickselection).
+
+### Values
+
+| Value | Description |
+|-------|-------------|
+| "value" | the individual data value that was clicked |
+| "legendFacetValue" | every value sharing the clicked value's legend facet value - in a stacked bar chart, every segment of the same color |
+| "dataLabelFacetValue" | every value in the clicked value's data-label group - in a stacked bar chart, the whole stack |
+| "none" | nothing; the click does not change the selection |
+
+### Groups
+
+- selectionSharing
+
+---
 ## Type: ValueItemType
 
 ### Description
@@ -9076,18 +9095,6 @@ Also, while the current implementation would allow creation of a formula that ca
 - fieldGeneration
 
 ---
-## Object: UserSummary
-
-### Description
-An object representing a user-created summary.
-
-[ListGrid](classes/ListGrid_1.md#class-listgrid)s additionally allow the summary to be user-modifiable, with the summary created and edited with a [SummaryBuilder](classes/SummaryBuilder.md#class-summarybuilder), either directly or via the [ListGrid.canAddSummaryFields](classes/ListGrid_1.md#attr-listgridcanaddsummaryfields) behavior.
-
-### Groups
-
-- fieldGeneration
-
----
 ## Object: ValueFromMapping
 
 ### Description
@@ -9115,12 +9122,6 @@ For keys ending in `"Properties"` or `"Defaults"`, values are merged via [Class.
 
 ### Description
 One entry of [addedSteps](classes/WorkflowBuilderCoTResult.md#attr-workflowbuildercotresultaddedsteps) - a single Workflow step added by a [WorkflowBuilderProcess](#class-workflowbuilderprocess) run.
-
----
-## Object: WorkflowBuilderCoTParams
-
-### Description
-The shape of `process.state` to populate before starting a [WorkflowBuilderProcess](#class-workflowbuilderprocess) directly (its own class documentation covers the three ways this process may be invoked - as a sub-process of [AI.buildUI](#classmethod-aibuildui), standalone, or via the EventStream/UISession convergence).
 
 ---
 ## Object: WorkflowBuilderCoTResult

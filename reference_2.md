@@ -3961,6 +3961,18 @@ Boolean object. Attributes, parameters, or return values declared as `Boolean` m
 Base class for a representation of a response to a high-level request to AI to build something.
 
 ---
+## Object: ChartSelection
+
+### Description
+The complete state of a [FacetChart](classes/FacetChart.md#class-facetchart)'s value selection, as returned by [FacetChart.getChartSelection](classes/FacetChart.md#method-facetchartgetchartselection) and accepted by [FacetChart.setChartSelection](classes/FacetChart.md#method-facetchartsetchartselection).
+
+The three lists are kept apart because a group selection and the values it happens to cover are different statements of intent, and only the distinction survives a pivot or a data change intact.
+
+### Groups
+
+- selectionSharing
+
+---
 ## Object: ClassFactory
 
 ### Description
@@ -4298,7 +4310,7 @@ Wherever a DynamicProperty is expected, several shorthand forms are also accepte
 
 *   A plain string is shorthand for `{ dataPath: "..." }`.
 *   A [UserFormula](#object-userformula) object (`{text, formulaVars}`) is treated as [formula](classes/DynamicProperty.md#attr-dynamicpropertyformula).
-*   A [UserSummary](#object-usersummary) object (`{text, summaryVars}`) is treated as [template](classes/DynamicProperty.md#attr-dynamicpropertytemplate).
+*   A [UserSummary](reference_2.md#object-usersummary) object (`{text, summaryVars}`) is treated as [template](classes/DynamicProperty.md#attr-dynamicpropertytemplate).
 *   An [AdvancedCriteria](#object-advancedcriteria) -- or a single bare criterion with no `_constructor` or wrapping `criteria` array, such as `{fieldName: "...", operator: "...", value: ...}` -- is treated as [trueWhen](classes/DynamicProperty.md#attr-dynamicpropertytruewhen).
 
 See [Dynamic Properties](kb_topics/dynamicProperties.md#kb-topic-dynamic-properties) for an overview of the feature with worked examples covering each of these forms.
@@ -4987,6 +4999,18 @@ Represents a user-specified and user-modifiable request to AI in some context. F
 The user's request is combined with other messages, data, and instructions provided by the framework to create [AIRequest](#object-airequest)s that are sent to the AI engine for the purpose of fulfilling the user's request.
 
 ---
+## Object: UserSummary
+
+### Description
+An object representing a user-created summary.
+
+[ListGrid](classes/ListGrid_1.md#class-listgrid)s additionally allow the summary to be user-modifiable, with the summary created and edited with a [SummaryBuilder](classes/SummaryBuilder.md#class-summarybuilder), either directly or via the [ListGrid.canAddSummaryFields](classes/ListGrid_1.md#attr-listgridcanaddsummaryfields) behavior.
+
+### Groups
+
+- fieldGeneration
+
+---
 ## Object: ValidatorDefinition
 
 ### Description
@@ -4997,6 +5021,12 @@ Validator definition for a built-in [Validator.type](classes/Validator.md#attr-v
 
 ### Description
 Defines the method of the [ServerObject](reference_2.md#object-serverobject) if it appears in an [Application declaration file](kb_topics/applicationDeclaration.md#kb-topic-application-declaration-files). Method can refer the `ServerObject` method allowed to be called from the client or can be implemented right in the .app.xml file using the [inline server script](kb_topics/serverScript.md#kb-topic-server-scripting).
+
+---
+## Object: WorkflowBuilderCoTParams
+
+### Description
+The shape of `process.state` to populate before starting a [WorkflowBuilderProcess](#class-workflowbuilderprocess) directly (its own class documentation covers the three ways this process may be invoked - as a sub-process of [AI.buildUI](#classmethod-aibuildui), standalone, or via the EventStream/UISession convergence).
 
 ---
 ## Object: WorkflowExplorationEntry

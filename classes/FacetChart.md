@@ -654,6 +654,26 @@ Applies to "Column", "Bar" and "Histogram" charts. Note that along a Bar chart's
 **Flags**: IR
 
 ---
+## Attr: FacetChart.canSelectValues
+
+### Description
+Enables interactive selection of the chart's data values: clicking a pie slice, bar, column, area segment or point selects that value's facet-value combination in [FacetChart.selectedValues](#attr-facetchartselectedvalues), and clicking a data label or legend swatch selects all values for that facet value.
+
+A click REPLACES the selection by default, ctrl-click (the meta key on a Mac) adds to or removes from it, and clicking chart whitespace or re-clicking the only selected value clears it. See [FacetChart.selectionType](#attr-facetchartselectiontype) for the other gesture styles, including the accumulate-on-every-click behavior.
+
+While a selection exists, selected values render at full strength and all other data is de-emphasized (see [FacetChart.selectionMutePercent](#attr-facetchartselectionmutepercent)).
+
+What a click selects depends on what it lands on. A bar, column, histogram segment, pie slice or data point identifies a single value, and selects it. In a Line, Area or Radar chart a series is drawn as one shape spanning every value it holds, so a click on that band or line identifies the SERIES rather than any one value, and selects it as a facet value - which requires [FacetChart.canSelectFacetValues](#attr-facetchartcanselectfacetvalues). Show [data points](#attr-facetchartshowdatapoints) to make the individual values of those charts selectable too.
+
+Selection is expressed as data, not as pixels: each entry in `selectedValues` is a [FacetValueMap](../reference.md#object-facetvaluemap) - an object of the form `{facetId: facetValueId}`, with one property per dimension facet the user's click identified. Clicking the "West" column yields `{region: "West"}`; clicking the West segment of the 2024 series in a stacked chart yields `{region: "West", year: 2024}`; selecting several values yields several entries, e.g. `[ {region: "West"}, {region: "East"} ]`.
+
+### Groups
+
+- selectionSharing
+
+**Flags**: IRW
+
+---
 ## Attr: FacetChart.logScalePointColor
 
 ### Description
@@ -1099,7 +1119,7 @@ Whether to draw lines between adjacent data points in "Scatter" plots. See also 
 ## Attr: FacetChart.brightenPercent
 
 ### Description
-When [FacetChart.highlightDataValues](#attr-facetcharthighlightdatavalues) is true, sets the percentage by which to brighten filled data-shapes in some [chart-types](#attr-facetchartcharttype) as the mouse is moved over the chart. Affects Bar, Column, Pie and Doughnut charts, and will brighten either the shape's fill-color or its border-color, depending on the value of [FacetChart.brightenAllOnHover](#attr-facetchartbrightenallonhover).
+When [FacetChart.highlightDataValues](#attr-facetcharthighlightdatavalues) is true, sets the percentage by which to brighten filled data-shapes in some [chart-types](#attr-facetchartcharttype) as the mouse is moved over the chart. Affects Bar, Column, Histogram, Pie, Doughnut, Line, Area and Radar charts, and will brighten either the shape's fill-color or its border-color, depending on [FacetChart.brightenAllOnHover](#attr-facetchartbrightenallonhover).
 
 Valid values are between 0 and 100, inclusive.
 
@@ -1265,6 +1285,20 @@ Space between the legend and the chart rect or axis labels (whatever the legend 
 - legend
 
 **Flags**: IR
+
+---
+## Attr: FacetChart.selectionMutePercent
+
+### Description
+While [a value selection](#attr-facetchartcanselectvalues) exists, how far data colors for NON-selected values recede toward the chart's background, so that the selection reads at full strength.
+
+The blend happens in the oklch color space, which closes the lightness gap to the background and drops chroma at the same time. Lightening alone does neither reliably: it keeps a color's chroma, so a mid-tone green lightened by 60% becomes a vivid pale green that is more eye-catching than the color it was meant to de-emphasize, not less. [FacetChart.selectionMuteChromaPercent](#attr-facetchartselectionmutechromapercent) removes further chroma for backgrounds that are not near-neutral.
+
+### Groups
+
+- selectionSharing
+
+**Flags**: IRW
 
 ---
 ## Attr: FacetChart.titleProperties
@@ -1714,7 +1748,7 @@ When [FacetChart.highlightDataValues](#attr-facetcharthighlightdatavalues) is tr
 
 By default, only the border around the draw-area is brightened.
 
-Only affects Bar, Column, Pie and Doughnut [chart-types](#attr-facetchartcharttype).
+Only affects the [chart-types](#attr-facetchartcharttype) that highlight on rollover - see [FacetChart.highlightDataValues](#attr-facetcharthighlightdatavalues).
 
 **Flags**: IRW
 
@@ -2001,6 +2035,22 @@ Whether a boundary should be drawn above the Legend area for circumstances where
 **Flags**: IR
 
 ---
+## Attr: FacetChart.canSelectFacetValues
+
+### Description
+Enables selection of every data value associated with a facet value, rather than of individual values. In a stacked bar chart that means clicking a legend entry selects every segment of that color, and clicking a data label selects the whole stack.
+
+Those two gestures are controlled by [FacetChart.selectOnLegendClick](#attr-facetchartselectonlegendclick) and [FacetChart.selectOnDataLabelClick](#attr-facetchartselectondatalabelclick). What a click on a plotted segment selects is ambiguous - the segment, its stack, or its color across stacks - and is controlled by [FacetChart.valueClickSelection](#attr-facetchartvalueclickselection).
+
+Selections keep their facet identities when the chart is pivoted, so a selected color group simply becomes a selected stack. Neither this property nor [FacetChart.canSelectValues](#attr-facetchartcanselectvalues) restricts programmatic selection.
+
+### Groups
+
+- selectionSharing
+
+**Flags**: IRW
+
+---
 ## Attr: FacetChart.proportional
 
 ### Description
@@ -2232,6 +2282,20 @@ Causes labels for the X axis to be shown above the axis and to the right of the 
 **Flags**: IR
 
 ---
+## Attr: FacetChart.selectOnLegendClick
+
+### Description
+Whether clicking a legend entry selects every data value associated with that legend facet value. Controls legend clicks only, independently of [FacetChart.valueClickSelection](#attr-facetchartvalueclickselection).
+
+Requires [FacetChart.canSelectFacetValues](#attr-facetchartcanselectfacetvalues): a legend click is a facet-value selection, so it does nothing when facet-value selection is disabled.
+
+### Groups
+
+- selectionSharing
+
+**Flags**: IRW
+
+---
 ## Attr: FacetChart.titleAlign
 
 ### Description
@@ -2331,7 +2395,7 @@ Margin between [multiple value axes](#attr-facetchartextraaxismetrics).
 ### Description
 Should the draw-area of nearby filled data-value shapes be highlighted as the mouse is moved over some [chart-types](#attr-facetchartcharttype)?
 
-When set to true, data-shapes in Bar, Column, Pie and Doughnut charts can be highlighted by [brightening](#attr-facetchartbrightenallonhover) their fill or border colors by a [percentage](#attr-facetchartbrightenpercent), and by applying a [shadow](#attr-facetchartdatavaluehovershadow) around them.
+When set to true, data-shapes in Bar, Column, Histogram, Pie, Doughnut, Line, Area and Radar charts can be highlighted by [brightening](#attr-facetchartbrightenallonhover) their fill or border colors by a [percentage](#attr-facetchartbrightenpercent), and by applying a [shadow](#attr-facetchartdatavaluehovershadow) around them. In a Line, Area or Radar chart the shape is the whole series, so hovering anywhere on its band or line highlights that series.
 
 **Flags**: IRW
 
@@ -2654,6 +2718,33 @@ Whether the chart should use multiple shapes to show data points. If set to `tru
 **Flags**: IRW
 
 ---
+## Attr: FacetChart.selectionType
+
+### Description
+How mouse gestures change the chart's value selection, using the same vocabulary as [ListGrid.selectionType](ListGrid_1.md#attr-listgridselectiontype):
+
+*   `"none"` - clicks never select
+*   `"single"` - a click replaces the selection; modifier keys are ignored
+*   `"multiple"` - a click replaces the selection, and ctrl-click (the meta key on a Mac) adds to or removes from it
+*   `"simple"` - every click toggles one value, and selections accumulate without any modifier key
+
+Defaults to `"multiple"`.
+
+This property shapes gestures; it does not enable them. Selection is enabled by [FacetChart.canSelectValues](#attr-facetchartcanselectvalues) and [FacetChart.canSelectFacetValues](#attr-facetchartcanselectfacetvalues), and with both unset a chart does not select however this is configured. (That differs from [ListGrid.selectionType](ListGrid_1.md#attr-listgridselectiontype), which is itself the enabler because a grid has no separate capability flag.)
+
+Re-clicking the only selected value clears the selection, as does clicking chart whitespace.
+
+Shift-click to extend a selection across a contiguous range is not supported: what "contiguous" means differs by chart type - along the bar in a column chart, around the circle in a pie - so there is no single correct behavior to offer.
+
+This affects mouse gestures only. Programmatic selection is never restricted by it; see [FacetChart.setSelectedValues](#method-facetchartsetselectedvalues).
+
+### Groups
+
+- selectionSharing
+
+**Flags**: IRW
+
+---
 ## Attr: FacetChart.showBubbleLegendPerShape
 
 ### Description
@@ -2683,7 +2774,7 @@ Maximum distance from the \*outer radius\* of the nearest bubble when hover will
 ## Attr: FacetChart.dataValueHoverShadow
 
 ### Description
-When [FacetChart.highlightDataValues](#attr-facetcharthighlightdatavalues) is true, this attribute can be set to a [DrawItem shadow](../reference.md#object-shadow) to show around the draw-area of nearby filled data-value shapes as the mouse is moved around in Bar, Column, Pie and Doughnut [chart-types](#attr-facetchartcharttype).
+When [FacetChart.highlightDataValues](#attr-facetcharthighlightdatavalues) is true, this attribute can be set to a [DrawItem shadow](../reference.md#object-shadow) to show around the draw-area of nearby filled data-value shapes as the mouse is moved around in the [chart-types](#attr-facetchartcharttype) that highlight on rollover - see [FacetChart.highlightDataValues](#attr-facetcharthighlightdatavalues).
 
 **Flags**: IRW
 
@@ -3069,6 +3160,20 @@ Whether the positions of value axes can be changed. The default is true for char
 **Flags**: IR
 
 ---
+## Attr: FacetChart.selectOnDataLabelClick
+
+### Description
+Whether clicking a data label selects the group of data values that label represents - in a two-facet stacked bar chart, the whole stack. A higher-level label in a chart with several data-label facets covers several stacks.
+
+Requires [FacetChart.canSelectFacetValues](#attr-facetchartcanselectfacetvalues), for the same reason [FacetChart.selectOnLegendClick](#attr-facetchartselectonlegendclick) does.
+
+### Groups
+
+- selectionSharing
+
+**Flags**: IRW
+
+---
 ## Attr: FacetChart.pointShapes
 
 ### Description
@@ -3350,11 +3455,15 @@ Properties for doughnut hole
 ### Description
 Whether a category label too long for the space available may be wrapped onto further lines, breaking at spaces.
 
-The chart lays its category labels out by trying, in order, to draw them as they are, to wrap them, and to rotate them, settling on the first that fits; where none does, it falls back to showing only some of them (see [FacetChart.labelCollapseMode](#attr-facetchartlabelcollapsemode)). Setting this property inserts the wrapping step, which means long labels less often have to be rotated or dropped. It does not force wrapping: labels that already fit on one line are left alone.
+Where [FacetChart.rotateLabels](#attr-facetchartrotatelabels) is "always", labels are rotated 90 degrees and none of what follows applies. Otherwise the axis measures each way of drawing its labels that is available to it, and takes the one using the fewest lines that fits the space each label is given:
 
-[FacetChart.maxDataLabelLines](#attr-facetchartmaxdatalabellines) caps how many lines a label may take, and [FacetChart.maxDataLabelWidth](#attr-facetchartmaxdatalabelwidth) optionally caps how wide one may be. Both are ignored unless this property is set, so leaving it alone leaves label layout exactly as it would otherwise be.
+*   on a single line, as authored;
+*   wrapped onto at most [FacetChart.maxDataLabelLines](#attr-facetchartmaxdatalabellines) lines (3 by default), each no wider than [FacetChart.maxDataLabelWidth](#attr-facetchartmaxdatalabelwidth) where that is set - offered only while this property is true;
+*   rotated 90 degrees - offered only while [FacetChart.rotateLabels](#attr-facetchartrotatelabels) permits it, which "never" does not, and which "auto" does except on a Column, Bar or Histogram chart using [FacetChart.getMinClusterSize](#method-facetchartgetminclustersize), or a chart using [FacetChart.autoScrollData](#attr-facetchartautoscrolldata).
 
-Applies to category labels on either axis. A single word longer than the space available is never broken, so it still renders at its full width.
+Because the single-line form is measured alongside the wrapped one, a label that already fits is never wrapped, and a chart with room to spare wraps onto fewer lines than its budget allows. Where no available form fits, the axis draws only some of the labels - see [FacetChart.labelCollapseMode](#attr-facetchartlabelcollapsemode) - so clearing this property on a chart whose labels cannot be rotated means they are dropped instead of wrapped.
+
+Wrapping applies to the labels below the plot, which own the height it needs: not to a Bar chart's category labels at the side, not to [inlined](#attr-facetchartshowinlinelabels) labels, and not where an inner data-label facet already stacks two rows of labels under the axis. A single word too long for the width is never broken, so it still renders at its full width.
 
 ### Groups
 
@@ -3501,6 +3610,22 @@ See [ChartType](../reference.md#type-charttype) for a list of known types - Colu
 
 ### Description
 Default styleName for the chart.
+
+**Flags**: IRW
+
+---
+## Attr: FacetChart.valueClickSelection
+
+### Description
+What a click on a plotted data value selects: that individual value, its legend facet value, its data-label group, or nothing.
+
+When unset, a click selects the legend facet value if [FacetChart.canSelectFacetValues](#attr-facetchartcanselectfacetvalues) is enabled and the chart has a legend facet; failing that the data-label group; otherwise the individual value, if [FacetChart.canSelectValues](#attr-facetchartcanselectvalues) is enabled.
+
+An explicitly configured target still requires the matching capability: if that is disabled, or the chart has no such facet, the click does nothing. [FacetChart.selectOnLegendClick](#attr-facetchartselectonlegendclick) and [FacetChart.selectOnDataLabelClick](#attr-facetchartselectondatalabelclick) do not affect segment clicks.
+
+### Groups
+
+- selectionSharing
 
 **Flags**: IRW
 
@@ -3770,6 +3895,18 @@ If minor ticks are used, by default, major ticks are used for powers of 10 and m
 **Flags**: IRW
 
 ---
+## Attr: FacetChart.selectedValues
+
+### Description
+The current interactive value selection: one [FacetValueMap](../reference.md#object-facetvaluemap) per selected facet-value combination, each an object of the form `{facetId: facetValueId}` covering the chart's dimension facets only (never the metric facet) - see [FacetChart.canSelectValues](#attr-facetchartcanselectvalues) for examples. Null or empty when nothing is selected. Interaction state, not definition: never serialized.
+
+### Groups
+
+- selectionSharing
+
+**Flags**: IRW
+
+---
 ## Attr: FacetChart.bandedStandardDeviations
 
 ### Description
@@ -3811,6 +3948,22 @@ Note that this method is simply an override point, since it has no default imple
 
 - [DrawItem.lineWidth](DrawItem.md#attr-drawitemlinewidth)
 - [FacetChart.getDataLineColor](#method-facetchartgetdatalinecolor)
+
+---
+## Method: FacetChart.toggleValue
+
+### Description
+Flips one individual data value in or out of the selection - the programmatic equivalent of a click under `selectionType:"simple"`.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| facetValues | [FacetValueMap](#type-facetvaluemap) | false | — | coordinates of the value |
+
+### Groups
+
+- selectionSharing
 
 ---
 ## Method: FacetChart.setDataColors
@@ -3910,6 +4063,23 @@ The first argument, criteria, determines which metric is used to calculate the m
 ### Returns
 
 `[Float](../reference_2.md#type-float)` — the mean of the data values
+
+---
+## Method: FacetChart.chartSelectionUpdated
+
+### Description
+Notification fired once after any completed operation changes the chart's selection, whether driven by the user or by the API. Pivoting alone does not change the selection and does not fire this.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| selection | [ChartSelection](#type-chartselection) | false | — | the complete new state |
+| change | [Object](../reference_2.md#type-object) | false | — | what changed: `source` is one of `"valueClick"`, `"legendClick"`, `"dataLabelClick"`, `"menu"`, `"api"` or `"dataChanged"` |
+
+### Groups
+
+- selectionSharing
 
 ---
 ## Method: FacetChart.getPercentile
@@ -4566,6 +4736,41 @@ Get a facet definition by facetId.
 - [Facet](../reference_2.md#object-facet)
 
 ---
+## Method: FacetChart.selectValue
+
+### Description
+Selects or deselects one individual data value.
+
+Supply complete coordinates - every dimension facet the chart has. Deselecting a value that a selected facet value covers records an EXCLUSION: the group stays selected and the one value is punched out of it, rather than the group being dissolved into its remaining members.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| facetValues | [FacetValueMap](#type-facetvaluemap) | false | — | coordinates of the value |
+| newState | [boolean](../reference.md#type-boolean) | true | — | true to select (the default), false to deselect |
+
+### Groups
+
+- selectionSharing
+
+---
+## Method: FacetChart.setSelectionType
+
+### Description
+Setter for [FacetChart.selectionType](#attr-facetchartselectiontype).
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| selectionType | [SelectionStyle](../reference.md#type-selectionstyle) | false | — | new selection style |
+
+### Groups
+
+- selectionSharing
+
+---
 ## Method: FacetChart.setScaleStartColor
 
 ### Description
@@ -4580,6 +4785,22 @@ Setter for [FacetChart.scaleStartColor](#attr-facetchartscalestartcolor).
 ### Groups
 
 - dataPoints
+
+---
+## Method: FacetChart.setSelectedValues
+
+### Description
+Setter for [FacetChart.selectedValues](#attr-facetchartselectedvalues): replaces the current value selection and restyles the chart.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| selectedValues | [Array of FacetValueMap](#type-array-of-facetvaluemap) | false | — | new selection; null or empty clears |
+
+### Groups
+
+- selectionSharing
 
 ---
 ## Method: FacetChart.getChartTop
@@ -4648,6 +4869,16 @@ Setter for [FacetChart.showXTicks](#attr-facetchartshowxticks).
 - ticks
 
 ---
+## Method: FacetChart.clearValueSelection
+
+### Description
+Clears [FacetChart.selectedValues](#attr-facetchartselectedvalues), restoring full-strength rendering and retracting any published selection criteria.
+
+### Groups
+
+- selectionSharing
+
+---
 ## Method: FacetChart.getDrawnValuesAtPoint
 
 ### Description
@@ -4681,6 +4912,26 @@ Setter for [FacetChart.scaleEndColor](#attr-facetchartscaleendcolor).
 ### Groups
 
 - dataPoints
+
+---
+## Method: FacetChart.isValueSelected
+
+### Description
+Whether one data value is selected, either directly or through a selected facet value. An individual exclusion takes precedence over the group that would otherwise cover it.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| facetValues | [FacetValueMap](#type-facetvaluemap) | false | — | coordinates of the value to test |
+
+### Returns
+
+`[boolean](../reference.md#type-boolean)` — true if the value is selected
+
+### Groups
+
+- selectionSharing
 
 ---
 ## Method: FacetChart.legendClick
@@ -5113,6 +5364,16 @@ Setter for [FacetChart.showRegressionLine](#attr-facetchartshowregressionline).
 | showRegressionLine | [Boolean](#type-boolean) | false | — | New value for this.showRegressionLine. |
 
 ---
+## Method: FacetChart.clearChartSelection
+
+### Description
+Clears the entire selection - facet-value groups, individual values and exclusions alike - firing one [FacetChart.chartSelectionUpdated](#method-facetchartchartselectionupdated) notification.
+
+### Groups
+
+- selectionSharing
+
+---
 ## Method: FacetChart.getMedian
 
 ### Description
@@ -5149,6 +5410,36 @@ Note that the user may swap the data label facet and the [legend facet](#method-
 - [FacetChart.facets](#attr-facetchartfacets)
 
 ---
+## Method: FacetChart.setChartSelection
+
+### Description
+Replaces the entire selection, firing a single [FacetChart.chartSelectionUpdated](#method-facetchartchartselectionupdated) notification.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| selection | [ChartSelection](#type-chartselection) | false | — | state as returned by [FacetChart.getChartSelection](#method-facetchartgetchartselection); null clears |
+
+### Groups
+
+- selectionSharing
+
+---
+## Method: FacetChart.getChartSelection
+
+### Description
+The complete selection state, for inspection or for later restoration through [FacetChart.setChartSelection](#method-facetchartsetchartselection). Group selections, individual values and individual exclusions are kept distinct, and facet identities are stored rather than legend/data-label roles - so a saved selection survives a pivot.
+
+### Returns
+
+`[ChartSelection](#type-chartselection)` — the selection state
+
+### Groups
+
+- selectionSharing
+
+---
 ## Method: FacetChart.setZoomStartValue
 
 ### Description
@@ -5175,6 +5466,28 @@ Returns the font family in effect for this chart's text: [FacetChart.defaultFont
 ### Returns
 
 `[String](#type-string)` — font family list, as a CSS font-family value
+
+---
+## Method: FacetChart.selectFacetValue
+
+### Description
+Selects or deselects every data value associated with a facet value.
+
+Call as `selectFacetValue(facetId, facetValueId, newState)`, or pass a [FacetValueMap](../reference.md#object-facetvaluemap) as the first argument to select a combination - the form a stack takes in a chart with more than one data-label facet.
+
+Multiple facet-value selections combine as a union: selecting West and then Hardware selects the West stack plus Hardware across every other stack. Deselecting one leaves values that another group, or an individual selection, still covers.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| facetId | [String](#type-string)|[FacetValueMap](#type-facetvaluemap) | false | — | facet id, or the whole combination |
+| facetValueId | [Any](#type-any) | true | — | facet value id, when the first argument is a facet id |
+| newState | [boolean](../reference.md#type-boolean) | true | — | true to select (the default), false to deselect |
+
+### Groups
+
+- selectionSharing
 
 ---
 ## Method: FacetChart.setFilled
@@ -5227,6 +5540,22 @@ Setter for [RegressionLineType](../reference_2.md#type-regressionlinetype).
 | regressionLineType | [RegressionLineType](../reference_2.md#type-regressionlinetype) | false | — | New value for this.regressionLineType |
 
 ---
+## Method: FacetChart.getSelectedFacetValues
+
+### Description
+The facet values explicitly selected as groups, each a [FacetValueMap](../reference.md#object-facetvaluemap) naming one facet value or, for a nested data-label selection, the combination that identifies it.
+
+A group is never inferred: selecting every value under a facet value individually does not make that facet value appear here.
+
+### Returns
+
+`[Array of FacetValueMap](#type-array-of-facetvaluemap)` — selected facet values, or null if there are none
+
+### Groups
+
+- selectionSharing
+
+---
 ## Method: FacetChart.getNumDataPoints
 
 ### Description
@@ -5259,6 +5588,22 @@ When [FacetChart.showDataPoints](#attr-facetchartshowdatapoints) is true and the
 ### Returns
 
 `[HTMLString](../reference.md#type-htmlstring)` — String of HTML to show in a hover. Return `null` or an empty string (`""`) to suppress the hover.
+
+---
+## Method: FacetChart.getSelectedValues
+
+### Description
+The facet coordinates of every currently available data value the selection covers - values selected individually, plus every value under a selected facet value, minus any [individually deselected](#method-facetchartselectvalue) exclusion.
+
+Use [FacetChart.getChartSelection](#method-facetchartgetchartselection) to see the selection as the user expressed it, with group selections distinct from individual ones.
+
+### Returns
+
+`[Array of FacetValueMap](#type-array-of-facetvaluemap)` — covered values, or null if nothing is selected
+
+### Groups
+
+- selectionSharing
 
 ---
 ## Method: FacetChart.getLegendHoverHTML

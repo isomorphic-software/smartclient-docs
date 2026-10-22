@@ -21,7 +21,7 @@ This attribute is writable only in [ListGrid](ListGrid_1.md#class-listgrid)s. Ap
 ## Attr: UserSummary.summaryVars
 
 ### Description
-Map from the single capital letters used as summary variables in the [UserSummary](../reference.md#object-usersummary) String to the field names these variables should represent.
+Map from the single capital letters used as summary variables in the [UserSummary](../reference_2.md#object-usersummary) String to the field names these variables should represent.
 
 When used in the context of grid or detail viewer fields, field names are evaluated against the record.
 

@@ -266,6 +266,8 @@ When unset (the default), the role is determined automatically:
 
 Set to `"img"` to force screen readers to announce the icon even when text is also shown (useful when the icon conveys meaning not present in the text, such as a color-coded status indicator). Set to `"presentation"` to force the icon to be treated as decorative.
 
+The announced label is the cell value, mapped through [ListGridField.valueMap](#attr-listgridfieldvaluemap) if one is set. A null value, or a field missing from the record altogether, is looked up under the valueMap’s `null` key, so `valueMap:{null:"Unknown"}` labels the icon of an empty cell without the application having to alter its data. Failing that, [ListGridField.emptyCellValue](#attr-listgridfieldemptycellvalue) is used if it has been set to text of its own. An icon for which none of these sources yields text stays `role="presentation"` even if this property is `"img"`, since an unlabeled image has nothing to announce.
+
 ### Groups
 
 - imageColumns
@@ -274,6 +276,7 @@ Set to `"img"` to force screen readers to announce the icon even when text is al
 ### See Also
 
 - [ListGridField.showValueIconOnly](#attr-listgridfieldshowvalueicononly)
+- [ListGridField.valueMap](#attr-listgridfieldvaluemap)
 
 **Flags**: IRW
 

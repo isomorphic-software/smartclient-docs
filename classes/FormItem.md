@@ -2541,6 +2541,8 @@ When unset, the role is determined automatically: if [FormItem.showValueIconOnly
 
 Set to `"img"` to force screen reader announcement even when text is shown, or `"presentation"` to suppress even when icon-only.
 
+The announced label is the item’s display value: the value mapped through [FormItem.valueMap](#attr-formitemvaluemap) if one is set, otherwise the value itself. A null or undefined value is looked up under the valueMap’s `null` key, so `valueMap:{null:"Unknown"}` labels the icon shown for an empty value. Failing that, [FormItem.emptyDisplayValue](#attr-formitememptydisplayvalue) is used if set. An icon for which none of these sources yields text stays `role="presentation"`, since an unlabeled image has nothing to announce. Note that the icon shown for an empty value is [FormItem.emptyValueIcon](#attr-formitememptyvalueicon), not a `valueIcons` entry.
+
 ### Groups
 
 - valueIcons
@@ -2549,6 +2551,8 @@ Set to `"img"` to force screen reader announcement even when text is shown, or `
 ### See Also
 
 - [FormItem.showValueIconOnly](#attr-formitemshowvalueicononly)
+- [FormItem.emptyValueIcon](#attr-formitememptyvalueicon)
+- [FormItem.valueMap](#attr-formitemvaluemap)
 
 **Flags**: IRW
 
@@ -3665,7 +3669,7 @@ Return the value tracked by this form item as a Float. If the value cannot be pa
 
 ### Returns
 
-`[Float](../reference.md#type-float)` — value of this element
+`[Float](../reference_2.md#type-float)` — value of this element
 
 ### See Also
 

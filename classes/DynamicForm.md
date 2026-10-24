@@ -272,7 +272,9 @@ If set to true, client-side validators will not run on the form when validate() 
 ### Description
 When should this form update the values it is showing from a successful save against its [DataSource](#attr-dynamicformdatasource)?
 
-A form has no [ResultSet](ResultSet.md#class-resultset) keeping it current, so it applies such updates itself, merging the saved record over its current values. Note that this is a merge, where a ResultSet replaces the row outright — so a partial record passed to [DataSource.updateCaches](DataSource.md#method-datasourceupdatecaches) appears to work against a form while losing fields elsewhere. Always pass the complete record.
+A form has no [ResultSet](ResultSet.md#class-resultset) keeping it current, so it applies such updates itself, merging the record over its current values. A cache manager replaces the cached row instead, so where a record omits a field, a form keeps its value and a grid clears it.
+
+Where an update carries only the primary keys and the fields that changed — a [Real-Time Messaging](../kb_topics/messaging.md#kb-topic-real-time-messaging) push, typically — declare it with [cacheSyncData:"partial"](DSRequest.md#attr-dsrequestcachesyncdata) and every cache merges it consistently. Where the record is meant to be the complete row, set [DynamicForm.cacheSyncClearsOmittedFields](#attr-dynamicformcachesyncclearsomittedfields) to have this form clear omitted fields as a cache manager does.
 
 Values the user has edited and not yet saved are preserved across an update - see [CacheSyncMode](../reference.md#type-cachesyncmode).
 

@@ -257,6 +257,8 @@ Applies only when [DetailViewer.data](#attr-detailviewerdata) is a plain Array o
 
 A DetailViewer never saves, so "whenSaving" has the same effect as "never" here.
 
+The record is merged over the values being shown, where a cache manager replaces the cached row. See [DetailViewer.cacheSyncClearsOmittedFields](#attr-detailviewercachesyncclearsomittedfields) to clear omitted fields as a cache manager does, and [DSRequest.cacheSyncData](DSRequest.md#attr-dsrequestcachesyncdata) where an update carries only the fields that changed.
+
 ### Groups
 
 - databinding

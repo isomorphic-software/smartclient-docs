@@ -223,6 +223,22 @@ For tree facets, whether expand/collapse controls should be shown.
 **Flags**: IR
 
 ---
+## Attr: Facet.dateGranularity
+
+### Description
+For a facet on a date or datetime field, the size of the date buckets this facet's values represent. Declaring it makes a [FacetChart](FacetChart.md#class-facetchart) plot one aggregated value per bucket - twelve columns for a year of daily rows, say - instead of one per distinct date, and labels each bucket by its period (`Jun 2026` rather than `2026-06-01`).
+
+Each bucket's facet value is the period's start date, so clicking a bucket in a chart whose selection is shared selects the whole period rather than that one date.
+
+Aggregation reuses the measure field's [DataSourceField.summaryFunction](DataSourceField.md#attr-datasourcefieldsummaryfunction), defaulting to `"sum"`. The chart's [data](Chart.md#attr-chartdata) is never modified: bucket records are derived, so a [ResultSet](ResultSet.md#class-resultset) handed to the chart stays intact and the raw rows remain available.
+
+A bucketed chart should fetch raw rows, so do not also group on the bucketed date field via `fetchRequestProperties.groupBy`, and do not set [DataBoundComponent.recordLimit](DataBoundComponent.md#attr-databoundcomponentrecordlimit) - the first caps nothing but composes wrongly with an `avg` summary, and the second makes the buckets at each end of the range partial. The chart warns about both.
+
+**Note:** this property is specific to [FacetChart](FacetChart.md#class-facetchart) and has no effect in a [CubeGrid](CubeGrid.md#class-cubegrid).
+
+**Flags**: IR
+
+---
 ## Attr: Facet.titleAlign
 
 ### Description

@@ -199,7 +199,9 @@ Like the other `deepCloneOnEdit` settings, this flag only has an effect if you a
 ### Description
 When should this ValuesManager update the values it is showing from a successful save against its [DataSource](#attr-valuesmanagerdatasource)?
 
-A ValuesManager has no [ResultSet](ResultSet.md#class-resultset) keeping it current, so it applies such updates itself, merging the saved record over its current values and distributing them to its members. Note that this is a merge, where a ResultSet replaces the row outright — so a partial record passed to [DataSource.updateCaches](DataSource_1.md#method-datasourceupdatecaches) appears to work here while losing fields elsewhere. Always pass the complete record.
+A ValuesManager has no [ResultSet](ResultSet.md#class-resultset) keeping it current, so it applies such updates itself, merging the record over its current values and distributing them to its members. A cache manager replaces the cached row instead, so where a record omits a field, a ValuesManager keeps its value and a grid clears it.
+
+Where an update carries only the primary keys and the fields that changed — a [Real-Time Messaging](../kb_topics/messaging.md#kb-topic-real-time-messaging) push, typically — declare it with [cacheSyncData:"partial"](DSRequest.md#attr-dsrequestcachesyncdata) and every cache merges it consistently. Where the record is meant to be the complete row, set [ValuesManager.cacheSyncClearsOmittedFields](#attr-valuesmanagercachesyncclearsomittedfields) to have this ValuesManager clear omitted fields as a cache manager does.
 
 Values the user has edited and not yet saved are preserved across an update, in whichever member form holds them - see [CacheSyncMode](../reference.md#type-cachesyncmode).
 

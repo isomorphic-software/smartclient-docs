@@ -146,14 +146,6 @@ Optional list of natural-language prompt strings deployments want authors to dis
 **Flags**: IRW
 
 ---
-## Attr: ReportBuilder.globalFilterDateField
-
-### Description
-Name of the date/datetime field driven by the report-level date-range filter in the global filter bar. The selected range is published to the report [dataContext](Canvas_1.md#attr-canvasdatacontext) for every available DataSource that has a field of this name, so a single date range narrows all data views at once. Defaults to `"created"` -- the row audit timestamp present on the demo's DataSources. A DataSource without this field is simply left unfiltered by the date range.
-
-**Flags**: IRW
-
----
 ## Attr: ReportBuilder.reportDeploymentType
 
 ### Description
@@ -189,7 +181,7 @@ Form containing the DataSource picker. Scoped to manual palette-based component 
 ## Attr: ReportBuilder.autoLinkComponents
 
 ### Description
-When true, dropping two foreign-key-related data views (e.g. an Orders grid and an Order Items grid) automatically makes them master-detail: selecting a row in the master (the FK parent) narrows the detail (the FK child) to that record's children. The driving happens through the shared-criteria bus ([DataBoundComponent.shareSelection](#attr-databoundcomponentshareselection) on the master, default consumption on the detail); this toggle governs whether a newly-added view participates - a view added while it is off gets [sharedDataSelectionSources](#attr-canvasshareddataselectionsources) `"none"` (independent) - and whether the add-time pass announces new pairings and gives details their empty-selection prompt. Auto-pairings surface an auto-dismissing notification and a "Driven by" affordance, and can be changed or removed by the user. Turn this off for fully manual linking.
+When true, dropping two foreign-key-related data views (e.g. an Orders grid and an Order Items grid) automatically makes them master-detail: selecting a row in the master (the FK parent) narrows the detail (the FK child) to that record's children. The driving happens through the report's dataContext ([DataBoundComponent.publishSelection](#attr-databoundcomponentpublishselection) on the master, default consumption on the detail); this toggle governs whether a newly-added view participates - a view added while it is off gets [publishedSelectionSources](#attr-canvaspublishedselectionsources) `"none"` (independent) - and whether the add-time pass announces new pairings and gives details their empty-selection prompt. Auto-pairings surface an auto-dismissing notification and a "Driven by" affordance, and can be changed or removed by the user. Turn this off for fully manual linking.
 
 **Flags**: IRW
 
@@ -274,6 +266,14 @@ Label above [output.summary](#outputsummary) in the incomplete dialog. Only rend
 
 ### Description
 Cap on persisted AI prompt history records. Older records are trimmed in FIFO order once the cap is reached.
+
+**Flags**: IRW
+
+---
+## Attr: ReportBuilder.publishDeployingMessage
+
+### Description
+Message shown while a published report is being deployed. Deploying installs the report's DataSources, data, skin and screens into the deployment, so it takes noticeably longer than saving the report does.
 
 **Flags**: IRW
 
@@ -598,12 +598,30 @@ The log auto-hides shortly after the process completes (success or failure) so t
 **Flags**: R
 
 ---
+## Attr: ReportBuilder.defaultPaletteGroup
+
+### Description
+Which of the [ReportBuilder.paletteGroups](#attr-reportbuilderpalettegroups) a palette node declaring no `group` appears in.
+
+**Flags**: IR
+
+---
 ## Attr: ReportBuilder.reifyIntegration
 
 ### Description
 Master switch for Reify integration. When `false`, no `isc.Reify.*` call is reachable and the Reify module is never lazy-loaded. Sets the defaults for [ReportBuilder.showEditInReify](#attr-reportbuildershoweditinreify) and [ReportBuilder.showPublish](#attr-reportbuildershowpublish).
 
 Set this to `false` for standalone use under an Enterprise (Portals & Tools) license with no Reify dependency.
+
+**Flags**: IR
+
+---
+## Attr: ReportBuilder.paletteGroups
+
+### Description
+Folders of the [ReportBuilder.componentPalette](#attr-reportbuildercomponentpalette), in display order. Each entry is `{name, title}`; a palette node names its group through the `group` property and lands in [ReportBuilder.defaultPaletteGroup](#attr-reportbuilderdefaultpalettegroup) if it names none.
+
+Defaults to a `data` group holding the components that visualize a dataset and a `filtering` group holding those that filter one.
 
 **Flags**: IR
 
@@ -623,7 +641,9 @@ Title for the dialog shown on hard AI failure (error output, empty output, watch
 ## Attr: ReportBuilder.componentPalette
 
 ### Description
-Palette containing available component types. Data Views are standalone components that use the DataSource picker. Uses ListPalette so that setDefaultPalette works correctly and the framework handles drop positioning automatically.
+Palette containing available component types, grouped into folders by what the component does -- see [ReportBuilder.paletteGroups](#attr-reportbuilderpalettegroups). Data Views are standalone components that use the DataSource picker.
+
+A [TreePalette](../reference.md#class-treepalette) so that [EditPane.setDefaultPalette](EditPane.md#method-editpanesetdefaultpalette) works and the framework handles drop positioning automatically.
 
 **Flags**: R
 
@@ -816,6 +836,16 @@ A report that has never been saved has no name to save under and is left alone; 
 How many recent auto-saved versions the [Revert](#attr-reportbuildershowrevert) menu lists, in addition to the last manual save.
 
 **Flags**: IR
+
+---
+## Attr: ReportBuilder.publishedReportSignInPassword
+
+### Description
+Password set on the sign-in accounts of a published report. A published report is a deployed application and requires a sign-in; the accounts come from the project's sample users, and this is the password they are given.
+
+Not shown anywhere in the authoring UI; [ReportBuilder.publishReport](#method-reportbuilderpublishreport) is what applies it.
+
+**Flags**: IRW
 
 ---
 ## Attr: ReportBuilder.emptyMessageImage

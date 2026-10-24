@@ -4,6 +4,22 @@
 
 ---
 
+## Method: DataSource.getSummaryFunctionsJSONSchema
+
+### Description
+Returns a JSON Schema for a DSRequest `summaryFunctions` value against this DataSource — an object mapping field-path names to [SummaryFunction](../reference_2.md#type-summaryfunction) values (or arrays of SummaryFunctions).
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| settings | [JSONSchemaSettings](#type-jsonschemasettings) | true | — | Optional settings. |
+
+### Returns
+
+`[Object](../reference_2.md#type-object)|[String](#type-string)` — JSON Schema.
+
+---
 ## Method: DataSource.getPrimaryKeyField
 
 ### Description

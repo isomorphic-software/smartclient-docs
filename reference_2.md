@@ -711,6 +711,29 @@ The direction in which an item should lay out it's fields.
 | "vertical" | fields are placed vertically |
 
 ---
+## Type: DateGranularity
+
+### Description
+Size of the date buckets a facet's values represent, as declared by [Facet.dateGranularity](classes/Facet.md#attr-facetdategranularity).
+
+Every granularity names an **absolute** period, so January 2024 and January 2025 are separate buckets. That is the meaning of the ListGrid's `"monthAndYear"` [grouping mode](classes/ListGridField.md#attr-listgridfieldgroupingmode), and the grid's cross-year modes - which fold every January together whatever the year - have no equivalent here, because such a group cannot be named by a single date. The grid's spellings for the periods that _are_ absolute are accepted as synonyms, so `"monthAndYear"`, `"quarterAndYear"` and `"weekAndYear"` mean the same as `"month"`, `"quarter"` and `"year"`.
+
+### Values
+
+| Value | Description |
+|-------|-------------|
+| "second" | one bucket per second |
+| "minute" | one bucket per minute |
+| "hour" | one bucket per hour |
+| "day" | one bucket per day |
+| "week" | one bucket per week, starting on [DateUtil.getFirstDayOfWeek](classes/DateUtil.md#classmethod-dateutilgetfirstdayofweek) |
+| "month" | one bucket per calendar month |
+| "quarter" | one bucket per calendar quarter |
+| "year" | one bucket per calendar year |
+| "decade" | one bucket per decade |
+| "century" | one bucket per century |
+
+---
 ## Type: DateItemSelectorFormat
 
 ### Description
@@ -4108,7 +4131,7 @@ For example, in JavaScript:
 ## Object: DataContextCriteriaSettings
 
 ### Description
-A contribution to the [shared criteria](classes/DataContext.md#attr-datacontextsharedcriteria) of a [Canvas.dataContext](classes/Canvas_1.md#attr-canvasdatacontext), published with [Canvas.setDataContextCriteria](classes/Canvas_1.md#method-canvassetdatacontextcriteria): up to three sets of criteria, the DataSources they apply to, and an envelope describing the contributor.
+A contribution to the [shared criteria](classes/DataContext.md#attr-datacontextsharedcriteria) of a [Canvas.dataContext](classes/Canvas_1.md#attr-canvasdatacontext), published with [Canvas.setDataContextCriteria](classes/Canvas_1.md#method-canvassetdatacontextcriteria): up to three sets of criteria, the DataSources they apply to, and the contributor.
 
 ### Groups
 

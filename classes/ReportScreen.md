@@ -10,6 +10,14 @@
 The deployable frame around a [DataReport](DataReport.md#class-datareport): a VLayout stacking a report-level [ReportToolbar](ReportToolbar.md#class-reporttoolbar) (an autoChild, like a Window's header) above the DataReport body. This is the composite ReportBuilder authors and that a deployment renders like any other screen. Because the toolbar is an autoChild and [EditProxy.allowNestedDrops](EditProxy.md#attr-editproxyallownesteddrops) is false, Reify treats the ReportScreen as fixed chrome + a single editable content area (the DataReport) -- a viewer/author cannot drop components between the toolbar and the report.
 
 ---
+## Attr: ReportScreen.slicerBarEmptyMessageStyle
+
+### Description
+CSS style applied to [ReportScreen.slicerBarEmptyMessage](#attr-reportscreenslicerbaremptymessage). Defaults to the same style the report body uses for its own empty-state guidance, so the two read as one family rather than two unrelated greys.
+
+**Flags**: IRW
+
+---
 ## Attr: ReportScreen.destroyReportOnReplace
 
 ### Description
@@ -22,6 +30,30 @@ Note that once a DataReport has been destroyed it cannot be re-used elsewhere wi
 **Flags**: IRW
 
 ---
+## Attr: ReportScreen.showSlicerBar
+
+### Description
+Whether the report's filter bar is shown between the [ReportToolbar](ReportToolbar.md#class-reporttoolbar) and the report body. The bar holds the report's [DataReport.slicers](DataReport.md#attr-datareportslicers); with this false they are not shown, though a hidden slicer's criteria still reach the report.
+
+**Flags**: IR
+
+---
+## Attr: ReportScreen.showSlicerReset
+
+### Description
+Whether the filter bar offers a control returning its slicers to the selections the report's author saved. See [ReportScreen.resetSlicers](#method-reportscreenresetslicers).
+
+**Flags**: IR
+
+---
+## Attr: ReportScreen.slicerFlow
+
+### Description
+The wrapping row of slicers inside [ReportScreen.slicerBar](#attr-reportscreenslicerbar).
+
+**Flags**: R
+
+---
 ## Attr: ReportScreen.dataReport
 
 ### Description
@@ -30,12 +62,36 @@ The report body -- the [DataReport](DataReport.md#class-datareport) whose portle
 **Flags**: IR
 
 ---
+## Attr: ReportScreen.slicerBarEmptyMessage
+
+### Description
+Text shown across an empty filter bar, naming what the region is for. An empty bar is otherwise indistinguishable from blank space.
+
+**Flags**: IRW
+
+---
+## Attr: ReportScreen.slicerResetButton
+
+### Description
+Control that returns the filter bar's slicers to the author's saved selections. Centered beneath the slicers, in a fixed place of its own, so it does not move as slicers are added or removed.
+
+**Flags**: R
+
+---
 ## Attr: ReportScreen.dataReportConstructor
 
 ### Description
 Class used to build the [ReportScreen.dataReport](#attr-reportscreendatareport) autoChild.
 
 **Flags**: IR
+
+---
+## Attr: ReportScreen.slicerBar
+
+### Description
+The report's filter bar, holding the [DataReport.slicers](DataReport.md#attr-datareportslicers) of the report body in [ReportScreen.slicerFlow](#attr-reportscreenslicerflow) plus the reset control beneath them.
+
+**Flags**: R
 
 ---
 ## Attr: ReportScreen.dataReportProperties
@@ -72,5 +128,19 @@ The linked report body, or null. See [ReportScreen.setDataReport](#method-report
 ### Returns
 
 `[DataReport](#type-datareport)` — the report body, or null
+
+---
+## Method: ReportScreen.refreshSlicerBar
+
+### Description
+Rebuild the filter bar from the report body's [DataReport.slicers](DataReport.md#attr-datareportslicers). Called when the frame is created and whenever the report's slicers change.
+
+---
+## Method: ReportScreen.resetSlicers
+
+### Description
+Return the report's filter-bar slicers to the selections its author saved, discarding the current reader's choices.
+
+A slicer the author marked hidden is left alone: its selection is the author's constraint rather than the reader's, and the reader has no control for it.
 
 ---

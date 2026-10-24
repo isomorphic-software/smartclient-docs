@@ -661,7 +661,7 @@ Enables interactive selection of the chart's data values: clicking a pie slice, 
 
 A click REPLACES the selection by default, ctrl-click (the meta key on a Mac) adds to or removes from it, and clicking chart whitespace or re-clicking the only selected value clears it. See [FacetChart.selectionType](#attr-facetchartselectiontype) for the other gesture styles, including the accumulate-on-every-click behavior.
 
-While a selection exists, selected values render at full strength and all other data is de-emphasized (see [FacetChart.selectionMutePercent](#attr-facetchartselectionmutepercent)).
+While a selection exists, selected values render at full strength and all other data is de-emphasized (see [FacetChart.unselectedFadePercent](#attr-facetchartunselectedfadepercent)).
 
 What a click selects depends on what it lands on. A bar, column, histogram segment, pie slice or data point identifies a single value, and selects it. In a Line, Area or Radar chart a series is drawn as one shape spanning every value it holds, so a click on that band or line identifies the SERIES rather than any one value, and selects it as a facet value - which requires [FacetChart.canSelectFacetValues](#attr-facetchartcanselectfacetvalues). Show [data points](#attr-facetchartshowdatapoints) to make the individual values of those charts selectable too.
 
@@ -1119,7 +1119,9 @@ Whether to draw lines between adjacent data points in "Scatter" plots. See also 
 ## Attr: FacetChart.brightenPercent
 
 ### Description
-When [FacetChart.highlightDataValues](#attr-facetcharthighlightdatavalues) is true, sets the percentage by which to brighten filled data-shapes in some [chart-types](#attr-facetchartcharttype) as the mouse is moved over the chart. Affects Bar, Column, Histogram, Pie, Doughnut, Line, Area and Radar charts, and will brighten either the shape's fill-color or its border-color, depending on [FacetChart.brightenAllOnHover](#attr-facetchartbrightenallonhover).
+When [FacetChart.highlightDataValues](#attr-facetcharthighlightdatavalues) is true, sets the percentage by which to brighten filled data-shapes in some [chart-types](#attr-facetchartcharttype) as the mouse is moved over the chart. Affects Bar, Column, Histogram, Pie, Doughnut, Line, Area and Radar charts, and brightens the shape's fill-color or, where [FacetChart.brightenAllOnHover](#attr-facetchartbrightenallonhover) is `false`, its border-color.
+
+A value's SELECTED appearance is half this percentage, so normal, selected and rolled-over read as three even steps from the color the value rests at.
 
 Valid values are between 0 and 100, inclusive.
 
@@ -1285,20 +1287,6 @@ Space between the legend and the chart rect or axis labels (whatever the legend 
 - legend
 
 **Flags**: IR
-
----
-## Attr: FacetChart.selectionMutePercent
-
-### Description
-While [a value selection](#attr-facetchartcanselectvalues) exists, how far data colors for NON-selected values recede toward the chart's background, so that the selection reads at full strength.
-
-The blend happens in the oklch color space, which closes the lightness gap to the background and drops chroma at the same time. Lightening alone does neither reliably: it keeps a color's chroma, so a mid-tone green lightened by 60% becomes a vivid pale green that is more eye-catching than the color it was meant to de-emphasize, not less. [FacetChart.selectionMuteChromaPercent](#attr-facetchartselectionmutechromapercent) removes further chroma for backgrounds that are not near-neutral.
-
-### Groups
-
-- selectionSharing
-
-**Flags**: IRW
 
 ---
 ## Attr: FacetChart.titleProperties
@@ -1746,9 +1734,13 @@ By default, all ticks are shown as major ticks.
 ### Description
 When [FacetChart.highlightDataValues](#attr-facetcharthighlightdatavalues) is true, should the whole draw-area of the data-value be brightened by [a percentage](#attr-facetchartbrightenpercent), or just its border?
 
-By default, only the border around the draw-area is brightened.
+By default the whole draw-area is brightened. Set `false` to leave the fill alone, in which case the rollover shows only on the value's border - and so is visible only where the value has one, which means [FacetChart.showValueBorders](#attr-facetchartshowvalueborders) is `true`, or the value is selected, or a [style series](#attr-facetchartvaluestyle) declares one.
 
 Only affects the [chart-types](#attr-facetchartcharttype) that highlight on rollover - see [FacetChart.highlightDataValues](#attr-facetcharthighlightdatavalues).
+
+### See Also
+
+- [FacetChart.showValueBorders](#attr-facetchartshowvalueborders)
 
 **Flags**: IRW
 
@@ -2395,7 +2387,7 @@ Margin between [multiple value axes](#attr-facetchartextraaxismetrics).
 ### Description
 Should the draw-area of nearby filled data-value shapes be highlighted as the mouse is moved over some [chart-types](#attr-facetchartcharttype)?
 
-When set to true, data-shapes in Bar, Column, Histogram, Pie, Doughnut, Line, Area and Radar charts can be highlighted by [brightening](#attr-facetchartbrightenallonhover) their fill or border colors by a [percentage](#attr-facetchartbrightenpercent), and by applying a [shadow](#attr-facetchartdatavaluehovershadow) around them. In a Line, Area or Radar chart the shape is the whole series, so hovering anywhere on its band or line highlights that series.
+When set to true, data-shapes in Bar, Column, Histogram, Pie, Doughnut, Line, Area and Radar charts are highlighted by brightening their fill by a [percentage](#attr-facetchartbrightenpercent) - or, where [FacetChart.brightenAllOnHover](#attr-facetchartbrightenallonhover) is `false`, their border instead - and by applying a [shadow](#attr-facetchartdatavaluehovershadow) around them. In a Line, Area or Radar chart the shape is the whole series, so hovering anywhere on its band or line highlights that series.
 
 **Flags**: IRW
 
@@ -3174,6 +3166,24 @@ Requires [FacetChart.canSelectFacetValues](#attr-facetchartcanselectfacetvalues)
 **Flags**: IRW
 
 ---
+## Attr: FacetChart.highlightNearestValue
+
+### Description
+When [FacetChart.highlightDataValues](#attr-facetcharthighlightdatavalues) is true, may a value be highlighted while the mouse is merely NEAR it rather than on it?
+
+Asked for the drawn value at a point, a chart answers with the nearest one, and for a Bar or Column that means nearest along the data axis only - the value whose column you are pointing at the column of, whether or not you are pointing at the bar itself. That is what the floating [value label](#attr-facetchartshowvalueonhover) wants, and as a purely visual guide it is often what the rollover wants too.
+
+It is not what a selectable chart wants. Clicking is hit-tested against the shape, so a value highlighted from across the plot is one a click will not select - the chart would be pointing at something it is about to ignore. Left unset, nearest-value highlighting is therefore allowed except where [FacetChart.canSelectValues](#attr-facetchartcanselectvalues) or [FacetChart.canSelectFacetValues](#attr-facetchartcanselectfacetvalues) is on, in which case the highlight is confined to the shape under the mouse.
+
+The value label follows the nearest value either way; this setting governs the rollover appearance alone.
+
+### See Also
+
+- [FacetChart.getNearestDrawnValue](#method-facetchartgetnearestdrawnvalue)
+
+**Flags**: IRW
+
+---
 ## Attr: FacetChart.pointShapes
 
 ### Description
@@ -3743,6 +3753,20 @@ Properties for title background (if being drawn).
 ### Groups
 
 - chartTitle
+
+**Flags**: IRW
+
+---
+## Attr: FacetChart.unselectedFadePercent
+
+### Description
+While [a value selection](#attr-facetchartcanselectvalues) exists, how far data colors for NON-selected values recede toward the chart's background, so that the selection reads at full strength.
+
+The blend happens in the oklch color space, which closes the lightness gap to the background and drops chroma at the same time. Lightening alone does neither reliably: it keeps a color's chroma, so a mid-tone green lightened by 60% becomes a vivid pale green that is more eye-catching than the color it was meant to de-emphasize, not less. [FacetChart.unselectedDesaturatePercent](#attr-facetchartunselecteddesaturatepercent) removes further chroma for backgrounds that are not near-neutral.
+
+### Groups
+
+- selectionSharing
 
 **Flags**: IRW
 

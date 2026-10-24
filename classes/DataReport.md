@@ -24,6 +24,18 @@ Suggested recipient email addresses offered in the Share / Schedule dialogs. A d
 **Flags**: IRW
 
 ---
+## Attr: DataReport.slicers
+
+### Description
+Slicers shown in the report's filter bar, in bar order.
+
+A filter-bar slicer is not a portlet: the report's author arranges the bar, and a viewer of the deployed report can neither remove nor reorder what is in it. A slicer placed in the report body instead is an ordinary portlet, with the usual close, minimize and drag behavior, and does not appear in this list.
+
+A bar slicer whose [Slicer.visibility](Slicer.md#attr-slicervisibility) is `"hidden"` is not created in a deployed report at all; only the criteria it carries reach the report, through the [dataContext](Canvas_1.md#attr-canvasdatacontext). Whether the bar is shown at all is [ReportScreen.showSlicerBar](ReportScreen.md#attr-reportscreenshowslicerbar).
+
+**Flags**: IR
+
+---
 ## Attr: DataReport.reportTitle
 
 ### Description
@@ -87,6 +99,8 @@ Export the whole report to a single multi-sheet Excel workbook -- one sheet per 
 ### Description
 Re-show a single component the viewer has hidden (see [DataReport.willClosePortlet](#method-datareportwillcloseportlet)), returning it to the layout position implied by where its recorded neighbor now sits.
 
+The component comes back as it was: hiding does not clear its selection or criteria, so restored Slicer still carries its value and a restored grid its selection.
+
 ### Parameters
 
 | Name | Type | Optional | Default | Description |
@@ -114,6 +128,16 @@ Re-show every component the viewer has hidden, reconstructing the original layou
 
 ### Description
 Re-show every viewer-hidden component. Synonym for [DataReport.restoreAll](#method-datareportrestoreall).
+
+---
+## Method: DataReport.getSlicers
+
+### Description
+The report's filter-bar slicers. See [DataReport.slicers](#attr-datareportslicers).
+
+### Returns
+
+`[Array of Slicer](#type-array-of-slicer)` — the filter-bar slicers; empty if the report has none
 
 ---
 ## Method: DataReport.setReportTitle

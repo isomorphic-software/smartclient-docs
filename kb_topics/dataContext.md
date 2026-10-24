@@ -11,10 +11,9 @@ A [Canvas.dataContext](../classes/Canvas_1.md#attr-canvasdatacontext) binds the 
 
 A dataContext's DataSources are also exposed to [rule context](#rulescope) as `dataContext.`<DataSourceID>``, so visibility, validation and dynamic criteria can react to "the current Customer" without a component fetching it; and [Canvas.testDataContext](../classes/Canvas_1.md#attr-canvastestdatacontext) supplies sample records when none is set, so a screen can be built and tested in isolation.
 
-A dataContext may also carry a reserved `sharedCriteria` key: a shared-criteria bus that every subscribing component folds into its fetch, contributed through [Canvas.setDataContextCriteria](../classes/Canvas_1.md#method-canvassetdatacontextcriteria) and carrying the envelope in [DataContextCriteriaSettings](../reference_2.md#object-datacontextcriteriasettings). Two features publish onto it:
+A dataContext may also carry a reserved `sharedCriteria` key: a shared-criteria bus that every subscribing component folds into its fetch, contributed through [Canvas.setDataContextCriteria](../classes/Canvas_1.md#method-canvassetdatacontextcriteria) and carrying the envelope in [DataContextCriteriaSettings](../reference_2.md#object-datacontextcriteriasettings). Authored filter controls and components that share their own criteria publish onto it ([Canvas.shareCriteria](../classes/Canvas_1.md#attr-canvassharecriteria), consumed per [Canvas.useDataContextCriteria](../classes/Canvas_1.md#attr-canvasusedatacontextcriteria); a [Slicer](../classes/Slicer.md#class-slicer) is the common example), and their contributions are part of the saved screen.
 
-*   **Filter sharing** - authored filter controls and components that share their own criteria ([Canvas.shareCriteria](../classes/Canvas_1.md#attr-canvassharecriteria), consumed per [Canvas.useDataContextCriteria](../classes/Canvas_1.md#attr-canvasusedatacontextcriteria); a [Slicer](../classes/Slicer.md#class-slicer) is the common example): "filter"-type contributions, part of the saved screen.
-*   **Selection sharing** - a selection in one component narrowing others ([selectionSharing](#kb-topic-selectionsharing)): "dataSelection"-type contributions, interaction state that is never serialized.
+Selections are shared through the same dataContext but not on this bus: a component publishes its selection itself, and each other component derives what it does with it (see [selectionSharing](#kb-topic-selectionsharing)). Published selections are interaction state and are never serialized.
 
 ### Related
 

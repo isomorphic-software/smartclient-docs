@@ -1677,6 +1677,8 @@ If set, titles are automatically derived from [field.name](DataSourceField.md#at
 ### Description
 When true, indicates that any updates for this DataSource include only those fields that have actually changed (and primaryKey fields); when false (the default), all field values are included in updates, whether they have changed or not
 
+This is about the update _requests_ this DataSource sends. [CacheSyncData](../reference.md#type-cachesyncdata) is the same idea applied in the other direction: whether the records coming back, and applied to client-side caches, are complete rows or only the fields that changed.
+
 **Flags**: IR
 
 ---
@@ -5650,6 +5652,8 @@ Notification method fired when a DataSource operation such as an [add](#method-d
 
 This method is used by [ResultSet](ResultSet.md#class-resultset)s to keep the user-visible data up to date as changes are made, and by components that have no cache manager - see [DynamicForm.cacheSync](DynamicForm.md#attr-dynamicformcachesync).
 
+Code observing this method should not assume the records in the response are complete rows: [CacheSyncData](../reference.md#type-cachesyncdata) lets an update carry only the primary keys plus the fields that changed. [DataSource.updateCaches](#method-datasourceupdatecaches) describes both modes.
+
 Note: rather than overriding this method, we recommend using [observation](Class.md#method-classobserve) to be notified when it is fired.
 
 ### Parameters
@@ -6817,21 +6821,5 @@ Remove a particular file version stored in this DataSource. Any other versions o
 ### Groups
 
 - fileSource
-
----
-## Method: DataSource.getSummaryFunctionsJSONSchema
-
-### Description
-Returns a JSON Schema for a DSRequest `summaryFunctions` value against this DataSource — an object mapping field-path names to [SummaryFunction](../reference_2.md#type-summaryfunction) values (or arrays of SummaryFunctions).
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| settings | [JSONSchemaSettings](#type-jsonschemasettings) | true | — | Optional settings. |
-
-### Returns
-
-`[Object](../reference_2.md#type-object)|[String](#type-string)` — JSON Schema.
 
 ---

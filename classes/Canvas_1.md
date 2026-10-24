@@ -6661,7 +6661,7 @@ Publishes a contribution to the [sharedCriteria](DataContext.md#attr-datacontext
 
 **Three kinds of criteria.** A contribution may carry any of:
 
-*   [beforeCriteria](DataContextCriteriaSettings.md#attr-datacontextcriteriasettingsbeforecriteria) - criteria on the records, applied to each component's fetches as [DSRequest.beforeCriteria](DSRequest.md#attr-dsrequestbeforecriteria): before aggregation by a component that aggregates, as ordinary criteria by one that does not. A test on raw records means the same to every component, so this is the kind for filter controls such as a [Slicer](Slicer.md#class-slicer) or a date range, and the kind selection sharing publishes.
+*   [beforeCriteria](DataContextCriteriaSettings.md#attr-datacontextcriteriasettingsbeforecriteria) - criteria on the records, applied to each component's fetches as [DSRequest.beforeCriteria](DSRequest.md#attr-dsrequestbeforecriteria): before aggregation by a component that aggregates, as ordinary criteria by one that does not. A test on raw records means the same to every component, so this is the kind for filter controls such as a [Slicer](Slicer.md#class-slicer) or a date range.
 *   [afterCriteria](DataContextCriteriaSettings.md#attr-datacontextcriteriasettingsaftercriteria) - criteria on totals, applied as [DSRequest.afterCriteria](DSRequest.md#attr-dsrequestaftercriteria) only by a component whose request groups, and groups or summarizes every field the criteria test. Every other component ignores them (logged at DEBUG level): it has no such totals, and applying the test to its records would contradict the components that do filter their totals with it.
 *   [criteria](DataContextCriteriaSettings.md#attr-datacontextcriteriasettingscriteria) - ordinary criteria, combined into each component's criteria; a component that aggregates splits them per field like any criteria of its request (see the [Server Summaries\\n Overview](../kb_topics/serverSummaries.md#kb-topic-server-summaries)).
 
@@ -8338,7 +8338,7 @@ Set the [Canvas.edgeOpacity](#attr-canvasedgeopacity) and mark the canvas for re
 ## Method: Canvas.dataContextChanged
 
 ### Description
-Notification fired when [DataContext](../reference_2.md#object-datacontext) is bound. This can occur on the initial draw, via [Canvas.setDataContext](#method-canvassetdatacontext), or via [Canvas.setDataContextCriteria](#method-canvassetdatacontextcriteria).
+Notification fired when [DataContext](../reference_2.md#object-datacontext) is bound. This can occur on the initial draw, via [Canvas.setDataContext](#method-canvassetdatacontext), via [Canvas.setDataContextCriteria](#method-canvassetdatacontextcriteria), or when a component in the dataContext's scope publishes or clears a selection.
 
 This feature allows use of `dataContext` as a general-purpose API to the screen. For example, you could show/hide parts of a screen based on external state placed in `dataContext`.
 

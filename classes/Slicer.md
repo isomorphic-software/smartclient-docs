@@ -51,6 +51,18 @@ Convenience for single-select chip mode with radio-button visual styling. Equiva
 **Flags**: IR
 
 ---
+## Attr: Slicer.dataSources
+
+### Description
+The DataSources this Slicer's criteria apply to, when it should reach more than the one named by its [Slicer.field](#attr-slicerfield).
+
+A slicer normally filters the single DataSource its field belongs to. A filter often wants every dataset that carries the field instead -- "Region" narrowing orders, shipments and returns together -- and this names them. The DataSource in `field` is still the one the control itself reads, for the field's type and for its selectable values; the others receive the published criteria.
+
+Unset, the slicer applies to its field's DataSource alone. The list is carried on the contribution the slicer publishes through [Canvas.setDataContextCriteria](Canvas_1.md#method-canvassetdatacontextcriteria).
+
+**Flags**: IR
+
+---
 ## Attr: Slicer.multiSelect
 
 ### Description
@@ -136,6 +148,21 @@ The Slicer's current selection, expressed as the [AdvancedCriteria](../reference
 **Flags**: IRW
 
 ---
+## Attr: Slicer.visibility
+
+### Description
+Whether a reader of the deployed report sees this slicer.
+
+*   `"editable"` (default) — shown, and the reader may change it.
+*   `"hidden"` — not shown in the deployed report at all; the criteria the author left in it still filter, reaching the report through the [dataContext](Canvas_1.md#attr-canvasdatacontext).
+
+Applies to a slicer in a report's filter bar (see [DataReport.slicers](DataReport.md#attr-datareportslicers)). A slicer placed in the report body is an ordinary portlet, which a reader may hide with the usual control, so this does not apply to one.
+
+An authoring tool shows a hidden slicer regardless, so that it can be found and un-hidden.
+
+**Flags**: IR
+
+---
 ## Attr: Slicer.field
 
 ### Description
@@ -190,6 +217,24 @@ Set to `false` to restrict the Slicer's criteria to only components bound to the
 - [Canvas.setDataContextCriteria](Canvas_1.md#method-canvassetdatacontextcriteria)
 
 **Flags**: IRW
+
+---
+## Method: Slicer.setVisibility
+
+### Description
+Set whether a reader of the deployed report sees this slicer. See [Slicer.visibility](#attr-slicervisibility).
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| visibility | [String](#type-string) | false | — | "editable" or "hidden" |
+
+---
+## Method: Slicer.resetFilter
+
+### Description
+Return this Slicer to the selection its author saved with the report, discarding whatever the current reader has chosen. A Slicer the author saved with no selection clears instead.
 
 ---
 ## Method: Slicer.clearFilter

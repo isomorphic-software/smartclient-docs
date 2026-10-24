@@ -7,7 +7,7 @@
 ## Class: GroupingMessages
 
 ### Description
-Grouping titles that will be displayed when data is grouped in a [ListGrid](ListGrid_1.md#class-listgrid).
+Grouping titles that will be displayed when data is grouped in a [ListGrid](ListGrid_1.md#class-listgrid), or when a [FacetChart](FacetChart.md#class-facetchart) labels date buckets declared with `facet.dateGranularity` - both localize from here, so a grid and a chart name the same bucket identically.
 
 ---
 ## ClassAttr: GroupingMessages.byMillisecondsTitle

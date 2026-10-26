@@ -133,7 +133,7 @@ When [ProcessElement.waitFor](#attr-processelementwaitfor) or [Process.defaultWa
 ## Attr: ProcessElement.bindOutput
 
 ### Description
-When set, the output of the task will be automatically bound to the specified value in the [process state](Process.md#attr-processstate).
+When set, the output of the task will be automatically bound to the specified value in the [process state](Process.md#attr-processstate). A leading "$" is optional. See [taskIO](../kb_topics/taskIO.md#kb-topic-task-input--output).
 
 See [taskInputExpressions](../reference_2.md#type-taskinputexpression) for details on the transient state outputs.
 
@@ -292,7 +292,7 @@ This method is a helper to implement task-specific [ProcessElement.updateLastEle
 ## Method: ProcessElement.getTextFormulaValue
 
 ### Description
-Resolves a [UserSummary](../reference_2.md#object-usersummary) value against the current [rule context](Canvas_1.md#attr-canvasrulescope).
+Resolves a [UserSummary](../reference.md#object-usersummary) value against the current [rule context](Canvas_1.md#attr-canvasrulescope).
 
 ### Parameters
 
@@ -575,7 +575,7 @@ Sets the [process](Process.md#class-process) executing this task instance making
 ## Method: ProcessElement.updateGlobalIDInTextFormula
 
 ### Description
-Updates [text formula](../reference_2.md#object-usersummary) containing ruleScope references.
+Updates [text formula](../reference.md#object-usersummary) containing ruleScope references.
 
 This method is a helper to implement task-specific [ProcessElement.updateGlobalIDReferences](#method-processelementupdateglobalidreferences).
 

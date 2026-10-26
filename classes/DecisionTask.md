@@ -65,7 +65,7 @@ Simple or [AdvancedCriteria](../reference.md#object-advancedcriteria) to be appl
 
 Data values in this criteria prefixed with "$" will be treated as dynamic expressions as detailed in [TaskInputExpression](../reference_2.md#type-taskinputexpression). Specifically, this means that for simple criteria, any property value that is a String and is prefixed with "$" will be assumed to be an expression, and for AdvancedCriteria, the same treatment will be applied to [Criterion.value](Criterion.md#attr-criterionvalue).
 
-Note that dynamic expressions starting with "$input" are not applicable for a DecisionTask but "$inputRecord" can be used for direct reference to [Process.state](Process.md#attr-processstate).
+A DecisionTask has no [inputs](Task.md#attr-taskinputs), so in its criteria "$input" refers directly to [Process.state](Process.md#attr-processstate).
 
 This property supports [dynamicCriteria](../kb_topics/dynamicCriteria.md#kb-topic-dynamiccriteria) - use [Criterion.valuePath](Criterion.md#attr-criterionvaluepath) to refer to values in the [Process.ruleScope](Process.md#attr-processrulescope).
 

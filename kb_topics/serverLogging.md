@@ -57,7 +57,7 @@ _See our [Logging migration](loggingMigration.md#kb-topic-logging-migration) rec
 
 #### Third-party libraries depending on Slf4j
 
-Smartclient uses Quartz Scheduler 2.3.1 and also continues to support Hibernate 3, both of which depend on Slf4j for their internal logging. So, we are shipping with the set of dependencies redirecting Hibernate and Quartz logging to the Log4j 2 using the [Log4j 2.x Slf4j binding](https://logging.apache.org/log4j/2.x/log4j-slf4j-impl/index.html) approach, so that the internal logging goes: _Hibernate -> Slf4j -> Slf4j to Log4j 2.x binding -> Log4j 2.x_.
+Third-party libraries such as Hibernate and Quartz depend on Slf4j for their internal logging. The SDK ships with the Log4j 2.x SLF4J binding (`log4j-slf4j2-impl`) so that third-party logging is routed to Log4j 2: _Hibernate -> Slf4j -> log4j-slf4j2-impl -> Log4j 2.x_.
 
 #### Special logging category: com.isomorphic.SLOW\_SQL
 

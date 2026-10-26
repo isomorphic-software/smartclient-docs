@@ -620,6 +620,28 @@ Resolves this Process's effective error task: [Process.errorTaskRef](#attr-proce
 `[String](#type-string)` — ID of the effective error task, or null if none resolves
 
 ---
+## Method: Process.getExpressionValue
+
+### Description
+Get the value of a [TaskInputExpression](../reference_2.md#type-taskinputexpression) against this process, for example "$state.orderId", "$last.name" or "$ruleScope.customerName". A String that does not start with "$" is treated as a [StatePath](../reference_2.md#type-statepath) into [Process.state](#attr-processstate); any other non-null value is a literal and returned unchanged.
+
+`$input` refers to the inputs of a specific task, so it is not resolved here and such expressions are returned unchanged; use [Task.getExpressionValue](Task.md#method-taskgetexpressionvalue) to evaluate an expression on behalf of a task.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| expression | [TaskInputExpression](../reference_2.md#type-taskinputexpression)|[Any](#type-any) | false | — | expression to evaluate, or a StatePath |
+
+### Returns
+
+`[Any](#type-any)` — value of expression
+
+### Groups
+
+- taskIO
+
+---
 ## Method: Process.getEditContext
 
 ### Description
@@ -651,7 +673,7 @@ Checks whether [Process.errorTaskRef](#attr-processerrortaskref)'s target is **a
 ### Description
 Apply the state updates specified by [Process.setStateVariable](#method-processsetstatevariable) to the process state.
 
-`stateUpdates` is a mapping from a [setterPath](../reference_2.md#type-setterpath) to a ${TaskInputExpression} or other value.
+`stateUpdates` is a mapping from a [StatePath](../reference_2.md#type-statepath) to a [TaskInputExpression](../reference_2.md#type-taskinputexpression) or other value.
 
 `stateUpdates` can declare nested structures, and `TaskInputExpressions` are allowed anywhere in the nested declaration.
 
@@ -673,7 +695,7 @@ In this example, the output is appended to the "currentDS.fields" array in [Proc
 |------|------|----------|---------|-------------|
 | stateUpdates | [Object](../reference_2.md#type-object) | false | — | state updates to apply |
 | inputRecord | [Object](../reference_2.md#type-object) | true | — | record to use as the source for any $input [TaskInputExpression](../reference_2.md#type-taskinputexpression) properties. |
-| strict | [Boolean](#type-boolean) | true | — | if true, the paths must exist in the state to be set. Otherwise, the paths will be created if not existing. Defaults to `process.strictPaths` when null. |
+| strict | [Boolean](#type-boolean) | true | — | if true, intermediate segments of each path must already exist in the state (see [StatePath](../reference_2.md#type-statepath)). Otherwise, missing intermediate objects are created. Defaults to [Process.strictPaths](#attr-processstrictpaths) when null. |
 
 ---
 ## Method: Process.fail
@@ -728,7 +750,7 @@ Returns a variable value from the [process state](#attr-processstate). Values ca
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| stateVariablePath | [String](#type-string) | false | — | path to variable in process state to set. segments are separated by a decimal point (.) |
+| statePath | [StatePath](../reference_2.md#type-statepath) | false | — | path to the value in the process state to retrieve |
 
 ### Returns
 
@@ -746,9 +768,9 @@ The path, which is one or more valid identifiers separated by periods, is used t
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| stateVariablePath | [SetterPath](../reference_2.md#type-setterpath) | false | — | path to the variable in the process state to set. |
+| statePath | [StatePath](../reference_2.md#type-statepath) | false | — | path to the variable in the process state to set. |
 | value | [Any](#type-any) | false | — | the value to save |
-| strict | [Boolean](#type-boolean) | true | — | if true, the path must exist in the state to be set. Otherwise, the path will be created if it does not exist. Defaults to `process.strictPaths` when null. |
+| strict | [Boolean](#type-boolean) | true | — | if true, intermediate segments of the path must already exist in the state (see [StatePath](../reference_2.md#type-statepath)). Otherwise, missing intermediate objects are created. Defaults to [Process.strictPaths](#attr-processstrictpaths) when null. |
 
 ---
 ## Method: Process.setNextElement
@@ -872,7 +894,7 @@ Providing `priorTaskOutputs` means that [TaskInputExpressions](../reference_2.md
 
 If `state` is supplied, it is used as the temporary process state for this call (the original state is preserved). If `ruleScope` is supplied, it replaces the normal [ruleScope determination](#attr-processrulescope) for this invocation only.
 
-When the task completes, `callback` (a [Callbacks.RunTaskCallback](Callbacks.md#method-callbacksruntaskcallback)) is invoked with the task, process, and any outputs the task produced (for example, a CoTTask’s `$outputs`).
+When the task completes, `callback` (a [Callbacks.RunTaskCallback](Callbacks.md#method-callbacksruntaskcallback)) is invoked with the task, process, and any outputs the task produced (for example, a CoTTask's `$outputs`).
 
 ### Parameters
 

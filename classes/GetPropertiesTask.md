@@ -15,7 +15,7 @@ For a canvas the [componentId](ComponentTask.md#attr-componenttaskcomponentid) s
 
 The next task might be a save operation on a DataSource, or SetPropertiesTask to copy settings from one component to another.
 
-GetPropertiesTask _is an advanced and rarely used task_. If you need a component property to be dynamic, you can configure that property as a [Dynamic Property](Class.md#attr-classdynamicproperties) without the need for a Workflow. _Dynamic Properties_ created this way automatically update as your users make changes.
+GetPropertiesTask _is an advanced and rarely used task_. If you need a component property to be dynamic, you can configure that property as a [Dynamic Property](../kb_topics/dynamicProperties.md#kb-topic-dynamic-properties) without the need for a Workflow. _Dynamic Properties_ created this way automatically update as your users make changes.
 
 ---
 ## Attr: GetPropertiesTask.targetFieldName

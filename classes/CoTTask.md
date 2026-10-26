@@ -109,7 +109,7 @@ When AI produces a non-transition result, typically it just needs to be stored t
   },
  
 ```
-Shown above is a shorthand format; in general `stateUpdates` is a mapping from a [statePath](../reference_2.md#type-statepath) to a ${TaskInputExpression} or other value.
+Shown above is a shorthand format; in general `stateUpdates` is a mapping from a [statePath](../reference_2.md#type-statepath) to a [TaskInputExpression](../reference_2.md#type-taskinputexpression) or other value.
 ```
  { ID:"addField", title: "Add Field", ... other properties ...
     stateUpdates : {

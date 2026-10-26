@@ -76,7 +76,7 @@ If automatic cache synchronization isn't working, troubleshoot the problem using
 
 Regarding [operationIds](OperationBinding.md#attr-operationbindingoperationid) and how they affect caching: cache synchronization is **not** scoped by operationId. Every ResultSet on the DataSource is notified of an update, whatever operationId its own data was fetched with, so separate operationIds do not give a component a private cache.
 
-[cacheSyncOperation](OperationBinding.md#attr-operationbindingcachesyncoperation) selects the fetch the _server_ uses to re-read the updated row; it does not limit which caches the result is then applied to.
+[cacheSyncOperation](#attr-operationbindingcachesyncoperation) selects the fetch the _server_ uses to re-read the updated row; it does not limit which caches the result is then applied to.
 
 This matters where components on one DataSource fetch different sets of fields, since a record from one operation is applied to all of them - see [DSRequest.cacheSyncData](DSRequest.md#attr-dsrequestcachesyncdata) to apply only the fields that changed, or [ResultSet.dropCacheOnUpdate](#attr-resultsetdropcacheonupdate) and [DSResponse.invalidateCache](DSResponse.md#attr-dsresponseinvalidatecache) where a component should refetch instead.
 
@@ -363,7 +363,7 @@ A ResultSet that has a complete cache for the current filter criteria can potent
 ## Attr: ResultSet.useClientFiltering
 
 ### Description
-Whether to filter data locally when we have a complete cache of all DataSource records for the current criteria, and the user further restricts the criteria (see [DataSource.compareCriteria](DataSource_2.md#method-datasourcecomparecriteria)).
+Whether to filter data locally when we have a complete cache of all DataSource records for the current criteria, and the user further restricts the criteria (see [DataSource.compareCriteria](DataSource_1.md#method-datasourcecomparecriteria)).
 
 This may need to be disabled if client-side filtering differs from server-side filtering in a way that affects functionality or is surprising.
 
@@ -1096,9 +1096,9 @@ Note that if [progressive loading](DataSource_1.md#attr-datasourceprogressiveloa
 ## Method: ResultSet.compareCriteria
 
 ### Description
-Default behavior is to call [DataSource.compareCriteria](DataSource_2.md#method-datasourcecomparecriteria) to determine whether new criteria is guaranteed more restrictive, equivalent to the old criteria, or not guaranteed more restrictive, returning 1, 0 or -1 respectively. See [DataSource.compareCriteria](DataSource_2.md#method-datasourcecomparecriteria) for a full explanation of the default behavior.
+Default behavior is to call [DataSource.compareCriteria](DataSource_1.md#method-datasourcecomparecriteria) to determine whether new criteria is guaranteed more restrictive, equivalent to the old criteria, or not guaranteed more restrictive, returning 1, 0 or -1 respectively. See [DataSource.compareCriteria](DataSource_1.md#method-datasourcecomparecriteria) for a full explanation of the default behavior.
 
-Override this method or [DataSource.compareCriteria](DataSource_2.md#method-datasourcecomparecriteria) to implement your own client-side filtering behavior.
+Override this method or [DataSource.compareCriteria](DataSource_1.md#method-datasourcecomparecriteria) to implement your own client-side filtering behavior.
 
 ### Parameters
 

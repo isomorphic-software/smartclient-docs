@@ -16,7 +16,7 @@ The following objects/values are always available to template expressions:
 *   **process** — the owning [CoTProcess](../classes/CoTProcess.md#class-cotprocess) instance (ID, policies, etc)
 *   **goal** — equivalent to process.goal
 *   **state** — the shared [CoTProcess.state](../classes/Process.md#attr-processstate) object for the workflow
-*   **inputs** — inputs to this task if specified as [task.inputs](../classes/Task.md#attr-taskinputs); the same data returned by [Task.getInputRecord](../classes/Task.md#method-taskgetinputrecord) (may be absent if inputs were not defined)
+*   **inputs** — inputs to this task if specified as [task.inputs](../classes/Task.md#attr-taskinputs); the same data returned by [Task.getInputRecord](../classes/Task.md#method-taskgetinputrecord) (the whole process state when no inputs are defined)
 
 #### Helper functions
 

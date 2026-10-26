@@ -91,8 +91,8 @@ For an asynchronous task, the return value is ignored and the task should call [
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| input | [Any](#type-any) | false | — | the task input |
-| inputRecord | [Record](#type-record) | false | — | the task input record if `inputs` is specified. See [taskIO](../kb_topics/taskIO.md#kb-topic-task-input--output) |
+| input | [Any](#type-any) | false | — | the task input - its [input record](Task.md#method-taskgetinputrecord): the declared [inputs](Task.md#attr-taskinputs), or a shallow copy of the whole process state when none are declared. When `inputs` is a single String, it is instead the value that String refers to. See [taskIO](../kb_topics/taskIO.md#kb-topic-task-input--output) |
+| inputRecord | [Record](#type-record) | false | — | retained for compatibility: always the input record, so it differs from `input` only when `inputs` is a single String. New code should use `input` |
 
 ### Returns
 

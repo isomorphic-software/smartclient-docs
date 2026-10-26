@@ -55,9 +55,13 @@ Special expression to write task output directly into a [DataBoundComponent](../
 ## Attr: Task.inputs
 
 ### Description
-Defines how fields in the [process state](Process.md#attr-processstate) are extracted for the input record to this task.
+Defines how fields in the [process state](Process.md#attr-processstate) are extracted for the [input record](#method-taskgetinputrecord) to this task. `inputs` may be:
 
-When `inputs` is an object, the keys are the [setter paths](../reference_2.md#type-setterpath) of the fields to be set in the input record, and the values are literals or [taskInputExpressions](../reference_2.md#type-taskinputexpression). See [taskIO](../kb_topics/taskIO.md#kb-topic-task-input--output).
+*   a single [StatePath](../reference_2.md#type-statepath) or [TaskInputExpression](../reference_2.md#type-taskinputexpression): the value it refers to is the task's `$input`. If that value is a Record, its fields form the input record; otherwise the value is stored in the input record under the last segment of the path.
+*   an Array of `StatePaths`: each value is stored in the input record under the last segment of its path.
+*   an Object: each key is a [StatePath](../reference_2.md#type-statepath) (in its setter form) into the input record, and each value is a [TaskInputExpression](../reference_2.md#type-taskinputexpression), a [StatePath](../reference_2.md#type-statepath) into [Process.state](Process.md#attr-processstate), or, for a non-String value, a literal. Because a String value is always resolved, a literal String cannot be supplied this way. `$input` cannot be referenced here, since it is the result of these `inputs`.
+
+When neither `inputs` nor the deprecated [Task.inputFieldList](#attr-taskinputfieldlist) is set, the input record is the entire process state. See [taskIO](../kb_topics/taskIO.md#kb-topic-task-input--output) for details and examples.
 
 ### Groups
 
@@ -91,11 +95,39 @@ Field in the [process state](Process.md#attr-processstate) where this task write
 ## Method: Task.getInputRecord
 
 ### Description
-Get all inputs to the task as specified by the [inputs](#attr-taskinputs), as a Record.
+Get all inputs to the task as specified by the [inputs](#attr-taskinputs), as a Record. When the task declares no `inputs`, the input record is a shallow copy of the entire [Process.state](Process.md#attr-processstate): fields can be added to or replaced in the returned record without affecting the process state, but nested objects are shared with it and must not be modified. See [taskIO](../kb_topics/taskIO.md#kb-topic-task-input--output) for how each form of `inputs` contributes to the input record.
+
+Outside of a running process, for example while a task is being edited, there is no state to draw from and declared inputs have no values.
 
 ### Returns
 
 `[Record](#type-record)` — input record
+
+### Groups
+
+- taskIO
+
+---
+## Method: Task.getCriteriaExpressionValue
+
+### Description
+Get the value of a Criteria or AdvancedCriteria by resolving any values containing [taskInputExpression](../reference_2.md#type-taskinputexpression)s. The criteria passed in is not modified; a resolved copy is returned.
+
+Data values in the criteria prefixed with "$" will be treated as dynamic expressions as detailed in [TaskInputExpression](../reference_2.md#type-taskinputexpression). Specifically, this means that for simple criteria, any property value that is a String and is prefixed with "$" will be assumed to be an expression, and for AdvancedCriteria, the same treatment will be applied to [Criterion.value](Criterion.md#attr-criterionvalue). To use a literal value starting with "$", escape it with a backslash: the value `\$last` resolves to the String `$last`.
+
+For AdvancedCriteria only, when [Process.ruleScope](Process.md#attr-processrulescope) is set, a [dynamic criteria](../kb_topics/dynamicCriteria.md#kb-topic-dynamiccriteria) containing [Criterion.valuePath](Criterion.md#attr-criterionvaluepath) values is also resolved against the ruleScope component's [ruleContext](Canvas_1.md#method-canvasgetrulecontext).
+
+Returns null when called outside of a running process.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| value | [Criteria](../reference_2.md#type-criteria)|[AdvancedCriteria](#type-advancedcriteria) | false | — | criteria to resolve |
+
+### Returns
+
+`[Criteria](../reference_2.md#type-criteria)|[AdvancedCriteria](#type-advancedcriteria)` — resolved copy of criteria
 
 ### Groups
 
@@ -125,7 +157,7 @@ Returns a value from the [process state](Process.md#attr-processstate). Values c
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| statePath | [String](#type-string) | false | — | path to the value in the process state to set. Segments are separated by a decimal point (.) |
+| statePath | [StatePath](../reference_2.md#type-statepath) | false | — | path to the value in the process state to retrieve |
 
 ### Returns
 
@@ -135,7 +167,7 @@ Returns a value from the [process state](Process.md#attr-processstate). Values c
 ## Method: Task.setState
 
 ### Description
-Sets a [process state](Process.md#attr-processstate) value for later reference with [Process.getStateVariable](Process.md#method-processgetstatevariable) or more commonly with a [TaskInputExpression](../reference_2.md#type-taskinputexpression) property.
+Sets a [process state](Process.md#attr-processstate) value for later reference with [Process.getStateVariable](Process.md#method-processgetstatevariable) or more commonly, with a [TaskInputExpression](../reference_2.md#type-taskinputexpression) property.
 
 The path, which is one or more valid identifiers separated by periods, is used to identify the variable. By appending an empty pair of brackets (\[\]) the value will be placed into an existing or new array at the specified path.
 
@@ -143,21 +175,23 @@ The path, which is one or more valid identifiers separated by periods, is used t
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| stateVariablePath | [String](#type-string) | false | — | path to the variable in the process state to set. segments are separated by a decimal point (.) |
+| statePath | [StatePath](../reference_2.md#type-statepath) | false | — | path to the variable in the process state to set. segments are separated by a decimal point (.) |
 | value | [TaskInputExpression](../reference_2.md#type-taskinputexpression)|[Any](#type-any) | false | — | the value to save |
-| strict | [Boolean](#type-boolean) | false | — | if true, the path must exist in the state to be set. If false, the path will be created if it does not exist. Defaults to `process.strictPaths` when null. |
+| strict | [Boolean](#type-boolean) | false | — | if true, every intermediate segment of the path must already exist in the state; the final segment is always created or replaced. If false, missing intermediate objects are created. Defaults to [Task.strictPaths](#attr-taskstrictpaths), then [Process.strictPaths](Process.md#attr-processstrictpaths), when null. |
 
 ---
 ## Method: Task.getExpressionValue
 
 ### Description
-Get the value of a [inputExpression](../reference_2.md#type-taskinputexpression).
+Get the value of a [inputExpression](../reference_2.md#type-taskinputexpression). A String that does not start with "$" is treated as a [StatePath](../reference_2.md#type-statepath) into [Process.state](Process.md#attr-processstate); any other non-null value is a literal and returned unchanged. Expressions are resolved as by [Process.getExpressionValue](Process.md#method-processgetexpressionvalue), plus `$input`, drawn from this task's [inputs](#attr-taskinputs).
+
+Outside of a running process a String expression resolves to null.
 
 ### Parameters
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| value | [String](#type-string) | false | — | expression to evaluate |
+| value | [TaskInputExpression](../reference_2.md#type-taskinputexpression)|[Any](#type-any) | false | — | expression to evaluate, or a StatePath |
 
 ### Returns
 

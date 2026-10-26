@@ -18,10 +18,10 @@ UserTask is designed for **client-side workflows** where a form is shown immedia
 A UserTask takes the following steps:
 
 *   Optionally show() or otherwise make visible the [targetView](#attr-usertasktargetview) or [inlineView](#attr-usertaskinlineview)
-*   Provide values to either a [DynamicForm](DynamicForm.md#class-dynamicform) designated as the [targetForm](#attr-usertasktargetform) or to a [ValuesManager](ValuesManager.md#class-valuesmanager) designated as the [targetVM](#attr-usertasktargetvm), via [setValues()](ValuesManager.md#method-valuesmanagersetvalues)
+*   Provide values to either a [DynamicForm](DynamicForm.md#class-dynamicform) designated as the [targetForm](#attr-usertasktargetform) or to a [ValuesManager](ValuesManager.md#class-valuesmanager) designated as the [targetVM](#attr-usertasktargetvm), via [setValues()](ValuesManager.md#method-valuesmanagersetvalues). The values are the task's [input record](Task.md#method-taskgetinputrecord): the declared [inputs](Task.md#attr-taskinputs), or the whole process state when none are declared.
 *   Waits for notification of completion or cancellation. The UserTask is notified of completion if a [SubmitItem](../reference.md#class-submititem) is pressed in either the `targetForm` or any form that is a member of the `targetVM`. Likewise a [CancelItem](../reference.md#class-cancelitem) triggers cancellation. Direct calls to [DynamicForm.cancelEditing](DynamicForm.md#method-dynamicformcancelediting) or [DynamicForm.completeEditing](DynamicForm.md#method-dynamicformcompleteediting) achieve the same result.
 *   if cancellation occurs, the process continues to the [cancelElement](#attr-usertaskcancelelement) if specified. Otherwise the workflow is immediately finished.
-*   if completion occurs, values are retrieved from the form or valuesManager and applied to the process state based on [outputField](Task.md#attr-taskoutputfield), [outputFieldList](Task.md#attr-taskoutputfieldlist) or [inputs](Task.md#attr-taskinputs), in that order.
+*   if completion occurs, values are retrieved from the form or valuesManager and applied to the process state based on [outputField](Task.md#attr-taskoutputfield), [outputFieldList](Task.md#attr-taskoutputfieldlist) or a single String [inputs](Task.md#attr-taskinputs) state path, in that order. An `inputs` that is a [TaskInputExpression](../reference_2.md#type-taskinputexpression) (starting with "$") is not written back.
 
 ### See Also
 

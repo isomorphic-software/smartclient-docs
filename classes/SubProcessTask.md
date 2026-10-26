@@ -46,9 +46,9 @@ See the [Process I/O Schema](../kb_topics/processIO.md#kb-topic-process-input-an
 ## Attr: SubProcessTask.stateUpdates
 
 ### Description
-Same [SetterPath](../reference_2.md#type-setterpath)-to-[TaskInputExpression](../reference_2.md#type-taskinputexpression) mapping as [CoTTask.stateUpdates](CoTTask.md#attr-cottaskstateupdates). Applied after the child Process completes successfully, with the child's validated output serving as the record referenced by `$output.`<fieldName>`` expressions (and by `$outputs`, which is treated as an alias here).
+Same [StatePath](../reference_2.md#type-statepath)-to-[TaskInputExpression](../reference_2.md#type-taskinputexpression) mapping as [CoTTask.stateUpdates](CoTTask.md#attr-cottaskstateupdates). Applied after the child Process completes successfully, with the child's validated output serving as the record referenced by `$output.`<fieldName>`` expressions (and by `$outputs`, which is treated as an alias here).
 
-SetterPath operators `[]` (array append), `{}` (shallow merge, overwrite) and `{?}` (shallow merge, preserve existing) are honored just as in CoTTask.
+[StatePath](../reference_2.md#type-statepath) operators `[]` (array append), `{}` (shallow merge, overwrite) and `{?}` (shallow merge, preserve existing) are honored just as in CoTTask.
 
 **Flags**: IRW
 

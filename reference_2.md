@@ -144,20 +144,6 @@ How should field width be determined when [ListGridField.autoFitWidth](classes/L
 - autoFitFields
 
 ---
-## Type: AutoScrollDataApproach
-
-### Description
-What should drive the automatic expansion of the chart?
-
-### Values
-
-| Value | Description |
-|-------|-------------|
-| "labels" | Expand the chart to make room for data label facet value. Unused in Bar-type charts |
-| "clusters" | Expand the chart to accommodate [FacetChart.barMargin](classes/FacetChart.md#attr-facetchartbarmargin), [FacetChart.minBarThickness](classes/FacetChart.md#attr-facetchartminbarthickness), and [FacetChart.getMinClusterSize](classes/FacetChart.md#method-facetchartgetminclustersize). |
-| "both" | Expand the chart to make room for both labels and clusters (whichever requires more space). |
-
----
 ## Type: AutoTestLocator
 
 ### Description
@@ -213,7 +199,7 @@ Possible values for [Canvas.backgroundRepeat](classes/Canvas_1.md#attr-canvasbac
 ## Type: CacheSyncStrategy
 
 ### Description
-Indicates the strategy to be used for [automatic cache synchronization](kb_topics/cacheSynchronization.md#kb-topic-automatic-cache-synchronization), for a given [DataSource](classes/DataSource_1.md#attr-datasourcecachesyncstrategy), [OperationBinding](classes/OperationBinding.md#attr-operationbindingcachesyncstrategy) or [DSRequest](classes/DSRequest.md#attr-dsrequestcachesyncstrategy).
+Indicates the strategy to be used for [automatic cache synchronization](kb_topics/cacheSynchronization.md#kb-topic-automatic-cache-synchronization), for a given [DataSource](#attr-datasourcecachesyncstrategy), [OperationBinding](#attr-operationbindingcachesyncstrategy) or [DSRequest](#attr-dsrequestcachesyncstrategy).
 
 ### Values
 
@@ -227,7 +213,7 @@ This is the most complete and foolproof way to get cache sync data, because we p
 Note, if no `oldValues` are available and the updated record is [incomplete](classes/DataSource_1.md#attr-datasourcesparseupdates), or if the combination of `oldValues` and values is missing a value for a [required field](classes/DataSourceField.md#attr-datasourcefieldrequired) for any other reason, this strategy will return incomplete cache sync data. For details of what we do in these circumstances, see the "CacheSyncStrategy" section of the [cache synchronization overview](kb_topics/cacheSynchronization.md#kb-topic-automatic-cache-synchronization) |
 | "responseValues" | This strategy simply returns the data returned by the add or update operation, as the cache sync data. This only makes sense for `DataSource` types that return a value for an update operation. This may include generic DataSources and `RestConnector`s, depending entirely on what the implementation returns. It specifically does not include [SQL DataSources](kb_topics/sqlDataSource.md#kb-topic-sql-datasources), because SQL/JDBC update operations do not return a value (other than the number of affected records).
 
-This is the default strategy for [RestConnector](kb_topics/serverRestConnector.md#kb-topic-server-side-rest-connector)s, because it was the default way we did cache sync for that DataSource type before `CacheSyncStrategy` was introduced (and also because it is the ideal strategy for REST services that return the record-as-updated). See [DataSource.cacheSyncStrategy](classes/DataSource_1.md#attr-datasourcecachesyncstrategy) for details of how to change the default strategy for a given dataSource type. |
+This is the default strategy for [RestConnector](kb_topics/serverRestConnector.md#kb-topic-server-side-rest-connector)s, because it was the default way we did cache sync for that DataSource type before `CacheSyncStrategy` was introduced (and also because it is the ideal strategy for REST services that return the record-as-updated). See [DataSource.cacheSyncStrategy](#attr-datasourcecachesyncstrategy) for details of how to change the default strategy for a given dataSource type. |
 | "none" | This strategy does not attempt to derive cache sync data at all. No response data is sent back to the caller, and the response is marked for [cache invalidation](classes/DSResponse.md#attr-dsresponseinvalidatecache) |
 
 ### See Also
@@ -238,14 +224,14 @@ This is the default strategy for [RestConnector](kb_topics/serverRestConnector.m
 ## Type: CacheSyncTiming
 
 ### Description
-Indicates the timing strategy to be used for [automatic cache synchronization](kb_topics/cacheSynchronization.md#kb-topic-automatic-cache-synchronization), for a given [DataSource](classes/DataSource_1.md#attr-datasourcecachesynctiming), [OperationBinding](classes/OperationBinding.md#attr-operationbindingcachesynctiming) or [DSRequest](classes/DSRequest.md#attr-dsrequestcachesynctiming). This property controls the "when" of cache synchronization; the "how" is controlled by [CacheSyncStrategy](reference_2.md#type-cachesyncstrategy).
+Indicates the timing strategy to be used for [automatic cache synchronization](kb_topics/cacheSynchronization.md#kb-topic-automatic-cache-synchronization), for a given [DataSource](#attr-datasourcecachesynctiming), [OperationBinding](#attr-operationbindingcachesynctiming) or [DSRequest](#attr-dsrequestcachesynctiming). This property controls the "when" of cache synchronization; the "how" is controlled by [CacheSyncStrategy](reference_2.md#type-cachesyncstrategy).
 
 **NOTE:** `CacheSyncTiming` is intended to allow applications to defer cache synchronization to the point where response data is actually requested; the primary aim of this is to avoid doing cache sync altogether in cases where the response data is never requested. There are some mainstream types of request where we know that the response data unequivocally _is_ required, and for these requests a global default `CacheSyncTiming` will be overridden to "immediate" by SmartClient because there is no point in deferring cache sync when we know for sure it will eventually be needed. Thus, cache sync will always run immediately regardless of the default `cacheSyncTiming` setting in these cases:
 
 *   Requests sent from a client
 *   Server-created requests that copy an `RPCManager` across from a client-originated request, either by specifying it in the `DSRequest` constructor, or by calling `dsRequest.setRPCManager()`
 
-The above only applies to the global default `cacheSyncTiming`: a `cacheSyncTiming` set explicitly at the [DataSource](classes/DataSource_1.md#attr-datasourcecachesynctiming), [operation](classes/OperationBinding.md#attr-operationbindingcachesynctiming) or [request](classes/DSRequest.md#attr-dsrequestcachesynctiming) level will usually be honored. However, even an explicit `cacheSyncTiming` setting on the DataSource, operation or request will be ignored in situations where it could break a framework feature if we honored it. These situations are:
+The above only applies to the global default `cacheSyncTiming`: a `cacheSyncTiming` set explicitly at the [DataSource](#attr-datasourcecachesynctiming), [operation](#attr-operationbindingcachesynctiming) or [request](#attr-dsrequestcachesynctiming) level will usually be honored. However, even an explicit `cacheSyncTiming` setting on the DataSource, operation or request will be ignored in situations where it could break a framework feature if we honored it. These situations are:
 
 *   Requests where [automatic auditing](classes/DataSource_1.md#attr-datasourceaudit) is in force
 *   Requests on a dataSource with one-to-many or many-to-many relations, where the update means that SmartClient must update foreign keys on the related dataSources to maintain relation integrity
@@ -691,7 +677,7 @@ the below example would cause `dbName` to be resolved as `MyDatabase`
  
 ```
 (Note, you can use a different token than "`$config`" if you need to - see [templateConfigToken](classes/DataSource_1.md#attr-datasourcetemplateconfigtoken)) |
-| "all" | Indicates that full Velocity processing will be used to resolve templated references. This allows you to use all of Velocity's template-handling features - for example, conditional blocks and iteration - and so is more powerful than the simple "configOnly" option above. Note, however, that this templating is necessarily limited by the fact that it takes place during DataSource initialization, when there is not a lot of context available for templating purposes - you have the "`$config`" object, as with "configOnly", and some of the other variables listed in the [Velocity overview](kb_topics/velocitySupport.md#kb-topic-velocity-context-variables), but nothing relating to [DSRequest](reference_2.md#object-dsrequest)s |
+| "all" | Indicates that full Velocity processing will be used to resolve templated references. This allows you to use all of Velocity's template-handling features - for example, conditional blocks and iteration - and so is more powerful than the simple "configOnly" option above. Note, however, that this templating is necessarily limited by the fact that it takes place during DataSource initialization, when there is not a lot of context available for templating purposes - you have the "`$config`" object, as with "configOnly", and some of the other variables listed in the [Velocity overview](#kb-topic-velocitysupport), but nothing relating to [DSRequest](reference_2.md#object-dsrequest)s |
 
 ### See Also
 
@@ -998,7 +984,7 @@ There are also additional, non-CRUD operations explained below.
 | "clientExport" | Upload formatted client data and export it to Excel, XML and other formats. Used automatically by [exportClientData()](classes/DataSource_1.md#method-datasourceexportclientdata) and cannot be used directly. Usable only with the SmartClient server framework. |
 | "getFile" | Use the DataSource as a [source for files](kb_topics/fileSource.md#kb-topic-filesource-operations). Used automatically by [DataSource.getFile](classes/DataSource_1.md#method-datasourcegetfile), and would not normally be used directly. Usable only with the SmartClient server framework. |
 | "hasFile" | Use the DataSource as a [source for files](kb_topics/fileSource.md#kb-topic-filesource-operations). Used automatically by [DataSource.hasFile](classes/DataSource_2.md#method-datasourcehasfile), and would not normally be used directly. Usable only with the SmartClient server framework. |
-| "listFiles" | Use the DataSource as a [source for files](kb_topics/fileSource.md#kb-topic-filesource-operations). Used automatically by [DataSource.listFiles](classes/DataSource_2.md#method-datasourcelistfiles), and would not normally be used directly. Usable only with the SmartClient server framework. |
+| "listFiles" | Use the DataSource as a [source for files](kb_topics/fileSource.md#kb-topic-filesource-operations). Used automatically by [DataSource.listFiles](classes/DataSource_1.md#method-datasourcelistfiles), and would not normally be used directly. Usable only with the SmartClient server framework. |
 | "removeFile" | Use the DataSource as a [source for files](kb_topics/fileSource.md#kb-topic-filesource-operations). Used automatically by [DataSource.removeFile](classes/DataSource_1.md#method-datasourceremovefile), and would not normally be used directly. Usable only with the SmartClient server framework. |
 | "saveFile" | Use the DataSource as a [source for files](kb_topics/fileSource.md#kb-topic-filesource-operations). Used automatically by [DataSource.saveFile](classes/DataSource_1.md#method-datasourcesavefile), and would not normally be used directly. Usable only with the SmartClient server framework. |
 | "renameFile" | Use the DataSource as a [source for files](kb_topics/fileSource.md#kb-topic-filesource-operations). Used automatically by [DataSource.renameFile](classes/DataSource_1.md#method-datasourcerenamefile), and would not normally be used directly. Usable only with the SmartClient server framework. |
@@ -1429,7 +1415,7 @@ Note: to declare related but _separate_ objects, as in an "Account" object that 
 | "creatorTimestamp" | Fields of this type are automatically populated by the SmartClient Server with the current date and time as part of an "add" operation (when the record is first created). By default, fields of this type are hidden and not editable; the server ignores any value that the client sends in a field of this type (but see also [writeToGeneratedFields](classes/DSRequest.md#attr-dsrequestwritetogeneratedfields)). |
 | "uuid" | Fields of this type are automatically populated by the SmartClient Server with a new UUID (Universally Unique Identifier) as part of an "add" operation, if no value is provided by the client. This is useful for primary key fields where you want the server to auto-generate unique IDs. Unlike [creatorTimestamp](reference_2.md#type-fieldtype), if the client provides a value, that value is used instead of generating a new UUID. The generated UUID is a standard 36-character string in the format `xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx`. |
 | "password" | Same as "text", but causes [PasswordItem](#class-passworditem) to be used by default for editing (hides typed-in value), and defaults [storeWithhash](classes/DataSourceField.md#attr-datasourcefieldstorewithhash) to "bcrypt" (affecting server operations). |
-| "ntext" | A special field type specifically for use with Unicode data in conjunction with the Microsoft SQL Server database. Field type "ntext" implies the use of [sqlStorageStrategy](classes/DataSourceField.md#attr-datasourcefieldsqlstoragestrategy) "ntext"; other than that, this type is identical to "text" |
+| "ntext" | A special field type specifically for use with Unicode data in conjunction with the Microsoft SQL Server database. Field type "ntext" implies the use of [sqlStorageStrategy](#attr-datasourcefieldsqlstoragestrategy) "ntext"; other than that, this type is identical to "text" |
 | "localeInt" | An integer number with locale-based formatting, e.g. `12,345,678`. See [Localized Number Formatting](#kb-topic-localized-number-formatting) for more info. |
 | "localeFloat" | A float number with locale-based formatting, e.g. `12,345.67`. See [Localized Number Formatting](#kb-topic-localized-number-formatting) for more info. |
 | "localeCurrency" | A float number with locale-based formatting and using currency symbol, e.g. `$12,345.67`. See [Localized Number Formatting](#kb-topic-localized-number-formatting) for more info. |
@@ -1719,21 +1705,6 @@ Property to govern when the 'over' styling is applied to a formItemIcon.
 A string which is a valid JavaScript identifier, as specified by ECMA-262 Section 7.6.
 
 Note: The [String.isValidID](classes/String.md#staticmethod-stringisvalidid) function can be used to test whether a name is a valid JavaScript identifier.
-
----
-## Type: ImportFormat
-
-### Description
-—
-
-### Values
-
-| Value | Description |
-|-------|-------------|
-| "xml" | XML format: same as that expected by the [adminConsole](kb_topics/adminConsole.md#kb-topic-admin-console) for DataSource [test data](kb_topics/testData.md#kb-topic-test-data) |
-| "json" | JSON format: a JSON Array of JSON Objects |
-| "csv" | Comma-separated values, or in general delimiter-separated values based on a provided delimiter. |
-| "auto" | Auto-detect format |
 
 ---
 ## Type: Integer
@@ -2547,21 +2518,6 @@ Possible placements for pop-up choosers, menus, dialogs or other temporary UIs, 
 | "none" | this setting disables all panelPlacement sizing and positioning logic. Explicitly specified size and positioning will be used. |
 
 ---
-## Type: PartialCommitOption
-
-### Description
-Action to take if a user attempts to save the dataset produced by a [BatchUploader](classes/BatchUploader.md#class-batchuploader) whilst it still contains errors.
-
-### Values
-
-| Value | Description |
-|-------|-------------|
-| "allow" | Silently allow the partial commit to proceed (note that this will result in the user losing those records that contain errors) |
-| "prevent" | Pop up a message window showing the [BatchUploader.partialCommitError](classes/BatchUploader.md#attr-batchuploaderpartialcommiterror) and prevent the partial commit |
-| "prompt" | Pop up a confirmation window with the [BatchUploader.partialCommitPrompt](classes/BatchUploader.md#attr-batchuploaderpartialcommitprompt) and allow the user to choose whether or not to proceed |
-| "retain" | Commit any records that are error-free and remove them from the grid. If any records had errors, leave them in the grid and leave the grid visible. If no records had errors, run normal cleanup as we would for "allow". This option allows the user to fix errors iteratively, rather than having to fix everything upfront before committing |
-
----
 ## Type: Positioning
 
 ### Description
@@ -3241,44 +3197,6 @@ Use `requiresWhen` when the client should know the operation was denied (securit
 - [Authentication](classes/Authentication.md#class-authentication)
 
 ---
-## Type: SetterPath
-
-### Description
-A path expression indicating where and how a nested Object should be updated.
-
-A `SetterPath` is a dot-delimited list of segments, where each segment is a property name. The `SetterPath` can end in an operator that controls how the property update is done:
-
-*   `[]` – append to an Array (creates the Array if missing)
-*   `{}` – deep merge into an Object, overwriting existing keys
-*   `{?}` – deep merge into an Object, preserving existing keys (non-clobbering)
-
-This syntax is used in [Task.setState](classes/Task.md#method-tasksetstate)/[Process.setStateVariable](classes/Process.md#method-processsetstatevariable).
-
-Missing objects and Arrays are created as needed unless [strictPaths](classes/Task.md#attr-taskstrictpaths) is set, either in the specific API call, or on the [task](classes/Task.md#attr-taskstrictpaths) or [process](classes/Process.md#attr-processstrictpaths) involved. When `strictPaths` is enabled, attempting to traverse through a non-object/Array or a missing segment throws an error instead.
-
-#### Examples
-Assume `process.state` starts as:
-```
- {
-     currentDS: {
-         fields: [ { name:"orderId", type:"integer" } ],
-         defaults: { timezone:"UTC" }
-     }
- }
- 
-```
-
-*   **Append**  
-    `"currentDS.fields[]": { name:"orderDate", type:"date" }`  
-    Result: `fields` gains a new element at the end.
-*   **Deep merge (clobber)**  
-    `"currentDS.defaults{}": { timezone:"PST", dateFormat:"YYYY-MM-DD" }`  
-    Result: `timezone` is overwritten to "PST"; `dateFormat` is added.
-*   **Deep merge (non-clobber)**  
-    `"currentDS.defaults{?}": { timezone:"PST", locale:"en-US" }`  
-    Result: existing `timezone:"UTC"` is preserved; `locale` is added.
-
----
 ## Type: SettledPromiseStatus
 
 ### Description
@@ -3374,23 +3292,6 @@ Do we display an arrow for the sorted field ?
 - sorting
 
 ---
-## Type: SQLType
-
-### Description
-The types of custom query that can be handled by SmartClient's built-in "sql" and "hibernate" DataSources. Note, only applies to [OperationBinding.operationType](classes/OperationBinding.md#attr-operationbindingoperationtype) "custom".
-
-### Values
-
-| Value | Description |
-|-------|-------------|
-| "query" | The custom SQL or HQL is read-only |
-| "update" | The custom SQL or HQL updates data |
-
-### Groups
-
-- customQuerying
-
----
 ## Type: StackPersistence
 
 ### Description
@@ -3407,13 +3308,50 @@ The types of custom query that can be handled by SmartClient's built-in "sql" an
 ## Type: StatePath
 
 ### Description
-A path expression indicating where a value in a nested Object should be extracted.
+A path expression identifying a value in a nested Object such as [Process.state](classes/Process.md#attr-processstate), used both to read a value (as a getter) and to specify where and how a value is written (as a setter).
 
-A `StatePath` is a dot-delimited list of segments, where each segment is a property name. Any `segment` can end in an operator that provides additional details:
+A `StatePath` is a dot-delimited list of segments, where each segment is a property name, optionally followed by an operator:
 
-*   `[]` – specifies an array index to extract
+*   When the path is used as a getter, any segment may end in `[`<index>`]` to extract that element of an Array.
+*   When the path is used as a setter, the last segment may end in one of:
+    
+    *   `[]` – append to an Array (creates the Array if missing)
+    *   `{}` – shallow merge into an Object, overwriting existing keys
+    *   `{?}` – shallow merge into an Object, preserving existing keys (non-clobbering)
+    
+    Array indexes are not supported in setter paths: `"a[0].b"` sets a property literally named "a\[0\]".
 
-This syntax is used in [Task.getInputRecord](classes/Task.md#method-taskgetinputrecord).
+This syntax is used in [Task.setState](classes/Task.md#method-tasksetstate)/[Process.setStateVariable](classes/Process.md#method-processsetstatevariable) and [Task.getState](classes/Task.md#method-taskgetstate)/[Task.getInputRecord](classes/Task.md#method-taskgetinputrecord)/[Process.getStateVariable](classes/Process.md#method-processgetstatevariable).
+
+Missing intermediate objects are created as needed unless [strictPaths](classes/Task.md#attr-taskstrictpaths) is set, either in the specific API call or on the [task](classes/Task.md#attr-taskstrictpaths) or [process](classes/Process.md#attr-processstrictpaths) involved. When `strictPaths` is enabled, a missing intermediate segment throws an error instead, as does a missing target for an `[]`, `{}` or `{?}` operator. The final segment of a plain setter path is always created or replaced.
+
+#### Examples
+Assume `process.state` starts as:
+```
+ {
+     currentDS: {
+         fields: [ { name:"orderId", type:"integer" } ],
+         defaults: { timezone:"UTC" }
+     }
+ }
+ 
+```
+
+*   **Append**  
+    `"currentDS.fields[]": { name:"orderDate", type:"date" }`  
+    Result: `fields` gains a new element at the end.
+*   **Merge (clobber)**  
+    `"currentDS.defaults{}": { timezone:"PST", dateFormat:"YYYY-MM-DD" }`  
+    Result: `timezone` is overwritten to "PST"; `dateFormat` is added.
+*   **Merge (non-clobber)**  
+    `"currentDS.defaults{?}": { timezone:"PST", locale:"en-US" }`  
+    Result: existing `timezone:"UTC"` is preserved; `locale` is added.
+*   **Get default timezone**  
+    `"currentDS.defaults.timezone"`  
+    Result: `"UTC"`
+*   **Get first field type**  
+    `"currentDS.fields[0].type"`  
+    Result: `"integer"`
 
 ---
 ## Type: StringMethod
@@ -3501,7 +3439,7 @@ Similarly, in [GridFetchDataTask](classes/GridFetchDataTask.md#class-gridfetchda
 
 `TaskInputExpressions` are designed to be visual-tool-friendly so that it's easy to visually wire together processes in the [Workflow Editor](kb_topics/reifyAddWorkflowTask.md#kb-topic-adding-custom-workflow-tasks).
 
-A TaskInputExpression is a String prefixed with "$input", "$inputRecord", "$ruleScope", "$state" or "$last" followed by an optional dot-separated hierarchical path, which can specify either an atomic data value (String, Number) or Record from the input data. For example, if the [Process.state](classes/Process.md#attr-processstate) represented in JSON were:
+A TaskInputExpression is a String prefixed with "$input", "$ruleScope", "$state" or "$last" followed by an optional dot-separated hierarchical path, which can specify either an atomic data value (String, Number) or Record from the input data. For example, if the [Process.state](classes/Process.md#attr-processstate) represented in JSON were:
 
 ```
  {
@@ -3513,17 +3451,20 @@ A TaskInputExpression is a String prefixed with "$input", "$inputRecord", "$rule
  }
  
 ```
-.. and a task specified an `inputs` of "orderId" and an inputFieldList of "orderItems","orderUser", then:
+.. and a task specified [inputs](classes/Task.md#attr-taskinputs) of \[ "orderItems", "orderUser" \], then:
 
-*   $input is the value 5
-*   $inputRecord.orderUser.name is "Henry Winkle"
-*   $inputRecord.orderItems\[0\] is the first orderItems Record ({name:"Pencils", ... })
+*   $input.orderUser.name is "Henry Winkle"
+*   $input.orderItems\[0\] is the first orderItems Record ({name:"Pencils", ... })
+
+With no `inputs` at all, $input refers to the whole process state, so $input.orderId is 5. When `inputs` is a single String such as "orderId", $input is the value itself: 5. See [taskIO](kb_topics/taskIO.md#kb-topic-task-input--output) for how a task's input is built.
+
+"$inputRecord" is equivalent to "$input", except when `inputs` is a single String: there it is a Record holding that value under the last segment of the path ({ orderId: 5 } in the example above).
 
 "$ruleScope" can be used to pull values from a [ruleScope](classes/Canvas_1.md#attr-canvasrulescope) [ruleContext](classes/Canvas_1.md#method-canvasgetrulecontext) when configured in [Process.ruleScope](classes/Process.md#attr-processrulescope).
 
 *   $ruleScope.property references the ruleContext "property" field
 
-Two others sources of input are "$state" and "$last". The former references the contents of the [Process.state](classes/Process.md#attr-processstate) and the latter the [transient state](classes/Process.md#attr-processstate).
+Two others sources of input are "$state" and "$last". The former references the contents of the [Process.state](classes/Process.md#attr-processstate) and the latter the transient output of the previous task, also available from [Process.getLastTaskOutput](classes/Process.md#method-processgetlasttaskoutput) (see "Transient state outputs" below).
 
 *   $state is the full contents of the process state
 *   $state.orderId is the "orderId" field of the process state (5 from the example above)
@@ -3748,7 +3689,7 @@ Note that this object is not intended to be interrogated directly, but may be st
 ## Type: UnionFieldsStrategy
 
 ### Description
-The strategy used when auto-deriving the fields that make up a UnionDataSource, if no [unionFields](classes/DataSource_1.md#attr-datasourceunionfields) setting is provided.
+The strategy used when auto-deriving the fields that make up a UnionDataSource, if no [unionFields](#attr-datasourceunionfields) setting is provided.
 
 ### Values
 
@@ -3760,7 +3701,7 @@ The strategy used when auto-deriving the fields that make up a UnionDataSource, 
 
 ### See Also
 
-- [DataSource.unionFields](classes/DataSource_1.md#attr-datasourceunionfields)
+- [DataSource.unionFields](#attr-datasourceunionfields)
 
 ---
 ## Type: URL
@@ -3817,7 +3758,7 @@ See also the [SmartClient Architecture Overview](kb_topics/smartArchitecture.md#
 ## Type: VelocityExpression
 
 ### Description
-An expression in the [Velocity Template Language](http://velocity.apache.org/engine/releases/velocity-1.7/user-guide.html) (VTL). For more information on SmartClient's Velocity support, see [Velocity support](kb_topics/velocitySupport.md#kb-topic-velocity-context-variables).
+An expression in the [Velocity Template Language](http://velocity.apache.org/engine/releases/velocity-1.7/user-guide.html) (VTL). For more information on SmartClient's Velocity support, see [Velocity support](#kb-topic-velocitysupport).
 
 Note that a `VelocityExpression` must often evaluate to a particular type of value to be useful. For example, [DataSource.requires](classes/DataSource_1.md#attr-datasourcerequires) must evaluate to true or false (Boolean objects or strings containing those two words), and [Mail.messageData](classes/Mail.md#attr-mailmessagedata) must evaluate to a Java `Map` object, or a Java `List` containing only `Map`s.
 
@@ -4279,7 +4220,7 @@ You provide a list of DSRequestModifiers as the [OperationBinding.criteria](clas
 
 A DSRequestModifier consists of a [fieldName](classes/DSRequestModifier.md#attr-dsrequestmodifierfieldname), usually a [value](classes/DSRequestModifier.md#attr-dsrequestmodifiervalue) and possibly an [operator](classes/DSRequestModifier.md#attr-dsrequestmodifieroperator) and [start](classes/DSRequestModifier.md#attr-dsrequestmodifierstart) and/or [end](classes/DSRequestModifier.md#attr-dsrequestmodifierend) values (applicable to advanced criteria only). The value, start and end settings can be static, or - with Power or better licenses - they can be expressions in the Velocity template language, which will be resolved at runtime, immediately before the DSRequest is executed.
 
-In addition to the standard [Velocity variables](kb_topics/velocitySupport.md#kb-topic-velocity-context-variables), special Velocity variables are available for the _value_ field when used in a `<values>` declaration - see [DSRequestModifier.value](classes/DSRequestModifier.md#attr-dsrequestmodifiervalue) for details.
+In addition to the standard [Velocity variables](#kb-topic-velocitysupport), special Velocity variables are available for the _value_ field when used in a `<values>` declaration - see [DSRequestModifier.value](classes/DSRequestModifier.md#attr-dsrequestmodifiervalue) for details.
 
 See below some examples of [OperationBinding.criteria](classes/OperationBinding.md#attr-operationbindingcriteria) declarations:
 
@@ -4333,7 +4274,7 @@ Wherever a DynamicProperty is expected, several shorthand forms are also accepte
 
 *   A plain string is shorthand for `{ dataPath: "..." }`.
 *   A [UserFormula](#object-userformula) object (`{text, formulaVars}`) is treated as [formula](classes/DynamicProperty.md#attr-dynamicpropertyformula).
-*   A [UserSummary](reference_2.md#object-usersummary) object (`{text, summaryVars}`) is treated as [template](classes/DynamicProperty.md#attr-dynamicpropertytemplate).
+*   A [UserSummary](#object-usersummary) object (`{text, summaryVars}`) is treated as [template](classes/DynamicProperty.md#attr-dynamicpropertytemplate).
 *   An [AdvancedCriteria](#object-advancedcriteria) -- or a single bare criterion with no `_constructor` or wrapping `criteria` array, such as `{fieldName: "...", operator: "...", value: ...}` -- is treated as [trueWhen](classes/DynamicProperty.md#attr-dynamicpropertytruewhen).
 
 See [Dynamic Properties](kb_topics/dynamicProperties.md#kb-topic-dynamic-properties) for an overview of the feature with worked examples covering each of these forms.
@@ -4706,18 +4647,6 @@ Specification of an operator for use in filtering, for example "equals". Use wit
 Optional settings for [Reify.showOverlay](classes/Reify.md#classmethod-reifyshowoverlay).
 
 ---
-## Object: PaletteNode
-
-### Description
-An object representing a component which the user may create dynamically within an application.
-
-A PaletteNode expresses visual properties for how the palette will display it (eg [title](classes/PaletteNode.md#attr-palettenodetitle), [icon](classes/PaletteNode.md#attr-palettenodeicon)) as well as instructions for creating the component the paletteNode represents ([PaletteNode.type](classes/PaletteNode.md#attr-palettenodetype), [PaletteNode.defaults](classes/PaletteNode.md#attr-palettenodedefaults)).
-
-Various types of palettes ([ListPalette](#class-listpalette), [TreePalette](#class-treepalette), [MenuPalette](#class-menupalette), [TilePalette](#class-tilepalette)) render a PaletteNode in different ways, and allow the user to trigger creation in different ways (eg drag and drop, or just click). All share a common pattern for how components are created from palettes.
-
-Note that in a TreePalette, a PaletteNode is essentially a [TreeNode](reference_2.md#object-treenode) and can have properties expected for a TreeNode (eg, [showDropIcon](classes/TreeGrid.md#attr-treegridcustomicondropproperty)). Likewise a PaletteNode in a MenuPalette can have the properties of a [MenuItem](reference_2.md#object-menuitem), such as [MenuItem.enableIf](classes/MenuItem.md#method-menuitemenableif).
-
----
 ## Object: PartialPromptConfig
 
 ### Description
@@ -5022,18 +4951,6 @@ Represents a user-specified and user-modifiable request to AI in some context. F
 The user's request is combined with other messages, data, and instructions provided by the framework to create [AIRequest](#object-airequest)s that are sent to the AI engine for the purpose of fulfilling the user's request.
 
 ---
-## Object: UserSummary
-
-### Description
-An object representing a user-created summary.
-
-[ListGrid](classes/ListGrid_1.md#class-listgrid)s additionally allow the summary to be user-modifiable, with the summary created and edited with a [SummaryBuilder](classes/SummaryBuilder.md#class-summarybuilder), either directly or via the [ListGrid.canAddSummaryFields](classes/ListGrid_1.md#attr-listgridcanaddsummaryfields) behavior.
-
-### Groups
-
-- fieldGeneration
-
----
 ## Object: ValidatorDefinition
 
 ### Description
@@ -5044,12 +4961,6 @@ Validator definition for a built-in [Validator.type](classes/Validator.md#attr-v
 
 ### Description
 Defines the method of the [ServerObject](reference_2.md#object-serverobject) if it appears in an [Application declaration file](kb_topics/applicationDeclaration.md#kb-topic-application-declaration-files). Method can refer the `ServerObject` method allowed to be called from the client or can be implemented right in the .app.xml file using the [inline server script](kb_topics/serverScript.md#kb-topic-server-scripting).
-
----
-## Object: WorkflowBuilderCoTParams
-
-### Description
-The shape of `process.state` to populate before starting a [WorkflowBuilderProcess](#class-workflowbuilderprocess) directly (its own class documentation covers the three ways this process may be invoked - as a sub-process of [AI.buildUI](#classmethod-aibuildui), standalone, or via the EventStream/UISession convergence).
 
 ---
 ## Object: WorkflowExplorationEntry

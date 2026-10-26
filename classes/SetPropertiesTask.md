@@ -13,7 +13,7 @@ Gets the value properties from a component and makes them available within the w
 
 For a canvas the [componentId](ComponentTask.md#attr-componenttaskcomponentid) specifies everything necessary to identify the target. For a form control more information is needed. The [componentId](ComponentTask.md#attr-componenttaskcomponentid) identifies the container (i.e. DynamicForm) and the individual field is specified as [targetFieldName](#attr-setpropertiestasktargetfieldname).
 
-SetPropertiesTask _is an advanced and rarely used task_. If you need a component property to be dynamic, you can configure that property as a [Dynamic Property](Class.md#attr-classdynamicproperties) without the need for a Workflow. _Dynamic Properties_ created this way automatically update as your users make changes.
+SetPropertiesTask _is an advanced and rarely used task_. If you need a component property to be dynamic, you can configure that property as a [Dynamic Property](../kb_topics/dynamicProperties.md#kb-topic-dynamic-properties) without the need for a Workflow. _Dynamic Properties_ created this way automatically update as your users make changes.
 
 ---
 ## Attr: SetPropertiesTask.properties

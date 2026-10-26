@@ -15,9 +15,9 @@ Some examples:
 
 *   inputField: "a", outputField: "b" - copies "a" to "b"
 *   inputField: "a", outputField: "b", type: "integer" - copies "a" to "b" converting "a" to an integer
-*   inputFieldList: \["a","b"\], outputField: \["c","d"\] - copies "a" and "b" to "c" and "d" respectively.
+*   inputFieldList: \["a","b"\], outputFieldList: \["c","d"\] - copies "a" and "b" to "c" and "d" respectively.
 
-Works inside [server-side\\n processes](OperationBinding.md#attr-operationbindingprocess).
+StateTask reads its source fields from the `inputField` and [inputFieldList](Task.md#attr-taskinputfieldlist) properties directly, not from [inputs](Task.md#attr-taskinputs) or the [input record](Task.md#method-taskgetinputrecord). Works inside [server-side\\n processes](OperationBinding.md#attr-operationbindingprocess).
 
 ### Groups
 
@@ -39,7 +39,7 @@ The default message to be reported with [getInvalidTaskMessage()](ProcessElement
 ## Attr: StateTask.value
 
 ### Description
-If a stateTask does not declare [inputs](Task.md#attr-taskinputs), it must declare a `value` which should be assigned to the output field.
+If a stateTask does not declare `inputField` or [inputFieldList](Task.md#attr-taskinputfieldlist), it must declare a `value` which should be assigned to the output field.
 
 See [StateTask.type](#attr-statetasktype) for how the value is interpreted.
 

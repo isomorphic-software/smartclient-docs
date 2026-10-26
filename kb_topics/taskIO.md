@@ -12,14 +12,27 @@ Tasks require "inputs" to do their work, just like a method call. For example, [
 
 For built-in tasks, you can typically use [TaskInputExpressions](../reference_2.md#type-taskinputexpression) to declare that the inputs of a task are drawn from [Process.state](../classes/Process.md#attr-processstate), the [output](../classes/Task.md#method-tasksetoutput) of a previous task in the process, or from global context such as [ruleScope](../classes/Process.md#attr-processrulescope). See the docs for each task for details.
 
-If you are implementing your own task and want to support `TaskInputExpressions` for the data required by your task, use [Task.getExpressionValue](../classes/Task.md#method-taskgetexpressionvalue).
+If you are implementing your own task and want to support `TaskInputExpressions` for the data required by your task, use [Task.getExpressionValue](../classes/Task.md#method-taskgetexpressionvalue), or [Task.getCriteriaExpressionValue](../classes/Task.md#method-taskgetcriteriaexpressionvalue) for criteria. [Task.getState](../classes/Task.md#method-taskgetstate) reads a value from the process state directly.
 
 You can also use the property [Task.inputs](../classes/Task.md#attr-taskinputs) to automatically support `TaskInputExpressions`: call [getInputRecord()](../classes/Task.md#method-taskgetinputrecord) to get the values of the provided expressions.
+
+The input record is built from the task's declared inputs as follows:
+
+*   an Array [inputs](../classes/Task.md#attr-taskinputs) (or the deprecated [Task.inputFieldList](../classes/Task.md#attr-taskinputfieldlist)) stores each value under the last segment of its path;
+*   an Object `inputs` sets each key, as a [StatePath](../reference_2.md#type-statepath), to the value of its expression;
+*   a single String `inputs` becomes `$input`. A Record value supplies the fields of the input record, merged with any `inputFieldList` entries; any other value is stored under the last segment of the path.
+*   with nothing declared, the input record is a shallow copy of the whole [Process.state](../classes/Process.md#attr-processstate). Top-level fields may be changed in the copy, but nested objects are shared with the process state.
+
+In a [TaskInputExpression](../reference_2.md#type-taskinputexpression), `$input` refers to the task's input: the input record, or, when `inputs` is a single String, the value that String refers to (`null` if it is missing).
+
+[DSRequestTask](../classes/DSRequestTask.md#class-dsrequesttask) resolves `$input` the same way in its [criteria](../classes/DSRequestTask.md#attr-dsrequesttaskcriteria) and [values](../classes/DSRequestTask.md#attr-dsrequesttaskvalues), but only declared inputs are used as its implicit request data: a task with no `inputs`, `criteria` or `values` sends no data. [DecisionTask](../classes/DecisionTask.md#class-decisiontask) and [MultiDecisionTask](../classes/MultiDecisionTask.md#class-multidecisiontask) have no `inputs`; in their criteria, `$input` refers to the whole process state.
 
 #### Output
 A task can call [Task.setOutput](../classes/Task.md#method-tasksetoutput) to provide outputs which other tasks can use via `TaskInputExpressions` or programmatically via APIs such as [Process.getLastTaskOutput](../classes/Process.md#method-processgetlasttaskoutput).
 
 Using the property [Task.outputField](../classes/Task.md#attr-taskoutputfield) and/or [Task.outputFieldList](../classes/Task.md#attr-taskoutputfieldlist) allows certain properties of the output, from setOutput(), to be written into the [Process.state](../classes/Process.md#attr-processstate). Use [Task.outputField](../classes/Task.md#attr-taskoutputfield) to specify the field in the process state where the task output should be written. Or, for more complex tasks, use [Task.outputFieldList](../classes/Task.md#attr-taskoutputfieldlist) to specify multiple fields.
+
+To store the whole output as-is, set [ProcessElement.bindOutput](../classes/ProcessElement.md#attr-processelementbindoutput) to a [StatePath](../reference_2.md#type-statepath): whenever the task's output is recorded - including the output a pass-through task forwards from the previous task - it is also written to that path in the process state. For example, `bindOutput: "lastOrder"` on a fetch DSRequestTask keeps the fetched record in `process.state.lastOrder`, and `bindOutput: "orders[]"` appends each output to an Array. Unlike `outputField`, no properties are picked out of the output.
 
 You can also use the property [Task.outputExpression](../classes/Task.md#attr-taskoutputexpression) to write task output directly into a [DataBoundComponent](../reference.md#interface-databoundcomponent) instead of or in addition to the process state.
 
@@ -52,11 +65,17 @@ Consider these input definitions and resulting `inputRecord`:
     *   inputRecord: { name: "Henry Winkle", address: ... }
 *   inputs: \[ "orderUser" \]
     *   inputRecord: { orderUser: { name: "Henry Winkle", address: ... } }
+*   inputs: { "customer.name": "orderUser.name", "quantity": 1 }
+    *   inputRecord: { customer: { name: "Henry Winkle" }, quantity: 1 }
+*   no inputs
+    *   inputRecord: { orderId: 5, orderItems: \[ ... \], orderUser: { ... } }
 
 ### Related
 
 - [Task.getInputRecord](../classes/Task.md#method-taskgetinputrecord)
 - [Task.getExpressionValue](../classes/Task.md#method-taskgetexpressionvalue)
+- [Task.getCriteriaExpressionValue](../classes/Task.md#method-taskgetcriteriaexpressionvalue)
+- [Process.getExpressionValue](../classes/Process.md#method-processgetexpressionvalue)
 - [ScriptTask.setOutput](../classes/ScriptTask.md#method-scripttasksetoutput)
 - [Task.inputs](../classes/Task.md#attr-taskinputs)
 - [Task.inputFieldList](../classes/Task.md#attr-taskinputfieldlist)

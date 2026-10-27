@@ -384,7 +384,7 @@ A [Callback](../reference.md#type-callback) fired when [DataSource.hasFileVersio
 ## Method: Callbacks.PaletteNodeCallback
 
 ### Description
-Callback fired with the [PaletteNodes](../reference.md#object-palettenode) obtained asynchronously.
+Callback fired with the [PaletteNodes](../reference_2.md#object-palettenode) obtained asynchronously.
 
 ### Parameters
 

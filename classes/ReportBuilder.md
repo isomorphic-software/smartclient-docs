@@ -570,7 +570,7 @@ Notification fired after a component is added to the report.
 Signature: `componentCreated(editNode, paletteNode)` where:
 
 *   `editNode` - the created [EditNode](../reference.md#object-editnode)
-*   `paletteNode` - the source [PaletteNode](../reference.md#object-palettenode)
+*   `paletteNode` - the source [PaletteNode](../reference_2.md#object-palettenode)
 
 **Flags**: IRW
 

@@ -67,7 +67,7 @@ Image to display in lieu of the usual placeholder text.
 ## Attr: PaletteNode.canDuplicate
 
 ### Description
-If set to false, indicates that this node cannot be [copy & pasted](EditProxy.md#attr-editproxyusecopypasteshortcuts), including disallowing calls to [EditContext.makePaletteNode](EditContext.md#method-editcontextmakepalettenode) for [EditNodes](../reference.md#object-editnode) created from this [PaletteNode](../reference.md#object-palettenode).
+If set to false, indicates that this node cannot be [copy & pasted](EditProxy.md#attr-editproxyusecopypasteshortcuts), including disallowing calls to [EditContext.makePaletteNode](EditContext.md#method-editcontextmakepalettenode) for [EditNodes](../reference.md#object-editnode) created from this [PaletteNode](../reference_2.md#object-palettenode).
 
 **Flags**: IR
 

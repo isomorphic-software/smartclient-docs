@@ -22,7 +22,7 @@ For a full list of operators, see [OperatorId](../reference.md#type-operatorid).
 - [Operator.compareCriteria](../classes/Operator.md#method-operatorcomparecriteria)
 - [DataSource.addSearchOperator](../classes/DataSource_2.md#method-datasourceaddsearchoperator)
 - [DataSource.getSearchOperator](../classes/DataSource_1.md#method-datasourcegetsearchoperator)
-- [DataSource.getTypeOperators](../classes/DataSource_1.md#method-datasourcegettypeoperators)
+- [DataSource.getTypeOperators](../classes/DataSource_2.md#method-datasourcegettypeoperators)
 - [DataSource.setTypeOperators](../classes/DataSource_1.md#method-datasourcesettypeoperators)
 - [DataSource.hasCustomTypeOperators](../classes/DataSource_1.md#method-datasourcehascustomtypeoperators)
 - [DataSource.getFieldOperators](../classes/DataSource_1.md#method-datasourcegetfieldoperators)

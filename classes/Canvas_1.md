@@ -448,7 +448,7 @@ This is typically used to create a 3-way split pane, where left and right-hand s
 ## Attr: Canvas.editNode
 
 ### Description
-The component's [EditNode](../reference.md#object-editnode) for a component that has been created by a [Palette](../reference.md#interface-palette) from a [PaletteNode](../reference.md#object-palettenode).
+The component's [EditNode](../reference.md#object-editnode) for a component that has been created by a [Palette](../reference.md#interface-palette) from a [PaletteNode](../reference_2.md#object-palettenode).
 
 **Flags**: R
 
@@ -3835,7 +3835,7 @@ An [EditProxy](EditProxy.md#class-editproxy) controls the behaviors of a compone
 
 The `editProxy` AutoChild is created when a component is first placed into edit mode via [Canvas.setEditMode](#method-canvasseteditmode).
 
-`editProxy` properties can be supplied on a [PaletteNode](../reference.md#object-palettenode) or [EditNode](../reference.md#object-editnode) as [editProxyProperties](PaletteNode.md#attr-palettenodeeditproxyproperties), but must be provided before the component is first placed into edit mode.
+`editProxy` properties can be supplied on a [PaletteNode](../reference_2.md#object-palettenode) or [EditNode](../reference.md#object-editnode) as [editProxyProperties](PaletteNode.md#attr-palettenodeeditproxyproperties), but must be provided before the component is first placed into edit mode.
 
 Most editable components use a custom EditProxy. See the documentation for each class' [editProxyConstructor](#attr-canvaseditproxyconstructor) to determine the class.
 

@@ -6325,7 +6325,7 @@ If [ListGrid.showHeaderMenuButton](#attr-listgridshowheadermenubutton) is true, 
 
 ### See Also
 
-- [ListGrid.rotatedHeaderMenuButtonHeight](#attr-listgridrotatedheadermenubuttonheight)
+- [ListGrid.rotatedHeaderMenuButtonHeight](ListGrid_2.md#attr-listgridrotatedheadermenubuttonheight)
 
 **Flags**: IRA
 
@@ -7877,6 +7877,20 @@ If we're showing a [headerContextMenu](#attr-listgridshowheadercontextmenu) for 
 - i18nMessages
 
 **Flags**: IRW
+
+---
+## Attr: ListGrid.includeAllRowsInSummary
+
+### Description
+When true, [getUISummary()](Canvas_1.md#method-canvasgetuisummary) reports every loaded row of this grid, not only the rows currently scrolled into view, and is not limited to the default 50 rows. For a tree, nodes inside collapsed folders are included too, marked `visibleRow: false` because they cannot be clicked until their folder is opened. Rows are never fetched for the summary: a [ResultSet](ResultSet.md#class-resultset) reports only the rows it has loaded.
+
+**Use with great care.** A UI summary is sent to an AI with every request, and a grid reporting all of its data can flood the AI's context window and make the request fail outright, or crowd out the rest of the screen. Only turn this on for a grid whose full contents an AI genuinely needs in order to act and which is small and bounded - typically a palette such as a [TreePalette](../reference.md#class-treepalette), where the AI must know every component it can drag, including those in collapsed folders or not yet scrolled into view. Pair it with [Canvas.trimSummaryRowData](Canvas_1.md#attr-canvastrimsummaryrowdata) and [Canvas.summaryDataCharLimit](Canvas_1.md#attr-canvassummarydatacharlimit) to bound what is reported.
+
+### Groups
+
+- prodErrorReport
+
+**Flags**: IRA
 
 ---
 ## Attr: ListGrid.fields
@@ -9635,21 +9649,5 @@ If not set, [ListGrid.preRenderDelay](#attr-listgridprerenderdelay) is used for 
 - [ListGrid.preRenderDelay](#attr-listgridprerenderdelay)
 
 **Flags**: IRW
-
----
-## Attr: ListGrid.rotatedHeaderMenuButtonHeight
-
-### Description
-If [ListGrid.showHeaderMenuButton](#attr-listgridshowheadermenubutton) is true, this property governs the height of the auto-generated `headerMenuButton` over a [rotated](ListGridField.md#attr-listgridfieldrotatetitle) header button.
-
-### Groups
-
-- headerMenuButton
-
-### See Also
-
-- [ListGrid.headerMenuButtonHeight](#attr-listgridheadermenubuttonheight)
-
-**Flags**: IRA
 
 ---

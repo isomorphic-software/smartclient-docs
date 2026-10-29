@@ -4983,7 +4983,7 @@ Object's "stacking order" above or below other objects
 - [Canvas.getZIndex](classes/Canvas_1.md#method-canvasgetzindex)
 - [Canvas.bringToFront](classes/Canvas_1.md#method-canvasbringtofront)
 - [Canvas.sendToBack](classes/Canvas_1.md#method-canvassendtoback)
-- [Canvas.moveAbove](classes/Canvas_1.md#method-canvasmoveabove)
+- [Canvas.moveAbove](classes/Canvas_2.md#method-canvasmoveabove)
 - [Canvas.moveBelow](classes/Canvas_1.md#method-canvasmovebelow)
 - [DrawItem.getZIndex](classes/DrawItem.md#method-drawitemgetzindex)
 - [DrawItem.setZIndex](classes/DrawItem.md#method-drawitemsetzindex)
@@ -6818,7 +6818,7 @@ Determines sizing model when sizing / positioning a canvas relative to its [perc
 
 | Value | Description |
 |-------|-------------|
-| "visible" | use coordinates relative to the [drawn height](classes/Canvas_1.md#method-canvasgetvisibleheight) and width of the other canvas |
+| "visible" | use coordinates relative to the [drawn height](classes/Canvas_2.md#method-canvasgetvisibleheight) and width of the other canvas |
 | "viewport" | use coordinates relative to the [drawn viewport height](classes/Canvas_1.md#method-canvasgetviewportheight) and width of the other canvas |
 | "specified" | use coordinates relative to the [specified height](classes/Canvas_1.md#method-canvasgetheight) and width of the other canvas. For [overflow:"visible"](classes/Canvas_1.md#attr-canvasoverflow) canvases this may be smaller than drawn size. |
 | "inner" | use coordinates relative to the [specified inner height](classes/Canvas_1.md#method-canvasgetinnerheight) and width of the other canvas |
@@ -9089,18 +9089,6 @@ Note that the current implementation of formulas simply executes the [text](clas
 Also, while the current implementation would allow creation of a formula that calls JavaScript functions which are not part of the standard or custom [MathFunctions](classes/MathFunction.md#class-mathfunction), this behavior should not be relied upon, as future versions of the formula engine may prohibit such calls.
 
 [ListGrid](classes/ListGrid_1.md#class-listgrid)s additionally allow the formula to be user-modifiable, with the formula created and edited with a [FormulaBuilder](classes/FormulaBuilder.md#class-formulabuilder), either directly or via the [ListGrid.canAddFormulaFields](classes/ListGrid_1.md#attr-listgridcanaddformulafields) behavior.
-
-### Groups
-
-- fieldGeneration
-
----
-## Object: UserSummary
-
-### Description
-An object representing a user-created summary.
-
-[ListGrid](classes/ListGrid_1.md#class-listgrid)s additionally allow the summary to be user-modifiable, with the summary created and edited with a [SummaryBuilder](classes/SummaryBuilder.md#class-summarybuilder), either directly or via the [ListGrid.canAddSummaryFields](classes/ListGrid_1.md#attr-listgridcanaddsummaryfields) behavior.
 
 ### Groups
 

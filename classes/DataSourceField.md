@@ -1117,7 +1117,7 @@ A number is always shown with its original precision when edited.
 ## Attr: DataSourceField.template
 
 ### Description
-If `field.template` is set, this field's value in records will be calculated dynamically via the specified [template](../reference.md#object-usersummary).
+If `field.template` is set, this field's value in records will be calculated dynamically via the specified [template](../reference_2.md#object-usersummary).
 
 This property may be set to a valid [template expression](UserSummary.md#attr-usersummarytext).
 

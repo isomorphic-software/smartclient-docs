@@ -4335,7 +4335,7 @@ Wherever a DynamicProperty is expected, several shorthand forms are also accepte
 
 *   A plain string is shorthand for `{ dataPath: "..." }`.
 *   A [UserFormula](#object-userformula) object (`{text, formulaVars}`) is treated as [formula](classes/DynamicProperty.md#attr-dynamicpropertyformula).
-*   A [UserSummary](#object-usersummary) object (`{text, summaryVars}`) is treated as [template](classes/DynamicProperty.md#attr-dynamicpropertytemplate).
+*   A [UserSummary](reference_2.md#object-usersummary) object (`{text, summaryVars}`) is treated as [template](classes/DynamicProperty.md#attr-dynamicpropertytemplate).
 *   An [AdvancedCriteria](#object-advancedcriteria) -- or a single bare criterion with no `_constructor` or wrapping `criteria` array, such as `{fieldName: "...", operator: "...", value: ...}` -- is treated as [trueWhen](classes/DynamicProperty.md#attr-dynamicpropertytruewhen).
 
 See [Dynamic Properties](kb_topics/dynamicProperties.md#kb-topic-dynamic-properties) for an overview of the feature with worked examples covering each of these forms.
@@ -5022,6 +5022,18 @@ Settings that control how a widget UI Summary is built.
 Represents a user-specified and user-modifiable request to AI in some context. For example, the user's request may be in the context of AI-assisted filtering of a [ListGrid](classes/ListGrid_1.md#class-listgrid); in such a context, the user's request is their description of which records they would like to see.
 
 The user's request is combined with other messages, data, and instructions provided by the framework to create [AIRequest](#object-airequest)s that are sent to the AI engine for the purpose of fulfilling the user's request.
+
+---
+## Object: UserSummary
+
+### Description
+An object representing a user-created summary.
+
+[ListGrid](classes/ListGrid_1.md#class-listgrid)s additionally allow the summary to be user-modifiable, with the summary created and edited with a [SummaryBuilder](classes/SummaryBuilder.md#class-summarybuilder), either directly or via the [ListGrid.canAddSummaryFields](classes/ListGrid_1.md#attr-listgridcanaddsummaryfields) behavior.
+
+### Groups
+
+- fieldGeneration
 
 ---
 ## Object: ValidatorDefinition

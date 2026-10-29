@@ -4,6 +4,22 @@
 
 ---
 
+## Attr: ListGrid.rotatedHeaderMenuButtonHeight
+
+### Description
+If [ListGrid.showHeaderMenuButton](ListGrid_1.md#attr-listgridshowheadermenubutton) is true, this property governs the height of the auto-generated `headerMenuButton` over a [rotated](ListGridField.md#attr-listgridfieldrotatetitle) header button.
+
+### Groups
+
+- headerMenuButton
+
+### See Also
+
+- [ListGrid.headerMenuButtonHeight](ListGrid_1.md#attr-listgridheadermenubuttonheight)
+
+**Flags**: IRA
+
+---
 ## Attr: ListGrid.sortBinaryByFileName
 
 ### Description

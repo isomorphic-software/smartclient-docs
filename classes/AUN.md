@@ -22,9 +22,10 @@ AI UI Navigation (AUN) is a CoT-based workflow engine that explores SmartClient 
 
 #### Usage
 ```
- // UISession can be created standalone (will auto-discover UI) or with explicit rootCanvas
+ // The UISession needs the Canvas whose UI AUN works on - it does not discover one itself
+ // (see UISession.rootCanvas).  myApp.getUISession() creates the same session.
  var session = isc.UISession.create({
-     rootCanvas: myApp  // optional - omit to auto-discover all top-level canvases
+     rootCanvas: myApp  // required
  });
 
  var aun = isc.AUN.create({

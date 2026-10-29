@@ -4,6 +4,99 @@
 
 ---
 
+## Method: Canvas.setHeight
+
+### Description
+Resizes the widget vertically to the specified height (moves the bottom side of the widget). The height parameter can be expressed as a percentage of viewport size or as the number of pixels.
+
+NOTE: if you're setting multiple coordinates, use resizeTo() or setRect() instead
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| height | [Number](#type-number)|[String](#type-string) | false | — | new height |
+
+### Groups
+
+- sizing
+
+---
+## Method: Canvas.getPageLeft
+
+### Description
+Returns the page-relative left coordinate of the widget on the page, in pixels.
+
+### Returns
+
+`[number](#type-number)` — global left coordinate
+
+### Groups
+
+- positioning
+
+**Flags**: A
+
+---
+## Method: Canvas.moveAbove
+
+### Description
+Puts this widget just above the specified widget in the stacking order, so it appears in front of the specified widget if both widgets have the same parent.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| canvas | [Canvas](#type-canvas) | false | — | canvas to move above |
+
+### Groups
+
+- zIndex
+
+---
+## Method: Canvas.getVisibleHeight
+
+### Description
+Return the visible height of the Canvas.
+
+See [gettingCanvasSize](../kb_topics/gettingCanvasSize.md#kb-topic-determining-the-size-of-a-drawn-canvas)
+
+### Returns
+
+`[number](#type-number)` — visible height in pixels
+
+### Groups
+
+- sizing
+
+**Flags**: A
+
+---
+## Method: Canvas.getInnerContentWidth
+
+### Description
+Returns the amount of space available for interior content (or relatively positioned child widget(s)) without introducing clipping, scrolling or overflow.  
+This is the space within the viewport of the widget (not including padding, and excluding margins, borders or scrollbars) rendered at its specified size.
+
+See [gettingCanvasSize](../kb_topics/gettingCanvasSize.md#kb-topic-determining-the-size-of-a-drawn-canvas)
+
+### Returns
+
+`[number](#type-number)` — inner height of the widget in pixels
+
+### Groups
+
+- sizing
+
+### See Also
+
+- [Canvas.getInnerContentHeight](Canvas_1.md#method-canvasgetinnercontentheight)
+- [Canvas.getInnerHeight](Canvas_1.md#method-canvasgetinnerheight)
+- [Canvas.getInnerWidth](Canvas_1.md#method-canvasgetinnerwidth)
+
+**Flags**: A
+
+---
 ## Method: Canvas.visibleAtPoint
 
 ### Description

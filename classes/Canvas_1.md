@@ -1906,6 +1906,20 @@ If [Canvas.htmlElement](#attr-canvashtmlelement) is specified, this attribute sp
 **Flags**: IRWA
 
 ---
+## Attr: Canvas.summaryDataCharLimit
+
+### Description
+Maximum characters of row data a grid reports in [Canvas.getUISummary](#method-canvasgetuisummary). A value that is an object or array longer than a tenth of the limit is replaced by a short note of its size, and if the rows still exceed the limit, the grid reports fewer of its visible rows and says how many in `reportedRows`.
+
+Applies to this component and every component reported in its summary, by setting [UISummarySettings.dataCharLimit](../reference.md#attr-uisummarysettingsdatacharlimit) for them. See also [Canvas.trimSummaryRowData](#attr-canvastrimsummaryrowdata).
+
+### Groups
+
+- prodErrorReport
+
+**Flags**: IRA
+
+---
 ## Attr: Canvas.snapOnDrop
 
 ### Description
@@ -3678,6 +3692,26 @@ Background color for the EdgedCanvas created to decorate this component. This ca
 **Flags**: IR
 
 ---
+## Attr: Canvas.trimSummaryRowData
+
+### Description
+When true, the rows a grid reports in [Canvas.getUISummary](#method-canvasgetuisummary) carry only:
+
+*   the values of the grid's visible fields, and the [displayField](ListGridField.md#attr-listgridfielddisplayfield) value shown for any of them
+*   the DataSource primary key, so each row can be named and edited
+*   for a tree, the node id and folder flag
+
+Every other field is listed in the grid's summary as `hiddenFields` - name and type, without values - so an AI knows such fields exist and can ask for them. Records often carry much more than the grid shows, and nested objects in particular can be very large: without trimming, a tree whose nodes hold component definitions can report hundreds of thousands of characters for a dozen rows. The [UISummarySettings.focusComponent](../reference.md#attr-uisummarysettingsfocuscomponent) is never trimmed.
+
+Applies to this component and every component reported in its summary, by setting [UISummarySettings.trimRowData](../reference.md#attr-uisummarysettingstrimrowdata) for them. See also [Canvas.summaryDataCharLimit](#attr-canvassummarydatacharlimit).
+
+### Groups
+
+- prodErrorReport
+
+**Flags**: IRA
+
+---
 ## Attr: Canvas.animateResizeLayoutMode
 
 ### Description
@@ -4775,6 +4809,20 @@ Minimum height available to this Canvas. Minimum sizes do not apply to all situa
 - [Canvas.dragMinHeight](#attr-canvasdragminheight)
 
 **Flags**: IRWA
+
+---
+## Attr: Canvas.includeDBCsInSummaries
+
+### Description
+When true, [Canvas.getUISummary](#method-canvasgetuisummary) also reports this component's [DataBoundComponent](../reference.md#interface-databoundcomponent) [AutoChildren](../kb_topics/autoChildren.md#kb-topic-autochildren), at any depth in its layout, under an `autoChildren` object keyed by AutoChild name.
+
+AutoChildren are normally left out of UI summaries: most are implementation details such as scrollbars and icons that would only consume an AI's context. But in an application built from AutoChildren - a tool whose palettes, trees and property forms are all AutoChildren of one top-level component - leaving them out leaves an AI nothing to work with. Setting this flag on that top-level component reports every drawn, visible DataBoundComponent among its AutoChildren; the layouts and other containers between them are not reported, except as the named path to an AutoChild created by one of them (`autoChildren.library.autoChildren.palette`). AutoChildren already reported by the normal summary walk are not repeated.
+
+### Groups
+
+- prodErrorReport
+
+**Flags**: IRA
 
 ---
 ## Attr: Canvas.adaptiveHeightPriority
@@ -6568,7 +6616,7 @@ See [gettingCanvasSize](../kb_topics/gettingCanvasSize.md#kb-topic-determining-t
 
 - [Canvas.getInnerWidth](#method-canvasgetinnerwidth)
 - [Canvas.getInnerContentHeight](#method-canvasgetinnercontentheight)
-- [Canvas.getInnerContentWidth](#method-canvasgetinnercontentwidth)
+- [Canvas.getInnerContentWidth](Canvas_2.md#method-canvasgetinnercontentwidth)
 
 **Flags**: A
 
@@ -7164,7 +7212,7 @@ See [gettingCanvasSize](../kb_topics/gettingCanvasSize.md#kb-topic-determining-t
 
 ### See Also
 
-- [Canvas.getInnerContentWidth](#method-canvasgetinnercontentwidth)
+- [Canvas.getInnerContentWidth](Canvas_2.md#method-canvasgetinnercontentwidth)
 - [Canvas.getInnerHeight](#method-canvasgetinnerheight)
 - [Canvas.getInnerWidth](#method-canvasgetinnerwidth)
 
@@ -7986,7 +8034,7 @@ Whether a resizeBar is actually shown also depends on the [defaultResizeBars](La
 ## Method: Canvas.resized
 
 ### Description
-Observable method called whenever a Canvas changes size. Note that if this canvas is [overflow:"visible"](#attr-canvasoverflow), and is waiting for a queued redraw (see [Canvas.isDirty](#method-canvasisdirty)), the value for [Canvas.getVisibleWidth](#method-canvasgetvisiblewidth) and [Canvas.getVisibleHeight](#method-canvasgetvisibleheight) will be unreliable until `redraw()` fires.  
+Observable method called whenever a Canvas changes size. Note that if this canvas is [overflow:"visible"](#attr-canvasoverflow), and is waiting for a queued redraw (see [Canvas.isDirty](#method-canvasisdirty)), the value for [Canvas.getVisibleWidth](#method-canvasgetvisiblewidth) and [Canvas.getVisibleHeight](Canvas_2.md#method-canvasgetvisibleheight) will be unreliable until `redraw()` fires.  
 In this case, if the delayed redraw does change the drawn size of the component, this notification will be fired a second time when it completes.
 
 ---
@@ -9765,7 +9813,7 @@ See [gettingCanvasSize](../kb_topics/gettingCanvasSize.md#kb-topic-determining-t
 
 - [Canvas.getInnerHeight](#method-canvasgetinnerheight)
 - [Canvas.getInnerContentHeight](#method-canvasgetinnercontentheight)
-- [Canvas.getInnerContentWidth](#method-canvasgetinnercontentwidth)
+- [Canvas.getInnerContentWidth](Canvas_2.md#method-canvasgetinnercontentwidth)
 
 **Flags**: A
 
@@ -9992,99 +10040,6 @@ Unless you're in an advanced scenario where you need to inject code before the a
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | arguments 0-N | [Any](#type-any) | true | — | All arguments initially passed to [Class.create](Class.md#classmethod-classcreate) |
-
-**Flags**: A
-
----
-## Method: Canvas.setHeight
-
-### Description
-Resizes the widget vertically to the specified height (moves the bottom side of the widget). The height parameter can be expressed as a percentage of viewport size or as the number of pixels.
-
-NOTE: if you're setting multiple coordinates, use resizeTo() or setRect() instead
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| height | [Number](#type-number)|[String](#type-string) | false | — | new height |
-
-### Groups
-
-- sizing
-
----
-## Method: Canvas.getPageLeft
-
-### Description
-Returns the page-relative left coordinate of the widget on the page, in pixels.
-
-### Returns
-
-`[number](#type-number)` — global left coordinate
-
-### Groups
-
-- positioning
-
-**Flags**: A
-
----
-## Method: Canvas.moveAbove
-
-### Description
-Puts this widget just above the specified widget in the stacking order, so it appears in front of the specified widget if both widgets have the same parent.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| canvas | [Canvas](#type-canvas) | false | — | canvas to move above |
-
-### Groups
-
-- zIndex
-
----
-## Method: Canvas.getVisibleHeight
-
-### Description
-Return the visible height of the Canvas.
-
-See [gettingCanvasSize](../kb_topics/gettingCanvasSize.md#kb-topic-determining-the-size-of-a-drawn-canvas)
-
-### Returns
-
-`[number](#type-number)` — visible height in pixels
-
-### Groups
-
-- sizing
-
-**Flags**: A
-
----
-## Method: Canvas.getInnerContentWidth
-
-### Description
-Returns the amount of space available for interior content (or relatively positioned child widget(s)) without introducing clipping, scrolling or overflow.  
-This is the space within the viewport of the widget (not including padding, and excluding margins, borders or scrollbars) rendered at its specified size.
-
-See [gettingCanvasSize](../kb_topics/gettingCanvasSize.md#kb-topic-determining-the-size-of-a-drawn-canvas)
-
-### Returns
-
-`[number](#type-number)` — inner height of the widget in pixels
-
-### Groups
-
-- sizing
-
-### See Also
-
-- [Canvas.getInnerContentHeight](#method-canvasgetinnercontentheight)
-- [Canvas.getInnerHeight](#method-canvasgetinnerheight)
-- [Canvas.getInnerWidth](#method-canvasgetinnerwidth)
 
 **Flags**: A
 

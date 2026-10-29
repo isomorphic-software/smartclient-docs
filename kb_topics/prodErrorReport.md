@@ -177,5 +177,9 @@ This comprehensive error context makes it much easier to reproduce and fix issue
 - [Class.getStackTrace](../classes/Class.md#method-classgetstacktrace)
 - [EventStream.setEventErrorListener](../classes/EventStream.md#method-eventstreamseteventerrorlistener)
 - [Canvas.getUISummary](../classes/Canvas_1.md#method-canvasgetuisummary)
+- [Canvas.includeDBCsInSummaries](../classes/Canvas_1.md#attr-canvasincludedbcsinsummaries)
+- [Canvas.trimSummaryRowData](../classes/Canvas_1.md#attr-canvastrimsummaryrowdata)
+- [Canvas.summaryDataCharLimit](../classes/Canvas_1.md#attr-canvassummarydatacharlimit)
+- [ListGrid.includeAllRowsInSummary](../classes/ListGrid_1.md#attr-listgridincludeallrowsinsummary)
 
 ---

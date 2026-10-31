@@ -457,7 +457,7 @@ The following variables are available for evaluation within this string:
 ## Attr: ListGrid.rowSpanSelectionMode
 
 ### Description
-Chooses the selection mode when [ListGrid.useRowSpanStyling](#attr-listgriduserowspanstyling) is enabled. See [RowSpanSelectionMode](../reference_2.md#type-rowspanselectionmode).
+Chooses the selection mode when [ListGrid.useRowSpanStyling](#attr-listgriduserowspanstyling) is enabled. See [RowSpanSelectionMode](../reference.md#type-rowspanselectionmode).
 
 **Flags**: IR
 
@@ -2858,7 +2858,7 @@ Enables various styling behaviors that potentially make sense when [ListGrid.get
 
 *   computes [banded styling](#attr-listgridalternaterecordstyles) based on the span of the cell in the left-most column
 *   enables [cell-level selection](#attr-listgridcanselectcells), including [cell-level rollover](#attr-listgridusecellrollovers) styling
-*   enables row-span-sensitive cell selection. See also [RowSpanSelectionMode](../reference_2.md#type-rowspanselectionmode) for available behaviors
+*   enables row-span-sensitive cell selection. See also [RowSpanSelectionMode](../reference.md#type-rowspanselectionmode) for available behaviors
 
 Because this setting enables [ListGrid.canSelectCells](#attr-listgridcanselectcells), it is incompatible with any APIs that expect a record-oriented data model.
 
@@ -4536,6 +4536,22 @@ When using [ListGrid.autoFitFieldWidths](#attr-listgridautofitfieldwidths), padd
 **Flags**: IR
 
 ---
+## Attr: ListGrid.canGroupBy
+
+### Description
+If false, grouping via context menu will be disabled.
+
+### Groups
+
+- grouping
+
+### See Also
+
+- [ListGrid.groupBy](ListGrid_2.md#method-listgridgroupby)
+
+**Flags**: IRW
+
+---
 ## Attr: ListGrid.asyncErrorCellValue
 
 ### Description
@@ -4550,22 +4566,6 @@ This is the grid-wide setting. [ListGridField.asyncErrorCellValue](ListGridField
 ### See Also
 
 - [DataBoundComponent.isValuePendingAsyncOrAsyncError](DataBoundComponent.md#method-databoundcomponentisvaluependingasyncorasyncerror)
-
-**Flags**: IRW
-
----
-## Attr: ListGrid.canGroupBy
-
-### Description
-If false, grouping via context menu will be disabled.
-
-### Groups
-
-- grouping
-
-### See Also
-
-- [ListGrid.groupBy](ListGrid_2.md#method-listgridgroupby)
 
 **Flags**: IRW
 

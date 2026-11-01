@@ -17,7 +17,7 @@ UnionDataSource is useful when you need a unified view of data entities that, fo
 However, from a Customs point of view, Customers and Suppliers _are_ similar - they are both Trading Partners. As mentioned above, you probably store lots of things about Customers that you don't store about Suppliers and vice versa, but there will be a set of fields common to both - name, address, country, and financial details like total amount sold or purchased this year. You can use UnionDataSource to provide a "Trading Partners" view of this data.
 
 **Configuration**  
-If your member dataSources are very similar, unionDataSource can work in an auto-config mode where all you specify is the list of member dataSource in the unionDataSource's [unionOf](../classes/DataSource.md#attr-datasourceunionof) property, and we derive a set of common fields amongst the members where the names and data types match (there is flexibility in this auto-derivation process - see [defaultUnionFieldsStrategy](../classes/DataSource.md#attr-datasourcedefaultunionfieldsstrategy)). You can trim this by specifying the list of fields you want to union (again, assuming they have the same name in each member dataSource) using the [unionFields](../classes/DataSource.md#attr-datasourceunionfields) property. You can also refine the auto-derived configuration by specifying field definitions in the unionDataSource, using field-level [unionOf](../classes/DataSourceField.md#attr-datasourcefieldunionof) definitions to explicitly declare which member fields should be unioned. You can also use unionDataSource field definitions to optionally rename the unioned field, and do more mundane things, like change the title. Eg,
+If your member dataSources are very similar, unionDataSource can work in an auto-config mode where all you specify is the list of member dataSource in the unionDataSource's [unionOf](#attr-datasourceunionof) property, and we derive a set of common fields amongst the members where the names and data types match (there is flexibility in this auto-derivation process - see [defaultUnionFieldsStrategy](#attr-datasourcedefaultunionfieldsstrategy)). You can trim this by specifying the list of fields you want to union (again, assuming they have the same name in each member dataSource) using the [unionFields](#attr-datasourceunionfields) property. You can also refine the auto-derived configuration by specifying field definitions in the unionDataSource, using field-level [unionOf](#attr-datasourcefieldunionof) definitions to explicitly declare which member fields should be unioned. You can also use unionDataSource field definitions to optionally rename the unioned field, and do more mundane things, like change the title. Eg,
 
 ```
     <field name="tradingPartnerId" unionOf="customerDS.custId,vendorDS.vendorCode" title="Partner ID"/>
@@ -25,13 +25,5 @@ If your member dataSources are very similar, unionDataSource can work in an auto
 ```
 **Performance note**  
 Ordering and paging with a UnionDataSource only makes sense when applied to the bonded dataset; in order to ensure that we can sort and page the overall dataset correctly, we must fetch every matching record from each member dataSource. For this reason, you should not rely on the paging feature to keep the number of records in the working dataset small; always provide criteria for that purpose. This is a good practice, and one we recommend for any type of dataSource, but it is particularly important with unionDataSource, to avoid situations where we have to fetch thousands or millions of rows from multiple member dataSources, in order to find out which of those rows are in positions 100 to 150 with the current sort settings.
-
-### Related
-
-- [DataSource.unionOf](../classes/DataSource.md#attr-datasourceunionof)
-- [DataSource.unionFields](../classes/DataSource.md#attr-datasourceunionfields)
-- [DataSource.defaultUnionFieldsStrategy](../classes/DataSource.md#attr-datasourcedefaultunionfieldsstrategy)
-- [OperationBinding.unionFields](../classes/OperationBinding.md#attr-operationbindingunionfields)
-- [DataSourceField.unionOf](../classes/DataSourceField.md#attr-datasourcefieldunionof)
 
 ---

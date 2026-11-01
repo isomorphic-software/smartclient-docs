@@ -1014,7 +1014,7 @@ If there is an operationBinding declared for a given operationType which does no
       </operationBinding>
  
 ```
-The second operationBinding requires the "manager" role even though there is no explicit `requiresRole` declaration. To prevent the "manager" role being required by the second operationBinding, add `requireRole=""`.
+The second operationBinding requires the "manager" role even though there is no explicit `requiresRole` declaration. To prevent the "manager" role being required by the second operationBinding, add `requiresRole=""`.
 
 Note that if [DataSource.requiresRole](DataSource.md#attr-datasourcerequiresrole) is set, all operations on the DataSource require the roles set for the DataSource as a whole, even if they declare individual `requiresRole` attributes.
 

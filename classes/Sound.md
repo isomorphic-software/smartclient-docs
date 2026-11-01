@@ -74,7 +74,7 @@ Move playback to a particular time in a loaded audio file.
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| time | [Float](../reference.md#type-float) | false | — | time to move to. This method will have no effect if the file has not been loaded or no [Sound.src](#attr-soundsrc) element is defined. |
+| time | [Float](../reference_2.md#type-float) | false | — | time to move to. This method will have no effect if the file has not been loaded or no [Sound.src](#attr-soundsrc) element is defined. |
 
 ---
 ## Method: Sound.setSrc
@@ -96,7 +96,7 @@ Retrieves the current playback time of a playing or paused audio file in seconds
 
 ### Returns
 
-`[Float](../reference.md#type-float)` — current playback time audio file in seconds. If the file has not been loaded, or no [Sound.src](#attr-soundsrc) is defined, this method will return zero.
+`[Float](../reference_2.md#type-float)` — current playback time audio file in seconds. If the file has not been loaded, or no [Sound.src](#attr-soundsrc) is defined, this method will return zero.
 
 ---
 ## Method: Sound.reset
@@ -124,7 +124,7 @@ Retrieves the duration of the current audio file in seconds.
 
 ### Returns
 
-`[Float](../reference.md#type-float)` — duration of the audio file in seconds. If the file has not been loaded, or no [Sound.src](#attr-soundsrc) is defined, this method will return null.
+`[Float](../reference_2.md#type-float)` — duration of the audio file in seconds. If the file has not been loaded, or no [Sound.src](#attr-soundsrc) is defined, this method will return null.
 
 ---
 ## Method: Sound.play

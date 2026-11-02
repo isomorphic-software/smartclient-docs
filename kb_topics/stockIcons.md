@@ -29,6 +29,28 @@ You can also provide additional customization along with the StockIcon-name. For
  
 ```
 
+#### Borrowing an icon from another IconSet
+
+A skin maps its StockIcons to on-disk images from its "images/" directory, or to [SVG Symbols](svgSymbols.md#kb-topic-svg-symbols-overview), according to the [IconSet](../reference.md#object-iconset) it [uses](../classes/Media.md#classmethod-mediausemedia) - Shiva uses the builtin "svg" IconSet, most other skins use "skin". The special `"iconSet"` setting asks for one single icon from a different IconSet, leaving every other StockIcon alone:
+
+```
+ // the SVG Symbol that Shiva would show for "Edit", in a skin that uses on-disk images
+ isc.Button.create({ icon: "Edit:iconSet:svg" });
+ // other settings combine with it as usual, separated by semicolons
+ isc.Img.create({ src: "Edit:iconSet:svg;color:red;" });
+ 
+```
+
+The value accepts everything [useMedia()](../classes/Media.md#classmethod-mediausemedia) accepts, so the weight and style variants of the "svg" IconSet's SVG Symbols can be selected per icon too:
+
+```
+ isc.Button.create({ icon: "Edit:iconSet:svg:500" });
+ isc.Img.create({ src: "Edit:iconSet:svg:600:filled" });
+ 
+```
+
+This is the one setting that is not a [SCSpriteConfig](../reference.md#type-scspriteconfig) property - it selects the media rather than styling it, so it is consumed when the StockIcon-name is resolved. The named IconSet needs no [installation](../classes/Media.md#classmethod-mediausemedia) and the current one is unaffected. The StockIcon's current image is shown unchanged if the named IconSet is already the one in use, or has no mapping for that StockIcon - the icons the "svg" IconSet does not map are ones already defined as SVG Symbols under every skin.
+
 ### Related
 
 - [Media.getStockIcon](../classes/Media.md#classmethod-mediagetstockicon)

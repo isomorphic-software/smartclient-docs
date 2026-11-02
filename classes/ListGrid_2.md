@@ -4311,6 +4311,8 @@ Return the width of a particular column.
 ### Description
 Returns all selected records in this grid.
 
+For a [TreeGrid](TreeGrid.md#class-treegrid) showing a [multi-link tree](Tree.md#method-treeismultilinktree), each selected node occurrence contributes its node, so a node selected in several places is listed once for each; [MultiLinkSelection.getSelection](MultiLinkSelection.md#method-multilinkselectiongetselection) identifies the occurrences themselves.
+
 **NOTE:** Records in the returned array should be treated as read-only and not modified.
 
 ### Parameters

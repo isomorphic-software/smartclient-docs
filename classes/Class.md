@@ -72,6 +72,16 @@ If left unspecified, the Framework applies rules to determine which component to
 **Flags**: IRA
 
 ---
+## Attr: Class.destroyed
+
+### Description
+Set to `true` by [Class.destroy](#method-classdestroy) when this instance has been destroyed. A destroyed instance is no longer valid and should not be used.
+
+[Class.fireCallback](#classmethod-classfirecallback) skips callbacks whose target is destroyed, including method calls scheduled through [Class.delayCall](#method-classdelaycall). The timer itself may still fire, but the target method will not be called.
+
+**Flags**: RA
+
+---
 ## Attr: Class.dynamicProperties
 
 ### Description
@@ -1607,7 +1617,7 @@ A method named log_Priority_ exists for each priority level, on every ISC Class 
 ## Method: Class.destroy
 
 ### Description
-Permanently destroy a class instance and any automatically created resources, recursively.
+Permanently destroy a class instance and any automatically created resources, recursively. Sets [Class.destroyed](#attr-classdestroyed) to `true` so pending callbacks will not invoke methods on this instance. Overrides must call the superclass method.
 
 ### See Also
 

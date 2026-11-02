@@ -4885,6 +4885,8 @@ It's also possible to extend a known `StockIcon` each time you use it, by statin
  
 ```
 
+A single usage can also take its image from an [IconSet](#object-iconset) other than the one the skin uses - see [the StockIcons overview](kb_topics/stockIcons.md#kb-topic-stockicons-overview).
+
 While a `StockIcon` maps a unique name to an image-src, it can also map **_from_** a known file-path via the [fromSrc property](classes/StockIcon.md#attr-stockiconfromsrc). If that attribute is set on a stockIcon, any request for the URL it represents will be mapped to that stockIcon and render its current `src` instead.
 
 Developers may also add custom StockIcons either by calling [addStockIcons()](classes/Media.md#classmethod-mediaaddstockicons) or by passing an existing [IconSet](#object-iconset) to [useMedia()](classes/Media.md#classmethod-mediausemedia), and these can be used in the same way as builtin ones - once installed, code can refer to them by name. Later, the icons can be modified individually or in bulk by calling [updateIconMappings()](classes/Media.md#classmethod-mediaupdateiconmappings) which will update the current src property on the named stockIcons and refresh the UI.

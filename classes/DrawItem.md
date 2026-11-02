@@ -137,7 +137,7 @@ Line color
 ## Attr: DrawItem.destroying
 
 ### Description
-Flag indicating a drawItem is mid-destruction, similar to [Canvas.destroying](Canvas_1.md#attr-canvasdestroying).
+Flag indicating a drawItem is mid-destruction, similar to [Canvas.destroying](Canvas_1.md#attr-canvasdestroying). If this property is true, but [DrawItem.destroyed](#attr-drawitemdestroyed) is not, this indicates the drawItem is in the process of being destroyed.
 
 **Flags**: RA
 

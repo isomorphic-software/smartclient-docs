@@ -341,6 +341,8 @@ Should folders be sorted separately from leaves or should nodes be ordered accor
 ### Description
 If true, indicates this is a "multiLink" tree - ie, one that can contain the same node in more than one place. Note, multiLink trees **must** use the "parent" [model type](#attr-treemodeltype)
 
+Because a node in a multiLink tree can have several parents, the tree keeps parent-child relationships only in its link records: it does not set [Tree.parentIdField](#attr-treeparentidfield) on the nodes themselves, as it does for other trees.
+
 See [Tree.linkData](#attr-treelinkdata) and [ResultTree.linkDataSource](ResultTree.md#attr-resulttreelinkdatasource) for further details of multiLink trees.
 
 ### Groups
@@ -1432,7 +1434,7 @@ var currentUserRecord = recordList.findNextIndex(0, function (record, i, recordL
 ## Method: Tree.getParentsAndPositions
 
 ### Description
-For [multiLink trees](#method-treeismultilinktree), returns the array of this node's direct parents and the node's position within each parent. Each entry is a record like this:
+For [multiLink trees](#method-treeismultilinktree), returns the array of this node's direct parents and the node's position within each parent - its index among that parent's children. Each entry is a record like this:
 ```
  [
      {parent: [reference-to-parent-node], position: [this-node's-position-within-the-parent]},

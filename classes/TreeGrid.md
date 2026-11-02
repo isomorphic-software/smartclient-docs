@@ -638,6 +638,8 @@ This may be set to false to display a tree or partial tree as a flattened list w
 ### Description
 Mode of fetching records from server.
 
+[Multi-link trees](Tree.md#method-treeismultilinktree) do not support fetchMode:"paged"; a multi-link ResultTree configured with it logs a warning and uses "basic" instead.
+
 fetchMode:"local" implies that local filtering will always be performed. See [TreeGrid.keepParentsOnFilter](#attr-treegridkeepparentsonfilter) for additional filtering details.
 
 fetchMode:"basic" or "paged" implies that if search criteria change, the entire tree will be discarded and re-fetched from the server. When retrieving the replacement tree data, the default behavior will be to preserve the [openState](#method-treegridgetopenstate) for any nodes that the server returns which were previously opened by the user. Note that this implies that if [TreeGrid.loadDataOnDemand](#attr-treegridloaddataondemand) is enabled and the server returns only root-level nodes, open state will be preserved only for root-level nodes, and children of open root-level nodes will be immediately fetched from the server if they are not included in the server's initial response.
@@ -2137,7 +2139,8 @@ This method is called when a leaf or folder record is clicked on. Note that if y
 
 ### Description
 Returns a snapshot of the current selection within this treeGrid as a [ListGridSelectedState](../reference_2.md#type-listgridselectedstate) object.  
-This object can be passed to [TreeGrid.setSelectedPaths](#method-treegridsetselectedpaths) to reset this grid's selection the current state (assuming the same data is present in the grid).
+This object can be passed to [TreeGrid.setSelectedPaths](#method-treegridsetselectedpaths) to reset this grid's selection the current state (assuming the same data is present in the grid).  
+For a [multi-link tree](Tree.md#method-treeismultilinktree), each selected node occurrence is recorded by its own path - the path [Tree.getPathForOpenListIndex](Tree.md#method-treegetpathforopenlistindex) returns for it - so restoring the selection selects the same occurrences, not every occurrence of the same node.
 
 ### Returns
 

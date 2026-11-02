@@ -1571,7 +1571,7 @@ Similarly, the [DataView.drawn()](#method-canvasdrawn) StringMethod fires after 
 ## Attr: Canvas.destroyed
 
 ### Description
-If this property is set to `true`, the [destroy()](#method-canvasdestroy) method has been called on this canvas. This implies the canvas is no longer valid. Its ID has been removed from global scope, and calling standard canvas APIs on it is likely to result in errors.
+If this property is set to `true`, the [destroy()](#method-canvasdestroy) method has been called on this canvas. This implies the canvas is no longer valid. Its ID has been removed from global scope, and calling standard canvas APIs on it is likely to result in errors. See [Class.destroyed](Class.md#attr-classdestroyed) for how this flag suppresses pending callbacks.
 
 ### See Also
 

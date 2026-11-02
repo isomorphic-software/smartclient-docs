@@ -139,6 +139,8 @@ See the [keepParentsOnFilter](#attr-resulttreekeepparentsonfilter) overview for 
 ### Description
 Mode of fetching records from server.
 
+[Multi-link trees](Tree.md#method-treeismultilinktree) do not support fetchMode:"paged"; a multi-link ResultTree configured with it logs a warning and uses "basic" instead.
+
 fetchMode:"local" implies that local filtering will always be performed. See [ResultTree.keepParentsOnFilter](#attr-resulttreekeepparentsonfilter) for additional filtering details.
 
 fetchMode:"basic" or "paged" implies that if search criteria change, the entire tree will be discarded and re-fetched from the server. When retrieving the replacement tree data, the default behavior will be to preserve the [openState](#method-resulttreegetopenstate) for any nodes that the server returns which were previously opened by the user. Note that this implies that if [ResultTree.loadDataOnDemand](#attr-resulttreeloaddataondemand) is enabled and the server returns only root-level nodes, open state will be preserved only for root-level nodes, and children of open root-level nodes will be immediately fetched from the server if they are not included in the server's initial response.

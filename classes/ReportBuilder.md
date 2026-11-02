@@ -181,7 +181,7 @@ Form containing the DataSource picker. Scoped to manual palette-based component 
 ## Attr: ReportBuilder.autoLinkComponents
 
 ### Description
-When true, dropping two foreign-key-related data views (e.g. an Orders grid and an Order Items grid) automatically makes them master-detail: selecting a row in the master (the FK parent) narrows the detail (the FK child) to that record's children. The driving happens through the report's dataContext ([DataBoundComponent.publishSelection](#attr-databoundcomponentpublishselection) on the master, default consumption on the detail); this toggle governs whether a newly-added view participates - a view added while it is off gets [publishedSelectionSources](#attr-canvaspublishedselectionsources) `"none"` (independent) - and whether the add-time pass announces new pairings and gives details their empty-selection prompt. Auto-pairings surface an auto-dismissing notification and a "Driven by" affordance, and can be changed or removed by the user. Turn this off for fully manual linking.
+When true, dropping two foreign-key-related data views (e.g. an Orders grid and an Order Items grid) automatically makes them master-detail: selecting a row in the master (the FK parent) narrows the detail (the FK child) to that record's children. The driving happens through the report's dataContext ([DataBoundComponent.publishSelection](#attr-databoundcomponentpublishselection) on the master, default consumption on the detail); this toggle governs whether a newly-added component participates - any component a selection could drive (grid, chart, pivot, KPI) added while it is off gets [publishedSelectionSources](#attr-canvaspublishedselectionsources) `"none"` (independent) - and whether the add-time pass announces new pairings and gives details their empty-selection prompt. Auto-pairings surface an auto-dismissing notification and a "Driven by" affordance, and can be changed or removed by the user. Turn this off for fully manual linking. Change it at runtime with [ReportBuilder.setAutoLinkComponents](#method-reportbuildersetautolinkcomponents), which keeps the toolbar's Auto-link switch in step.
 
 **Flags**: IRW
 
@@ -972,6 +972,18 @@ Opens a dialog to load a previously saved report.
 
 ### Description
 Reverts the report to the checkpoint saved just before the most recent AI run (the "Before AI" version), undoing the whole run as a single step.
+
+---
+## Method: ReportBuilder.setAutoLinkComponents
+
+### Description
+Sets [ReportBuilder.autoLinkComponents](#attr-reportbuilderautolinkcomponents) and updates the toolbar's Auto-link switch to match. As with the switch, only components added afterwards are affected: existing links, and components already marked independent, are kept.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| autoLink | [Boolean](#type-boolean) | false | — | whether newly added components are linked automatically |
 
 ---
 ## Method: ReportBuilder.addComponent

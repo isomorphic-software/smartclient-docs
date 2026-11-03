@@ -258,6 +258,8 @@ Alignment of facet label title.
 ### Description
 When applied to a [Chart](../reference_2.md#interface-chart), does the chart's data contain multiple values per record for this facet. See [Chart.data](Chart.md#attr-chartdata) for a full overview of `inlinedValues` behavior.
 
+A [CubeGrid](CubeGrid.md#class-cubegrid) supports the same representation: each [CellRecord](../reference.md#object-cellrecord) holds one property per [facet value](#attr-facetvalues) of the inlined facet, named by the facet value's id, in place of [CubeGrid.valueProperty](CubeGrid.md#attr-cubegridvalueproperty). The inlined facet must be the innermost row or column facet, and there can be at most one per axis. A typical use is a [metric facet](CubeGrid.md#attr-cubegridmetricfacetid) whose values are the measure fields of a DataSource, so records fetched from that DataSource - including summarized records - display directly; when the CubeGrid fetches its own data, an inlined facet is never sent as criteria.
+
 **Flags**: IRW
 
 ---

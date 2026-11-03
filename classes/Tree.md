@@ -91,6 +91,8 @@ If you are using the "parent" modelType and did not specify a root node via [Tre
 
 This setting is invalid if [TreeGrid.keepParentsOnFilter](TreeGrid.md#attr-treegridkeepparentsonfilter) is set and [fetch-mode](TreeGrid.md#attr-treegriddatafetchmode) is set to anything other than ["paged"](../reference_2.md#type-fetchmode) - a root-value cannot be used in this case because there is no efficient way to load a subtree to include all parents. If `fetchMode` is specifically set to "paged", the rootValue is passed as criteria and the [keepParentsOnFilter](DSRequest.md#attr-dsrequestkeepparentsonfilter) flag is set on the request so the server knows to use special filtering rules, but these rules are not built-in - the developer is responsible for this logic.
 
+In a [multi-link tree](#attr-treemultilinktree), [setRoot()](#method-treesetroot) re-roots the tree on another node and sets `rootValue` to that node's ID.
+
 See [Tree.data](#attr-treedata) for an example.
 
 ### See Also
@@ -342,6 +344,8 @@ Should folders be sorted separately from leaves or should nodes be ordered accor
 If true, indicates this is a "multiLink" tree - ie, one that can contain the same node in more than one place. Note, multiLink trees **must** use the "parent" [model type](#attr-treemodeltype)
 
 Because a node in a multiLink tree can have several parents, the tree keeps parent-child relationships only in its link records: it does not set [Tree.parentIdField](#attr-treeparentidfield) on the nodes themselves, as it does for other trees.
+
+Any node of a multiLink tree can become its root: [setRoot()](#method-treesetroot) re-roots the tree on a node, or on one particular occurrence of it, keeping the open and selected state of the subtree under it.
 
 See [Tree.linkData](#attr-treelinkdata) and [ResultTree.linkDataSource](ResultTree.md#attr-resulttreelinkdatasource) for further details of multiLink trees.
 
@@ -1697,11 +1701,13 @@ Note that on a big change (many items being added or deleted) this may be called
 ### Description
 Set the root node of the tree. Called automatically on this Tree during initialization and on the Tree returned from a call to [duplicate()](#method-treeduplicate).
 
+In a [multi-link tree](#attr-treemultilinktree), `setRoot()` re-roots the tree on any node: the tree then shows the subtree under that node, and [Tree.rootValue](#attr-treerootvalue) is set to the node's ID, so the tree is the same as one created with that `rootValue`. Re-rooting on a node that is already in the tree - passed as the node, or as a [NodeLocator](../reference_2.md#object-nodelocator) for one particular occurrence of it - is done in place, without relinking the tree, and keeps the open and selected state of every node occurrence within the new root's subtree. Pass a NodeLocator to choose the occurrence whose state is kept; given just the node, one of its occurrences is used. Re-rooting on any other node, such as an ancestor of the current root, relinks the tree from its [data](#attr-treedata) and [linkData](#attr-treelinkdata); a [ResultTree](ResultTree.md#class-resulttree) instead fetches the new root's subtree with [invalidateCache()](ResultTree.md#method-resulttreeinvalidatecache).
+
 ### Parameters
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| newRoot | [TreeNode](#type-treenode) | false | — | new root node |
+| newRoot | [TreeNode](#type-treenode)|[NodeLocator](#type-nodelocator) | false | — | new root node, or for a multi-link tree, a NodeLocator for one occurrence of it |
 | autoOpen | [boolean](../reference.md#type-boolean) | false | — | set to true to automatically open the new root node. |
 
 ---

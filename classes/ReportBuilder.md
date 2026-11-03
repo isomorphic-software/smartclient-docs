@@ -46,6 +46,14 @@ Whether the "Theme" toolbar menu button is shown.
 **Flags**: IR
 
 ---
+## Attr: ReportBuilder.publishedReportsLauncher
+
+### Description
+The deployments launcher inside [ReportBuilder.publishedReportsWindow](#attr-reportbuilderpublishedreportswindow): one row per published report, with actions to visit the published URL, push current content to it again, and open its Deployment Console.
+
+**Flags**: R
+
+---
 ## Attr: ReportBuilder.canCancelAIBuild
 
 ### Description
@@ -300,6 +308,14 @@ Subtitle text in the incomplete dialog.
 **Flags**: IRW
 
 ---
+## Attr: ReportBuilder.deploymentWindow
+
+### Description
+Modal window hosting the [deployment editor](#attr-reportbuilderdeploymenteditor) for a report's first publish and for reconfiguring an existing publication.
+
+**Flags**: R
+
+---
 ## Attr: ReportBuilder.aiIncompletePromptLabel
 
 ### Description
@@ -432,6 +448,14 @@ Reports themselves are not written to a project of this name: [ReportBuilder.edi
 **Flags**: IRW
 
 ---
+## Attr: ReportBuilder.deploymentEditor
+
+### Description
+Reify's own deployment editor, publishing the report's publication project: deployment name and type with a live URL, the sample-data import grid, and the authentication step that installs the test users under an author-chosen password -- or shares another deployment's accounts. One editor serves both tools, so deployment fixes land in each at once; what it needs from its host is the creator contract documented on [DeploymentEditor](#class-deploymenteditor).
+
+**Flags**: R
+
+---
 ## Attr: ReportBuilder.screenDataSource
 
 ### Description
@@ -557,7 +581,7 @@ Field definitions for report-level parameters. These appear in a parameter form 
 ## Attr: ReportBuilder.showPublish
 
 ### Description
-Whether the "Publish" toolbar button is shown. When `true` and [ReportBuilder.reifyIntegration](#attr-reportbuilderreifyintegration) is `false`, a [ReportBuilder.publishHandler](#attr-reportbuilderpublishhandler) must be provided (otherwise the button has no target).
+Whether the "Publish" toolbar menu is shown. The menu offers [Preview](#method-reportbuilderpreviewreport), [Publish](#method-reportbuilderpublishreport) and, where publishing deploys, [Published Reports](#method-reportbuilderopenpublishedreports). When `true` and [ReportBuilder.reifyIntegration](#attr-reportbuilderreifyintegration) is `false`, a [ReportBuilder.publishHandler](#attr-reportbuilderpublishhandler) must be provided (otherwise the menu's one Publish action has no target).
 
 **Flags**: IR
 
@@ -606,6 +630,14 @@ Which of the [ReportBuilder.paletteGroups](#attr-reportbuilderpalettegroups) a p
 **Flags**: IR
 
 ---
+## Attr: ReportBuilder.publishedReportsWindow
+
+### Description
+Modal window listing the author's published reports, holding the [launcher](#attr-reportbuilderpublishedreportslauncher).
+
+**Flags**: R
+
+---
 ## Attr: ReportBuilder.reifyIntegration
 
 ### Description
@@ -636,6 +668,14 @@ Title for the dialog shown on hard AI failure (error output, empty output, watch
 - i18nMessages
 
 **Flags**: IRW
+
+---
+## Attr: ReportBuilder.deploymentConsoleURL
+
+### Description
+URL of the Deployment Console page, where a published report's sign-in accounts are administered -- users created or removed, individual passwords set, roles granted -- and where the deployment itself can be removed. Opened by the Manage action of [Published Reports](#method-reportbuilderopenpublishedreports) and by the Manage Users button of the publish dialog.
+
+**Flags**: IR
 
 ---
 ## Attr: ReportBuilder.componentPalette
@@ -841,9 +881,7 @@ How many recent auto-saved versions the [Revert](#attr-reportbuildershowrevert) 
 ## Attr: ReportBuilder.publishedReportSignInPassword
 
 ### Description
-Password set on the sign-in accounts of a published report. A published report is a deployed application and requires a sign-in; the accounts come from the project's sample users, and this is the password they are given.
-
-Not shown anywhere in the authoring UI; [ReportBuilder.publishReport](#method-reportbuilderpublishreport) is what applies it.
+Fallback password for the sign-in accounts of a published report when publishing is driven programmatically, without the first-publish configuration dialog. A published report is a deployed application and requires a sign-in; the accounts come from the project's sample users, and the dialog has the author choose their shared password. When a publish bypasses the dialog this value is used instead, and when it is also null the deployment server's own default applies.
 
 **Flags**: IRW
 
@@ -1053,6 +1091,12 @@ Exports the current report to a file.
 | callback | [Callback](../reference.md#type-callback) | true | — | optional callback fired after export completes |
 
 ---
+## Method: ReportBuilder.openPublishedReports
+
+### Description
+Opens the Published Reports manager: every report this author has published, each with its published URL (a lost link is never lost), a one-click re-publish, and a Manage action opening the deployment's console -- where readers' accounts are administered and the deployment can be removed. Requires [a deployment store](#attr-reportbuilderdeploymentdatasource).
+
+---
 ## Method: ReportBuilder.getComponentDefaults
 
 ### Description
@@ -1113,6 +1157,14 @@ Undo the last change by reverting the report to its previous auto-saved version.
 - [ReportBuilder.redo](#method-reportbuilderredo)
 
 ---
+## Method: ReportBuilder.previewReport
+
+### Description
+Opens the current report in a new browser tab, exactly as a reader will see it -- no authoring chrome, served live from the author's workspace. The report is saved first, so the preview always shows current content.
+
+Previewing creates no deployment: it is the fast "look at it" half of the Publish menu, and a previewed report is reachable only by its author. Releasing the report to its audience is [publishReport()](#method-reportbuilderpublishreport).
+
+---
 ## Method: ReportBuilder.redo
 
 ### Description
@@ -1163,9 +1215,17 @@ Sets report-level query configuration including criteria, groupBy, and summaryFu
 ## Method: ReportBuilder.publishReport
 
 ### Description
-Publishes the current report to a shareable URL. The report is saved, then its publication project -- an ordinary Reify project named for the report -- is created on first publish and merged on every publish after that, so anything a user has added to that project in Reify survives re-publishing. On success a dialog displays the copyable share URL.
+Publishes the current report to a shareable URL. The report is saved, then its publication project -- an ordinary Reify project named for the report -- is created on first publish and merged on every publish after that, so anything a user has added to that project in Reify survives re-publishing.
+
+Where publishing deploys (see [deploymentDataSource](#attr-reportbuilderdeploymentdatasource)), an `interactive` first publish -- the toolbar menu's Publish action -- opens the shared deployment editor to configure the publication: its URL name, its [type](#attr-reportbuilderreportdeploymenttype), which sample data it carries, and the password its initial sign-in accounts are installed with (or an existing deployment whose accounts it shares). A programmatic call without `settings.interactive` publishes directly with the defaults, as does every publish after the first: the report's current content is pushed to the existing deployment in one step, leaving its configuration and its user accounts untouched. Accounts are administered in the Deployment Console (see [openPublishedReports()](#method-reportbuilderopenpublishedreports)). On success a dialog displays the copyable share URL.
 
 The published project is served by the same Reify infrastructure (`projectRunner.jsp`) that serves every project, and the report's screen inside it stays maintained by the ReportBuilder: content changes flow to the served URL because the project references the screen by name.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| settings | [Object](../reference_2.md#type-object) | true | — | publish settings; `interactive` (boolean) allows the first-publish configuration dialog to be shown |
 
 ---
 ## Method: ReportBuilder.saveReportToStorage

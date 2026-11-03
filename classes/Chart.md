@@ -75,10 +75,7 @@ Whether to show labels on each individual value (bar, column or line point)
 ## Attr: Chart.facets
 
 ### Description
-An Array of facets, exactly analogous to [CubeGrid.facets](CubeGrid.md#attr-cubegridfacets), except that:
-
-*   the "inlinedValues" property can be set on a facet to change data representation as described under [Chart.data](#attr-chartdata).
-*   for a non-inlined facet, Charts support auto-derivation of facetValues from the data.
+An Array of facets, exactly analogous to [CubeGrid.facets](CubeGrid.md#attr-cubegridfacets). As in a CubeGrid, the [inlinedValues](Facet.md#attr-facetinlinedvalues) property can be set on a facet to change data representation as described under [Chart.data](#attr-chartdata). For a non-inlined facet, facetValues can be derived automatically from the data.
 
 **Flags**: IR
 

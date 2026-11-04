@@ -77,6 +77,8 @@ Name of the property on a [TreeNode](../reference_2.md#object-treenode) that hol
 ### Description
 The name of the "position" field in this [multi-link tree](#attr-treelinkdata)'s link data. Ignored if this tree is not a multi-link tree. Note, these values are only used to order the nodes within a parent - so a node with link position -123 will appear before a node with link position 87, but that is the only significance of the link position values
 
+For a databound tree, declare this field of the [linkDataSource](ResultTree.md#attr-resulttreelinkdatasource) with a decimal type (`"float"` or `"decimal"`). A link placed between two others then always has a value between theirs, so placing it never changes another link. With an integer type, two neighbors can have no whole number between them, and the links after them must then be renumbered: see [Tree.getLinkPositionForInsert](#method-treegetlinkpositionforinsert) and [ResultTree.autoUpdateSiblingNodesOnDrag](ResultTree.md#attr-resulttreeautoupdatesiblingnodesondrag). An unbound tree's positions are plain numbers, so this never arises.
+
 ### Groups
 
 - multiLinkTree
@@ -606,6 +608,53 @@ For load on demand trees (those that only have a partial representation client-s
 ### Returns
 
 `[Array of TreeNode](#type-array-of-treenode)` — List of immediate children that are leaves.
+
+---
+## Method: Tree.getLinkPositionForInsert
+
+### Description
+For a [multi-link tree](#method-treeismultilinktree), the [linkPositionField](#attr-treelinkpositionfield) value that places a new link at `index` among the children of `parent`, together with any updates to the positions of the parent's existing links that are needed to make room for it.
+
+The position is one more than that of the sibling before, if that sorts before the sibling after; otherwise a value between the two; one less than the first sibling's when inserting first; and in an empty parent, [ResultTree.firstPositionValue](ResultTree.md#attr-resulttreefirstpositionvalue) for a `ResultTree` and 0 for an unbound tree. Sibling positions only need to change when the position field holds whole numbers and there is no whole number free between the two siblings - for a [ResultTree](ResultTree.md#class-resulttree), when the `linkPositionField` of its [linkDataSource](ResultTree.md#attr-resulttreelinkdatasource) is declared with an integer type. The siblings after the insertion point then move up by one as far as needed to make room. Declaring the position field as a decimal type (`"float"` or `"decimal"`) means there is always room, and no sibling ever needs updating.
+
+The tree itself is not changed. For a databound tree, send the `siblingUpdates` and the new link in one [queue](RPCManager.md#classmethod-rpcmanagerstartqueue), with the updates first and in the order given, and cache synchronization then moves the siblings and links in the new child:
+
+```
+ var tree = myTreeGrid.data,
+     linkDS = isc.DataSource.get(tree.linkDataSource),
+     // "bar" is to be the third child of "foo"
+     placement = tree.getLinkPositionForInsert(tree.findById("foo"), 2),
+     newLink = {};
+ newLink[tree.parentIdField] = "foo";
+ newLink[tree.idField] = "bar";
+ newLink[tree.linkPositionField] = placement.position;
+
+ isc.RPCManager.startQueue();
+ for (var i = 0; i < placement.siblingUpdates.length; i++) {
+     linkDS.updateData(placement.siblingUpdates[i]);
+ }
+ linkDS.addData(newLink);
+ isc.RPCManager.sendQueue();
+ 
+```
+For an unbound tree, positions are plain numbers, so there is always room: `siblingUpdates` is empty, and the link can be passed to [Tree.add](#method-treeadd).
+
+The position is null if the sibling the new link would follow has no position value.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| parent | [TreeNode](#type-treenode)|[NodeLocator](#type-nodelocator) | false | — | parent of the new link |
+| index | [Integer](../reference_2.md#type-integer) | true | — | where the new child goes among `parent`'s children; after them all if not given |
+
+### Returns
+
+`[Object](../reference_2.md#type-object)` — an object with a `position` property, the position for the new link, and a `siblingUpdates` property, an array of the link records whose positions must change - each a copy of the link record with its new position, ready to pass to `updateData()`
+
+### Groups
+
+- multiLinkTree
 
 ---
 ## Method: Tree.removeChildren

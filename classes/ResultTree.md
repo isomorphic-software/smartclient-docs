@@ -66,6 +66,20 @@ This property allows you to specify the number of ancestor levels SmartClient at
 **Flags**: IRW
 
 ---
+## Attr: ResultTree.keepSiblingPositionsConsecutive
+
+### Description
+With [ResultTree.autoUpdateSiblingNodesOnDrag](#attr-resulttreeautoupdatesiblingnodesondrag), keeps each parent's [link positions](Tree.md#attr-treelinkpositionfield) consecutive integers starting at [ResultTree.firstPositionValue](#attr-resulttreefirstpositionvalue), for applications that use position values as indexes. A dropped node takes the position after its new previous sibling's (or `firstPositionValue` if dropped first), every sibling after it moves up by one, and the siblings that followed it in its old parent move down by one. In the example in [ResultTree.autoUpdateSiblingNodesOnDrag](#attr-resulttreeautoupdatesiblingnodesondrag), D moves to position 2 as well as G to 3.
+
+This only works if each parent's positions are consecutive integers to begin with, and it sends an "update" for every following sibling - many requests when a node is dropped near the head of a long list of siblings.
+
+### Groups
+
+- multiLinkTree
+
+**Flags**: IR
+
+---
 ## Attr: ResultTree.autoPreserveOpenState
 
 ### Description
@@ -178,7 +192,7 @@ Note, this value can be overridden by [DSRequest.linkDataFetchOperation](DSReque
 ### Description
 The [operationId](DSRequest.md#attr-dsrequestoperationid) this `ResultTree` should use when performing add operations on its [ResultTree.linkDataSource](#attr-resulttreelinkdatasource). Has no effect if this is not a [multi-link tree](Tree.md#method-treeismultilinktree).
 
-Note, this property wll be used by internal update operations when you drag-move or drag-reparent nodes in a multi-link tree. Do not use it when adding records from application code by directly calling `addData()` on the [linkDataSource](#attr-resulttreelinkdatasource); instead just use the regular `operationId` property in your add request. Also note, because this property is intended to allow your code to influence the operationId used by internal methods, and those methods never directly update link data (moved and re-parented links are always removed and then re-added), there is no corresponding `linkDataUpdateOperation` property.
+Note, this property wll be used by internal update operations when you drag-move or drag-reparent nodes in a multi-link tree. Do not use it when adding records from application code by directly calling `addData()` on the [linkDataSource](#attr-resulttreelinkdatasource); instead just use the regular `operationId` property in your add request. Also note, because this property is intended to allow your code to influence the operationId used by internal methods, and those methods only update link data to renumber siblings (moved and re-parented links are always removed and then re-added - see [ResultTree.autoUpdateSiblingNodesOnDrag](#attr-resulttreeautoupdatesiblingnodesondrag)), there is no corresponding `linkDataUpdateOperation` property; the renumbering updates use the default update operation.
 
 ### Groups
 
@@ -204,7 +218,10 @@ Applicable only with `fetchMode: "paged"`. When a paged ResultTree is asked for 
 ## Attr: ResultTree.autoUpdateSiblingNodesOnDrag
 
 ### Description
-For [multi-link trees](Tree.md#method-treeismultilinktree), indicates that we should automatically update the [position](Tree.md#attr-treelinkpositionfield) values of old and new sibling records after a drag reparent or reposition-within-parent operation. For example, say you have a tree like this (where the number in parentheses indicates the node's [position](Tree.md#attr-treelinkpositionfield) value):
+For [multi-link trees](Tree.md#method-treeismultilinktree), whether a drag and drop that leaves no room for the dropped node's [position](Tree.md#attr-treelinkpositionfield) value updates the positions of the siblings after the drop point to make room.
+
+A dropped node takes the position after its new previous sibling's, if that is less than the next sibling's, or otherwise a value between the two (see [Tree.getLinkPositionForInsert](Tree.md#method-treegetlinkpositionforinsert) for the full rule). Only when the `linkPositionField` of the [ResultTree.linkDataSource](#attr-resulttreelinkdatasource) has an integer type, and there is no whole number between the two siblings, is there no room. For example, say you have a tree like this (where the number in parentheses indicates the node's [position](Tree.md#attr-treelinkpositionfield) value):
+
 ```
       A
         - B (1)
@@ -214,12 +231,11 @@ For [multi-link trees](Tree.md#method-treeismultilinktree), indicates that we sh
         - F (1)
         - G (2)
 ```
-and you drag node C out and drop it between nodes F and G. This drag operation will spawn two update operations to the server: a "remove" to delete node C from parent A, and an "add" to re-add it under parent E. With `autoUpdateSiblingNodesOnDrag` in force, we also automatically issue two "update" operations to the server - one to change the position on node D to 2, and another to change the position on node G to 3. The end result of this is that node position values are kept correct.
+and you drag node C out and drop it between nodes F and G. The drop sends a "remove" to delete C's link under A and an "add" to link it under E, at position 2. With `autoUpdateSiblingNodesOnDrag`, the same [queue](RPCManager.md#classmethod-rpcmanagerstartqueue) also sends an "update" moving G to position 3; positions after G move up as well, but only as far as they collide. Dropping C between two siblings at positions 10 and 20 instead gives it position 11 and updates nothing. Without `autoUpdateSiblingNodesOnDrag`, C would take position 2 alongside G, and the order of the two would be undefined.
 
-Please note the following:
+Declaring the position field with a decimal type (`"float"` or `"decimal"`) means there is always room, so no sibling ever needs updating - see [Tree.linkPositionField](Tree.md#attr-treelinkpositionfield).
 
-*   As noted above, these automatic updates are persistent - we send a queue of actual update requests to the server. This is convenient, but it may not be terribly efficient, particularly if you have just dropped a node at the head of a list of several hundred siblings. This is why we do not default this setting to true
-*   The automatic updates work by applying an integer delta value to the existing position value. So in the above example, we would compute a delta of negative 1 for node D and positive 1 for node G. The upshot of this is that `autoUpdateSiblingNodesOnDrag` only works well if your position values are consecutive integers
+To keep each parent's positions consecutive integers instead - so that the gap C leaves under A is closed as well - set [ResultTree.keepSiblingPositionsConsecutive](#attr-resulttreekeepsiblingpositionsconsecutive).
 
 ### Groups
 
@@ -476,7 +492,7 @@ See [ResultTree.linkDataAddOperation](#attr-resulttreelinkdataaddoperation) for 
 ## Attr: ResultTree.firstPositionValue
 
 ### Description
-If [ResultTree.autoUpdateSiblingNodesOnDrag](#attr-resulttreeautoupdatesiblingnodesondrag) is in force, this is the value we will use to auto-update the position of a node when we cannot derive that value from the existing value of a neighbor. This happens when a node is dropped into the very first position below a parent (including the special case of the parent being previously empty)
+The [position](Tree.md#attr-treelinkpositionfield) given to the first link added under an empty parent, and, with [ResultTree.keepSiblingPositionsConsecutive](#attr-resulttreekeepsiblingpositionsconsecutive), to a node dropped first under a parent
 
 ### Groups
 

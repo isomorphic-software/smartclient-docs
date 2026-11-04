@@ -287,6 +287,48 @@ For multi-axis adjustments, use [adjust()](#classmethod-colorsadjust) directly.
 - [Colors.adjust](#classmethod-colorsadjust)
 
 ---
+## ClassMethod: Colors.relativeCSS
+
+### Description
+Express one color as a CSS Relative Color Syntax transformation of another, in a single call.
+
+This is the common case of the relationship pipeline: given a base color and a derived color, produce the oklch RCS expression that turns the first into the second. It is equivalent to [Colors.describeRelationship](#classmethod-colorsdescriberelationship) followed by [Colors.generateCSS](#classmethod-colorsgeneratecss), and exists so that callers converting a palette of fixed colors into derived ones need not handle the intermediate descriptor.
+
+```
+     // A skin pins its accent and several shades of it as fixed colors.  Re-express a
+     // shade as a relationship, so it follows the accent when that is re-themed:
+     isc.Colors.relativeCSS("#3B82F6", "#2563EB", "var(--isc-highlight_color)");
+     // "oklch(from var(--isc-highlight_color) calc(l - 0.0769) calc(c + 0.0272)
+     //        calc(h + 3.1))"
+
+     // With no origin given, the base color itself is the origin:
+     isc.Colors.relativeCSS("#3B82F6", "#2563EB");
+     // "oklch(from #3B82F6 calc(l - 0.0769) calc(c + 0.0272) calc(h + 3.1))"
+ 
+```
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| baseColor | [String](#type-string)|[Color](#type-color) | false | — | the origin/base color |
+| derivedColor | [String](#type-string)|[Color](#type-color) | false | — | the color to express as a transformation of the base |
+| origin | [String](#type-string) | true | — | the CSS expression to use as the RCS origin, typically a `var()` reference naming the base color. Defaults to the base color itself, written as a literal |
+
+### Returns
+
+`[String](#type-string)` — a CSS oklch RCS expression, or null if either color is invalid
+
+### Groups
+
+- colorOverview
+
+### See Also
+
+- [Colors.describeRelationship](#classmethod-colorsdescriberelationship)
+- [Colors.generateCSS](#classmethod-colorsgeneratecss)
+
+---
 ## ClassMethod: Colors.classifyRelationship
 
 ### Description

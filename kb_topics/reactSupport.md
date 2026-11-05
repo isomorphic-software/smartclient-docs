@@ -206,7 +206,7 @@ If you need to call React component APIs after the component has been rendered, 
  );
 ```
 
-#### Conditional JSX
+#### Re-rendering and conditional JSX
 
 We support JSX that contains conditional child elements, such as:
 
@@ -222,18 +222,28 @@ We support JSX that contains conditional child elements, such as:
 ```
 as well as conditional JSX in attributes assigned via inlined JavaScript.
 
-We recommend using React refs to reconfigure components after construction, as discussed above, rather than re-rendering conditional JSX child elements, for the best performance, readabillity, and maintainability.
+Re-rendering with changed attributes is the idiomatic React way to reconfigure a component, and the wrapper components support it as described below. React refs, as discussed above, remain the way to call widget APIs that have no attribute equivalent, such as starting an edit or scrolling a record into view.
 
-When using conditional JSX, keep in mind:
+When re-rendering, keep in mind:
 
-*   When JSX is re-rendered, React will call **componentDidUpdate()**. By default, re-rendering does not automatically update the underlying SmartClient widget.
-*   To apply changed props to the SC widget, set the attribute `updateOnReactComponentUpdate` on the component, or set `isc.React.updateOnReactComponentUpdate` globally; an attribute set explicitly to `false` excludes a component from the global setting. Changed props are applied through [Class.setProperties](../classes/Class.md#method-classsetproperties), so a property's setter runs where one exists, other [writable properties](../reference.md#kb-topic-flag-abbreviations) are assigned, and a property the reference documents as init-only that has no setter is left unchanged with a warning logged once. Handlers are applied as well, so an inline handler that captured new state takes effect on the next render. The setting also covers the nested declarations of a component: a changed member, tab, item or field is updated in place via its own setter (for example [TabSet.setTabProperties](../classes/TabSet.md#method-tabsetsettabproperties) or [ListGrid.setFieldProperties](../classes/ListGrid_2.md#method-listgridsetfieldproperties)) rather than by replacing the whole set, unless nested declarations were added or removed. The widget itself is not recreated.
+*   When JSX is re-rendered, React calls **componentDidUpdate()** on each wrapper component, which applies the attributes that changed to its SmartClient widget. Changed props are applied through [Class.setProperties](../classes/Class.md#method-classsetproperties), so a property's setter runs where one exists, other [writable properties](../reference.md#kb-topic-flag-abbreviations) are assigned, and a property the reference documents as init-only that has no setter is left unchanged with a warning logged once. Handlers are applied as well, so an inline handler that captured new state takes effect on the next render. The update also covers the nested declarations of a component: a changed member, tab, item or field is updated in place via its own setter (for example [TabSet.setTabProperties](../classes/TabSet.md#method-tabsetsettabproperties) or [ListGrid.setFieldProperties](../classes/ListGrid_2.md#method-listgridsetfieldproperties)) rather than by replacing the whole set, unless nested declarations were added or removed. The widget itself is not recreated.
+*   To leave a widget untouched by re-renders, for example in a performance-sensitive tree, set the attribute `updateOnReactComponentUpdate` to `false` on the component; its nested declarations are then left alone as well. Setting [isc.React.updateOnReactComponentUpdate](#classattr-reactupdateonreactcomponentupdate) to `false` turns updates off for every component that does not set its own attribute, and a component's own attribute always wins, in either direction. That single global setting is also the way to keep the behavior of releases before 15.0, where re-renders did not update the widgets unless a component opted in.
 *   To destroy and recreate the SC widget in **componentDidUpdate()**, set the attribute `recreateOnReactComponentUpdate` true on the component.
 *   Alternatively, if you set the `key` attribute on the component to a unique number, that will force React to re-create and remount the component, so that **componentDidMount()** gets called against, recreating the underlying SC widget.
 *   When declaring properties that can contain objects, like [Window.headerControls](../classes/Window.md#attr-windowheadercontrols) (a list of strings naming specific controls or Canvas instances), any falsy value will be considered an excluded child element and skipped.
 *   For other properties declared with conditional JSX, your conditional element must actually evaluate to `false` to be excluded from the declaration.
 
 For an example of re-rendering, see the ["Saved Search > Built-in" Showcase sample](https://smartclient.com/smartclient-latest/showcase/?id=gridSavedSearchBuiltin&react)
+
+#### Upgrading from releases before 15.0
+
+In releases before 15.0, a re-render did not update the SmartClient widgets unless a component set `updateOnReactComponentUpdate` or the application set [isc.React.updateOnReactComponentUpdate](#classattr-reactupdateonreactcomponentupdate). As of 15.0 that global setting defaults to `true`, so an application that re-renders wrapper components with changed attributes now has those changes applied to the widgets. An application that reconfigures widgets through refs while still rendering the original attributes would see those edits overwritten on the next render. To keep the earlier behavior for the whole application, set the global flag to `false` once, after the framework has loaded and before the first render:
+
+```
+ import { SC, ListGrid } from 'smartclient-eval/react';
+ isc.React.updateOnReactComponentUpdate = false;
+```
+Individual components can then still opt in with their own `updateOnReactComponentUpdate` attribute, which always wins over the global setting.
 
 #### Loading Reify screens
 

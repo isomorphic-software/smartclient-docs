@@ -1179,7 +1179,7 @@ Note that this feature is incompatible with the following properties:
 *   [canDragScroll](DrawPane.md#attr-drawpanecandragscroll)
 *   [FacetChart.canZoom](#attr-facetchartcanzoom)
 
-If [FacetChart.rotateLabels](#attr-facetchartrotatelabels) is set to "auto" it will be treated as "never" if `autoScrollData` has been set. If any of the other properties have non-default values, a warning will be logged and `autoScrollData` will be disabled. The factors used to drive expansion can be limited by setting [AutoScrollDataApproach](../reference_2.md#type-autoscrolldataapproach). You can also enforce a minimum size for the chart-content, and scrollbars will be introduced if this widget shrinks below that size. See [autoScrollContent](#attr-facetchartautoscrollcontent), along with [minContentWidth](#attr-facetchartmincontentwidth) and [minContentHeight](#attr-facetchartmincontentheight).
+If [FacetChart.rotateLabels](#attr-facetchartrotatelabels) is set to "auto" it will be treated as "never" if `autoScrollData` has been set. If any of the other properties have non-default values, a warning will be logged and `autoScrollData` will be disabled. The factors used to drive expansion can be limited by setting [AutoScrollDataApproach](../reference.md#type-autoscrolldataapproach). You can also enforce a minimum size for the chart-content, and scrollbars will be introduced if this widget shrinks below that size. See [autoScrollContent](#attr-facetchartautoscrollcontent), along with [minContentWidth](#attr-facetchartmincontentwidth) and [minContentHeight](#attr-facetchartmincontentheight).
 
 ### See Also
 
@@ -5060,13 +5060,13 @@ This is only allowed to be called when [FacetChart.chartDrawn](#method-facetchar
 ## Method: FacetChart.setAutoScrollDataApproach
 
 ### Description
-Sets [AutoScrollDataApproach](../reference_2.md#type-autoscrolldataapproach) and updates the chart.
+Sets [AutoScrollDataApproach](../reference.md#type-autoscrolldataapproach) and updates the chart.
 
 ### Parameters
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| autoScrollDataApproach | [AutoScrollDataApproach](../reference_2.md#type-autoscrolldataapproach) | false | — | what should drive horizontal expansion of the chart? |
+| autoScrollDataApproach | [AutoScrollDataApproach](../reference.md#type-autoscrolldataapproach) | false | — | what should drive horizontal expansion of the chart? |
 
 ---
 ## Method: FacetChart.setFreezeValueAxis

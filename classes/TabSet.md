@@ -1281,6 +1281,8 @@ Return false from this method to cancel the change.
 ### Description
 Remove one or more tabs. The pane(s) associated with the removed tab(s) is automatically destroyed when you call this method.
 
+If a removed tab (or its pane) held keyboard focus, focus is moved to the tab left selected afterwards, so that keyboard and screen-reader users can carry on navigating the tabs.
+
 ### Parameters
 
 | Name | Type | Optional | Default | Description |

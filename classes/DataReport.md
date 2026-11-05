@@ -31,7 +31,7 @@ Slicers shown in the report's filter bar, in bar order.
 
 A filter-bar slicer is not a portlet: the report's author arranges the bar, and a viewer of the deployed report can neither remove nor reorder what is in it. A slicer placed in the report body instead is an ordinary portlet, with the usual close, minimize and drag behavior, and does not appear in this list.
 
-A bar slicer whose [Slicer.visibility](Slicer.md#attr-slicervisibility) is `"hidden"` is not created in a deployed report at all; only the criteria it carries reach the report, through the [dataContext](Canvas_1.md#attr-canvasdatacontext). Whether the bar is shown at all is [ReportScreen.showSlicerBar](ReportScreen.md#attr-reportscreenshowslicerbar).
+A bar slicer whose [visibility](Canvas_1.md#attr-canvasvisibility) is `"hidden"` is not shown in a deployed report at all; only the criteria it carries reach the report, through the [dataContext](Canvas_1.md#attr-canvasdatacontext). An authoring tool still shows it, marked as hidden, so it can be found and un-hidden. Whether the bar is shown at all is [ReportScreen.showSlicerBar](ReportScreen.md#attr-reportscreenshowslicerbar).
 
 **Flags**: IR
 

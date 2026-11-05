@@ -146,7 +146,7 @@ Possible values for [Canvas.backgroundRepeat](classes/Canvas.md#attr-canvasbackg
 ## Type: CacheSyncStrategy
 
 ### Description
-Indicates the strategy to be used for [automatic cache synchronization](kb_topics/cacheSynchronization.md#kb-topic-automatic-cache-synchronization), for a given [DataSource](classes/DataSource.md#attr-datasourcecachesyncstrategy), [OperationBinding](classes/OperationBinding.md#attr-operationbindingcachesyncstrategy) or [DSRequest](classes/DSRequest.md#attr-dsrequestcachesyncstrategy).
+Indicates the strategy to be used for [automatic cache synchronization](kb_topics/cacheSynchronization.md#kb-topic-automatic-cache-synchronization), for a given [DataSource](#attr-datasourcecachesyncstrategy), [OperationBinding](#attr-operationbindingcachesyncstrategy) or [DSRequest](#attr-dsrequestcachesyncstrategy).
 
 ### Values
 
@@ -169,14 +169,14 @@ Note, if no `oldValues` are available and the updated record is [incomplete](cla
 ## Type: CacheSyncTiming
 
 ### Description
-Indicates the timing strategy to be used for [automatic cache synchronization](kb_topics/cacheSynchronization.md#kb-topic-automatic-cache-synchronization), for a given [DataSource](classes/DataSource.md#attr-datasourcecachesynctiming), [OperationBinding](classes/OperationBinding.md#attr-operationbindingcachesynctiming) or [DSRequest](classes/DSRequest.md#attr-dsrequestcachesynctiming). This property controls the "when" of cache synchronization; the "how" is controlled by [CacheSyncStrategy](reference_2.md#type-cachesyncstrategy).
+Indicates the timing strategy to be used for [automatic cache synchronization](kb_topics/cacheSynchronization.md#kb-topic-automatic-cache-synchronization), for a given [DataSource](#attr-datasourcecachesynctiming), [OperationBinding](#attr-operationbindingcachesynctiming) or [DSRequest](#attr-dsrequestcachesynctiming). This property controls the "when" of cache synchronization; the "how" is controlled by [CacheSyncStrategy](reference_2.md#type-cachesyncstrategy).
 
 **NOTE:** `CacheSyncTiming` is intended to allow applications to defer cache synchronization to the point where response data is actually requested; the primary aim of this is to avoid doing cache sync altogether in cases where the response data is never requested. There are some mainstream types of request where we know that the response data unequivocally _is_ required, and for these requests a global default `CacheSyncTiming` will be overridden to "immediate" by SmartClient because there is no point in deferring cache sync when we know for sure it will eventually be needed. Thus, cache sync will always run immediately regardless of the default `cacheSyncTiming` setting in these cases:
 
 *   Requests sent from a client
 *   Server-created requests that copy an `RPCManager` across from a client-originated request, either by specifying it in the `DSRequest` constructor, or by calling `dsRequest.setRPCManager()`
 
-The above only applies to the global default `cacheSyncTiming`: a `cacheSyncTiming` set explicitly at the [DataSource](classes/DataSource.md#attr-datasourcecachesynctiming), [operation](classes/OperationBinding.md#attr-operationbindingcachesynctiming) or [request](classes/DSRequest.md#attr-dsrequestcachesynctiming) level will usually be honored. However, even an explicit `cacheSyncTiming` setting on the DataSource, operation or request will be ignored in situations where it could break a framework feature if we honored it. These situations are:
+The above only applies to the global default `cacheSyncTiming`: a `cacheSyncTiming` set explicitly at the [DataSource](#attr-datasourcecachesynctiming), [operation](#attr-operationbindingcachesynctiming) or [request](#attr-dsrequestcachesynctiming) level will usually be honored. However, even an explicit `cacheSyncTiming` setting on the DataSource, operation or request will be ignored in situations where it could break a framework feature if we honored it. These situations are:
 
 *   Requests where [automatic auditing](classes/DataSource.md#attr-datasourceaudit) is in force
 *   Requests on a dataSource with one-to-many or many-to-many relations, where the update means that SmartClient must update foreign keys on the related dataSources to maintain relation integrity
@@ -1018,7 +1018,7 @@ Note: to declare related but _separate_ objects, as in an "Account" object that 
 | "creator" | Fields of this type are automatically populated by the SmartClient Server with the current authenticated userId as part of "add" operations. By default, fields of this type are hidden and not editable; the server ignores any value that the client sends in a field of this type. (but see also [writeToGeneratedFields](classes/DSRequest.md#attr-dsrequestwritetogeneratedfields)). The notes about type "modifier" also apply to fields of this type. |
 | "creatorTimestamp" | Fields of this type are automatically populated by the SmartClient Server with the current date and time as part of an "add" operation (when the record is first created). By default, fields of this type are hidden and not editable; the server ignores any value that the client sends in a field of this type (but see also [writeToGeneratedFields](classes/DSRequest.md#attr-dsrequestwritetogeneratedfields)). |
 | "password" | Same as "text", but causes [PasswordItem](#class-passworditem) to be used by default for editing (hides typed-in value), and defaults [storeWithhash](classes/DataSourceField.md#attr-datasourcefieldstorewithhash) to "bcrypt" (affecting server operations). |
-| "ntext" | A special field type specifically for use with Unicode data in conjunction with the Microsoft SQL Server database. Field type "ntext" implies the use of [sqlStorageStrategy](classes/DataSourceField.md#attr-datasourcefieldsqlstoragestrategy) "ntext"; other than that, this type is identical to "text" |
+| "ntext" | A special field type specifically for use with Unicode data in conjunction with the Microsoft SQL Server database. Field type "ntext" implies the use of [sqlStorageStrategy](#attr-datasourcefieldsqlstoragestrategy) "ntext"; other than that, this type is identical to "text" |
 | "localeInt" | An integer number with locale-based formatting, e.g. `12,345,678`. See [Localized Number Formatting](#kb-topic-localized-number-formatting) for more info. |
 | "localeFloat" | A float number with locale-based formatting, e.g. `12,345.67`. See [Localized Number Formatting](#kb-topic-localized-number-formatting) for more info. |
 | "localeCurrency" | A float number with locale-based formatting and using currency symbol, e.g. `$12,345.67`. See [Localized Number Formatting](#kb-topic-localized-number-formatting) for more info. |
@@ -1113,23 +1113,6 @@ Type of change to the [ListGrid.groupTree](classes/ListGrid_1.md#attr-listgridgr
 - [ListGrid.groupTreeChanged](classes/ListGrid_2.md#method-listgridgrouptreechanged)
 
 ---
-## Type: HashAlgorithm
-
-### Description
-Algorithms to use when hashing field values (see [DataSourceField.storeWithHash](classes/DataSourceField.md#attr-datasourcefieldstorewithhash)). Note that the `MD5` and `SHA` algorithms are deprecated as secure hashes since they are vulnerable to collisions created by an attacker with current technology, though they may still be useful in detecting corruption due to faulty transmission or storage.
-
-### Values
-
-| Value | Description |
-|-------|-------------|
-| "MD5" | Message Digest algorithm. _Deprecated as a secure hash._ |
-| "SHA" | Secure Hashing Algorithm (SHA-1). _Deprecated as a secure hash._ |
-| "SHA-256" | Secure Hashing Algorithm (SHA-256). |
-| "SHA-512" | Secure Hashing Algorithm (SHA-512). |
-| "bcrypt" | bcrypt is a password hashing function designed by Niels Provos and David Mazieres, based on the Blowfish cipher. |
-| "none" | Don't hash values. Can be specified to avoid the default algorithm. |
-
----
 ## Type: HoopSelectionStyle
 
 ### Description
@@ -1176,21 +1159,6 @@ Property to govern when the 'over' styling is applied to a formItemIcon.
 | "item" | Show rollover styling and media when the user is over any part of the FormItem, including the entire cell within a DynamicForm table containing the item. |
 
 ---
-## Type: ImportFormat
-
-### Description
-—
-
-### Values
-
-| Value | Description |
-|-------|-------------|
-| "xml" | XML format: same as that expected by the [adminConsole](kb_topics/adminConsole.md#kb-topic-admin-console) for DataSource [test data](kb_topics/testData.md#kb-topic-test-data) |
-| "json" | JSON format: a JSON Array of JSON Objects |
-| "csv" | Comma-separated values, or in general delimiter-separated values based on a provided delimiter. |
-| "auto" | Auto-detect format |
-
----
 ## Type: Integer
 
 ### Description
@@ -1214,38 +1182,6 @@ What the [JSONEncoder](classes/JSONEncoder.md#class-jsonencoder) should do when 
 | "omit" | circular references in Arrays will be represented as a null entry, and objects will have a property with a null value |
 | "marker" | leave a string marker, the [JSONEncoder.circularReferenceMarker](classes/JSONEncoder.md#attr-jsonencodercircularreferencemarker), wherever a circular reference is found |
 | "path" | leave a string marker _followed by_ the path to the first occurrence of the circular reference from the top of the object tree that was serialized. This potentially allows the original object graph to be reconstructed. |
-
----
-## Type: KeyName
-
-### Description
-Strings to identify the various keys on the keyboard.
-
-*   For alpha keys, the single (uppercase) character value is used, such as "Q"
-*   For Numeric keys, the number is used as in a single character string, like "1"
-*   Function keys are identified as `"f1"` - `"f12"`
-*   Non alpha-numeric character keys (such as the key for "\[" / "{") are identified by their unmodified character value (the value obtained by hitting the key without holding shift down), by default - exceptions are listed below.
-*   Additional key names:  
-    \- `Space`  
-    \- `Tab`  
-    \- `Enter`  
-    \- `Escape`  
-    \- `Backspace`  
-    \- `Insert`  
-    \- `Delete`  
-    \- `Arrow_Up`  
-    \- `Arrow_Down`  
-    \- `Arrow_Left`  
-    \- `Arrow_Right`  
-    \- `Home`  
-    \- `End`  
-    \- `Page_Up`  
-    \- `Page_Down`  
-    \- `Shift`  
-    \- `Ctrl`  
-    \- `Alt`
-
-\[Note: Some keys may not be available for capture on every platform\]
 
 ---
 ## Type: LabelAlignment
@@ -2348,7 +2284,7 @@ An object containing the open state for a treeGrid. Note that this object is not
 ## Type: UnionFieldsStrategy
 
 ### Description
-The strategy used when auto-deriving the fields that make up a UnionDataSource, if no [unionFields](classes/DataSource.md#attr-datasourceunionfields) setting is provided.
+The strategy used when auto-deriving the fields that make up a UnionDataSource, if no [unionFields](#attr-datasourceunionfields) setting is provided.
 
 ### Values
 
@@ -2360,7 +2296,7 @@ The strategy used when auto-deriving the fields that make up a UnionDataSource, 
 
 ### See Also
 
-- [DataSource.unionFields](classes/DataSource.md#attr-datasourceunionfields)
+- [DataSource.unionFields](#attr-datasourceunionfields)
 
 ---
 ## Type: URL
@@ -2404,7 +2340,7 @@ See also the [SmartClient Architecture Overview](kb_topics/smartArchitecture.md#
 ## Type: VelocityExpression
 
 ### Description
-An expression in the [Velocity Template Language](http://velocity.apache.org/engine/releases/velocity-1.7/user-guide.html) (VTL). For more information on SmartClient's Velocity support, see [Velocity support](kb_topics/velocitySupport.md#kb-topic-velocity-context-variables).
+An expression in the [Velocity Template Language](http://velocity.apache.org/engine/releases/velocity-1.7/user-guide.html) (VTL). For more information on SmartClient's Velocity support, see [Velocity support](#kb-topic-velocitysupport).
 
 Note that a `VelocityExpression` must often evaluate to a particular type of value to be useful. For example, [DataSource.requires](classes/DataSource.md#attr-datasourcerequires) must evaluate to true or false (Boolean objects or strings containing those two words), and [Mail.messageData](classes/Mail.md#attr-mailmessagedata) must evaluate to a Java `Map` object, or a Java `List` containing only `Map`s.
 

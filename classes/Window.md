@@ -477,7 +477,9 @@ If true, a click outside the bounds of the Window will have the same effect as p
 ## Attr: Window.showHeaderOnRollOver
 
 ### Description
-When [Window.showHeader](#attr-windowshowheader) is false, should the [Window.header](#attr-windowheader) be shown when the pointer is over the Window or keyboard focus is within the Window or its header? This includes focus on the Window itself, for example by tabbing to a Window with [canFocus](Canvas_1.md#attr-canvascanfocus) set to true, and focus on its descendant controls. The header overlays the top of the body without changing the layout of the contents, and is hidden when neither the pointer nor keyboard focus is within the Window or its header.
+When [Window.showHeader](#attr-windowshowheader) is false, should the [Window.header](#attr-windowheader) be shown while the pointer is over the Window or its header?
+
+The header overlays the top of the body without changing the layout of the contents, and is hidden once the pointer leaves the Window and its header, unless [Window.showHeaderOnFocus](#attr-windowshowheaderonfocus) keeps it visible.
 
 Has no effect when [Window.showHeader](#attr-windowshowheader) is null or true, since the header is always shown in that case. Use [Window.setShowHeaderOnRollOver](#method-windowsetshowheaderonrollover) to change this property at runtime.
 
@@ -531,6 +533,7 @@ If true, this Window may be moved around by the user by dragging on the Window h
 
 - [Window.showHeader](#attr-windowshowheader)
 - [Window.showHeaderOnRollOver](#attr-windowshowheaderonrollover)
+- [Window.showHeaderOnFocus](#attr-windowshowheaderonfocus)
 
 **Flags**: IRW
 
@@ -699,7 +702,7 @@ If true, draw the body contents when this Window is drawn.
 ### Description
 If null or true, always show the [Window.header](#attr-windowheader) for this Window.
 
-When false, the value of [Window.showHeaderOnRollOver](#attr-windowshowheaderonrollover) determines whether the header is shown on roll over or keyboard focus, or remains hidden. Use [Window.setShowHeader](#method-windowsetshowheader) to change this property at runtime.
+When false, [Window.showHeaderOnRollOver](#attr-windowshowheaderonrollover) and [Window.showHeaderOnFocus](#attr-windowshowheaderonfocus) determine whether the header is shown on roll over, on keyboard focus, or remains hidden. Use [Window.setShowHeader](#method-windowsetshowheader) to change this property at runtime.
 
 Note that in certain Smartclient skins [Window.showHeaderBackground](#attr-windowshowheaderbackground) may be set to `false` and the header's appearance implemented as part of the window's [edge media](Canvas_1.md#attr-canvasshowedges). In this case suppressing the header can be achieved by overriding the edge media as well as setting this property to false. For example, to create a headerless window with a similar appearance to a [Menu](Menu.md#class-menu) in the `_TreeFrog_` skin, the following attributes could be used:
 
@@ -886,6 +889,26 @@ Style for the Window header.
 - header
 
 **Flags**: IRWA
+
+---
+## Attr: Window.showHeaderOnFocus
+
+### Description
+When [Window.showHeader](#attr-windowshowheader) is false, should the [Window.header](#attr-windowheader) be shown while keyboard focus is within the Window or its header? This includes focus on the Window itself, for example by tabbing to a Window with [canFocus](Canvas_1.md#attr-canvascanfocus) set to true, and focus on its descendant controls.
+
+The header overlays the top of the body without changing the layout of the contents, in the same way as [Window.showHeaderOnRollOver](#attr-windowshowheaderonrollover). Either setting may be used alone or both together; with both, the header is shown while either the pointer or keyboard focus is within the Window or its header.
+
+Enable this setting when keyboard users need to reach the controls in the header, since a hidden header's controls cannot receive focus. Note that focus can also arrive without keyboard navigation - for example, dismissing a menu or dialog opened from the Window returns focus to it - so with this setting a header revealed by roll over stays visible after the pointer leaves until focus moves elsewhere.
+
+Has no effect when [Window.showHeader](#attr-windowshowheader) is null or true, since the header is always shown in that case. Use [Window.setShowHeaderOnFocus](#method-windowsetshowheaderonfocus) to change this property at runtime.
+
+### Groups
+
+- windowMembers
+- appearance
+- header
+
+**Flags**: IRW
 
 ---
 ## Attr: Window.footer
@@ -1317,7 +1340,7 @@ Reveals the child Canvas passed in by showing it if it is currently hidden. Note
 ## Method: Window.setShowHeaderOnRollOver
 
 ### Description
-Updates [Window.showHeaderOnRollOver](#attr-windowshowheaderonrollover) at runtime. When [Window.showHeader](#attr-windowshowheader) is false, creates the rollover header if enabled or removes the header if disabled. Has no effect on the displayed header when [Window.showHeader](#attr-windowshowheader) is null or true.
+Updates [Window.showHeaderOnRollOver](#attr-windowshowheaderonrollover) at runtime. When [Window.showHeader](#attr-windowshowheader) is false, creates the header if roll over or focus now shows it, or removes it if neither does. Has no effect on the displayed header when [Window.showHeader](#attr-windowshowheader) is null or true.
 
 ### Parameters
 
@@ -1434,6 +1457,24 @@ Restores the window to its specified height and width after a call to [Window.mi
 Resizing will occur as an animation if [Window.animateMinimize](#attr-windowanimateminimize) is true.
 
 ---
+## Method: Window.setShowHeaderOnFocus
+
+### Description
+Updates [Window.showHeaderOnFocus](#attr-windowshowheaderonfocus) at runtime. When [Window.showHeader](#attr-windowshowheader) is false, creates the header if roll over or focus now shows it, or removes it if neither does. Has no effect on the displayed header when [Window.showHeader](#attr-windowshowheader) is null or true.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| showHeaderOnFocus | [Boolean](#type-boolean) | false | — | new value for `this.showHeaderOnFocus` |
+
+### Groups
+
+- windowMembers
+- appearance
+- header
+
+---
 ## Method: Window.setStatus
 
 ### Description
@@ -1545,7 +1586,7 @@ Sets the URL of the contents to display in the body of the window, redrawing if 
 ## Method: Window.setShowHeader
 
 ### Description
-Updates [Window.showHeader](#attr-windowshowheader) at runtime. When set to false, [Window.showHeaderOnRollOver](#attr-windowshowheaderonrollover) determines whether the header appears on roll over or keyboard focus, or remains hidden.
+Updates [Window.showHeader](#attr-windowshowheader) at runtime. When set to false, [Window.showHeaderOnRollOver](#attr-windowshowheaderonrollover) and [Window.showHeaderOnFocus](#attr-windowshowheaderonfocus) determine whether the header appears on roll over, on keyboard focus, or remains hidden.
 
 ### Parameters
 

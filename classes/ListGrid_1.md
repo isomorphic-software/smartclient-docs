@@ -720,10 +720,10 @@ If [ListGrid.showGroupSummary](ListGrid_2.md#attr-listgridshowgroupsummary) is t
 ## Attr: ListGrid.editSelectionType
 
 ### Description
-If [ListGrid.selectOnEdit](#attr-listgridselectonedit) is true, what should be the edit-selection behavior be?
+When [ListGrid.selectOnEdit](#attr-listgridselectonedit) selects the edited row, should that selection be exclusive or additive? This governs only selection driven by [ListGrid.selectOnEdit](#attr-listgridselectonedit); it does not affect selection the user makes by clicking.
 
 Default setting of `"single"` will cause the edit row to be automatically selected and any other selection in the grid to be dropped.  
-If set to `"multiple"`, selection will be additive (as a record goes into edit mode, it is selected in addition to any pre-existant selection).
+If set to `"multiple"`, selection will be additive (as a record goes into edit mode, it is selected in addition to any pre-existent selection).
 
 If set to `null` behavior is as follows:
 
@@ -1478,7 +1478,7 @@ How much padding should there be on the left of [hilite icons](#attr-listgridhil
 ## Attr: ListGrid.canRemoveRecords
 
 ### Description
-If set, provide UI for the user to remove records from the grid as an additional field showing the [ListGrid.removeIcon](#attr-listgridremoveicon), which, when clicked, will call [ListGrid.removeRecordClick](ListGrid_2.md#method-listgridremoverecordclick) which removes the row from the data set (or if [ListGrid.deferRemoval](#attr-listgriddeferremoval) is true changes the [ListGrid.markRecordRemoved](ListGrid_2.md#method-listgridmarkrecordremoved) status for the record). Individual records can be marked to prevent removal - see [ListGrid.recordCanRemoveProperty](#attr-listgridrecordcanremoveproperty).
+If set, provide UI for the user to remove records from the grid as an additional field showing the [ListGrid.removeIcon](#attr-listgridremoveicon), which, when clicked, will call [ListGrid.removeRecordClick](ListGrid_2.md#method-listgridremoverecordclick) which removes the row from the data set (or if [ListGrid.deferRemoval](#attr-listgriddeferremoval) is true changes the [ListGrid.markRecordRemoved](ListGrid_3.md#method-listgridmarkrecordremoved) status for the record). Individual records can be marked to prevent removal - see [ListGrid.recordCanRemoveProperty](#attr-listgridrecordcanremoveproperty).
 
 To add a confirmation dialog before a record is removed, set [ListGrid.warnOnRemoval](#attr-listgridwarnonremoval).
 
@@ -1590,7 +1590,7 @@ Developers may configure different ARIA HTML roles and attributes by modifying t
 ## Attr: ListGrid.deferRemoval
 
 ### Description
-When enabled, the field shown by [ListGrid.canRemoveRecords](#attr-listgridcanremoverecords) causes records to be marked for future removal via [ListGrid.markRecordRemoved](ListGrid_2.md#method-listgridmarkrecordremoved) instead of immediately being removed.
+When enabled, the field shown by [ListGrid.canRemoveRecords](#attr-listgridcanremoverecords) causes records to be marked for future removal via [ListGrid.markRecordRemoved](ListGrid_3.md#method-listgridmarkrecordremoved) instead of immediately being removed.
 
 When a record has been marked for removal, an icon in the `canRemoveRecords` field allowing it to be unmarked will be displayed.
 
@@ -1867,9 +1867,13 @@ An automatically generated field that displays the current row number when [show
 ## Attr: ListGrid.selectOnEdit
 
 ### Description
-When the user starts editing a row, should the row also be selected?
+Should the edited row be selected when editing begins by a means other than a selecting mouse click - namely a programmatic [ListGrid.startEditing](ListGrid_2.md#method-listgridstartediting) call, [ListGrid.editOnFocus](#attr-listgrideditonfocus), keyboard navigation into a cell, [F2](#attr-listgrideditonf2keypress), the new-record row, or the editor advancing via [ListGrid.listEndEditAction](#attr-listgridlistendeditaction)?
 
-See [ListGrid.editSelectionType](#attr-listgrideditselectiontype) for how edit-selection behaves.
+The purpose is to keep selection coherent with editing: the row being edited is also the selected row, so it shows selected styling and serves as the anchor for selection-based behavior, exactly as if it had been clicked. When editing is started by a mouse click there is nothing extra to do - the click already selects the row through normal selection handling - so this flag only has a visible effect on the non-click entry paths above.
+
+This flag does not suppress click-driven selection: a click that starts editing, or that lands on any cell of the edit row - including inside an active editor - selects the row regardless of this setting. To govern whether rows can be selected by clicking at all, use [listGrid.canSelect](#listgridcanselect) and [ListGrid.selectionType](#attr-listgridselectiontype).
+
+See [ListGrid.editSelectionType](#attr-listgrideditselectiontype) for whether this selection is exclusive or additive.
 
 ### Groups
 
@@ -4133,7 +4137,7 @@ If [ListGrid.canRemoveRecords](#attr-listgridcanremoverecords) is true, when the
 ## Attr: ListGrid.removedCSSText
 
 ### Description
-Custom CSS text to be applied to records that have been [marked for removal](ListGrid_2.md#method-listgridmarkrecordremoved).
+Custom CSS text to be applied to records that have been [marked for removal](ListGrid_3.md#method-listgridmarkrecordremoved).
 
 This CSS text will be applied on top of standard disabled styling for the cell.
 
@@ -7105,7 +7109,7 @@ A specific field can be omitted from the column picker via [ListGridField.canHid
 ## Attr: ListGrid.unremoveIcon
 
 ### Description
-When [ListGrid.canRemoveRecords](#attr-listgridcanremoverecords) is enabled, this icon will be shown in the auto generated field fro removing records if the record has been marked as removed via [ListGrid.markRecordRemoved](ListGrid_2.md#method-listgridmarkrecordremoved). At this point, clicking on the icon will unmark the record as removed.
+When [ListGrid.canRemoveRecords](#attr-listgridcanremoverecords) is enabled, this icon will be shown in the auto generated field fro removing records if the record has been marked as removed via [ListGrid.markRecordRemoved](ListGrid_3.md#method-listgridmarkrecordremoved). At this point, clicking on the icon will unmark the record as removed.
 
 **Flags**: IR
 
@@ -9602,51 +9606,6 @@ Default CSS class for the ListGrid as a whole.
 ### Groups
 
 - appearance
-
-**Flags**: IRW
-
----
-## Attr: ListGrid.fieldVisibilitySubmenuTitle
-
-### Description
-If we're showing a [headerContextMenu](#attr-listgridshowheadercontextmenu) for this grid, and [this.canPickFields](#attr-listgridcanpickfields) is true, this attribute will be shown as the title for the menu item which contains a submenu with items allowing the user to show and hide fields in the grid.
-
-### Groups
-
-- i18nMessages
-
-**Flags**: IRW
-
----
-## Attr: ListGrid.removeIconStyle
-
-### Description
-Custom style to apply to the image in the [removeField](#attr-listgridremovefieldproperties) displayed in rows when [ListGrid.canRemoveRecords](#attr-listgridcanremoverecords) is true. Affects the icons provided by [ListGrid.removeIcon](#attr-listgridremoveicon) and [ListGrid.unremoveIcon](#attr-listgridunremoveicon).
-
-### Groups
-
-- appearance
-
-**Flags**: IRW
-
----
-## Attr: ListGrid.preRenderStructureDelay
-
-### Description
-Separate delay for "structure" mode [ListGrid.preRender](#attr-listgridprerender), which can be more aggressive since structure mode is much faster than data mode. When set, this overrides [ListGrid.preRenderDelay](#attr-listgridprerenderdelay) for structure mode scrolling.
-
-Structure mode rendering is O(1) using canvas pattern fills, allowing near-synchronous re-render on scroll. A value of 0 means almost immediate hiding of the canvas preview. Even synchronous (no delay) can work because structure mode renders so quickly.
-
-If not set, [ListGrid.preRenderDelay](#attr-listgridprerenderdelay) is used for both modes.
-
-### Groups
-
-- performance
-
-### See Also
-
-- [ListGrid.preRender](#attr-listgridprerender)
-- [ListGrid.preRenderDelay](#attr-listgridprerenderdelay)
 
 **Flags**: IRW
 

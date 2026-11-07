@@ -146,6 +146,14 @@ Are the [MultiWindow](MultiWindow.md#class-multiwindow) APIs supported and cross
 **Flags**: RW
 
 ---
+## ClassAttr: Browser.hasDualInput
+
+### Description
+Is [dual input mode](../kb_topics/dualInput.md#kb-topic-dual-input-mode) currently active, so that both native mouse and native touch events are handled? Starts `true` on [desktop Linux](#classattr-browserisdesktoplinux) with a touch screen, or anywhere the `isc_useDualInput` global is `true`; on Windows and Chrome OS it becomes `true` when the first touch event arrives.
+
+**Flags**: R
+
+---
 ## ClassAttr: Browser.micPermission
 
 ### Description
@@ -160,6 +168,14 @@ Not all browsers support querying microphone permission state in advance; in suc
 - [Browser.checkMicStatus](#classmethod-browsercheckmicstatus)
 
 **Flags**: RA
+
+---
+## ClassAttr: Browser.isDesktopLinux
+
+### Description
+Is the browser running on desktop Linux (or another desktop Unix), as opposed to a mobile OS such as Android or iOS, or Chrome OS? Linux tablets and touch-screen laptops report this way, and get [dual input mode](../kb_topics/dualInput.md#kb-topic-dual-input-mode) when a touch screen is present.
+
+**Flags**: R
 
 ---
 ## ClassAttr: Browser.hasNativeDrag
@@ -181,7 +197,7 @@ Browser major version number (integer: 4, 5, etc).
 ## ClassAttr: Browser.supportsDualInput
 
 ### Description
-Does the browser support both mouse and touch input?
+Does the platform support [dual input mode](../kb_topics/dualInput.md#kb-topic-dual-input-mode), accepting both mouse and touch input on the same page? True for Chrome, Firefox, IE11 and legacy Edge on Windows 8+, Chrome and Firefox on Chrome OS, and Chrome and Firefox on [desktop Linux](#classattr-browserisdesktoplinux) when a touch screen is reported. Whether the mode is currently active is reported by [Browser.hasDualInput](#classattr-browserhasdualinput). Setting the `isc_useDualInput` global to `false` before SmartClient loads forces this to `false`.
 
 **Flags**: RW
 

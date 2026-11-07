@@ -505,7 +505,7 @@ Properties defining an object's appearance
 - [ListGrid.selectionType](../classes/ListGrid_1.md#attr-listgridselectiontype)
 - [ListGrid.selectionProperty](../classes/ListGrid_1.md#attr-listgridselectionproperty)
 - [ListGrid.removedCSSText](../classes/ListGrid_1.md#attr-listgridremovedcsstext)
-- [ListGrid.removeIconStyle](../classes/ListGrid_1.md#attr-listgridremoveiconstyle)
+- [ListGrid.removeIconStyle](../classes/ListGrid_2.md#attr-listgridremoveiconstyle)
 - [ListGrid.showHeader](../classes/ListGrid_1.md#attr-listgridshowheader)
 - [ListGrid.headerBarStyle](../classes/ListGrid_1.md#attr-listgridheaderbarstyle)
 - [ListGrid.headerBackgroundColor](../classes/ListGrid_1.md#attr-listgridheaderbackgroundcolor)

@@ -4,6 +4,51 @@
 
 ---
 
+## Attr: ListGrid.fieldVisibilitySubmenuTitle
+
+### Description
+If we're showing a [headerContextMenu](ListGrid_1.md#attr-listgridshowheadercontextmenu) for this grid, and [this.canPickFields](ListGrid_1.md#attr-listgridcanpickfields) is true, this attribute will be shown as the title for the menu item which contains a submenu with items allowing the user to show and hide fields in the grid.
+
+### Groups
+
+- i18nMessages
+
+**Flags**: IRW
+
+---
+## Attr: ListGrid.removeIconStyle
+
+### Description
+Custom style to apply to the image in the [removeField](ListGrid_1.md#attr-listgridremovefieldproperties) displayed in rows when [ListGrid.canRemoveRecords](ListGrid_1.md#attr-listgridcanremoverecords) is true. Affects the icons provided by [ListGrid.removeIcon](ListGrid_1.md#attr-listgridremoveicon) and [ListGrid.unremoveIcon](ListGrid_1.md#attr-listgridunremoveicon).
+
+### Groups
+
+- appearance
+
+**Flags**: IRW
+
+---
+## Attr: ListGrid.preRenderStructureDelay
+
+### Description
+Separate delay for "structure" mode [ListGrid.preRender](ListGrid_1.md#attr-listgridprerender), which can be more aggressive since structure mode is much faster than data mode. When set, this overrides [ListGrid.preRenderDelay](ListGrid_1.md#attr-listgridprerenderdelay) for structure mode scrolling.
+
+Structure mode rendering is O(1) using canvas pattern fills, allowing near-synchronous re-render on scroll. A value of 0 means almost immediate hiding of the canvas preview. Even synchronous (no delay) can work because structure mode renders so quickly.
+
+If not set, [ListGrid.preRenderDelay](ListGrid_1.md#attr-listgridprerenderdelay) is used for both modes.
+
+### Groups
+
+- performance
+
+### See Also
+
+- [ListGrid.preRender](ListGrid_1.md#attr-listgridprerender)
+- [ListGrid.preRenderDelay](ListGrid_1.md#attr-listgridprerenderdelay)
+
+**Flags**: IRW
+
+---
 ## Attr: ListGrid.rotatedHeaderMenuButtonHeight
 
 ### Description
@@ -1141,7 +1186,7 @@ The returned value is never null, and can be freely modified.
 ## Method: ListGrid.hasChanges
 
 ### Description
-Whether the grid as a whole has any unsaved edits, in any row. Note that this method will return true if any rows are [marked as removed](#method-listgridmarkrecordremoved) in addition to any rows that have unsaved edits.
+Whether the grid as a whole has any unsaved edits, in any row. Note that this method will return true if any rows are [marked as removed](ListGrid_3.md#method-listgridmarkrecordremoved) in addition to any rows that have unsaved edits.
 
 Note that if this grid is bound to a [dataSource](ListGrid_1.md#attr-listgriddatasource), and an asynchronous save has been submitted, this method will compare the local edit values against the submitted values by default, returning false (no changes), if they match. This is useful for detecting whether the user is actively editing values and hasn't yet committed them.
 
@@ -2535,7 +2580,7 @@ Other, standard callbacks such as [ListGrid.editComplete](#method-listgrideditco
 
 Note this method does not hide the inline editors if they are showing - to explicitly save and end editing, use the method 'endEditing()'
 
-If this method is called for a row which has been marked for deletion (see [ListGrid.markRecordRemoved](#method-listgridmarkrecordremoved)) it will cause the record to be removed from the data-set.
+If this method is called for a row which has been marked for deletion (see [ListGrid.markRecordRemoved](ListGrid_3.md#method-listgridmarkrecordremoved)) it will cause the record to be removed from the data-set.
 
 For more information on editing, see the [editing overview](../kb_topics/editing.md#kb-topic-grid-editing).
 
@@ -2820,7 +2865,7 @@ setUserSummary() may not be used to add a `userSummary` to a field of this grid 
 ## Method: ListGrid.getAllEditRows
 
 ### Description
-Returns an array of every rowNum for which we have pending (unsubmitted) edits. This will return records that have been marked as removed (see [ListGrid.markRecordRemoved](#method-listgridmarkrecordremoved) as well as records with unsaved changes to field values.
+Returns an array of every rowNum for which we have pending (unsubmitted) edits. This will return records that have been marked as removed (see [ListGrid.markRecordRemoved](ListGrid_3.md#method-listgridmarkrecordremoved) as well as records with unsaved changes to field values.
 
 ### Returns
 
@@ -3710,7 +3755,7 @@ Cancel outstanding edits for the specified rows, discarding edit values, and hid
 
 Note that if this method is called on a new edit row (created via [ListGrid.startEditingNew](#method-listgridstarteditingnew) for example), which has not yet been saved, this method will remove the row entirely.
 
-Also note that this method will clear the [removed](#method-listgridmarkrecordremoved) state of records that have been marked as removed.
+Also note that this method will clear the [removed](ListGrid_3.md#method-listgridmarkrecordremoved) state of records that have been marked as removed.
 
 ### Parameters
 
@@ -3878,7 +3923,7 @@ Setter for [GridRenderer.fastCellUpdates](GridRenderer.md#attr-gridrendererfastc
 ### Description
 Marks an array of records deleted such that a later call to [ListGrid.saveEdits](#method-listgridsaveedits) or [ListGrid.saveAllEdits](#method-listgridsavealledits) will cause a "remove" [DSRequest](../reference_2.md#object-dsrequest) to be submitted.
 
-This method is similar to [ListGrid.markRecordRemoved](#method-listgridmarkrecordremoved) but should be more efficient in avoiding unneeded duplicate refreshes due to the multiple records getting marked.
+This method is similar to [ListGrid.markRecordRemoved](ListGrid_3.md#method-listgridmarkrecordremoved) but should be more efficient in avoiding unneeded duplicate refreshes due to the multiple records getting marked.
 
 ### Parameters
 
@@ -3892,7 +3937,7 @@ This method is similar to [ListGrid.markRecordRemoved](#method-listgridmarkrecor
 
 ### See Also
 
-- [ListGrid.markRecordRemoved](#method-listgridmarkrecordremoved)
+- [ListGrid.markRecordRemoved](ListGrid_3.md#method-listgridmarkrecordremoved)
 
 ---
 ## Method: ListGrid.getCellErrors
@@ -4419,7 +4464,7 @@ Returns the page offsets and size of the cell at the passed row and column. If a
 ## Method: ListGrid.showDragHandles
 
 ### Description
-Shows an additional field near the beginning of the field list (after any [row number](#attr-listgridshowrownumbers) field) that can be dragged to drag the current selection. This feature is useful in [touch environments](Browser.md#classattr-browseristouch) where both touch scrolling and dragging are needed on the same grid, and allows scrolling to be triggered on the other fields so that both operations are available. Targeted touch environments include both mobile devices, and Windows hardware that supports [Dual Input Mode](Browser.md#classattr-browsersupportsdualinput) such as Microsoft Surface.
+Shows an additional field near the beginning of the field list (after any [row number](#attr-listgridshowrownumbers) field) that can be dragged to drag the current selection. This feature is useful in [touch environments](Browser.md#classattr-browseristouch) where both touch scrolling and dragging are needed on the same grid, and allows scrolling to be triggered on the other fields so that both operations are available. Targeted touch environments include both mobile devices, and hardware running in [dual input mode](../kb_topics/dualInput.md#kb-topic-dual-input-mode) such as Microsoft Surface or Linux tablets.
 
 Note that the [drag handle field](ListGrid_1.md#attr-listgriddraghandlefield) will never be shown unless [ListGrid.canReorderRecords](#attr-listgridcanreorderrecords) or [ListGrid.canDragRecordsOut](ListGrid_1.md#attr-listgridcandragrecordsout) are true.
 
@@ -8712,7 +8757,7 @@ This method is appropriate if the [selectionType](ListGrid_1.md#attr-listgridsel
 ## Method: ListGrid.unmarkRecordRemoved
 
 ### Description
-Reverses a previous call to [ListGrid.markRecordRemoved](#method-listgridmarkrecordremoved).
+Reverses a previous call to [ListGrid.markRecordRemoved](ListGrid_3.md#method-listgridmarkrecordremoved).
 
 Note that a record that is marked for removal and then un-marked retains any uncommitted edits from before it was marked for removal. These can be discarded with [ListGrid.discardEdits](#method-listgriddiscardedits).
 
@@ -8840,7 +8885,7 @@ Cancel outstanding edits, discarding edit values, and hiding editors for the rec
 
 If no rows are passed in, all outstanding edit values will be dropped. This will **not** automatically end editing; call [ListGrid.endEditing](#method-listgridendediting) **before** calling discardAllEdits() if you also want to end editing.
 
-Note that this also clears the [removed](#method-listgridmarkrecordremoved) state of any records that have been marked as removed.
+Note that this also clears the [removed](ListGrid_3.md#method-listgridmarkrecordremoved) state of any records that have been marked as removed.
 
 ### Parameters
 
@@ -8859,7 +8904,7 @@ Note that this also clears the [removed](#method-listgridmarkrecordremoved) stat
 ## Method: ListGrid.markSelectionRemoved
 
 ### Description
-Marks the currently selected records as removed, as though [ListGrid.markRecordRemoved](#method-listgridmarkrecordremoved) had been called.
+Marks the currently selected records as removed, as though [ListGrid.markRecordRemoved](ListGrid_3.md#method-listgridmarkrecordremoved) had been called.
 
 ### Groups
 
@@ -9144,27 +9189,5 @@ Callback fired when the user starts editing a new row.
 ### See Also
 
 - [ListGrid.editorEnter](ListGrid_3.md#method-listgrideditorenter)
-
----
-## Method: ListGrid.markRecordRemoved
-
-### Description
-Marks a record deleted such that a later call to [ListGrid.saveEdits](#method-listgridsaveedits) or [ListGrid.saveAllEdits](#method-listgridsavealledits) will cause a "remove" [DSRequest](../reference_2.md#object-dsrequest) to be submitted.
-
-A removed record is disabled and non-editable, and uses [ListGrid.removedCSSText](ListGrid_1.md#attr-listgridremovedcsstext) for its CSS style, which by default will show strikethrough text.
-
-Contrast this method with removeSelectedData(), which immediately submits a DSRequest to remove the selected records from the dataset.
-
-Records that have been marked for removal using this method may be 'unmarked' via a call to [ListGrid.unmarkRecordRemoved](#method-listgridunmarkrecordremoved), or by discarding edit values ([ListGrid.discardEdits](#method-listgriddiscardedits)).
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| rowNum | [number](#type-number) | false | — | row number for the record to mark |
-
-### Groups
-
-- editing
 
 ---

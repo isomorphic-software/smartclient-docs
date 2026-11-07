@@ -115,7 +115,7 @@ However you _can_ create an editor with a [FormItem icon](../classes/FormItem.md
 - [ListGridField.parseEditorValue](../classes/ListGridField.md#method-listgridfieldparseeditorvalue)
 - [ListGridField.change](../classes/ListGridField.md#method-listgridfieldchange)
 - [ListGridField.changed](../classes/ListGridField.md#method-listgridfieldchanged)
-- [ListGrid.markRecordRemoved](../classes/ListGrid_2.md#method-listgridmarkrecordremoved)
+- [ListGrid.markRecordRemoved](../classes/ListGrid_3.md#method-listgridmarkrecordremoved)
 - [ListGrid.markRecordsRemoved](../classes/ListGrid_2.md#method-listgridmarkrecordsremoved)
 - [ListGrid.recordMarkedAsRemoved](../classes/ListGrid_3.md#method-listgridrecordmarkedasremoved)
 - [ListGrid.unmarkRecordRemoved](../classes/ListGrid_2.md#method-listgridunmarkrecordremoved)

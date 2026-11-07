@@ -4,12 +4,34 @@
 
 ---
 
+## Method: ListGrid.markRecordRemoved
+
+### Description
+Marks a record deleted such that a later call to [ListGrid.saveEdits](ListGrid_2.md#method-listgridsaveedits) or [ListGrid.saveAllEdits](ListGrid_2.md#method-listgridsavealledits) will cause a "remove" [DSRequest](../reference_2.md#object-dsrequest) to be submitted.
+
+A removed record is disabled and non-editable, and uses [ListGrid.removedCSSText](ListGrid_1.md#attr-listgridremovedcsstext) for its CSS style, which by default will show strikethrough text.
+
+Contrast this method with removeSelectedData(), which immediately submits a DSRequest to remove the selected records from the dataset.
+
+Records that have been marked for removal using this method may be 'unmarked' via a call to [ListGrid.unmarkRecordRemoved](ListGrid_2.md#method-listgridunmarkrecordremoved), or by discarding edit values ([ListGrid.discardEdits](ListGrid_2.md#method-listgriddiscardedits)).
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| rowNum | [number](#type-number) | false | — | row number for the record to mark |
+
+### Groups
+
+- editing
+
+---
 ## Method: ListGrid.rowHasChanges
 
 ### Description
 If this listGrid can be edited, this method will return true if the row passed in has been edited, but the edits have not yet been saved to the ListGrid's data object.
 
-Note this method will not return true if a record has been marked as [removed](ListGrid_2.md#method-listgridmarkrecordremoved), but has no other changes. Developers can use [ListGrid.recordMarkedAsRemoved](#method-listgridrecordmarkedasremoved) to check for this case.
+Note this method will not return true if a record has been marked as [removed](#method-listgridmarkrecordremoved), but has no other changes. Developers can use [ListGrid.recordMarkedAsRemoved](#method-listgridrecordmarkedasremoved) to check for this case.
 
 Note that if this grid is bound to a [dataSource](ListGrid_1.md#attr-listgriddatasource), and an asynchronous save has been submitted, this method will compare the local edit values against the submitted values by default, returning false (no changes), if they match. This is useful for detecting whether the user is actively editing values and hasn't yet committed them.
 
@@ -100,7 +122,7 @@ This method is an override point. Custom implementations are required to peform 
 ## Method: ListGrid.recordMarkedAsRemoved
 
 ### Description
-Returns true if the specified record is marked as removed via a call to [ListGrid.markRecordRemoved](ListGrid_2.md#method-listgridmarkrecordremoved)
+Returns true if the specified record is marked as removed via a call to [ListGrid.markRecordRemoved](#method-listgridmarkrecordremoved)
 
 ### Parameters
 

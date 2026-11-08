@@ -87,11 +87,13 @@ The name of the CSS class to apply to this ToggleSwitch - the actual styleName a
 ## Attr: ToggleSwitch.toggleOnThumbClick
 
 ### Description
-When set to true, causes the ToggleSwitch to change value when the [thumb](#attr-toggleswitchthumb) is clicked, as well as when clicking in the widget body.
+Clicking anywhere in a ToggleSwitch, including on the [thumb](#attr-toggleswitchthumb), changes its value.
 
 ### Groups
 
 - appearance
+
+**Deprecated**
 
 **Flags**: IRW
 

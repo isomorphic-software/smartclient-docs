@@ -19,7 +19,7 @@ There are three types of dataSource relation:
     
     The default editor for one-to-many relation fields is a [MultiPickerItem](../classes/MultiPickerItem.md#class-multipickeritem), allowing the user to select a new set of values for the field from the options available in the related dataSource.
     
-*   **Many-to-many**, where the dataSources at both ends of the relation declare a foreignKey to a third "middle" or "join" dataSource. In a true many-to-many relation, the only information held in the "join" dataSource is the keys of the two related dataSources; if any other information is stored in the "join" dataSource, it is no longer a many-to-many relation but two separate many-to-one relations. An example of a true many-to-many relation would be Employees to Teams: an Employee can be in multiple Teams, and a Team consists of multiple Emloyees. [DataSource.isJoinDataSource](../classes/DataSource_1.md#method-datasourceisjoindatasource) tells whether a DataSource is such a "join" dataSource, and [DataSource.isLookupDataSource](../classes/DataSource_1.md#method-datasourceislookupdatasource) whether it is a lookup table - one that is only ever on the "parent" end of many-to-one relations
+*   **Many-to-many**, where the dataSources at both ends of the relation declare a foreignKey to a third "middle" or "join" dataSource. In a true many-to-many relation, the only information held in the "join" dataSource is the keys of the two related dataSources; if any other information is stored in the "join" dataSource, it is no longer a many-to-many relation but two separate many-to-one relations. An example of a true many-to-many relation would be Employees to Teams: an Employee can be in multiple Teams, and a Team consists of multiple Emloyees. [DataSource.isJoinDataSource](../classes/DataSource_2.md#method-datasourceisjoindatasource) tells whether a DataSource is such a "join" dataSource, and [DataSource.isLookupDataSource](../classes/DataSource_1.md#method-datasourceislookupdatasource) whether it is a lookup table - one that is only ever on the "parent" end of many-to-one relations
     
     As with one-to-many relation fields, many-to-many fields will show a [MultiPickerItem](../classes/MultiPickerItem.md#class-multipickeritem) as the default editing interface.
     
@@ -57,7 +57,7 @@ The way this idea of multiple related records is handled is different according 
 
 - [JoinType](../reference_2.md#type-jointype)
 - [DataSource.isLookupDataSource](../classes/DataSource_1.md#method-datasourceislookupdatasource)
-- [DataSource.isJoinDataSource](../classes/DataSource_1.md#method-datasourceisjoindatasource)
+- [DataSource.isJoinDataSource](../classes/DataSource_2.md#method-datasourceisjoindatasource)
 - [DBCField.displayField](../classes/DBCField.md#attr-dbcfielddisplayfield)
 - [DataSource.relatedTableAlias](../classes/DataSource_1.md#attr-datasourcerelatedtablealias)
 - [DataSourceField.primaryKey](../classes/DataSourceField.md#attr-datasourcefieldprimarykey)

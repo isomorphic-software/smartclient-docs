@@ -2547,7 +2547,13 @@ Colors must be in the format of a leading hash (#) plus 6 hexadecimal digits, fo
 ### Description
 Whether to show alternating color bands in the background of chart. See [FacetChart.backgroundBandProperties](#attr-facetchartbackgroundbandproperties).
 
-**Flags**: IR
+Bands are drawn behind alternate gradation intervals of the value axis, so they appear only where that axis runs vertically - a Bar chart, whose value axis is horizontal, shows none whatever this is set to.
+
+### See Also
+
+- [FacetChart.showGradationLines](#attr-facetchartshowgradationlines)
+
+**Flags**: IRW
 
 ---
 ## Attr: FacetChart.zoomChartHeight
@@ -3033,6 +3039,24 @@ Maximum allowed zIndex that can be specified through [FacetChart.zIndexMetric](#
 - [FacetChart.zIndexMetric](#attr-facetchartzindexmetric)
 
 **Flags**: IR
+
+---
+## Attr: FacetChart.showGradationLines
+
+### Description
+Whether to draw the gradation lines that run across the plot area at each value-axis gradation.
+
+The zero line is drawn either way: it marks a coordinate rather than a gradation, has its own [FacetChart.gradationZeroLineProperties](#attr-facetchartgradationzerolineproperties) and lines up with its own axis label. Axis ticks are likewise unaffected - see [FacetChart.tickLength](#attr-facetchartticklength).
+
+### Groups
+
+- chartFeatures
+
+### See Also
+
+- [FacetChart.gradationLineProperties](#attr-facetchartgradationlineproperties)
+
+**Flags**: IRW
 
 ---
 ## Attr: FacetChart.maxDataLabelLines

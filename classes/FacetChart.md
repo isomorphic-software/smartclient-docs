@@ -3643,7 +3643,7 @@ See [ChartType](../reference.md#type-charttype) for a list of known types - Colu
 ## Attr: FacetChart.styleName
 
 ### Description
-Default styleName for the chart.
+Default styleName for the chart. The class styles the chart's own box - the surface its plot and chrome are drawn on - so its background, border and font apply to the chart as a whole. The chrome drawn within the chart takes its own styles, named by [FacetChart.titleStyle](#attr-facetcharttitlestyle), [FacetChart.legendStyle](#attr-facetchartlegendstyle) and the label, line and band style properties.
 
 **Flags**: IRW
 

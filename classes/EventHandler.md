@@ -355,7 +355,7 @@ Can only be called during the [Canvas.dragStart](Canvas_1.md#method-canvasdragst
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| src | [SCImgURL](../reference.md#type-scimgurl) | false | — | image source |
+| src | [SCImgURL](../reference_2.md#type-scimgurl) | false | — | image source |
 | x | [int](../reference.md#type-int) | true | — | offset-x from the mouse cursor |
 | y | [int](../reference.md#type-int) | true | — | offset-y from the mouse cursor |
 

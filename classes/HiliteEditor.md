@@ -99,7 +99,7 @@ This component is an [AutoChild](../reference.md#type-autochild) and as such may
 ### Description
 Specifies a list of icons that can be used in [hilites](../reference_2.md#object-hilite).
 
-`hiliteIcons` should be specified as an Array of [SCImgURL](../reference.md#type-scimgurl). When present, [HiliteRule](HiliteRule.md#class-hiliterule)s will offer the user a drop down for picking one of these icons.
+`hiliteIcons` should be specified as an Array of [SCImgURL](../reference_2.md#type-scimgurl). When present, [HiliteRule](HiliteRule.md#class-hiliterule)s will offer the user a drop down for picking one of these icons.
 
 If the user picks an icon, the created hiliting rule will have [Hilite.icon](Hilite.md#attr-hiliteicon) set to the chosen icon. [ListGridField.hiliteIconPosition](ListGridField.md#attr-listgridfieldhiliteiconposition) controls where the icon will appear for that field -- the default is that it appears in front of the normal cell content.
 

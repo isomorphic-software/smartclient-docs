@@ -89,7 +89,7 @@ Two basic formats are supported:
 
 *   "Standard model": `data` is an array of CellRecords where each record contains one data value. Each record also contains a property named after each facetId whose value is a facetValueId from that facet.
     
-    For example, with a facet with id "regions" and facetValues "west", "north" and "east", and with [Chart.valueProperty](#attr-chartvalueproperty) with it's default value "\_value", the `data` property could be:
+    For example, with a facet with id "regions" and facetValues "west", "north" and "east", and with [Chart.valueProperty](#attr-chartvalueproperty) with its default value "\_value", the `data` property could be:
     
     ```
         isc.Chart.create({

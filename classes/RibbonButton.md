@@ -373,7 +373,7 @@ Returns the URL for the current icon.
 
 ### Returns
 
-`[SCImgURL](../reference.md#type-scimgurl)` — URL of current icon
+`[SCImgURL](../reference_2.md#type-scimgurl)` — URL of current icon
 
 ### Groups
 
@@ -417,7 +417,7 @@ Sets a new Icon for this button after initialization.
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| icon | [SCImgURL](../reference.md#type-scimgurl) | false | — | URL of new icon |
+| icon | [SCImgURL](../reference_2.md#type-scimgurl) | false | — | URL of new icon |
 
 ### Groups
 

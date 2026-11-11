@@ -3276,7 +3276,7 @@ In a databound form, if [FormItem.displayField](#attr-formitemdisplayfield) is s
 ## Attr: FormItem.valueIcons
 
 ### Description
-A mapping of logical form item values to [SCImgURL](../reference.md#type-scimgurl)s or the special value "blank", which means that no image will be displayed. If specified, when the form item is set to the value in question, an icon will be displayed with the appropriate source URL.
+A mapping of logical form item values to [SCImgURL](../reference_2.md#type-scimgurl)s or the special value "blank", which means that no image will be displayed. If specified, when the form item is set to the value in question, an icon will be displayed with the appropriate source URL.
 
 ### Groups
 
@@ -3933,7 +3933,7 @@ The special value "blank" means that no image will be displayed. This is typical
 
 Takes precedence over [FormItem.valueIcons](#attr-formitemvalueicons)
 
-The returned [SCImgURL](../reference.md#type-scimgurl), if not `null` or "blank", will be suffixed with [FormItem.imageURLSuffix](#attr-formitemimageurlsuffix).
+The returned [SCImgURL](../reference_2.md#type-scimgurl), if not `null` or "blank", will be suffixed with [FormItem.imageURLSuffix](#attr-formitemimageurlsuffix).
 
 ### Parameters
 
@@ -3943,7 +3943,7 @@ The returned [SCImgURL](../reference.md#type-scimgurl), if not `null` or "blank"
 
 ### Returns
 
-`[SCImgURL](../reference.md#type-scimgurl)` — the image source or `null` if no value icon should be displayed.
+`[SCImgURL](../reference_2.md#type-scimgurl)` — the image source or `null` if no value icon should be displayed.
 
 ### Groups
 
@@ -4853,7 +4853,7 @@ Implementing `getPrintValueIcon()` may be useful in order to swap out the value 
 
 Takes precedence over [FormItem.valueIcons](#attr-formitemvalueicons) and [FormItem.getValueIcon](#method-formitemgetvalueicon) when printing.
 
-The returned [SCImgURL](../reference.md#type-scimgurl), if not `null` or "blank", will be suffixed with [FormItem.imageURLSuffix](#attr-formitemimageurlsuffix).
+The returned [SCImgURL](../reference_2.md#type-scimgurl), if not `null` or "blank", will be suffixed with [FormItem.imageURLSuffix](#attr-formitemimageurlsuffix).
 
 ### Parameters
 
@@ -4863,7 +4863,7 @@ The returned [SCImgURL](../reference.md#type-scimgurl), if not `null` or "blank"
 
 ### Returns
 
-`[SCImgURL](../reference.md#type-scimgurl)` — the image source or `null` if no value icon should be displayed.
+`[SCImgURL](../reference_2.md#type-scimgurl)` — the image source or `null` if no value icon should be displayed.
 
 ### Groups
 
@@ -6172,7 +6172,7 @@ Sets the [valueIcons](#attr-formitemvalueicons) for this item.
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| map | [Object](../reference_2.md#type-object) | false | — | mapping of logical values for this item to icon src [SCImgURL](../reference.md#type-scimgurl)s or the special value "blank". |
+| map | [Object](../reference_2.md#type-object) | false | — | mapping of logical values for this item to icon src [SCImgURL](../reference_2.md#type-scimgurl)s or the special value "blank". |
 
 ### Groups
 

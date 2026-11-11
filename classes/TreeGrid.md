@@ -142,7 +142,7 @@ If appropriate, this suffix will be combined with the [TreeGrid.openIconSuffix](
 ## Attr: TreeGrid.cantDragMultipleNodeOccurencesMessage
 
 ### Description
-For [Multi-link trees](Tree.md#method-treeismultilinktree) only, the message displayed when the user attempts to drag two or more occurrences of the same node into a parent.
+For [Multi-link trees](Tree.md#method-treeismultilinktree) only, the message displayed when the user attempts to drag two or more occurrences of the same node into a parent, when [allowDuplicateChildren](Tree.md#attr-treeallowduplicatechildren) is not set true.
 
 ### Groups
 
@@ -154,6 +154,7 @@ For [Multi-link trees](Tree.md#method-treeismultilinktree) only, the message dis
 - [TreeGrid.canAcceptDroppedRecords](#attr-treegridcanacceptdroppedrecords)
 - [TreeGrid.canReorderRecords](#attr-treegridcanreorderrecords)
 - [TreeGrid.parentAlreadyContainsChildMessage](#attr-treegridparentalreadycontainschildmessage)
+- [Tree.allowDuplicateChildren](Tree.md#attr-treeallowduplicatechildren)
 
 **Flags**: IR
 
@@ -261,7 +262,7 @@ Message displayed when user attempts to drop a node into a parent that has the s
 ## Attr: TreeGrid.parentAlreadyContainsChildMessage
 
 ### Description
-Message displayed when user attempts to drag a node into a parent that already contains a child of the same name/ID.
+Message displayed when user attempts to drag a node into a parent that already contains a child of the same name/ID. Note, for [multi-link trees](Tree.md#method-treeismultilinktree), this message will not be shown if [allowDuplicateChildren](Tree.md#attr-treeallowduplicatechildren) is set.
 
 ### Groups
 
@@ -273,6 +274,7 @@ Message displayed when user attempts to drag a node into a parent that already c
 - [TreeGrid.canAcceptDroppedRecords](#attr-treegridcanacceptdroppedrecords)
 - [TreeGrid.canReorderRecords](#attr-treegridcanreorderrecords)
 - [TreeGrid.cantDragMultipleNodeOccurencesMessage](#attr-treegridcantdragmultiplenodeoccurencesmessage)
+- [Tree.allowDuplicateChildren](Tree.md#attr-treeallowduplicatechildren)
 
 **Flags**: IR
 
@@ -379,7 +381,7 @@ Specifies the type of nodes displayed in the treeGrid.
 ### Description
 The base filename or [stateful image block](../reference.md#object-scstatefulimgconfig) for the opener icon for folder nodes when "showConnectors" is false for this TreeGrid. The opener icon is displayed beside the folder icon in the Tree column for folder nodes. Clicking on this icon will toggle the open state of the folder.
 
-**When set to an [SCImgURL](../reference.md#type-scimgurl):** the stateful filenames for these icons are assembled from this base filename and the state of the node, as follows: If the openerImage is set to `{baseName}.{extension}`, `{baseName}_opened.{extension}` will be displayed next to opened folders, and `{baseName}_closed.{extension}` will be displayed next to closed folders, or if this page is in RTL mode, `{baseName}_opened_rtl.{extension}` and `{baseName}_closed_rtl.{extension}` will be used.
+**When set to an [SCImgURL](../reference_2.md#type-scimgurl):** the stateful filenames for these icons are assembled from this base filename and the state of the node, as follows: If the openerImage is set to `{baseName}.{extension}`, `{baseName}_opened.{extension}` will be displayed next to opened folders, and `{baseName}_closed.{extension}` will be displayed next to closed folders, or if this page is in RTL mode, `{baseName}_opened_rtl.{extension}` and `{baseName}_closed_rtl.{extension}` will be used.
 
 If [TreeGrid.showSelectedOpener](#attr-treegridshowselectedopener) is true the URL for selected nodes will append the string `"_selected"` to the image URLs described above. So for an openerImage set to `{baseName}.{extension}`, the URLs for selected records would be `{baseName}_opened_selected.{extension}`, `{baseName}_closed_selected.{extension}`, etc.
 
@@ -669,7 +671,7 @@ The base filename or [stateful image block](../reference.md#object-scstatefulimg
 
 Note that [TreeGrid.showFullConnectors](#attr-treegridshowfullconnectors) governs whether connector lines will be displayed for all indent levels, or just for the innermost level of the tree.
 
-**When set to an [SCImgURL](../reference.md#type-scimgurl):** the stateful filenames for these icons are assembled from this base filename and the state of the node. Assuming the connectorImage is set to `{baseName}.{extension}`, the full set of images to be displayed will be:
+**When set to an [SCImgURL](../reference_2.md#type-scimgurl):** the stateful filenames for these icons are assembled from this base filename and the state of the node. Assuming the connectorImage is set to `{baseName}.{extension}`, the full set of images to be displayed will be:
 
 `{baseName}_ancestor[_rtl].{extension}` if [TreeGrid.showFullConnectors](#attr-treegridshowfullconnectors) is true, this is the URL for the vertical continuation image to be displayed at the appropriate indent levels for ancestor nodes with subsequent children.
 
@@ -2385,7 +2387,7 @@ Set the icon for a particular treenode to a specified URL
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | node | [TreeNode](#type-treenode) | false | — | tree node |
-| icon | [SCImgURL](../reference.md#type-scimgurl) | false | — | path to the resource |
+| icon | [SCImgURL](../reference_2.md#type-scimgurl) | false | — | path to the resource |
 
 ### Groups
 

@@ -348,7 +348,7 @@ May be defined as a [stringMethod](../kb_topics/stringMethods.md#kb-topic-string
 
 ### Returns
 
-`[SCImgURL](../reference.md#type-scimgurl)` — the url of this menuItems icon
+`[SCImgURL](../reference_2.md#type-scimgurl)` — the url of this menuItems icon
 
 ### Groups
 

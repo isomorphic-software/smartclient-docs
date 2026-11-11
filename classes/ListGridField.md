@@ -426,7 +426,7 @@ If unset, but [ListGridField.imageURLPrefix](#attr-listgridfieldimageurlprefix) 
 ## Attr: ListGridField.valueIcons
 
 ### Description
-This property is a mapping from data values for this field to [urls](../reference.md#type-scimgurl) for icons to display for those data values.
+This property is a mapping from data values for this field to [urls](../reference_2.md#type-scimgurl) for icons to display for those data values.
 
 For example, given a field named "status" with possible values "Normal", "Slow", "Offline", the follow definition would show various icons for that field:
 

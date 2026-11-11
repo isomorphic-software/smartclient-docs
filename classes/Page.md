@@ -566,7 +566,7 @@ To use a skin image, start the URL with "\[SKIN\]". Any other relative URL is as
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| src | [SCImgURL](../reference.md#type-scimgurl) | false | — | Local file name for the image. |
+| src | [SCImgURL](../reference_2.md#type-scimgurl) | false | — | Local file name for the image. |
 | imgDir | [String](#type-string) | true | — | User-specified image directory, local to |
 
 ### Returns

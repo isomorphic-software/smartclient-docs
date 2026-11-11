@@ -204,7 +204,7 @@ Change the icon being shown for the header.
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| icon | [SCImgURL](../reference.md#type-scimgurl) | false | — | URL of new icon |
+| icon | [SCImgURL](../reference_2.md#type-scimgurl) | false | — | URL of new icon |
 
 ---
 ## Method: ImgSectionHeader.setIconOrientation

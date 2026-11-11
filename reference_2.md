@@ -1840,6 +1840,21 @@ Strings to identify the various keys on the keyboard.
 | DrawLabel.RIGHT | Justify label's right edge against its left coordinate |
 
 ---
+## Type: LabelCollapseMode
+
+### Description
+Strategy to apply when there is too little room for labels to be shown for all data points with comfortable padding ([FacetChart.minLabelGap](classes/FacetChart.md#attr-facetchartminlabelgap)).
+
+### Values
+
+| Value | Description |
+|-------|-------------|
+| "none" | Show all labels regardless, even though they will overlap |
+| "time" | Show significant time values such as the first day of the month or week. Data values in Records must be true Date objects, not Strings. |
+| "numeric" | Pick round numbers in the range and show labels for just those numbers. Best for continuous datasets that are not time-based |
+| "sample" | Pick periodic values from the dataset and show labels for those. Best when the there are no particular points that would clearly be the best to label |
+
+---
 ## Type: LabelRotationMode
 
 ### Description
@@ -2363,6 +2378,42 @@ Controls the navigation mode of records.
 |-------|-------------|
 | TableView.WHOLE_RECORD | Clicking anywhere on the record navigates |
 | TableView.NAVICON_ONLY | Only clicking directly on the navigation icon triggers navigation |
+
+---
+## Type: NodeGraphDirection
+
+### Description
+Which way a query or view follows an edge (see [nodeGraph](kb_topics/nodeGraph.md#kb-topic-node-graphs)).
+
+### Values
+
+| Value | Description |
+|-------|-------------|
+| "out" | from the edge's source to its target |
+| "in" | from the edge's target to its source |
+| "both" | either way |
+
+### Groups
+
+- nodeGraph
+
+---
+## Type: NodeGraphTraversalMode
+
+### Description
+How a traversal of a [NodeGraph](classes/NodeGraph.md#class-nodegraph) ([NodeGraph.getTraversal](classes/NodeGraph.md#method-nodegraphgettraversal), or the structure of a [NodeGraphTree](classes/NodeGraphTree.md#class-nodegraphtree)) places the nodes it reaches.
+
+### Values
+
+| Value | Description |
+|-------|-------------|
+| "spanning" | breadth-first, each node once, under one parent from the level above (see [chooseParent](classes/NodeGraphQuerySettings.md#attr-nodegraphquerysettingschooseparent)) |
+| "shortestPaths" | breadth-first, each node under every node one step nearer the root that has an edge to it, so every shortest path from the root is a path in the tree, and a node reachable by several equally short paths appears under each of their last steps, as in a [multi-link tree](classes/Tree.md#method-treeismultilinktree) |
+| "dag" | every edge followed except one closing a loop, so a node reachable several ways appears under each parent, as in a [multi-link tree](classes/Tree.md#method-treeismultilinktree) |
+
+### Groups
+
+- nodeGraph
 
 ---
 ## Type: NotifyType
@@ -2945,6 +2996,90 @@ When discovering a tree, the scanMode determines how to scan for the childrenPro
 | "node" | take each node individually |
 | "branch" | scan direct siblings as a group, looking for best fit |
 | "level" | scan entire tree levels as a group, looking for best fit |
+
+---
+## Type: SCImgURL
+
+### Description
+For properties that refer to images by URL, such as [Img.src](classes/Img.md#attr-imgsrc) and [Button.icon](classes/Button.md#attr-buttonicon), SmartClient provides various capabilities to allow for simpler and more uniform settings, and to allow applications to be restructured more easily.
+
+**[StockIcons](reference_2.md#object-stockicon)**
+
+SmartClient defines a list of [known-icons](classes/Media.md#classmethod-mediagetstockiconnames) which can be used by name in src-strings. For example, setting a button's [icon](classes/Button.md#attr-buttonicon) property to "Edit" will show the [current image](classes/StockIcon.md#attr-stockiconsrc) mapped to the builtin StockIcon with that name. You can also modify the image currently assigned to the "Edit" icon by calling [Media.updateIconMapping("Edit", "new src")](classes/Media.md#classmethod-mediaupdateiconmapping).
+
+When using a StockIcon-name as a src, you may also include additional settings to extend the [StockIcon](classes/StockIcon.md#attr-stockiconsrc) if applicable. For example, a src of "Edit:size:24,24;" will take the "Edit" stockIcon's current src and, if that src represents a sprite-string, apply the additional size attributes and render the Edit icon at a larger size.
+
+These features are especially useful in combination with [SVG Symbols](kb_topics/svgSymbols.md#kb-topic-svg-symbols-overview) using runtime-styling, where colors can be easily modified on a per usage-basis, for example with "Edit:color:red;". **the application image directory**
+
+When specifying URLs to image files via SmartClient component properties such as [StretchImg.src](classes/StretchImg.md#attr-stretchimgsrc), any relative path is assumed to be relative to the "application image directory" (`appImgDir`). The application image directory can be set via [Page.setAppImgDir](classes/Page.md#classmethod-pagesetappimgdir), and defaults to "images/", representing the typical practice of placing images in a subdirectory relative to the URL at which the application is accessed.
+
+For applications that may be launched from multiple URLs, the `appImgDir` can be set to the correct relative path to the image directory by calling [Page.setAppImgDir](classes/Page.md#classmethod-pagesetappimgdir) before any SmartClient components are created. This enables applications or components of an application to be launched from multiple locations, or to be relocated, without changing any image URLs supplied to SmartClient components.
+
+**the "\[SKIN\]" URL prefix**
+
+The special prefix "\[SKIN\]" can be used to refer to images within the skin folder whenever image URLs are supplied to SmartClient components.
+
+The value of "\[SKIN\]" is the combination of:
+
+*   the "skin directory", established in `load_skin.js` via [Page.setSkinDir](classes/Page.md#classmethod-pagesetskindir), plus..
+*   the setting for [skinImgDir](classes/Canvas_1.md#attr-canvasskinimgdir) on the component where you set an image URL property
+
+`skinImgDir` defaults to "images/", so creating an [Img](classes/Img.md#class-img) component with [Img.src](classes/Img.md#attr-imgsrc) set to "\[SKIN\]myButton/button.gif" will expand to `Page.getSkinDir() + "/images/myButton/button.gif"`.
+
+Some components that use a large number of images use `skinImgDir` to group them together and make it possible to relocate all the media for the component with a single setting. For example, the [TreeGrid](classes/TreeGrid.md#class-treegrid) class sets `skinImgDir` to "images/TreeGrid/". This allows [TreeGrid.folderIcon](classes/TreeGrid.md#attr-treegridfoldericon) to be set to just "\[SKIN\]folder.gif" but refer to `Page.getSkinDir() + "/images/TreeGrid/folder.gif"`.
+
+A custom subclass of TreeGrid can set `skinImgDir` to a different path, such as "/images/MyTreeGrid", to source all media from a different location.
+
+_TIPS:_
+
+*   subcomponents do not automatically share the parent component's setting for skinImgDir. For example, the [Window.minimizeButton](classes/Window.md#attr-windowminimizebutton) has the default setting for "skinImgDir" ("images/"), so the [src](classes/Img.md#attr-imgsrc) property used with this component is set to "\[SKIN\]/Window/minimize.png" (in the "SmartClient" sample skin).
+*   for a particular image, the skinImgDir setting on the component may not be convenient. The prefix "\[SKINIMG\]" can be used to refer to `Page.getSkinDir() + "/images"` regardless of the setting for `skinImgDir`
+
+**Using a css class instead of an image URL**
+
+In some cases, instead of an explicit image URL, developers may wish to apply a named css class with a background-image to an image based component. This may be achieved by specifying your image URL in the format **"style:_`<styleName>`_"**.
+
+For example if your application loads the following css class:
+
+```
+ .starImg {
+    width: 48px; height: 48px;
+    background: url(/images/star.gif) 0 0;    
+ }
+ 
+```
+It may be displayed in an Img component by setting [Img.src](classes/Img.md#attr-imgsrc) to `"style:startImg"`.
+
+**Sprited images**
+
+In addition to the `"style:..."` prefix for specifying a css class instead of a simple image URL, the prefix `"sprite:..."` may be used to specify properties required to extract an image from an image [sprite](https://www.w3schools.com/Css/css_image_sprites.asp).
+
+For details on how this format may be used, see the [SCSpriteConfig](#type-scspriteconfig) documentation.
+
+**Stateful image URLs**
+
+Many SmartClient components support changing their appearance to reflect their current "state" \[_"Focused"_, _"Disabled"_, etc\]. As such they may display different image media to reflect their current state.  
+See the [Stateful Images overview](kb_topics/statefulImages.md#kb-topic-stateful-images) for details on how image states are managed in SmartClient.
+
+**SVG Images**
+
+_For more information about using stylable SVGs for spriting in a way that doesn't involve lots of file-loads or the flickering typically associated with modifying SVGs in-browser, see the [SVG Symbols Overview](kb_topics/svgSymbols.md#kb-topic-svg-symbols-overview)._
+
+If the URL represents an SVG image, you may specify `tag` as a query param to control whether it's rendered in an object or image tag, provided [Canvas.useImageForSVG](classes/Canvas_1.md#attr-canvasuseimageforsvg) isn't set. If that query param is present and has any value other than `object`, then the SVG image will be rendered in an image tag. Otherwise, it will be rendered in an object tag. For example, an `SCImgURL` of "circle.svg?tag=image" will render in an image tag.
+
+**the special "blank" constant**
+
+If you don't have to show any image for any reason or you need to reset the area where an image is, you can call _myImage.setSrc('blank')_ or set:
+
+```
+ isc.Img.create({
+    ID: "myImage",
+    width:48, height:48,
+    src: "blank"
+ })
+ 
+```
+This will render an empty space, where the blank.gif image, that each skin has, will be used for this purpose.
 
 ---
 ## Type: SelectedAppearance
@@ -3954,6 +4089,16 @@ Context for an asynchronous data-bound operation.
 - [AsyncDataBoundOperationParams](#object-asyncdataboundoperationparams)
 
 ---
+## Object: AsyncMultipleValuesGenerationResult
+
+### Description
+The result of an asynchronous operation to generate multiple values.
+
+### Groups
+
+- fieldGeneration
+
+---
 ## Object: AsyncOperationContext
 
 ### Description
@@ -4686,6 +4831,46 @@ Settings used to control the export or serialization of a [DataSource](classes/D
 Encapsulates state of a [NavigationBar](classes/NavigationBar.md#class-navigationbar)'s view. A `NavigationBarViewState` object is created to pass to [NavigationBar.setViewState](classes/NavigationBar.md#method-navigationbarsetviewstate) so that multiple properties of the `NavigationBar` can be changed at once.
 
 ---
+## Object: NodeGraphLink
+
+### Description
+One parent-child link of a [NodeGraphTraversal](reference_2.md#object-nodegraphtraversal).
+
+### Groups
+
+- nodeGraph
+
+---
+## Object: NodeGraphQuerySettings
+
+### Description
+Settings for the [NodeGraph](classes/NodeGraph.md#class-nodegraph) queries and traversal. Each query uses the settings that apply to it, as its description says; the filters apply to every query.
+
+### Groups
+
+- nodeGraph
+
+---
+## Object: NodeGraphReach
+
+### Description
+What [NodeGraph.getReach](classes/NodeGraph.md#method-nodegraphgetreach) found.
+
+### Groups
+
+- nodeGraph
+
+---
+## Object: NodeGraphTraversal
+
+### Description
+The tree a traversal of a [NodeGraph](classes/NodeGraph.md#class-nodegraph) found (see [NodeGraph.getTraversal](classes/NodeGraph.md#method-nodegraphgettraversal)).
+
+### Groups
+
+- nodeGraph
+
+---
 ## Object: NodeLocator
 
 ### Description
@@ -4870,7 +5055,7 @@ For simple sort specifiers, you can convert between a `SortSpecifier` and the co
 ## Object: StockIcon
 
 ### Description
-An object that represents a known image by mapping a unique [name](classes/StockIcon.md#attr-stockiconname) to an [image-src](classes/StockIcon.md#attr-stockiconsrc). The current image-src may be modified at runtime and developers may use these known images by name in any [image-property](#type-scimgurl) - for example, [icon](classes/StatefulCanvas.md#attr-statefulcanvasicon): "Edit" or [src](classes/Img.md#attr-imgsrc): "Accept" would show whatever image-src is [currently mapped](classes/StockIcon.md#attr-stockiconsrc) to those builtin stockIcons.
+An object that represents a known image by mapping a unique [name](classes/StockIcon.md#attr-stockiconname) to an [image-src](classes/StockIcon.md#attr-stockiconsrc). The current image-src may be modified at runtime and developers may use these known images by name in any [image-property](reference_2.md#type-scimgurl) - for example, [icon](classes/StatefulCanvas.md#attr-statefulcanvasicon): "Edit" or [src](classes/Img.md#attr-imgsrc): "Accept" would show whatever image-src is [currently mapped](classes/StockIcon.md#attr-stockiconsrc) to those builtin stockIcons.
 ```
  isc.Button.create({ icon: "Edit" });
  isc.Img.create({ src: "Edit" });
@@ -5048,6 +5233,12 @@ Validator definition for a built-in [Validator.type](classes/Validator.md#attr-v
 
 ### Description
 Defines the method of the [ServerObject](reference_2.md#object-serverobject) if it appears in an [Application declaration file](kb_topics/applicationDeclaration.md#kb-topic-application-declaration-files). Method can refer the `ServerObject` method allowed to be called from the client or can be implemented right in the .app.xml file using the [inline server script](kb_topics/serverScript.md#kb-topic-server-scripting).
+
+---
+## Object: WorkflowBuilderCoTParams
+
+### Description
+The shape of `process.state` to populate before starting a [WorkflowBuilderProcess](#class-workflowbuilderprocess) directly (its own class documentation covers the three ways this process may be invoked - as a sub-process of [AI.buildUI](#classmethod-aibuildui), standalone, or via the EventStream/UISession convergence).
 
 ---
 ## Object: WorkflowExplorationEntry

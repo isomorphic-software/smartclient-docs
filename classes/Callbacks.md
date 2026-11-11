@@ -23,6 +23,26 @@ Callback reporting the result of a [RemoteWindow](RemoteWindow.md#class-remotewi
 | result | [Map](#type-map) | false | — | result |
 
 ---
+## Method: Callbacks.NodeGraphNodeFilter
+
+### Description
+Decides whether a [NodeGraph](NodeGraph.md#class-nodegraph) query or view may enter a node (see [NodeGraphQuerySettings.nodeFilter](NodeGraphQuerySettings.md#attr-nodegraphquerysettingsnodefilter)).
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| nodeId | [String](#type-string) | false | — | the node's ID |
+
+### Returns
+
+`[Boolean](#type-boolean)` — whether the node may be entered
+
+### Groups
+
+- nodeGraph
+
+---
 ## Method: Callbacks.RunTaskCallback
 
 ### Description
@@ -429,6 +449,27 @@ A [Callback](../reference.md#type-callback) fired when [DataSource.hasFile](Data
 A [Callback](../reference.md#type-callback) fired when [Sound.load](Sound.md#method-soundload) completes.
 
 ---
+## Method: Callbacks.NodeGraphChooseParent
+
+### Description
+Chooses the parent of a node in a "spanning" traversal (see [NodeGraphQuerySettings.chooseParent](NodeGraphQuerySettings.md#attr-nodegraphquerysettingschooseparent)).
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| nodeId | [String](#type-string) | false | — | the node being placed |
+| candidates | [Array of String](#type-array-of-string) | false | — | the IDs of the nodes one level up with an edge to it, in the order the traversal reached them |
+
+### Returns
+
+`[String](#type-string)` — the chosen parent, one of the candidates
+
+### Groups
+
+- nodeGraph
+
+---
 ## Method: Callbacks.AskDataQuestionResultCallback
 
 ### Description
@@ -552,6 +593,27 @@ Callback for [DateRangeDialog.askForRange](DateRangeDialog.md#classmethod-datera
 | criterion | [Criterion](#type-criterion) | false | — | criterion representing the selected range |
 
 ---
+## Method: Callbacks.NodeGraphSortChildren
+
+### Description
+Orders the children of a node in a traversal (see [NodeGraphQuerySettings.sortChildren](NodeGraphQuerySettings.md#attr-nodegraphquerysettingssortchildren)).
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| parentId | [String](#type-string) | false | — | the parent's ID |
+| childIds | [Array of String](#type-array-of-string) | false | — | its children's IDs, in the order they were reached (a copy the callback may reorder) |
+
+### Returns
+
+`[Array of String](#type-array-of-string)` — the same IDs in display order
+
+### Groups
+
+- nodeGraph
+
+---
 ## Method: Callbacks.GetFileCallback
 
 ### Description
@@ -623,6 +685,26 @@ Callback executed when a [supplied html](PrintCanvas.md#method-printcanvassethtm
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | printPreview | [PrintCanvas](#type-printcanvas) | false | — | The canvas being printed. |
+
+---
+## Method: Callbacks.NodeGraphEdgeFilter
+
+### Description
+Decides whether a [NodeGraph](NodeGraph.md#class-nodegraph) query or view may follow an edge (see [NodeGraphQuerySettings.edgeFilter](NodeGraphQuerySettings.md#attr-nodegraphquerysettingsedgefilter)).
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| edge | [Record](#type-record) | false | — | the edge record |
+
+### Returns
+
+`[Boolean](#type-boolean)` — whether the edge may be followed
+
+### Groups
+
+- nodeGraph
 
 ---
 ## Method: Callbacks.MessagingCallback

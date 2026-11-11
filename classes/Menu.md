@@ -109,7 +109,7 @@ When using any `placement` setting that fills a portion of the screen or a panel
 ## Attr: Menu.submenuDisabledImage
 
 ### Description
-Default image to use for the submenu indicator when the item is disabled. The value can be either a regular [SCImgURL](../reference.md#type-scimgurl) which can specify _size:w,h;_, or an [ImgHTMLProperties](../reference_2.md#object-imghtmlproperties) object, specifying at least _src_, _width_ and _height_.
+Default image to use for the submenu indicator when the item is disabled. The value can be either a regular [SCImgURL](../reference_2.md#type-scimgurl) which can specify _size:w,h;_, or an [ImgHTMLProperties](../reference_2.md#object-imghtmlproperties) object, specifying at least _src_, _width_ and _height_.
 
 If [Menu.submenuDirection](#attr-menusubmenudirection) is set to `"left"`, the image src will have the suffix `"_left"` appended to it.
 
@@ -189,7 +189,7 @@ When using a Tree or hierarchical DataSource as the menu's data, optional subcla
 ## Attr: Menu.submenuImage
 
 ### Description
-Default image to use for the submenu indicator. The value can be either a regular [SCImgURL](../reference.md#type-scimgurl) which can specify _size:w,h;_, or an [ImgHTMLProperties](../reference_2.md#object-imghtmlproperties) object, specifying at least _src_, _width_ and _height_.
+Default image to use for the submenu indicator. The value can be either a regular [SCImgURL](../reference_2.md#type-scimgurl) which can specify _size:w,h;_, or an [ImgHTMLProperties](../reference_2.md#object-imghtmlproperties) object, specifying at least _src_, _width_ and _height_.
 
 If [Menu.submenuDirection](#attr-menusubmenudirection) is set to `"left"`, the image src will have the suffix `"_left"` appended to it.
 
@@ -469,7 +469,7 @@ Explicitly disable alternateRecordStyles at the menu level by default so setting
 ## Attr: Menu.checkmarkDisabledImage
 
 ### Description
-Default image to display for [check-marked items](MenuItem.md#attr-menuitemchecked) when the item is disabled. The value can be either a regular [SCImgURL](../reference.md#type-scimgurl) which can specify _size:w,h;_, or an [ImgHTMLProperties](../reference_2.md#object-imghtmlproperties) object, specifying at least _src_, _width_ and _height_.
+Default image to display for [check-marked items](MenuItem.md#attr-menuitemchecked) when the item is disabled. The value can be either a regular [SCImgURL](../reference_2.md#type-scimgurl) which can specify _size:w,h;_, or an [ImgHTMLProperties](../reference_2.md#object-imghtmlproperties) object, specifying at least _src_, _width_ and _height_.
 
 Submenus created by this menu inherit this property.
 
@@ -601,7 +601,7 @@ Custom properties for the automatically generated title column.
 ## Attr: Menu.checkmarkImage
 
 ### Description
-Default image to display for [check-marked items](MenuItem.md#attr-menuitemchecked). The value can be either a regular [SCImgURL](../reference.md#type-scimgurl) which can specify _size:w,h;_, or an [ImgHTMLProperties](../reference_2.md#object-imghtmlproperties) object, specifying at least _src_, _width_ and _height_.
+Default image to display for [check-marked items](MenuItem.md#attr-menuitemchecked). The value can be either a regular [SCImgURL](../reference_2.md#type-scimgurl) which can specify _size:w,h;_, or an [ImgHTMLProperties](../reference_2.md#object-imghtmlproperties) object, specifying at least _src_, _width_ and _height_.
 
 Submenus created by this menu inherit this property.
 

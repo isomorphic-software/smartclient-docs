@@ -271,7 +271,7 @@ Changes the base [StretchImg.src](#attr-stretchimgsrc) for this stretchImg, redr
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| src | [SCImgURL](../reference.md#type-scimgurl) | false | — | new URL for the image |
+| src | [SCImgURL](../reference_2.md#type-scimgurl) | false | — | new URL for the image |
 
 ### Groups
 

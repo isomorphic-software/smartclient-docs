@@ -25,7 +25,7 @@ The RecordEditor class exists as a helper class for ListGrids, used to provide a
 ### Description
 [Icon](Button.md#attr-buttonicon) to show on the [RecordEditor.actionButton](#attr-recordeditoractionbutton) if this component is being used as a [ListGrid.filterEditor](ListGrid_1.md#attr-listgridfiltereditor).
 
-Note that this [SCImgURL](../reference.md#type-scimgurl) will be resolved using the [RecordEditor.skinImgDir](#attr-recordeditorskinimgdir) defined for the RecordEditor.
+Note that this [SCImgURL](../reference_2.md#type-scimgurl) will be resolved using the [RecordEditor.skinImgDir](#attr-recordeditorskinimgdir) defined for the RecordEditor.
 
 **Flags**: IR
 

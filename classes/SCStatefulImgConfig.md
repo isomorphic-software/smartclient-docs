@@ -11,7 +11,7 @@ Image to display when the component is [selected](StatefulCanvas.md#attr-statefu
 
 May be specified as
 
-*   A [SCImgURL](../reference.md#type-scimgurl) indicating the media to load
+*   A [SCImgURL](../reference_2.md#type-scimgurl) indicating the media to load
 *   A reference to another entry in this SCStatefulImgConfig via the format `"#state:_otherStateName_"`
 *   A modifier to apply to the [SCStatefulImgConfig._base](#attr-scstatefulimgconfig_base) media via the format `"#modifier:_modifierString_"`
 
@@ -40,7 +40,7 @@ Image to display when the component is [selected](StatefulCanvas.md#attr-statefu
 
 May be specified as
 
-*   A [SCImgURL](../reference.md#type-scimgurl) indicating the media to load
+*   A [SCImgURL](../reference_2.md#type-scimgurl) indicating the media to load
 *   A reference to another entry in this SCStatefulImgConfig via the format `"#state:_otherStateName_"`
 *   A modifier to apply to the [SCStatefulImgConfig._base](#attr-scstatefulimgconfig_base) media via the format `"#modifier:_modifierString_"`
 
@@ -56,7 +56,7 @@ Image to display when the component is [selected](StatefulCanvas.md#attr-statefu
 
 May be specified as
 
-*   A [SCImgURL](../reference.md#type-scimgurl) indicating the media to load
+*   A [SCImgURL](../reference_2.md#type-scimgurl) indicating the media to load
 *   A reference to another entry in this SCStatefulImgConfig via the format `"#state:_otherStateName_"`
 *   A modifier to apply to the [SCStatefulImgConfig._base](#attr-scstatefulimgconfig_base) media via the format `"#modifier:_modifierString_"`
 
@@ -72,7 +72,7 @@ Image to display when the component is [focused](Canvas_1.md#method-canvasisfocu
 
 May be specified as
 
-*   A [SCImgURL](../reference.md#type-scimgurl) indicating the media to load
+*   A [SCImgURL](../reference_2.md#type-scimgurl) indicating the media to load
 *   A reference to another entry in this SCStatefulImgConfig via the format `"#state:_otherStateName_"`
 *   A modifier to apply to the [SCStatefulImgConfig._base](#attr-scstatefulimgconfig_base) media via the format `"#modifier:_modifierString_"`
 
@@ -88,7 +88,7 @@ Image to display on [mouseDown](StatefulCanvas.md#attr-statefulcanvasshowdown).
 
 May be specified as
 
-*   A [SCImgURL](../reference.md#type-scimgurl) indicating the media to load
+*   A [SCImgURL](../reference_2.md#type-scimgurl) indicating the media to load
 *   A reference to another entry in this SCStatefulImgConfig via the format `"#state:_otherStateName_"`
 *   A modifier to apply to the [SCStatefulImgConfig._base](#attr-scstatefulimgconfig_base) media via the format `"#modifier:_modifierString_"`
 
@@ -104,7 +104,7 @@ Image to display when the component is [selected](StatefulCanvas.md#attr-statefu
 
 May be specified as
 
-*   A [SCImgURL](../reference.md#type-scimgurl) indicating the media to load
+*   A [SCImgURL](../reference_2.md#type-scimgurl) indicating the media to load
 *   A reference to another entry in this SCStatefulImgConfig via the format `"#state:_otherStateName_"`
 *   A modifier to apply to the [SCStatefulImgConfig._base](#attr-scstatefulimgconfig_base) media via the format `"#modifier:_modifierString_"`
 
@@ -120,7 +120,7 @@ Image to display on [roll over](StatefulCanvas.md#attr-statefulcanvasshowrollove
 
 May be specified as
 
-*   A [SCImgURL](../reference.md#type-scimgurl) indicating the media to load
+*   A [SCImgURL](../reference_2.md#type-scimgurl) indicating the media to load
 *   A reference to another entry in this SCStatefulImgConfig via the format `"#state:_otherStateName_"`
 *   A modifier to apply to the [SCStatefulImgConfig._base](#attr-scstatefulimgconfig_base) media via the format `"#modifier:_modifierString_"`
 
@@ -136,7 +136,7 @@ Image to display when the component is [selected](StatefulCanvas.md#attr-statefu
 
 May be specified as
 
-*   A [SCImgURL](../reference.md#type-scimgurl) indicating the media to load
+*   A [SCImgURL](../reference_2.md#type-scimgurl) indicating the media to load
 *   A reference to another entry in this SCStatefulImgConfig via the format `"#state:_otherStateName_"`
 *   A modifier to apply to the [SCStatefulImgConfig._base](#attr-scstatefulimgconfig_base) media via the format `"#modifier:_modifierString_"`
 
@@ -152,7 +152,7 @@ Image to display when the component is [selected](StatefulCanvas.md#attr-statefu
 
 May be specified as
 
-*   A [SCImgURL](../reference.md#type-scimgurl) indicating the media to load
+*   A [SCImgURL](../reference_2.md#type-scimgurl) indicating the media to load
 *   A reference to another entry in this SCStatefulImgConfig via the format `"#state:_otherStateName_"`
 *   A modifier to apply to the [SCStatefulImgConfig._base](#attr-scstatefulimgconfig_base) media via the format `"#modifier:_modifierString_"`
 
@@ -168,7 +168,7 @@ Image to display when the component is [focused](Canvas_1.md#method-canvasisfocu
 
 May be specified as
 
-*   A [SCImgURL](../reference.md#type-scimgurl) indicating the media to load
+*   A [SCImgURL](../reference_2.md#type-scimgurl) indicating the media to load
 *   A reference to another entry in this SCStatefulImgConfig via the format `"#state:_otherStateName_"`
 *   A modifier to apply to the [SCStatefulImgConfig._base](#attr-scstatefulimgconfig_base) media via the format `"#modifier:_modifierString_"`
 
@@ -184,7 +184,7 @@ Image to display when the component is [focused](Canvas_1.md#method-canvasisfocu
 
 May be specified as
 
-*   A [SCImgURL](../reference.md#type-scimgurl) indicating the media to load
+*   A [SCImgURL](../reference_2.md#type-scimgurl) indicating the media to load
 *   A reference to another entry in this SCStatefulImgConfig via the format `"#state:_otherStateName_"`
 *   A modifier to apply to the [SCStatefulImgConfig._base](#attr-scstatefulimgconfig_base) media via the format `"#modifier:_modifierString_"`
 
@@ -200,7 +200,7 @@ Image to display when the component is [disabled](Canvas_1.md#attr-canvasdisable
 
 May be specified as
 
-*   A [SCImgURL](../reference.md#type-scimgurl) indicating the media to load
+*   A [SCImgURL](../reference_2.md#type-scimgurl) indicating the media to load
 *   A reference to another entry in this SCStatefulImgConfig via the format `"#state:_otherStateName_"`
 *   A modifier to apply to the [SCStatefulImgConfig._base](#attr-scstatefulimgconfig_base) media via the format `"#modifier:_modifierString_"`
 
@@ -216,7 +216,7 @@ Image to display when the component is [selected](StatefulCanvas.md#attr-statefu
 
 May be specified as
 
-*   A [SCImgURL](../reference.md#type-scimgurl) indicating the media to load
+*   A [SCImgURL](../reference_2.md#type-scimgurl) indicating the media to load
 *   A reference to another entry in this SCStatefulImgConfig via the format `"#state:_otherStateName_"`
 *   A modifier to apply to the [SCStatefulImgConfig._base](#attr-scstatefulimgconfig_base) media via the format `"#modifier:_modifierString_"`
 

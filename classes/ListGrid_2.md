@@ -846,7 +846,7 @@ Change the [ListGridField.icon](ListGridField.md#attr-listgridfieldicon) for a f
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | fieldName | [String](#type-string) | false | — | field to update |
-| icon | [SCImgURL](../reference.md#type-scimgurl) | false | — | icon for the field |
+| icon | [SCImgURL](../reference_2.md#type-scimgurl) | false | — | icon for the field |
 
 ---
 ## Method: ListGrid.setCanRemoveRecords
@@ -1539,7 +1539,7 @@ Returns the appropriate valueIcon for a cell based on the field and the data val
 
 ### Returns
 
-`[SCImgURL](../reference.md#type-scimgurl)` — url for the icon
+`[SCImgURL](../reference_2.md#type-scimgurl)` — url for the icon
 
 ### Groups
 
@@ -5309,7 +5309,7 @@ Change the [ListGridField.cellIcon](ListGridField.md#attr-listgridfieldcellicon)
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | fieldName | [String](#type-string) | false | — | field to update |
-| cellIcon | [SCImgURL](../reference.md#type-scimgurl) | false | — | new cellIcon for the field |
+| cellIcon | [SCImgURL](../reference_2.md#type-scimgurl) | false | — | new cellIcon for the field |
 
 ---
 ## Method: ListGrid.getExportTextColor

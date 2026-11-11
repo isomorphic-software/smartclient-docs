@@ -137,7 +137,7 @@ Specific browsers offer alternate approaches to quickly discover the images or s
 
 Properties that refer to images by URL, such as [Img.src](../classes/Img.md#attr-imgsrc) and [Button.icon](../classes/Button.md#attr-buttonicon), are specially interpreted in SmartClient to allow for simpler and more uniform image URLs, and to allow applications to be restructured more easily.
 
-Unlike the URL used with an HTML `<IMG>` element, the image URL passed to a SmartClient component is not assumed to be relative to the current page. See [SCImgURL](../reference.md#type-scimgurl) for a full explanation of the default application image directory, and the meaning of the "\[SKIN\]" prefix.
+Unlike the URL used with an HTML `<IMG>` element, the image URL passed to a SmartClient component is not assumed to be relative to the current page. See [SCImgURL](../reference_2.md#type-scimgurl) for a full explanation of the default application image directory, and the meaning of the "\[SKIN\]" prefix.
 
 #### Specifying Image URLs
 

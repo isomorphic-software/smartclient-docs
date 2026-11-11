@@ -345,7 +345,7 @@ Setter for [rightButtonIcon](#attr-navigationbarrightbuttonicon).
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| newIcon | [SCImgURL](../reference.md#type-scimgurl) | false | — | new icon for the right button. |
+| newIcon | [SCImgURL](../reference_2.md#type-scimgurl) | false | — | new icon for the right button. |
 
 ---
 ## Method: NavigationBar.setRightButtonTitle
@@ -369,6 +369,6 @@ Setter for [leftButtonIcon](#attr-navigationbarleftbuttonicon).
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| newIcon | [SCImgURL](../reference.md#type-scimgurl) | false | — | new icon for left button. |
+| newIcon | [SCImgURL](../reference_2.md#type-scimgurl) | false | — | new icon for left button. |
 
 ---

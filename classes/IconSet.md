@@ -7,7 +7,7 @@
 ## Attr: IconSet.mappings
 
 ### Description
-An optional JavaScript object that maps known [stockIcon-names](StockIcon.md#attr-stockiconname) to new src-strings, which may be of [any type](../reference.md#type-scimgurl). This set of mappings may be applied at runtime by passing the IconSet itself, or it's [name](#attr-iconsetname) if it's already been [registered](Media.md#classmethod-mediaaddiconset), to [useMedia](Media.md#classmethod-mediausemedia).
+An optional JavaScript object that maps known [stockIcon-names](StockIcon.md#attr-stockiconname) to new src-strings, which may be of [any type](../reference_2.md#type-scimgurl). This set of mappings may be applied at runtime by passing the IconSet itself, or it's [name](#attr-iconsetname) if it's already been [registered](Media.md#classmethod-mediaaddiconset), to [useMedia](Media.md#classmethod-mediausemedia).
 
 ### Groups
 

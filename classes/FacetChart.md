@@ -522,13 +522,13 @@ Title for the `"Area"` item in the `"Chart Type"` submenu in the context menu.
 ### Description
 Specifies what [DataSource](DataSource_1.md#class-datasource) fields to use as the chart [FacetChart.facets](#attr-facetchartfacets) for a databound chart. If [FacetChart.facets](#attr-facetchartfacets) is also explicitly set, [FacetChart.facetFields](#attr-facetchartfacetfields) is definitive but [Facet](../reference_2.md#object-facet) properties will be picked up from [FacetChart.facets](#attr-facetchartfacets) also present in the [FacetChart.facetFields](#attr-facetchartfacetfields).
 
-If neither this property nor [FacetChart.facets](#attr-facetchartfacets) is set, a databound chart will attempt to auto-derive [FacetChart.facetFields](#attr-facetchartfacetfields) from the DataSource fields. The first two text or text-derived fields in the DataSource will be assumed to be the [FacetChart.facetFields](#attr-facetchartfacetfields).
+If neither this property nor [FacetChart.facets](#attr-facetchartfacets) is set, a databound chart will attempt to auto-derive [FacetChart.facets](#attr-facetchartfacets) from the first two text or text-derived fields in the DataSource. This does not assign a value to `facetFields`.
 
 ### See Also
 
 - [FacetChart.valueProperty](#attr-facetchartvalueproperty)
 
-**Flags**: IR
+**Flags**: IRW
 
 ---
 ## Attr: FacetChart.logBase
@@ -626,7 +626,7 @@ Bar and Column charts also support three non-metric facets, where the first two 
 
 For databound charts, [FacetChart.facetFields](#attr-facetchartfacetfields) may be specified instead of this property. If both are provided, [FacetChart.facetFields](#attr-facetchartfacetfields) is definitive but [Facet](../reference_2.md#object-facet) properties will be picked up from [FacetChart.facets](#attr-facetchartfacets) also present in the [FacetChart.facetFields](#attr-facetchartfacetfields).
 
-**Flags**: IR
+**Flags**: IRW
 
 ---
 ## Attr: FacetChart.sizeClustersToLabels
@@ -1174,7 +1174,7 @@ When true for a Bar chart, expansion and scrollbar are vertical, and also make s
 
 Note that this feature is incompatible with the following properties:
 
-*   [LabelCollapseMode](../reference.md#type-labelcollapsemode) (other than the default of "none")
+*   [LabelCollapseMode](../reference_2.md#type-labelcollapsemode) (other than the default of "none")
 *   [FacetChart.rotateLabels](#attr-facetchartrotatelabels) (in "auto" mode)
 *   [canDragScroll](DrawPane.md#attr-drawpanecandragscroll)
 *   [FacetChart.canZoom](#attr-facetchartcanzoom)
@@ -1185,7 +1185,7 @@ If [FacetChart.rotateLabels](#attr-facetchartrotatelabels) is set to "auto" it w
 
 - [FacetChart.canZoom](#attr-facetchartcanzoom)
 - [FacetChart.rotateLabels](#attr-facetchartrotatelabels)
-- [LabelCollapseMode](../reference.md#type-labelcollapsemode)
+- [LabelCollapseMode](../reference_2.md#type-labelcollapsemode)
 - [FacetChart.getMinClusterSize](#method-facetchartgetminclustersize)
 - [DrawPane.canDragScroll](DrawPane.md#attr-drawpanecandragscroll)
 
@@ -1556,7 +1556,7 @@ See also [FacetChart.majorTickTimeIntervals](#attr-facetchartmajorticktimeinterv
 ## Attr: FacetChart.labelCollapseMode
 
 ### Description
-What to do when there are too many data points to be able to show labels for every data point at the current chart size - see [LabelCollapseMode](../reference.md#type-labelcollapsemode).
+What to do when there are too many data points to be able to show labels for every data point at the current chart size - see [LabelCollapseMode](../reference_2.md#type-labelcollapsemode).
 
 Each of the possible strategies is re-applied when the user resizes the chart as a whole, so if labels are omitted the user can make them visible via resize or zoom.
 
@@ -1641,9 +1641,9 @@ Minimum height for this chart instance.
 ## Attr: FacetChart.showDataAxisLabel
 
 ### Description
-Whether to show a label for the data axis as a whole (the data axis is where labels for each data point appear). If true, [Facet.title](Facet.md#attr-facettitle) for the data label facet will be shown as the label.
+Whether to allow a label for the data axis as a whole (the data axis is where labels for each data point appear). The label normally comes from the data label facet's [Facet.title](Facet.md#attr-facettitle). For Scatter and Bubble charts, it comes from the [FacetValue.title](FacetValue.md#attr-facetvaluetitle) of the [X-axis metric](#attr-facetchartxaxismetric) instead.
 
-Automatically disabled for non-rectangular charts (eg Pie, Radar).
+Setting this property to false suppresses the label. A value of true or null allows the label to be shown, but does not force it to appear. For example, a chart with a single data label facet without a title will not show a data axis label. Data axis labels are not shown for non-rectangular charts (for example, Pie and Radar).
 
 ### Groups
 
@@ -2347,9 +2347,9 @@ Note that zIndex values should be integers between 0 and [FacetChart.maxDataZInd
 ## Attr: FacetChart.showValueAxisLabel
 
 ### Description
-Whether to show the [FacetChart.valueTitle](#attr-facetchartvaluetitle) (or, in the case of [proportional rendering mode](#attr-facetchartproportional), the [FacetChart.proportionalAxisLabel](#attr-facetchartproportionalaxislabel)) as a label on the value axis.
+Whether to allow the [FacetChart.valueTitle](#attr-facetchartvaluetitle) (or, in the case of [proportional rendering mode](#attr-facetchartproportional), the [FacetChart.proportionalAxisLabel](#attr-facetchartproportionalaxislabel)) as a label on the value axis.
 
-Automatically disabled for non-rectangular charts (eg Pie, Radar).
+Setting this property to false suppresses the label. A value of true or null allows the label to be shown, but does not force it to appear: a value title must be available unless proportional rendering mode is active, and vertical value axis labels require the chart's Y-axis gradations to be shown. Value axis labels are not shown for non-rectangular charts (for example, Pie and Radar).
 
 ### Groups
 
@@ -3229,7 +3229,7 @@ Two basic formats are supported:
 
 *   "Standard model": `data` is an array of CellRecords where each record contains one data value. Each record also contains a property named after each facetId whose value is a facetValueId from that facet.
     
-    For example, with a facet with id "regions" and facetValues "west", "north" and "east", and with [FacetChart.valueProperty](#attr-facetchartvalueproperty) with it's default value "\_value", the `data` property could be:
+    For example, with a facet with id "regions" and facetValues "west", "north" and "east", and with [FacetChart.valueProperty](#attr-facetchartvalueproperty) with its default value "\_value", the `data` property could be:
     
     ```
         isc.Chart.create({
@@ -5276,7 +5276,7 @@ See [FacetChart.chartBackgroundDrawn](#method-facetchartchartbackgrounddrawn) fo
 ### Description
 Return the text string to display along the axes for [gradation labels](#attr-facetchartgradationlabelproperties) or facet value labels given the raw metric value or facet value id.
 
-Note that this formatter will be called for the gradation labels on an axis, including those generated for [LabelCollapseMode](../reference.md#type-labelcollapsemode) "numeric". It also will be called for each facet value along the linear axes of a chart (vertical or horizontal) unless a [FacetValue.title](FacetValue.md#attr-facetvaluetitle) has been specified (in [Facet.values](Facet.md#attr-facetvalues)) or the raw value is a string and [FacetChart.formatStringFacetValueIds](#attr-facetchartformatstringfacetvalueids) is `false`.
+Note that this formatter will be called for the gradation labels on an axis, including those generated for [LabelCollapseMode](../reference_2.md#type-labelcollapsemode) "numeric". It also will be called for each facet value along the linear axes of a chart (vertical or horizontal) unless a [FacetValue.title](FacetValue.md#attr-facetvaluetitle) has been specified (in [Facet.values](Facet.md#attr-facetvalues)) or the raw value is a string and [FacetChart.formatStringFacetValueIds](#attr-facetchartformatstringfacetvalueids) is `false`.
 
 Note that the rendering of values in hovers or via [FacetChart.showDataValues](#attr-facetchartshowdatavalues) is handled by [FacetChart.formatDataValue](#method-facetchartformatdatavalue).
 

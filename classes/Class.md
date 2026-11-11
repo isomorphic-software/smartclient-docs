@@ -180,6 +180,7 @@ Not all Class subclasses support this property. The following commonly-used subc
 *   [ValuesManager](ValuesManager.md#class-valuesmanager)
 *   [ResultSet](ResultSet.md#class-resultset)
 *   [ResultTree](ResultTree.md#class-resulttree)
+*   [NodeGraph](NodeGraph.md#class-nodegraph)
 
 **Flags**: IR
 

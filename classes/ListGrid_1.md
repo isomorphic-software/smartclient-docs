@@ -4322,7 +4322,7 @@ If we're showing a [headerContextMenu](#attr-listgridshowheadercontextmenu) for 
 ## Attr: ListGrid.sortAscendingImage
 
 ### Description
-Image to show when sorted in ascending order. Can be either a regular [SCImgURL](../reference.md#type-scimgurl) src, or an [ImgHTMLProperties](../reference_2.md#object-imghtmlproperties) object.
+Image to show when sorted in ascending order. Can be either a regular [SCImgURL](../reference_2.md#type-scimgurl) src, or an [ImgHTMLProperties](../reference_2.md#object-imghtmlproperties) object.
 
 ### See Also
 
@@ -4559,7 +4559,7 @@ If true, causes the [summaryRow](#attr-listgridsummaryrow) component to be hidde
 ## Attr: ListGrid.trackerImage
 
 ### Description
-Default image to use for the dragTracker when things are dragged within or out of this list. Can be either a regular [SCImgURL](../reference.md#type-scimgurl) src, or an [ImgHTMLProperties](../reference_2.md#object-imghtmlproperties) object.
+Default image to use for the dragTracker when things are dragged within or out of this list. Can be either a regular [SCImgURL](../reference_2.md#type-scimgurl) src, or an [ImgHTMLProperties](../reference_2.md#object-imghtmlproperties) object.
 
 ### Groups
 
@@ -5612,7 +5612,7 @@ This setting only applies to the [ResultSet](ResultSet.md#class-resultset) autom
 ### Description
 Specifies a list of icons that can be used in [hilites](DataBoundComponent.md#method-databoundcomponentedithilites).
 
-`hiliteIcons` should be specified as an Array of [SCImgURL](../reference.md#type-scimgurl). When present, the hilite editing interface shown when [DataBoundComponent.editHilites](DataBoundComponent.md#method-databoundcomponentedithilites) is called will offer the user a drop down for picking one of these icons when defining either a simple or advanced hilite rule.
+`hiliteIcons` should be specified as an Array of [SCImgURL](../reference_2.md#type-scimgurl). When present, the hilite editing interface shown when [DataBoundComponent.editHilites](DataBoundComponent.md#method-databoundcomponentedithilites) is called will offer the user a drop down for picking one of these icons when defining either a simple or advanced hilite rule.
 
 If the user picks an icon, the created hiliting rule will have [Hilite.icon](Hilite.md#attr-hiliteicon) set to the chosen icon. [DataBoundComponent.hiliteIconPosition](DataBoundComponent.md#attr-databoundcomponenthiliteiconposition) controls where the icon will appear for that field -- the default is that it appears in front of the normal cell content. This can also be overridden at the field level.
 
@@ -5626,7 +5626,7 @@ If the user picks an icon, the created hiliting rule will have [Hilite.icon](Hil
 ## Attr: ListGrid.sortDescendingImage
 
 ### Description
-Image to show when sorted in descending order. Can be either a regular [SCImgURL](../reference.md#type-scimgurl) src, or an [ImgHTMLProperties](../reference_2.md#object-imghtmlproperties) object.
+Image to show when sorted in descending order. Can be either a regular [SCImgURL](../reference_2.md#type-scimgurl) src, or an [ImgHTMLProperties](../reference_2.md#object-imghtmlproperties) object.
 
 ### Groups
 

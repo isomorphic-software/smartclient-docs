@@ -181,7 +181,7 @@ This will be shown inside the field via [TextItem.showHintInField](TextItem.md#a
 ## Attr: MultiPickerItem.expandIconSrc
 
 ### Description
-[SCImgURL](../reference.md#type-scimgurl) for the [MultiPickerItem.expansionIcon](#attr-multipickeritemexpansionicon) while not in expanded mode
+[SCImgURL](../reference_2.md#type-scimgurl) for the [MultiPickerItem.expansionIcon](#attr-multipickeritemexpansionicon) while not in expanded mode
 
 **Flags**: IR
 
@@ -433,7 +433,7 @@ This only applies to selectionStyle "pickList".
 ## Attr: MultiPickerItem.collapseIconSrc
 
 ### Description
-[SCImgURL](../reference.md#type-scimgurl) for the [MultiPickerItem.expansionIcon](#attr-multipickeritemexpansionicon) while in expanded mode
+[SCImgURL](../reference_2.md#type-scimgurl) for the [MultiPickerItem.expansionIcon](#attr-multipickeritemexpansionicon) while in expanded mode
 
 **Flags**: IR
 

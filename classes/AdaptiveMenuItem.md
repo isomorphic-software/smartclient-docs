@@ -102,7 +102,7 @@ Note that the `menu` parameter may be null if this `AdaptiveMenuItem` is not cur
 
 ### Returns
 
-`[SCImgURL](../reference.md#type-scimgurl)` — the url of this menuItems icon
+`[SCImgURL](../reference_2.md#type-scimgurl)` — the url of this menuItems icon
 
 ### Groups
 

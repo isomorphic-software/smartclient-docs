@@ -1251,7 +1251,7 @@ Changes the icon for a tab
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | tab | [Tab](#type-tab)|[number](#type-number)|[GlobalId](../reference_2.md#type-globalid)|[TabName](../reference.md#type-tabname) | false | — | tab to update |
-| icon | [SCImgURL](../reference.md#type-scimgurl) | false | — | new icon |
+| icon | [SCImgURL](../reference_2.md#type-scimgurl) | false | — | new icon |
 
 **Flags**: A
 

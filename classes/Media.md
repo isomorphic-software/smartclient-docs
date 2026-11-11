@@ -103,7 +103,7 @@ Typically, this will take effect immediately with no further action by the devel
 ## ClassMethod: Media.getStockIconNames
 
 ### Description
-Returns an array of the [names](StockIcon.md#attr-stockiconname) of all registered [stockIcons](../reference_2.md#object-stockicon). These are the names which can be used as src-string values for [image attributes](../reference.md#type-scimgurl).
+Returns an array of the [names](StockIcon.md#attr-stockiconname) of all registered [stockIcons](../reference_2.md#object-stockicon). These are the names which can be used as src-string values for [image attributes](../reference_2.md#type-scimgurl).
 
 ### Groups
 
@@ -116,14 +116,14 @@ Returns an array of the [names](StockIcon.md#attr-stockiconname) of all register
 ### Description
 Updates the [src-string](StockIcon.md#attr-stockiconsrc) currently assigned to the passed [icon-name](StockIcon.md#attr-stockiconname).
 
-Changes the src that will be rendered when the passed icon-name or it's [StockIcon.fromSrc](StockIcon.md#attr-stockiconfromsrc) are used as the value of an [image-src](../reference.md#type-scimgurl) property, such as [Button.icon](Button.md#attr-buttonicon) or [Img.src](Img.md#attr-imgsrc).
+Changes the src that will be rendered when the passed icon-name or it's [StockIcon.fromSrc](StockIcon.md#attr-stockiconfromsrc) are used as the value of an [image-src](../reference_2.md#type-scimgurl) property, such as [Button.icon](Button.md#attr-buttonicon) or [Img.src](Img.md#attr-imgsrc).
 
 ### Parameters
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | name | [String](#type-string) | false | — | the name of the stockIcon to modify |
-| newSrc | [String](#type-string) | false | — | the new [src-string](../reference.md#type-scimgurl) for the passed icon-name |
+| newSrc | [String](#type-string) | false | — | the new [src-string](../reference_2.md#type-scimgurl) for the passed icon-name |
 
 ### Groups
 
@@ -170,7 +170,7 @@ Registers a list of new [stockIcons](../reference_2.md#object-stockicon) for use
 ## ClassMethod: Media.updateIconMappings
 
 ### Description
-Updates the [src-strings](StockIcon.md#attr-stockiconsrc) currently assigned to one or more [StockIcons](../reference_2.md#object-stockicon). The _mappings_ parameter should be a map of StockIcon-name to [any valid src-string](../reference.md#type-scimgurl).
+Updates the [src-strings](StockIcon.md#attr-stockiconsrc) currently assigned to one or more [StockIcons](../reference_2.md#object-stockicon). The _mappings_ parameter should be a map of StockIcon-name to [any valid src-string](../reference_2.md#type-scimgurl).
 
 Once updated, the icons named in the map will render their respective new images when their [names](StockIcon.md#attr-stockiconname) or [fromSrc-values](StockIcon.md#attr-stockiconfromsrc) are used as the value of an image-src property, such as [Button.icon](Button.md#attr-buttonicon) or [Img.src](Img.md#attr-imgsrc).
 

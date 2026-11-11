@@ -4803,7 +4803,7 @@ Returns the [source image](#attr-calendareventcanvasgrippericon) to use as the g
 
 ### Returns
 
-`[SCImgURL](../reference.md#type-scimgurl)` — the URL for the image to load
+`[SCImgURL](../reference_2.md#type-scimgurl)` — the URL for the image to load
 
 ---
 ## Method: Calendar.eventOverflowImgClick

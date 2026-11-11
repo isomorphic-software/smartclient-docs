@@ -262,7 +262,7 @@ The `linkDataSource` is an ordinary [DataSource](DataSource_1.md#class-datasourc
 *   A [primaryKey field](DataSourceField.md#attr-datasourcefieldprimarykey). Like any dataSource, a `linkDataSource` is not fully functional without a `primaryKey` field
 *   A field named the same as the [Tree.parentIdField](Tree.md#attr-treeparentidfield)
 *   A field named the same as the [Tree.idField](Tree.md#attr-treeidfield)
-*   Optionally, a field named the same as the [Tree.linkPositionField](Tree.md#attr-treelinkpositionfield)
+*   Optionally, a field named the same as the [Tree.linkPositionField](Tree.md#attr-treelinkpositionfield). This is only required if [Tree.allowDuplicateChildren](Tree.md#attr-treeallowduplicatechildren) is set, as it is used to disambiguate between two instances of the same child node within the same parent
 *   Fields for other values you may wish to store with the link, if any
 
 #### Providing node data and link data

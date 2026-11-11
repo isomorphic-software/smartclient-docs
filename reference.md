@@ -354,8 +354,8 @@ This is the central API reference for the SmartClient framework.
   - [DateUtil](classes/DateUtil.md)
   - [Page](classes/Page.md)
   - [Validator](classes/Validator.md)
-  - [SavedSearches](classes/SavedSearches.md)
   - [Callbacks](classes/Callbacks.md)
+  - [SavedSearches](classes/SavedSearches.md)
   - [EventStream](classes/EventStream.md)
   - [EventHandler](classes/EventHandler.md)
   - [ProcessElement](classes/ProcessElement.md)
@@ -434,6 +434,7 @@ This is the central API reference for the SmartClient framework.
   - [VoiceAssist](classes/VoiceAssist.md)
   - [AI](classes/AI.md)
   - [Browser](classes/Browser.md)
+  - [NodeGraph](classes/NodeGraph.md)
   - [TabIndexManager](classes/TabIndexManager.md)
   - [Log](classes/Log.md)
   - [XMLTools](classes/XMLTools.md)
@@ -485,6 +486,7 @@ This is the central API reference for the SmartClient framework.
     - [HandPlacedContainerEditProxy](#class-handplacedcontainereditproxy)
   - [Selection](classes/Selection.md)
   - [Operators](classes/Operators.md)
+  - [NodeGraphTree](classes/NodeGraphTree.md)
   - [Mail](classes/Mail.md)
   - [Authentication](classes/Authentication.md)
     - [Auth](#class-auth)
@@ -706,6 +708,7 @@ This is the central API reference for the SmartClient framework.
 - [multiAutoChildren](#kb-topic-multiautochildren)
 - [Transparent Multi-Tenancy](kb_topics/multiTenancy.md)
 - [Network Performance](kb_topics/networkPerformance.md)
+- [Node Graphs](kb_topics/nodeGraph.md)
 - [Don't Misuse Frames](kb_topics/noFrames.md)
 - [.NET, PHP, Serverless Integration](kb_topics/nonJavaBackend.md)
 - [NPMJS Support](kb_topics/npmjs.md)
@@ -6256,21 +6259,6 @@ Entries for the [DrawItem.knobs](classes/DrawItem.md#attr-drawitemknobs) array. 
 | "rotate" | Display a rotation knob above the top resize knob, allowing the user to rotate the item. See also [DrawItem.rotateKnob](classes/DrawItem.md#attr-drawitemrotateknob). |
 
 ---
-## Type: LabelCollapseMode
-
-### Description
-Strategy to apply when there is too little room for labels to be shown for all data points with comfortable padding ([FacetChart.minLabelGap](classes/FacetChart.md#attr-facetchartminlabelgap)).
-
-### Values
-
-| Value | Description |
-|-------|-------------|
-| "none" | Show all labels regardless, even though they will overlap |
-| "time" | Show significant time values such as the first day of the month or week. Data values in Records must be true Date objects, not Strings. |
-| "numeric" | Pick round numbers in the range and show labels for just those numbers. Best for continuous datasets that are not time-based |
-| "sample" | Pick periodic values from the dataset and show labels for those. Best when the there are no particular points that would clearly be the best to label |
-
----
 ## Type: LayoutResizeBarPolicy
 
 ### Description
@@ -7226,90 +7214,6 @@ Cannot be used to target cross-domain URLs directly. |
 Name of a SmartClient Class, that is, a Class that has been created via [isc.defineClass](classes/isc.md#staticmethod-iscdefineclass), including Classes built into SmartClient, such as "ListGrid".
 
 ---
-## Type: SCImgURL
-
-### Description
-For properties that refer to images by URL, such as [Img.src](classes/Img.md#attr-imgsrc) and [Button.icon](classes/Button.md#attr-buttonicon), SmartClient provides various capabilities to allow for simpler and more uniform settings, and to allow applications to be restructured more easily.
-
-**[StockIcons](reference_2.md#object-stockicon)**
-
-SmartClient defines a list of [known-icons](classes/Media.md#classmethod-mediagetstockiconnames) which can be used by name in src-strings. For example, setting a button's [icon](classes/Button.md#attr-buttonicon) property to "Edit" will show the [current image](classes/StockIcon.md#attr-stockiconsrc) mapped to the builtin StockIcon with that name. You can also modify the image currently assigned to the "Edit" icon by calling [Media.updateIconMapping("Edit", "new src")](classes/Media.md#classmethod-mediaupdateiconmapping).
-
-When using a StockIcon-name as a src, you may also include additional settings to extend the [StockIcon](classes/StockIcon.md#attr-stockiconsrc) if applicable. For example, a src of "Edit:size:24,24;" will take the "Edit" stockIcon's current src and, if that src represents a sprite-string, apply the additional size attributes and render the Edit icon at a larger size.
-
-These features are especially useful in combination with [SVG Symbols](kb_topics/svgSymbols.md#kb-topic-svg-symbols-overview) using runtime-styling, where colors can be easily modified on a per usage-basis, for example with "Edit:color:red;". **the application image directory**
-
-When specifying URLs to image files via SmartClient component properties such as [StretchImg.src](classes/StretchImg.md#attr-stretchimgsrc), any relative path is assumed to be relative to the "application image directory" (`appImgDir`). The application image directory can be set via [Page.setAppImgDir](classes/Page.md#classmethod-pagesetappimgdir), and defaults to "images/", representing the typical practice of placing images in a subdirectory relative to the URL at which the application is accessed.
-
-For applications that may be launched from multiple URLs, the `appImgDir` can be set to the correct relative path to the image directory by calling [Page.setAppImgDir](classes/Page.md#classmethod-pagesetappimgdir) before any SmartClient components are created. This enables applications or components of an application to be launched from multiple locations, or to be relocated, without changing any image URLs supplied to SmartClient components.
-
-**the "\[SKIN\]" URL prefix**
-
-The special prefix "\[SKIN\]" can be used to refer to images within the skin folder whenever image URLs are supplied to SmartClient components.
-
-The value of "\[SKIN\]" is the combination of:
-
-*   the "skin directory", established in `load_skin.js` via [Page.setSkinDir](classes/Page.md#classmethod-pagesetskindir), plus..
-*   the setting for [skinImgDir](classes/Canvas_1.md#attr-canvasskinimgdir) on the component where you set an image URL property
-
-`skinImgDir` defaults to "images/", so creating an [Img](classes/Img.md#class-img) component with [Img.src](classes/Img.md#attr-imgsrc) set to "\[SKIN\]myButton/button.gif" will expand to `Page.getSkinDir() + "/images/myButton/button.gif"`.
-
-Some components that use a large number of images use `skinImgDir` to group them together and make it possible to relocate all the media for the component with a single setting. For example, the [TreeGrid](classes/TreeGrid.md#class-treegrid) class sets `skinImgDir` to "images/TreeGrid/". This allows [TreeGrid.folderIcon](classes/TreeGrid.md#attr-treegridfoldericon) to be set to just "\[SKIN\]folder.gif" but refer to `Page.getSkinDir() + "/images/TreeGrid/folder.gif"`.
-
-A custom subclass of TreeGrid can set `skinImgDir` to a different path, such as "/images/MyTreeGrid", to source all media from a different location.
-
-_TIPS:_
-
-*   subcomponents do not automatically share the parent component's setting for skinImgDir. For example, the [Window.minimizeButton](classes/Window.md#attr-windowminimizebutton) has the default setting for "skinImgDir" ("images/"), so the [src](classes/Img.md#attr-imgsrc) property used with this component is set to "\[SKIN\]/Window/minimize.png" (in the "SmartClient" sample skin).
-*   for a particular image, the skinImgDir setting on the component may not be convenient. The prefix "\[SKINIMG\]" can be used to refer to `Page.getSkinDir() + "/images"` regardless of the setting for `skinImgDir`
-
-**Using a css class instead of an image URL**
-
-In some cases, instead of an explicit image URL, developers may wish to apply a named css class with a background-image to an image based component. This may be achieved by specifying your image URL in the format **"style:_`<styleName>`_"**.
-
-For example if your application loads the following css class:
-
-```
- .starImg {
-    width: 48px; height: 48px;
-    background: url(/images/star.gif) 0 0;    
- }
- 
-```
-It may be displayed in an Img component by setting [Img.src](classes/Img.md#attr-imgsrc) to `"style:startImg"`.
-
-**Sprited images**
-
-In addition to the `"style:..."` prefix for specifying a css class instead of a simple image URL, the prefix `"sprite:..."` may be used to specify properties required to extract an image from an image [sprite](https://www.w3schools.com/Css/css_image_sprites.asp).
-
-For details on how this format may be used, see the [SCSpriteConfig](#type-scspriteconfig) documentation.
-
-**Stateful image URLs**
-
-Many SmartClient components support changing their appearance to reflect their current "state" \[_"Focused"_, _"Disabled"_, etc\]. As such they may display different image media to reflect their current state.  
-See the [Stateful Images overview](kb_topics/statefulImages.md#kb-topic-stateful-images) for details on how image states are managed in SmartClient.
-
-**SVG Images**
-
-_For more information about using stylable SVGs for spriting in a way that doesn't involve lots of file-loads or the flickering typically associated with modifying SVGs in-browser, see the [SVG Symbols Overview](kb_topics/svgSymbols.md#kb-topic-svg-symbols-overview)._
-
-If the URL represents an SVG image, you may specify `tag` as a query param to control whether it's rendered in an object or image tag, provided [Canvas.useImageForSVG](classes/Canvas_1.md#attr-canvasuseimageforsvg) isn't set. If that query param is present and has any value other than `object`, then the SVG image will be rendered in an image tag. Otherwise, it will be rendered in an object tag. For example, an `SCImgURL` of "circle.svg?tag=image" will render in an image tag.
-
-**the special "blank" constant**
-
-If you don't have to show any image for any reason or you need to reset the area where an image is, you can call _myImage.setSrc('blank')_ or set:
-
-```
- isc.Img.create({
-    ID: "myImage",
-    width:48, height:48,
-    src: "blank"
- })
- 
-```
-This will render an empty space, where the blank.gif image, that each skin has, will be used for this purpose.
-
----
 ## Type: SCSpriteConfig
 
 ### Description
@@ -7319,14 +7223,14 @@ See also the "spriting" discussion in the [skinning overview](kb_topics/skinning
 
 The SmartClient framework supports the `SCSpriteConfig` format for sprited images.
 
-Note that _SCSpriteConfig_ is just a special class of [image URL](#type-scimgurl), and as such any component attribute of type SCImgURL may be set to a sprite configuration.
+Note that _SCSpriteConfig_ is just a special class of [image URL](reference_2.md#type-scimgurl), and as such any component attribute of type SCImgURL may be set to a sprite configuration.
 
 SCSpriteConfigs have the following format:  
 `"sprite:_`<image URL>`_;offset:_`<Left>`,`<Top>`_;size:_`<Width>`,`<Height>`_;cssClass:_`<className>`_"`
 
 This format allows developers to specify the image source and the native size and offset of the sprite within the image.
 
-The media to load will be retrieved from the specified image URL. Standard [SCImgURL](#type-scimgurl) directory prefixes such as "\[SKIN\]" can be included in this URL.
+The media to load will be retrieved from the specified image URL. Standard [SCImgURL](reference_2.md#type-scimgurl) directory prefixes such as "\[SKIN\]" can be included in this URL.
 
 Developers may also specify [an image data URL](https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/Data_URLs) - for example `"sprite:data:image/jpeg;base64,_`<data>`_;offset:-120,0;size:20,20;"`.
 
@@ -8271,16 +8175,6 @@ Parameters to an asynchronous data-bound operation.
 - [AsyncDataBoundOperationContext](reference_2.md#object-asyncdataboundoperationcontext)
 
 ---
-## Object: AsyncMultipleValuesGenerationResult
-
-### Description
-The result of an asynchronous operation to generate multiple values.
-
-### Groups
-
-- fieldGeneration
-
----
 ## Object: AsyncOperationParams
 
 ### Description
@@ -8566,7 +8460,7 @@ The [History.registerCallback](classes/History.md#staticmethod-historyregisterca
 ## Object: IconSet
 
 ### Description
-An object with a unique name that groups together [known images](classes/IconSet.md#attr-iconsetstockicons) as an array of [stockIcons](reference_2.md#object-stockicon) and/or [mappings](classes/IconSet.md#attr-iconsetmappings) from existing [stockIcon-names](classes/StockIcon.md#attr-stockiconname) to new [src-strings of any type](#type-scimgurl). Provides a means of applying an overlay that will replace many or all registered stockIcons, and/or install a set of custom stockIcons, in a single call.
+An object with a unique name that groups together [known images](classes/IconSet.md#attr-iconsetstockicons) as an array of [stockIcons](reference_2.md#object-stockicon) and/or [mappings](classes/IconSet.md#attr-iconsetmappings) from existing [stockIcon-names](classes/StockIcon.md#attr-stockiconname) to new [src-strings of any type](reference_2.md#type-scimgurl). Provides a means of applying an overlay that will replace many or all registered stockIcons, and/or install a set of custom stockIcons, in a single call.
 
 The framework ships with many builtin [StockIcons](classes/Media.md#classmethod-mediagetstockiconnames) and has two builtin IconSets that use them:
 
@@ -8729,6 +8623,46 @@ Allows specifying settings to apply to the [MultiWindow](classes/MultiWindow.md#
 
 ### Description
 Properties for a navigation item in a [NavPanel](classes/NavPanel.md#class-navpanel).
+
+---
+## Object: NodeGraphBackReference
+
+### Description
+An edge closing a loop in a [NodeGraphTraversal](reference_2.md#object-nodegraphtraversal) (see [NodeGraphTraversal.backReferences](classes/NodeGraphTraversal.md#attr-nodegraphtraversalbackreferences)).
+
+### Groups
+
+- nodeGraph
+
+---
+## Object: NodeGraphNodeRoles
+
+### Description
+Structural roles of a graph's nodes (see [NodeGraph.classifyNodes](classes/NodeGraph.md#method-nodegraphclassifynodes)).
+
+### Groups
+
+- nodeGraph
+
+---
+## Object: NodeGraphPath
+
+### Description
+A path through a [NodeGraph](classes/NodeGraph.md#class-nodegraph) (see [NodeGraph.findPath](classes/NodeGraph.md#method-nodegraphfindpath)).
+
+### Groups
+
+- nodeGraph
+
+---
+## Object: NodeGraphReachStep
+
+### Description
+How a search first reached a node (see [NodeGraphReach.prev](#attr-nodegraphreachprev)).
+
+### Groups
+
+- nodeGraph
 
 ---
 ## Object: NotifyAction
@@ -8898,7 +8832,7 @@ A configuration object containing image URLs for a set of possible images to dis
 Each attribute in this configuration object maps a state to a target URL.  
 Each URL may be specified in one of three ways
 
-*   a standard [SCImgURL](#type-scimgurl) may be used to refer directly to an image file.
+*   a standard [SCImgURL](reference_2.md#type-scimgurl) may be used to refer directly to an image file.
 *   the `"#state:"` prefix may be used to display media from another specified state.
 *   the `"#modifier:"` prefix may be used to specify a modifier string to apply to the [base image](classes/SCStatefulImgConfig.md#attr-scstatefulimgconfig_base).  
     The modifier will be applied to the base file name before the file type suffix.
@@ -8916,7 +8850,7 @@ For example, consider a stateful image config with the following properties:
 ```
 In this case
 
-*   the base image URL and the the "Over" state image URL would be determined using the standard [SCImgURL](#type-scimgurl) rules
+*   the base image URL and the the "Over" state image URL would be determined using the standard [SCImgURL](reference_2.md#type-scimgurl) rules
 *   the "Focused" and "Selected" state images would re-use the "Over" state image (`"bright_button.png"`)
 *   the "Disabled" state image would be the base state image with a `"_Disabled"` suffix applied to the file name (`"button_Disabled.png"`)
 *   the `"SelectedDisabled"` entry would be used for the combined `"Selected"` and `"Disabled"` states, and would re-use the "Selected" state image (which in turn maps back to the "Over" state, resolving to `"bright_button.png"`)
@@ -9123,12 +9057,6 @@ For keys ending in `"Properties"` or `"Defaults"`, values are merged via [Class.
 
 ### Description
 One entry of [addedSteps](classes/WorkflowBuilderCoTResult.md#attr-workflowbuildercotresultaddedsteps) - a single Workflow step added by a [WorkflowBuilderProcess](#class-workflowbuilderprocess) run.
-
----
-## Object: WorkflowBuilderCoTParams
-
-### Description
-The shape of `process.state` to populate before starting a [WorkflowBuilderProcess](#class-workflowbuilderprocess) directly (its own class documentation covers the three ways this process may be invoked - as a sub-process of [AI.buildUI](#classmethod-aibuildui), standalone, or via the EventStream/UISession convergence).
 
 ---
 ## Object: WorkflowBuilderCoTResult

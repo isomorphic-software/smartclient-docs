@@ -891,7 +891,7 @@ Fallback password for the sign-in accounts of a published report when publishing
 ### Description
 Illustration shown below [ReportBuilder.emptyMessage](#attr-reportbuilderemptymessage) in an empty report. Scaled to fit the available space, preserving the aspect ratio implied by [ReportBuilder.emptyMessageImageSize](#attr-reportbuilderemptymessageimagesize). Set to `null` for no image.
 
-Defaults to the `DropComponentHere` [StockIcon](../reference_2.md#object-stockicon), the same illustration the visual builder shows on a new project, so the two tools present an empty document identically. It is line art drawn in the current text colour, and as framework media it resolves on any page with no image directory to configure. Any other [SCImgURL](../reference.md#type-scimgurl) may be used instead; set [ReportBuilder.emptyMessageImageSize](#attr-reportbuilderemptymessageimagesize) to its natural size.
+Defaults to the `DropComponentHere` [StockIcon](../reference_2.md#object-stockicon), the same illustration the visual builder shows on a new project, so the two tools present an empty document identically. It is line art drawn in the current text colour, and as framework media it resolves on any page with no image directory to configure. Any other [SCImgURL](../reference_2.md#type-scimgurl) may be used instead; set [ReportBuilder.emptyMessageImageSize](#attr-reportbuilderemptymessageimagesize) to its natural size.
 
 **Flags**: IRW
 

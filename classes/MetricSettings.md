@@ -291,7 +291,9 @@ Unless this block sets a `fontFamily`, these labels are drawn in ${isc.DocUtils.
 ## Attr: MetricSettings.showValueAxisLabel
 
 ### Description
-Whether to show the [valueTitle](#attr-metricsettingsvaluetitle) (or, in the case of [proportional rendering mode](#attr-metricsettingsproportional), [MetricSettings.proportionalAxisLabel](#attr-metricsettingsproportionalaxislabel)) as a label on this extra value axis.
+Whether to allow the [valueTitle](#attr-metricsettingsvaluetitle) (or, in the case of [proportional rendering mode](#attr-metricsettingsproportional), [MetricSettings.proportionalAxisLabel](#attr-metricsettingsproportionalaxislabel)) as a label on this extra value axis.
+
+Setting this property to false suppresses the label. A value of true or null allows the label to be shown, subject to the conditions described for [FacetChart.showValueAxisLabel](FacetChart.md#attr-facetchartshowvalueaxislabel). The label is also suppressed when [showAxis](#attr-metricsettingsshowaxis) is false.
 
 **Flags**: IR
 

@@ -3436,6 +3436,23 @@ Padding between each swatch and label pair.
 **Flags**: IR
 
 ---
+## Attr: FacetChart.showDataLabelStates
+
+### Description
+When value selection is enabled, should the labels along the data axis show rollover and selected states, as the plotted values do? Both the inner and the outer labels take them.
+
+The states are the [FacetChart.dataLabelStyle](#attr-facetchartdatalabelstyle) class with "Over" and "Selected" appended - so a skin styles them as it styles anything else, and an application can restyle them without touching the chart. The shipped classes change color only: the axis measures its labels to decide wrapping, rotation and how many it can show, so a state that changed the font would move the layout under the pointer.
+
+The rollover state appears only where a label click actually selects - see [FacetChart.selectOnDataLabelClick](#attr-facetchartselectondatalabelclick) - because a label that lights up under the pointer but does nothing when clicked promises something it cannot do. The selected state follows the selection itself, so a selection made from code shows on the labels whether or not the user could have made it.
+
+### See Also
+
+- [FacetChart.dataLabelStyle](#attr-facetchartdatalabelstyle)
+- [FacetChart.canSelectFacetValues](#attr-facetchartcanselectfacetvalues)
+
+**Flags**: IRW
+
+---
 ## Attr: FacetChart.pointSizeLogBase
 
 ### Description

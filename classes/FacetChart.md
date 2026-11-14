@@ -2144,9 +2144,9 @@ Note that zIndex values should be integers between 0 and [FacetChart.maxDataZInd
 ## Attr: FacetChart.showValueAxisLabel
 
 ### Description
-Whether to show the [FacetChart.valueTitle](#attr-facetchartvaluetitle) (or, in the case of [proportional rendering mode](#attr-facetchartproportional), the [FacetChart.proportionalAxisLabel](#attr-facetchartproportionalaxislabel)) as a label on the value axis.
+Whether to allow the [FacetChart.valueTitle](#attr-facetchartvaluetitle) (or, in the case of [proportional rendering mode](#attr-facetchartproportional), the [FacetChart.proportionalAxisLabel](#attr-facetchartproportionalaxislabel)) as a label on the value axis.
 
-Automatically disabled for non-rectangular charts (eg Pie, Radar).
+Setting this property to false suppresses the label. A value of true or null allows the label to be shown, but does not force it to appear: a value title (or [FacetChart.proportionalAxisLabel](#attr-facetchartproportionalaxislabel) in proportional rendering mode) must be available. Vertical value axis labels require the chart's Y-axis gradations to be shown. Labels are not shown for non-rectangular charts (for example, Pie and Radar).
 
 ### Groups
 
@@ -3010,6 +3010,8 @@ When [FacetChart.logScalePointSize](#attr-facetchartlogscalepointsize) is true, 
 
 ### Description
 A label for the data values, such as "Sales in Thousands", typically used as the label for the value axis.
+
+In [proportional rendering mode](#attr-facetchartproportional), the value axis label is determined by [FacetChart.proportionalAxisLabel](#attr-facetchartproportionalaxislabel) instead of this property.
 
 ### Groups
 

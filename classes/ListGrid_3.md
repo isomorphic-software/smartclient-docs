@@ -4,6 +4,28 @@
 
 ---
 
+## Method: ListGrid.rowEditorEnter
+
+### Description
+Callback fired when the user starts editing a new row.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| record | [ListGridField](#type-listgridfield) | false | — | record for the cell being edited |
+| editValues | [Object](../reference_2.md#type-object) | false | — | edit values for the current row |
+| rowNum | [number](#type-number) | false | — | row number for the cell |
+
+### Groups
+
+- editing
+
+### See Also
+
+- [ListGrid.editorEnter](#method-listgrideditorenter)
+
+---
 ## Method: ListGrid.markRecordRemoved
 
 ### Description

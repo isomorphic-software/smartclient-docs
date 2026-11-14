@@ -378,7 +378,7 @@ If exporting in [JPEG format](../reference_2.md#type-exportimageformat), the out
 ## Attr: DSRequest.exportRawValues
 
 ### Description
-Whether formatting settings should be applied to data being exported. Default behavior and the effect of setting of `exportRawValues` is described in the [Export Formatting overview](../kb_topics/exportFormatting.md#kb-topic-exports--formatting).
+Whether formatting settings should be applied to data being exported. Default behavior and the effect of setting of `exportRawValues` is described in the [Export Formatting overview](../kb_topics/exportFormatting.md#kb-topic-export-value-formatting).
 
 ### Groups
 
@@ -821,7 +821,7 @@ Note that this setting overrides the equivalent [operationBinding setting](Opera
 ### Description
 When set, causes the results of the DSRequest to be exported to a file, whose name and format are indicated by [DSRequest.exportFilename](#attr-dsrequestexportfilename) and [DSRequest.exportAs](#attr-dsrequestexportas) respectively. When no exportFilename is provided, the default is _Results.csv_ and the default value of exportAs is _csv_.
 
-The export field-list can also be configured, see [DSRequest.exportFields](#attr-dsrequestexportfields). Formats for exported date and numeric are controlled by several settings - see [exportFormatting](../kb_topics/exportFormatting.md#kb-topic-exports--formatting) for an overview.
+The export field-list can also be configured, see [DSRequest.exportFields](#attr-dsrequestexportfields). Formats for exported date and numeric are controlled by several settings - see [exportFormatting](../kb_topics/exportFormatting.md#kb-topic-export-value-formatting) for an overview.
 
 Once the operation completes, [DSRequest.exportDisplay](#attr-dsrequestexportdisplay) specifies whether the exported data should be downloaded to the file-system or displayed in a new window. The default value of exportDisplay is "download" which displays the Save As dialog. See [ExportDisplay](../reference_2.md#type-exportdisplay) for more information.
 

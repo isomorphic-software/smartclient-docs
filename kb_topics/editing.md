@@ -152,7 +152,7 @@ However you _can_ create an editor with a [FormItem icon](../classes/FormItem.md
 - [ListGrid.editComplete](../classes/ListGrid_2.md#method-listgrideditcomplete)
 - [ListGrid.editFailed](../classes/ListGrid_2.md#method-listgrideditfailed)
 - [ListGrid.editorEnter](../classes/ListGrid_3.md#method-listgrideditorenter)
-- [ListGrid.rowEditorEnter](../classes/ListGrid_2.md#method-listgridroweditorenter)
+- [ListGrid.rowEditorEnter](../classes/ListGrid_3.md#method-listgridroweditorenter)
 - [ListGrid.editorExit](../classes/ListGrid_2.md#method-listgrideditorexit)
 - [ListGrid.rowEditorExit](../classes/ListGrid_2.md#method-listgridroweditorexit)
 - [ListGrid.formatEditorValue](../classes/ListGrid_2.md#method-listgridformateditorvalue)

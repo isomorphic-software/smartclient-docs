@@ -554,6 +554,18 @@ Properties to combine with the [FieldPicker](FieldPicker.md#class-fieldpicker) a
 **Flags**: IR
 
 ---
+## Attr: FilterBuilder.inlineNotTitle
+
+### Description
+Title for the "Not" operator, as used when criteria are rendered as a sentence - see [DataSource.getAdvancedCriteriaDescription](DataSource.md#classmethod-datasourcegetadvancedcriteriadescription), where a "not" group reads as this title prefixed to its bracketed clauses.
+
+### Groups
+
+- i18nMessages
+
+**Flags**: IR
+
+---
 ## Attr: FilterBuilder.radioOperatorLayout
 
 ### Description

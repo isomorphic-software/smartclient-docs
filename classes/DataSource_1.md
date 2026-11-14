@@ -4525,9 +4525,9 @@ Returns true if a given AdvancedCriteria is "flat." That is, the criteria consis
 ## ClassMethod: DataSource.exportMultiSheetData
 
 ### Description
-Export several datasets to a single multi-sheet spreadsheet (native `.xlsx`), one worksheet per dataset, streamed back to the browser as a file download.
+Export several sheets of data to a single multi-sheet spreadsheet (native `.xlsx`), one worksheet per entry, streamed back to the browser as a file download.
 
-Where [DataSource.exportClientData](DataSource_1.md#method-datasourceexportclientdata) exports one client-supplied record list to a single sheet, this method assembles a workbook that can span **multiple DataSources**. Each dataset is either a **server fetch** -- a fetch spec (`dataSource` plus `criteria`, `sortBy`, `groupBy`/`summaryFunctions`) which the server runs itself, so a paged component exports its FULL filtered result rather than just the rows currently loaded on the client -- or a block of pre-supplied **client rows** (for [clientOnly](DataSource_1.md#attr-datasourceclientonly) DataSources or an already-computed client-side table).
+Where [DataSource.exportClientData](DataSource_1.md#method-datasourceexportclientdata) exports one client-supplied record list to a single sheet, this method assembles a workbook that can span **multiple DataSources**. Each sheet's data is either a **server fetch** -- a fetch spec (`dataSource` plus `criteria`, `sortBy`, `groupBy`/`summaryFunctions`) which the server runs itself, so a paged component exports its FULL filtered result rather than just the rows currently loaded on the client -- or a block of pre-supplied **client rows** (for [clientOnly](DataSource_1.md#attr-datasourceclientonly) DataSources or an already-computed client-side table): data by reference, or by value.
 
 The transport is the framework's DataSource-free RPC download path: a [DMI](DMI.md#class-dmi) call to the built-in server method `downloadMultiSheetExport`, which runs the framework `MultiSheetDataExport` engine and streams the workbook via `RPCManager.doCustomResponse()`. No server DataSource is required.
 
@@ -5514,7 +5514,9 @@ Perform a "fetch" DataSource operation against this DataSource, sending search c
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | criteria | [Criteria](../reference_2.md#type-criteria) | true | — | search criteria |
-| requestProperties | [DSRequest Properties](#type-dsrequest-properties) | true | — | additional properties to set on the DSRequest that will be issued |
+| requestProperties | [DSRequest Properties](#type-dsrequest-properties) | true | — | additional properties to set on the DSRequest that will be issued
+
+See [Exporting](../kb_topics/exporting.md#kb-topic-exporting) for an overview of all data and visual export approaches. |
 | callback | [DSCallback](../reference_2.md#type-dscallback) | true | — | callback to invoke on completion. Note that this parameter only applies where [DSRequest.exportToClient](DSRequest.md#attr-dsrequestexporttoclient) is explicitly set to false, because file downloads do not provide ordinary SmartClient callbacks |
 
 ### Groups

@@ -51,5 +51,11 @@ _Note that this is not intended to be an exhaustive list_:
 *   `sql_comment_mdc_key` if specified is used as a logging MDC key to get the configurable "log\_correlation\_id" third party tools, like Dynatrace, Graylog etc., use for the context. Smartclient picks that from the logging MDC and adds as a comment to the end of generated SQL queries, so those can be connected to the context.
 *   This file can contain [Full Text Search provider configuration](fullTextSearch.md#kb-topic-full-text-search) for searching document/binary fields via external providers like OpenSearch or Oracle Text.
 *   `export.columnWidthPadding` (integer) adds extra character-widths to every column in Excel/OOXML exports, compensating for sub-pixel rounding between Excel's column auto-fit and its text rendering engine that can cause text to wrap and expand row heights unexpectedly. One unit equals one character width. A value of 1 is generally sufficient. Unset means no padding. Can be overridden per-export via [ListGrid.exportColumnWidthPadding](../classes/ListGrid_1.md#attr-listgridexportcolumnwidthpadding). See also the [Apache POI auto-fit guide](https://poi.apache.org/components/spreadsheet/quick-guide.html#Autofit) (if that link breaks, search for _"apache poi autoSizeColumn extra width"_).
+*   `map.obfuscateKeys.`<keyName>`` specifies replacement text for String or numeric values associated with the matching map key in JSTranslater output, including output produced by `DataTools.prettyPrint()`. For example:
+    ```
+     map.obfuscateKeys.password: <obfuscated>
+         
+    ```
+    This replaces the value in the formatted output without changing the original map. Framework code can disable this substitution when serializing client responses. See [DataTools](server/javadoc/com/isomorphic/util/DataTools.html) `prettyPrint(Object)` for supported value types and handling of criterion maps.
 
 ---

@@ -1471,7 +1471,7 @@ See the [AutoChild usage overview](../kb_topics/autoChildren.md#kb-topic-autochi
 4.  sets this._autoChildName_ to the created component
 5.  adds the component either to this component, or to some other parent, specified by the "autoParent" property in the autoChild's defaults. The "autoParent" property may be "none" indicating the autoChild should not be automatically added.
 
-When adding an autoChild to a [Layout](Layout.md#class-layout) subclass, [addMember()](Layout.md#method-layoutaddmember) will be called instead of the normal [addChild()](Canvas_1.md#method-canvasaddchild). To prevent this behavior, `addAsChild:true` can be set in the autoChild defaults. Similarly, `addAsPeer:true` may be set to add an autoChild as a peer.
+When adding an autoChild to a [Layout](Layout.md#class-layout) subclass, [addMember()](Layout.md#method-layoutaddmember) will be called instead of the normal [addChild()](Canvas_2.md#method-canvasaddchild). To prevent this behavior, `addAsChild:true` can be set in the autoChild defaults. Similarly, `addAsPeer:true` may be set to add an autoChild as a peer.
 
 **Tip:** because `addAutoChild()` checks specifically for show_AutoChildName_:false, you do not have to add show_AutoChildName_:true in order for an autoChild to be shown by default; leaving the property undefined is sufficient.
 
@@ -1570,7 +1570,7 @@ In addition to applying defaults and properties as described under the [AutoChil
 *   is automatically `autoDraw:false`
 *   has a `creator` property that points to this component, for easy authoring of event handlers (eg click:"this.creator.doSomething()")
 
-Unlike [Class.addAutoChild](#method-classaddautochild), `createAutoChild()` does not create a this._autoChildName_ reference to the component, check a show_AutoChildName_ flag, or automatically add the autoChild via [Canvas.addChild](Canvas_1.md#method-canvasaddchild).
+Unlike [Class.addAutoChild](#method-classaddautochild), `createAutoChild()` does not create a this._autoChildName_ reference to the component, check a show_AutoChildName_ flag, or automatically add the autoChild via [Canvas.addChild](Canvas_2.md#method-canvasaddchild).
 
 General you use `createAutoChild` rather than addAutoChild when:
 

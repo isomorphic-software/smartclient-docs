@@ -963,6 +963,8 @@ Note that the server cannot reliably determine whether an HTTP URL points to a r
 
 In ContainerIO mode (WAR deployment where the framework loads resources from the classpath rather than the filesystem), filesystem access from user-provided HTML is always denied regardless of this setting. Internal skin resources (fonts, CSS, images) are loaded from known skin directories and are not affected by this setting in any deployment mode.
 
+See [Exporting](../kb_topics/exporting.md#kb-topic-exporting) for an overview of all data and visual export approaches.
+
 ### Parameters
 
 | Name | Type | Optional | Default | Description |

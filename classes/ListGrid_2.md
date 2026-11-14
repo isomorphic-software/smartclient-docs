@@ -1136,6 +1136,8 @@ Ordinarily, calls to this method go through the static classMethod [DataSource.e
 
 To export data from this component's dataSource, see [exportData](DataBoundComponent.md#method-databoundcomponentexportdata), which does not include client-side formatters, but **does** include formatters declared in the `.ds.xml` file. `exportData()` relies on both the SmartClient server and server-side DataSources.
 
+See [Exporting](../kb_topics/exporting.md#kb-topic-exporting) for an overview of all data and visual export approaches.
+
 ### Parameters
 
 | Name | Type | Optional | Default | Description |
@@ -1146,7 +1148,7 @@ To export data from this component's dataSource, see [exportData](DataBoundCompo
 ### See Also
 
 - [DataSource.exportClientData](DataSource_1.md#method-datasourceexportclientdata)
-- [exportFormatting](../kb_topics/exportFormatting.md#kb-topic-exports--formatting)
+- [exportFormatting](../kb_topics/exportFormatting.md#kb-topic-export-value-formatting)
 
 ---
 ## Method: ListGrid.setBodyStyleName
@@ -3604,6 +3606,8 @@ Note that data exported via this method skips client-side fields defined only in
 
 For more information on exporting data, see [DataSource.exportData](DataSource_1.md#method-datasourceexportdata).
 
+See [Exporting](../kb_topics/exporting.md#kb-topic-exporting) for an overview of all data and visual export approaches.
+
 ### Parameters
 
 | Name | Type | Optional | Default | Description |
@@ -3617,7 +3621,7 @@ For more information on exporting data, see [DataSource.exportData](DataSource_1
 
 ### See Also
 
-- [exportFormatting](../kb_topics/exportFormatting.md#kb-topic-exports--formatting)
+- [exportFormatting](../kb_topics/exportFormatting.md#kb-topic-export-value-formatting)
 
 ---
 ## Method: ListGrid.preRenderDone
@@ -9167,27 +9171,5 @@ Returns the HTML that is displayed by the default [headerHover](#method-listgrid
 - [ListGrid.clipHeaderTitles](ListGrid_1.md#attr-listgridclipheadertitles)
 
 **Flags**: A
-
----
-## Method: ListGrid.rowEditorEnter
-
-### Description
-Callback fired when the user starts editing a new row.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| record | [ListGridField](#type-listgridfield) | false | — | record for the cell being edited |
-| editValues | [Object](../reference_2.md#type-object) | false | — | edit values for the current row |
-| rowNum | [number](#type-number) | false | — | row number for the cell |
-
-### Groups
-
-- editing
-
-### See Also
-
-- [ListGrid.editorEnter](ListGrid_3.md#method-listgrideditorenter)
 
 ---

@@ -63,6 +63,7 @@ For a full list of operators, see [OperatorId](../reference.md#type-operatorid).
 - [Operator.fieldTypes](../classes/Operator.md#attr-operatorfieldtypes)
 - [Operator.requiresServer](../classes/Operator.md#attr-operatorrequiresserver)
 - [Operator.hidden](../classes/Operator.md#attr-operatorhidden)
+- [Operator.textMatch](../classes/Operator.md#attr-operatortextmatch)
 - [Operator.valueType](../classes/Operator.md#attr-operatorvaluetype)
 - [Operator.usageHint](../classes/Operator.md#attr-operatorusagehint)
 - [Operator.editorType](../classes/Operator.md#attr-operatoreditortype)

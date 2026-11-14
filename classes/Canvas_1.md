@@ -1071,6 +1071,18 @@ Number of pixels the cursor needs to move before the EventHandler starts a drag 
 **Flags**: IRWA
 
 ---
+## Attr: Canvas.allSheetsMessage
+
+### Description
+Shown in the cover-sheet filter table for a filter that narrows every data sheet.
+
+### Groups
+
+- i18nMessages
+
+**Flags**: IR
+
+---
 ## Attr: Canvas.matchElement
 
 ### Description
@@ -1244,7 +1256,7 @@ Specifies the cursor image to display when the mouse pointer is over this widget
 
 ### Description
 This Canvas's immediate parent, if any. May be specified as a Canvas instance or the String ID of a Canvas.  
-Can be initialized, but any subsequent manipulation should be via [addChild()](#method-canvasaddchild) and [removeChild()](Canvas_2.md#method-canvasremovechild) calls on the parent. The parent Canvas should be fetched using [getParentCanvas()](#method-canvasgetparentcanvas).
+Can be initialized, but any subsequent manipulation should be via [addChild()](Canvas_2.md#method-canvasaddchild) and [removeChild()](Canvas_2.md#method-canvasremovechild) calls on the parent. The parent Canvas should be fetched using [getParentCanvas()](#method-canvasgetparentcanvas).
 
 See [containment](../kb_topics/containment.md#kb-topic-component-containment-and-hierarchy) for an overview of parent/child relationships.
 
@@ -1301,6 +1313,18 @@ Default class used to construct menus created by this component, including conte
 ### See Also
 
 - [Canvas.showContextMenu](#method-canvasshowcontextmenu)
+
+**Flags**: IR
+
+---
+## Attr: Canvas.filterConditionTitle
+
+### Description
+Header of the cover-sheet filter table's condition column.
+
+### Groups
+
+- i18nMessages
 
 **Flags**: IR
 
@@ -1380,6 +1404,18 @@ The canvas's [Canvas.borderRadius](#attr-canvasborderradius) also applies to thi
 - appearance
 
 **Flags**: IRW
+
+---
+## Attr: Canvas.asDisplayedMessage
+
+### Description
+Caption annotation on a sheet exported via [DataBoundComponent.exportAsDisplayed](DataBoundComponent.md#attr-databoundcomponentexportasdisplayed), marking that its values are the component's displayed data rather than a fresh DataSource fetch.
+
+### Groups
+
+- i18nMessages
+
+**Flags**: IR
 
 ---
 ## Attr: Canvas.definingPropertyNameOptions
@@ -1688,6 +1724,18 @@ Note that this property only has an impact if [Canvas.showCustomScrollbars](#att
 ### See Also
 
 - [Canvas.showCustomScrollbars](#attr-canvasshowcustomscrollbars)
+
+**Flags**: IR
+
+---
+## Attr: Canvas.exportRowLimitMessage
+
+### Description
+Shown when a client-executed export fetch exceeds the export row cap. The export is refused rather than silently truncated.
+
+### Groups
+
+- i18nMessages
 
 **Flags**: IR
 
@@ -2048,6 +2096,18 @@ To force a fresh render after the external content has been torn down, either cl
 **Flags**: IRWA
 
 ---
+## Attr: Canvas.noFiltersAppliedMessage
+
+### Description
+Shown in the cover-sheet filter table when nothing filtered the exported data, so a blank table never reads as an omission.
+
+### Groups
+
+- i18nMessages
+
+**Flags**: IR
+
+---
 ## Attr: Canvas.showDragShadow
 
 ### Description
@@ -2075,6 +2135,18 @@ Will this Canvas fire hover events when the user hovers over it, or one of its c
 - [Canvas.hover](#method-canvashover)
 
 **Flags**: IRW
+
+---
+## Attr: Canvas.emptyExportMessage
+
+### Description
+Shown when [Canvas.exportDescendantData](#method-canvasexportdescendantdata) finds no exportable components.
+
+### Groups
+
+- i18nMessages
+
+**Flags**: IR
 
 ---
 ## Attr: Canvas.sizeMayChangeOnRedraw
@@ -2297,6 +2369,18 @@ Indicates that this object can be dropped on top of other widgets. Only valid if
 - dragdrop
 
 **Flags**: IRWA
+
+---
+## Attr: Canvas.exportDefaultTitle
+
+### Description
+Workbook title used by [Canvas.exportDescendantData](#method-canvasexportdescendantdata) when the settings supply none.
+
+### Groups
+
+- i18nMessages
+
+**Flags**: IR
 
 ---
 ## Attr: Canvas.percentBox
@@ -2655,6 +2739,18 @@ Maximum sizes do not apply in various other circumstances where sizes are being 
 **Flags**: IRWA
 
 ---
+## Attr: Canvas.filtersAppliedTitle
+
+### Description
+Header of the exported workbook's cover-sheet table stating which filters produced the exported numbers. See [Canvas.exportDescendantData](#method-canvasexportdescendantdata).
+
+### Groups
+
+- i18nMessages
+
+**Flags**: IR
+
+---
 ## Attr: Canvas.animateRectAcceleration
 
 ### Description
@@ -2712,7 +2808,7 @@ If [this.showHover](#attr-canvasshowhover) is true, this property can be used to
 ### Description
 Array of all Canvii that are immediate children of this Canvas.
 
-Use [Canvas.addChild](#method-canvasaddchild) and [Canvas.removeChild](Canvas_2.md#method-canvasremovechild) to add and remove children after a Canvas has been created/drawn.
+Use [Canvas.addChild](Canvas_2.md#method-canvasaddchild) and [Canvas.removeChild](Canvas_2.md#method-canvasremovechild) to add and remove children after a Canvas has been created/drawn.
 
 As an alternative to providing Canvas instances, the `children` array may also contain Strings. A String will be assumed to be a global ID, and a Canvas with that ID will be used as the child.
 
@@ -3371,6 +3467,30 @@ The names for segments are the same as those given for controlling resizable edg
 **Flags**: IRA
 
 ---
+## Attr: Canvas.selectedInTitle
+
+### Description
+Cover-sheet filter table title for a published selection narrowing exported components. The variable `source` is the display title of the selecting component.
+
+### Groups
+
+- i18nMessages
+
+**Flags**: IR
+
+---
+## Attr: Canvas.asDisplayedPartialMessage
+
+### Description
+Caption annotation on an [DataBoundComponent.exportAsDisplayed](DataBoundComponent.md#attr-databoundcomponentexportasdisplayed) sheet whose component holds only part of a paged dataset.
+
+### Groups
+
+- i18nMessages
+
+**Flags**: IR
+
+---
 ## Attr: Canvas.hoverAutoFitMaxWidth
 
 ### Description
@@ -3543,6 +3663,18 @@ See the [Mobile Development overview](../kb_topics/mobileDevelopment.md#kb-topic
 ### Groups
 
 - scrolling
+
+**Flags**: IR
+
+---
+## Attr: Canvas.filterAppliesToTitle
+
+### Description
+Header of the cover-sheet filter table's column naming the sheets each filter narrows.
+
+### Groups
+
+- i18nMessages
 
 **Flags**: IR
 
@@ -4227,7 +4359,7 @@ If `this.showHover` is true, this property can be used to customize the alignmen
 
 ### Description
 This Canvas's immediate parent, if any. May be specified as a Canvas instance or the String ID of a Canvas.  
-Can be initialized, but any subsequent manipulation should be via [addChild()](#method-canvasaddchild) and [removeChild()](Canvas_2.md#method-canvasremovechild) calls on the parent.
+Can be initialized, but any subsequent manipulation should be via [addChild()](Canvas_2.md#method-canvasaddchild) and [removeChild()](Canvas_2.md#method-canvasremovechild) calls on the parent.
 
 ### Groups
 
@@ -4236,6 +4368,18 @@ Can be initialized, but any subsequent manipulation should be via [addChild()](#
 **Deprecated**
 
 **Flags**: IRA
+
+---
+## Attr: Canvas.filteredByPrefix
+
+### Description
+Prefix of the line above an exported sheet's header listing the filters that narrow that sheet. The line survives a sheet being copied out of the workbook, and is the only filter statement in a single-component export (which has no cover sheet).
+
+### Groups
+
+- i18nMessages
+
+**Flags**: IR
 
 ---
 ## Attr: Canvas.hoverOpacity
@@ -4303,7 +4447,7 @@ If not specified, the framework applies these defaults:
 ### Description
 When [Canvas.childrenSnapAlign](#attr-canvaschildrensnapalign) is enabled, list of candidates to check for alignment.
 
-If a list of `snapAlignCandidates` is never provided, the default is to use all children that are not explicitly excluded via [Canvas.isSnapAlignCandidate](#attr-canvasissnapaligncandidate), including automatically adding newly added children as candidates, and ignoring children that have been removed. Use [Canvas.addSnapAlignCandidate](#method-canvasaddsnapaligncandidate) and [Canvas.removeSnapAlignCandidate](#method-canvasremovesnapaligncandidate) to add and remove special candidates while retaining all children as default candidates.
+If a list of `snapAlignCandidates` is never provided, the default is to use all children that are not explicitly excluded via [Canvas.isSnapAlignCandidate](#attr-canvasissnapaligncandidate), including automatically adding newly added children as candidates, and ignoring children that have been removed. Use [Canvas.addSnapAlignCandidate](Canvas_2.md#method-canvasaddsnapaligncandidate) and [Canvas.removeSnapAlignCandidate](#method-canvasremovesnapaligncandidate) to add and remove special candidates while retaining all children as default candidates.
 
 Possible candidates which are not drawn or are hidden are automatically ignored.
 
@@ -4695,6 +4839,18 @@ Note that if developers wish to have hovers expand horizontally to fit their tex
 - [Canvas.showHover](#attr-canvasshowhover)
 
 **Flags**: IRW
+
+---
+## Attr: Canvas.filterOnTitle
+
+### Description
+Cover-sheet filter table title for a component's own viewer-entered criteria (for example a grid's filter row). The variable `title` is the component's exported sheet title.
+
+### Groups
+
+- i18nMessages
+
+**Flags**: IR
 
 ---
 ## Attr: Canvas.dragAppearance
@@ -6512,9 +6668,9 @@ See [gettingCanvasSize](../kb_topics/gettingCanvasSize.md#kb-topic-determining-t
 ## Method: Canvas.initWidget
 
 ### Description
-Initialization method called by [Canvas.init](#method-canvasinit) when a Canvas or subclass is first initialized via [create()](Class.md#classmethod-classcreate).
+Initialization method called by [Canvas.init](Canvas_2.md#method-canvasinit) when a Canvas or subclass is first initialized via [create()](Class.md#classmethod-classcreate).
 
-The default implementation for this method varies by class, but while [Canvas.init](#method-canvasinit) performs very low-level initialization required by all canvases, this method will typically perform actions specificy to the canvas subclass, such as creating [autoChildren](../reference.md#type-autochild) for composite components.
+The default implementation for this method varies by class, but while [Canvas.init](Canvas_2.md#method-canvasinit) performs very low-level initialization required by all canvases, this method will typically perform actions specificy to the canvas subclass, such as creating [autoChildren](../reference.md#type-autochild) for composite components.
 
 This method may be overridden by subclasses of Canvas-based components to take additional standard actions on initialization. Note that if you're looking for a simple initialization notification for a specific instance of a component, you may want to use [Canvas.initComplete](#method-canvasinitcomplete) instead of overriding this method.
 
@@ -6757,6 +6913,28 @@ This method tells a component to adjust for changes in the size of its content t
 - sizing
 
 **Flags**: A
+
+---
+## Method: Canvas.exportDescendantData
+
+### Description
+Export the data of every eligible [DataBoundComponent](../reference.md#interface-databoundcomponent) beneath this canvas as one multi-sheet Excel workbook, downloaded to the user. The workbook leads with a cover sheet: the title, a "Filters applied" table stating every filter a viewer could see or choose ([Slicer](Slicer.md#class-slicer) values, cross-component selections, per-component filter criteria) and which sheets each narrows, and the sheet index. Each narrowed sheet additionally carries a "Filtered by:" line above its header.
+
+This canvas defines the export's **scope only** - which components contribute sheets. Each sheet's data comes from executing that component's own effective fetch (its criteria, any [dataContext](#attr-canvasdatacontext) criteria that apply to it, aggregation and sort) against its DataSource - server-side when the SmartClient server backs the DataSource, client-side otherwise - so the workbook reflects stored data, matching what each component shows. A component whose fetch matches no rows produces a sheet with headers and no data rows. Per-component control: [shouldExport](DataBoundComponent.md#attr-databoundcomponentshouldexport) (participation), [exportTitle](DataBoundComponent.md#attr-databoundcomponentexporttitle) (sheet naming) and [exportAsDisplayed](DataBoundComponent.md#attr-databoundcomponentexportasdisplayed) (export the displayed data instead, including client-computed values).
+
+Eligible components are visible [DataBoundComponent](../reference.md#interface-databoundcomponent)s with a DataSource, located by walking this canvas's descendants; a found component is treated as a leaf (its internal subcomponents are never exported separately).
+
+See [Exporting](../kb_topics/exporting.md#kb-topic-exporting) for an overview of all data and visual export approaches.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| settings | [MultiSheetExportSettings](#type-multisheetexportsettings) | true | — | export configuration |
+
+### Groups
+
+- descendantDataExport
 
 ---
 ## Method: Canvas.showRecursively
@@ -7353,7 +7531,7 @@ This is more expensive than hide(), because in order to become visible again, th
 
 You would only use clear() if you were managing a very large pool of components and you wanted to reclaim some of the memory used by components that had not been used in a while, while still being able to just draw() them to make them active and visible again.
 
-Note: a clear() will happen as part of moving a Canvas to a different parent. See [Canvas.addChild](#method-canvasaddchild).
+Note: a clear() will happen as part of moving a Canvas to a different parent. See [Canvas.addChild](Canvas_2.md#method-canvasaddchild).
 
 **Flags**: A
 
@@ -7844,7 +8022,7 @@ Horizontally scrolls the content of the widget to 0
 Returns the outer DOM element of this Canvas. This method is provided for the very rare cases where a programmer needs to examine the DOM hierarchy created by a drawn SmartClient component.
 
 Direct manipulation of the DOM elements created by SmartClient components is not supported. SmartClient components should be rendered or cleared using standard methods such as [Canvas.draw](#method-canvasdraw), [Canvas.clear](#method-canvasclear). If direct integration with existing DOM structures is required, this should be achieved via the [Canvas.htmlElement](#attr-canvashtmlelement) attribute, rather than by attempting to move the component's outer element via native browser APIs.  
-The content of SmartClient components' DOM elements should also not be directly manipulated using native browser APIs - standard methods such as [Canvas.setContents](#method-canvassetcontents), [Canvas.addChild](#method-canvasaddchild), [Canvas.removeChild](Canvas_2.md#method-canvasremovechild), [Canvas.markForRedraw](#method-canvasmarkforredraw) and [Canvas.redraw](#method-canvasredraw) should be used instead.
+The content of SmartClient components' DOM elements should also not be directly manipulated using native browser APIs - standard methods such as [Canvas.setContents](#method-canvassetcontents), [Canvas.addChild](Canvas_2.md#method-canvasaddchild), [Canvas.removeChild](Canvas_2.md#method-canvasremovechild), [Canvas.markForRedraw](#method-canvasmarkforredraw) and [Canvas.redraw](#method-canvasredraw) should be used instead.
 
 In some cases, the element returned may match the element returned by [Canvas.getContentElement](#method-canvasgetcontentelement), but this will not always be the case.
 
@@ -7872,7 +8050,7 @@ Notification method fired when an ancestor of this component's position changes.
 
 ### See Also
 
-- [Canvas.moved](#method-canvasmoved)
+- [Canvas.moved](Canvas_2.md#method-canvasmoved)
 
 ---
 ## Method: Canvas.getTop
@@ -8034,7 +8212,7 @@ Whether a resizeBar is actually shown also depends on the [defaultResizeBars](La
 ## Method: Canvas.resized
 
 ### Description
-Observable method called whenever a Canvas changes size. Note that if this canvas is [overflow:"visible"](#attr-canvasoverflow), and is waiting for a queued redraw (see [Canvas.isDirty](#method-canvasisdirty)), the value for [Canvas.getVisibleWidth](#method-canvasgetvisiblewidth) and [Canvas.getVisibleHeight](Canvas_2.md#method-canvasgetvisibleheight) will be unreliable until `redraw()` fires.  
+Observable method called whenever a Canvas changes size. Note that if this canvas is [overflow:"visible"](#attr-canvasoverflow), and is waiting for a queued redraw (see [Canvas.isDirty](Canvas_2.md#method-canvasisdirty)), the value for [Canvas.getVisibleWidth](#method-canvasgetvisiblewidth) and [Canvas.getVisibleHeight](Canvas_2.md#method-canvasgetvisibleheight) will be unreliable until `redraw()` fires.  
 In this case, if the delayed redraw does change the drawn size of the component, this notification will be fired a second time when it completes.
 
 ---
@@ -8231,7 +8409,7 @@ Return the right coordinate of this object as rendered, relative to its enclosin
 Returns the DOM element for this Canvas which contains the [Canvas.contents](#attr-canvascontents), or for [parent components](#method-canvasgetparentcanvas), the DOM elements for any drawn children. This method is provided for the very rare cases where a programmer needs to examine the DOM hierarchy created by a drawn SmartClient component.
 
 Direct manipulation of the DOM elements created by SmartClient components is not supported. SmartClient components should be rendered or cleared using standard methods such as [Canvas.draw](#method-canvasdraw), [Canvas.clear](#method-canvasclear). If direct integration with existing DOM structures is required, this should be achieved via the [Canvas.htmlElement](#attr-canvashtmlelement) attribute, rather than by attempting to move the component's outer element via native browser APIs.  
-The content of SmartClient components' DOM elements should also not be directly manipulated using native browser APIs - standard methods such as [Canvas.setContents](#method-canvassetcontents), [Canvas.addChild](#method-canvasaddchild), [Canvas.removeChild](Canvas_2.md#method-canvasremovechild), [Canvas.markForRedraw](#method-canvasmarkforredraw) and [Canvas.redraw](#method-canvasredraw) should be used instead.
+The content of SmartClient components' DOM elements should also not be directly manipulated using native browser APIs - standard methods such as [Canvas.setContents](#method-canvassetcontents), [Canvas.addChild](Canvas_2.md#method-canvasaddchild), [Canvas.removeChild](Canvas_2.md#method-canvasremovechild), [Canvas.markForRedraw](#method-canvasmarkforredraw) and [Canvas.redraw](#method-canvasredraw) should be used instead.
 
 In some cases, the element returned may match the element returned by [Canvas.getOuterElement](#method-canvasgetouterelement), but this will not always be the case.
 
@@ -9891,156 +10069,5 @@ Remove a peer from this Canvas
 ### Groups
 
 - containment
-
----
-## Method: Canvas.moved
-
-### Description
-Notification method fired when this component is explicitly moved. Note that a component's position on the screen may also changed due to an ancestor being moved. The [Canvas.parentMoved](#method-canvasparentmoved) method provides a notification entry point to catch that case as well.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| deltaX | [int](../reference.md#type-int) | false | — | horizontal difference between current and previous position |
-| deltaY | [int](../reference.md#type-int) | false | — | vertical difference between current and previous position |
-
----
-## Method: Canvas.addChild
-
-### Description
-Adds newChild as a child of this widget, set up a named object reference (i.e., this\[name\]) to the new widget if name argument is provided, and draw the child if this widget has been drawn already.
-
-If newChild has a parent it will be removed from it. If it has a master, it will be detached from it if the master is a child of a different parent. If newChild has peers, they'll be added to this widget as children as well.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| newChild | [Canvas](#type-canvas) | false | — | new child canvas to add |
-| name | [String](#type-string) | true | — | name to assign to child (eg: this\[name\] == child) |
-| autoDraw | [Boolean](#type-boolean) | true | — | if false, child will not automatically be drawn (only for advanced use) |
-
-### Returns
-
-`[Canvas](#type-canvas)` — the new child, or null if it couldn't be added
-
-### Groups
-
-- containment
-
----
-## Method: Canvas.mouseUp
-
-### Description
-Executed when the left mouse is released on this widget. No default implementation.
-
-### Returns
-
-`[Boolean](#type-boolean)` — false to prevent this event from bubbling to this widget's parent, true or undefined to bubble.
-
-### Groups
-
-- widgetEvents
-
-### See Also
-
-- [Canvas.getOffsetX](#method-canvasgetoffsetx)
-- [Canvas.getOffsetY](#method-canvasgetoffsety)
-
-**Flags**: A
-
----
-## Method: Canvas.setPageLeft
-
-### Description
-Set the page-relative left coordinate of this widget.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| left | [number](#type-number) | false | — | new left coordinate in pixels |
-
-### Groups
-
-- positioning
-
----
-## Method: Canvas.addSnapAlignCandidate
-
-### Description
-Add a candidate to [Canvas.snapAlignCandidates](#attr-canvassnapaligncandidates). Duplicates are automatically avoided.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| newCandidate | [Canvas](#type-canvas) | false | — | — |
-
----
-## Method: Canvas.isDirty
-
-### Description
-Returns whether a canvas is waiting to be redrawn. Will return true if [Canvas.markForRedraw](#method-canvasmarkforredraw) has been called, but this canvas has not yet been redrawn.
-
-### Returns
-
-`[Boolean](#type-boolean)` — true is this canvas needs to be redrawn; false otherwise
-
-### Groups
-
-- drawing
-
-**Flags**: A
-
----
-## Method: Canvas.mouseOver
-
-### Description
-Executed when mouse enters this widget. No default implementation.
-
-### Returns
-
-`[Boolean](#type-boolean)` — false to prevent this event from bubbling to this widget's parent, true or undefined to bubble.
-
-### Groups
-
-- widgetEvents
-
-### See Also
-
-- [Canvas.getOffsetX](#method-canvasgetoffsetx)
-- [Canvas.getOffsetY](#method-canvasgetoffsety)
-
-**Flags**: A
-
----
-## Method: Canvas.init
-
-### Description
-This method performs some basic initialization common to all UI components. To do custom UI component initialization, you should generally override [Canvas.initComplete](#method-canvasinitcomplete) or [Canvas.initWidget](#method-canvasinitwidget). This method does the following, in order:
-
-*   Sets up a global reference to this instance as described in [Canvas.ID](#attr-canvasid).
-*   Ensures certain numeric properties have numeric values (e.g. width, height, padding, margin)
-*   Ensures [Canvas.children](#attr-canvaschildren) and [Canvas.peers](#attr-canvaspeers) are Arrays.
-*   Calls [Canvas.initWidget](#method-canvasinitwidget) - typically implemented at the class level to perform standard initialization for Canvas subclasses.
-*   Calls [Canvas.initComplete](#method-canvasinitcomplete) - typically implemented to perform custom initialization at the instance level.
-*   Creates [edges](#attr-canvasshowedges) and [shadow](#attr-canvasshowshadow), if so configured.
-*   Calls [Canvas.draw](#method-canvasdraw) if [Canvas.autoDraw](#attr-canvasautodraw) is set on instance or globally.
-
-Unless you're in an advanced scenario where you need to inject code before the above logic executes, place your initialization logic in intComplete or initWidget() rather than init(). If you do decided to override this method, you must call the superclass implementation like so:
-```
-    this.Super("init", arguments);
- 
-```
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| arguments 0-N | [Any](#type-any) | true | — | All arguments initially passed to [Class.create](Class.md#classmethod-classcreate) |
-
-**Flags**: A
 
 ---

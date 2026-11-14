@@ -494,9 +494,9 @@ This is the central API reference for the SmartClient framework.
   - [NumberUtil](classes/NumberUtil.md)
   - [GroupingMessages](classes/GroupingMessages.md)
   - [JSON](classes/JSON.md)
+  - [DataReport](classes/DataReport.md)
   - [RemoteWindow](classes/RemoteWindow.md)
     - [OpenFinWindow](#class-openfinwindow)
-  - [DataReport](classes/DataReport.md)
   - [Messaging](classes/Messaging.md)
   - [Media](classes/Media.md)
   - [ReportScreen](classes/ReportScreen.md)
@@ -567,6 +567,7 @@ This is the central API reference for the SmartClient framework.
 - [Automatic Cache Synchronization](kb_topics/cacheSynchronization.md)
 - [Caching](kb_topics/caching.md)
 - [cellStyleSuffixes](kb_topics/cellStyleSuffixes.md)
+- [Chart Data Export](kb_topics/chartExport.md)
 - [Client-side Data Integration](kb_topics/clientDataIntegration.md)
 - [Client Only DataSources](kb_topics/clientOnlyDataSources.md)
 - [Client-Server Integration](kb_topics/clientServerIntegration.md)
@@ -609,6 +610,7 @@ This is the central API reference for the SmartClient framework.
 - [Using the Debug Modules](kb_topics/debugModules.md)
 - [Declarative Security](kb_topics/declarativeSecurity.md)
 - [Deployment Management Console](kb_topics/deploymentManagement.md)
+- [Descendant Data Export](kb_topics/descendantDataExport.md)
 - [The Developer Console RPC Tab](kb_topics/devConsoleRPCTab.md)
 - [Dashboards & Tools Framework Overview](kb_topics/devTools.md)
 - [Direct Method Invocation](kb_topics/dmiOverview.md)
@@ -635,7 +637,8 @@ This is the central API reference for the SmartClient framework.
 - [Copy and Paste with Excel](kb_topics/excelPasting.md)
 - [Experimental Features](kb_topics/experimental.md)
 - [Exports & Cell Background Color](kb_topics/exportBGColor.md)
-- [Exports & Formatting](kb_topics/exportFormatting.md)
+- [Export Value Formatting](kb_topics/exportFormatting.md)
+- [Exporting](kb_topics/exporting.md)
 - [Feature Explorer Overview](kb_topics/featureExplorerOverview.md)
 - [Server Features and Custom Persistence](kb_topics/featuresCustomPersistence.md)
 - [Field-Level Security](kb_topics/fieldLevelAuth.md)
@@ -4584,7 +4587,7 @@ Rendering an object on the page.
 - [Canvas.isDrawn](classes/Canvas_1.md#method-canvasisdrawn)
 - [Canvas.getInnerHTML](classes/Canvas_1.md#method-canvasgetinnerhtml)
 - [Canvas.draw](classes/Canvas_1.md#method-canvasdraw)
-- [Canvas.isDirty](classes/Canvas_1.md#method-canvasisdirty)
+- [Canvas.isDirty](classes/Canvas_2.md#method-canvasisdirty)
 - [Canvas.markForRedraw](classes/Canvas_1.md#method-canvasmarkforredraw)
 - [Canvas.redraw](classes/Canvas_1.md#method-canvasredraw)
 - [FormItem.getFieldName](classes/FormItem.md#method-formitemgetfieldname)
@@ -5412,6 +5415,26 @@ For specific SmartClient methods that make use of `Callback` objects, see local 
 - validation
 
 ---
+## Type: ChartExportSortMode
+
+### Description
+Row order for an exported chart table.
+
+### Values
+
+| Value | Description |
+|-------|-------------|
+| "auto" | The resolved shape's natural order (ranked for a comparison, chronological for a trend). The default. |
+| "value" | Largest measure first. |
+| "label" | By the facet's display label. |
+| "chronological" | Ascending by the facet value. |
+| "none" | As fetched. |
+
+### Groups
+
+- chartExport
+
+---
 ## Type: ChartType
 
 ### Description
@@ -5962,7 +5985,7 @@ This category includes cases where code running in the browser does the renderin
 #### Excel export
 Almost the same as in-browser rendering, with minor limitations due to missing features in Excel. Exact differences are described under [DataSourceField.exportFormat](classes/DataSourceField.md#attr-datasourcefieldexportformat).
 #### non-Excel server export
-For example, CSV, XML or JSON [export formats](reference_2.md#type-exportformat) provided via [DataSource.exportData](classes/DataSource_1.md#method-datasourceexportdata). Full support for SimpleDateFormat/DecimalFormat as provided by whichever Java version you have installed on the server. However note that depending on the context of the export, the default behavior may be to ignore format strings, since formatting intended for end users wouldn't be desirable if data exchange is the goal. See the [Export Formatting overview](kb_topics/exportFormatting.md#kb-topic-exports--formatting) for details.
+For example, CSV, XML or JSON [export formats](reference_2.md#type-exportformat) provided via [DataSource.exportData](classes/DataSource_1.md#method-datasourceexportdata). Full support for SimpleDateFormat/DecimalFormat as provided by whichever Java version you have installed on the server. However note that depending on the context of the export, the default behavior may be to ignore format strings, since formatting intended for end users wouldn't be desirable if data exchange is the goal. See the [Export Formatting overview](kb_topics/exportFormatting.md#kb-topic-export-value-formatting) for details.
 
 #### Date Format
 
@@ -8251,6 +8274,20 @@ A CellRecord represents the data for one cell of the body area.
 Each CellRecord should be an object that minimally has a property named after each visible facetId with the value being a facetValueId from that facet, and also a value for [CubeGrid.valueProperty](classes/CubeGrid.md#attr-cubegridvalueproperty).
 
 Cell records can contain any other properties desired, such as cell ids, or values for facets not initially shown.
+
+---
+## Object: ChartExportSettings
+
+### Description
+Per-chart configuration for the table a [FacetChart](classes/FacetChart.md#class-facetchart) contributes to [Canvas.exportDescendantData](classes/Canvas_1.md#method-canvasexportdescendantdata), set as [FacetChart.chartExportSettings](classes/FacetChart.md#attr-facetchartchartexportsettings).
+
+A chart exports the table that matches its reader's takeaway — its **export shape**: a ranked share-of-whole table for magnitude charts, a chronological table with change-over-period columns for time series, raw point tuples for scatter plots, and a category × series matrix for two-facet charts. By default the shape and every column toggle are inferred from the chart itself (chart type, facet field types, and what the measure's aggregation makes valid); each property here overrides one aspect of that inference. Toggles left null are decided by the resolved shape, so `{shape: "trend"}` is a complete override.
+
+Settings choose among valid tables only: a toggle the measure's aggregation makes invalid (a summed Total over averages, a running total of minimums) is ignored with a warning.
+
+### Groups
+
+- chartExport
 
 ---
 ## Object: CreateScreenSettings

@@ -7403,7 +7403,7 @@ Width to size non-visible fields (which may be specified with [exportFields](Dat
 
 ### See Also
 
-- [exportFormatting](../kb_topics/exportFormatting.md#kb-topic-exports--formatting)
+- [exportFormatting](../kb_topics/exportFormatting.md#kb-topic-export-value-formatting)
 - [ListGrid.exportFieldWidths](#attr-listgridexportfieldwidths)
 
 **Flags**: IRW

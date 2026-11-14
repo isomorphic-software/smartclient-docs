@@ -75,7 +75,7 @@ When unset, the address is: in a [ReportBuilder](ReportBuilder.md#class-reportbu
 ## Method: DataReport.getComponents
 
 ### Description
-The report's components, one descriptor per portlet, in portlet (visual) order. Each descriptor is shaped like a Reify edit node (`{ type, liveObject, title, exportInclude, defaults:{title, exportInclude} }`) so the export pipeline reads one shape whether enumeration comes from a live PortalLayout (deployed) or, in the editor, from [ReportBuilder](ReportBuilder.md#class-reportbuilder) delegating here. Filtered to the classified component types; a portlet with no recognized inner component is skipped.
+The report's components, one descriptor per portlet, in portlet (visual) order. Each descriptor is shaped like a Reify edit node (`{ type, liveObject, title, shouldExport, defaults:{title, shouldExport} }`) so the export pipeline reads one shape whether enumeration comes from a live PortalLayout (deployed) or, in the editor, from [ReportBuilder](ReportBuilder.md#class-reportbuilder) delegating here. Filtered to the classified component types; a portlet with no recognized inner component is skipped.
 
 ### Returns
 
@@ -85,7 +85,7 @@ The report's components, one descriptor per portlet, in portlet (visual) order. 
 ## Method: DataReport.exportReportToExcel
 
 ### Description
-Export the whole report to a single multi-sheet Excel workbook -- one sheet per included data component -- and download it.
+Export the whole report to a single multi-sheet Excel workbook — one sheet per included data component — and download it. This is the report-flavored entry to [Canvas.exportDescendantData](Canvas_1.md#method-canvasexportdescendantdata): component selection follows the report's policy (author opt-out via [shouldExport](DataBoundComponent.md#attr-databoundcomponentshouldexport), visible portlets only, KPIs omitted) and each sheet is titled by its portlet.
 
 ### Parameters
 

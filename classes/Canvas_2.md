@@ -4,6 +4,157 @@
 
 ---
 
+## Method: Canvas.moved
+
+### Description
+Notification method fired when this component is explicitly moved. Note that a component's position on the screen may also changed due to an ancestor being moved. The [Canvas.parentMoved](Canvas_1.md#method-canvasparentmoved) method provides a notification entry point to catch that case as well.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| deltaX | [int](../reference.md#type-int) | false | — | horizontal difference between current and previous position |
+| deltaY | [int](../reference.md#type-int) | false | — | vertical difference between current and previous position |
+
+---
+## Method: Canvas.addChild
+
+### Description
+Adds newChild as a child of this widget, set up a named object reference (i.e., this\[name\]) to the new widget if name argument is provided, and draw the child if this widget has been drawn already.
+
+If newChild has a parent it will be removed from it. If it has a master, it will be detached from it if the master is a child of a different parent. If newChild has peers, they'll be added to this widget as children as well.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| newChild | [Canvas](#type-canvas) | false | — | new child canvas to add |
+| name | [String](#type-string) | true | — | name to assign to child (eg: this\[name\] == child) |
+| autoDraw | [Boolean](#type-boolean) | true | — | if false, child will not automatically be drawn (only for advanced use) |
+
+### Returns
+
+`[Canvas](#type-canvas)` — the new child, or null if it couldn't be added
+
+### Groups
+
+- containment
+
+---
+## Method: Canvas.mouseUp
+
+### Description
+Executed when the left mouse is released on this widget. No default implementation.
+
+### Returns
+
+`[Boolean](#type-boolean)` — false to prevent this event from bubbling to this widget's parent, true or undefined to bubble.
+
+### Groups
+
+- widgetEvents
+
+### See Also
+
+- [Canvas.getOffsetX](Canvas_1.md#method-canvasgetoffsetx)
+- [Canvas.getOffsetY](Canvas_1.md#method-canvasgetoffsety)
+
+**Flags**: A
+
+---
+## Method: Canvas.setPageLeft
+
+### Description
+Set the page-relative left coordinate of this widget.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| left | [number](#type-number) | false | — | new left coordinate in pixels |
+
+### Groups
+
+- positioning
+
+---
+## Method: Canvas.addSnapAlignCandidate
+
+### Description
+Add a candidate to [Canvas.snapAlignCandidates](Canvas_1.md#attr-canvassnapaligncandidates). Duplicates are automatically avoided.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| newCandidate | [Canvas](#type-canvas) | false | — | — |
+
+---
+## Method: Canvas.isDirty
+
+### Description
+Returns whether a canvas is waiting to be redrawn. Will return true if [Canvas.markForRedraw](Canvas_1.md#method-canvasmarkforredraw) has been called, but this canvas has not yet been redrawn.
+
+### Returns
+
+`[Boolean](#type-boolean)` — true is this canvas needs to be redrawn; false otherwise
+
+### Groups
+
+- drawing
+
+**Flags**: A
+
+---
+## Method: Canvas.mouseOver
+
+### Description
+Executed when mouse enters this widget. No default implementation.
+
+### Returns
+
+`[Boolean](#type-boolean)` — false to prevent this event from bubbling to this widget's parent, true or undefined to bubble.
+
+### Groups
+
+- widgetEvents
+
+### See Also
+
+- [Canvas.getOffsetX](Canvas_1.md#method-canvasgetoffsetx)
+- [Canvas.getOffsetY](Canvas_1.md#method-canvasgetoffsety)
+
+**Flags**: A
+
+---
+## Method: Canvas.init
+
+### Description
+This method performs some basic initialization common to all UI components. To do custom UI component initialization, you should generally override [Canvas.initComplete](Canvas_1.md#method-canvasinitcomplete) or [Canvas.initWidget](Canvas_1.md#method-canvasinitwidget). This method does the following, in order:
+
+*   Sets up a global reference to this instance as described in [Canvas.ID](Canvas_1.md#attr-canvasid).
+*   Ensures certain numeric properties have numeric values (e.g. width, height, padding, margin)
+*   Ensures [Canvas.children](Canvas_1.md#attr-canvaschildren) and [Canvas.peers](Canvas_1.md#attr-canvaspeers) are Arrays.
+*   Calls [Canvas.initWidget](Canvas_1.md#method-canvasinitwidget) - typically implemented at the class level to perform standard initialization for Canvas subclasses.
+*   Calls [Canvas.initComplete](Canvas_1.md#method-canvasinitcomplete) - typically implemented to perform custom initialization at the instance level.
+*   Creates [edges](Canvas_1.md#attr-canvasshowedges) and [shadow](Canvas_1.md#attr-canvasshowshadow), if so configured.
+*   Calls [Canvas.draw](Canvas_1.md#method-canvasdraw) if [Canvas.autoDraw](Canvas_1.md#attr-canvasautodraw) is set on instance or globally.
+
+Unless you're in an advanced scenario where you need to inject code before the above logic executes, place your initialization logic in intComplete or initWidget() rather than init(). If you do decided to override this method, you must call the superclass implementation like so:
+```
+    this.Super("init", arguments);
+ 
+```
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| arguments 0-N | [Any](#type-any) | true | — | All arguments initially passed to [Class.create](Class.md#classmethod-classcreate) |
+
+**Flags**: A
+
+---
 ## Method: Canvas.setHeight
 
 ### Description

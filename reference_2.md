@@ -306,6 +306,28 @@ When [canSelectCells](classes/ListGrid_1.md#attr-listgridcanselectcells) is true
 - selection
 
 ---
+## Type: ChartExportShape
+
+### Description
+The table a chart contributes to [Canvas.exportDescendantData](classes/Canvas_1.md#method-canvasexportdescendantdata) -- see [ChartExportSettings](#object-chartexportsettings) for how the shape is chosen and controlled.
+
+### Values
+
+| Value | Description |
+|-------|-------------|
+| "auto" | Infer the shape from the chart: its type, its facets' field types, and what its measure's aggregation makes valid. The default. |
+| "comparison" | Ranked share-of-whole: resolved labels, the measure, percent of total, rank, and a summary row, largest first. |
+| "trend" | Change over time: chronological periods with change-vs-prior columns and, for additive measures, a running total. |
+| "correlation" | Raw point tuples: a leading record-identity column, then the unaggregated (X, Y\[, size\]) values. |
+| "distribution" | The measure's fetched values bucketed into equal-width bins with frequency, percent and cumulative percent. |
+| "matrix" | Category by series: one column per series value, a Total column, and for stacked charts a percentage block. |
+| "raw" | The fetched rows as a plain table, unreconstructed. |
+
+### Groups
+
+- chartExport
+
+---
 ## Type: ClientUniquenessCheckCondition
 
 ### Description
@@ -4504,6 +4526,19 @@ Configuration for [Reify.editInReify](classes/Reify.md#classmethod-reifyeditinre
 Every signal available about a task failure, passed to [Process.classifyError](classes/Process.md#classmethod-processclassifyerror). Fields not applicable to the failure that occurred are left unset - for example, a DataSource-operation failure ([DSRequestTask](classes/DSRequestTask.md#class-dsrequesttask) and similar) populates [ErrorContext.response](#attr-errorcontextresponse)/[ErrorContext.request](#attr-errorcontextrequest), while an infrastructure-style failure (propagated from a [SubProcessTask](classes/SubProcessTask.md#class-subprocesstask)'s child, or explicitly raised via [Process.fail](classes/Process.md#method-processfail)) populates [ErrorContext.failure](#attr-errorcontextfailure) instead.
 
 ---
+## Object: ExportSpec
+
+### Description
+One component's contribution to a multi-sheet data export (see [Canvas.exportDescendantData](classes/Canvas_1.md#method-canvasexportdescendantdata)): the specification its worksheet is built from. An ExportSpec carries the sheet's presentation — [ExportSpec.fields](classes/ExportSpec.md#attr-exportspecfields) and an optional [ExportSpec.caption](classes/ExportSpec.md#attr-exportspeccaption) — plus its data, supplied in exactly one of two ways:
+
+*   **by reference**: [ExportSpec.fetch](classes/ExportSpec.md#attr-exportspecfetch) describes a fetch the server executes itself, so the sheet reflects the full filtered result regardless of what the client has loaded;
+*   **by value**: [ExportSpec.rows](classes/ExportSpec.md#attr-exportspecrows) holds the records, already computed on the client — a [clientOnly](classes/DataSource_1.md#attr-datasourceclientonly) DataSource's result, as-displayed values, or a component-computed table such as a chart's reconstruction (see [chartExport](kb_topics/chartExport.md#kb-topic-chart-data-export)).
+
+### Groups
+
+- descendantDataExport
+
+---
 ## Object: Facet
 
 ### Description
@@ -4823,6 +4858,16 @@ The extra value axis charts may be [single- or multi-facet](classes/MetricSettin
 
 ### Description
 Settings used to control the export or serialization of a [DataSource](classes/DataSource_1.md#class-datasource) by [Reify.getMockDS](classes/Reify.md#classmethod-reifygetmockds).
+
+---
+## Object: MultiSheetExportSettings
+
+### Description
+Per-call configuration for [Canvas.exportDescendantData](classes/Canvas_1.md#method-canvasexportdescendantdata).
+
+### Groups
+
+- descendantDataExport
 
 ---
 ## Object: NavigationBarViewState

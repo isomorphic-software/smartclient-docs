@@ -23,7 +23,7 @@ Horizontal and vertical location on the page
 - [Canvas.getBottom](../classes/Canvas_1.md#method-canvasgetbottom)
 - [Canvas.getScrollLeft](../classes/Canvas_1.md#method-canvasgetscrollleft)
 - [Canvas.getScrollTop](../classes/Canvas_1.md#method-canvasgetscrolltop)
-- [Canvas.setPageLeft](../classes/Canvas_1.md#method-canvassetpageleft)
+- [Canvas.setPageLeft](../classes/Canvas_2.md#method-canvassetpageleft)
 - [Canvas.setPageTop](../classes/Canvas_1.md#method-canvassetpagetop)
 - [Canvas.getPageLeft](../classes/Canvas_2.md#method-canvasgetpageleft)
 - [Canvas.getPageTop](../classes/Canvas_1.md#method-canvasgetpagetop)

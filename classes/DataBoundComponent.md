@@ -186,6 +186,20 @@ The message to display to the user if an export of a DataBoundComponent's data i
 **Flags**: IRW
 
 ---
+## Attr: DataBoundComponent.exportAsDisplayed
+
+### Description
+When set, a containing [Canvas.exportDescendantData](Canvas_1.md#method-canvasexportdescendantdata) exports this component's data **as this component displays it** — gathered by the same client-side machinery as [exportClientData()](ListGrid_2.md#method-listgridexportclientdata), so client-computed formula and summary values are included and every value arrives as its displayed text. The sheet's caption is annotated to say so, and when the component holds only part of a paged dataset the annotation also states how many of the total rows were exported.
+
+When unset, the export re-fetches from the DataSource, so the sheet reflects stored data and the full result set — including rows the component never loaded, and excluding unsaved edits.
+
+### Groups
+
+- descendantDataExport
+
+**Flags**: IR
+
+---
 ## Attr: DataBoundComponent.hiliteIcons
 
 ### Description
@@ -274,6 +288,20 @@ The message to show when a user tries to use AI on a data set containing more th
 - i18nMessages
 
 **Flags**: IRW
+
+---
+## Attr: DataBoundComponent.shouldExport
+
+### Description
+Whether this component's data is included when an ancestor's [Canvas.exportDescendantData](Canvas_1.md#method-canvasexportdescendantdata) exports descendant data. Like [Canvas.shouldPrint](Canvas_1.md#attr-canvasshouldprint) for printing, this controls participation in a container-level operation only: it does not affect calling [exportData()](#method-databoundcomponentexportdata) or [exportClientData()](ListGrid_2.md#method-listgridexportclientdata) on the component directly.
+
+When unset, the default follows [dataArity](#attr-databoundcomponentdataarity): "multiple" components (grids, trees, cubes, charts) are included; "single" and "either" components (forms, detail viewers) are excluded and opt in by setting this `true`.
+
+### Groups
+
+- descendantDataExport
+
+**Flags**: IR
 
 ---
 ## Attr: DataBoundComponent.hiliteIconHeight
@@ -517,6 +545,18 @@ If this property is not defined, SmartClient defaults to returning the selection
 - operations
 
 **Flags**: IRW
+
+---
+## Attr: DataBoundComponent.exportTitle
+
+### Description
+Name for this component's sheet, and for its entries on the workbook cover sheet, when it is exported by [Canvas.exportDescendantData](Canvas_1.md#method-canvasexportdescendantdata). When unset the title falls back to the [DataSource title](DataSource_1.md#attr-datasourcetitle), then to this component's ID when one was explicitly assigned, then to the class name. The field-level analog is [DataSourceField.exportTitle](DataSourceField.md#attr-datasourcefieldexporttitle).
+
+### Groups
+
+- descendantDataExport
+
+**Flags**: IR
 
 ---
 ## Attr: DataBoundComponent.defaultAsyncErrorHoverContents
@@ -2008,6 +2048,8 @@ Note that data exported via this method skips client-side fields defined only in
 
 For more information on exporting data, see [DataSource.exportData](DataSource_1.md#method-datasourceexportdata).
 
+See [Exporting](../kb_topics/exporting.md#kb-topic-exporting) for an overview of all data and visual export approaches.
+
 ### Parameters
 
 | Name | Type | Optional | Default | Description |
@@ -2021,7 +2063,7 @@ For more information on exporting data, see [DataSource.exportData](DataSource_1
 
 ### See Also
 
-- [exportFormatting](../kb_topics/exportFormatting.md#kb-topic-exports--formatting)
+- [exportFormatting](../kb_topics/exportFormatting.md#kb-topic-export-value-formatting)
 
 ---
 ## Method: DataBoundComponent.userAddedField
@@ -2144,6 +2186,29 @@ Return the set of hilite-objects currently applied to this DataBoundComponent. T
 ### Groups
 
 - hiliting
+
+---
+## Method: DataBoundComponent.getExportSpec
+
+### Description
+Returns, through the callback, the [ExportSpec](../reference_2.md#object-exportspec) this component contributes to a containing [Canvas.exportDescendantData](Canvas_1.md#method-canvasexportdescendantdata) call — always through the callback, because client-executed fetches and as-displayed gathering are asynchronous.
+
+The default implementation supplies the component's data **by reference** (its full effective fetch — criteria, sort, aggregation — for the server to execute) when the SmartClient Server backs the DataSource, and **by value** otherwise, executing the same fetch on the client; with [exportAsDisplayed](#attr-databoundcomponentexportasdisplayed) set it instead gathers the component's displayed values, like [exportClientData()](ListGrid_2.md#method-listgridexportclientdata).
+
+Override this to substitute a richer table than the component's raw data: return [rows](ExportSpec.md#attr-exportspecrows) for a client-computed table — [FacetChart](FacetChart.md#class-facetchart) ships the canonical example, exporting the table its chart conveys (see [chartExport](../kb_topics/chartExport.md#kb-topic-chart-data-export)) — or a custom [fetch](ExportSpec.md#attr-exportspecfetch) for a different server-side dataset. To keep the default behavior and adjust its result, call `Super` and modify the spec it hands back.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| settings | [MultiSheetExportSettings](#type-multisheetexportsettings) | false | — | the containing export's settings (row cap and label overrides are read from it) |
+| callback | [Callback](../reference.md#type-callback) | false | — | fires with the spec: `callback(spec)` |
+
+### Groups
+
+- descendantDataExport
+
+**Flags**: A
 
 ---
 ## Method: DataBoundComponent.findByKey

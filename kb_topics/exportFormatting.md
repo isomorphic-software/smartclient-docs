@@ -1,13 +1,13 @@
-# Exports & Formatting
+# Export Value Formatting
 
 [← Back to API Index](../reference.md)
 
 ---
 
-## KB Topic: Exports & Formatting
+## KB Topic: Export Value Formatting
 
 ### Description
-This topic explains the default rules for whether date, numeric and other formatting settings are applied when performing various types of exports, and how to override the default behavior.
+Part of the [Exporting](exporting.md#kb-topic-exporting) family: this topic explains the default rules for whether date, numeric and other formatting settings are applied when performing various types of exports, and how to override the default behavior.
 
 For server-based exports (e.g. [ListGrid.exportData](../classes/ListGrid_2.md#method-listgridexportdata) or [DataSource.exportData](../classes/DataSource_1.md#method-datasourceexportdata)):
 

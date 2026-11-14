@@ -211,7 +211,7 @@ Note that the displayTimezone effects datetime fields only and has no effect on 
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| offset | [String](#type-string) | false | — | offset from UTC. This should be a string in the format `+/-HH:MM` for example `"-08:00"` |
+| offset | [String](#type-string) | false | — | the display timezone, as either an IANA timezone name such as `"America/Los_Angeles"`, or an offset from UTC in the format `+/-HH:MM` for example `"-08:00"`. A name is preferable: it is retained (see [Time.getDefaultDisplayTimezoneName](#classmethod-timegetdefaultdisplaytimezonename)) and sent to the server, where it is what identifies the zone's daylight-saving rules. An offset describes only the date on which it was measured. |
 
 ### See Also
 
@@ -280,5 +280,38 @@ It may be a common hack for a server framework (e.g. aspx) where there is no "ti
 |------|------|----------|---------|-------------|
 | timeString | [String](#type-string) | false | — | time string to convert to a date |
 | validTime | [boolean](../reference.md#type-boolean) | false | — | If this method is passed a timeString in an unrecognized format, return null rather than a date object with time set to 00:00:00 |
+
+---
+## ClassMethod: Time.getBrowserTimezoneName
+
+### Description
+Returns the IANA timezone name reported by the browser, for example `"Europe/London"`, or null if the platform cannot supply one.
+
+### Returns
+
+`[String](#type-string)` — IANA timezone name, or null
+
+### See Also
+
+- [Time.getDefaultDisplayTimezoneName](#classmethod-timegetdefaultdisplaytimezonename)
+
+---
+## ClassMethod: Time.getDefaultDisplayTimezoneName
+
+### Description
+Returns the IANA name of the display timezone, for example `"America/Los_Angeles"`, when one is known.
+
+A name is known when [Time.setDefaultDisplayTimezone](#classmethod-timesetdefaultdisplaytimezone) was passed one, and also when no custom display timezone is in effect at all, in which case the browser's own timezone name is returned. If a custom display timezone was set as a bare offset such as `"+01:00"` there is no name to report and this method returns null, since an offset identifies a zone only on the date it was measured.
+
+Prefer passing a name to [Time.setDefaultDisplayTimezone](#classmethod-timesetdefaultdisplaytimezone): it is the only form that tells server-side date grouping which daylight-saving rules apply to dates outside the current part of the year.
+
+### Returns
+
+`[String](#type-string)` — IANA timezone name, or null if the display timezone has no known name
+
+### See Also
+
+- [Time.setDefaultDisplayTimezone](#classmethod-timesetdefaultdisplaytimezone)
+- [Time.getDefaultDisplayTimezone](#classmethod-timegetdefaultdisplaytimezone)
 
 ---

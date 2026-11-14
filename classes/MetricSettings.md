@@ -101,13 +101,13 @@ Properties for gradation lines
 ## Attr: MetricSettings.proportionalAxisLabel
 
 ### Description
-Default title for the value axis label when the chart is in [proportional rendering mode](#attr-metricsettingsproportional). This title will be used unless the [legend facet](FacetChart.md#method-facetchartgetlegendfacet) defines a [proportionalTitle](Facet.md#attr-facetproportionaltitle).
+Title for this extra axis in [proportional rendering mode](#attr-metricsettingsproportional). If this property is omitted, uses the chart's current [FacetChart.proportionalAxisLabel](FacetChart.md#attr-facetchartproportionalaxislabel), including changes made after this axis was created. Explicit null and undefined values both override inheritance and suppress the label.
 
-### Groups
+Use [MetricSettings.clearProportionalAxisLabel](#method-metricsettingsclearproportionalaxislabel) to remove the override and restore inheritance. Calling [MetricSettings.setProportionalAxisLabel](#method-metricsettingssetproportionalaxislabel) with null or undefined clears the label, but does not remove the override.
 
-- i18nMessages
+The legend facet's [Facet.proportionalTitle](Facet.md#attr-facetproportionaltitle), when set, takes precedence over both this property and the chart's proportional axis label, even when the override is null or undefined.
 
-**Flags**: IR
+**Flags**: IRW
 
 ---
 ## Attr: MetricSettings.axisLineProperties
@@ -431,13 +431,11 @@ Whether this extra value axis plots values while varying the facet values of jus
 ## Attr: MetricSettings.valueTitle
 
 ### Description
-A label for the data values, such as "Sales in Thousands", typically used as the label for the value axis.
+A label for the data values on this extra axis. See [FacetChart.valueTitle](FacetChart.md#attr-facetchartvaluetitle).
 
-### Groups
+In [proportional rendering mode](#attr-metricsettingsproportional), the value axis label is determined by [MetricSettings.proportionalAxisLabel](#attr-metricsettingsproportionalaxislabel) instead of this property.
 
-- labelsAndTitles
-
-**Flags**: IR
+**Flags**: IRW
 
 ---
 ## Attr: MetricSettings.logGradations
@@ -466,6 +464,18 @@ Or base 2:
 - gradations
 
 **Flags**: IR
+
+---
+## Method: MetricSettings.setValueTitle
+
+### Description
+Sets [MetricSettings.valueTitle](#attr-metricsettingsvaluetitle) and redraws the chart to update its layout.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| valueTitle | [String](#type-string) | false | — | new title, or null to clear the explicit value title |
 
 ---
 ## Method: MetricSettings.setStacked
@@ -696,6 +706,26 @@ Setter for [MetricSettings.proportional](#attr-metricsettingsproportional).
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | proportional | [boolean](../reference.md#type-boolean) | false | — | Whether the chart should now use proportional mode. |
+
+---
+## Method: MetricSettings.clearProportionalAxisLabel
+
+### Description
+Removes this extra axis's [MetricSettings.proportionalAxisLabel](#attr-metricsettingsproportionalaxislabel) override, restoring inheritance of the chart's current [FacetChart.proportionalAxisLabel](FacetChart.md#attr-facetchartproportionalaxislabel), and redraws the chart to update its layout. Subsequent chart-level label changes also apply to this axis until another override is set.
+
+This clears the override, not the displayed label. To suppress the label instead, call [MetricSettings.setProportionalAxisLabel](#method-metricsettingssetproportionalaxislabel) with null or undefined. The legend facet's [Facet.proportionalTitle](Facet.md#attr-facetproportionaltitle) takes precedence in either case.
+
+---
+## Method: MetricSettings.setProportionalAxisLabel
+
+### Description
+Sets [MetricSettings.proportionalAxisLabel](#attr-metricsettingsproportionalaxislabel) and redraws the chart to update its layout. The legend facet's [Facet.proportionalTitle](Facet.md#attr-facetproportionaltitle) takes precedence over this setting. Use [MetricSettings.clearProportionalAxisLabel](#method-metricsettingsclearproportionalaxislabel) to remove the override and restore inheritance; passing null or undefined to this setter clears the label instead.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| proportionalAxisLabel | [String](#type-string) | false | — | new label, or null/undefined to suppress the label |
 
 ---
 ## Method: MetricSettings.getDataColor

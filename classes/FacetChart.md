@@ -2349,7 +2349,7 @@ Note that zIndex values should be integers between 0 and [FacetChart.maxDataZInd
 ### Description
 Whether to allow the [FacetChart.valueTitle](#attr-facetchartvaluetitle) (or, in the case of [proportional rendering mode](#attr-facetchartproportional), the [FacetChart.proportionalAxisLabel](#attr-facetchartproportionalaxislabel)) as a label on the value axis.
 
-Setting this property to false suppresses the label. A value of true or null allows the label to be shown, but does not force it to appear: a value title must be available unless proportional rendering mode is active, and vertical value axis labels require the chart's Y-axis gradations to be shown. Value axis labels are not shown for non-rectangular charts (for example, Pie and Radar).
+Setting this property to false suppresses the label. A value of true or null allows the label to be shown, but does not force it to appear: a value title (or [FacetChart.proportionalAxisLabel](#attr-facetchartproportionalaxislabel) in proportional rendering mode) must be available. Vertical value axis labels require the chart's Y-axis gradations to be shown. Value axis labels are not shown for non-rectangular charts (for example, Pie and Radar).
 
 ### Groups
 
@@ -3470,11 +3470,13 @@ When [FacetChart.logScalePointSize](#attr-facetchartlogscalepointsize) is true, 
 ### Description
 A label for the data values, such as "Sales in Thousands", typically used as the label for the value axis.
 
+In [proportional rendering mode](#attr-facetchartproportional), the value axis label is determined by [FacetChart.proportionalAxisLabel](#attr-facetchartproportionalaxislabel) instead of this property.
+
 ### Groups
 
 - labelsAndTitles
 
-**Flags**: IR
+**Flags**: IRW
 
 ---
 ## Attr: FacetChart.chartRectProperties
@@ -3754,7 +3756,7 @@ Default title for the value axis label when the chart is in [proportional render
 
 - i18nMessages
 
-**Flags**: IR
+**Flags**: IRW
 
 ---
 ## Attr: FacetChart.showColorScaleLegend
@@ -3892,6 +3894,18 @@ NOTE: if `autoFetchData` is set, calling [fetchData()](ListGrid_2.md#method-list
 - [ListGrid.fetchData](ListGrid_2.md#method-listgridfetchdata)
 
 **Flags**: IRW
+
+---
+## Attr: FacetChart.chartExportSettings
+
+### Description
+Controls the table this chart contributes to [Canvas.exportDescendantData](Canvas_1.md#method-canvasexportdescendantdata). When unset, every aspect is inferred from the chart — see [ChartExportSettings](../reference.md#object-chartexportsettings) for the shapes and toggles.
+
+### Groups
+
+- chartExport
+
+**Flags**: IR
 
 ---
 ## Attr: FacetChart.implicitCriteria
@@ -4711,6 +4725,22 @@ If called before [FacetChart.chartDrawn](#method-facetchartchartdrawn), logs a w
 `[Array of DrawnValue](#type-array-of-drawnvalue)` — the DrawnValues, or null for invalid arguments / incorrect timing of call
 
 ---
+## Method: FacetChart.setProportionalAxisLabel
+
+### Description
+Sets [FacetChart.proportionalAxisLabel](#attr-facetchartproportionalaxislabel) and redraws the chart to update its layout. The legend facet's [Facet.proportionalTitle](Facet.md#attr-facetproportionaltitle) takes precedence over this setting.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| proportionalAxisLabel | [String](#type-string) | false | — | new label, or null/undefined to clear the explicit label |
+
+### Groups
+
+- labelsAndTitles
+
+---
 ## Method: FacetChart.getPrintHTML
 
 ### Description
@@ -5096,6 +5126,22 @@ This is only allowed to be called when [FacetChart.chartDrawn](#method-facetchar
 ### Returns
 
 `[Point](#type-point)` — the centerpoint for radar charts and pie charts.
+
+---
+## Method: FacetChart.setValueTitle
+
+### Description
+Sets [FacetChart.valueTitle](#attr-facetchartvaluetitle) and redraws the chart to update its layout.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| valueTitle | [String](#type-string) | false | — | new title, or null to clear the explicit value title |
+
+### Groups
+
+- labelsAndTitles
 
 ---
 ## Method: FacetChart.setAutoScrollDataApproach

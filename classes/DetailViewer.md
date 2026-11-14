@@ -866,6 +866,8 @@ Note that data exported via this method skips client-side fields defined only in
 
 For more information on exporting data, see [DataSource.exportData](DataSource_1.md#method-datasourceexportdata).
 
+See [Exporting](../kb_topics/exporting.md#kb-topic-exporting) for an overview of all data and visual export approaches.
+
 ### Parameters
 
 | Name | Type | Optional | Default | Description |
@@ -879,7 +881,7 @@ For more information on exporting data, see [DataSource.exportData](DataSource_1
 
 ### See Also
 
-- [exportFormatting](../kb_topics/exportFormatting.md#kb-topic-exports--formatting)
+- [exportFormatting](../kb_topics/exportFormatting.md#kb-topic-export-value-formatting)
 
 ---
 ## Method: DetailViewer.viewSelectedData

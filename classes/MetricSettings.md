@@ -257,7 +257,9 @@ Properties for labels of value axis.
 ## Attr: MetricSettings.showValueAxisLabel
 
 ### Description
-Whether to show the [valueTitle](#attr-metricsettingsvaluetitle) (or, in the case of [proportional rendering mode](#attr-metricsettingsproportional), [MetricSettings.proportionalAxisLabel](#attr-metricsettingsproportionalaxislabel)) as a label on this extra value axis.
+Whether to allow the [valueTitle](#attr-metricsettingsvaluetitle) (or, in the case of [proportional rendering mode](#attr-metricsettingsproportional), [MetricSettings.proportionalAxisLabel](#attr-metricsettingsproportionalaxislabel)) as a label on this extra value axis.
+
+Setting this property to false suppresses the label. A value of true or null allows the label to be shown, subject to the conditions described for [FacetChart.showValueAxisLabel](FacetChart.md#attr-facetchartshowvalueaxislabel). The label is also suppressed when [showAxis](#attr-metricsettingsshowaxis) is false.
 
 **Flags**: IR
 
@@ -403,11 +405,9 @@ Whether this extra value axis plots values while varying the facet values of jus
 ## Attr: MetricSettings.valueTitle
 
 ### Description
-A label for the data values, such as "Sales in Thousands", typically used as the label for the value axis.
+A label for the data values on this extra axis. See [FacetChart.valueTitle](FacetChart.md#attr-facetchartvaluetitle).
 
-### Groups
-
-- labelsAndTitles
+In [proportional rendering mode](#attr-metricsettingsproportional), the value axis label is determined by [FacetChart.proportionalAxisLabel](FacetChart.md#attr-facetchartproportionalaxislabel) instead of this property.
 
 **Flags**: IR
 

@@ -3831,7 +3831,7 @@ Returns the page offsets and size of the cell at the passed row and column. If a
 ## Method: ListGrid.showDragHandles
 
 ### Description
-Shows an additional field near the beginning of the field list (after any [row number](ListGrid_1.md#attr-listgridshowrownumbers) field) that can be dragged to drag the current selection. This feature is useful in [touch environments](Browser.md#classattr-browseristouch) where both touch scrolling and dragging are needed on the same grid, and allows scrolling to be triggered on the other fields so that both operations are available. Targeted touch environments include both mobile devices, and Windows hardware that supports [Dual Input Mode](Browser.md#classattr-browsersupportsdualinput) such as Microsoft Surface.
+Shows an additional field near the beginning of the field list (after any [row number](ListGrid_1.md#attr-listgridshowrownumbers) field) that can be dragged to drag the current selection. This feature is useful in [touch environments](Browser.md#classattr-browseristouch) where both touch scrolling and dragging are needed on the same grid, and allows scrolling to be triggered on the other fields so that both operations are available. Targeted touch environments include both mobile devices, and hardware running in [dual input mode](../kb_topics/dualInput.md#kb-topic-dual-input-mode) such as Microsoft Surface or Linux tablets.
 
 Note that the [drag handle field](ListGrid_1.md#attr-listgriddraghandlefield) will never be shown unless [ListGrid.canReorderRecords](ListGrid_1.md#attr-listgridcanreorderrecords) or [ListGrid.canDragRecordsOut](ListGrid_1.md#attr-listgridcandragrecordsout) are true.
 

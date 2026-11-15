@@ -27,6 +27,10 @@ In general, a SmartClient application written with complete ignorance of mobile 
 
 If you would like to check whether a specific device falls under normal Support, or would like a quote for a Support plan that would include a specific device or platform, [contact Isomorphic here](http://smartclient.com/company/contact.jsp).
 
+#### Touch screens on desktop operating systems
+
+Windows touch-screen machines such as Microsoft Surface, Chromebooks with touch screens, and Linux tablets or touch-screen laptops run a desktop browser that may also have a mouse or touchpad attached. SmartClient handles these with [dual input\\n mode](dualInput.md#kb-topic-dual-input-mode), which accepts mouse and touch events side by side; the rest of this topic concerns phones and tablets running a mobile OS, where only touch input exists.
+
 #### Adaptive Components
 
 Many SmartClient components automatically change their behavior and/or appearance when used with touch devices in general, or tablets and handsets specifically. There are too many adaptations to comprehensively list, but some of the more obvious behaviors are listed below:

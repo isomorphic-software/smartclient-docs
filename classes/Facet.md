@@ -226,9 +226,11 @@ For tree facets, whether expand/collapse controls should be shown.
 ## Attr: Facet.dateGranularity
 
 ### Description
-For a facet on a date or datetime field, the size of the date buckets this facet's values represent. Declaring it makes a [FacetChart](FacetChart.md#class-facetchart) plot one aggregated value per bucket - twelve columns for a year of daily rows, say - instead of one per distinct date, and labels each bucket by its period (`Jun 2026` rather than `2026-06-01`).
+For a facet on a date or datetime field, the [grouping mode](../kb_topics/builtinGroupingModes.md#kb-topic-built-in-grouping-modes) that decides which bucket each of this facet's values falls in. Declaring it makes a [FacetChart](FacetChart.md#class-facetchart) plot one aggregated value per bucket - twelve columns for a year of daily rows, say - instead of one per distinct date, and labels each bucket the way a [ListGrid](ListGrid_1.md#class-listgrid) labels the same group.
 
-Each bucket's facet value is the period's start date, so clicking a bucket in a chart whose selection is shared selects the whole period rather than that one date.
+A mode naming one stretch of the calendar, such as `"month"`, gives a bucket per calendar month, so June 2025 and June 2026 are separate. A mode gathering a recurring position instead, such as `"dayOfWeek"`, gives a bucket per weekday across the whole dataset - seven columns however many years the data spans.
+
+Where a bucket spans a single period, its facet value is that period's start date, so clicking the bucket in a chart whose selection is shared selects the whole period rather than that one date. A recurring-position bucket spans no single period, so it publishes its own value alone.
 
 Aggregation reuses the measure field's [DataSourceField.summaryFunction](DataSourceField.md#attr-datasourcefieldsummaryfunction), defaulting to `"sum"`. The chart's [data](Chart.md#attr-chartdata) is never modified: bucket records are derived, so a [ResultSet](ResultSet.md#class-resultset) handed to the chart stays intact and the raw rows remain available.
 

@@ -266,6 +266,26 @@ Retrieve a simpleType definition by type name
 `[SimpleType](#type-simpletype)` — simple type object
 
 ---
+## ClassMethod: SimpleType.isGroupingMode
+
+### Description
+Whether a type offers the named [grouping mode](../kb_topics/builtinGroupingModes.md#kb-topic-built-in-grouping-modes).
+
+Worth asking before grouping by a mode a caller supplied, since a mode a type does not offer does not fail: the value falls through ungrouped, which reads as the grouping having been ignored rather than as a mistake.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| mode | [String](#type-string) | false | — | grouping mode to test |
+| type | [SimpleType](#type-simpletype)|[String](#type-string) | false | — | the type, or its name |
+| dataSource | [DataSource](#type-datasource) | true | — | DataSource to resolve a named type against |
+
+### Returns
+
+`[boolean](../reference.md#type-boolean)` — true if the type offers that mode
+
+---
 ## ClassMethod: SimpleType.setDefaultSummaryFunction
 
 ### Description
@@ -304,6 +324,22 @@ You may override built-in summary functions; however, the summary value type sho
 and return a summary value for the field across the records. |
 
 ---
+## ClassMethod: SimpleType.parseGroupingSpec
+
+### Description
+Splits a grouping spec of the form `"fieldName::mode"` into the field name and the [grouping mode](../kb_topics/builtinGroupingModes.md#kb-topic-built-in-grouping-modes) it names. A string naming no mode is a plain field name, and yields a null `groupingMode`.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| spec | [String](#type-string) | false | — | grouping spec, or a plain field name |
+
+### Returns
+
+`[Object](../reference_2.md#type-object)` — object carrying `fieldName` and `groupingMode`
+
+---
 ## ClassMethod: SimpleType.getDefaultSummaryFunction
 
 ### Description
@@ -318,6 +354,22 @@ Retrieves the default summary function for some field type.
 ### Returns
 
 `[SummaryFunction](../reference_2.md#type-summaryfunction)` — default summary function for this data type.
+
+---
+## ClassMethod: SimpleType.getGroupingPeriod
+
+### Description
+The period a [grouping mode](../kb_topics/builtinGroupingModes.md#kb-topic-built-in-grouping-modes) names, as accepted by [DateUtil.getStartOf](DateUtil.md#classmethod-dateutilgetstartof), or null for a mode that gathers a recurring position in the calendar rather than one stretch of it - `"month"`, which groups every January together whatever the year, has no period, where `"monthAndYear"` has `"m"`.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| mode | [String](#type-string) | false | — | grouping mode |
+
+### Returns
+
+`[String](#type-string)` — DateUtil period, or null if the mode names no single period
 
 ---
 ## ClassMethod: SimpleType.applySummaryFunction

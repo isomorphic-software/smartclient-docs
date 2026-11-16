@@ -1099,7 +1099,7 @@ If minor tick marks are also shown, their length is controlled by [FacetChart.mi
 ## Attr: FacetChart.dataMargin
 
 ### Description
-For rectangular charts (bar, column, line), margin around the inside of the main chart area, so that data elements are not flush to edge.
+For rectangular charts (bar, column, line), margin around the inside of the main chart area, so that data elements are not flush to edge. The default follows [control density](#attr-facetchartchartrectmargin).
 
 ### Groups
 
@@ -1155,6 +1155,8 @@ For example, the setting \[1, 2.5, 5\] means that, for a chart showing values th
 
 ### Description
 Margin around the main chart rect: between title and chart, between chart and axis labels, and chart rect and right edge of chart.
+
+Chart spacing defaults grow with the control-size increase applied through [Canvas.resizeControls](Canvas.md#classmethod-canvasresizecontrols). This applies to this margin, [FacetChart.dataMargin](#attr-facetchartdatamargin), [FacetChart.barMargin](#attr-facetchartbarmargin), [FacetChart.legendMargin](#attr-facetchartlegendmargin), [FacetChart.legendPadding](#attr-facetchartlegendpadding), [FacetChart.legendItemPadding](#attr-facetchartlegenditempadding), [FacetChart.legendTextPadding](#attr-facetchartlegendtextpadding), and the spacing between legend rows. Skins may supply different base values; explicit instance settings override the density-scaled defaults.
 
 ### Groups
 
@@ -1280,7 +1282,7 @@ If set, the [mean line](#attr-facetchartshowexpectedvalueline), [standard deviat
 ## Attr: FacetChart.legendMargin
 
 ### Description
-Space between the legend and the chart rect or axis labels (whatever the legend is adjacent to.
+Space between the legend and the chart rect or axis labels (whatever the legend is adjacent to). The default follows [control density](#attr-facetchartchartrectmargin).
 
 ### Groups
 
@@ -2096,7 +2098,7 @@ The value provided should be a value in the range of the facet for the X axis, f
 ## Attr: FacetChart.legendTextPadding
 
 ### Description
-Padding between color swatch and its label.
+Padding between color swatch and its label. The default follows [control density](#attr-facetchartchartrectmargin).
 
 ### Groups
 
@@ -2165,7 +2167,7 @@ Note that the FacetChart handles cases where the sum total of all probabilities 
 ## Attr: FacetChart.barMargin
 
 ### Description
-Distance between bars. May be reduced if bars would be smaller than [FacetChart.minBarThickness](#attr-facetchartminbarthickness).
+Distance between bars. May be reduced if bars would be smaller than [FacetChart.minBarThickness](#attr-facetchartminbarthickness). The default is 3 pixels at Dense density and increases by the control-size increase applied through [Canvas.resizeControls](Canvas.md#classmethod-canvasresizecontrols). An explicit instance value overrides the density-scaled default. See [FacetChart.chartRectMargin](#attr-facetchartchartrectmargin) for other spacing defaults that follow control density.
 
 ### Groups
 
@@ -2619,7 +2621,7 @@ In practice, size values should be non-negative. When [FacetChart.logScalePointS
 ## Attr: FacetChart.legendPadding
 
 ### Description
-Padding around the legend as a whole.
+Padding around the legend as a whole. The default follows [control density](#attr-facetchartchartrectmargin).
 
 ### Groups
 
@@ -3097,7 +3099,7 @@ Whether to show gradation labels in radar charts.
 ### Description
 Maximum width for a data label on the category axis, where [FacetChart.canWrapLabels](#attr-facetchartcanwraplabels) allows wrapping at all. Has no effect unless that property is set.
 
-A label wider than this is wrapped onto as many lines as it needs, breaking at spaces, up to [FacetChart.maxDataLabelLines](#attr-facetchartmaxdatalabellines). A single word longer than this width is never broken, so it still renders wider than the maximum. Left unset, the chart derives a width from the labels themselves.
+A label wider than this is wrapped onto as many lines as it needs, breaking at spaces, up to [FacetChart.maxDataLabelLines](#attr-facetchartmaxdatalabellines). A single word longer than this width is never broken, so it still renders wider than the maximum. Left unset, a horizontal category axis derives a width from the labels themselves; a Bar chart leaves its side labels unwrapped.
 
 Wrapping is one of the options the chart weighs when it lays the axis out, alongside [rotating the labels](#attr-facetchartrotatelabels): a wrapped label is narrower, so more labels fit side by side, at the cost of the extra lines' height. The chart picks whichever fits the space it has, so setting this does not force wrapping where the labels already fit on one line.
 
@@ -3516,7 +3518,7 @@ Where [FacetChart.rotateLabels](#attr-facetchartrotatelabels) is "always", label
 
 Because the single-line form is measured alongside the wrapped one, a label that already fits is never wrapped, and a chart with room to spare wraps onto fewer lines than its budget allows. Where no available form fits, the axis draws only some of the labels - see [FacetChart.labelCollapseMode](#attr-facetchartlabelcollapsemode) - so clearing this property on a chart whose labels cannot be rotated means they are dropped instead of wrapped.
 
-Wrapping applies to the labels below the plot, which own the height it needs: not to a Bar chart's category labels at the side, not to [inlined](#attr-facetchartshowinlinelabels) labels, and not where an inner data-label facet already stacks two rows of labels under the axis. A single word too long for the width is never broken, so it still renders at its full width.
+Wrapping applies to the labels below the plot, which own the height it needs. On a Bar chart, category labels at the side wrap only when [FacetChart.maxDataLabelWidth](#attr-facetchartmaxdatalabelwidth) is explicitly set. Wrapping does not apply to [inlined](#attr-facetchartshowinlinelabels) labels, or where an inner data-label facet already stacks two rows under the axis. A word too long for the width is never broken, so it still renders at its full width.
 
 ### Groups
 
@@ -3779,7 +3781,7 @@ Whether to show an additional legend underneath the chart to indicate color valu
 ## Attr: FacetChart.legendItemPadding
 
 ### Description
-Padding between each swatch and label pair.
+Padding between each swatch and label pair. The default follows [control density](#attr-facetchartchartrectmargin).
 
 ### Groups
 

@@ -76,7 +76,7 @@ If automatic cache synchronization isn't working, troubleshoot the problem using
 
 Regarding [operationIds](OperationBinding.md#attr-operationbindingoperationid) and how they affect caching: cache synchronization is **not** scoped by operationId. Every ResultSet on the DataSource is notified of an update, whatever operationId its own data was fetched with, so separate operationIds do not give a component a private cache.
 
-[cacheSyncOperation](#attr-operationbindingcachesyncoperation) selects the fetch the _server_ uses to re-read the updated row; it does not limit which caches the result is then applied to.
+[cacheSyncOperation](OperationBinding.md#attr-operationbindingcachesyncoperation) selects the fetch the _server_ uses to re-read the updated row; it does not limit which caches the result is then applied to.
 
 This matters where components on one DataSource fetch different sets of fields, since a record from one operation is applied to all of them - see [DSRequest.cacheSyncData](DSRequest.md#attr-dsrequestcachesyncdata) to apply only the fields that changed, or [ResultSet.dropCacheOnUpdate](#attr-resultsetdropcacheonupdate) and [DSResponse.invalidateCache](DSResponse.md#attr-dsresponseinvalidatecache) where a component should refetch instead.
 

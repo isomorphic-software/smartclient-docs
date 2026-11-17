@@ -4,6 +4,107 @@
 
 ---
 
+## Method: Canvas.getInnerWidth
+
+### Description
+Returns the amount of space available for absolutely positioned child widget(s) or absolutely positioned HTML content, without introducing clipping, scrolling or overflow.
+
+This is the space within the viewport of the widget (including padding, but excluding margins, borders or scrollbars) rendered at its specified size.
+
+See [gettingCanvasSize](../kb_topics/gettingCanvasSize.md#kb-topic-determining-the-size-of-a-drawn-canvas)
+
+### Returns
+
+`[number](#type-number)` — inner width of the widget in pixels
+
+### Groups
+
+- sizing
+
+### See Also
+
+- [Canvas.getInnerHeight](Canvas_1.md#method-canvasgetinnerheight)
+- [Canvas.getInnerContentHeight](Canvas_1.md#method-canvasgetinnercontentheight)
+- [Canvas.getInnerContentWidth](#method-canvasgetinnercontentwidth)
+
+**Flags**: A
+
+---
+## Method: Canvas.setLeavePageSpace
+
+### Description
+Setter for [leavePageSpace](Canvas_1.md#attr-canvasleavepagespace).
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| newPageSpace | [Integer](../reference_2.md#type-integer) | false | — | new value for `leavePageSpace`. |
+
+### Groups
+
+- positioning
+
+**Flags**: A
+
+---
+## Method: Canvas.updateHover
+
+### Description
+If this canvas is currently showing a hover (see [Canvas.handleHover](Canvas_1.md#method-canvashandlehover)), this method can be called to update the HTML contents of the hover. Has no effect if this widget is showing [hover-components instead of simple HTML](Canvas_1.md#attr-canvasshowhovercomponents), or if the hover canvas is not showing for this widget.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| hoverHTML | [String](#type-string) | true | — | Option to specify new HTML for the hover. If not passed, the result of [this.getHoverHTML()](Canvas_1.md#method-canvasgethoverhtml) will be used instead. Note that if the hover HTML is empty the hover will be hidden. |
+
+### Groups
+
+- hovers
+
+**Flags**: A
+
+---
+## Method: Canvas.keyDown
+
+### Description
+Executed when a key is pressed on a focusable widget ([Canvas.canFocus](Canvas_1.md#attr-canvascanfocus): true).
+
+Use [EventHandler.getKey](EventHandler.md#classmethod-eventhandlergetkey) to find out the [keyName](../reference_2.md#type-keyname) of the key that was pressed, and use [EventHandler.shiftKeyDown](EventHandler.md#classmethod-eventhandlershiftkeydown) and related functions to determine whether modifier keys were down.
+
+### Returns
+
+`[Boolean](#type-boolean)` — false to prevent this event from bubbling to this widget's parent, true or undefined to bubble.
+
+### Groups
+
+- widgetEvents
+
+### See Also
+
+- [Canvas.canFocus](Canvas_1.md#attr-canvascanfocus)
+
+**Flags**: A
+
+---
+## Method: Canvas.removePeer
+
+### Description
+Remove a peer from this Canvas
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| peer | [Canvas](#type-canvas) | false | — | Peer to be removed from this canvas |
+| name | [String](#type-string) | true | — | If this peer was assigned a name when added via addPeer(), it should be passed in here to ensure no reference is kept to the peer |
+
+### Groups
+
+- containment
+
+---
 ## Method: Canvas.moved
 
 ### Description
@@ -243,7 +344,7 @@ See [gettingCanvasSize](../kb_topics/gettingCanvasSize.md#kb-topic-determining-t
 
 - [Canvas.getInnerContentHeight](Canvas_1.md#method-canvasgetinnercontentheight)
 - [Canvas.getInnerHeight](Canvas_1.md#method-canvasgetinnerheight)
-- [Canvas.getInnerWidth](Canvas_1.md#method-canvasgetinnerwidth)
+- [Canvas.getInnerWidth](#method-canvasgetinnerwidth)
 
 **Flags**: A
 

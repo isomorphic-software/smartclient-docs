@@ -45,6 +45,8 @@ If this attribute is set, it serves as an initial default.
 
 If this attribute is not set, the default for most built-in icons, it will default to the full-path represented by the `stockIcon.fromSrc`.
 
+This attribute may also name another StockIcon, with or without extra settings - `"Cancel"` or `"Cancel:size:12,12"` - making this icon an alias for that one. An alias renders whatever its target currently renders, and keeps doing so as a skin or an [IconSet](../reference.md#object-iconset) remaps the target, so a set of icons that should share artwork can name one of their number instead of each repeating its media. Settings the alias adds are applied to the target's src, and settings supplied where the icon is _used_ are applied after those. A chain of aliases is followed to the media at its end; a chain that loops is logged and left unresolved.
+
 You may set this attribute to the special value "empty" to provide a StockIcon which has no mapping and will not render any HTML by default, unless you assign a different src via a call to [Media.updateIconMappings](Media.md#classmethod-mediaupdateiconmappings) or in an [IconSet](../reference.md#object-iconset) passed to [Media.useMedia](Media.md#classmethod-mediausemedia). In this way, if one skin applies a src for this stockIcon, it will be shown - if another skin doesn't apply a src, it won't render HTML at all. For example, a Button would not show empty space where the icon should be.
 
 ### Groups

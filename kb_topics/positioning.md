@@ -18,7 +18,7 @@ Horizontal and vertical location on the page
 - [Canvas.setLeft](../classes/Canvas_2.md#method-canvassetleft)
 - [Canvas.getTop](../classes/Canvas_1.md#method-canvasgettop)
 - [Canvas.setTop](../classes/Canvas_1.md#method-canvassettop)
-- [Canvas.setLeavePageSpace](../classes/Canvas_1.md#method-canvassetleavepagespace)
+- [Canvas.setLeavePageSpace](../classes/Canvas_2.md#method-canvassetleavepagespace)
 - [Canvas.getRight](../classes/Canvas_1.md#method-canvasgetright)
 - [Canvas.getBottom](../classes/Canvas_1.md#method-canvasgetbottom)
 - [Canvas.getScrollLeft](../classes/Canvas_1.md#method-canvasgetscrollleft)

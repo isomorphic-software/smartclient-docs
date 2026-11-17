@@ -123,7 +123,7 @@ Controls whether text clipping uses per-cell `ctx.measureText()` or average char
 
 When false (the default), text width is estimated from a pre-measured average character width — O(1) per cell with no canvas API calls. This is fast but imprecise: some cells may show slightly more or less text than the HTML grid. The [CanvasGrid.clipFillRatio](#attr-canvasgridclipfillratio) tuning knob controls how aggressively cells are filled.
 
-When true, `ctx.measureText()` is called per cell for pixel-perfect text truncation matching the HTML grid. Cells whose text certainly fits (based on maxCharWidth) skip the call. Cost: +10-14% total render time (see the Canvas PreRender Performance IDocument in CanvasGrid.js for detailed measurements).
+When true, `ctx.measureText()` is called per cell for pixel-perfect text truncation matching the HTML grid. Cells whose text certainly fits (based on maxCharWidth) skip the call. Cost: +10-14% total render time.
 
 ### See Also
 

@@ -651,7 +651,7 @@ Returns a live [EditContext](EditContext.md#class-editcontext) reflecting this P
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| settings | [Object](../reference_2.md#type-object) | true | — | Optional settings; `settings.tree` supplies an already-computed process tree (from [Process.getProcessTree](#method-processgetprocesstree)) to reuse, rather than retracing it - see this method's own class IDocument for why retracing a second time on the same live process can be unsafe. |
+| settings | [Object](../reference_2.md#type-object) | true | — | Optional settings; `settings.tree` supplies an already-computed process tree (from [Process.getProcessTree](#method-processgetprocesstree)) to reuse, rather than retracing it. |
 
 ### Returns
 

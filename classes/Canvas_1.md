@@ -1267,6 +1267,18 @@ See [containment](../kb_topics/containment.md#kb-topic-component-containment-and
 **Flags**: IRA
 
 ---
+## Attr: Canvas.exportConfigIncludeTitle
+
+### Description
+Heading above the component checklist in the [export configuration dialog](#method-canvasshowexportconfigdialog).
+
+### Groups
+
+- i18nMessages
+
+**Flags**: IR
+
+---
 ## Attr: Canvas.animateRectTime
 
 ### Description
@@ -1299,6 +1311,18 @@ CSS class used to apply additional styles to this canvas when [Canvas.showPendin
 The default `pendingMarkerStyle`, _pendingMarker_, renders a small triangle in the top-left of the Canvas. You can modify this class or provide a custom one to achieve a different display.
 
 **Flags**: IRW
+
+---
+## Attr: Canvas.exportConfigTitleFieldTitle
+
+### Description
+Title of the workbook-title field in the [export configuration dialog](#method-canvasshowexportconfigdialog).
+
+### Groups
+
+- i18nMessages
+
+**Flags**: IR
 
 ---
 ## Attr: Canvas.menuConstructor
@@ -2236,7 +2260,7 @@ Using this settings differs from simply disabling wrapping via [hoverWrap:false]
 ### Description
 Array of all Canvii that are peers of this Canvas.
 
-Use [Canvas.addPeer](#method-canvasaddpeer) and [Canvas.removePeer](#method-canvasremovepeer) to add and remove peers after a Canvas has been created/drawn.
+Use [Canvas.addPeer](#method-canvasaddpeer) and [Canvas.removePeer](Canvas_2.md#method-canvasremovepeer) to add and remove peers after a Canvas has been created/drawn.
 
 See [containment](../kb_topics/containment.md#kb-topic-component-containment-and-hierarchy) for an overview of master/peer relationships.
 
@@ -2761,6 +2785,18 @@ Default acceleration function for performing an animated move and resize. If uns
 - animation
 
 **Flags**: IRWA
+
+---
+## Attr: Canvas.exportConfigFilenameFieldTitle
+
+### Description
+Title of the download-filename field in the [export configuration dialog](#method-canvasshowexportconfigdialog). The `.xlsx` extension is appended automatically and shown as the field's hint.
+
+### Groups
+
+- i18nMessages
+
+**Flags**: IR
 
 ---
 ## Attr: Canvas.maxZoomOverflowError
@@ -4092,6 +4128,18 @@ This attribute denotes the name of a property to use as a [Canvas.getDefiningPro
 **Flags**: IRWA
 
 ---
+## Attr: Canvas.exportConfigCancelButtonTitle
+
+### Description
+Title of the cancelling button in the [export configuration dialog](#method-canvasshowexportconfigdialog).
+
+### Groups
+
+- i18nMessages
+
+**Flags**: IR
+
+---
 ## Attr: Canvas.deferActionConversion
 
 ### Description
@@ -4327,6 +4375,18 @@ Prompt displayed in hover canvas if [showHover](#attr-canvasshowhover) is true.
 **Flags**: IRW
 
 ---
+## Attr: Canvas.exportConfigExportButtonTitle
+
+### Description
+Title of the confirming button in the [export configuration dialog](#method-canvasshowexportconfigdialog).
+
+### Groups
+
+- i18nMessages
+
+**Flags**: IR
+
+---
 ## Attr: Canvas.dragType
 
 ### Description
@@ -4438,6 +4498,18 @@ If not specified, the framework applies these defaults:
 ### See Also
 
 - [contentsEmbeddedComponents](../kb_topics/contentsEmbeddedComponents.md#kb-topic-embedded-components-in-contents)
+
+**Flags**: IR
+
+---
+## Attr: Canvas.exportConfigDialogTitle
+
+### Description
+Title of the dialog shown by [Canvas.showExportConfigDialog](#method-canvasshowexportconfigdialog).
+
+### Groups
+
+- i18nMessages
 
 **Flags**: IR
 
@@ -5031,6 +5103,18 @@ The [Canvas.dragMaskType](#attr-canvasdragmasktype) property controls what kind 
 - dragdrop
 
 **Flags**: IRW
+
+---
+## Attr: Canvas.selectionSeeCoverMessage
+
+### Description
+Per-sheet "Filtered by:" wording for a published selection whose identities are listed in full on the cover sheet - the sheet carries this short pointer instead of repeating the list. Variables: `dataSourceTitle` (the selected DataSource's title) and `count` (how many rows are selected).
+
+### Groups
+
+- i18nMessages
+
+**Flags**: IR
 
 ---
 ## ClassMethod: Canvas.getSnapPosition
@@ -6770,7 +6854,7 @@ See [gettingCanvasSize](../kb_topics/gettingCanvasSize.md#kb-topic-determining-t
 
 ### See Also
 
-- [Canvas.getInnerWidth](#method-canvasgetinnerwidth)
+- [Canvas.getInnerWidth](Canvas_2.md#method-canvasgetinnerwidth)
 - [Canvas.getInnerContentHeight](#method-canvasgetinnercontentheight)
 - [Canvas.getInnerContentWidth](Canvas_2.md#method-canvasgetinnercontentwidth)
 
@@ -7392,7 +7476,7 @@ See [gettingCanvasSize](../kb_topics/gettingCanvasSize.md#kb-topic-determining-t
 
 - [Canvas.getInnerContentWidth](Canvas_2.md#method-canvasgetinnercontentwidth)
 - [Canvas.getInnerHeight](#method-canvasgetinnerheight)
-- [Canvas.getInnerWidth](#method-canvasgetinnerwidth)
+- [Canvas.getInnerWidth](Canvas_2.md#method-canvasgetinnerwidth)
 
 **Flags**: A
 
@@ -7466,6 +7550,28 @@ Remove a candidate from [Canvas.snapAlignCandidates](#attr-canvassnapaligncandid
 ### Groups
 
 - snapGridDragging
+
+---
+## Method: Canvas.showExportConfigDialog
+
+### Description
+Opens a dialog letting the user adjust the workbook title and filename and choose which components to include, then runs [Canvas.exportDescendantData](#method-canvasexportdescendantdata) with those choices. The Export button is focused when the dialog opens, so a single keypress accepts the defaults and exports exactly what `exportDescendantData()` would have.
+
+The checklist offers every component the export could include - components opted out via [shouldExport](DataBoundComponent.md#attr-databoundcomponentshouldexport) appear unchecked, so a run can include them. **Every choice applies to that run only**: nothing in the dialog modifies the components.
+
+`settings` supplies the same defaults `exportDescendantData()` takes; the dialog's values override its `title`, `exportFilename` and `components`. If the user cancels, no export runs and `settings.callback` does not fire.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| settings | [MultiSheetExportSettings](#type-multisheetexportsettings) | true | — | export defaults, as for [Canvas.exportDescendantData](#method-canvasexportdescendantdata) |
+
+### Groups
+
+- descendantDataExport
+
+**Flags**: A
 
 ---
 ## Method: Canvas.bringToFront
@@ -9968,106 +10074,5 @@ Destroyed components are automatically excluded since they are removed from the 
 *   `source` ([Canvas](#class-canvas) or [FormItem](FormItem.md#class-formitem)) - the component that owns the event handler
 *   `eventName` (String) - the name of the event handler property (e.g. "click")
 *   `event` (Object) - the Action or Workflow definition (the original expression passed to the event handler)
-
----
-## Method: Canvas.getInnerWidth
-
-### Description
-Returns the amount of space available for absolutely positioned child widget(s) or absolutely positioned HTML content, without introducing clipping, scrolling or overflow.
-
-This is the space within the viewport of the widget (including padding, but excluding margins, borders or scrollbars) rendered at its specified size.
-
-See [gettingCanvasSize](../kb_topics/gettingCanvasSize.md#kb-topic-determining-the-size-of-a-drawn-canvas)
-
-### Returns
-
-`[number](#type-number)` — inner width of the widget in pixels
-
-### Groups
-
-- sizing
-
-### See Also
-
-- [Canvas.getInnerHeight](#method-canvasgetinnerheight)
-- [Canvas.getInnerContentHeight](#method-canvasgetinnercontentheight)
-- [Canvas.getInnerContentWidth](Canvas_2.md#method-canvasgetinnercontentwidth)
-
-**Flags**: A
-
----
-## Method: Canvas.setLeavePageSpace
-
-### Description
-Setter for [leavePageSpace](#attr-canvasleavepagespace).
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| newPageSpace | [Integer](../reference_2.md#type-integer) | false | — | new value for `leavePageSpace`. |
-
-### Groups
-
-- positioning
-
-**Flags**: A
-
----
-## Method: Canvas.updateHover
-
-### Description
-If this canvas is currently showing a hover (see [Canvas.handleHover](#method-canvashandlehover)), this method can be called to update the HTML contents of the hover. Has no effect if this widget is showing [hover-components instead of simple HTML](#attr-canvasshowhovercomponents), or if the hover canvas is not showing for this widget.
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| hoverHTML | [String](#type-string) | true | — | Option to specify new HTML for the hover. If not passed, the result of [this.getHoverHTML()](#method-canvasgethoverhtml) will be used instead. Note that if the hover HTML is empty the hover will be hidden. |
-
-### Groups
-
-- hovers
-
-**Flags**: A
-
----
-## Method: Canvas.keyDown
-
-### Description
-Executed when a key is pressed on a focusable widget ([Canvas.canFocus](#attr-canvascanfocus): true).
-
-Use [EventHandler.getKey](EventHandler.md#classmethod-eventhandlergetkey) to find out the [keyName](../reference_2.md#type-keyname) of the key that was pressed, and use [EventHandler.shiftKeyDown](EventHandler.md#classmethod-eventhandlershiftkeydown) and related functions to determine whether modifier keys were down.
-
-### Returns
-
-`[Boolean](#type-boolean)` — false to prevent this event from bubbling to this widget's parent, true or undefined to bubble.
-
-### Groups
-
-- widgetEvents
-
-### See Also
-
-- [Canvas.canFocus](#attr-canvascanfocus)
-
-**Flags**: A
-
----
-## Method: Canvas.removePeer
-
-### Description
-Remove a peer from this Canvas
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| peer | [Canvas](#type-canvas) | false | — | Peer to be removed from this canvas |
-| name | [String](#type-string) | true | — | If this peer was assigned a name when added via addPeer(), it should be passed in here to ensure no reference is kept to the peer |
-
-### Groups
-
-- containment
 
 ---

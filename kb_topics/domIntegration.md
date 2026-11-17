@@ -62,7 +62,7 @@ Also by default, your component will redraw() if it is resized. In the example a
 
 If you do not redraw HTML on resize, you either have to write the HTML in a way that makes it flow into available space (width/height 100% may be enough here) **or** you need to manually resize the DOM element when the [resized event](../classes/Canvas_1.md#method-canvasresized) fires.
 
-In the latter case, you should adjust the size of the DOM element to match the [inner width](../classes/Canvas_1.md#method-canvasgetinnerwidth) and [inner height](../classes/Canvas_1.md#method-canvasgetinnerheight) of the containing Canvas. The "inner" dimensions are the dimensions after border and margins have been subtracted, so this will work even if a border is added to your Canvas subclass via CSS or [Canvas.setBorder](../classes/Canvas_1.md#method-canvassetborder).
+In the latter case, you should adjust the size of the DOM element to match the [inner width](../classes/Canvas_2.md#method-canvasgetinnerwidth) and [inner height](../classes/Canvas_1.md#method-canvasgetinnerheight) of the containing Canvas. The "inner" dimensions are the dimensions after border and margins have been subtracted, so this will work even if a border is added to your Canvas subclass via CSS or [Canvas.setBorder](../classes/Canvas_1.md#method-canvassetborder).
 
 #### Other redraws
 

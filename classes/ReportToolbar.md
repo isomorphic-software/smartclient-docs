@@ -85,7 +85,7 @@ Hover hint shown on the report title while editing, cueing that a double-click r
 ## Method: ReportToolbar.exportReport
 
 ### Description
-Export the whole report (xlsx today).
+Export the whole report (xlsx today): opens the export configuration dialog (see [Canvas.showExportConfigDialog](Canvas_1.md#method-canvasshowexportconfigdialog)) over the report's defaults.
 
 ---
 ## Method: ReportToolbar.restoreAll

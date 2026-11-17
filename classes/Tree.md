@@ -1153,13 +1153,13 @@ Close all nodes under a particular node
 ## Method: Tree.getLoadState
 
 ### Description
-What is the loadState of a given folder?
+What is the loadState of a given folder? In a [multi-link tree](#method-treeismultilinktree) the load state belongs to the node, so every occurrence of the node shares it.
 
 ### Parameters
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| node | [TreeNode](#type-treenode) | false | — | folder in question |
+| node | [TreeNode](#type-treenode)|[NodeLocator](#type-nodelocator) | false | — | folder in question |
 
 ### Returns
 

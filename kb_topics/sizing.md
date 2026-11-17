@@ -49,7 +49,7 @@ Width and height of an object
 - [Canvas.getViewportWidth](../classes/Canvas_1.md#method-canvasgetviewportwidth)
 - [Canvas.getViewportHeight](../classes/Canvas_1.md#method-canvasgetviewportheight)
 - [Canvas.getInnerHeight](../classes/Canvas_1.md#method-canvasgetinnerheight)
-- [Canvas.getInnerWidth](../classes/Canvas_1.md#method-canvasgetinnerwidth)
+- [Canvas.getInnerWidth](../classes/Canvas_2.md#method-canvasgetinnerwidth)
 - [Canvas.getInnerContentHeight](../classes/Canvas_1.md#method-canvasgetinnercontentheight)
 - [Canvas.getInnerContentWidth](../classes/Canvas_2.md#method-canvasgetinnercontentwidth)
 - [Canvas.getVisibleWidth](../classes/Canvas_1.md#method-canvasgetvisiblewidth)

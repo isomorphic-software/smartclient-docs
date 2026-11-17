@@ -153,7 +153,7 @@ See the [keepParentsOnFilter](#attr-resulttreekeepparentsonfilter) overview for 
 ### Description
 Mode of fetching records from server.
 
-[Multi-link trees](Tree.md#method-treeismultilinktree) do not support fetchMode:"paged"; a multi-link ResultTree configured with it logs a warning and uses "basic" instead.
+[Multi-link trees](Tree.md#method-treeismultilinktree) support fetchMode:"paged" with [LinkDataFetchMode](../reference.md#type-linkdatafetchmode):"single": each page of a folder's children is one fetch of joined node-and-link records for that parent, ordered by [Tree.linkPositionField](Tree.md#attr-treelinkpositionfield) unless the tree is sorted. A folder that appears in several places has one set of children, so a page fetched in one place shows in all of them. Paging is not supported with linkDataFetchMode:"separate", [Tree.allowDuplicateChildren](Tree.md#attr-treeallowduplicatechildren) or [ResultTree.canReturnOpenFolders](#attr-resulttreecanreturnopenfolders); a multi-link ResultTree configured with fetchMode:"paged" and any of these logs a warning and uses "basic" instead.
 
 fetchMode:"local" implies that local filtering will always be performed. See [ResultTree.keepParentsOnFilter](#attr-resulttreekeepparentsonfilter) for additional filtering details.
 

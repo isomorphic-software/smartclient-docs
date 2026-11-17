@@ -17,7 +17,7 @@ In addition to parent-child relationships, SmartClient components support [maste
 ### Related
 
 - [Canvas.addChild](../classes/Canvas_2.md#method-canvasaddchild)
-- [Canvas.removePeer](../classes/Canvas_1.md#method-canvasremovepeer)
+- [Canvas.removePeer](../classes/Canvas_2.md#method-canvasremovepeer)
 - [Canvas.depeer](../classes/Canvas_1.md#method-canvasdepeer)
 - [Canvas.deparent](../classes/Canvas_2.md#method-canvasdeparent)
 - [Canvas.removeChild](../classes/Canvas_2.md#method-canvasremovechild)

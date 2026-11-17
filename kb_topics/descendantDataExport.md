@@ -14,6 +14,7 @@ Per-component control is declarative: [shouldExport](../classes/DataBoundCompone
 ### Related
 
 - [Canvas.exportDescendantData](../classes/Canvas_1.md#method-canvasexportdescendantdata)
+- [Canvas.showExportConfigDialog](../classes/Canvas_1.md#method-canvasshowexportconfigdialog)
 - [DataBoundComponent.getExportSpec](../classes/DataBoundComponent.md#method-databoundcomponentgetexportspec)
 - [MultiSheetExportSettings](../reference_2.md#object-multisheetexportsettings)
 - [ExportSpec](../reference_2.md#object-exportspec)

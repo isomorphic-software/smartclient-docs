@@ -785,6 +785,21 @@ See also [DataSource.transformResponse](DataSource_1.md#method-datasourcetransfo
 `[Array of Objects](#type-array-of-objects)` — the modified data, ready to be cached
 
 ---
+## Method: ResultSet.fetchFailed
+
+### Description
+Notification fired when a fetch issued by this ResultSet returns an error response ([DSResponse.status](DSResponse.md#attr-dsresponsestatus) below zero). [ResultSet.dataArrived](#method-resultsetdataarrived) does not fire for such a response, so an observer that waits for data would otherwise never learn that the fetch ended; this notification fires instead, with the response and the request that produced it.
+
+The framework's standard error handling (see [RPCManager.handleError](RPCManager.md#classmethod-rpcmanagerhandleerror)) still runs unless the fetch was issued with [DSRequest.willHandleError](RPCRequest.md#attr-rpcrequestwillhandleerror) set, in which case this notification is the only report of the failure.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| dsResponse | [DSResponse](#type-dsresponse) | false | — | the failed response |
+| dsRequest | [DSRequest](#type-dsrequest) | false | — | the request that produced it |
+
+---
 ## Method: ResultSet.allMatchingRowsCached
 
 ### Description

@@ -235,6 +235,51 @@ When re-rendering, keep in mind:
 
 For an example of re-rendering, see the ["Saved Search > Built-in" Showcase sample](https://smartclient.com/smartclient-latest/showcase/?id=gridSavedSearchBuiltin&react)
 
+#### Controlled props
+
+React's usual way to wire interactive state is a value prop paired with a change handler, with the value held in component state. The wrapper components support that pattern for every attribute that has a setter, as described above, and add it for the interactive state the framework keeps behind methods rather than attributes. The handler is the framework's own notification, with its documented arguments; the table gives the argument that carries the new value:
+
+| Component | Prop | Notification | Value argument |
+|---|---|---|---|
+| [TabSet](../classes/TabSet.md#class-tabset) | selectedTab | tabSelected | first, tabNum |
+| [ListGrid](../classes/ListGrid_1.md#class-listgrid), [TreeGrid](../classes/TreeGrid.md#class-treegrid), [TileGrid](../classes/TileGrid.md#class-tilegrid) | selectedRecords | selectionUpdated | second, recordList |
+| every [FormItem](../classes/FormItem.md#class-formitem) | value | changed | third, value |
+| [TreeGrid](../classes/TreeGrid.md#class-treegrid) | openState | folderOpened, folderClosed | read getOpenState() in the handler |
+| [Calendar](../classes/Calendar.md#class-calendar) | selectedEvents | selectedEventsChanged | first, selectedEvents |
+| [SectionStack](../classes/SectionStack.md#class-sectionstack) | expandedSections | expandedSectionsChanged | first, the expanded names |
+| [Window](../classes/Window.md#class-window) | minimized, maximized | minimizedChanged, maximizedChanged | first, the boolean |
+
+The last three notifications exist only on the React wrappers: they report the new state after a change made by the user or by application code, and are called once with the final state after a change the prop itself made. Records and events are matched by primary key where the DataSource has one, so a plain object carrying the key selects the cached record, and a selection present at mount is applied once the grid's data has arrived. `selectedEvents` requires [Calendar.canSelectEvents](../classes/Calendar.md#attr-calendarcanselectevents) on the Calendar.
+
+A prop is applied only when it differs from the widget's current state, so a handler that stores the value it was given causes no second notification and no loop, and a same-value re-render touches nothing. The prop is pushed only when it changes, as every attribute is: a handler that does not store the value leaves the widget and the component's state different until the prop next changes, and an imperative call such as `selectRecords()` or `editRecord()` stands until then as well. A prop removed on a later render leaves the widget as it is. A record in `selectedRecords` that lies outside the rows the grid has loaded is not selected, since the match is made against the cached records. The `updateOnReactComponentUpdate` attribute and [its global default](#classattr-reactupdateonreactcomponentupdate), described above, switch these props off along with every other re-render update. For example:
+
+```
+ const [selected, setSelected] = useState([]);
+ <ListGrid dataSource="supplyItem" autoFetchData selectedRecords={selected}
+           selectionUpdated={(record, list) => setSelected(list)}/>
+```
+Other attributes whose setter is named after them, such as `chosenDate` on [Calendar](../classes/Calendar.md#class-calendar), `currentPane` on [SplitPane](../classes/SplitPane.md#class-splitpane), `value` on [Slider](../classes/Slider.md#class-slider), `values` on [DynamicForm](../classes/DynamicForm.md#class-dynamicform) and `criteria` with `criteriaChanged` on a [ListGrid](../classes/ListGrid_1.md#class-listgrid) filter editor, already work this way with their own notifications.
+
+#### Hooks
+
+Three React hooks on the `SC` module let a function component use SmartClient without a wrapper component. They are built on `useSyncExternalStore` and so need React 18 or later; the wrapper components themselves run on React 17 as well.
+
+*   `SC.useRuleScope(path)` returns the value at a path of the enclosing [rule scope](../classes/Canvas_1.md#attr-canvasrulescope) and re-renders the component when it changes.
+*   `SC.useDataSource(id)` returns a DataSource by ID, loading it from the server when it is not present, with `loading` true until then.
+*   `SC.useFetch(dataSource, criteria, options)` fetches records through a DataSource for data rendered in the component's own markup, returning `records`, `loading`, `error`, the total `length`, the underlying `resultSet` and a `refresh()` function. The records come from a [ResultSet](../classes/ResultSet.md#class-resultset), the framework's cache, so an `addData()`, `updateData()` or `removeData()` anywhere in the application re-renders the component with the change, and a bound grid on the same DataSource shows the same rows; no invalidation code is needed. The ResultSet's first page is fetched by default; `options.range` selects other rows, `options.sortBy` orders them, and `options.requestProperties` configures every fetch, where [DSRequest.willHandleError](../classes/RPCRequest.md#attr-rpcrequestwillhandleerror) makes `error` the only report of a failed fetch.
+
+For example:
+```
+ function Capitals({ continent }) {
+     const { records, loading } =
+         SC.useFetch("worldDS", { continent }, { sortBy: "countryName" });
+     if (loading) return <p>Loading...</p>;
+     return <ul>{records.map(r =>
+         <li key={r.pk}>{r.capital}</li>)}</ul>;
+ }
+```
+A data grid remains the [ListGrid](../classes/ListGrid_1.md#class-listgrid) wrapper's job: it renders only the visible rows, loads on scroll and carries selection, editing and filtering. The hook is for data in the developer's own markup, where the alternative is a disconnected [DataSource.fetchData](../classes/DataSource_1.md#method-datasourcefetchdata) array outside the cache.
+
 #### Upgrading from releases before 15.0
 
 In releases before 15.0, a re-render did not update the SmartClient widgets unless a component set `updateOnReactComponentUpdate` or the application set [isc.React.updateOnReactComponentUpdate](#classattr-reactupdateonreactcomponentupdate). As of 15.0 that global setting defaults to `true`, so an application that re-renders wrapper components with changed attributes now has those changes applied to the widgets. An application that reconfigures widgets through refs while still rendering the original attributes would see those edits overwritten on the next render. To keep the earlier behavior for the whole application, set the global flag to `false` once, after the framework has loaded and before the first render:

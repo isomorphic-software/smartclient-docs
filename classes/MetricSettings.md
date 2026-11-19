@@ -9,9 +9,9 @@
 ### Description
 Whether shapes are filled, for example, whether a multi-series line chart appears as a stack of filled regions as opposed to just multiple lines.
 
-If unset, fills will be automatically used when there are multiple facets and stacking is active (so Line and Radar charts will show stacked regions).
+If unset, Area charts are filled. Other chart types use fills when there are multiple facets and [stacking](#attr-metricsettingsstacked) is active. Thus a Line chart defaults to unfilled when unstacked, but to filled when stacking multiple series.
 
-You can explicitly set filled:false to create multi-facet Line or Radar charts where translucent regions overlap, or filled:true to fill in a single-facet Line or Radar chart.
+Explicitly setting filled:false disables filling. Setting filled:true with stacked:false creates overlapping filled regions for multi-facet Line or Radar charts; translucency can make the overlapping regions visible. Setting filled:true also fills single-facet Line or Radar charts.
 
 ### Groups
 

@@ -6336,7 +6336,7 @@ Cache managers are not the only things affected. A [DynamicForm](DynamicForm.md#
 #### Complete records, or partial ones
 How much of a row a record has to describe is set by [DSRequest.cacheSyncData](DSRequest.md#attr-dsrequestcachesyncdata) or [DSResponse.cacheSyncData](DSResponse.md#attr-dsresponsecachesyncdata) - the request wins where both are set - and is `"full"` unless you say otherwise.
 
-In **"full"** mode each record _is_ the row. A cache manager replaces the cached row with the record supplied, so a field the record omits is **cleared** - omitting a field is how a response says that field is now null, which is why an omission cannot also mean "leave this one alone". An explicit null and an absent field therefore have the same effect on a grid. Pass an incomplete record in this mode and its missing fields are dropped from every [ResultSet](ResultSet.md#class-resultset) on the DataSource; a warning naming those fields is logged when this is detected.
+In **"full"** mode each record _is_ the row. A cache manager replaces the cached row with the record supplied, so a field the record omits is **cleared** - omitting a field is how a response says that field is now null, which is why an omission cannot also mean "leave this one alone". An explicit null and an absent field therefore have the same effect on a grid. Pass an incomplete record in this mode and its missing fields are dropped from every [ResultSet](ResultSet.md#class-resultset) on the DataSource; a warning naming those fields is logged when this is detected. The warning is for records you pass to this method yourself: the server's own responses to add and update operations are complete rows, and a SQL DataSource leaves out a field whose value is null, so those responses are applied without it.
 
 Still in "full" mode, a record whose primary keys match no cached row is **added** to any cache whose criteria it matches. If that record was incomplete, the cache gains an incomplete row, and the same record can end up complete in one grid and partial in another. Whether it is added at all depends on whether the criteria happen to reference fields the record carries, so an incomplete record in "full" mode is not reliably ignorable either.
 
@@ -6798,21 +6798,5 @@ Note that with SQLDataSource, `performCustomOperation` must be used if you plan 
 ### Groups
 
 - operations
-
----
-## Method: DataSource.getCriteriaJSONSchema
-
-### Description
-Returns a JSON Schema for an [AdvancedCriteria](../reference.md#object-advancedcriteria) against this DataSource. This is the JSON-Schema flavor of [DataSource.getCriteriaSchema](#method-datasourcegetcriteriaschema): it delegates to the existing method to obtain the criteria DataSource, then serializes it via [DataSource.asJSONSchema](#method-datasourceasjsonschema), augmenting the `fieldName` / `valuePath` enums with any cross-DS paths exposed by [jSONSchemaSettings.relatedDataSources](#jsonschemasettingsrelateddatasources).
-
-### Parameters
-
-| Name | Type | Optional | Default | Description |
-|------|------|----------|---------|-------------|
-| settings | [JSONSchemaSettings](#type-jsonschemasettings) | true | — | Optional settings. |
-
-### Returns
-
-`[Object](../reference_2.md#type-object)|[String](#type-string)` — JSON Schema.
 
 ---

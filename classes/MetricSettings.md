@@ -9,9 +9,9 @@
 ### Description
 Whether shapes are filled, for example, whether a multi-series line chart appears as a stack of filled regions as opposed to just multiple lines.
 
-If unset, fills will be automatically used when there are multiple facets and stacking is active (so Line and Radar charts will show stacked regions).
+If unset, Area charts are filled. Other chart types use fills when there are multiple facets and [stacking](#attr-metricsettingsstacked) is active. Thus a Line chart defaults to unfilled when unstacked, but to filled when stacking multiple series.
 
-You can explicitly set filled:false to create multi-facet Line or Radar charts where translucent regions overlap, or filled:true to fill in a single-facet Line or Radar chart.
+Explicitly setting filled:false disables filling. Setting filled:true with stacked:false creates overlapping filled regions for multi-facet Line or Radar charts; translucency can make the overlapping regions visible. Setting filled:true also fills single-facet Line or Radar charts.
 
 ### Groups
 
@@ -101,7 +101,7 @@ Properties for gradation lines
 ## Attr: MetricSettings.proportionalAxisLabel
 
 ### Description
-Title for this extra axis in [proportional rendering mode](#attr-metricsettingsproportional). If this property is omitted, uses the chart's current [FacetChart.proportionalAxisLabel](FacetChart.md#attr-facetchartproportionalaxislabel), including changes made after this axis was created. Explicit null and undefined values both override inheritance and suppress the label.
+Title for this extra axis in [proportional mode](#attr-metricsettingsproportional). If this property is omitted, uses the chart's current [FacetChart.proportionalAxisLabel](FacetChart.md#attr-facetchartproportionalaxislabel), including changes made after this axis was created. Explicit null and undefined values both override inheritance and suppress the label.
 
 Use [MetricSettings.clearProportionalAxisLabel](#method-metricsettingsclearproportionalaxislabel) to remove the override and restore inheritance. Calling [MetricSettings.setProportionalAxisLabel](#method-metricsettingssetproportionalaxislabel) with null or undefined clears the label, but does not remove the override.
 
@@ -241,7 +241,11 @@ For multi-facet charts, render data values as a proportion of the sum of all dat
 
 Gradation labels will be switched to show percentage instead of absolute values.
 
-This setting is valid only for Column, Bar, Area and Radar chart types and only in [stacked](#attr-metricsettingsstacked) mode. Stacked columns will be as tall as the chart rect and stacked bars will be as wide as the chart rect. Area and Radar charts will be completely filled except for facet values where all values are 0.
+Requires multiple series and [stacked](#attr-metricsettingsstacked) rendering. Supported chart types are Column, Bar, Area, Line, and Radar. Area, Line, and Radar charts must also use [filled](#attr-metricsettingsfilled) rendering, either explicitly or when filling is enabled by default. Logarithmic scaling and date-valued metrics are not supported. Axes sharing gradations must all support proportional mode.
+
+Filled regions make each series' proportion explicit through its colored area, rather than requiring viewers to interpret cumulative boundaries. With unfilled stacked lines, the last series' line would always lie at 100% wherever the total is positive, even when that series' own share changes. Its contribution would have to be inferred from the gap between that line and the preceding series' line.
+
+Stacked columns span the chart height and stacked bars span its width. Filled regions cover the full 0% to 100% range, except where all values are zero. If proportional mode is requested with incompatible settings, ordinary rendering is used and a warning is logged when the chart is drawn.
 
 **Flags**: IRW
 
@@ -291,7 +295,7 @@ Unless this block sets a `fontFamily`, these labels are drawn in ${isc.DocUtils.
 ## Attr: MetricSettings.showValueAxisLabel
 
 ### Description
-Whether to allow the [valueTitle](#attr-metricsettingsvaluetitle) (or, in the case of [proportional rendering mode](#attr-metricsettingsproportional), [MetricSettings.proportionalAxisLabel](#attr-metricsettingsproportionalaxislabel)) as a label on this extra value axis.
+Whether to allow the [valueTitle](#attr-metricsettingsvaluetitle) (or, in the case of [proportional mode](#attr-metricsettingsproportional), [MetricSettings.proportionalAxisLabel](#attr-metricsettingsproportionalaxislabel)) as a label on this extra value axis.
 
 Setting this property to false suppresses the label. A value of true or null allows the label to be shown, subject to the conditions described for [FacetChart.showValueAxisLabel](FacetChart.md#attr-facetchartshowvalueaxislabel). The label is also suppressed when [showAxis](#attr-metricsettingsshowaxis) is false.
 
@@ -433,7 +437,7 @@ Whether this extra value axis plots values while varying the facet values of jus
 ### Description
 A label for the data values on this extra axis. See [FacetChart.valueTitle](FacetChart.md#attr-facetchartvaluetitle).
 
-In [proportional rendering mode](#attr-metricsettingsproportional), the value axis label is determined by [MetricSettings.proportionalAxisLabel](#attr-metricsettingsproportionalaxislabel) instead of this property.
+In [proportional mode](#attr-metricsettingsproportional), the value axis label is determined by [MetricSettings.proportionalAxisLabel](#attr-metricsettingsproportionalaxislabel) instead of this property.
 
 **Flags**: IRW
 

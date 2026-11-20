@@ -849,6 +849,8 @@ In the case of a validation error, the callback will **not** be called by defaul
 
 **Note:** If a form is to be cleared after saving data, we recommend clearing the form from the callback rather than calling saveData() and then synchronously clearing the form. This gives users a chance to view and respond to any validation errors returned by the server. It is also required to ensure forms containing an [upload field](FileItem.md#class-fileitem), have a chance to upload the file to the server.
 
+For handling a save the server refuses because another user changed the record in the meantime, see [concurrentEdits](../kb_topics/concurrentEdits.md#kb-topic-handling-concurrent-edits-in-smartclient-datasources).
+
 ### Parameters
 
 | Name | Type | Optional | Default | Description |

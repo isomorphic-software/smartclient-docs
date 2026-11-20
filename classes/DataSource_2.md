@@ -4,6 +4,22 @@
 
 ---
 
+## Method: DataSource.getCriteriaJSONSchema
+
+### Description
+Returns a JSON Schema for an [AdvancedCriteria](../reference.md#object-advancedcriteria) against this DataSource. This is the JSON-Schema flavor of [DataSource.getCriteriaSchema](DataSource_1.md#method-datasourcegetcriteriaschema): it delegates to the existing method to obtain the criteria DataSource, then serializes it via [DataSource.asJSONSchema](DataSource_1.md#method-datasourceasjsonschema), augmenting the `fieldName` / `valuePath` enums with any cross-DS paths exposed by [jSONSchemaSettings.relatedDataSources](#jsonschemasettingsrelateddatasources).
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| settings | [JSONSchemaSettings](#type-jsonschemasettings) | true | — | Optional settings. |
+
+### Returns
+
+`[Object](../reference_2.md#type-object)|[String](#type-string)` — JSON Schema.
+
+---
 ## Method: DataSource.getPrimaryKeyFieldNames
 
 ### Description

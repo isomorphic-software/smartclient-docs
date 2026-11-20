@@ -388,7 +388,7 @@ Title for the `"Histogram"` item in the `"Chart Type"` submenu in the context me
 ## ClassAttr: FacetChart.proportionalContextMenuItemTitle
 
 ### Description
-Title for the `"Proportional"` option of the context menu for charts that support [proportional rendering mode](#attr-facetchartproportional).
+Title for the `"Proportional"` option of the context menu for charts that support [proportional mode](#attr-facetchartproportional).
 
 ### Groups
 
@@ -1536,7 +1536,7 @@ Not used if there is an inline facet, see [Chart.data](Chart.md#attr-chartdata).
 
 - [FacetChart.facetFields](#attr-facetchartfacetfields)
 
-**Flags**: IR
+**Flags**: IRW
 
 ---
 ## Attr: FacetChart.majorTickGradations
@@ -1552,7 +1552,7 @@ See also [FacetChart.majorTickTimeIntervals](#attr-facetchartmajorticktimeinterv
 
 - ticks
 
-**Flags**: IR
+**Flags**: IRW
 
 ---
 ## Attr: FacetChart.labelCollapseMode
@@ -2052,7 +2052,11 @@ For multi-facet charts, render data values as a proportion of the sum of all dat
 
 Gradation labels will be switched to show percentage instead of absolute values.
 
-This setting is valid only for Column, Bar, Area and Radar chart types and only in [stacked](#attr-facetchartstacked) mode. Stacked columns will be as tall as the chart rect and stacked bars will be as wide as the chart rect. Area and Radar charts will be completely filled except for facet values where all values are 0.
+Requires multiple series and [stacked](#attr-facetchartstacked) rendering. Supported chart types are Column, Bar, Area, Line, and Radar. Area, Line, and Radar charts must also use [filled](#attr-facetchartfilled) rendering, either explicitly or when filling is enabled by default. Logarithmic scaling and date-valued metrics are not supported. Axes sharing gradations must all support proportional mode.
+
+Filled regions make each series' proportion explicit through its colored area, rather than requiring viewers to interpret cumulative boundaries. With unfilled stacked lines, the last series' line would always lie at 100% wherever the total is positive, even when that series' own share changes. Its contribution would have to be inferred from the gap between that line and the preceding series' line.
+
+Stacked columns span the chart height and stacked bars span its width. Filled regions cover the full 0% to 100% range, except where all values are zero. If proportional mode is requested with incompatible settings, ordinary rendering is used and a warning is logged when the chart is drawn.
 
 **Flags**: IRW
 
@@ -2349,9 +2353,9 @@ Note that zIndex values should be integers between 0 and [FacetChart.maxDataZInd
 ## Attr: FacetChart.showValueAxisLabel
 
 ### Description
-Whether to allow the [FacetChart.valueTitle](#attr-facetchartvaluetitle) (or, in the case of [proportional rendering mode](#attr-facetchartproportional), the [FacetChart.proportionalAxisLabel](#attr-facetchartproportionalaxislabel)) as a label on the value axis.
+Whether to allow the [FacetChart.valueTitle](#attr-facetchartvaluetitle) (or, in the case of [proportional mode](#attr-facetchartproportional), the [FacetChart.proportionalAxisLabel](#attr-facetchartproportionalaxislabel)) as a label on the value axis.
 
-Setting this property to false suppresses the label. A value of true or null allows the label to be shown, but does not force it to appear: a value title (or [FacetChart.proportionalAxisLabel](#attr-facetchartproportionalaxislabel) in proportional rendering mode) must be available. Vertical value axis labels require the chart's Y-axis gradations to be shown. Value axis labels are not shown for non-rectangular charts (for example, Pie and Radar).
+Setting this property to false suppresses the label. A value of true or null allows the label to be shown, but does not force it to appear: a value title (or [FacetChart.proportionalAxisLabel](#attr-facetchartproportionalaxislabel) in proportional mode) must be available. Vertical value axis labels require the chart's Y-axis gradations to be shown. Value axis labels are not shown for non-rectangular charts (for example, Pie and Radar).
 
 ### Groups
 
@@ -2830,9 +2834,9 @@ Note that for rectangular charts the properties are for a [DrawLine](DrawLine.md
 ### Description
 Whether shapes are filled, for example, whether a multi-series line chart appears as a stack of filled regions as opposed to just multiple lines.
 
-If unset, fills will be automatically used when there are multiple facets and stacking is active (so Line and Radar charts will show stacked regions).
+If unset, Area charts are filled. Other chart types use fills when there are multiple facets and [stacking](#attr-facetchartstacked) is active. Thus a Line chart defaults to unfilled when unstacked, but to filled when stacking multiple series.
 
-You can explicitly set filled:false to create multi-facet Line or Radar charts where translucent regions overlap, or filled:true to fill in a single-facet Line or Radar chart.
+Explicitly setting filled:false disables filling. Setting filled:true with stacked:false creates overlapping filled regions for multi-facet Line or Radar charts; translucency can make the overlapping regions visible. Setting filled:true also fills single-facet Line or Radar charts.
 
 ### Groups
 
@@ -3472,7 +3476,7 @@ When [FacetChart.logScalePointSize](#attr-facetchartlogscalepointsize) is true, 
 ### Description
 A label for the data values, such as "Sales in Thousands", typically used as the label for the value axis.
 
-In [proportional rendering mode](#attr-facetchartproportional), the value axis label is determined by [FacetChart.proportionalAxisLabel](#attr-facetchartproportionalaxislabel) instead of this property.
+In [proportional mode](#attr-facetchartproportional), the value axis label is determined by [FacetChart.proportionalAxisLabel](#attr-facetchartproportionalaxislabel) instead of this property.
 
 ### Groups
 
@@ -3752,7 +3756,7 @@ Properties for background band
 ## Attr: FacetChart.proportionalAxisLabel
 
 ### Description
-Default title for the value axis label when the chart is in [proportional rendering mode](#attr-facetchartproportional). This title will be used unless the [legend facet](#method-facetchartgetlegendfacet) defines a [proportionalTitle](Facet.md#attr-facetproportionaltitle).
+Default title for the value axis label when the chart is in [proportional mode](#attr-facetchartproportional). This title will be used unless the [legend facet](#method-facetchartgetlegendfacet) defines a [proportionalTitle](Facet.md#attr-facetproportionaltitle).
 
 ### Groups
 

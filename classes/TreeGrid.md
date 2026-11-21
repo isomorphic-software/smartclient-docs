@@ -142,7 +142,7 @@ If appropriate, this suffix will be combined with the [TreeGrid.openIconSuffix](
 ## Attr: TreeGrid.cantDragMultipleNodeOccurencesMessage
 
 ### Description
-For [Multi-link trees](Tree.md#method-treeismultilinktree) only, the message displayed when the user attempts to drag two or more occurrences of the same node into a parent, when [allowDuplicateChildren](Tree.md#attr-treeallowduplicatechildren) is not set true.
+For [Multi-link trees](Tree.md#method-treeismultilinktree) only, the message displayed when the user attempts to drag two or more occurrences of the same node into a parent.
 
 ### Groups
 
@@ -154,7 +154,6 @@ For [Multi-link trees](Tree.md#method-treeismultilinktree) only, the message dis
 - [TreeGrid.canAcceptDroppedRecords](#attr-treegridcanacceptdroppedrecords)
 - [TreeGrid.canReorderRecords](#attr-treegridcanreorderrecords)
 - [TreeGrid.parentAlreadyContainsChildMessage](#attr-treegridparentalreadycontainschildmessage)
-- [Tree.allowDuplicateChildren](Tree.md#attr-treeallowduplicatechildren)
 
 **Flags**: IR
 
@@ -262,7 +261,7 @@ Message displayed when user attempts to drop a node into a parent that has the s
 ## Attr: TreeGrid.parentAlreadyContainsChildMessage
 
 ### Description
-Message displayed when user attempts to drag a node into a parent that already contains a child of the same name/ID. Note, for [multi-link trees](Tree.md#method-treeismultilinktree), this message will not be shown if [allowDuplicateChildren](Tree.md#attr-treeallowduplicatechildren) is set.
+Message displayed when user attempts to drag a node into a parent that already contains a child of the same name/ID.
 
 ### Groups
 
@@ -274,7 +273,6 @@ Message displayed when user attempts to drag a node into a parent that already c
 - [TreeGrid.canAcceptDroppedRecords](#attr-treegridcanacceptdroppedrecords)
 - [TreeGrid.canReorderRecords](#attr-treegridcanreorderrecords)
 - [TreeGrid.cantDragMultipleNodeOccurencesMessage](#attr-treegridcantdragmultiplenodeoccurencesmessage)
-- [Tree.allowDuplicateChildren](Tree.md#attr-treeallowduplicatechildren)
 
 **Flags**: IR
 
@@ -640,7 +638,14 @@ This may be set to false to display a tree or partial tree as a flattened list w
 ### Description
 Mode of fetching records from server.
 
-[Multi-link trees](Tree.md#method-treeismultilinktree) support fetchMode:"paged" with [LinkDataFetchMode](../reference.md#type-linkdatafetchmode):"single": each page of a folder's children is one fetch of joined node-and-link records for that parent, ordered by [Tree.linkPositionField](Tree.md#attr-treelinkpositionfield) unless the tree is sorted. A folder that appears in several places has one set of children, so a page fetched in one place shows in all of them. Paging is not supported with linkDataFetchMode:"separate", [Tree.allowDuplicateChildren](Tree.md#attr-treeallowduplicatechildren) or [canReturnOpenFolders](#canreturnopenfolders); a multi-link ResultTree configured with fetchMode:"paged" and any of these logs a warning and uses "basic" instead.
+[Multi-link trees](Tree.md#method-treeismultilinktree) support fetchMode:"paged". A folder that appears in several places has one set of children, so a page fetched in one place shows in all of them. Pages are ordered by [Tree.linkPositionField](Tree.md#attr-treelinkpositionfield) unless the tree is sorted. How a page is fetched depends on [linkDataFetchMode](ResultTree.md#attr-resulttreelinkdatafetchmode):
+
+*   "single": one fetch of joined node-and-link records for that parent
+*   "separate": a fetch of that parent's link records from the [linkDataSource](ResultTree.md#attr-resulttreelinkdatasource), then a fetch by ID of the nodes they name that the tree does not already have. The tree's criteria name node fields, so they are applied to the link fetch as an `inSet` [subquery](../reference.md#object-advancedcriterionsubquery) on the [dataSource](ResultTree.md#attr-resulttreedatasource); this needs no [foreignKey](DataSourceField.md#attr-datasourcefieldforeignkey) or [includeFrom](DataSourceField.md#attr-datasourcefieldincludefrom) declarations on the linkDataSource. A page can only be sorted by fields of the linkDataSource: sorting by node fields orders fully loaded folders only, and logs a warning. With [canReturnOpenFolders](ResultTree.md#attr-resulttreecanreturnopenfolders), a folder returned open is described on its link record: the children (link records) under [Tree.childrenProperty](Tree.md#attr-treechildrenproperty), with [ResultTree.childCountProperty](ResultTree.md#attr-resulttreechildcountproperty), [Tree.openProperty](Tree.md#attr-treeopenproperty) and [canReturnOpenSubfoldersProperty](ResultTree.md#attr-resulttreecanreturnopensubfoldersproperty) as for a node
+
+A parent that links a child more than once has a row, and an occurrence, for each link, named by the link's key (see [Tree.linkKeyField](Tree.md#attr-treelinkkeyfield)): each page carries the keys of its own rows, so nothing more is fetched to name them. Pages are sorted by link position after any sort of the tree's own, so that the rows of a child linked more than once are always in link position order.
+
+Paging is not supported with linkDataFetchMode:"separate" together with [keepParentsOnFilter](ResultTree.md#attr-resulttreekeepparentsonfilter); a multi-link ResultTree configured that way with fetchMode:"paged" logs a warning and uses "basic" instead.
 
 fetchMode:"local" implies that local filtering will always be performed. See [TreeGrid.keepParentsOnFilter](#attr-treegridkeepparentsonfilter) for additional filtering details.
 

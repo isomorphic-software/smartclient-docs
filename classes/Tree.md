@@ -79,6 +79,8 @@ The name of the "position" field in this [multi-link tree](#attr-treelinkdata)'s
 
 For a databound tree, declare this field of the [linkDataSource](ResultTree.md#attr-resulttreelinkdatasource) with a decimal type (`"float"` or `"decimal"`). A link placed between two others then always has a value between theirs, so placing it never changes another link. With an integer type, two neighbors can have no whole number between them, and the links after them must then be renumbered: see [Tree.getLinkPositionForInsert](#method-treegetlinkpositionforinsert) and [ResultTree.autoUpdateSiblingNodesOnDrag](ResultTree.md#attr-resulttreeautoupdatesiblingnodesondrag). An unbound tree's positions are plain numbers, so this never arises.
 
+Links without a position come after those with one. Links at the same position - and links without one - are ordered by their keys (see [Tree.linkKeyField](#attr-treelinkkeyfield)).
+
 ### Groups
 
 - multiLinkTree
@@ -119,7 +121,7 @@ See also [ResultTree.defaultIsFolder](ResultTree.md#attr-resulttreedefaultisfold
 ## Attr: Tree.duplicateChildPathMarker
 
 ### Description
-With [Tree.allowDuplicateChildren](#attr-treeallowduplicatechildren), the marker between a node's ID and the ordinal that tells apart its occurrences under the same parent, in the paths of the second and later occurrences ("/foo/bar~1"). Node IDs in such a tree should not end with this marker followed by digits.
+For a [multi-link tree](#method-treeismultilinktree), the marker between a node's ID and a link key in the path of an occurrence of a child that its parent links more than once. Of the parent's links to that child, the one with the lowest key is named by the child's ID alone, and each of the others by the ID, this marker and its key: "/foo/bar", "/foo/bar~96". See [Tree.linkKeyField](#attr-treelinkkeyfield) for where link keys come from. The path delimiter, this marker and "%" are escaped in a key as "%" followed by the character's hexadecimal code.
 
 ### Groups
 
@@ -301,6 +303,22 @@ If [Tree.separateFolders](#attr-treeseparatefolders) is true, should folders be 
 **Flags**: IRW
 
 ---
+## Attr: Tree.linkKeyField
+
+### Description
+For a [multi-link tree](#method-treeismultilinktree), the field of the [link records](#attr-treelinkdata) holding a value unique to each link.
+
+A parent can link the same child more than once, and each such link places its own occurrence of the child, with its own open state, selection and link record. The occurrences are told apart in their paths by their links' keys - see [Tree.duplicateChildPathMarker](#attr-treeduplicatechildpathmarker) - so a key must stay the same for as long as its link exists. Keys are compared as numbers when they are numeric, and as strings otherwise.
+
+A [ResultTree](ResultTree.md#class-resulttree) needs no `linkKeyField`: it uses the primary key of its [linkDataSource](ResultTree.md#attr-resulttreelinkdatasource), or with [linkDataFetchMode](ResultTree.md#attr-resulttreelinkdatafetchmode) "single", of its DataSource unless that is just the node ID. A tree with neither keys each link itself, in the order it first sees them, as "\_1", "\_2" and so on; these keys sort after any keys the links have of their own. Such keys last only as long as the tree, so open state saved with [TreeGrid.getOpenState](TreeGrid.md#method-treegridgetopenstate) does not reach the repeated occurrences of a child in a tree built later; specify a `linkKeyField` if that matters. Children that their parent links only once are named by their IDs alone, whatever their keys.
+
+### Groups
+
+- multiLinkTree
+
+**Flags**: IR
+
+---
 ## Attr: Tree.showRoot
 
 ### Description
@@ -323,22 +341,6 @@ Name of the property on a [TreeNode](../reference_2.md#object-treenode) that hol
 - [TreeNode.name](TreeNode.md#attr-treenodename)
 
 **Flags**: IRW
-
----
-## Attr: Tree.allowDuplicateChildren
-
-### Description
-For [multi-link trees](#method-treeismultilinktree), indicates that duplicate children are allowed within the same parent: [Tree.linkData](#attr-treelinkdata) may link the same child under the same parent more than once, and each of those links places its own occurrence of the child, with its own link record, open state and selection.
-
-The full path from the root to a node no longer identifies an occurrence on its own, so the occurrences of a repeated child are told apart by their order: when a parent links the same child more than once, the links are ordered by their [position](#attr-treelinkpositionfield) values, and the paths of the second and later occurrences add the occurrence's place in that order to the child's ID - "/foo/bar", "/foo/bar~1", "/foo/bar~2" - see [Tree.duplicateChildPathMarker](#attr-treeduplicatechildpathmarker). Therefore, if you set this flag, every link must specify a position, and the links between the same parent and child must have different positions; a further link at the same position is ignored, with a warning. As in any multi-link tree, positions are only used to order siblings: they can be any values that sort correctly, and need not be consecutive. Adding, removing, moving or sorting other children of the parent never changes an occurrence's path; adding or removing a link to the same child earlier in the order changes the paths of that child's later occurrences, which keep their state.
-
-Also see [ResultTree.linkDataSource](ResultTree.md#attr-resulttreelinkdatasource) for further details of multiLink trees.
-
-### Groups
-
-- multiLinkTree
-
-**Flags**: IR
 
 ---
 ## Attr: Tree.modelType
@@ -450,7 +452,7 @@ For a [multi-link tree](#attr-treemultilinktree), this property specifies the pa
 
 For a regular, non-multiLink tree, the `linkData` property is ignored.
 
-Minimally, the link data should include a node id, parent id and optionally the position of the child within that parent (required, and unique among the links between the same two nodes, if [Tree.allowDuplicateChildren](#attr-treeallowduplicatechildren) is set). To describe this multi-link tree:
+Minimally, the link data should include a node id, parent id and optionally the position of the child within that parent (see [Tree.linkPositionField](#attr-treelinkpositionfield)). To describe this multi-link tree:
 
 ```
    foo
@@ -481,6 +483,8 @@ and link information in `linkData` like this:
    ]
  
 ```
+A parent may link the same child more than once. Each link places its own occurrence of the child, with its own link record, open state and selection, and the occurrences are told apart in their paths by their links' keys - see [Tree.linkKeyField](#attr-treelinkkeyfield) and [Tree.duplicateChildPathMarker](#attr-treeduplicatechildpathmarker).
+
 For information on databinding multi-link trees, and further discussion on multi-link trees generally, see [ResultTree.linkDataSource](ResultTree.md#attr-resulttreelinkdatasource)
 
 ### Groups
@@ -1523,7 +1527,7 @@ For [multiLink trees](#method-treeismultilinktree), returns the array of this no
  ]
  
 ```
-Note, if [Tree.allowDuplicateChildren](#attr-treeallowduplicatechildren) is set, a parent that has the node as a direct child more than once appears once for each of those occurrences, each with its own position.
+Note, a parent that has the node as a direct child more than once appears once for each of those occurrences, each with its own position.
 
 For non-multiLink trees, returns null (calling this method makes no sense for non-multiLink trees).
 

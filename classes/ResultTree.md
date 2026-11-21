@@ -153,7 +153,14 @@ See the [keepParentsOnFilter](#attr-resulttreekeepparentsonfilter) overview for 
 ### Description
 Mode of fetching records from server.
 
-[Multi-link trees](Tree.md#method-treeismultilinktree) support fetchMode:"paged" with [LinkDataFetchMode](../reference.md#type-linkdatafetchmode):"single": each page of a folder's children is one fetch of joined node-and-link records for that parent, ordered by [Tree.linkPositionField](Tree.md#attr-treelinkpositionfield) unless the tree is sorted. A folder that appears in several places has one set of children, so a page fetched in one place shows in all of them. Paging is not supported with linkDataFetchMode:"separate", [Tree.allowDuplicateChildren](Tree.md#attr-treeallowduplicatechildren) or [ResultTree.canReturnOpenFolders](#attr-resulttreecanreturnopenfolders); a multi-link ResultTree configured with fetchMode:"paged" and any of these logs a warning and uses "basic" instead.
+[Multi-link trees](Tree.md#method-treeismultilinktree) support fetchMode:"paged". A folder that appears in several places has one set of children, so a page fetched in one place shows in all of them. Pages are ordered by [Tree.linkPositionField](Tree.md#attr-treelinkpositionfield) unless the tree is sorted. How a page is fetched depends on [linkDataFetchMode](#attr-resulttreelinkdatafetchmode):
+
+*   "single": one fetch of joined node-and-link records for that parent
+*   "separate": a fetch of that parent's link records from the [linkDataSource](#attr-resulttreelinkdatasource), then a fetch by ID of the nodes they name that the tree does not already have. The tree's criteria name node fields, so they are applied to the link fetch as an `inSet` [subquery](../reference.md#object-advancedcriterionsubquery) on the [dataSource](#attr-resulttreedatasource); this needs no [foreignKey](DataSourceField.md#attr-datasourcefieldforeignkey) or [includeFrom](DataSourceField.md#attr-datasourcefieldincludefrom) declarations on the linkDataSource. A page can only be sorted by fields of the linkDataSource: sorting by node fields orders fully loaded folders only, and logs a warning. With [canReturnOpenFolders](#attr-resulttreecanreturnopenfolders), a folder returned open is described on its link record: the children (link records) under [Tree.childrenProperty](Tree.md#attr-treechildrenproperty), with [ResultTree.childCountProperty](#attr-resulttreechildcountproperty), [Tree.openProperty](Tree.md#attr-treeopenproperty) and [canReturnOpenSubfoldersProperty](#attr-resulttreecanreturnopensubfoldersproperty) as for a node
+
+A parent that links a child more than once has a row, and an occurrence, for each link, named by the link's key (see [Tree.linkKeyField](Tree.md#attr-treelinkkeyfield)): each page carries the keys of its own rows, so nothing more is fetched to name them. Pages are sorted by link position after any sort of the tree's own, so that the rows of a child linked more than once are always in link position order.
+
+Paging is not supported with linkDataFetchMode:"separate" together with [keepParentsOnFilter](#attr-resulttreekeepparentsonfilter); a multi-link ResultTree configured that way with fetchMode:"paged" logs a warning and uses "basic" instead.
 
 fetchMode:"local" implies that local filtering will always be performed. See [ResultTree.keepParentsOnFilter](#attr-resulttreekeepparentsonfilter) for additional filtering details.
 
@@ -262,7 +269,7 @@ The `linkDataSource` is an ordinary [DataSource](DataSource_1.md#class-datasourc
 *   A [primaryKey field](DataSourceField.md#attr-datasourcefieldprimarykey). Like any dataSource, a `linkDataSource` is not fully functional without a `primaryKey` field
 *   A field named the same as the [Tree.parentIdField](Tree.md#attr-treeparentidfield)
 *   A field named the same as the [Tree.idField](Tree.md#attr-treeidfield)
-*   Optionally, a field named the same as the [Tree.linkPositionField](Tree.md#attr-treelinkpositionfield). This is only required if [Tree.allowDuplicateChildren](Tree.md#attr-treeallowduplicatechildren) is set, as it is used to disambiguate between two instances of the same child node within the same parent
+*   Optionally, a field named the same as the [Tree.linkPositionField](Tree.md#attr-treelinkpositionfield), which orders the children of each parent
 *   Fields for other values you may wish to store with the link, if any
 
 #### Providing node data and link data
@@ -636,11 +643,11 @@ Note: if criteria is being split to retrieve server criteria portion and the cri
 ## Method: ResultTree.compareCriteria
 
 ### Description
-Default behavior is to call [DataSource.compareCriteria](DataSource_2.md#method-datasourcecomparecriteria) to determine whether new criteria is equivalent to the old criteria (returns 0) or not.
+Default behavior is to call [DataSource.compareCriteria](DataSource_1.md#method-datasourcecomparecriteria) to determine whether new criteria is equivalent to the old criteria (returns 0) or not.
 
-See [DataSource.compareCriteria](DataSource_2.md#method-datasourcecomparecriteria) for a full explanation of the default behavior. The [CriteriaPolicy](../reference_2.md#type-criteriapolicy) used is "dropOnChange".
+See [DataSource.compareCriteria](DataSource_1.md#method-datasourcecomparecriteria) for a full explanation of the default behavior. The [CriteriaPolicy](../reference_2.md#type-criteriapolicy) used is "dropOnChange".
 
-Override this method or [DataSource.compareCriteria](DataSource_2.md#method-datasourcecomparecriteria) to implement your own client-side filtering behavior.
+Override this method or [DataSource.compareCriteria](DataSource_1.md#method-datasourcecomparecriteria) to implement your own client-side filtering behavior.
 
 ### Parameters
 

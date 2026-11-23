@@ -43,3 +43,18 @@ The unique name for this IconSet - must be a valid JavaScript Identifier. If the
 **Flags**: IR
 
 ---
+## Attr: IconSet.baseSet
+
+### Description
+Whether this `IconSet` answers where the framework's own icons are sourced from. Only one base set is in force at a time, so installing one with [Media.useMedia](Media.md#classmethod-mediausemedia) replaces the one before it and makes it the current [Media.iconSet](#mediaiconset); the framework's "skin" and "svg" sets are the base sets.
+
+An `IconSet` you define leaves this false. Such a set is an overlay: it contributes [new icons](#attr-iconsetstockicons), re-maps existing ones with [mappings](#attr-iconsetmappings), or both, and any number of them can be installed alongside whichever base set is in use - see [Media.installedIconSets](Media.md#classattr-mediainstallediconsets).
+
+### Groups
+
+- media
+- stockIcons
+
+**Flags**: IR
+
+---

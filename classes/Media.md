@@ -22,6 +22,21 @@ The default-size in pixels for any request for an SVG symbol that doesn't provid
 **Flags**: IR
 
 ---
+## ClassAttr: Media.installedIconSets
+
+### Description
+The [names](IconSet.md#attr-iconsetname) of the overlay [IconSets](../reference.md#object-iconset) installed with [Media.useMedia](#classmethod-mediausemedia), in the order they were installed.
+
+A [base set](IconSet.md#attr-iconsetbaseset) is not listed here - only one of those is in force at a time and [Media.iconSet](#mediaiconset) names it.
+
+### Groups
+
+- media
+- stockIcons
+
+**Flags**: R
+
+---
 ## ClassAttr: Media.svgAutoScale
 
 ### Description
@@ -111,6 +126,29 @@ Returns an array of the [names](StockIcon.md#attr-stockiconname) of all register
 - media
 
 ---
+## ClassMethod: Media.uninstallIconSet
+
+### Description
+Uninstalls an [IconSet](../reference.md#object-iconset) that [Media.useMedia](#classmethod-mediausemedia) installed, undoing the [mappings](IconSet.md#attr-iconsetmappings) it applied. Any [stockIcons](IconSet.md#attr-iconsetstockicons) it contributed stay registered, since components may be showing them by name.
+
+Only an overlay can be uninstalled. A [base set](IconSet.md#attr-iconsetbaseset) answers where the framework's own icons come from and one is always in force, so it is replaced by installing another rather than removed.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| iconSet | [String](#type-string)|[IconSet](#type-iconset) | false | — | the IconSet, or the [name](IconSet.md#attr-iconsetname) of one |
+
+### Returns
+
+`[boolean](../reference.md#type-boolean)` — true if the IconSet was installed and has been uninstalled
+
+### Groups
+
+- stockIcons
+- media
+
+---
 ## ClassMethod: Media.updateIconMapping
 
 ### Description
@@ -155,11 +193,15 @@ If an IconSet has not been registered with this method, you may pass the object 
 ### Description
 Registers a list of new [stockIcons](../reference_2.md#object-stockicon) for use in an application.
 
+An icon that does not specify [StockIcon.index](StockIcon.md#attr-stockiconindex) is numbered automatically, past every index already in use and in the order the list gives - so the icons of an [IconSet](../reference.md#object-iconset) keep the order they were declared in, and a set registered later cannot collide with one registered earlier. Pass `autoAssignIndex` false to leave such icons unindexed.
+
 ### Parameters
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | icons | [Array of StockIcon](#type-array-of-stockicon) | false | — | the [StockIcons](../reference_2.md#object-stockicon) to add |
+| autoAssignIndex | [boolean](../reference.md#type-boolean) | true | — | pass false to leave an un-indexed icon unindexed |
+| updateExisting | [boolean](../reference.md#type-boolean) | true | — | update an icon whose [StockIcon.name](StockIcon.md#attr-stockiconname) is already registered rather than refusing it; see [Media.addStockIcon](#classmethod-mediaaddstockicon) |
 
 ### Groups
 

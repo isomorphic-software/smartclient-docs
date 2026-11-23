@@ -5955,18 +5955,6 @@ For editable listGrids, outstanding unsaved edits when the user performs a new f
 **Flags**: IRW
 
 ---
-## Attr: ListGrid.unknownRowCountDisplayValue
-
-### Description
-Value to return from [ListGrid.getFormattedRowCount](ListGrid_2.md#method-listgridgetformattedrowcount) when the row count is unknown
-
-### Groups
-
-- i18nMessages
-
-**Flags**: IRW
-
----
 ## Attr: ListGrid.headerMenuButtonHeight
 
 ### Description
@@ -5981,6 +5969,18 @@ If [ListGrid.showHeaderMenuButton](#attr-listgridshowheadermenubutton) is true, 
 - [ListGrid.rotatedHeaderMenuButtonHeight](#attr-listgridrotatedheadermenubuttonheight)
 
 **Flags**: IRA
+
+---
+## Attr: ListGrid.unknownRowCountDisplayValue
+
+### Description
+Value to return from [ListGrid.getFormattedRowCount](ListGrid_2.md#method-listgridgetformattedrowcount) when the row count is unknown
+
+### Groups
+
+- i18nMessages
+
+**Flags**: IRW
 
 ---
 ## Attr: ListGrid.headerMenuButtonIconHeight
@@ -6264,18 +6264,6 @@ An automatically generated field that can be dragged to drag the current selecti
 **Flags**: IR
 
 ---
-## Attr: ListGrid.rowRangeDisplayStyle
-
-### Description
-How should the [ListGrid.getFormattedRowRange](ListGrid_2.md#method-listgridgetformattedrowrange) format the row range and row count for display to the user?
-
-### Groups
-
-- rowRangeDisplay
-
-**Flags**: IRW
-
----
 ## Attr: ListGrid.warnOnRemovalMessage
 
 ### Description
@@ -6284,6 +6272,18 @@ Warning message to show the user on a click on the 'remove' icon if [ListGrid.ca
 ### Groups
 
 - i18nMessages
+
+**Flags**: IRW
+
+---
+## Attr: ListGrid.rowRangeDisplayStyle
+
+### Description
+How should the [ListGrid.getFormattedRowRange](ListGrid_2.md#method-listgridgetformattedrowrange) format the row range and row count for display to the user?
+
+### Groups
+
+- rowRangeDisplay
 
 **Flags**: IRW
 
@@ -6416,6 +6416,18 @@ If set, the [ListGrid.checkboxFieldPartialImage](#attr-listgridcheckboxfieldpart
 **Flags**: IRWA
 
 ---
+## Attr: ListGrid.defaultDateTimeFieldWidth
+
+### Description
+Default width for datetime type fields. See [ListGrid.autoFitDateFields](#attr-listgridautofitdatefields) for details on how this property is used.
+
+### Groups
+
+- autoFitFields
+
+**Flags**: IRW
+
+---
 ## Attr: ListGrid.showHeader
 
 ### Description
@@ -6425,18 +6437,6 @@ Should we show the header for this ListGrid?
 
 - gridHeader
 - appearance
-
-**Flags**: IRW
-
----
-## Attr: ListGrid.defaultDateTimeFieldWidth
-
-### Description
-Default width for datetime type fields. See [ListGrid.autoFitDateFields](#attr-listgridautofitdatefields) for details on how this property is used.
-
-### Groups
-
-- autoFitFields
 
 **Flags**: IRW
 

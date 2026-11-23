@@ -3772,7 +3772,7 @@ StringMethod fired in response to a keydown while focused in this form item.
 |------|------|----------|---------|-------------|
 | item | [FormItem](#type-formitem) | false | — | Item over which the keydown occurred |
 | form | [DynamicForm](#type-dynamicform) | false | — | Pointer to the item's form |
-| keyName | [KeyName](../reference_2.md#type-keyname) | false | — | Name of the key pressed (Example: `"A"`, `"Enter"`) |
+| keyName | [KeyName](../reference.md#type-keyname) | false | — | Name of the key pressed (Example: `"A"`, `"Enter"`) |
 
 ### Returns
 
@@ -4079,7 +4079,7 @@ StringMethod fired when the user presses a key while focused in this form item.
 |------|------|----------|---------|-------------|
 | item | [FormItem](#type-formitem) | false | — | Item over which the keypress occurred |
 | form | [DynamicForm](#type-dynamicform) | false | — | Pointer to the item's form |
-| keyName | [KeyName](../reference_2.md#type-keyname) | false | — | Name of the key pressed (Example: `"A"`, `"Enter"`) |
+| keyName | [KeyName](../reference.md#type-keyname) | false | — | Name of the key pressed (Example: `"A"`, `"Enter"`) |
 | characterValue | [number](#type-number) | false | — | If this was a character key, this is the numeric value for the character |
 
 ### Returns
@@ -4117,7 +4117,7 @@ StringMethod fired in response to a keyup while focused in this form item.
 |------|------|----------|---------|-------------|
 | item | [FormItem](#type-formitem) | false | — | Item over which the keyup occurred |
 | form | [DynamicForm](#type-dynamicform) | false | — | Pointer to the item's form |
-| keyName | [KeyName](../reference_2.md#type-keyname) | false | — | Name of the key pressed (Example: `"A"`, `"Enter"`) |
+| keyName | [KeyName](../reference.md#type-keyname) | false | — | Name of the key pressed (Example: `"A"`, `"Enter"`) |
 
 ### Returns
 
@@ -4137,7 +4137,7 @@ StringMethod. Default action to fire when an icon has keyboard focus and the use
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| keyName | [KeyName](../reference_2.md#type-keyname) | false | — | name of the key pressed |
+| keyName | [KeyName](../reference.md#type-keyname) | false | — | name of the key pressed |
 | character | [Character](#type-character) | false | — | character produced by the keypress |
 | form | [DynamicForm](#type-dynamicform) | false | — | a pointer to this item's form |
 | item | [FormItem](#type-formitem) | false | — | a pointer to this form item |
@@ -4651,7 +4651,7 @@ Developers may override this method to allow the form to react to certain keypre
 
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
-| keyName | [KeyName](../reference_2.md#type-keyname) | false | — | name of the key pressed |
+| keyName | [KeyName](../reference.md#type-keyname) | false | — | name of the key pressed |
 | characterValue | [number](#type-number) | false | — | If this was a character key, this is the numeric value for the character |
 
 ### Returns

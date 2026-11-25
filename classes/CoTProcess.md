@@ -640,6 +640,26 @@ A task can suppress any of these named parts by setting [CoTTask.partialPrompt](
 - CoT
 
 ---
+## Method: CoTProcess.handleOutputValidationFailure
+
+### Description
+Called when a [CoTTask](CoTTask.md#class-cottask)'s AI response arrives but cannot be used: it fails the task's [output-field check](CoTTask.md#attr-cottaskoutputfields), names a `goTo` or [transition](CoTTask.md#attr-cottasktransitions) that is not allowed, or is not valid JSON. The task does not advance.
+
+The default implementation re-runs the task with `errors` included in its prompt, up to [CoTTask.maxRetries](CoTTask.md#attr-cottaskmaxretries) (or [CoTProcess.maxRetries](#attr-cotprocessmaxretries)) times, and returns `true`; once that budget is spent it returns `false`, and the run ends as described in [AIRetriesExhausted](../kb_topics/AIRetriesExhausted.md#kb-topic-airetriesexhausted). Override to apply a different retry policy.
+
+### Parameters
+
+| Name | Type | Optional | Default | Description |
+|------|------|----------|---------|-------------|
+| task | [CoTTask](#type-cottask) | false | — | the task whose response was rejected |
+| errors | [Array of Object](#type-array-of-object) | false | — | the problems found, each with a `message` and, for an output-field failure, the `field` concerned |
+| outputs | [Object](../reference_2.md#type-object) | false | — | the response as parsed, or `null` when it could not be parsed |
+
+### Returns
+
+`[boolean](../reference.md#type-boolean)` — `true` if the failure has been handled - a retry is scheduled, or the process has ended itself; `false` to end the run with a `"taskOutputValidation"` [ProcessFailure](../reference.md#object-processfailure)
+
+---
 ## Method: CoTProcess.isCanceled
 
 ### Description

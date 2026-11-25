@@ -15,7 +15,7 @@ Properties defining an object's appearance
 - [VerticalAlignment](../reference.md#type-verticalalignment)
 - [Direction](../reference.md#type-direction)
 - [ImageStyle](../reference.md#type-imagestyle)
-- [BackgroundRepeat](../reference.md#type-backgroundrepeat)
+- [BackgroundRepeat](../reference_2.md#type-backgroundrepeat)
 - [CSSStyleName](../reference.md#type-cssstylename)
 - [CSSColor](../reference_2.md#type-csscolor)
 - [SortArrow](../reference_2.md#type-sortarrow)

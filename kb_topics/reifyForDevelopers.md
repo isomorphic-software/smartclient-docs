@@ -109,7 +109,7 @@ If you have existing DataSources in hand-coded applications, the quickest way to
 
 If you give the DataSource you create in Reify the same ID as the real DataSource in your project, then when the Reify project is exported and added to an existing hand-coded project, the real DataSource will automatically take the place of the MockDataSource you create in Reify.
 
-Note that Reify does not offer direct upload of existing .ds.xml files, because of the security implications of features such as [`<customSQL>`](#attr-operationbindingcustomsql) and [Server Scripting](serverScript.md#kb-topic-server-scripting). Even aside from security concerns, an existing .ds.xml can have dependencies on other parts of your environment, such as custom [SimpleTypes](../classes/SimpleType.md#class-simpletype), validators that invoke server Java code, or custom tags.
+Note that Reify does not offer direct upload of existing .ds.xml files, because of the security implications of features such as [`<customSQL>`](../classes/OperationBinding.md#attr-operationbindingcustomsql) and [Server Scripting](serverScript.md#kb-topic-server-scripting). Even aside from security concerns, an existing .ds.xml can have dependencies on other parts of your environment, such as custom [SimpleTypes](../classes/SimpleType.md#class-simpletype), validators that invoke server Java code, or custom tags.
 
 When you export to CSV and create a MockDataSource, Reify automatically determines field types, including distinguishing between "time", "date", and "datetime" fields, as well as between "int" and "float" fields, so the MockDataSource is a perfect stand-in for your real DataSource for design purposes.
 

@@ -5338,7 +5338,7 @@ Set a specific [ARIA state](#attr-canvasariastate) for this component.
 | Name | Type | Optional | Default | Description |
 |------|------|----------|---------|-------------|
 | stateName | [String](#type-string) | false | — | aria state to update |
-| stateValue | [String](#type-string)|[Boolean](#type-boolean)|[Integer](../reference_2.md#type-integer)|[Float](../reference.md#type-float) | false | — | value for the aria state |
+| stateValue | [String](#type-string)|[Boolean](#type-boolean)|[Integer](../reference_2.md#type-integer)|[Float](../reference_2.md#type-float) | false | — | value for the aria state |
 
 ### Groups
 
